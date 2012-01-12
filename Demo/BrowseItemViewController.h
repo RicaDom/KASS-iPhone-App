@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ListItem.h"
 
 @interface BrowseItemViewController : UIViewController
-
+@property (weak, nonatomic) IBOutlet UILabel *itemTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *itemDescriptionLabel;
+@property (nonatomic, strong) ListItem *currentItem;
 @end

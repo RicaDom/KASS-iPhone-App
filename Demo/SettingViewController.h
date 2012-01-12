@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  SettingViewController.h
 //  Demo
 //
 //  Created by zhicai on 12/22/11.
@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface SettingViewController : UIViewController
 
-@property (strong, nonatomic) UIWindow *window;
 @end

@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppScrollView.h"
 
-@interface PostViewController : UIViewController
+@interface PostViewController : UIViewController <UIScrollViewDelegate> 
 
+@property (weak, nonatomic) IBOutlet AppScrollView *hotPostScrollView;
+
+@property (weak, nonatomic) IBOutlet UIPageControl *hotPostPageControl;
+
+- (IBAction)changeHotPostPage;
+//- (void) touchesEnded: (NSSet *) touches withEvent: (UIEvent *) event;
 @end

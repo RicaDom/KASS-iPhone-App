@@ -10,4 +10,5 @@
 
 @interface PostFlowPriceViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITextField *priceTextField;
 @end

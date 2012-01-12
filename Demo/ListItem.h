@@ -10,4 +10,10 @@
 
 @interface ListItem : NSObject
 
+@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *description;
+@property (nonatomic, strong) NSDate *needItBy;
+@property (nonatomic, strong) NSDecimalNumber *askPrice;
+@property (nonatomic, strong) NSString *picFileName;
+
 @end

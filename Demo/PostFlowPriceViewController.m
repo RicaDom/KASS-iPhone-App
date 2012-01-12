@@ -9,6 +9,7 @@
 #import "PostFlowPriceViewController.h"
 
 @implementation PostFlowPriceViewController
+@synthesize priceTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,16 +37,18 @@
 }
 */
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
+    [priceTextField becomeFirstResponder];
     [super viewDidLoad];
 }
-*/
+
 
 - (void)viewDidUnload
 {
+    [self setPriceTextField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

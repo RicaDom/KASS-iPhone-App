@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ListItem.h"
+#import "BrowseItemViewController.h"
 
-@interface BrowseTableViewController : UITableViewController
+@interface BrowseTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UISegmentedControl *browseSegment;
 
+- (IBAction)browseSegmentAction:(id)sender;
+- (void)setupArray;
 @end

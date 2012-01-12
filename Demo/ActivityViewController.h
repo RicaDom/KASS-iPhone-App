@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ListItem.h"
+#import "ItemViewController.h"
 
-@interface ActivityViewController : UITableViewController
+@interface ActivityViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource>{
+    __weak IBOutlet UISegmentedControl *activitySegment;
+}
+
+- (IBAction)activityChanged:(id)sender;
+-(void)setupArray;
 
 @end

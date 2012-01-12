@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainTabBarViewController : UITabBarController
+@interface MainTabBarViewController : UITabBarController <UIAlertViewDelegate, UITabBarControllerDelegate>
 
+- (void)showMessage;
 @end

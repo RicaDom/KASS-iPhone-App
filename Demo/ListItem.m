@@ -10,4 +10,10 @@
 
 @implementation ListItem
 
+@synthesize title;
+@synthesize description;
+@synthesize needItBy;
+@synthesize askPrice;
+@synthesize picFileName;
+
 @end

@@ -10,6 +10,10 @@
 
 @implementation BrowseItemViewController
 
+@synthesize itemTitleLabel;
+@synthesize itemDescriptionLabel;
+@synthesize currentItem;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -36,16 +40,20 @@
 }
 */
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
+    itemTitleLabel.text = currentItem.title;
+    itemDescriptionLabel.text = currentItem.description;
     [super viewDidLoad];
 }
-*/
+
 
 - (void)viewDidUnload
 {
+    [self setItemTitleLabel:nil];
+    [self setItemDescriptionLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

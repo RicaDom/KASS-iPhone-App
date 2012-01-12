@@ -11,6 +11,84 @@
 
 @implementation ActivityViewController
 
+NSMutableArray *buyingItems, *sellingItems, *currentItems;
+
+- (IBAction)activityChanged:(id)sender {
+    if ( 0 == activitySegment.selectedSegmentIndex) {
+        currentItems = buyingItems;
+    } else {
+        currentItems = sellingItems;
+    }
+    [self.tableView reloadData];
+}
+
+-(void)setupArray{
+    
+    // buying items
+    buyingItems = [NSMutableArray new];
+    
+    ListItem *item = [ListItem new];
+    [item setTitle:@"need a iPad"];
+    [item setDescription:@"good condition with wifi"];
+    item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
+                     [[NSNumber numberWithFloat:209.75f] decimalValue]];
+    
+    [buyingItems addObject:item];
+    
+    item = [ListItem new];
+    [item setTitle:@"i want basketball shoes"];
+    [item setDescription:@"air jordan"];
+    item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
+                     [[NSNumber numberWithFloat:98.55f] decimalValue]];
+    
+    [buyingItems addObject:item];
+ 
+    item = [ListItem new];
+    [item setTitle:@"need a girl to take a walk"];
+    [item setDescription:@"under 28 years old, pretty, hot"];
+    item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
+                     [[NSNumber numberWithFloat:-8.55f] decimalValue]];
+    
+    [buyingItems addObject:item];
+
+    
+    // selling items
+    sellingItems = [NSMutableArray new];
+
+    item = [ListItem new];
+    [item setTitle:@"gently used kindle"];
+    [item setDescription:@"good condition with wifi"];
+    item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
+                     [[NSNumber numberWithFloat:89.75f] decimalValue]];
+    
+    [sellingItems addObject:item];
+    
+    item = [ListItem new];
+    [item setTitle:@"games for ps3"];
+    [item setDescription:@"any shooting games"];
+    item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
+                     [[NSNumber numberWithFloat:18.55f] decimalValue]];
+    
+    [sellingItems addObject:item];
+    
+    if ( 0 == activitySegment.selectedSegmentIndex) {
+        currentItems = buyingItems;
+    } else {
+        currentItems = sellingItems;
+    }
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ShowItem"]) {
+        ItemViewController *ivc = [segue destinationViewController];
+        
+        NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+        int row = [path row];
+        ListItem *item = [currentItems objectAtIndex:row];
+        ivc.currentItem = item;
+    }
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -28,10 +106,11 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-#pragma mark - View lifecycle
+//#pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
+    [self setupArray];
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -43,6 +122,7 @@
 
 - (void)viewDidUnload
 {
+    activitySegment = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -78,29 +158,33 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
+    // #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
+    // #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+
+    return [currentItems count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"activityCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    // Configure the cell...
-    
+    // Configure the cell...    
+    ListItem *item = [currentItems objectAtIndex:indexPath.row];
+    NSString *price = [[item askPrice] stringValue];
+    cell.textLabel.text = [[item title] stringByAppendingFormat:@" ¥%@", price];
+
     return cell;
 }
 
@@ -149,7 +233,7 @@
 {
     // Navigation logic may go here. Create and push another view controller.
     /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+    // <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
      // ...
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];

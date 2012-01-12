@@ -1,18 +1,14 @@
 //
-//  ItemViewController.m
+//  SettingViewController.m
 //  Demo
 //
-//  Created by zhicai on 12/27/11.
+//  Created by zhicai on 12/22/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "ItemViewController.h"
+#import "SettingViewController.h"
 
-@implementation ItemViewController
-
-@synthesize itemTitle;
-@synthesize itemDescription;
-@synthesize currentItem;
+@implementation SettingViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,19 +36,16 @@
 }
 */
 
-
+/*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
-    itemTitle.text = currentItem.title;
-    itemDescription.text = currentItem.description;
     [super viewDidLoad];
 }
+*/
 
 - (void)viewDidUnload
-{    
-    [self setItemTitle:nil];
-    [self setItemDescription:nil];
+{
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
