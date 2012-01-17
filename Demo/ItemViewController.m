@@ -10,9 +10,9 @@
 
 @implementation ItemViewController
 
-@synthesize itemTitle;
-@synthesize itemDescription;
-@synthesize currentItem;
+@synthesize itemTitle = _itemTitle;
+@synthesize itemDescription = _itemDescription;
+@synthesize currentItem = _currentItem;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,8 +44,8 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
-    itemTitle.text = currentItem.title;
-    itemDescription.text = currentItem.description;
+    self.itemTitle.text = self.currentItem.title;
+    self.itemDescription.text = self.currentItem.description;
     [super viewDidLoad];
 }
 

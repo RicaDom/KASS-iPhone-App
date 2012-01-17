@@ -10,9 +10,9 @@
 
 @implementation BrowseItemViewController
 
-@synthesize itemTitleLabel;
-@synthesize itemDescriptionLabel;
-@synthesize currentItem;
+@synthesize itemTitleLabel = _itemTitleLabel;
+@synthesize itemDescriptionLabel = _itemDescriptionLabel;
+@synthesize currentItem = _currentItem;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,8 +44,8 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
-    itemTitleLabel.text = currentItem.title;
-    itemDescriptionLabel.text = currentItem.description;
+    self.itemTitleLabel.text = self.currentItem.title;
+    self.itemDescriptionLabel.text = self.currentItem.description;
     [super viewDidLoad];
 }
 

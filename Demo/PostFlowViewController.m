@@ -10,8 +10,8 @@
 
 @implementation PostFlowViewController
 
-@synthesize titleTextField;
-@synthesize currentTabBarController;
+@synthesize titleTextField = _titleTextField;
+@synthesize currentTabBarController = _currentTabBarController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,7 +44,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [titleTextField becomeFirstResponder];
+    [self.titleTextField becomeFirstResponder];
     //NSLog(@"Current tab controller: %@", NSStringFromClass([currentTabBarController class]));
 }
 
@@ -64,7 +64,7 @@
 }
 
 - (IBAction)CancelAction:(id)sender {
-    [titleTextField resignFirstResponder];
+    [self.titleTextField resignFirstResponder];
     NSLog(@"controller class: %@", NSStringFromClass([self.navigationController.tabBarController class]));
     printf("Index: %d", self.navigationController.tabBarController.selectedIndex);
     //[self.navigationController dismissModalViewControllerAnimated:YES];

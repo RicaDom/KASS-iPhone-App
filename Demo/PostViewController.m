@@ -9,10 +9,10 @@
 #import "PostViewController.h"
 
 @implementation PostViewController
-@synthesize hotPostScrollView;
-@synthesize hotPostPageControl;
-@synthesize editorPostScrollView;
-@synthesize editorPostPageControl;
+@synthesize hotPostScrollView = _hotPostScrollView;
+@synthesize hotPostPageControl = _hotPostPageControl;
+@synthesize editorPostScrollView = _editorPostScrollView;
+@synthesize editorPostPageControl = _editorPostPageControl;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -109,7 +109,7 @@
 //    UITouch *touch2 = [touches anyObject];
 //    CGPoint tapLocation = [touch2 locationInView:self];
 //    NSLog(@"Post Location: %@", tapLocation);
-    if ([touch view] == hotPostScrollView) {
+    if ([touch view] == self.hotPostScrollView) {
         NSLog(@"touching... hotPostScrollView...");
         // do stuff here
     }
@@ -123,7 +123,7 @@
      NSLog(@"touching... 1hotPostScrollView...");
     // if the view in which the touch is found is myScrollView
     // (assuming myScrollView is the UIScrollView and is a subview of the UIView)
-    if ([touch view] == hotPostScrollView) {
+    if ([touch view] == self.hotPostScrollView) {
         NSLog(@"touching... hotPostScrollView...");
         // do stuff here
     }
@@ -221,7 +221,7 @@
 	self.hotPostPageControl.numberOfPages = 3;
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureCaptured:)];
-    [hotPostScrollView addGestureRecognizer:singleTap]; 
+    [self.hotPostScrollView addGestureRecognizer:singleTap]; 
     
     
     // EDITOR POST EXAMPLES:
@@ -254,7 +254,7 @@
 	self.editorPostPageControl.numberOfPages = 3;
     
     singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureCaptured:)];
-    [editorPostScrollView addGestureRecognizer:singleTap];     
+    [self.editorPostScrollView addGestureRecognizer:singleTap];     
     NSLog(@"Self = %@", self);
    // NSLog(@"Current responder = %@", [self.view findFirstResponder]);
 }

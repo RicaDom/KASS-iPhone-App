@@ -10,10 +10,10 @@
 
 @implementation ListItem
 
-@synthesize title;
-@synthesize description;
-@synthesize needItBy;
-@synthesize askPrice;
-@synthesize picFileName;
+@synthesize title = _title;
+@synthesize description = _description;
+@synthesize needItBy = _needItBy;
+@synthesize askPrice = _askPrice;
+@synthesize picFileName = _picFileName;
 
 @end
