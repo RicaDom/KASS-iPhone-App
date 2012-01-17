@@ -30,6 +30,9 @@
 		E5A0744A14AAA57100885232 /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A0744914AAA57100885232 /* ActivityViewController.m */; };
 		E5C0ABE814AAC9D20021873A /* ListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C0ABE714AAC9D20021873A /* ListItem.m */; };
 		E5C0ABED14AADF130021873A /* ItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C0ABEC14AADF130021873A /* ItemViewController.m */; };
+		E5C98E9F14C51D3800319277 /* Zaarly_logo3-300x143.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C98E9E14C51D3800319277 /* Zaarly_logo3-300x143.png */; };
+		E5C98EA314C51FBC00319277 /* images.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C98EA114C51FBC00319277 /* images.png */; };
+		E5C98EA414C51FBC00319277 /* martin_luther_king-2012-hp.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C98EA214C51FBC00319277 /* martin_luther_king-2012-hp.png */; };
 		E5D69EDD14AD0DB900D552F6 /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D69EDC14AD0DB900D552F6 /* MainTabBarViewController.m */; };
 		E5D69EEB14AD1A6700D552F6 /* world1.png in Resources */ = {isa = PBXBuildFile; fileRef = E5D69EEA14AD1A6700D552F6 /* world1.png */; };
 		E5D69EED14AD1AAD00D552F6 /* preferences1.png in Resources */ = {isa = PBXBuildFile; fileRef = E5D69EEC14AD1AAD00D552F6 /* preferences1.png */; };
@@ -91,6 +94,9 @@
 		E5C0ABE714AAC9D20021873A /* ListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListItem.m; sourceTree = "<group>"; };
 		E5C0ABEB14AADF130021873A /* ItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemViewController.h; sourceTree = "<group>"; };
 		E5C0ABEC14AADF130021873A /* ItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemViewController.m; sourceTree = "<group>"; };
+		E5C98E9E14C51D3800319277 /* Zaarly_logo3-300x143.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Zaarly_logo3-300x143.png"; sourceTree = "<group>"; };
+		E5C98EA114C51FBC00319277 /* images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = images.png; sourceTree = "<group>"; };
+		E5C98EA214C51FBC00319277 /* martin_luther_king-2012-hp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "martin_luther_king-2012-hp.png"; sourceTree = "<group>"; };
 		E5D69EDB14AD0DB900D552F6 /* MainTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarViewController.h; sourceTree = "<group>"; };
 		E5D69EDC14AD0DB900D552F6 /* MainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewController.m; sourceTree = "<group>"; };
 		E5D69EEA14AD1A6700D552F6 /* world1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = world1.png; sourceTree = "<group>"; };
@@ -242,6 +248,9 @@
 		E59AE14814AD09410048C7C0 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E5C98EA114C51FBC00319277 /* images.png */,
+				E5C98EA214C51FBC00319277 /* martin_luther_king-2012-hp.png */,
+				E5C98E9E14C51D3800319277 /* Zaarly_logo3-300x143.png */,
 				E5D69EF214AD54E100D552F6 /* house.png */,
 				E5D69EF014AD1ACB00D552F6 /* mailopened1.png */,
 				E5D69EEE14AD1AB900D552F6 /* shoppingcart1.png */,
@@ -332,6 +341,9 @@
 				E5D69EEF14AD1AB900D552F6 /* shoppingcart1.png in Resources */,
 				E5D69EF114AD1ACB00D552F6 /* mailopened1.png in Resources */,
 				E5D69EF314AD54E100D552F6 /* house.png in Resources */,
+				E5C98E9F14C51D3800319277 /* Zaarly_logo3-300x143.png in Resources */,
+				E5C98EA314C51FBC00319277 /* images.png in Resources */,
+				E5C98EA414C51FBC00319277 /* martin_luther_king-2012-hp.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
