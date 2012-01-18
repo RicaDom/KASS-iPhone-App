@@ -12,5 +12,5 @@
 @interface BrowseItemViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *itemTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *itemDescriptionLabel;
-@property (nonatomic, strong) ListItem *currentItem;
+@property (strong, nonatomic) ListItem *currentItem;
 @end

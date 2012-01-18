@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ListItem.h"
 
-@interface PostFlowViewController : UIViewController {
-    UITabBarController *currentTabBarController;
-}
-@property (nonatomic, strong) UITabBarController *currentTabBarController;
+@interface PostFlowViewController : UIViewController
+
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
-
+@property (weak, nonatomic) IBOutlet UITextField *descriptionTextField;
+@property (strong, nonatomic) ListItem *currentListItem;
 - (IBAction)CancelAction:(id)sender;
 
 @end

@@ -11,7 +11,8 @@
 @implementation PostFlowViewController
 
 @synthesize titleTextField = _titleTextField;
-@synthesize currentTabBarController = _currentTabBarController;
+@synthesize descriptionTextField = _descriptionTextField;
+@synthesize currentListItem = _currentListItem;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,6 +45,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.titleTextField.text = self.currentListItem.title;
+    self.descriptionTextField.text = self.currentListItem.description;
     [self.titleTextField becomeFirstResponder];
     //NSLog(@"Current tab controller: %@", NSStringFromClass([currentTabBarController class]));
 }
@@ -52,6 +55,7 @@
 - (void)viewDidUnload
 {
     [self setTitleTextField:nil];
+    [self setDescriptionTextField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
