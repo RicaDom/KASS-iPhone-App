@@ -296,7 +296,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="需求预览" id="fsH-d8-Vyd">
-                        <barButtonItem key="backBarButtonItem" title="上一步" id="Xys-sw-SyJ"/>
+                        <barButtonItem key="backBarButtonItem" title="修改" id="Xys-sw-SyJ"/>
                         <barButtonItem key="rightBarButtonItem" title="取消" id="ySB-D4-bsE"/>
                     </navigationItem>
                 </viewController>
@@ -621,7 +621,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="NKD-yl-Lve" kind="modal" id="MiZ-fx-3k2"/>
+                                    <segue destination="NKD-yl-Lve" kind="modal" identifier="EditorPostWorkFlow" id="MiZ-fx-3k2"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Hey there!" lineBreakMode="tailTruncation" minimumFontSize="10" id="NGl-X4-VLN">
@@ -689,8 +689,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="editorPostScrollView" destination="Q4T-jY-Vwt" id="Yla-GV-KAd"/>
                         <outlet property="hotPostPageControl" destination="Uc1-BJ-aQq" id="C0G-83-TcZ"/>
                         <outlet property="hotPostScrollView" destination="81e-Tr-J3D" id="qrI-JW-RgN"/>
-                        <segue destination="NKD-yl-Lve" kind="modal" identifier="EditorPostWorkFlow" id="gVg-kA-eUI"/>
-                        <segue destination="NKD-yl-Lve" kind="modal" identifier="HotPostWorkFlow" id="nXJ-AE-WaB"/>
+                        <segue destination="NKD-yl-Lve" kind="modal" identifier="HotPostWorkFlow" id="nl2-Xy-OWc"/>
+                        <segue destination="NKD-yl-Lve" kind="modal" identifier="ClearPostSegue" id="OBW-g0-aWf"/>
                     </connections>
                 </viewController>
             </objects>
@@ -704,88 +704,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="preferences1.png" width="26" height="26"/>
         <image name="world1.png" width="26" height="26"/>
     </resources>
-    <classes>
-        <class className="ActivityViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ActivityViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="activityChanged:"/>
-                <relationship kind="outlet" name="activitySegment" candidateClass="UISegmentedControl"/>
-            </relationships>
-        </class>
-        <class className="AppScrollView" superclassName="UIScrollView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AppScrollView.h"/>
-        </class>
-        <class className="BrowseItemViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BrowseItemViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="itemDescriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="itemTitleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="BrowseTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BrowseTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="browseSegmentAction:"/>
-                <relationship kind="outlet" name="browseSegment" candidateClass="UISegmentedControl"/>
-            </relationships>
-        </class>
-        <class className="ItemViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ItemViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="itemDescription" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="itemTitle" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MainTabBarViewController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainTabBarViewController.h"/>
-        </class>
-        <class className="MapViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="currentMap" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-        <class className="PostFlowPriceViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PostFlowPriceViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="priceTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="PostFlowSetDateViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PostFlowSetDateViewController.h"/>
-        </class>
-        <class className="PostFlowViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PostFlowViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="CancelAction:"/>
-                <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="titleTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="PostSummaryViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PostSummaryViewController.h"/>
-        </class>
-        <class className="PostViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PostViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="changeEditorPostPage"/>
-                <relationship kind="action" name="changeHotPostPage"/>
-                <relationship kind="outlet" name="editorPostPageControl" candidateClass="UIPageControl"/>
-                <relationship kind="outlet" name="editorPostScrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="hotPostPageControl" candidateClass="UIPageControl"/>
-                <relationship kind="outlet" name="hotPostScrollView" candidateClass="AppScrollView"/>
-            </relationships>
-        </class>
-        <class className="SettingViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="nXJ-AE-WaB"/>
+        <segue reference="MiZ-fx-3k2"/>
     </inferredMetricsTieBreakers>
 </document>

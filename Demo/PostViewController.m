@@ -151,8 +151,8 @@
           [NSNumber numberWithInt:self.hotPostScrollView.frame.size.width],
           [NSNumber numberWithInt:self.hotPostScrollView.frame.size.height]);
     
-    if(touchPoint.x <= self.hotPostScrollView.frame.size.width
-       && touchPoint.y <= self.hotPostScrollView.frame.size.height) {
+    if( //touchPoint.x <= self.hotPostScrollView.frame.size.width
+       touchPoint.y >= 0 && touchPoint.y <= self.hotPostScrollView.frame.size.height) {
         [self performSegueWithIdentifier:@"HotPostWorkFlow" sender:self];
         return;
     }
@@ -162,8 +162,8 @@
     NSLog(@"Editor Point x: %@ , y: %@", [NSNumber numberWithInt:touchPoint.x], [NSNumber numberWithInt:touchPoint.y]);
     NSLog(@"The page is %@", [NSNumber numberWithInt:self.hotPostPageControl.currentPage]);
     
-    if(touchPoint.x <= self.editorPostScrollView.frame.size.width
-       && touchPoint.y <= self.editorPostScrollView.frame.size.height) {
+    if(//touchPoint.x <= self.editorPostScrollView.frame.size.width
+       touchPoint.y <= self.editorPostScrollView.frame.size.height) {
         [self performSegueWithIdentifier:@"EditorPostWorkFlow" sender:self];
         return;
     }
@@ -175,6 +175,13 @@
     if ([segue.identifier isEqualToString:@"HotPostWorkFlow"]) {
         UINavigationController *navigationController = segue.destinationViewController;
         PostFlowViewController *pvc = (PostFlowViewController *)navigationController.topViewController;
+//        NSArray *viewControllerArray = [self.navigationController viewControllers];
+//        int parentViewControllerIndex = [viewControllerArray count] - 1;
+//        PostSummaryViewController *pvc = (PostSummaryViewController *)[viewControllerArray objectAtIndex:parentViewControllerIndex];
+//        NSInteger myInteger = 2;
+//        PostSummaryViewController *pvc = [navigationController.viewControllers indexOfObject:2];
+        
+        //[navigationController popToViewController:pvc animated:YES];
         //pvc.delegate = self;
         ListItem *hotPostListItem = [[ListItem alloc] init];
         hotPostListItem.title = @"Popular post item title";
