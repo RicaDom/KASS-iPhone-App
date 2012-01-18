@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ListItem.h"
+#import "Listing.h"
 #import "ItemViewController.h"
 
 @interface ActivityViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource>{

@@ -16,4 +16,14 @@
 @synthesize askPrice = _askPrice;
 @synthesize picFileName = _picFileName;
 
+- (id) initWithDictionary:(NSDictionary *) theDictionary
+{
+  if (self = [super init]) {
+    _title        = [theDictionary objectForKey:@"title"];
+    _description  = [theDictionary objectForKey:@"description"];
+    _askPrice     = [NSDecimalNumber decimalNumberWithDecimal:[[theDictionary objectForKey:@"price"] decimalValue]];
+  }
+  return self;
+}
+
 @end

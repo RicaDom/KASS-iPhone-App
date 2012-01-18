@@ -24,6 +24,8 @@
 		77899CA214C68E5100C6484B /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77899CA114C68E5100C6484B /* libOCMock.a */; };
 		77899CA614C6AF4D00C6484B /* listings.json in Resources */ = {isa = PBXBuildFile; fileRef = 77899C4414C67EAE00C6484B /* listings.json */; };
 		77899CA714C6B46200C6484B /* KassApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 77899C4714C67EE400C6484B /* KassApi.m */; };
+		77899CA914C6F21800C6484B /* myListings.json in Resources */ = {isa = PBXBuildFile; fileRef = 77899CA814C6F21800C6484B /* myListings.json */; };
+		77899CAA14C6F21800C6484B /* myListings.json in Resources */ = {isa = PBXBuildFile; fileRef = 77899CA814C6F21800C6484B /* myListings.json */; };
 		77F0279C14C5BC100065EDAA /* ListItemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F0279B14C5BC100065EDAA /* ListItemTest.m */; };
 		77F0279F14C665F70065EDAA /* Listing.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F0279E14C665F60065EDAA /* Listing.m */; };
 		77F027A214C666BA0065EDAA /* ListingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F027A114C666BA0065EDAA /* ListingTest.m */; };
@@ -113,6 +115,7 @@
 		77899C9F14C68E5100C6484B /* OCMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockObject.h; sourceTree = "<group>"; };
 		77899CA014C68E5100C6484B /* OCMockRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockRecorder.h; sourceTree = "<group>"; };
 		77899CA114C68E5100C6484B /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = Libraries/libOCMock.a; sourceTree = "<group>"; };
+		77899CA814C6F21800C6484B /* myListings.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = myListings.json; sourceTree = "<group>"; };
 		77F0279A14C5BC100065EDAA /* ListItemTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListItemTest.h; sourceTree = "<group>"; };
 		77F0279B14C5BC100065EDAA /* ListItemTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListItemTest.m; sourceTree = "<group>"; };
 		77F0279D14C665F60065EDAA /* Listing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Listing.h; sourceTree = "<group>"; };
@@ -275,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				77899C4414C67EAE00C6484B /* listings.json */,
+				77899CA814C6F21800C6484B /* myListings.json */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -489,6 +493,7 @@
 				E5C98E9F14C51D3800319277 /* Zaarly_logo3-300x143.png in Resources */,
 				E5C98EA314C51FBC00319277 /* images.png in Resources */,
 				E5C98EA414C51FBC00319277 /* martin_luther_king-2012-hp.png in Resources */,
+				77899CA914C6F21800C6484B /* myListings.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +503,7 @@
 			files = (
 				E5947DF314A3A12B0066723A /* InfoPlist.strings in Resources */,
 				77899C4514C67EAE00C6484B /* listings.json in Resources */,
+				77899CAA14C6F21800C6484B /* myListings.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

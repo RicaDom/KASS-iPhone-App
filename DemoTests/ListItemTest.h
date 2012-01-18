@@ -10,7 +10,11 @@
 //  See Also: http://developer.apple.com/iphone/library/documentation/Xcode/Conceptual/iphone_development/135-Unit_Testing_Applications/unit_testing_applications.html
 
 #import <SenTestingKit/SenTestingKit.h>
+#import "ListItem.h"
 
-@interface ListItemTest : SenTestCase
+@interface ListItemTest : SenTestCase{
+  ListItem *listItem;
+}
+
 
 @end

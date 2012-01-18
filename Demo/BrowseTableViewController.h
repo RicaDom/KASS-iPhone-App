@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ListItem.h"
+#import "Listing.h"
 #import "BrowseItemViewController.h"
 
 @interface BrowseTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>

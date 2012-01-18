@@ -1,0 +1,42 @@
+{ "listings" : [ 
+                { 
+                "accepted_price" : null,
+                "created_at" : "2012-01-12T20:34:48Z",
+                "description" : "Brand new",
+                "id" : "4f0f43e8c89af6051c0001f9",
+                "latlng" : [ 34.052234200000001,
+                            -118.24368490000001
+                            ],
+                "location" : "Los Angeles",
+                "offers" : [  ],
+                "paid?" : false,
+                "prepaid" : false,
+                "price" : 15.0,
+                "state" : "idle",
+                "time" : "2012-01-13T20:34:48Z",
+                "title" : "Basketball",
+                "updated_at" : "2012-01-12T20:34:48Z",
+                "url" : "http://www.zaarly.com/listings/4f0f43e8c89af6051c0001f9",
+                "user_id" : "4ee59ad3c89af64ad1000049"
+                },
+                { 
+                "accepted_price" : null,
+                "created_at" : "2012-01-08T04:53:14Z",
+                "description" : "",
+                "id" : "4f09213ac89af64cbd000169",
+                "latlng" : [ 34.052234200000001,
+                            -118.24368490000001
+                            ],
+                "location" : "Los Angeles",
+                "offers" : [  ],
+                "paid?" : false,
+                "prepaid" : false,
+                "price" : 500.0,
+                "state" : "idle",
+                "time" : "2012-01-08T06:53:14Z",
+                "title" : "iPhone 4S Unlocked",
+                "updated_at" : "2012-01-08T04:54:08Z",
+                "url" : "http://zaar.ly/1I1R",
+                "user_id" : "4ee59ad3c89af64ad1000049"
+                }
+                ] }
