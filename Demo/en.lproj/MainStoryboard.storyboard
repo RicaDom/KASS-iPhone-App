@@ -51,6 +51,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="descriptionTextField" destination="SMG-oa-0Dn" id="cHs-dz-zvy"/>
                         <outlet property="titleTextField" destination="oCU-Sy-vVj" id="Z1o-is-fNv"/>
                     </connections>
                 </viewController>
@@ -620,7 +621,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="NKD-yl-Lve" kind="modal" identifier="startPostFlowSegue" id="x5d-Ri-sqs"/>
+                                    <segue destination="NKD-yl-Lve" kind="modal" id="MiZ-fx-3k2"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Hey there!" lineBreakMode="tailTruncation" minimumFontSize="10" id="NGl-X4-VLN">
@@ -656,21 +657,21 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="KASS 编辑最爱" lineBreakMode="tailTruncation" minimumFontSize="10" id="VEp-yN-c90">
-                                        <rect key="frame" x="94" y="193" width="119" height="21"/>
+                                        <rect key="frame" x="94" y="181" width="119" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.098039217293262482" green="0.098039217293262482" blue="0.098039217293262482" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" id="Q4T-jY-Vwt">
-                                        <rect key="frame" x="8" y="222" width="303" height="115"/>
+                                        <rect key="frame" x="8" y="210" width="303" height="115"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <connections>
                                             <outlet property="delegate" destination="aJS-HG-URU" id="VYI-s5-Mzj"/>
                                         </connections>
                                     </scrollView>
                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="aL4-SA-ZkI">
-                                        <rect key="frame" x="141" y="331" width="38" height="36"/>
+                                        <rect key="frame" x="141" y="316" width="38" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <connections>
                                             <action selector="changeEditorPostPage" destination="aJS-HG-URU" eventType="valueChanged" id="bBR-KM-rk2"/>
@@ -688,10 +689,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="editorPostScrollView" destination="Q4T-jY-Vwt" id="Yla-GV-KAd"/>
                         <outlet property="hotPostPageControl" destination="Uc1-BJ-aQq" id="C0G-83-TcZ"/>
                         <outlet property="hotPostScrollView" destination="81e-Tr-J3D" id="qrI-JW-RgN"/>
+                        <segue destination="NKD-yl-Lve" kind="modal" identifier="EditorPostWorkFlow" id="gVg-kA-eUI"/>
+                        <segue destination="NKD-yl-Lve" kind="modal" identifier="HotPostWorkFlow" id="nXJ-AE-WaB"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-353" y="474"/>
+            <point key="canvasLocation" x="-353" y="458"/>
         </scene>
     </scenes>
     <resources>
@@ -755,6 +758,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PostFlowViewController.h"/>
             <relationships>
                 <relationship kind="action" name="CancelAction:"/>
+                <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="titleTextField" candidateClass="UITextField"/>
             </relationships>
         </class>
@@ -781,4 +785,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="nXJ-AE-WaB"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -9,7 +9,7 @@
 #import "MapViewController.h"
 
 @implementation MapViewController
-@synthesize currentMap;
+@synthesize currentMap = _currentMap;
 
 - (void) loadMapDemo {
     CLLocationCoordinate2D userCoordinate;
@@ -17,7 +17,7 @@
     userCoordinate.longitude = -76.580806;
     
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userCoordinate ,3000, 3000);
-    [currentMap setRegion:region animated:YES];
+    [self.currentMap setRegion:region animated:YES];
     
     for(int i = 1; i<=5;i++){
         CGFloat latDelta = rand()*.035/RAND_MAX -.02;
@@ -29,7 +29,7 @@
         anotationPoint.coordinate = newCoord;
         anotationPoint.title = @"KASS";
         anotationPoint.subtitle = @"KASS ROCKS";
-        [currentMap addAnnotation:anotationPoint];
+        [self.currentMap addAnnotation:anotationPoint];
     }
 }
 //- (void)viewWillAppear:(BOOL)animated {  

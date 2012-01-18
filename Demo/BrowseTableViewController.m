@@ -10,7 +10,7 @@
 
 
 @implementation BrowseTableViewController
-@synthesize browseSegment;
+@synthesize browseSegment = _browseSegment;
 
 NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
 
@@ -90,9 +90,9 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
     
     [priceItems addObject:item];
     
-    if ( 0 == browseSegment.selectedSegmentIndex ) {
+    if ( 0 == self.browseSegment.selectedSegmentIndex ) {
         currentItems = nearByItems;
-    } else if ( 1 == browseSegment.selectedSegmentIndex ){
+    } else if ( 1 == self.browseSegment.selectedSegmentIndex ){
         currentItems = recentItems;
     } else {
         currentItems = priceItems;
@@ -260,9 +260,9 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
 }
 
 - (IBAction)browseSegmentAction:(id)sender {
-    if ( 0 == browseSegment.selectedSegmentIndex ) {
+    if ( 0 == self.browseSegment.selectedSegmentIndex ) {
         currentItems = nearByItems;
-    } else if ( 1 == browseSegment.selectedSegmentIndex ){
+    } else if ( 1 == self.browseSegment.selectedSegmentIndex ){
         currentItems = recentItems;
     } else {
         currentItems = priceItems;

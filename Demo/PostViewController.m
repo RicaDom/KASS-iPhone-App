@@ -9,10 +9,10 @@
 #import "PostViewController.h"
 
 @implementation PostViewController
-@synthesize hotPostScrollView;
-@synthesize hotPostPageControl;
-@synthesize editorPostScrollView;
-@synthesize editorPostPageControl;
+@synthesize hotPostScrollView = _hotPostScrollView;
+@synthesize hotPostPageControl = _hotPostPageControl;
+@synthesize editorPostScrollView = _editorPostScrollView;
+@synthesize editorPostPageControl = _editorPostPageControl;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -96,83 +96,100 @@
 	hotPostPageControlBeingUsed = YES;
 }
 
-- (void) touchesEnded: (NSSet *) touches withEvent: (UIEvent *) event 
-{
-    if ([self isFirstResponder]){
-        NSLog(@"Touching first responder");
-    } else { 
-        NSLog(@"touching... ");
-    }
-    
-    UITouch *touch = [[event allTouches] anyObject];
-    
-//    UITouch *touch2 = [touches anyObject];
-//    CGPoint tapLocation = [touch2 locationInView:self];
-//    NSLog(@"Post Location: %@", tapLocation);
-    if ([touch view] == hotPostScrollView) {
-        NSLog(@"touching... hotPostScrollView...");
-        // do stuff here
-    }
-    // Process the single tap here
-    
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    // assign a UITouch object to the current touch
-    UITouch *touch = [[event allTouches] anyObject];
-     NSLog(@"touching... 1hotPostScrollView...");
-    // if the view in which the touch is found is myScrollView
-    // (assuming myScrollView is the UIScrollView and is a subview of the UIView)
-    if ([touch view] == hotPostScrollView) {
-        NSLog(@"touching... hotPostScrollView...");
-        // do stuff here
-    }
-}
-
-- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
-{
-    NSLog(@"hitTest:withEvent called :");
-    NSLog(@"Event: %@", event);
-    NSLog(@"Point: %@", NSStringFromCGPoint(point));
-    NSLog(@"Event Type: %d", event.type);
-    NSLog(@"Event SubType: %d", event.subtype);
-    NSLog(@"---");
-    return nil;
-    //return [super hitTest:point withEvent:event];
-}
+//- (void) touchesEnded: (NSSet *) touches withEvent: (UIEvent *) event 
+//{
+//    if ([self isFirstResponder]){
+//        NSLog(@"Touching first responder");
+//    } else { 
+//        NSLog(@"touching... ");
+//    }
+//    
+//    UITouch *touch = [[event allTouches] anyObject];
+//    
+////    UITouch *touch2 = [touches anyObject];
+////    CGPoint tapLocation = [touch2 locationInView:self];
+////    NSLog(@"Post Location: %@", tapLocation);
+//    if ([touch view] == self.hotPostScrollView) {
+//        NSLog(@"touching... hotPostScrollView...");
+//        // do stuff here
+//    }
+//    // Process the single tap here
+//    
+//}
+//
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+//    // assign a UITouch object to the current touch
+//    UITouch *touch = [[event allTouches] anyObject];
+//     NSLog(@"touching... 1hotPostScrollView...");
+//    // if the view in which the touch is found is myScrollView
+//    // (assuming myScrollView is the UIScrollView and is a subview of the UIView)
+//    if ([touch view] == self.hotPostScrollView) {
+//        NSLog(@"touching... hotPostScrollView...");
+//        // do stuff here
+//    }
+//}
+//
+//- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+//{
+//    NSLog(@"hitTest:withEvent called :");
+//    NSLog(@"Event: %@", event);
+//    NSLog(@"Point: %@", NSStringFromCGPoint(point));
+//    NSLog(@"Event Type: %d", event.type);
+//    NSLog(@"Event SubType: %d", event.subtype);
+//    NSLog(@"---");
+//    return nil;
+//    //return [super hitTest:point withEvent:event];
+//}
 
 - (void)singleTapGestureCaptured:(UITapGestureRecognizer *)gesture
 { 
-    //CGPoint touchPoint=[gesture locationInView:hotPostScrollView];
+    //gesture 
+    CGPoint touchPoint=[gesture locationInView:self.hotPostScrollView];
+    NSLog(@"Hot Point x: %@ , y: %@, frameWidth: %@, frameHeight: %@", 
+          [NSNumber numberWithInt:touchPoint.x], 
+          [NSNumber numberWithInt:touchPoint.y],
+          [NSNumber numberWithInt:self.hotPostScrollView.frame.size.width],
+          [NSNumber numberWithInt:self.hotPostScrollView.frame.size.height]);
     
-    [self performSegueWithIdentifier:@"startPostFlowSegue" sender:self];
+    if(touchPoint.x <= self.hotPostScrollView.frame.size.width
+       && touchPoint.y <= self.hotPostScrollView.frame.size.height) {
+        [self performSegueWithIdentifier:@"HotPostWorkFlow" sender:self];
+        return;
+    }
+    
+    touchPoint=[gesture locationInView:self.editorPostScrollView];
+    
+    NSLog(@"Editor Point x: %@ , y: %@", [NSNumber numberWithInt:touchPoint.x], [NSNumber numberWithInt:touchPoint.y]);
     NSLog(@"The page is %@", [NSNumber numberWithInt:self.hotPostPageControl.currentPage]);
+    
+    if(touchPoint.x <= self.editorPostScrollView.frame.size.width
+       && touchPoint.y <= self.editorPostScrollView.frame.size.height) {
+        [self performSegueWithIdentifier:@"EditorPostWorkFlow" sender:self];
+        return;
+    }
 }
 
-//- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    if ([segue.identifier isEqualToString:@"loadPostSegue"]) {
-//       // PostFlowViewController *pvc = [segue destinationViewController];
-//        //printf("Select index: %@", self.tabBarItem.title);
-//        NSLog(@"Current tab controller: %@", self.tabBarController.viewControllers);
-//        //pvc.currentTabBarController = self.tabBarController;
-//    }
-//}
-
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-//- (void)loadView
-//{
-//    //[self performSegueWithIdentifier:@"loadPostSegue" sender:self];
-//}
-
-#pragma mark - View lifecycle
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // TODO
+    // hardcode list item info and pass to next view
+    if ([segue.identifier isEqualToString:@"HotPostWorkFlow"]) {
+        UINavigationController *navigationController = segue.destinationViewController;
+        PostFlowViewController *pvc = (PostFlowViewController *)navigationController.topViewController;
+        //pvc.delegate = self;
+        ListItem *hotPostListItem = [[ListItem alloc] init];
+        hotPostListItem.title = @"Popular post item title";
+        hotPostListItem.description = @"Popular post item description";
+        pvc.currentListItem = hotPostListItem;
+    } else if ([segue.identifier isEqualToString:@"EditorPostWorkFlow"]) {
+        UINavigationController *navigationController = segue.destinationViewController;
+        PostFlowViewController *pvc = (PostFlowViewController *)navigationController.topViewController;
+        //pvc.delegate = self;
+        ListItem *hotPostListItem = [[ListItem alloc] init];
+        hotPostListItem.title = @"Editor post item title";
+        hotPostListItem.description = @"Editor post item description";
+        pvc.currentListItem = hotPostListItem;        
+    } 
 }
-*/
-
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
@@ -221,7 +238,7 @@
 	self.hotPostPageControl.numberOfPages = 3;
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureCaptured:)];
-    [hotPostScrollView addGestureRecognizer:singleTap]; 
+    [self.hotPostScrollView addGestureRecognizer:singleTap]; 
     
     
     // EDITOR POST EXAMPLES:
@@ -254,7 +271,7 @@
 	self.editorPostPageControl.numberOfPages = 3;
     
     singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureCaptured:)];
-    [editorPostScrollView addGestureRecognizer:singleTap];     
+    [self.editorPostScrollView addGestureRecognizer:singleTap];     
     NSLog(@"Self = %@", self);
    // NSLog(@"Current responder = %@", [self.view findFirstResponder]);
 }

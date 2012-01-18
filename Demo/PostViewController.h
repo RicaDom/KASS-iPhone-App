@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "AppScrollView.h"
+#import "ListItem.h"
+#import "PostFlowViewController.h"
 
 @interface PostViewController : UIViewController <UIScrollViewDelegate> {
     @private
