@@ -19,6 +19,7 @@
 - (id) initWithData:(NSData *) theData;
 - (id) initWithUrl:(NSString *) theUrl;
 - (NSDictionary *)getListings;
+- (ListItem *)getListing;
 - (NSData *)fetch;
 
 @end

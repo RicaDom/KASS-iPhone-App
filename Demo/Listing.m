@@ -55,6 +55,17 @@
   return dict;
 }
 
+- (ListItem *)getListing{
+  
+  if(!_data){
+    _data = [self fetch];
+  }
+  
+  NSDictionary *dict = [KassApi parseData:_data];  
+  NSDictionary *listDict = [dict objectForKey:@"listing"];
+  return [[ListItem alloc] initWithDictionary:listDict ];
+}
+
 - (NSData *)fetch{
   //NSLog(@"fetching data from url %@ ...", url);
   _data = [KassApi getData:_url];

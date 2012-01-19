@@ -40,4 +40,18 @@
   ListItem *li = [[listing listItems] objectAtIndex:0];
   STAssertEqualObjects([li title], @"Deliver Champagne and Sing Kenny Chesney for Brother on His Birthday", nil);
 }
+
+- (void)testGetListing
+{
+  NSString *filePath = [[NSBundle mainBundle] pathForResource:@"listing" ofType:@"json"];  
+  NSData *data = [NSData dataWithContentsOfFile:filePath];  
+  
+  id mockString = [OCMockObject mockForClass:[Listing class]];
+  [[[mockString stub] andReturn:data] fetch];
+  listing = [[Listing alloc] initWithData:data];
+  
+  ListItem *li = [listing getListing];
+  STAssertEqualObjects([li title], @"Acrylic fish tank", nil);
+}
+
 @end
