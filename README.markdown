@@ -4,8 +4,8 @@
 
 ## Specifications & Wiki
 
- [Kass specification](https://docs.google.com/document/pub?id=1hRCF0kVA3UK_zm4LnEWnFo5_pO4sHpqRl_u9OV1jgsc)
- [Kass Rails Wiki](https://github.com/he9lin/Kass/wiki)
+ * [Kass specification](https://docs.google.com/document/pub?id=1hRCF0kVA3UK_zm4LnEWnFo5_pO4sHpqRl_u9OV1jgsc)
+ * [Kass Rails Wiki](https://github.com/he9lin/Kass/wiki)
 
 ## Todos
 
