@@ -4,8 +4,8 @@
 
 == Specifications
 
-==== kass_spec[https://docs.google.com/document/pub?id=1hRCF0kVA3UK_zm4LnEWnFo5_pO4sHpqRl_u9OV1jgsc]
-==== kass_rails_wiki[https://github.com/he9lin/Kass/wiki]
+  https://docs.google.com/document/pub?id=1hRCF0kVA3UK_zm4LnEWnFo5_pO4sHpqRl_u9OV1jgsc
+  https://github.com/he9lin/Kass/wiki
 
 == Todos
 
