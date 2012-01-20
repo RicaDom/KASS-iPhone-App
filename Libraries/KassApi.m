@@ -10,7 +10,7 @@
 
 @implementation KassApi
 
-+ (NSData *)getListings:(NSString *)url
++ (NSData *)getData:(NSString *)url
 {
   NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init]; 
   [request setURL:[NSURL URLWithString:url]]; 

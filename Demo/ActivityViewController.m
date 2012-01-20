@@ -25,33 +25,23 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
 -(void)setupArray{
     
     // buying items
+  
+    // sample data
+    NSData *data = [NSData dataWithContentsOfFile:
+                     [[NSBundle mainBundle] pathForResource:@"myListings" ofType:@"json"] ]; 
+    
+    Listing *listing = [[Listing alloc] initWithData:data];
+    [listing getListings];
+    
     buyingItems = [NSMutableArray new];
+    for(id listItem in [listing listItems] )
+    {
+      [buyingItems addObject:listItem];
+    }
+  
+  
     
     ListItem *item = [ListItem new];
-    [item setTitle:@"need a iPad"];
-    [item setDescription:@"good condition with wifi"];
-    item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
-                     [[NSNumber numberWithFloat:209.75f] decimalValue]];
-    
-    [buyingItems addObject:item];
-    
-    item = [ListItem new];
-    [item setTitle:@"i want basketball shoes"];
-    [item setDescription:@"air jordan"];
-    item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
-                     [[NSNumber numberWithFloat:98.55f] decimalValue]];
-    
-    [buyingItems addObject:item];
- 
-    item = [ListItem new];
-    [item setTitle:@"need a girl to take a walk"];
-    [item setDescription:@"under 28 years old, pretty, hot"];
-    item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
-                     [[NSNumber numberWithFloat:-8.55f] decimalValue]];
-    
-    [buyingItems addObject:item];
-
-    
     // selling items
     sellingItems = [NSMutableArray new];
 

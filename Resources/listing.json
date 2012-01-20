@@ -1,0 +1,19 @@
+{
+  "listing":
+  {
+    "id":"4f0eca6ac89af605280001a4",
+    "user_id":"4f0e2112d85dd81ee80000e9",
+    "created_at":"2012-01-12T11:56:26Z", 
+    "updated_at":"2012-01-12T13:16:38Z", 
+    "time":"2012-01-19T11:56:26Z",
+    "latlng":[34.03822244,-118.09760055],
+    "title":"Acrylic fish tank",
+    "description":"Between 20-60 gallons with no leaks.",
+    "price":60.0,
+    "state":"idle",
+    "distance":null,
+    "url":"http://zaar.ly/1LY8",
+    "user":
+      {"id":"4f0e2112d85dd81ee80000e9"}
+  }
+}

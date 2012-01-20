@@ -16,8 +16,10 @@
 @property (nonatomic, retain) NSData   *data;
 @property (nonatomic, copy  ) NSMutableArray  *listItems;
 
-
+- (id) initWithData:(NSData *) theData;
+- (id) initWithUrl:(NSString *) theUrl;
 - (NSDictionary *)getListings;
+- (ListItem *)getListing;
 - (NSData *)fetch;
 
 @end

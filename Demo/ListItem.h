@@ -16,4 +16,7 @@
 @property (nonatomic, strong) NSDecimalNumber *askPrice;
 @property (nonatomic, strong) NSString *picFileName;
 
+
+- (id) initWithDictionary:(NSDictionary *) theDictionary;
+
 @end

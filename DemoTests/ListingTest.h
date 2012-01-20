@@ -13,6 +13,8 @@
 #include <OCMock/OCMock.h>
 #import "Listing.h"
 
-@interface ListingTest : SenTestCase
+@interface ListingTest : SenTestCase{
+  Listing *listing;
+}
 
 @end

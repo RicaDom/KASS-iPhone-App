@@ -10,44 +10,66 @@
 
 @implementation Listing : NSObject 
 
-@synthesize url, data, listItems;
+@synthesize url = _url;
+@synthesize data = _data;
+@synthesize listItems = _listItems;
 
+- (id) initWithData:(NSData *) theData
+{
+  if (self = [super init]) {
+    _data = theData;
+  }
+  return self;
+}
+
+- (id) initWithUrl:(NSString *) theUrl
+{
+  if (self = [super init]) {
+    _url = theUrl;
+  }
+  return self;
+}
 
 - (NSDictionary *)getListings{
   
-  if(!data){
-    data = [self fetch];
+  if(!_data){
+    _data = [self fetch];
   }
   
-  if(!listItems){
-    listItems = [NSMutableArray new];
+  if(!_listItems){
+    _listItems = [NSMutableArray new];
   }
   
-  NSDictionary *dict = [KassApi parseData:data];  
+  NSDictionary *dict = [KassApi parseData:_data];  
   
   NSArray *listings = [dict objectForKey:@"listings"];
   
   for(id listing in listings)
   {
     NSDictionary *listDict = listing; 
-    
-    ListItem *listItem = [[ListItem alloc] init ];
-    [listItem setTitle:[listDict objectForKey:@"title"]];
-    [listItem setDescription:[listDict objectForKey:@"description"]];
-    
-    [listItems addObject:listItem];
-    
-    NSLog(@"List Item: %@", [listItem title]);
+    ListItem *listItem = [[ListItem alloc] initWithDictionary:listDict ];
+    [_listItems addObject:listItem];
+    //NSLog(@"List Item: %@", [listItem title]);
   }
-  
   
   return dict;
 }
 
+- (ListItem *)getListing{
+  
+  if(!_data){
+    _data = [self fetch];
+  }
+  
+  NSDictionary *dict = [KassApi parseData:_data];  
+  NSDictionary *listDict = [dict objectForKey:@"listing"];
+  return [[ListItem alloc] initWithDictionary:listDict ];
+}
+
 - (NSData *)fetch{
-  NSLog(@"fetching data from url %@ ...", url);
-  data = [KassApi getData:url];
-  return data;
+  //NSLog(@"fetching data from url %@ ...", url);
+  _data = [KassApi getData:_url];
+  return _data;
 }
 
 @end
