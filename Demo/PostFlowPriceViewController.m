@@ -39,7 +39,9 @@
 
 - (void)loadCurrentPostingData
 {
-    self.priceTextField.text = [NSString stringWithFormat:@"%@", [VariableStore sharedInstance].currentPostingItem.askPrice];
+    if ([VariableStore sharedInstance].currentPostingItem.askPrice) {
+        self.priceTextField.text = [NSString stringWithFormat:@"%@", [VariableStore sharedInstance].currentPostingItem.askPrice];
+    }
 }
 
 - (void)saveCurrentPostingData

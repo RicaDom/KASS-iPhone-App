@@ -9,6 +9,10 @@
 #import "PostFlowSetDateViewController.h"
 
 @implementation PostFlowSetDateViewController
+@synthesize PostDueDatePicker = _PostDueDatePicker;
+@synthesize PostDueDateLabel = _PostDueDateLabel;
+@synthesize PostFlowSegment = _PostFlowSegment;
+NSArray *arrayTimePicker;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,16 +40,21 @@
 }
 */
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    arrayTimePicker = [[VariableStore sharedInstance].expiredTime keysSortedByValueUsingComparator: ^(id obj1, id obj2) {
+        return [(NSNumber *)obj1 compare:(NSNumber *)obj2];
+    }];
 }
-*/
 
 - (void)viewDidUnload
 {
+    [self setPostDueDatePicker:nil];
+    [self setPostDueDateLabel:nil];
+    [self setPostFlowSegment:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -55,6 +64,29 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark -
+#pragma mark Picker View Methods
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
+	
+	return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
+	
+	return [arrayTimePicker count];
+}
+
+- (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+	
+	return [arrayTimePicker objectAtIndex:row];
+}
+
+- (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+	self.PostDueDateLabel.text = [arrayTimePicker objectAtIndex:row];
+	NSLog(@"Selected Color: %@. Index of selected color: %i", [arrayTimePicker objectAtIndex:row], row);
 }
 
 @end
