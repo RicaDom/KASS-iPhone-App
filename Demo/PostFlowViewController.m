@@ -12,7 +12,7 @@
 
 @synthesize titleTextField = _titleTextField;
 @synthesize descriptionTextField = _descriptionTextField;
-@synthesize currentListItem = _currentListItem;
+@synthesize postType = _postType;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,15 +40,43 @@
 }
 */
 
+- (void)loadCurrentPostingData
+{
+    self.titleTextField.text = [[[VariableStore sharedInstance] currentPostingItem] title];
+    self.descriptionTextField.text = [[[VariableStore sharedInstance] currentPostingItem] 
+                                      description];
+}
+
+- (void)saveCurrentPostingData
+{
+    [VariableStore sharedInstance].currentPostingItem.title = self.titleTextField.text;
+    [VariableStore sharedInstance].currentPostingItem.description = self.descriptionTextField.text;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self saveCurrentPostingData];
+}
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.titleTextField.text = self.currentListItem.title;
-    self.descriptionTextField.text = self.currentListItem.description;
+    [self loadCurrentPostingData];
     [self.titleTextField becomeFirstResponder];
-    //NSLog(@"Current tab controller: %@", NSStringFromClass([currentTabBarController class]));
+    
+#pragma mark - TODO
+    // If it's a completed post template, stack all the views
+    // and show the last step of posting process
+    if (self.postType == POST_TYPE ) {
+        //[self.navigationController popToRootViewControllerAnimated:NO];
+        [self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"Post Price"] animated:NO];
+            
+        [self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"Post Due Date"] animated:NO];
+        
+        [self.navigationController pushViewController:
+         [self.storyboard instantiateViewControllerWithIdentifier:@"Post Summary"] animated:NO];
+    }
 }
 
 

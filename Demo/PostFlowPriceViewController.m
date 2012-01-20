@@ -37,14 +37,28 @@
 }
 */
 
+- (void)loadCurrentPostingData
+{
+    self.priceTextField.text = [NSString stringWithFormat:@"%@", [VariableStore sharedInstance].currentPostingItem.askPrice];
+}
+
+- (void)saveCurrentPostingData
+{
+    [VariableStore sharedInstance].currentPostingItem.askPrice = [NSDecimalNumber decimalNumberWithString:self.priceTextField.text];
+}
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
-    [self.priceTextField becomeFirstResponder];
     [super viewDidLoad];
+    [self loadCurrentPostingData];
+    [self.priceTextField becomeFirstResponder];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self saveCurrentPostingData];
+}
 
 - (void)viewDidUnload
 {

@@ -170,32 +170,22 @@
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // TODO
+#pragma mark - TODO
     // hardcode list item info and pass to next view
     if ([segue.identifier isEqualToString:@"HotPostWorkFlow"]) {
         UINavigationController *navigationController = segue.destinationViewController;
         PostFlowViewController *pvc = (PostFlowViewController *)navigationController.topViewController;
-//        NSArray *viewControllerArray = [self.navigationController viewControllers];
-//        int parentViewControllerIndex = [viewControllerArray count] - 1;
-//        PostSummaryViewController *pvc = (PostSummaryViewController *)[viewControllerArray objectAtIndex:parentViewControllerIndex];
-//        NSInteger myInteger = 2;
-//        PostSummaryViewController *pvc = [navigationController.viewControllers indexOfObject:2];
-        
-        //[navigationController popToViewController:pvc animated:YES];
         //pvc.delegate = self;
-        ListItem *hotPostListItem = [[ListItem alloc] init];
-        hotPostListItem.title = @"Popular post item title";
-        hotPostListItem.description = @"Popular post item description";
-        pvc.currentListItem = hotPostListItem;
+        pvc.postType = POST_TYPE;
+        [VariableStore sharedInstance].currentPostingItem.title = @"Popular post item title";
+        [VariableStore sharedInstance].currentPostingItem.description = @"Popular post item description";
+        [VariableStore sharedInstance].currentPostingItem.askPrice = [NSDecimalNumber decimalNumberWithString:@"888.99"];
     } else if ([segue.identifier isEqualToString:@"EditorPostWorkFlow"]) {
-        UINavigationController *navigationController = segue.destinationViewController;
-        PostFlowViewController *pvc = (PostFlowViewController *)navigationController.topViewController;
-        //pvc.delegate = self;
-        ListItem *hotPostListItem = [[ListItem alloc] init];
-        hotPostListItem.title = @"Editor post item title";
-        hotPostListItem.description = @"Editor post item description";
-        pvc.currentListItem = hotPostListItem;        
-    } 
+//        UINavigationController *navigationController = segue.destinationViewController;
+//        PostFlowViewController *pvc = (PostFlowViewController *)navigationController.topViewController;
+    } else if ([segue.identifier isEqualToString:@"ClearPostSegue"]) {
+        [[VariableStore sharedInstance] clearCurrentPostingItem];        
+    }
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.

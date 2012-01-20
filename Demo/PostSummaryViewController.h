@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VariableStore.h"
 
 @interface PostSummaryViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *postTitle;
+@property (weak, nonatomic) IBOutlet UILabel *postDescription;
+@property (weak, nonatomic) IBOutlet UILabel *postAskPrice;
+@property (weak, nonatomic) IBOutlet UILabel *postDueDate;
 
 @end
