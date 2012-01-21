@@ -7,13 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ListItem.h"
+#import "VariableStore.h"
+#import "Constants.h"
+#import "PostFlowPriceViewController.h"
+#import "PostFlowSetDateViewController.h"
+#import "PostSummaryViewController.h"
 
 @interface PostFlowViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UITextField *descriptionTextField;
-@property (strong, nonatomic) ListItem *currentListItem;
+@property (strong, nonatomic) NSString *postType;
+
 - (IBAction)CancelAction:(id)sender;
 
 @end

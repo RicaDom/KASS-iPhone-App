@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "AppScrollView.h"
 #import "ListItem.h"
+#import "Constants.h"
 #import "PostFlowViewController.h"
-#import "PostSummaryViewController.h"
 
 @interface PostViewController : UIViewController <UIScrollViewDelegate> {
     @private

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VariableStore.h"
 
 @interface PostFlowPriceViewController : UIViewController
 

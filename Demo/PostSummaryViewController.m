@@ -9,6 +9,10 @@
 #import "PostSummaryViewController.h"
 
 @implementation PostSummaryViewController
+@synthesize postTitle = _postTitle;
+@synthesize postDescription = _postDescription;
+@synthesize postAskPrice = _postAskPrice;
+@synthesize postDueDate = _postDueDate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +31,15 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+
+- (void)loadCurrentPostingData
+{
+    self.postTitle.text = [VariableStore sharedInstance].currentPostingItem.title;
+    self.postDescription.text = [VariableStore sharedInstance].currentPostingItem.description;
+    self.postAskPrice.text = [NSString stringWithFormat:@"%@", [VariableStore sharedInstance].currentPostingItem.askPrice];
+    //self.postDueDate.text = 
+}
+
 #pragma mark - View lifecycle
 
 /*
@@ -36,16 +49,19 @@
 }
 */
 
-/*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self loadCurrentPostingData];
 }
-*/
 
 - (void)viewDidUnload
 {
+    [self setPostTitle:nil];
+    [self setPostDescription:nil];
+    [self setPostAskPrice:nil];
+    [self setPostDueDate:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
