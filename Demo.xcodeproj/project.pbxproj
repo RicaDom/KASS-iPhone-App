@@ -42,6 +42,8 @@
 		77899CA614C6AF4D00C6484B /* listings.json in Resources */ = {isa = PBXBuildFile; fileRef = 77899C4414C67EAE00C6484B /* listings.json */; };
 		77899CB114C70CD900C6484B /* myListings.json in Resources */ = {isa = PBXBuildFile; fileRef = 77899CB014C70CD900C6484B /* myListings.json */; };
 		77899CB214C70CD900C6484B /* myListings.json in Resources */ = {isa = PBXBuildFile; fileRef = 77899CB014C70CD900C6484B /* myListings.json */; };
+		77CD5FC514CA52780013B510 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CD5FC214CA52780013B510 /* Constants.m */; };
+		77CD5FC614CA52780013B510 /* VariableStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CD5FC414CA52780013B510 /* VariableStore.m */; };
 		77F0279C14C5BC100065EDAA /* ListItemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F0279B14C5BC100065EDAA /* ListItemTest.m */; };
 		77F0279F14C665F70065EDAA /* Listing.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F0279E14C665F60065EDAA /* Listing.m */; };
 		77F027A214C666BA0065EDAA /* ListingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F027A114C666BA0065EDAA /* ListingTest.m */; };
@@ -161,6 +163,10 @@
 		77899CA014C68E5100C6484B /* OCMockRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockRecorder.h; sourceTree = "<group>"; };
 		77899CA114C68E5100C6484B /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = Libraries/libOCMock.a; sourceTree = "<group>"; };
 		77899CB014C70CD900C6484B /* myListings.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = myListings.json; path = Resources/myListings.json; sourceTree = "<group>"; };
+		77CD5FC114CA52780013B510 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		77CD5FC214CA52780013B510 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		77CD5FC314CA52780013B510 /* VariableStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VariableStore.h; sourceTree = "<group>"; };
+		77CD5FC414CA52780013B510 /* VariableStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VariableStore.m; sourceTree = "<group>"; };
 		77F0279A14C5BC100065EDAA /* ListItemTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListItemTest.h; sourceTree = "<group>"; };
 		77F0279B14C5BC100065EDAA /* ListItemTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListItemTest.m; sourceTree = "<group>"; };
 		77F0279D14C665F60065EDAA /* Listing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Listing.h; sourceTree = "<group>"; };
@@ -434,6 +440,10 @@
 		E5947DD014A3A12B0066723A /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				77CD5FC114CA52780013B510 /* Constants.h */,
+				77CD5FC214CA52780013B510 /* Constants.m */,
+				77CD5FC314CA52780013B510 /* VariableStore.h */,
+				77CD5FC414CA52780013B510 /* VariableStore.m */,
 				E5C0ABE614AAC9D20021873A /* ListItem.h */,
 				E5C0ABE714AAC9D20021873A /* ListItem.m */,
 				E5947DD914A3A12B0066723A /* AppDelegate.h */,
@@ -686,6 +696,8 @@
 				77506A6014C91347000494E5 /* ASIHTTPRequest.m in Sources */,
 				77506A6114C91347000494E5 /* ASIInputStream.m in Sources */,
 				77506A6214C91347000494E5 /* ASINetworkQueue.m in Sources */,
+				77CD5FC514CA52780013B510 /* Constants.m in Sources */,
+				77CD5FC614CA52780013B510 /* VariableStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
