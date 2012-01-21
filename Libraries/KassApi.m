@@ -12,12 +12,16 @@
 
 + (NSData *)getData:(NSString *)url
 {
-  NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init]; 
-  [request setURL:[NSURL URLWithString:url]]; 
-  [request setHTTPMethod:@"GET"];
-  NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-  //NSLog(@"----- GET DATA ... ------ \n %@ ", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-  return data;
+  ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+  [request startSynchronous];
+  NSError *error = [request error];
+  if (!error) {
+    NSData *data = [request responseData];
+    //NSLog(@"----- GET DATA ... ------ \n %@ ", [request responseString]);
+    return data;
+  }else{
+    return nil;
+  }
 }
 
 + (NSDictionary *)parseData:(NSData *)data

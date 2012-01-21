@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SBJson.h"
+#import "ASIHTTPRequest.h"
 
 @interface KassApi : NSObject
 

@@ -12,3 +12,8 @@
  * needs to start working on UI design - @lisaskywood 
  * needs to get more API done from project https://github.com/he9lin/Kass - @he9lin 
  * features - @he9qi, @zhicaiwang
+ 
+## Libs
+
+ * Added asi-http-request for REST requests - @he9qi
+ * Added SBJson for parsing json - @he9qi 
