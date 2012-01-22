@@ -1,8 +1,8 @@
 //
-//  ListItemTest.h
+//  LocationTest.h
 //  Demo
 //
-//  Created by Qi He on 12-1-17.
+//  Created by Qi He on 12-1-22.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
@@ -10,11 +10,11 @@
 //  See Also: http://developer.apple.com/iphone/library/documentation/Xcode/Conceptual/iphone_development/135-Unit_Testing_Applications/unit_testing_applications.html
 
 #import <SenTestingKit/SenTestingKit.h>
-#include <OCMock/OCMock.h>
-#import "ListItem.h"
+#import "Location.h"
+#import "KassApi.h"
 
-@interface ListItemTest : SenTestCase{
-  ListItem *listItem;
+@interface LocationTest : SenTestCase{
+  Location *location;
 }
 
 

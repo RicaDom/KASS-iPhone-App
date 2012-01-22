@@ -10,6 +10,19 @@
 
 @implementation KassApi
 
+
++ (NSData *)getListings{
+  NSString *url = [NSString stringWithFormat:@"http://%@/v1/listing.json", KHOST];
+  return [KassApi getData:url];
+}
+
++ (NSData *)getListing:(NSString *)modelId{
+  NSString *url = [NSString stringWithFormat:@"http://%@/v1/listings/%@.json", KHOST, modelId];
+  return [KassApi getData:url];
+}
+
+/////// CLASS METHODS ////////
+
 + (NSData *)getData:(NSString *)url
 {
   ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];

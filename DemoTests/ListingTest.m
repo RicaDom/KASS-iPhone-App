@@ -17,8 +17,8 @@
   NSString *filePath = [[NSBundle mainBundle] pathForResource:@"listings" ofType:@"json"];  
   NSData *data = [NSData dataWithContentsOfFile:filePath];  
   
-  id mockString = [OCMockObject mockForClass:[Listing class]];
-  [[[mockString stub] andReturn:data] fetch];
+  //id mockString = [OCMockObject mockForClass:[KassApi class]];
+  //[[[mockString stub] andReturn:data] getListings];
   listing = [[Listing alloc] initWithData:data];
 }
 
@@ -27,31 +27,12 @@
   [super tearDown];
 }
 
-- (void)testInitWithUrl
-{
-  Listing *l = [[Listing alloc] initWithUrl:@"localhost:3000"];
-  STAssertEqualObjects([l url], @"localhost:3000", nil);
-}
-
 // All code under test must be linked into the Unit Test bundle
-- (void)testGetListings
+- (void)testInitWithData
 {
-  [listing getListings];
   ListItem *li = [[listing listItems] objectAtIndex:0];
   STAssertEqualObjects([li title], @"Deliver Champagne and Sing Kenny Chesney for Brother on His Birthday", nil);
-}
-
-- (void)testGetListing
-{
-  NSString *filePath = [[NSBundle mainBundle] pathForResource:@"listing" ofType:@"json"];  
-  NSData *data = [NSData dataWithContentsOfFile:filePath];  
-  
-  id mockString = [OCMockObject mockForClass:[Listing class]];
-  [[[mockString stub] andReturn:data] fetch];
-  listing = [[Listing alloc] initWithData:data];
-  
-  ListItem *li = [listing getListing];
-  STAssertEqualObjects([li title], @"Acrylic fish tank", nil);
+  STAssertEqualObjects([[listing location] city], @"Los Angeles", nil);
 }
 
 @end

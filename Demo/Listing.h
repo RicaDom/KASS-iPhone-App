@@ -8,18 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import "KassApi.h"
+#import "Location.h"
 #import "ListItem.h"
 
 @interface Listing : NSObject
 
-@property (nonatomic, retain) NSString *url;
 @property (nonatomic, retain) NSData   *data;
 @property (nonatomic, copy  ) NSMutableArray  *listItems;
+@property (nonatomic, retain) Location *location;
+
 
 - (id) initWithData:(NSData *) theData;
-- (id) initWithUrl:(NSString *) theUrl;
-- (NSDictionary *)getListings;
-- (ListItem *)getListing;
-- (NSData *)fetch;
+- (void) printOut;
 
 @end

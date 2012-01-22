@@ -21,14 +21,9 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
     NSData *data = [NSData dataWithContentsOfFile:
                     [[NSBundle mainBundle] pathForResource:@"listings" ofType:@"json"] ]; 
     
-    Listing *listing = [[Listing alloc] initWithData:data];
-    [listing getListings];
-    
-    nearByItems = [NSMutableArray new];
-    for(id listItem in [listing listItems] )
-    {
-      [nearByItems addObject:listItem];
-    }
+    Listing *listing = [[Listing alloc] initWithData:data];    
+    nearByItems = [listing listItems];
+
     
     ListItem *item = [ListItem new];
     

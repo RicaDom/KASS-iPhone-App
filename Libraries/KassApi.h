@@ -10,10 +10,17 @@
 #import "SBJson.h"
 #import "ASIHTTPRequest.h"
 
+#import "Listing.h"
+#import "ListItem.h"
+
 @interface KassApi : NSObject
 
 + (NSData *)getData:(NSString *)url;
 + (NSDictionary *)parseData:(NSData *)data;
 + (void)logData:(NSDictionary *)dict;
+
++ (NSData *)getListings;
++ (NSData *)getListing:(NSString *)modelId;
+
 
 @end

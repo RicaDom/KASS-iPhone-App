@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KassApi.h"
 
 @interface ListItem : NSObject
 
@@ -16,7 +17,9 @@
 @property (nonatomic, strong) NSDecimalNumber *askPrice;
 @property (nonatomic, strong) NSString *picFileName;
 
+@property (nonatomic, retain) NSData   *data;
 
 - (id) initWithDictionary:(NSDictionary *) theDictionary;
+- (id) initWithData:(NSData *) theData;
 
 @end

@@ -31,15 +31,7 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
                      [[NSBundle mainBundle] pathForResource:@"myListings" ofType:@"json"] ]; 
     
     Listing *listing = [[Listing alloc] initWithData:data];
-    [listing getListings];
-    
-    buyingItems = [NSMutableArray new];
-    for(id listItem in [listing listItems] )
-    {
-      [buyingItems addObject:listItem];
-    }
-  
-  
+    buyingItems = [listing listItems];
     
     ListItem *item = [ListItem new];
     // selling items

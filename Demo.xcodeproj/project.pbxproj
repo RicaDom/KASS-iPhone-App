@@ -47,6 +47,8 @@
 		77F0279C14C5BC100065EDAA /* ListItemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F0279B14C5BC100065EDAA /* ListItemTest.m */; };
 		77F0279F14C665F70065EDAA /* Listing.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F0279E14C665F60065EDAA /* Listing.m */; };
 		77F027A214C666BA0065EDAA /* ListingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F027A114C666BA0065EDAA /* ListingTest.m */; };
+		77F3D0D914CC0B4D00770E73 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F3D0D814CC0B4D00770E73 /* Location.m */; };
+		77F3D0DC14CC0C3900770E73 /* LocationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F3D0DB14CC0C3900770E73 /* LocationTest.m */; };
 		E58B992614AC5AE400A780F6 /* BrowseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E58B992514AC5AE400A780F6 /* BrowseTableViewController.m */; };
 		E58B993214AC75EA00A780F6 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E58B993014AC746600A780F6 /* Default.png */; };
 		E5947DCB14A3A12B0066723A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5947DCA14A3A12B0066723A /* UIKit.framework */; };
@@ -128,8 +130,8 @@
 		77506A8414C9163D000494E5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		77506A8614C9164F000494E5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		77899C4414C67EAE00C6484B /* listings.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = listings.json; path = Resources/listings.json; sourceTree = "<group>"; };
-		77899C4614C67EE400C6484B /* KassApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KassApi.h; path = Libraries/KassApi.h; sourceTree = "<group>"; };
-		77899C4714C67EE400C6484B /* KassApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KassApi.m; path = Libraries/KassApi.m; sourceTree = "<group>"; };
+		77899C4614C67EE400C6484B /* KassApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KassApi.h; path = ../Libraries/KassApi.h; sourceTree = "<group>"; };
+		77899C4714C67EE400C6484B /* KassApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KassApi.m; path = ../Libraries/KassApi.m; sourceTree = "<group>"; };
 		77899C4A14C67F2300C6484B /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+SBJson.h"; path = "Libraries/SBJson/NSObject+SBJson.h"; sourceTree = "<group>"; };
 		77899C4B14C67F2300C6484B /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+SBJson.m"; path = "Libraries/SBJson/NSObject+SBJson.m"; sourceTree = "<group>"; };
 		77899C4C14C67F2300C6484B /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJson.h; path = Libraries/SBJson/SBJson.h; sourceTree = "<group>"; };
@@ -173,6 +175,10 @@
 		77F0279E14C665F60065EDAA /* Listing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Listing.m; sourceTree = "<group>"; };
 		77F027A014C666BA0065EDAA /* ListingTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListingTest.h; sourceTree = "<group>"; };
 		77F027A114C666BA0065EDAA /* ListingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListingTest.m; sourceTree = "<group>"; };
+		77F3D0D714CC0B4C00770E73 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		77F3D0D814CC0B4D00770E73 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		77F3D0DA14CC0C3900770E73 /* LocationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationTest.h; sourceTree = "<group>"; };
+		77F3D0DB14CC0C3900770E73 /* LocationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTest.m; sourceTree = "<group>"; };
 		E58B992414AC5AE400A780F6 /* BrowseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseTableViewController.h; sourceTree = "<group>"; };
 		E58B992514AC5AE400A780F6 /* BrowseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseTableViewController.m; sourceTree = "<group>"; };
 		E58B993014AC746600A780F6 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../../Default.png; sourceTree = "<group>"; };
@@ -382,8 +388,6 @@
 				77899C9914C68E5100C6484B /* Headers */,
 				77899CA114C68E5100C6484B /* libOCMock.a */,
 				77899C4914C67EEE00C6484B /* SBJson */,
-				77899C4614C67EE400C6484B /* KassApi.h */,
-				77899C4714C67EE400C6484B /* KassApi.m */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -440,6 +444,8 @@
 		E5947DD014A3A12B0066723A /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				77899C4614C67EE400C6484B /* KassApi.h */,
+				77899C4714C67EE400C6484B /* KassApi.m */,
 				77CD5FC114CA52780013B510 /* Constants.h */,
 				77CD5FC214CA52780013B510 /* Constants.m */,
 				77CD5FC314CA52780013B510 /* VariableStore.h */,
@@ -477,6 +483,8 @@
 				E5947DD114A3A12B0066723A /* Supporting Files */,
 				77F0279D14C665F60065EDAA /* Listing.h */,
 				77F0279E14C665F60065EDAA /* Listing.m */,
+				77F3D0D714CC0B4C00770E73 /* Location.h */,
+				77F3D0D814CC0B4D00770E73 /* Location.m */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -504,6 +512,8 @@
 				77F0279B14C5BC100065EDAA /* ListItemTest.m */,
 				77F027A014C666BA0065EDAA /* ListingTest.h */,
 				77F027A114C666BA0065EDAA /* ListingTest.m */,
+				77F3D0DA14CC0C3900770E73 /* LocationTest.h */,
+				77F3D0DB14CC0C3900770E73 /* LocationTest.m */,
 			);
 			path = DemoTests;
 			sourceTree = "<group>";
@@ -698,6 +708,7 @@
 				77506A6214C91347000494E5 /* ASINetworkQueue.m in Sources */,
 				77CD5FC514CA52780013B510 /* Constants.m in Sources */,
 				77CD5FC614CA52780013B510 /* VariableStore.m in Sources */,
+				77F3D0D914CC0B4D00770E73 /* Location.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,6 +719,7 @@
 				E5947DF614A3A12B0066723A /* DemoTests.m in Sources */,
 				77F0279C14C5BC100065EDAA /* ListItemTest.m in Sources */,
 				77F027A214C666BA0065EDAA /* ListingTest.m in Sources */,
+				77F3D0DC14CC0C3900770E73 /* LocationTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
