@@ -25,7 +25,6 @@
 		77506A8514C9163D000494E5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77506A8414C9163D000494E5 /* MobileCoreServices.framework */; };
 		77506A8714C9164F000494E5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 77506A8614C9164F000494E5 /* libz.dylib */; };
 		77899C4514C67EAE00C6484B /* listings.json in Resources */ = {isa = PBXBuildFile; fileRef = 77899C4414C67EAE00C6484B /* listings.json */; };
-		77899C4814C67EE400C6484B /* KassApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 77899C4714C67EE400C6484B /* KassApi.m */; };
 		77899C6314C67F2300C6484B /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 77899C4B14C67F2300C6484B /* NSObject+SBJson.m */; };
 		77899C6414C67F2300C6484B /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 77899C4E14C67F2300C6484B /* SBJsonParser.m */; };
 		77899C6514C67F2300C6484B /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 77899C5014C67F2300C6484B /* SBJsonStreamParser.m */; };
@@ -44,6 +43,7 @@
 		77899CB214C70CD900C6484B /* myListings.json in Resources */ = {isa = PBXBuildFile; fileRef = 77899CB014C70CD900C6484B /* myListings.json */; };
 		77CD5FC514CA52780013B510 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CD5FC214CA52780013B510 /* Constants.m */; };
 		77CD5FC614CA52780013B510 /* VariableStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CD5FC414CA52780013B510 /* VariableStore.m */; };
+		77E9ACC314CD0AF50089910F /* KassApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E9ACC214CD0AF50089910F /* KassApi.m */; };
 		77F0279C14C5BC100065EDAA /* ListItemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F0279B14C5BC100065EDAA /* ListItemTest.m */; };
 		77F0279F14C665F70065EDAA /* Listing.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F0279E14C665F60065EDAA /* Listing.m */; };
 		77F027A214C666BA0065EDAA /* ListingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F027A114C666BA0065EDAA /* ListingTest.m */; };
@@ -130,8 +130,6 @@
 		77506A8414C9163D000494E5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		77506A8614C9164F000494E5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		77899C4414C67EAE00C6484B /* listings.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = listings.json; path = Resources/listings.json; sourceTree = "<group>"; };
-		77899C4614C67EE400C6484B /* KassApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KassApi.h; path = ../Libraries/KassApi.h; sourceTree = "<group>"; };
-		77899C4714C67EE400C6484B /* KassApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KassApi.m; path = ../Libraries/KassApi.m; sourceTree = "<group>"; };
 		77899C4A14C67F2300C6484B /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+SBJson.h"; path = "Libraries/SBJson/NSObject+SBJson.h"; sourceTree = "<group>"; };
 		77899C4B14C67F2300C6484B /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+SBJson.m"; path = "Libraries/SBJson/NSObject+SBJson.m"; sourceTree = "<group>"; };
 		77899C4C14C67F2300C6484B /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJson.h; path = Libraries/SBJson/SBJson.h; sourceTree = "<group>"; };
@@ -169,6 +167,8 @@
 		77CD5FC214CA52780013B510 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		77CD5FC314CA52780013B510 /* VariableStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VariableStore.h; sourceTree = "<group>"; };
 		77CD5FC414CA52780013B510 /* VariableStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VariableStore.m; sourceTree = "<group>"; };
+		77E9ACC114CD0AF50089910F /* KassApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KassApi.h; sourceTree = "<group>"; };
+		77E9ACC214CD0AF50089910F /* KassApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KassApi.m; sourceTree = "<group>"; };
 		77F0279A14C5BC100065EDAA /* ListItemTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListItemTest.h; sourceTree = "<group>"; };
 		77F0279B14C5BC100065EDAA /* ListItemTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListItemTest.m; sourceTree = "<group>"; };
 		77F0279D14C665F60065EDAA /* Listing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Listing.h; sourceTree = "<group>"; };
@@ -444,8 +444,8 @@
 		E5947DD014A3A12B0066723A /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				77899C4614C67EE400C6484B /* KassApi.h */,
-				77899C4714C67EE400C6484B /* KassApi.m */,
+				77E9ACC114CD0AF50089910F /* KassApi.h */,
+				77E9ACC214CD0AF50089910F /* KassApi.m */,
 				77CD5FC114CA52780013B510 /* Constants.h */,
 				77CD5FC214CA52780013B510 /* Constants.m */,
 				77CD5FC314CA52780013B510 /* VariableStore.h */,
@@ -684,7 +684,6 @@
 				E5D7C49C14B508D600E29463 /* PostViewController.m in Sources */,
 				E5D7C4AE14B53C3F00E29463 /* AppScrollView.m in Sources */,
 				77F0279F14C665F70065EDAA /* Listing.m in Sources */,
-				77899C4814C67EE400C6484B /* KassApi.m in Sources */,
 				77899C6314C67F2300C6484B /* NSObject+SBJson.m in Sources */,
 				77899C6414C67F2300C6484B /* SBJsonParser.m in Sources */,
 				77899C6514C67F2300C6484B /* SBJsonStreamParser.m in Sources */,
@@ -709,6 +708,7 @@
 				77CD5FC514CA52780013B510 /* Constants.m in Sources */,
 				77CD5FC614CA52780013B510 /* VariableStore.m in Sources */,
 				77F3D0D914CC0B4D00770E73 /* Location.m in Sources */,
+				77E9ACC314CD0AF50089910F /* KassApi.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
