@@ -12,4 +12,6 @@
 
 NSString * const POST_TYPE = @"TEMPLATE";
 
+NSString * const HOST = @"localhost:3000";
+
 @end

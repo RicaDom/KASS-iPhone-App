@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SBJson.h"
 #import "ASIHTTPRequest.h"
+#import "Constants.h"
 
 #import "Listing.h"
 #import "ListItem.h"
@@ -19,7 +20,7 @@
 + (NSDictionary *)parseData:(NSData *)data;
 + (void)logData:(NSDictionary *)dict;
 
-+ (NSData *)getListings;
++ (NSData *)getListings:(NSString *)box;
 + (NSData *)getListing:(NSString *)modelId;
 
 

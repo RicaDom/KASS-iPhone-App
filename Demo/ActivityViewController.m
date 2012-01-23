@@ -29,7 +29,8 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
     // sample data
     NSData *data = [NSData dataWithContentsOfFile:
                      [[NSBundle mainBundle] pathForResource:@"myListings" ofType:@"json"] ]; 
-    
+                 //= [KassApi getListings:@"30.7715308509767,-128.31375383287669,36.17153085097671,-116.9137538328766"];
+      
     Listing *listing = [[Listing alloc] initWithData:data];
     buyingItems = [listing listItems];
     

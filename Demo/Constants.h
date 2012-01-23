@@ -11,5 +11,6 @@
 @interface Constants : NSObject
 
 extern NSString * const POST_TYPE;
+extern NSString * const HOST;
 
 @end

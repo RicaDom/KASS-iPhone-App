@@ -11,13 +11,13 @@
 @implementation KassApi
 
 
-+ (NSData *)getListings{
-  NSString *url = [NSString stringWithFormat:@"http://%@/v1/listing.json", KHOST];
++ (NSData *)getListings:(NSString *)box{
+  NSString *url = [NSString stringWithFormat:@"http://%@/v1/listing.json?box=%@", HOST, box];
   return [KassApi getData:url];
 }
 
 + (NSData *)getListing:(NSString *)modelId{
-  NSString *url = [NSString stringWithFormat:@"http://%@/v1/listings/%@.json", KHOST, modelId];
+  NSString *url = [NSString stringWithFormat:@"http://%@/v1/listings/%@.json", HOST, modelId];
   return [KassApi getData:url];
 }
 

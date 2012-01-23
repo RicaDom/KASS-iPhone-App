@@ -25,4 +25,3 @@
 #else
 #    define KHOST "www.kass.com"
 #endif
-#define ALog(...) NSLog(__VA_ARGS__)
