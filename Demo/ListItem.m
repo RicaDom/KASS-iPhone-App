@@ -12,10 +12,11 @@
 
 @synthesize title = _title;
 @synthesize description = _description;
-@synthesize needItBy = _needItBy;
+@synthesize postedDate = _postedDate;
 @synthesize askPrice = _askPrice;
 @synthesize picFileName = _picFileName;
 @synthesize data = _data;
+@synthesize postDuration = _postDuration;
 
 - (id) initWithDictionary:(NSDictionary *) theDictionary
 {

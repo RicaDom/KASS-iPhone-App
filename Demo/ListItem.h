@@ -13,9 +13,10 @@
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *description;
-@property (nonatomic, strong) NSDate *needItBy;
+@property (nonatomic, strong) NSDate *postedDate;
 @property (nonatomic, strong) NSDecimalNumber *askPrice;
 @property (nonatomic, strong) NSString *picFileName;
+@property (nonatomic, strong) NSNumber *postDuration;  // in minutes??
 
 @property (nonatomic, retain) NSData   *data;
 

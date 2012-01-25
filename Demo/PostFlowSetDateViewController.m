@@ -9,8 +9,8 @@
 #import "PostFlowSetDateViewController.h"
 
 @implementation PostFlowSetDateViewController
-@synthesize PostDueDatePicker = _PostDueDatePicker;
-@synthesize PostDueDateLabel = _PostDueDateLabel;
+@synthesize PostDurationPicker = _PostDurationPicker;
+@synthesize PostDurationLabel = _PostDurationLabel;
 @synthesize PostFlowSegment = _PostFlowSegment;
 NSArray *arrayTimePicker;
 
@@ -31,6 +31,30 @@ NSArray *arrayTimePicker;
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)loadCurrentPostingData
+{
+    if ([VariableStore sharedInstance].currentPostingItem.postDuration) {
+        NSArray *keys = [[VariableStore sharedInstance].expiredTime 
+                         allKeysForObject:[VariableStore sharedInstance].currentPostingItem.postDuration];
+        if (keys) {
+            NSString *selectedItem = [keys objectAtIndex:0];
+            if ([selectedItem length] != 0) {
+                [self.PostDurationPicker selectRow:[arrayTimePicker indexOfObject:selectedItem] inComponent:0 animated:NO];
+                self.PostDurationLabel.text = selectedItem;
+            }
+            //self.PostDurationPicker sele
+        }
+        //self.priceTextField.text = [NSString stringWithFormat:@"%@", [VariableStore sharedInstance].currentPostingItem.askPrice];
+    }
+}
+
+- (void)saveCurrentPostingData
+{
+    if (self.PostDurationLabel.text) {
+        [VariableStore sharedInstance].currentPostingItem.postDuration = [[VariableStore sharedInstance].expiredTime objectForKey:self.PostDurationLabel.text];
+    }
+}
+
 #pragma mark - View lifecycle
 
 /*
@@ -48,12 +72,13 @@ NSArray *arrayTimePicker;
     arrayTimePicker = [[VariableStore sharedInstance].expiredTime keysSortedByValueUsingComparator: ^(id obj1, id obj2) {
         return [(NSNumber *)obj1 compare:(NSNumber *)obj2];
     }];
+    [self loadCurrentPostingData];
 }
 
 - (void)viewDidUnload
 {
-    [self setPostDueDatePicker:nil];
-    [self setPostDueDateLabel:nil];
+    [self setPostDurationPicker:nil];
+    [self setPostDurationLabel:nil];
     [self setPostFlowSegment:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -64,6 +89,11 @@ NSArray *arrayTimePicker;
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self saveCurrentPostingData];
 }
 
 #pragma mark -
@@ -85,7 +115,7 @@ NSArray *arrayTimePicker;
 }
 
 - (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-	self.PostDueDateLabel.text = [arrayTimePicker objectAtIndex:row];
+	self.PostDurationLabel.text = [arrayTimePicker objectAtIndex:row];
 	NSLog(@"Selected Color: %@. Index of selected color: %i", [arrayTimePicker objectAtIndex:row], row);
 }
 

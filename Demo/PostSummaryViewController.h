@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *postTitle;
 @property (weak, nonatomic) IBOutlet UILabel *postDescription;
 @property (weak, nonatomic) IBOutlet UILabel *postAskPrice;
-@property (weak, nonatomic) IBOutlet UILabel *postDueDate;
+@property (weak, nonatomic) IBOutlet UILabel *postDuration;
+- (IBAction)cancelAction:(id)sender;
 
 @end

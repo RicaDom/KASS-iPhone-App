@@ -97,8 +97,8 @@
 
 - (IBAction)CancelAction:(id)sender {
     [self.titleTextField resignFirstResponder];
-    NSLog(@"controller class: %@", NSStringFromClass([self.navigationController.tabBarController class]));
-    printf("Index: %d", self.navigationController.tabBarController.selectedIndex);
+    //NSLog(@"controller class: %@", NSStringFromClass([self.navigationController.tabBarController class]));
+    //printf("Index: %d", self.navigationController.tabBarController.selectedIndex);
     //[self.navigationController dismissModalViewControllerAnimated:YES];
     //[self.navigationController removeFromParentViewController];
     //[self.navigationController dismissModalViewControllerAnimated:YES];

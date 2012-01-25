@@ -180,6 +180,7 @@
         [VariableStore sharedInstance].currentPostingItem.title = @"Popular post item title";
         [VariableStore sharedInstance].currentPostingItem.description = @"Popular post item description";
         [VariableStore sharedInstance].currentPostingItem.askPrice = [NSDecimalNumber decimalNumberWithString:@"888.99"];
+        [VariableStore sharedInstance].currentPostingItem.postDuration = [NSNumber numberWithInt:7200];
     } else if ([segue.identifier isEqualToString:@"EditorPostWorkFlow"]) {
 //        UINavigationController *navigationController = segue.destinationViewController;
 //        PostFlowViewController *pvc = (PostFlowViewController *)navigationController.topViewController;

@@ -10,8 +10,8 @@
 #import "VariableStore.h"
 
 @interface PostFlowSetDateViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIPickerView *PostDueDatePicker;
-@property (weak, nonatomic) IBOutlet UILabel *PostDueDateLabel;
+@property (weak, nonatomic) IBOutlet UIPickerView *PostDurationPicker;
+@property (weak, nonatomic) IBOutlet UILabel *PostDurationLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *PostFlowSegment;
 
 @end

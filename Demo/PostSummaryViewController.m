@@ -12,7 +12,7 @@
 @synthesize postTitle = _postTitle;
 @synthesize postDescription = _postDescription;
 @synthesize postAskPrice = _postAskPrice;
-@synthesize postDueDate = _postDueDate;
+@synthesize postDuration = _postDuration;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,7 +37,19 @@
     self.postTitle.text = [VariableStore sharedInstance].currentPostingItem.title;
     self.postDescription.text = [VariableStore sharedInstance].currentPostingItem.description;
     self.postAskPrice.text = [NSString stringWithFormat:@"%@", [VariableStore sharedInstance].currentPostingItem.askPrice];
-    //self.postDueDate.text = 
+
+    if ([VariableStore sharedInstance].currentPostingItem.postDuration) {
+        NSArray *keys = [[VariableStore sharedInstance].expiredTime 
+                         allKeysForObject:[VariableStore sharedInstance].currentPostingItem.postDuration];
+        if (keys) {
+            NSString *selectedItem = [keys objectAtIndex:0];
+            if ([selectedItem length] != 0) {
+                self.postDuration.text = selectedItem;
+            } else {
+                self.postDuration.text = nil;
+            }
+        }
+    }
 }
 
 #pragma mark - View lifecycle
@@ -61,16 +73,26 @@
     [self setPostTitle:nil];
     [self setPostDescription:nil];
     [self setPostAskPrice:nil];
-    [self setPostDueDate:nil];
+    [self setPostDuration:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self loadCurrentPostingData];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (IBAction)cancelAction:(id)sender {
+    [[VariableStore sharedInstance] clearCurrentPostingItem];
+    [self.presentingViewController dismissModalViewControllerAnimated:YES];
 }
 
 @end
