@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *postAskPrice;
 @property (weak, nonatomic) IBOutlet UILabel *postDuration;
 - (IBAction)cancelAction:(id)sender;
+- (IBAction)submitAction;
 
 @end

@@ -17,7 +17,13 @@
 @property (strong, nonatomic) ListItem *currentPostingItem;
 @property (strong, nonatomic) NSDictionary *expiredTime;
 
+#pragma mark - Testing Array -
+@property (strong, nonatomic) NSMutableArray *allListings;
+@property (strong, nonatomic) NSMutableArray *myBuyingListings;
+@property (strong, nonatomic) NSMutableArray *mySellingListings;
+
 + (VariableStore *) sharedInstance;
 - (void) clearCurrentPostingItem;
 - (void) initExpiredTime;
+- (void) initListingsData;
 @end
