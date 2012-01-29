@@ -32,7 +32,6 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)sender {
-    NSLog(@"Im in");
     if (sender == self.hotPostScrollView) {
         if (!hotPostPageControlBeingUsed) {
             // Switch the indicator when more than 50% of the previous/next page is visible

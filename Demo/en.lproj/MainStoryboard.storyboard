@@ -208,6 +208,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="l62-hN-2ks">
                         <nil key="title"/>
+                        <barButtonItem key="backBarButtonItem" title="上一步" id="oJm-0s-3Xt"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="ieo-7M-P3d">
                             <rect key="frame" x="5" y="7" width="254" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -512,7 +513,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="921" y="-431"/>
+            <point key="canvasLocation" x="902" y="-675"/>
         </scene>
         <scene sceneID="gQf-rS-YM8">
             <objects>
@@ -522,45 +523,189 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="标题：" lineBreakMode="tailTruncation" minimumFontSize="10" id="dyA-d3-WHr">
-                                <rect key="frame" x="20" y="11" width="51" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="描述：" lineBreakMode="tailTruncation" minimumFontSize="10" id="LgO-au-W7w">
-                                <rect key="frame" x="20" y="40" width="51" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="gVS-Jq-Ce4">
-                                <rect key="frame" x="81" y="11" width="219" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="bQn-AI-q0V">
-                                <rect key="frame" x="20" y="69" width="280" height="67"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="ref-jl-o6Z" customClass="TPKeyboardAvoidingScrollView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="5" minimumFontSize="10" id="bQn-AI-q0V">
+                                        <rect key="frame" x="9" y="67" width="298" height="61"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="描述：" lineBreakMode="tailTruncation" minimumFontSize="10" id="LgO-au-W7w">
+                                        <rect key="frame" x="9" y="38" width="51" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="gVS-Jq-Ce4">
+                                        <rect key="frame" x="68" y="5" width="239" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="标题：" lineBreakMode="tailTruncation" minimumFontSize="10" id="dyA-d3-WHr">
+                                        <rect key="frame" x="9" y="9" width="51" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="s03-rJ-2Co">
+                                        <rect key="frame" x="7" y="322" width="37" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="¥">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="RL8-g6-Yll" kind="modal" id="cVP-Bc-SG3"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="发送讯息或价格" minimumFontSize="17" id="4Mt-Md-eCi">
+                                        <rect key="frame" x="52" y="326" width="255" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="jzI-1g-RJt" id="lj9-gG-BbN"/>
+                                        </connections>
+                                    </textField>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="出价历史：" lineBreakMode="tailTruncation" minimumFontSize="10" id="k6C-wV-nOY">
+                                        <rect key="frame" x="9" y="136" width="85" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="epW-ZK-tX9">
+                                        <rect key="frame" x="9" y="165" width="298" height="129"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    </scrollView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="您的出价：" lineBreakMode="tailTruncation" minimumFontSize="10" id="kRQ-Uk-dkh">
+                                        <rect key="frame" x="52" y="297" width="80" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="hLs-a0-o6o">
+                                        <rect key="frame" x="129" y="297" width="178" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="dl3-r4-N9Y"/>
+                    <navigationItem key="navigationItem" title="交易单" id="dl3-r4-N9Y">
+                        <barButtonItem key="rightBarButtonItem" title="地图" id="Qei-wT-vVK">
+                            <connections>
+                                <action selector="navigationButtonAction:" destination="jzI-1g-RJt" id="abn-jY-PJU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="itemDescriptionLabel" destination="bQn-AI-q0V" id="u2Q-CJ-TYx"/>
                         <outlet property="itemTitleLabel" destination="gVS-Jq-Ce4" id="Iwh-J2-gLi"/>
+                        <outlet property="messageTextField" destination="4Mt-Md-eCi" id="dzR-GJ-Nzc"/>
+                        <outlet property="navigationButton" destination="Qei-wT-vVK" id="mbo-h2-YhH"/>
+                        <segue destination="XUy-mg-tBg" kind="push" identifier="dealMapModal" id="cp1-I0-Gqx"/>
                     </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="469" y="-109"/>
+        </scene>
+        <scene sceneID="Ak1-hY-aU3">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HNW-mR-W7c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="XUy-mg-tBg" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kO2-0q-wEb">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="AN7-bk-86O">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ahI-rt-6Nc"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="902" y="-109"/>
+        </scene>
+        <scene sceneID="1BH-DW-PPI">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xbk-Yt-aUk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="fgM-38-Koe" customClass="OfferChangingPriceViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7PI-0a-XfR">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="现在的出价是： " lineBreakMode="tailTruncation" minimumFontSize="10" id="gdb-UG-maw">
+                                <rect key="frame" x="81" y="11" width="124" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="您的理想价格是：" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="3oA-Gm-y8y">
+                                <rect key="frame" x="20" y="40" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="aAv-h0-U4a">
+                                <rect key="frame" x="194" y="11" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="¥ 100" textAlignment="center" minimumFontSize="37" id="Sar-p3-AF3">
+                                <rect key="frame" x="20" y="69" width="280" height="112"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="88"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <connections>
+                                    <outlet property="delegate" destination="fgM-38-Koe" id="ydq-Tl-GgS"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="修改价格" id="9k1-0U-52s">
+                        <barButtonItem key="leftBarButtonItem" title="取消" id="TvE-PO-C9V">
+                            <connections>
+                                <action selector="cancelChangingPriceAction:" destination="fgM-38-Koe" id="lT8-HD-Cad"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="确定" id="L9p-W5-w00">
+                            <connections>
+                                <action selector="doneChangingPriceAction:" destination="fgM-38-Koe" id="ye7-OY-9jG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="offerPriceTextField" destination="Sar-p3-AF3" id="ofB-Ia-O8V"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1850" y="-305"/>
         </scene>
         <scene sceneID="DtA-tP-kxv">
             <objects>
@@ -731,6 +876,23 @@
                 </viewController>
             </objects>
             <point key="canvasLocation" x="-353" y="458"/>
+        </scene>
+        <scene sceneID="FJ0-3g-hO5">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LVd-Am-m7K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="RL8-g6-Yll" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="oLJ-nH-K4d">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="fgM-38-Koe" kind="relationship" relationship="rootViewController" id="XOD-k7-hJ6"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1324" y="-305"/>
         </scene>
     </scenes>
     <resources>

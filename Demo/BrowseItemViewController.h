@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "ListItem.h"
 
-@interface BrowseItemViewController : UIViewController
+@interface BrowseItemViewController : UIViewController 
 @property (weak, nonatomic) IBOutlet UILabel *itemTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *itemDescriptionLabel;
 @property (strong, nonatomic) ListItem *currentItem;
+@property (weak, nonatomic) IBOutlet UITextField *messageTextField;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *navigationButton;
+- (IBAction)navigationButtonAction:(id)sender;
 @end

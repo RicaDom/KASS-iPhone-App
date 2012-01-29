@@ -49,6 +49,7 @@
 		77F027A214C666BA0065EDAA /* ListingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F027A114C666BA0065EDAA /* ListingTest.m */; };
 		77F3D0D914CC0B4D00770E73 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F3D0D814CC0B4D00770E73 /* Location.m */; };
 		77F3D0DC14CC0C3900770E73 /* LocationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F3D0DB14CC0C3900770E73 /* LocationTest.m */; };
+		E5129DCB14D3D59100FEE0BF /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5129DCA14D3D59100FEE0BF /* TPKeyboardAvoidingScrollView.m */; };
 		E58B992614AC5AE400A780F6 /* BrowseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E58B992514AC5AE400A780F6 /* BrowseTableViewController.m */; };
 		E58B993214AC75EA00A780F6 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E58B993014AC746600A780F6 /* Default.png */; };
 		E5947DCB14A3A12B0066723A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5947DCA14A3A12B0066723A /* UIKit.framework */; };
@@ -64,6 +65,7 @@
 		E5947DF314A3A12B0066723A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5947DF114A3A12B0066723A /* InfoPlist.strings */; };
 		E5947DF614A3A12B0066723A /* DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E5947DF514A3A12B0066723A /* DemoTests.m */; };
 		E5947E5614A4006D0066723A /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5947E5514A4006D0066723A /* SettingViewController.m */; };
+		E596EDC514D541B200B50F3B /* OfferChangingPriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E596EDC414D541B200B50F3B /* OfferChangingPriceViewController.m */; };
 		E59A174414ABC03300B7977D /* PostFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E59A174314ABC03300B7977D /* PostFlowViewController.m */; };
 		E59A174C14AC482900B7977D /* PostSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E59A174B14AC482800B7977D /* PostSummaryViewController.m */; };
 		E59A174F14AC513D00B7977D /* BrowseItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E59A174E14AC513D00B7977D /* BrowseItemViewController.m */; };
@@ -179,6 +181,8 @@
 		77F3D0D814CC0B4D00770E73 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		77F3D0DA14CC0C3900770E73 /* LocationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationTest.h; sourceTree = "<group>"; };
 		77F3D0DB14CC0C3900770E73 /* LocationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTest.m; sourceTree = "<group>"; };
+		E5129DC914D3D59100FEE0BF /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
+		E5129DCA14D3D59100FEE0BF /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		E58B992414AC5AE400A780F6 /* BrowseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseTableViewController.h; sourceTree = "<group>"; };
 		E58B992514AC5AE400A780F6 /* BrowseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseTableViewController.m; sourceTree = "<group>"; };
 		E58B993014AC746600A780F6 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../../Default.png; sourceTree = "<group>"; };
@@ -201,6 +205,8 @@
 		E5947DF514A3A12B0066723A /* DemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoTests.m; sourceTree = "<group>"; };
 		E5947E5414A4006D0066723A /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		E5947E5514A4006D0066723A /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		E596EDC314D541B200B50F3B /* OfferChangingPriceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfferChangingPriceViewController.h; sourceTree = "<group>"; };
+		E596EDC414D541B200B50F3B /* OfferChangingPriceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfferChangingPriceViewController.m; sourceTree = "<group>"; };
 		E59A174214ABC03300B7977D /* PostFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostFlowViewController.h; sourceTree = "<group>"; };
 		E59A174314ABC03300B7977D /* PostFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostFlowViewController.m; sourceTree = "<group>"; };
 		E59A174A14AC482800B7977D /* PostSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostSummaryViewController.h; sourceTree = "<group>"; };
@@ -456,6 +462,8 @@
 				E5947DDA14A3A12B0066723A /* AppDelegate.m */,
 				E5D7C4AC14B53C3F00E29463 /* AppScrollView.h */,
 				E5D7C4AD14B53C3F00E29463 /* AppScrollView.m */,
+				E5129DC914D3D59100FEE0BF /* TPKeyboardAvoidingScrollView.h */,
+				E5129DCA14D3D59100FEE0BF /* TPKeyboardAvoidingScrollView.m */,
 				E5A0744814AAA57100885232 /* ActivityViewController.h */,
 				E5A0744914AAA57100885232 /* ActivityViewController.m */,
 				E5C0ABEB14AADF130021873A /* ItemViewController.h */,
@@ -464,6 +472,8 @@
 				E59A174E14AC513D00B7977D /* BrowseItemViewController.m */,
 				E58B992414AC5AE400A780F6 /* BrowseTableViewController.h */,
 				E58B992514AC5AE400A780F6 /* BrowseTableViewController.m */,
+				E596EDC314D541B200B50F3B /* OfferChangingPriceViewController.h */,
+				E596EDC414D541B200B50F3B /* OfferChangingPriceViewController.m */,
 				E5947E5414A4006D0066723A /* SettingViewController.h */,
 				E5947E5514A4006D0066723A /* SettingViewController.m */,
 				E5E6AA3614A41B6D00A0CF86 /* MapViewController.h */,
@@ -709,6 +719,8 @@
 				77CD5FC614CA52780013B510 /* VariableStore.m in Sources */,
 				77F3D0D914CC0B4D00770E73 /* Location.m in Sources */,
 				77E9ACC314CD0AF50089910F /* KassApi.m in Sources */,
+				E5129DCB14D3D59100FEE0BF /* TPKeyboardAvoidingScrollView.m in Sources */,
+				E596EDC514D541B200B50F3B /* OfferChangingPriceViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
