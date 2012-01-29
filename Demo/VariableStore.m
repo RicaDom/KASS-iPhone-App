@@ -13,6 +13,10 @@
 @synthesize currentPostingItem = _currentPostingItem;
 @synthesize expiredTime = _expiredTime;
 
+@synthesize allListings = _allListings;
+@synthesize myBuyingListings = _myBuyingListings;
+@synthesize mySellingListings = _mySellingListings;
+
 + (VariableStore *) sharedInstance {
     // the instance of this class is stored here
     static VariableStore *myInstance;
@@ -24,6 +28,11 @@
             // initialize variables here
             myInstance.currentPostingItem = [[ListItem alloc] init];
             [myInstance initExpiredTime];
+            
+            myInstance.allListings = [[NSMutableArray alloc] init];
+            myInstance.mySellingListings = [[NSMutableArray alloc] init];
+            myInstance.myBuyingListings = [[NSMutableArray alloc] init];
+            [myInstance initListingsData];
         }
         // return the instance of this class
         return myInstance;    
@@ -32,6 +41,27 @@
 
 - (void) clearCurrentPostingItem {
     self.currentPostingItem = [[ListItem alloc] init];
+}
+
+//Loading sample data, for TESTING ONLY!
+- (void) initListingsData {
+    ListItem *item = [ListItem new];
+    
+    item = [ListItem new];
+    [item setTitle:@"gently used kindle"];
+    [item setDescription:@"good condition with wifi"];
+    item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
+                     [[NSNumber numberWithFloat:89.75f] decimalValue]];
+    
+    [self.allListings addObject:item];
+    
+    item = [ListItem new];
+    [item setTitle:@"games for ps3"];
+    [item setDescription:@"any shooting games"];
+    item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
+                     [[NSNumber numberWithFloat:18.55f] decimalValue]];
+    
+    [self.allListings addObject:item];
 }
 
 - (void) initExpiredTime {

@@ -28,23 +28,26 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
     ListItem *item = [ListItem new];
     
     // most recent items
-    recentItems = [NSMutableArray new];
+    // recentItems = [NSMutableArray new];
     
-    item = [ListItem new];
-    [item setTitle:@"gently used kindle"];
-    [item setDescription:@"good condition with wifi"];
-    item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
-                     [[NSNumber numberWithFloat:89.75f] decimalValue]];
+    // TESTING DATA - GLOBAL ARRAY FOR USER SUBMITTING NEW LISTING
+    recentItems = [VariableStore sharedInstance].allListings;
     
-    [recentItems addObject:item];
-    
-    item = [ListItem new];
-    [item setTitle:@"games for ps3"];
-    [item setDescription:@"any shooting games"];
-    item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
-                     [[NSNumber numberWithFloat:18.55f] decimalValue]];
-    
-    [recentItems addObject:item];
+//    item = [ListItem new];
+//    [item setTitle:@"gently used kindle"];
+//    [item setDescription:@"good condition with wifi"];
+//    item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
+//                     [[NSNumber numberWithFloat:89.75f] decimalValue]];
+//    
+//    [recentItems addObject:item];
+//    
+//    item = [ListItem new];
+//    [item setTitle:@"games for ps3"];
+//    [item setDescription:@"any shooting games"];
+//    item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
+//                     [[NSNumber numberWithFloat:18.55f] decimalValue]];
+//    
+//    [recentItems addObject:item];
     
     // price sorted items
     priceItems = [NSMutableArray new];
@@ -116,6 +119,7 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
 
 - (void)viewDidLoad
 {
+  
   [self setupArray];
   [super viewDidLoad];
 
@@ -194,45 +198,6 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
     cell.textLabel.text = [[item title] stringByAppendingFormat:@" ¥%@", price];
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 

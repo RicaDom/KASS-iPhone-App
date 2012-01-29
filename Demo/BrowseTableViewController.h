@@ -10,6 +10,7 @@
 #import "ListItem.h"
 #import "Listing.h"
 #import "BrowseItemViewController.h"
+#import "VariableStore.h"
 
 @interface BrowseTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UISegmentedControl *browseSegment;

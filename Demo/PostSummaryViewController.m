@@ -95,4 +95,10 @@
     [self.presentingViewController dismissModalViewControllerAnimated:YES];
 }
 
+- (IBAction)submitAction {
+    [[VariableStore sharedInstance].allListings addObject:[VariableStore sharedInstance].currentPostingItem];
+    [[VariableStore sharedInstance] clearCurrentPostingItem];
+    [self.presentingViewController dismissModalViewControllerAnimated:YES];
+}
+
 @end
