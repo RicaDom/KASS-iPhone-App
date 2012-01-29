@@ -50,13 +50,7 @@
 		77F3D0D914CC0B4D00770E73 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F3D0D814CC0B4D00770E73 /* Location.m */; };
 		77F3D0DC14CC0C3900770E73 /* LocationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F3D0DB14CC0C3900770E73 /* LocationTest.m */; };
 		77F3D91014D00EC20009AF75 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F3D90F14D00EC20009AF75 /* QuartzCore.framework */; };
-<<<<<<< HEAD
-<<<<<<< HEAD
 		E5129DCB14D3D59100FEE0BF /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5129DCA14D3D59100FEE0BF /* TPKeyboardAvoidingScrollView.m */; };
-=======
->>>>>>> 6480c0d5987f3b67710706ad8d4277d68a828a5d
-=======
->>>>>>> 6480c0d5987f3b67710706ad8d4277d68a828a5d
 		E58B992614AC5AE400A780F6 /* BrowseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E58B992514AC5AE400A780F6 /* BrowseTableViewController.m */; };
 		E58B993214AC75EA00A780F6 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E58B993014AC746600A780F6 /* Default.png */; };
 		E5947DCB14A3A12B0066723A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5947DCA14A3A12B0066723A /* UIKit.framework */; };
@@ -189,14 +183,8 @@
 		77F3D0DA14CC0C3900770E73 /* LocationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationTest.h; sourceTree = "<group>"; };
 		77F3D0DB14CC0C3900770E73 /* LocationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTest.m; sourceTree = "<group>"; };
 		77F3D90F14D00EC20009AF75 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-<<<<<<< HEAD
-<<<<<<< HEAD
 		E5129DC914D3D59100FEE0BF /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
 		E5129DCA14D3D59100FEE0BF /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
-=======
->>>>>>> 6480c0d5987f3b67710706ad8d4277d68a828a5d
-=======
->>>>>>> 6480c0d5987f3b67710706ad8d4277d68a828a5d
 		E58B992414AC5AE400A780F6 /* BrowseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseTableViewController.h; sourceTree = "<group>"; };
 		E58B992514AC5AE400A780F6 /* BrowseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseTableViewController.m; sourceTree = "<group>"; };
 		E58B993014AC746600A780F6 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../../Default.png; sourceTree = "<group>"; };
