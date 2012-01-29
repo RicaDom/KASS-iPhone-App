@@ -115,10 +115,22 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
 
 #pragma mark - View lifecycle
 
+
+
 - (void)viewDidLoad
 {
-    [self setupArray];
-    [super viewDidLoad];
+  
+  [self setupArray];
+  [super viewDidLoad];
+
+  NSLog(@"BrowseTableViewController::viewDidLoad ");
+
+  // Uncomment the following line to preserve selection between presentations.
+  // self.clearsSelectionOnViewWillAppear = NO;
+
+  // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+  // self.navigationItem.rightBarButtonItem = self.editButtonItem;];
+
 }
 
 - (void)viewDidUnload

@@ -12,9 +12,9 @@
 
 - (void)tabBarController:(UITabBarController *)tbc didSelectViewController:(UIViewController *)vc {
     // Middle tab bar item in question.
-    NSLog(@"AVVVVVVVVVVVVVVVVVVVVV");
+    NSLog(@"MainTabBarViewController tabBarController");
     if (vc == [tbc.viewControllers objectAtIndex:4]) {
-        NSLog(@"VVVVVVVVVVVVVVVVVVVVV");
+        NSLog(@"MainTabBarViewController vvvvvvvvv");
         //ScanVC *scanView = [[ScanVC alloc] initWithNibName:@"ScanViewController" bundle:nil];
         
         // set properties of scanView's ivars, etc
@@ -32,6 +32,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+      NSLog(@"MainTabBarViewController::initWithNibName ");
     }
     return self;
 }
