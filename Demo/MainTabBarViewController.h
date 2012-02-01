@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KassApi.h"
 
 @interface MainTabBarViewController : UITabBarController <UIAlertViewDelegate, UITabBarControllerDelegate>
 

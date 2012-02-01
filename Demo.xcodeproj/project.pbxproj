@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		774F965414D8D8EE00E2588A /* KassApiTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 774F965214D8D8EE00E2588A /* KassApiTest.m */; };
+		774F965714D8E5E200E2588A /* NSObject+AsyncRequestPerform.m in Sources */ = {isa = PBXBuildFile; fileRef = 774F965614D8E5E200E2588A /* NSObject+AsyncRequestPerform.m */; };
 		775069EF14C80ADE000494E5 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 775069EE14C80ADE000494E5 /* README.markdown */; };
 		775069F214C83FAF000494E5 /* listing.json in Resources */ = {isa = PBXBuildFile; fileRef = 775069F114C83FAF000494E5 /* listing.json */; };
 		775069F314C83FAF000494E5 /* listing.json in Resources */ = {isa = PBXBuildFile; fileRef = 775069F114C83FAF000494E5 /* listing.json */; };
@@ -103,6 +105,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		774F965114D8D8EE00E2588A /* KassApiTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KassApiTest.h; sourceTree = "<group>"; };
+		774F965214D8D8EE00E2588A /* KassApiTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KassApiTest.m; sourceTree = "<group>"; };
+		774F965514D8E5E100E2588A /* NSObject+AsyncRequestPerform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AsyncRequestPerform.h"; sourceTree = "<group>"; };
+		774F965614D8E5E200E2588A /* NSObject+AsyncRequestPerform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AsyncRequestPerform.m"; sourceTree = "<group>"; };
 		775069EE14C80ADE000494E5 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		775069F114C83FAF000494E5 /* listing.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = listing.json; path = Resources/listing.json; sourceTree = "<group>"; };
 		77506A0014C9131A000494E5 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHUnitIOS.framework; sourceTree = "<group>"; };
@@ -499,6 +505,8 @@
 				77F0279E14C665F60065EDAA /* Listing.m */,
 				77F3D0D714CC0B4C00770E73 /* Location.h */,
 				77F3D0D814CC0B4D00770E73 /* Location.m */,
+				774F965514D8E5E100E2588A /* NSObject+AsyncRequestPerform.h */,
+				774F965614D8E5E200E2588A /* NSObject+AsyncRequestPerform.m */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -519,6 +527,8 @@
 		E5947DEE14A3A12B0066723A /* DemoTests */ = {
 			isa = PBXGroup;
 			children = (
+				774F965114D8D8EE00E2588A /* KassApiTest.h */,
+				774F965214D8D8EE00E2588A /* KassApiTest.m */,
 				E5947DF414A3A12B0066723A /* DemoTests.h */,
 				E5947DF514A3A12B0066723A /* DemoTests.m */,
 				E5947DEF14A3A12B0066723A /* Supporting Files */,
@@ -725,6 +735,7 @@
 				77E9ACC314CD0AF50089910F /* KassApi.m in Sources */,
 				E5129DCB14D3D59100FEE0BF /* TPKeyboardAvoidingScrollView.m in Sources */,
 				E596EDC514D541B200B50F3B /* OfferChangingPriceViewController.m in Sources */,
+				774F965714D8E5E200E2588A /* NSObject+AsyncRequestPerform.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -736,6 +747,7 @@
 				77F0279C14C5BC100065EDAA /* ListItemTest.m in Sources */,
 				77F027A214C666BA0065EDAA /* ListingTest.m in Sources */,
 				77F3D0DC14CC0C3900770E73 /* LocationTest.m in Sources */,
+				774F965414D8D8EE00E2588A /* KassApiTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

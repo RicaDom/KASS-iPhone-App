@@ -16,6 +16,8 @@
 }
 
 - (IBAction)activityChanged:(id)sender;
--(void)setupArray;
+- (void)setupArray;
+- (void)reloadTable;
+- (void)getBuyingItems:(NSData *)data;
 
 @end

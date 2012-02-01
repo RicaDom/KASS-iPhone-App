@@ -14,51 +14,76 @@
 NSMutableArray *buyingItems, *sellingItems, *currentItems;
 
 - (IBAction)activityChanged:(id)sender {
-    if ( 0 == activitySegment.selectedSegmentIndex) {
-        currentItems = buyingItems;
-    } else {
-        currentItems = sellingItems;
-    }
-    [self.tableView reloadData];
+  [self reloadTable];
+}
+
+- (void)reloadTable
+{
+  if ( 0 == activitySegment.selectedSegmentIndex) {
+    currentItems = buyingItems;
+  } else {
+    currentItems = sellingItems;
+  }
+  [self.tableView reloadData];
+  DLog(@"ActivityViewController::reloadTable");
+}
+
+- (void)perform:(NSData *)data:(NSString *)method
+{
+  DLog(@"ActivityViewController::perform");
+  SEL theSelector = NSSelectorFromString(method);
+  if ([self respondsToSelector:theSelector]) 
+  {
+    DLog(@"ActivityViewController::perform:%@", method);
+    [self performSelector:theSelector withObject:data];
+  }
+}
+
+- (void)getBuyingItems:(NSData *)data
+{
+  DLog(@"ActivityViewController::getBuyingItems");
+  Listing *listing = [[Listing alloc] initWithData:data];
+  buyingItems = [listing listItems];
+  [self reloadTable];
 }
 
 -(void)setupArray{
     
-    // buying items
-  
-    // sample data
-    NSData *data = [NSData dataWithContentsOfFile:
-                     [[NSBundle mainBundle] pathForResource:@"myListings" ofType:@"json"] ]; 
-                 //= [KassApi getListings:@"30.7715308509767,-128.31375383287669,36.17153085097671,-116.9137538328766"];
-      
-    Listing *listing = [[Listing alloc] initWithData:data];
-    buyingItems = [listing listItems];
-    
-    ListItem *item = [ListItem new];
-    // selling items
-    sellingItems = [NSMutableArray new];
+  // buying items
 
-    item = [ListItem new];
-    [item setTitle:@"gently used kindle"];
-    [item setDescription:@"good condition with wifi"];
-    item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
-                     [[NSNumber numberWithFloat:89.75f] decimalValue]];
-    
-    [sellingItems addObject:item];
-    
-    item = [ListItem new];
-    [item setTitle:@"games for ps3"];
-    [item setDescription:@"any shooting games"];
-    item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
-                     [[NSNumber numberWithFloat:18.55f] decimalValue]];
-    
-    [sellingItems addObject:item];
-    
-    if ( 0 == activitySegment.selectedSegmentIndex) {
-        currentItems = buyingItems;
-    } else {
-        currentItems = sellingItems;
-    }
+  // sample data
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getBuyingItems:"];
+  NSDictionary * dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                               @"33.7715308509767,-118.31375383287669,34.17153085097671,-117.9137538328766", @"box",
+                               nil];
+  [ka getListings:dictionary];
+  
+  
+  ListItem *item = [ListItem new];
+  // selling items
+  sellingItems = [NSMutableArray new];
+
+  item = [ListItem new];
+  [item setTitle:@"gently used kindle"];
+  [item setDescription:@"good condition with wifi"];
+  item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
+                   [[NSNumber numberWithFloat:89.75f] decimalValue]];
+  
+  [sellingItems addObject:item];
+  
+  item = [ListItem new];
+  [item setTitle:@"games for ps3"];
+  [item setDescription:@"any shooting games"];
+  item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
+                   [[NSNumber numberWithFloat:18.55f] decimalValue]];
+  
+  [sellingItems addObject:item];
+  
+  if ( 0 == activitySegment.selectedSegmentIndex) {
+      currentItems = buyingItems;
+  } else {
+      currentItems = sellingItems;
+  }
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

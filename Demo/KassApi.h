@@ -9,19 +9,36 @@
 #import <Foundation/Foundation.h>
 #import "SBJson.h"
 #import "ASIHTTPRequest.h"
+#import "ASIFormDataRequest.h"
 #import "Constants.h"
-
+#import "NSObject+AsyncRequestPerform.h"
 #import "Listing.h"
 #import "ListItem.h"
 
 @interface KassApi : NSObject
 
+@property (nonatomic, strong) NSString *method;
+@property (nonatomic, strong) NSString *response;
+@property (nonatomic, strong) NSString *url;
+@property (nonatomic, strong) NSObject *performer;
+
+- (id) initWithPerformerAndAction:(NSObject *)thePerformer:(NSString *)theAction;
+
 + (NSData *)getData:(NSString *)url;
 + (NSDictionary *)parseData:(NSData *)data;
 + (void)logData:(NSDictionary *)dict;
++ (NSData *)postData:(NSString *)url:(NSDictionary *)dict;
 
 + (NSData *)getListings:(NSString *)box;
 + (NSData *)getListing:(NSString *)modelId;
 
+- (void)postData:(NSString *)url;
+- (void)getData:(NSString *)url;
+
+- (void)getListings:(NSDictionary *)dict;
+- (void)getListing:(NSString *)modelId;
+
+- (void)requestFinished:(ASIHTTPRequest *)request;
+- (void)requestFailed:(ASIHTTPRequest *)request;
 
 @end
