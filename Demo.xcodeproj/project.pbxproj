@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		774F965414D8D8EE00E2588A /* KassApiTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 774F965214D8D8EE00E2588A /* KassApiTest.m */; };
+		774F965714D8E5E200E2588A /* NSObject+AsyncRequestPerform.m in Sources */ = {isa = PBXBuildFile; fileRef = 774F965614D8E5E200E2588A /* NSObject+AsyncRequestPerform.m */; };
 		775069EF14C80ADE000494E5 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 775069EE14C80ADE000494E5 /* README.markdown */; };
 		775069F214C83FAF000494E5 /* listing.json in Resources */ = {isa = PBXBuildFile; fileRef = 775069F114C83FAF000494E5 /* listing.json */; };
 		775069F314C83FAF000494E5 /* listing.json in Resources */ = {isa = PBXBuildFile; fileRef = 775069F114C83FAF000494E5 /* listing.json */; };
@@ -44,6 +46,8 @@
 		77CD5FC514CA52780013B510 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CD5FC214CA52780013B510 /* Constants.m */; };
 		77CD5FC614CA52780013B510 /* VariableStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CD5FC414CA52780013B510 /* VariableStore.m */; };
 		77E9ACC314CD0AF50089910F /* KassApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E9ACC214CD0AF50089910F /* KassApi.m */; };
+		77EA15A414DA1EBC00E6E45A /* china.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 77EA15A314DA1EBC00E6E45A /* china.gpx */; };
+		77EA15AB14DA854C00E6E45A /* UIResponder+LocateMe.m in Sources */ = {isa = PBXBuildFile; fileRef = 77EA15AA14DA854B00E6E45A /* UIResponder+LocateMe.m */; };
 		77F0279C14C5BC100065EDAA /* ListItemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F0279B14C5BC100065EDAA /* ListItemTest.m */; };
 		77F0279F14C665F70065EDAA /* Listing.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F0279E14C665F60065EDAA /* Listing.m */; };
 		77F027A214C666BA0065EDAA /* ListingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F027A114C666BA0065EDAA /* ListingTest.m */; };
@@ -112,6 +116,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		774F965114D8D8EE00E2588A /* KassApiTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KassApiTest.h; sourceTree = "<group>"; };
+		774F965214D8D8EE00E2588A /* KassApiTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KassApiTest.m; sourceTree = "<group>"; };
+		774F965514D8E5E100E2588A /* NSObject+AsyncRequestPerform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AsyncRequestPerform.h"; sourceTree = "<group>"; };
+		774F965614D8E5E200E2588A /* NSObject+AsyncRequestPerform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AsyncRequestPerform.m"; sourceTree = "<group>"; };
 		775069EE14C80ADE000494E5 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		775069F114C83FAF000494E5 /* listing.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = listing.json; path = Resources/listing.json; sourceTree = "<group>"; };
 		77506A0014C9131A000494E5 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHUnitIOS.framework; sourceTree = "<group>"; };
@@ -181,6 +189,9 @@
 		77CD5FC414CA52780013B510 /* VariableStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VariableStore.m; sourceTree = "<group>"; };
 		77E9ACC114CD0AF50089910F /* KassApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KassApi.h; sourceTree = "<group>"; };
 		77E9ACC214CD0AF50089910F /* KassApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KassApi.m; sourceTree = "<group>"; };
+		77EA15A314DA1EBC00E6E45A /* china.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = china.gpx; sourceTree = "<group>"; };
+		77EA15A914DA854B00E6E45A /* UIResponder+LocateMe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+LocateMe.h"; sourceTree = "<group>"; };
+		77EA15AA14DA854B00E6E45A /* UIResponder+LocateMe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+LocateMe.m"; sourceTree = "<group>"; };
 		77F0279A14C5BC100065EDAA /* ListItemTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListItemTest.h; sourceTree = "<group>"; };
 		77F0279B14C5BC100065EDAA /* ListItemTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListItemTest.m; sourceTree = "<group>"; };
 		77F0279D14C665F60065EDAA /* Listing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Listing.h; sourceTree = "<group>"; };
@@ -429,6 +440,7 @@
 				775069F114C83FAF000494E5 /* listing.json */,
 				77899CB014C70CD900C6484B /* myListings.json */,
 				77899C4414C67EAE00C6484B /* listings.json */,
+				77EA15A314DA1EBC00E6E45A /* china.gpx */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -548,6 +560,10 @@
 				77F3D0D814CC0B4D00770E73 /* Location.m */,
 				E57EDB1D14D7EA0F0026D186 /* User.h */,
 				E57EDB1E14D7EA0F0026D186 /* User.m */,
+				774F965514D8E5E100E2588A /* NSObject+AsyncRequestPerform.h */,
+				774F965614D8E5E200E2588A /* NSObject+AsyncRequestPerform.m */,
+				77EA15A914DA854B00E6E45A /* UIResponder+LocateMe.h */,
+				77EA15AA14DA854B00E6E45A /* UIResponder+LocateMe.m */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -568,6 +584,8 @@
 		E5947DEE14A3A12B0066723A /* DemoTests */ = {
 			isa = PBXGroup;
 			children = (
+				774F965114D8D8EE00E2588A /* KassApiTest.h */,
+				774F965214D8D8EE00E2588A /* KassApiTest.m */,
 				E5947DF414A3A12B0066723A /* DemoTests.h */,
 				E5947DF514A3A12B0066723A /* DemoTests.m */,
 				E5947DEF14A3A12B0066723A /* Supporting Files */,
@@ -700,6 +718,7 @@
 				E5033BD414DA65A60049FA5D /* popupWindowBack@2x.png in Resources */,
 				E5033BD614DA65EC0049FA5D /* testContent.html in Resources */,
 				E5033BE314DA8CE80049FA5D /* login.png in Resources */,
+				77EA15A414DA1EBC00E6E45A /* china.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -784,6 +803,8 @@
 				E57EDB1F14D7EA0F0026D186 /* User.m in Sources */,
 				E5033BCB14DA65860049FA5D /* MTPopupWindow.m in Sources */,
 				E5033BD914DA71780049FA5D /* ALToastView.m in Sources */,
+				774F965714D8E5E200E2588A /* NSObject+AsyncRequestPerform.m in Sources */,
+				77EA15AB14DA854C00E6E45A /* UIResponder+LocateMe.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -795,6 +816,7 @@
 				77F0279C14C5BC100065EDAA /* ListItemTest.m in Sources */,
 				77F027A214C666BA0065EDAA /* ListingTest.m in Sources */,
 				77F3D0DC14CC0C3900770E73 /* LocationTest.m in Sources */,
+				774F965414D8D8EE00E2588A /* KassApiTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

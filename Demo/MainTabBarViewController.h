@@ -10,6 +10,7 @@
 #import "VariableStore.h"
 #import "MTPopupWindow.h"
 #import "ALToastView.h"
+#import "KassApi.h"
 
 @interface MainTabBarViewController : UITabBarController <UIAlertViewDelegate, UITabBarControllerDelegate>
 

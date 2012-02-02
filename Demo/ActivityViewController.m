@@ -16,51 +16,79 @@
 NSMutableArray *buyingItems, *sellingItems, *currentItems;
 
 - (IBAction)activityChanged:(id)sender {
-    if ( 0 == activitySegment.selectedSegmentIndex) {
-        currentItems = buyingItems;
-    } else {
-        currentItems = sellingItems;
-    }
-    [self.tableView reloadData];
+  [self reloadTable];
+}
+
+- (void)reloadTable
+{
+  DLog(@"ActivityViewController::reloadTable");
+  if ( 0 == activitySegment.selectedSegmentIndex) {
+    currentItems = buyingItems;
+  } else {
+    currentItems = sellingItems;
+  }
+  [self.tableView reloadData];
+}
+
+- (void)getBuyingItems:(NSData *)data
+{
+  DLog(@"ActivityViewController::getBuyingItems");
+  Listing *listing = [[Listing alloc] initWithData:data];
+  buyingItems = [listing listItems];
+  [self reloadTable];
+}
+
+- (void)setupAccount:(NSData *)data
+{
+  DLog(@"ActivityViewController::setupAccount");
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"ActivityViewController::setupAccount:dict %@", dict);
+  
+  [self setupArray];
+}
+
+- (void)login
+{
+  NSDictionary * userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                             @"kass@gmail.com", @"email",
+                             @"1111111", @"password",
+                             nil];
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"setupAccount:"];
+  [ka login:userInfo];
 }
 
 -(void)setupArray{
     
-    // buying items
+  // buying items
+  // sample data
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getBuyingItems:"];
+  [ka getListings:nil];
   
-    // sample data
-    NSData *data = [NSData dataWithContentsOfFile:
-                     [[NSBundle mainBundle] pathForResource:@"myListings" ofType:@"json"] ]; 
-                 //= [KassApi getListings:@"30.7715308509767,-128.31375383287669,36.17153085097671,-116.9137538328766"];
-      
-    Listing *listing = [[Listing alloc] initWithData:data];
-    buyingItems = [listing listItems];
-    
-    ListItem *item = [ListItem new];
-    // selling items
-    sellingItems = [NSMutableArray new];
+  ListItem *item = [ListItem new];
+  // selling items
+  sellingItems = [NSMutableArray new];
 
-    item = [ListItem new];
-    [item setTitle:@"gently used kindle"];
-    [item setDescription:@"good condition with wifi"];
-    item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
-                     [[NSNumber numberWithFloat:89.75f] decimalValue]];
-    
-    [sellingItems addObject:item];
-    
-    item = [ListItem new];
-    [item setTitle:@"games for ps3"];
-    [item setDescription:@"any shooting games"];
-    item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
-                     [[NSNumber numberWithFloat:18.55f] decimalValue]];
-    
-    [sellingItems addObject:item];
-    
-    if ( 0 == activitySegment.selectedSegmentIndex) {
-        currentItems = buyingItems;
-    } else {
-        currentItems = sellingItems;
-    }
+  item = [ListItem new];
+  [item setTitle:@"gently used kindle"];
+  [item setDescription:@"good condition with wifi"];
+  item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
+                   [[NSNumber numberWithFloat:89.75f] decimalValue]];
+  
+  [sellingItems addObject:item];
+  
+  item = [ListItem new];
+  [item setTitle:@"games for ps3"];
+  [item setDescription:@"any shooting games"];
+  item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
+                   [[NSNumber numberWithFloat:18.55f] decimalValue]];
+  
+  [sellingItems addObject:item];
+  
+  if ( 0 == activitySegment.selectedSegmentIndex) {
+      currentItems = buyingItems;
+  } else {
+      currentItems = sellingItems;
+  }
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -94,8 +122,9 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
 //#pragma mark - View lifecycle
 
 - (void)viewDidLoad
-{    
-    [super viewDidLoad];
+{
+  [super viewDidLoad];
+  [self login];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  

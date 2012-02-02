@@ -17,8 +17,13 @@
 }
 
 - (IBAction)activityChanged:(id)sender;
--(void)setupArray;
+
 @property (strong, nonatomic) IBOutlet UIImageView *emptyRecordsImageView;
 @property (weak, nonatomic) IBOutlet UITableView *listingsTableView;
+
+- (void)setupArray;
+- (void)reloadTable;
+- (void)getBuyingItems:(NSData *)data;
+- (void)setupAccount:(NSData *)data;
 
 @end

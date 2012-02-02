@@ -14,87 +14,82 @@
 
 NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
 
+
+- (void)reloadTable
+{
+  DLog(@"BrowseTableViewController::reloadTable");
+  if ( 0 == self.browseSegment.selectedSegmentIndex ) {
+    currentItems = nearByItems;
+  } else if ( 1 == self.browseSegment.selectedSegmentIndex ){
+    currentItems = recentItems;
+  } else {
+    currentItems = priceItems;
+  }
+  [self.tableView reloadData];
+}
+
+- (void)getNearbyItems:(NSData *)data
+{
+  DLog(@"ActivityViewController::getNearbyItems");
+  Listing *listing = [[Listing alloc] initWithData:data];
+  nearByItems = [listing listItems];
+  [self reloadTable];
+}
+
 - (void)setupArray {
+  // near by items
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getNearbyItems:"];
+  
+  NSString *latlng = [NSString stringWithFormat:@"%+.6f,%+.6f", 
+                      locationManager.location.coordinate.latitude, 
+                      locationManager.location.coordinate.longitude]; 
+  
+  NSDictionary * dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                               latlng, @"center",
+                               @"10", @"radius",
+                               nil];
+  [ka getListings:dictionary];
     
-    // near by items
-    // sample data
-    NSData *data = [NSData dataWithContentsOfFile:
-                    [[NSBundle mainBundle] pathForResource:@"listings" ofType:@"json"] ]; 
+  // sample data
+//  NSData *data = [NSData dataWithContentsOfFile:
+//                  [[NSBundle mainBundle] pathForResource:@"listings" ofType:@"json"] ]; 
+  
+  ListItem *item = [ListItem new];
+  
+  // most recent items
+  // recentItems = [NSMutableArray new];
+  
+  // TESTING DATA - GLOBAL ARRAY FOR USER SUBMITTING NEW LISTING
+  recentItems = [VariableStore sharedInstance].allListings;
+  
+  // price sorted items
+  priceItems = [NSMutableArray new];
+  
+  item = [ListItem new];
+  [item setTitle:@"Professionally clean outdoor grill"];
+  [item setDescription:@"Grand Turbo gas grill. Need someone to clean all parts of it to make it look like new"];
+  item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
+                   [[NSNumber numberWithFloat:59.75f] decimalValue]];
+  
+  [priceItems addObject:item];
+  
+  item = [ListItem new];
+  [item setTitle:@"External harddrive 500GB"];
+  [item setDescription:@"500GB"];
+  item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
+                   [[NSNumber numberWithFloat:18.55f] decimalValue]];
+  
+  [priceItems addObject:item];
+  
+  item = [ListItem new];
+  [item setTitle:@"Samsung galaxy"];
+  [item setDescription:@"I broke mine I need one that works!"];
+  item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
+                   [[NSNumber numberWithFloat:18.55f] decimalValue]];
+  
+  [priceItems addObject:item];
     
-    Listing *listing = [[Listing alloc] initWithData:data];    
-    nearByItems = [listing listItems];
-
-    
-    ListItem *item = [ListItem new];
-    
-    // most recent items
-    // recentItems = [NSMutableArray new];
-    
-    // TESTING DATA - GLOBAL ARRAY FOR USER SUBMITTING NEW LISTING
-    recentItems = [VariableStore sharedInstance].allListings;
-    
-//    item = [ListItem new];
-//    [item setTitle:@"gently used kindle"];
-//    [item setDescription:@"good condition with wifi"];
-//    item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
-//                     [[NSNumber numberWithFloat:89.75f] decimalValue]];
-//    
-//    [recentItems addObject:item];
-//    
-//    item = [ListItem new];
-//    [item setTitle:@"games for ps3"];
-//    [item setDescription:@"any shooting games"];
-//    item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
-//                     [[NSNumber numberWithFloat:18.55f] decimalValue]];
-//    
-//    [recentItems addObject:item];
-    
-    // price sorted items
-    priceItems = [NSMutableArray new];
-    
-    item = [ListItem new];
-    [item setTitle:@"Professionally clean outdoor grill"];
-    [item setDescription:@"Grand Turbo gas grill. Need someone to clean all parts of it to make it look like new"];
-    item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
-                     [[NSNumber numberWithFloat:59.75f] decimalValue]];
-    NSDateComponents *comps = [[NSDateComponents alloc] init];
-    [comps setDay:22];
-    [comps setMonth:1];
-    [comps setYear:2012];
-    item.postedDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
-    
-    item.postDuration = [NSNumber numberWithInt:172800];
-    [priceItems addObject:item];
-    
-    item = [ListItem new];
-    [item setTitle:@"External harddrive 500GB"];
-    [item setDescription:@"500GB"];
-    item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
-                     [[NSNumber numberWithFloat:18.55f] decimalValue]];
-
-    [comps setDay:22];
-    [comps setMonth:1];
-    [comps setYear:2012];
-    item.postedDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
-    
-    item.postDuration = [NSNumber numberWithInt:172800];    
-    [priceItems addObject:item];
-    
-    item = [ListItem new];
-    [item setTitle:@"Samsung galaxy"];
-    [item setDescription:@"I broke mine I need one that works!"];
-    item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
-                     [[NSNumber numberWithFloat:18.55f] decimalValue]];
-    
-    [priceItems addObject:item];
-    
-    if ( 0 == self.browseSegment.selectedSegmentIndex ) {
-        currentItems = nearByItems;
-    } else if ( 1 == self.browseSegment.selectedSegmentIndex ){
-        currentItems = recentItems;
-    } else {
-        currentItems = priceItems;
-    }
+  [self reloadTable];
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -127,15 +122,34 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
 
 #pragma mark - View lifecycle
 
+- (void)locateMe
+{
+  DLog(@"BrowseTableViewController::locateMe");
+  // Create the location manager if this object does not
+  // already have one.
+  if (nil == locationManager)
+    locationManager = [[CLLocationManager alloc] init];
+  
+  locationManager.delegate = self;
+  locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+  
+  // Set a movement threshold for new events.
+  locationManager.distanceFilter = 50;
+  
+  [locationManager startUpdatingLocation];
+}
 
+- (void)locateFinished
+{
+  DLog(@"BrowseTableViewController::locateFinished");
+  [self setupArray];
+}
 
 - (void)viewDidLoad
 {
-  
-  [self setupArray];
+  DLog(@"BrowseTableViewController::viewDidLoad ");
   [super viewDidLoad];
-
-  NSLog(@"BrowseTableViewController::viewDidLoad ");
+  [self locateMe];
 
   // Uncomment the following line to preserve selection between presentations.
   // self.clearsSelectionOnViewWillAppear = NO;
@@ -225,13 +239,6 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
 }
 
 - (IBAction)browseSegmentAction:(id)sender {
-    if ( 0 == self.browseSegment.selectedSegmentIndex ) {
-        currentItems = nearByItems;
-    } else if ( 1 == self.browseSegment.selectedSegmentIndex ){
-        currentItems = recentItems;
-    } else {
-        currentItems = priceItems;
-    }
-    [self.tableView reloadData];
+  [self reloadTable];
 }
 @end
