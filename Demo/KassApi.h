@@ -24,19 +24,21 @@
 
 - (id) initWithPerformerAndAction:(NSObject *)thePerformer:(NSString *)theAction;
 
-+ (NSData *)getData:(NSString *)url;
+//+ (NSData *)getData:(NSString *)url;
+//+ (NSData *)postData:(NSString *)url:(NSDictionary *)dict;
+//+ (NSData *)getListings:(NSString *)box;
+//+ (NSData *)getListing:(NSString *)modelId;
+
 + (NSDictionary *)parseData:(NSData *)data;
 + (void)logData:(NSDictionary *)dict;
-+ (NSData *)postData:(NSString *)url:(NSDictionary *)dict;
 
-+ (NSData *)getListings:(NSString *)box;
-+ (NSData *)getListing:(NSString *)modelId;
-
-- (void)postData:(NSString *)url;
+- (void)postData:(NSString *)url:(NSDictionary *)dict;
 - (void)getData:(NSString *)url;
 
 - (void)getListings:(NSDictionary *)dict;
 - (void)getListing:(NSString *)modelId;
+- (void)getAccountListings;
+- (void)login:(NSDictionary *)dict;
 
 - (void)requestFinished:(ASIHTTPRequest *)request;
 - (void)requestFailed:(ASIHTTPRequest *)request;

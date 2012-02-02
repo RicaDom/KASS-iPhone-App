@@ -42,16 +42,18 @@
   DLog(@"KassApi::requestFailed %@", error);
 }
 
-- (void)postData:(NSString *)url
+- (void)postData:(NSString *)url:(NSDictionary *)dict
 {
   id kassSelf = self;
   __block ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:url]];
   [request setCompletionBlock:^{ [kassSelf requestFinished:request]; }];
   [request setFailedBlock:^{[kassSelf requestFailed:request];}];
   [request setRequestMethod:@"POST"];
-  [request setPostValue:@"qihe229@gmail.com" forKey:@"email"];
-  [request setPostValue:@"1111111" forKey:@"password"];
+  for (id key in dict){
+    [request setPostValue:[dict objectForKey:key] forKey:key];
+  }
   [request startAsynchronous];
+  DLog(@"KassApi::postData::startAsynchronous=%@", url);
 }
 
 - (void)getData:(NSString *)url
@@ -61,6 +63,13 @@
   [request setCompletionBlock:^{ [kassSelf requestFinished:request]; }];
   [request setFailedBlock:^{[kassSelf requestFailed:request];}];  
   [request startAsynchronous];
+  DLog(@"KassApi::getData::startAsynchronous=%@", url);
+}
+
+- (void)getAccountListings
+{
+  _url = [NSString stringWithFormat:@"http://%@/v1/account/listings.json", HOST];
+  [self getData:_url];
 }
 
 - (void)getListings:(NSDictionary *)dict
@@ -77,6 +86,12 @@
   [self getData:_url];
 }
 
+- (void)login:(NSDictionary *)dict
+{
+  _url = [NSString stringWithFormat:@"http://%@/v1/auth.json", HOST];
+  [self postData:_url:dict];
+}
+
 - (void)getListing:(NSString *)modelId
 {
   _url = [NSString stringWithFormat:@"http://%@/v1/listings/%@.json", HOST, modelId];
@@ -84,53 +99,53 @@
 
 /////// CLASS METHODS - SYNCHRONOUS CALLS ////////
 
-+ (NSData *)getListings:(NSString *)box{
-  NSString *url = [NSString stringWithFormat:@"http://%@/v1/listings.json?box=%@", HOST, box];
-  return [KassApi getData:url];
-}
-
-+ (NSData *)getListing:(NSString *)modelId{
-  NSString *url = [NSString stringWithFormat:@"http://%@/v1/listings/%@.json", HOST, modelId];
-  return [KassApi getData:url];
-}
-
-+ (NSData *)postData:(NSString *)url:(NSDictionary *)dict
-{
-  //  ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];  
-  //  [request setUsername:@"qihe229@gmail.com"];
-  //  [request setPassword:@"1111111"];
-  //  [request appendPostData:[@"This is my data" dataUsingEncoding:NSUTF8StringEncoding]];
-  //  // Default becomes POST when you use appendPostData: / appendPostDataFromFile: / setPostBody:
-  //  [request setRequestMethod:@"POST"];
-  
-  ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:url]];
-  [request setRequestMethod:@"POST"];
-  [request setPostValue:@"qihe229@gmail.com" forKey:@"email"];
-  [request setPostValue:@"1111111" forKey:@"password"];
-  [request startSynchronous];
-  NSError *error = [request error];
-  if (!error) {
-    NSData *data = [request responseData];
-    DLog(@"----- POST DATA ... ------ \n %@ ", [request responseString]);
-    return data;
-  }else{
-    return nil;
-  }
-}
-
-+ (NSData *)getData:(NSString *)url
-{
-  ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
-  [request startSynchronous];
-  NSError *error = [request error];
-  if (!error) {
-    NSData *data = [request responseData];
-    DLog(@"----- GET DATA ... ------ \n %@ ", [request responseString]);
-    return data;
-  }else{
-    return nil;
-  }
-}
+//+ (NSData *)getListings:(NSString *)box{
+//  NSString *url = [NSString stringWithFormat:@"http://%@/v1/listings.json?box=%@", HOST, box];
+//  return [KassApi getData:url];
+//}
+//
+//+ (NSData *)getListing:(NSString *)modelId{
+//  NSString *url = [NSString stringWithFormat:@"http://%@/v1/listings/%@.json", HOST, modelId];
+//  return [KassApi getData:url];
+//}
+//
+//+ (NSData *)postData:(NSString *)url:(NSDictionary *)dict
+//{
+//  //  ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];  
+//  //  [request setUsername:@"kass@gmail.com"];
+//  //  [request setPassword:@"1111111"];
+//  //  [request appendPostData:[@"This is my data" dataUsingEncoding:NSUTF8StringEncoding]];
+//  //  // Default becomes POST when you use appendPostData: / appendPostDataFromFile: / setPostBody:
+//  //  [request setRequestMethod:@"POST"];
+//  
+//  ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:url]];
+//  [request setRequestMethod:@"POST"];
+//  [request setPostValue:@"kass@gmail.com" forKey:@"email"];
+//  [request setPostValue:@"1111111" forKey:@"password"];
+//  [request startSynchronous];
+//  NSError *error = [request error];
+//  if (!error) {
+//    NSData *data = [request responseData];
+//    DLog(@"----- POST DATA ... ------ \n %@ ", [request responseString]);
+//    return data;
+//  }else{
+//    return nil;
+//  }
+//}
+//
+//+ (NSData *)getData:(NSString *)url
+//{
+//  ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+//  [request startSynchronous];
+//  NSError *error = [request error];
+//  if (!error) {
+//    NSData *data = [request responseData];
+//    DLog(@"----- GET DATA ... ------ \n %@ ", [request responseString]);
+//    return data;
+//  }else{
+//    return nil;
+//  }
+//}
 
 + (NSDictionary *)parseData:(NSData *)data
 {

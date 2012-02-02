@@ -47,6 +47,7 @@
 		77CD5FC614CA52780013B510 /* VariableStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CD5FC414CA52780013B510 /* VariableStore.m */; };
 		77E9ACC314CD0AF50089910F /* KassApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E9ACC214CD0AF50089910F /* KassApi.m */; };
 		77EA15A414DA1EBC00E6E45A /* china.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 77EA15A314DA1EBC00E6E45A /* china.gpx */; };
+		77EA15AB14DA854C00E6E45A /* UIResponder+LocateMe.m in Sources */ = {isa = PBXBuildFile; fileRef = 77EA15AA14DA854B00E6E45A /* UIResponder+LocateMe.m */; };
 		77F0279C14C5BC100065EDAA /* ListItemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F0279B14C5BC100065EDAA /* ListItemTest.m */; };
 		77F0279F14C665F70065EDAA /* Listing.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F0279E14C665F60065EDAA /* Listing.m */; };
 		77F027A214C666BA0065EDAA /* ListingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F027A114C666BA0065EDAA /* ListingTest.m */; };
@@ -180,6 +181,8 @@
 		77E9ACC114CD0AF50089910F /* KassApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KassApi.h; sourceTree = "<group>"; };
 		77E9ACC214CD0AF50089910F /* KassApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KassApi.m; sourceTree = "<group>"; };
 		77EA15A314DA1EBC00E6E45A /* china.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = china.gpx; sourceTree = "<group>"; };
+		77EA15A914DA854B00E6E45A /* UIResponder+LocateMe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+LocateMe.h"; sourceTree = "<group>"; };
+		77EA15AA14DA854B00E6E45A /* UIResponder+LocateMe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+LocateMe.m"; sourceTree = "<group>"; };
 		77F0279A14C5BC100065EDAA /* ListItemTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListItemTest.h; sourceTree = "<group>"; };
 		77F0279B14C5BC100065EDAA /* ListItemTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListItemTest.m; sourceTree = "<group>"; };
 		77F0279D14C665F60065EDAA /* Listing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Listing.h; sourceTree = "<group>"; };
@@ -510,6 +513,8 @@
 				77F3D0D814CC0B4D00770E73 /* Location.m */,
 				774F965514D8E5E100E2588A /* NSObject+AsyncRequestPerform.h */,
 				774F965614D8E5E200E2588A /* NSObject+AsyncRequestPerform.m */,
+				77EA15A914DA854B00E6E45A /* UIResponder+LocateMe.h */,
+				77EA15AA14DA854B00E6E45A /* UIResponder+LocateMe.m */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -740,6 +745,7 @@
 				E5129DCB14D3D59100FEE0BF /* TPKeyboardAvoidingScrollView.m in Sources */,
 				E596EDC514D541B200B50F3B /* OfferChangingPriceViewController.m in Sources */,
 				774F965714D8E5E200E2588A /* NSObject+AsyncRequestPerform.m in Sources */,
+				77EA15AB14DA854C00E6E45A /* UIResponder+LocateMe.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

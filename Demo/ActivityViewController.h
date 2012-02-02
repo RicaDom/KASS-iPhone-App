@@ -10,16 +10,15 @@
 #import "ListItem.h"
 #import "Listing.h"
 #import "ItemViewController.h"
-#import <CoreLocation/CoreLocation.h>
 
-@interface ActivityViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>{
+@interface ActivityViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource>{
     __weak IBOutlet UISegmentedControl *activitySegment;
-   CLLocationManager *locationManager;
 }
 
 - (IBAction)activityChanged:(id)sender;
 - (void)setupArray;
 - (void)reloadTable;
 - (void)getBuyingItems:(NSData *)data;
+- (void)setupAccount:(NSData *)data;
 
 @end

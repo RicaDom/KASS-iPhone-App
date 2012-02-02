@@ -12,5 +12,11 @@
 - (void)perform:(NSData *)data:(NSString *)action
 {
   DLog(@"NSObject+AsyncRequestPerform::perform");
+  SEL theSelector = NSSelectorFromString(action);
+  if ([self respondsToSelector:theSelector]) 
+  {
+    DLog(@"NSObject+AsyncRequestPerform::perform:%@", action);
+    [self performSelector:theSelector withObject:data];
+  }
 }
 @end

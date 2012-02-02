@@ -19,24 +19,13 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
 
 - (void)reloadTable
 {
+  DLog(@"ActivityViewController::reloadTable");
   if ( 0 == activitySegment.selectedSegmentIndex) {
     currentItems = buyingItems;
   } else {
     currentItems = sellingItems;
   }
   [self.tableView reloadData];
-  DLog(@"ActivityViewController::reloadTable");
-}
-
-- (void)perform:(NSData *)data:(NSString *)method
-{
-  DLog(@"ActivityViewController::perform");
-  SEL theSelector = NSSelectorFromString(method);
-  if ([self respondsToSelector:theSelector]) 
-  {
-    DLog(@"ActivityViewController::perform:%@", method);
-    [self performSelector:theSelector withObject:data];
-  }
 }
 
 - (void)getBuyingItems:(NSData *)data
@@ -47,53 +36,31 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
   [self reloadTable];
 }
 
-- (void)startStandardUpdates
+- (void)setupAccount:(NSData *)data
 {
-  DLog(@"ActivityViewController::startStandardUpdates");
-  // Create the location manager if this object does not
-  // already have one.
-  if (nil == locationManager)
-    locationManager = [[CLLocationManager alloc] init];
+  DLog(@"ActivityViewController::setupAccount");
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"ActivityViewController::setupAccount:dict %@", dict);
   
-  locationManager.delegate = self;
-  locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
-  
-  // Set a movement threshold for new events.
-  locationManager.distanceFilter = 50;
-  
-  [locationManager startUpdatingLocation];
+  [self setupArray];
 }
 
-// Delegate method from the CLLocationManagerDelegate protocol.
-- (void)locationManager:(CLLocationManager *)manager
-    didUpdateToLocation:(CLLocation *)newLocation
-           fromLocation:(CLLocation *)oldLocation
+- (void)login
 {
-  DLog(@"ActivityViewController::didUpdateToLocation");
-  // If it's a relatively recent event, turn off updates to save power
-  NSDate* eventDate = newLocation.timestamp;
-  NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
-  if (abs(howRecent) < 15.0 )
-  {
-    DLog(@"ActivityViewController::latitude %+.6f, longitude %+.6f\n",
-         newLocation.coordinate.latitude,
-         newLocation.coordinate.longitude);
-    [self setupArray];
-  }
-  // else skip the event and process the next one.
+  NSDictionary * userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                             @"kass@gmail.com", @"email",
+                             @"1111111", @"password",
+                             nil];
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"setupAccount:"];
+  [ka login:userInfo];
 }
 
 -(void)setupArray{
     
   // buying items
-
   // sample data
   KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getBuyingItems:"];
-  NSDictionary * dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                               @"33.7715308509767,-118.31375383287669,34.17153085097671,-117.9137538328766", @"box",
-                               nil];
-  [ka getListings:dictionary];
-  
+  [ka getListings:nil];
   
   ListItem *item = [ListItem new];
   // selling items
@@ -155,8 +122,7 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  
-  [self startStandardUpdates];
+  [self login];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
