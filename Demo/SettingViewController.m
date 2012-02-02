@@ -9,6 +9,8 @@
 #import "SettingViewController.h"
 
 @implementation SettingViewController
+@synthesize welcomeMessageLabel;
+@synthesize authButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,8 +46,27 @@
 }
 */
 
+- (void)welcomeMessage
+{
+    if ([[VariableStore sharedInstance].isLoggedIn isEqualToString:@"YES"]) {     
+        self.authButton.title = UI_BUTTON_LABEL_SIGOUT;
+        self.welcomeMessageLabel.text = [@"你好! " stringByAppendingString:[VariableStore sharedInstance].user.name]; 
+    } else {
+        self.authButton.title = UI_BUTTON_LABEL_SIGIN;
+        self.welcomeMessageLabel.text = @"欢迎来到全世界最帅的KASS！！"; 
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self welcomeMessage];
+}
+
 - (void)viewDidUnload
 {
+    [self setWelcomeMessageLabel:nil];
+    [self setAuthButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -57,4 +78,16 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (IBAction)authButtonAction:(id)sender {
+    if ([self.authButton.title isEqualToString:UI_BUTTON_LABEL_SIGIN]) {
+        if ([[VariableStore sharedInstance] signIn]) {
+            self.authButton.title = UI_BUTTON_LABEL_SIGOUT;
+        }
+    } else {
+        if ([[VariableStore sharedInstance] signOut]) {
+            self.authButton.title = UI_BUTTON_LABEL_SIGIN;
+        }
+    }
+    [self welcomeMessage];
+}
 @end

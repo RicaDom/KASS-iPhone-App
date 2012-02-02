@@ -57,7 +57,13 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
     [item setDescription:@"Grand Turbo gas grill. Need someone to clean all parts of it to make it look like new"];
     item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
                      [[NSNumber numberWithFloat:59.75f] decimalValue]];
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setDay:22];
+    [comps setMonth:1];
+    [comps setYear:2012];
+    item.postedDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
     
+    item.postDuration = [NSNumber numberWithInt:172800];
     [priceItems addObject:item];
     
     item = [ListItem new];
@@ -65,7 +71,13 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
     [item setDescription:@"500GB"];
     item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
                      [[NSNumber numberWithFloat:18.55f] decimalValue]];
+
+    [comps setDay:22];
+    [comps setMonth:1];
+    [comps setYear:2012];
+    item.postedDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
     
+    item.postDuration = [NSNumber numberWithInt:172800];    
     [priceItems addObject:item];
     
     item = [ListItem new];

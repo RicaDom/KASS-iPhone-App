@@ -87,7 +87,14 @@
                                                      delegate:self 
                                             cancelButtonTitle:@"or just skip this for now" 
                                             otherButtonTitles:@"Sign Up", @"Login", @"Sign in with Facebook", nil];
-    [message show];
+    
+    //UIImageView *Image =[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"images.png"]];
+    
+    //[message addSubview:Image];
+    
+    //[message show];
+    [MTPopupWindow showWindowWithHTMLFile:@"testContent.html" insideView:self.view];
+    //[ALToastView toastInView:self.view withText:@"Hello ALToastView"];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -96,6 +103,7 @@
 	
 	if([title isEqualToString:@"Sign in with Facebook"])
 	{
+        [[VariableStore sharedInstance] signIn];
 		NSLog(@"Sign in with Facebook was selected.");
 	}
 	else if([title isEqualToString:@"Sign Up"])
@@ -104,6 +112,8 @@
 	}
 	else if([title isEqualToString:@"Login"])
 	{
+        [[VariableStore sharedInstance] signIn];
+        NSLog(@"Sign in: %@", [VariableStore sharedInstance].isLoggedIn);
 		NSLog(@"Login was selected.");
 	} 
 	else if([title isEqualToString:@"or just skip this for now"])

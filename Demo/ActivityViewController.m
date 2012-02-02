@@ -10,6 +10,8 @@
 
 
 @implementation ActivityViewController
+@synthesize emptyRecordsImageView = _emptyRecordsImageView;
+@synthesize listingsTableView = _listingsTableView;
 
 NSMutableArray *buyingItems, *sellingItems, *currentItems;
 
@@ -92,10 +94,8 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
 //#pragma mark - View lifecycle
 
 - (void)viewDidLoad
-{
-    [self setupArray];
+{    
     [super viewDidLoad];
-
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -106,6 +106,8 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
 - (void)viewDidUnload
 {
     activitySegment = nil;
+    [self setEmptyRecordsImageView:nil];
+    [self setListingsTableView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -113,6 +115,18 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    if ([[VariableStore sharedInstance].isLoggedIn isEqualToString:@"YES"]) {        
+        [self setupArray];
+        [self.emptyRecordsImageView removeFromSuperview];
+        self.emptyRecordsImageView = nil;
+        [self.tableView reloadData];
+    } else {
+        if (self.emptyRecordsImageView == nil || self.emptyRecordsImageView.image == nil) {
+            self.emptyRecordsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default.png"]];
+            [self.view addSubview:self.emptyRecordsImageView];
+        }
+    }
+    
     [super viewWillAppear:animated];
 }
 

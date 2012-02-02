@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "ListItem.h"
+#import "Constants.h"
 
 @interface BrowseItemViewController : UIViewController 
 @property (weak, nonatomic) IBOutlet UILabel *itemTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *itemDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *itemPriceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *itemExpiredDate;
+@property (weak, nonatomic) IBOutlet UILabel *itemPriceChangedToLabel;
 @property (strong, nonatomic) ListItem *currentItem;
 @property (weak, nonatomic) IBOutlet UITextField *messageTextField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *navigationButton;

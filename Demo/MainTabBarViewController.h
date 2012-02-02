@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VariableStore.h"
+#import "MTPopupWindow.h"
+#import "ALToastView.h"
 
 @interface MainTabBarViewController : UITabBarController <UIAlertViewDelegate, UITabBarControllerDelegate>
 

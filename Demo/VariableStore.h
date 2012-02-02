@@ -10,6 +10,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ListItem.h"
+#import "User.h"
 
 @interface VariableStore : NSObject
 // Global variables
@@ -21,9 +22,15 @@
 @property (strong, nonatomic) NSMutableArray *allListings;
 @property (strong, nonatomic) NSMutableArray *myBuyingListings;
 @property (strong, nonatomic) NSMutableArray *mySellingListings;
+@property (strong, nonatomic) User *user;
+@property (strong, nonatomic) NSString *isLoggedIn;
 
 + (VariableStore *) sharedInstance;
 - (void) clearCurrentPostingItem;
 - (void) initExpiredTime;
 - (void) initListingsData;
+
+
+- (BOOL) signIn;
+- (BOOL) signOut;
 @end

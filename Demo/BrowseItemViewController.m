@@ -12,6 +12,9 @@
 
 @synthesize itemTitleLabel = _itemTitleLabel;
 @synthesize itemDescriptionLabel = _itemDescriptionLabel;
+@synthesize itemPriceLabel = _itemPriceLabel;
+@synthesize itemExpiredDate = _itemExpiredDate;
+@synthesize itemPriceChangedToLabel = _itemPriceChangedToLabel;
 @synthesize currentItem = _currentItem;
 @synthesize messageTextField = _messageTextField;
 @synthesize navigationButton = _navigationButton;
@@ -49,15 +52,44 @@
     [super viewDidLoad];
     self.itemTitleLabel.text = self.currentItem.title;
     self.itemDescriptionLabel.text = self.currentItem.description;
-    self.navigationItem.backBarButtonItem.title = @"取消";
+    self.itemPriceLabel.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
+    self.itemPriceChangedToLabel.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
+    
+    NSTimeInterval theTimeInterval = [self.currentItem.postDuration integerValue];
+    NSDate *postedDate = [[NSDate alloc] initWithTimeInterval:theTimeInterval sinceDate:self.currentItem.postedDate];
+     
+    //Set the required date format
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    
+    //Get the string date
+    self.itemExpiredDate.text = [formatter stringFromDate:postedDate];   
+    
+    UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]
+                                initWithTitle:UI_BUTTON_LABEL_BACK
+                                style:UIBarButtonItemStyleBordered
+                                target:self
+                                action:@selector(OnClick_btnBack:)];
+    self.navigationItem.leftBarButtonItem = btnBack;  
 }
 
+-(IBAction)OnClick_btnBack:(id)sender  {
+    if (self.navigationItem.leftBarButtonItem.title == UI_BUTTON_LABEL_BACK) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        [self.messageTextField resignFirstResponder];
+    }
+    //[self.navigationController pushViewController:self.navigationController.parentViewController animated:YES];
+}
 
 - (void)viewDidUnload
 {
     [self setItemTitleLabel:nil];
     [self setItemDescriptionLabel:nil];
     [self setNavigationButton:nil];
+    [self setItemPriceLabel:nil];
+    [self setItemExpiredDate:nil];
+    [self setItemPriceChangedToLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -77,26 +109,27 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     if (textField == self.messageTextField) {
-        self.navigationItem.backBarButtonItem.title = @"取消";
-        self.navigationButton.title = @"提交";
+        self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_CANCEL;
+        //self.navigationController.navigationBar.backItem.title = @"取消";
+        //self.navigationItem.leftBarButtonItem.tintColor = [UIColor redColor];
+        self.navigationButton.title = UI_BUTTON_LABEL_SUBMIT;
     }
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     if (textField == self.messageTextField) {
-        self.navigationItem.backBarButtonItem.title = @"上一步";
-        self.navigationButton.title = @"地图";
+        self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_BACK;
+        //self.navigationController.navigationBar.backItem.title = @"上一步";
+        self.navigationButton.title = UI_BUTTON_LABEL_MAP;
     }
 }
 
 - (IBAction)navigationButtonAction:(id)sender {
-    NSLog(@"FUCK..............");
-    if ([self.navigationButton.title isEqualToString:@"地图"]) {
-        NSLog(@"here..............");
+    if (self.navigationButton.title == UI_BUTTON_LABEL_MAP) {
         [self performSegueWithIdentifier: @"dealMapModal" 
                                   sender: self];
-    } else if ([self.navigationButton.title isEqualToString:@"提交"]) {
+    } else if (self.navigationButton.title == UI_BUTTON_LABEL_SUBMIT) {
         // TODO - submitting data to backend server
         
         [self.messageTextField resignFirstResponder];

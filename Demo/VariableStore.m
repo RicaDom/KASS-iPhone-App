@@ -16,6 +16,8 @@
 @synthesize allListings = _allListings;
 @synthesize myBuyingListings = _myBuyingListings;
 @synthesize mySellingListings = _mySellingListings;
+@synthesize user = _user;
+@synthesize isLoggedIn = _isLoggedIn;
 
 + (VariableStore *) sharedInstance {
     // the instance of this class is stored here
@@ -39,6 +41,22 @@
     }
 }
 
+- (BOOL) signIn {
+    self.isLoggedIn = @"YES";
+    self.user = [[User alloc] init];
+    self.user.userId = @"123456789";
+    self.user.name = @"zhicai";
+    self.user.email = @"zhicaiwang@gmail.com";
+    self.user.phone = @"13120649606";
+    return YES;
+}
+
+- (BOOL) signOut {
+    self.isLoggedIn = nil;
+    self.user = nil;
+    return YES;
+}
+
 - (void) clearCurrentPostingItem {
     self.currentPostingItem = [[ListItem alloc] init];
 }
@@ -53,11 +71,25 @@
     item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
                      [[NSNumber numberWithFloat:89.75f] decimalValue]];
     
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setDay:22];
+    [comps setMonth:1];
+    [comps setYear:2012];
+    item.postedDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
+
+    item.postDuration = [NSNumber numberWithInt:172800];
     [self.allListings addObject:item];
     
     item = [ListItem new];
     [item setTitle:@"games for ps3"];
     [item setDescription:@"any shooting games"];
+    
+    [comps setDay:29];
+    [comps setMonth:1];
+    [comps setYear:2012];
+    item.postedDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
+    
+    item.postDuration = [NSNumber numberWithInt:43200];
     item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
                      [[NSNumber numberWithFloat:18.55f] decimalValue]];
     
@@ -65,7 +97,7 @@
 }
 
 - (void) initExpiredTime {
-    // convert to minutes
+    // convert to seconds
     self.expiredTime = [[NSDictionary alloc] initWithObjectsAndKeys:
                         [NSNumber numberWithInteger: 0], @"选择时间",
                         [NSNumber numberWithInteger: 3600], @"1 小时",
