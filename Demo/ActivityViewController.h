@@ -10,9 +10,11 @@
 #import "ListItem.h"
 #import "Listing.h"
 #import "ItemViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface ActivityViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource>{
+@interface ActivityViewController : UITableViewController<UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>{
     __weak IBOutlet UISegmentedControl *activitySegment;
+   CLLocationManager *locationManager;
 }
 
 - (IBAction)activityChanged:(id)sender;

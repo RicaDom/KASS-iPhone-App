@@ -47,6 +47,42 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
   [self reloadTable];
 }
 
+- (void)startStandardUpdates
+{
+  DLog(@"ActivityViewController::startStandardUpdates");
+  // Create the location manager if this object does not
+  // already have one.
+  if (nil == locationManager)
+    locationManager = [[CLLocationManager alloc] init];
+  
+  locationManager.delegate = self;
+  locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+  
+  // Set a movement threshold for new events.
+  locationManager.distanceFilter = 50;
+  
+  [locationManager startUpdatingLocation];
+}
+
+// Delegate method from the CLLocationManagerDelegate protocol.
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation
+{
+  DLog(@"ActivityViewController::didUpdateToLocation");
+  // If it's a relatively recent event, turn off updates to save power
+  NSDate* eventDate = newLocation.timestamp;
+  NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
+  if (abs(howRecent) < 15.0 )
+  {
+    DLog(@"ActivityViewController::latitude %+.6f, longitude %+.6f\n",
+         newLocation.coordinate.latitude,
+         newLocation.coordinate.longitude);
+    [self setupArray];
+  }
+  // else skip the event and process the next one.
+}
+
 -(void)setupArray{
     
   // buying items
@@ -118,9 +154,9 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
 
 - (void)viewDidLoad
 {
-    [self setupArray];
-    [super viewDidLoad];
-
+  [super viewDidLoad];
+  
+  [self startStandardUpdates];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
