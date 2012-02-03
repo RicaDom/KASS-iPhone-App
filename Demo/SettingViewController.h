@@ -9,11 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "VariableStore.h"
 #import "Constants.h"
+#import "SFHFKeychainUtils.h"
 
 @interface SettingViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *welcomeMessageLabel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *authButton;
 - (IBAction)authButtonAction:(id)sender;
+
+- (void)login;
+- (void)setupAccount:(NSData *)data;
 
 @end

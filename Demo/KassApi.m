@@ -30,16 +30,14 @@
 // for working with the response data
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-  NSString *responseString = [request responseString];
-  DLog(@"KassApi::requestFinished::responseString %@", responseString);
+  DLog(@"KassApi::requestFinished::responseString %@", [request responseString]);  
   [_performer perform:(NSData *)[request responseData]:(NSString *) _method];
 }
 
 // When asynchronous call fails, log the error
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
-  NSError *error = [request error];
-  DLog(@"KassApi::requestFailed %@", error);
+  DLog(@"KassApi::requestFailed %@", [request error]);
 }
 
 - (void)postData:(NSString *)url:(NSDictionary *)dict
@@ -49,6 +47,7 @@
   [request setCompletionBlock:^{ [kassSelf requestFinished:request]; }];
   [request setFailedBlock:^{[kassSelf requestFailed:request];}];
   [request setRequestMethod:@"POST"];
+  [request addRequestHeader:@"Content-Type" value:@"application/json"];
   for (id key in dict){
     [request setPostValue:[dict objectForKey:key] forKey:key];
   }

@@ -46,6 +46,49 @@
 }
 */
 
+
+- (void)setupAccount:(NSData *)data
+{
+  DLog(@"SettingViewController::setupAccount");
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"SettingViewController::setupAccount:dict %@", dict);
+}
+
+- (void)login
+{
+  
+  NSUserDefaults *standardDefaults = [NSUserDefaults standardUserDefaults];
+  NSString *username = [standardDefaults stringForKey:@"kApplicationUserNameKey"];
+  
+  if (username) {
+    NSError *error = nil;
+    NSString *password = [SFHFKeychainUtils getPasswordForUsername:username andServiceName:@"com.company.app" error:&error];
+    
+    // Check password...
+    DLog(@"user exists : %@, password: %@", username, password);
+    
+  } else {
+    // No username. Prompt the user to enter username & password and store it
+    username = @"kass@gmail.com";
+    NSString *password = @"1111111";
+    
+    [standardDefaults setValue:username forKey:@"kApplicationUserName"];    
+    
+    NSError *error = nil;
+    BOOL storeResult = [SFHFKeychainUtils storeUsername:username andPassword:password forServiceName:@"com.company.app" updateExisting:YES error:&error];
+    
+    DLog(@"stored result correct : %@",  (storeResult ? @"YES" : @"NO"));
+  }
+  
+  
+  NSDictionary * userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                             @"kass@gmail.com", @"email",
+                             @"1111111", @"password",
+                             nil];
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"setupAccount:"];
+  [ka login:userInfo];
+}
+
 - (void)welcomeMessage
 {
     if ([[VariableStore sharedInstance].isLoggedIn isEqualToString:@"YES"]) {     
@@ -80,13 +123,17 @@
 
 - (IBAction)authButtonAction:(id)sender {
     if ([self.authButton.title isEqualToString:UI_BUTTON_LABEL_SIGIN]) {
-        if ([[VariableStore sharedInstance] signIn]) {
-            self.authButton.title = UI_BUTTON_LABEL_SIGOUT;
-        }
+      
+      //log user in
+      [self login];      
+    
+      if ([[VariableStore sharedInstance] signIn]) {
+          self.authButton.title = UI_BUTTON_LABEL_SIGOUT;
+      }
     } else {
-        if ([[VariableStore sharedInstance] signOut]) {
-            self.authButton.title = UI_BUTTON_LABEL_SIGIN;
-        }
+      if ([[VariableStore sharedInstance] signOut]) {
+          self.authButton.title = UI_BUTTON_LABEL_SIGIN;
+      }
     }
     [self welcomeMessage];
 }
