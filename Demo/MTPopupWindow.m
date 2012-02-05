@@ -106,8 +106,6 @@
     [closeBtn addTarget:self action:@selector(closePopupWindow) forControlEvents:UIControlEventTouchUpInside];
     [self.bigPanelView addSubview: closeBtn];
     
-    
-    
     UILabel *loginWelcomeMessage = [[UILabel alloc] init];
     [loginWelcomeMessage setText:@"Get Started"];
     [loginWelcomeMessage setTextColor:[UIColor blackColor]];
@@ -118,6 +116,7 @@
     twitterButton.frame = CGRectMake(80.0, 90.0, 160.0, 40.0);
     [twitterButton setTitle:UI_BUTTON_LABEL_TWITTER_SIGNIN forState:UIControlStateNormal];
     [twitterButton setTitleColor: [UIColor orangeColor] forState: UIControlStateNormal];
+    [twitterButton addTarget:self action:@selector(loginWithTwitter) forControlEvents:UIControlEventTouchUpInside];
     [self.bigPanelView addSubview:twitterButton];
 
     UILabel *notTwitterMessage = [[UILabel alloc] init];
@@ -141,14 +140,6 @@
     [signInButton setTitleColor: [UIColor orangeColor] forState: UIControlStateNormal];
     [self.bigPanelView addSubview:signInButton];
     
-//    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//    [button addTarget:self.mtWindow 
-//               action:@selector(closePopupWindow)
-//     forControlEvents:UIControlEventTouchDown];
-//    [button setTitle:@"Show View" forState:UIControlStateNormal];
-//    button.frame = CGRectMake(80.0, 210.0, 160.0, 40.0);
-//    [self.bigPanelView addSubview: button];
-    
     //animation options
     UIViewAnimationOptions options = UIViewAnimationOptionTransitionFlipFromRight |
                                         UIViewAnimationOptionAllowUserInteraction    |
@@ -167,6 +158,11 @@
     }];
 }
 
+-(void)loginWithTwitter
+{
+    NSLog(@"I'm logging with Weibo");
+}
+
 /**
  * Removes the window background and calls the animation of the window
  */
@@ -176,7 +172,6 @@
     //remove the shade
     [[self.bigPanelView viewWithTag: kShadeViewTag] removeFromSuperview];    
     [self performSelector:@selector(closePopupWindowAnimate) withObject:nil afterDelay:0.1];
-    
 }
 
 /**

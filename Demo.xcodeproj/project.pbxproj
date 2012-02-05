@@ -538,7 +538,6 @@
 			children = (
 				777E4E9214DD8286002B40C3 /* SinaWeibo */,
 				777E4D1514DB8D97002B40C3 /* SFHFKeychainUtils */,
-				E5033BC814DA65550049FA5D /* MTPopupWindow */,
 				77506A0714C91347000494E5 /* AsiHttpRequest */,
 				77506A0314C91332000494E5 /* Reachability */,
 				775069FF14C9131A000494E5 /* GHUnit */,
@@ -567,7 +566,6 @@
 				E5033BCA14DA65860049FA5D /* MTPopupWindow.m */,
 			);
 			name = MTPopupWindow;
-			path = Demo;
 			sourceTree = "<group>";
 		};
 		E5033BCC14DA65920049FA5D /* Assets */ = {
@@ -666,6 +664,7 @@
 				E59A174B14AC482800B7977D /* PostSummaryViewController.m */,
 				E5D69EDB14AD0DB900D552F6 /* MainTabBarViewController.h */,
 				E5D69EDC14AD0DB900D552F6 /* MainTabBarViewController.m */,
+				E5033BC814DA65550049FA5D /* MTPopupWindow */,
 				E5947DD114A3A12B0066723A /* Supporting Files */,
 				77F0279D14C665F60065EDAA /* Listing.h */,
 				77F0279E14C665F60065EDAA /* Listing.m */,
