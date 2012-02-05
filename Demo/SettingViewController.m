@@ -59,31 +59,31 @@
   
   NSUserDefaults *standardDefaults = [NSUserDefaults standardUserDefaults];
   NSString *username = [standardDefaults stringForKey:@"kApplicationUserNameKey"];
+  NSString *password = @"";
   
   if (username) {
     NSError *error = nil;
-    NSString *password = [SFHFKeychainUtils getPasswordForUsername:username andServiceName:@"com.company.app" error:&error];
+    password = [SFHFKeychainUtils getPasswordForUsername:username andServiceName:@"com.company.app" error:&error];
     
-    // Check password...
-    DLog(@"user exists : %@, password: %@", username, password);
+    DLog(@"SettingViewController::login:user=%@, password=%@", username, password);
     
   } else {
     // No username. Prompt the user to enter username & password and store it
     username = @"kass@gmail.com";
-    NSString *password = @"1111111";
+    password = @"1111111";
     
     [standardDefaults setValue:username forKey:@"kApplicationUserName"];    
     
     NSError *error = nil;
     BOOL storeResult = [SFHFKeychainUtils storeUsername:username andPassword:password forServiceName:@"com.company.app" updateExisting:YES error:&error];
     
-    DLog(@"stored result correct : %@",  (storeResult ? @"YES" : @"NO"));
+    DLog(@"SettingViewController::login:store=%@",  (storeResult ? @"YES" : @"NO"));
   }
   
   
   NSDictionary * userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                             @"kass@gmail.com", @"email",
-                             @"1111111", @"password",
+                             username, @"email",
+                             password, @"password",
                              nil];
   KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"setupAccount:"];
   [ka login:userInfo];

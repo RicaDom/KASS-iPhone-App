@@ -11,7 +11,6 @@
 @interface Constants : NSObject
 
 extern NSString * const POST_TYPE;
-extern NSString * const HOST;
 
 // UI BUTTON LABEL
 extern NSString * const UI_BUTTON_LABEL_BACK;

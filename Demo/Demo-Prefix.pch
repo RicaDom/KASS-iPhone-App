@@ -21,7 +21,13 @@
 #define ALog(...) NSLog(__VA_ARGS__)
 
 #ifdef DEBUG
-#    define KHOST "location:3000"
+#    define HOST "localhost:3000"
+#    define TSINA_API_KEY "1507826766"
+#    define TSINA_API_SECRET "17db87811607bd1ce93dd912669c02d8"
+#    define TSINA_CALLBACK_URL "http://localhost:3000"
 #else
-#    define KHOST "www.kass.com"
+#    define HOST "www.kass.com"
+#    define TSINA_API_KEY "1507826766"
+#    define TSINA_API_SECRET "17db87811607bd1ce93dd912669c02d8"
+#    define TSINA_CALLBACK_URL "http://www.kass.com"
 #endif
