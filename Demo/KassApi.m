@@ -7,6 +7,7 @@
 //
 
 #import "KassApi.h"
+#import "JSON.h"
 
 @implementation KassApi
 
@@ -30,16 +31,14 @@
 // for working with the response data
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-  NSString *responseString = [request responseString];
-  DLog(@"KassApi::requestFinished::responseString %@", responseString);
+  DLog(@"KassApi::requestFinished::responseString %@", [request responseString]);  
   [_performer perform:(NSData *)[request responseData]:(NSString *) _method];
 }
 
 // When asynchronous call fails, log the error
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
-  NSError *error = [request error];
-  DLog(@"KassApi::requestFailed %@", error);
+  DLog(@"KassApi::requestFailed %@", [request error]);
 }
 
 - (void)postData:(NSString *)url:(NSDictionary *)dict
@@ -49,6 +48,7 @@
   [request setCompletionBlock:^{ [kassSelf requestFinished:request]; }];
   [request setFailedBlock:^{[kassSelf requestFailed:request];}];
   [request setRequestMethod:@"POST"];
+  [request addRequestHeader:@"Content-Type" value:@"application/json"];
   for (id key in dict){
     [request setPostValue:[dict objectForKey:key] forKey:key];
   }
@@ -68,13 +68,13 @@
 
 - (void)getAccountListings
 {
-  _url = [NSString stringWithFormat:@"http://%@/v1/account/listings.json", HOST];
+  _url = [NSString stringWithFormat:@"http://%s/v1/account/listings.json", HOST];
   [self getData:_url];
 }
 
 - (void)getListings:(NSDictionary *)dict
 {
-  _url = [NSString stringWithFormat:@"http://%@/v1/listings.json", HOST];
+  _url = [NSString stringWithFormat:@"http://%s/v1/listings.json", HOST];
   NSString *params = @"";
   for (id key in dict){
     NSString *param = [NSString stringWithFormat:@"%@=%@", key, [dict objectForKey:key]];
@@ -88,13 +88,13 @@
 
 - (void)login:(NSDictionary *)dict
 {
-  _url = [NSString stringWithFormat:@"http://%@/v1/auth.json", HOST];
+  _url = [NSString stringWithFormat:@"http://%s/v1/auth.json", HOST];
   [self postData:_url:dict];
 }
 
 - (void)getListing:(NSString *)modelId
 {
-  _url = [NSString stringWithFormat:@"http://%@/v1/listings/%@.json", HOST, modelId];
+  _url = [NSString stringWithFormat:@"http://%s/v1/listings/%@.json", HOST, modelId];
 }
 
 /////// CLASS METHODS - SYNCHRONOUS CALLS ////////
@@ -149,9 +149,11 @@
 
 + (NSDictionary *)parseData:(NSData *)data
 {
-  SBJsonParser *parser = [[SBJsonParser alloc] init];  
-  NSDictionary *dict = [parser objectWithData:data]; 
-  //DLog(@"----- PARSE DATA ... ------ \n %@ ", dict );
+  SBJSON *jsonParser = [[SBJSON alloc]init];
+	NSString *sdata = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+	NSError* parserError = nil;
+	NSDictionary *dict = [jsonParser objectWithString:sdata error:&parserError];
+
   return dict;
 }
 

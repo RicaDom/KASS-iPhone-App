@@ -266,7 +266,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "86"
          endingLineNumber = "86"
-         landmarkName = "-authButtonAction:"
+         landmarkName = "-login"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -280,7 +280,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "85"
          endingLineNumber = "85"
-         landmarkName = "-authButtonAction:"
+         landmarkName = "-login"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -294,7 +294,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "87"
          endingLineNumber = "87"
-         landmarkName = "-authButtonAction:"
+         landmarkName = "-login"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint

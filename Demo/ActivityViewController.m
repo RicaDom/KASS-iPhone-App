@@ -38,31 +38,12 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
   [self reloadTable];
 }
 
-- (void)setupAccount:(NSData *)data
-{
-  DLog(@"ActivityViewController::setupAccount");
-  NSDictionary *dict = [KassApi parseData:data];
-  DLog(@"ActivityViewController::setupAccount:dict %@", dict);
-  
-  [self setupArray];
-}
-
-- (void)login
-{
-  NSDictionary * userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                             @"kass@gmail.com", @"email",
-                             @"1111111", @"password",
-                             nil];
-  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"setupAccount:"];
-  [ka login:userInfo];
-}
-
 -(void)setupArray{
     
   // buying items
   // sample data
   KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getBuyingItems:"];
-  [ka getListings:nil];
+  [ka getAccountListings];
   
   ListItem *item = [ListItem new];
   // selling items
@@ -124,7 +105,7 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  [self login];
+  [self setupArray];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  

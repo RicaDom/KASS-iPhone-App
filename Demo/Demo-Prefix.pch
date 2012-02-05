@@ -21,7 +21,11 @@
 #define ALog(...) NSLog(__VA_ARGS__)
 
 #ifdef DEBUG
-#    define KHOST "location:3000"
+#    define HOST "localhost:3000"
+#    define SinaWeiBoSDKDemo_APPKey @"4058848639"
+#    define SinaWeiBoSDKDemo_APPSecret @"6f8e39f74b91d64eec43e2b4fd8d4c55"
 #else
-#    define KHOST "www.kass.com"
+#    define HOST "www.kass.com"
+#    define SinaWeiBoSDKDemo_APPKey @"4058848639"
+#    define SinaWeiBoSDKDemo_APPSecret @"6f8e39f74b91d64eec43e2b4fd8d4c55"
 #endif
