@@ -140,7 +140,8 @@
 
 - (IBAction)authButtonAction:(id)sender {
     
-    [MTPopupWindow showWindowWithHTMLFile:@"testContent.html" insideView:self.tabBarController.view];
+    //[MTPopupWindow showWindowWithHTMLFile:@"testContent.html" insideView:self.tabBarController.view];
+    [MTPopupWindow showWindowWithUIView:self.tabBarController.view];
     
     if ([self.authButton.title isEqualToString:UI_BUTTON_LABEL_SIGIN]) {
       

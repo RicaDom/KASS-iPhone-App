@@ -17,7 +17,9 @@
 //}
 @property (nonatomic, strong) UIView* bgView;
 @property (nonatomic, strong) UIView* bigPanelView;
+@property (nonatomic, strong) UIView* signUpView;
+@property (nonatomic, strong) UIView* signInView;
 @property (nonatomic, strong) MTPopupWindow *mtWindow;
 +(void)showWindowWithHTMLFile:(NSString*)fileName insideView:(UIView*)view;
-
++(void)showWindowWithUIView:(UIView*)view;
 @end
