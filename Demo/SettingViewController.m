@@ -8,9 +8,11 @@
 
 #import "SettingViewController.h"
 
+
 @implementation SettingViewController
 @synthesize welcomeMessageLabel;
 @synthesize authButton;
+@synthesize weibo = _weibo;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,46 +49,61 @@
 */
 
 
-- (void)setupAccount:(NSData *)data
+- (void)accountDidLogin:(NSData *)data
 {
-  DLog(@"SettingViewController::setupAccount");
+  DLog(@"SettingViewController::accountDidLogin");
   NSDictionary *dict = [KassApi parseData:data];
-  DLog(@"SettingViewController::setupAccount:dict %@", dict);
+  DLog(@"SettingViewController::accountDidLogin:dict %@", dict);
+}
+
+
+- (void)weiboDidLogin
+{
+	DLog(@"SettingViewController::weiboDidLogin");
+}
+
+- (void)weiboLoginFailed:(BOOL)userCancelled withError:(NSError*)error
+{
+	DLog(@"SettingViewController::weiboLoginFailed");
 }
 
 - (void)login
 {
+  weibo = [[WeiBo alloc]initWithAppKey:SinaWeiBoSDKDemo_APPKey 
+                         withAppSecret:SinaWeiBoSDKDemo_APPSecret];
+	weibo.delegate = self;
+	[weibo startAuthorize];
   
-  NSUserDefaults *standardDefaults = [NSUserDefaults standardUserDefaults];
-  NSString *username = [standardDefaults stringForKey:@"kApplicationUserNameKey"];
-  NSString *password = @"";
-  
-  if (username) {
-    NSError *error = nil;
-    password = [SFHFKeychainUtils getPasswordForUsername:username andServiceName:@"com.company.app" error:&error];
-    
-    DLog(@"SettingViewController::login:user=%@, password=%@", username, password);
-    
-  } else {
-    // No username. Prompt the user to enter username & password and store it
-    username = @"kass@gmail.com";
-    password = @"1111111";
-    
-    [standardDefaults setValue:username forKey:@"kApplicationUserName"];    
-    
-    NSError *error = nil;
-    BOOL storeResult = [SFHFKeychainUtils storeUsername:username andPassword:password forServiceName:@"com.company.app" updateExisting:YES error:&error];
-    
-    DLog(@"SettingViewController::login:store=%@",  (storeResult ? @"YES" : @"NO"));
-  }
-  
-  
-  NSDictionary * userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                             username, @"email",
-                             password, @"password",
-                             nil];
-  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"setupAccount:"];
-  [ka login:userInfo];
+//  NSUserDefaults *standardDefaults = [NSUserDefaults standardUserDefaults];
+//  NSString *username = [standardDefaults stringForKey:@"kApplicationUserNameKey"];
+//  NSString *password = @"";
+//  
+//  if (username) {
+//    NSError *error = nil;
+//    password = [SFHFKeychainUtils getPasswordForUsername:username andServiceName:@"com.company.app" error:&error];
+//    
+//    DLog(@"SettingViewController::login:user=%@, password=%@", username, password);
+//    
+//  } else {
+//    // No username. Prompt the user to enter username & password and store it
+//    username = @"kass@gmail.com";
+//    password = @"1111111";
+//    
+//    [standardDefaults setValue:username forKey:@"kApplicationUserName"];    
+//    
+//    NSError *error = nil;
+//    BOOL storeResult = [SFHFKeychainUtils storeUsername:username andPassword:password forServiceName:@"com.company.app" updateExisting:YES error:&error];
+//    
+//    DLog(@"SettingViewController::login:store=%@",  (storeResult ? @"YES" : @"NO"));
+//  }
+//  
+//  
+//  NSDictionary * userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+//                             username, @"email",
+//                             password, @"password",
+//                             nil];
+//  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"accountDidLogin:"];
+//  [ka login:userInfo];
 }
 
 - (void)welcomeMessage

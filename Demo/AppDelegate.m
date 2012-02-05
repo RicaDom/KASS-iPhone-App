@@ -47,6 +47,19 @@
      */
 }
 
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+	DLog(@"AppDelegate::handleOpenURL");
+	return TRUE;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+  DLog(@"AppDelegate::openURL");
+  return TRUE;
+}
+
+
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     /*

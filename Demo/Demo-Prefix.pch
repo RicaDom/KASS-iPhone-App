@@ -22,12 +22,10 @@
 
 #ifdef DEBUG
 #    define HOST "localhost:3000"
-#    define TSINA_API_KEY "1507826766"
-#    define TSINA_API_SECRET "17db87811607bd1ce93dd912669c02d8"
-#    define TSINA_CALLBACK_URL "http://localhost:3000"
+#    define SinaWeiBoSDKDemo_APPKey @"4058848639"
+#    define SinaWeiBoSDKDemo_APPSecret @"6f8e39f74b91d64eec43e2b4fd8d4c55"
 #else
 #    define HOST "www.kass.com"
-#    define TSINA_API_KEY "1507826766"
-#    define TSINA_API_SECRET "17db87811607bd1ce93dd912669c02d8"
-#    define TSINA_CALLBACK_URL "http://www.kass.com"
+#    define SinaWeiBoSDKDemo_APPKey @"4058848639"
+#    define SinaWeiBoSDKDemo_APPSecret @"6f8e39f74b91d64eec43e2b4fd8d4c55"
 #endif

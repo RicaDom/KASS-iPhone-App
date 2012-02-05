@@ -174,6 +174,7 @@ static NSString* oauthGetAccessTokenURL		= @"http://api.t.sina.com.cn/oauth/acce
 
 - (void)gettingRequestTokenSuccessWithData:(NSData*)data
 {
+  DLog(@"WBAuthorize::gettingRequestTokenSuccessWithData");
 	NSString* string = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
 	if( [string rangeOfString:@"error"].location == NSNotFound )
 	{
