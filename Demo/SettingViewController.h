@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "VariableStore.h"
 #import "Constants.h"
+#import "MTPopupWindow.h";
 
 @interface SettingViewController : UIViewController
 

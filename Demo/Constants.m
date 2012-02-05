@@ -21,4 +21,6 @@ NSString * const UI_BUTTON_LABEL_SUBMIT = @"提交";
 NSString * const UI_BUTTON_LABEL_MAP = @"地图";
 NSString * const UI_BUTTON_LABEL_SIGIN = @"登陆";
 NSString * const UI_BUTTON_LABEL_SIGOUT = @"注销";
+NSString * const UI_BUTTON_LABEL_TWITTER_SIGNIN = @"用微博登陆";
+NSString * const UI_BUTTON_LABEL_SIGNUP = @"注册";
 @end

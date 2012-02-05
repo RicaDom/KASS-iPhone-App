@@ -60,7 +60,6 @@
 		E5033BD314DA65A60049FA5D /* popupWindowBack.png in Resources */ = {isa = PBXBuildFile; fileRef = E5033BCF14DA65A60049FA5D /* popupWindowBack.png */; };
 		E5033BD414DA65A60049FA5D /* popupWindowBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5033BD014DA65A60049FA5D /* popupWindowBack@2x.png */; };
 		E5033BD614DA65EC0049FA5D /* testContent.html in Resources */ = {isa = PBXBuildFile; fileRef = E5033BD514DA65EC0049FA5D /* testContent.html */; };
-		E5033BD914DA71780049FA5D /* ALToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5033BD814DA71780049FA5D /* ALToastView.m */; };
 		E5033BE314DA8CE80049FA5D /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = E5033BE214DA8CE80049FA5D /* login.png */; };
 		E5129DCB14D3D59100FEE0BF /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5129DCA14D3D59100FEE0BF /* TPKeyboardAvoidingScrollView.m */; };
 		E57EDB1F14D7EA0F0026D186 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = E57EDB1E14D7EA0F0026D186 /* User.m */; };
@@ -210,8 +209,6 @@
 		E5033BCF14DA65A60049FA5D /* popupWindowBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popupWindowBack.png; sourceTree = "<group>"; };
 		E5033BD014DA65A60049FA5D /* popupWindowBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popupWindowBack@2x.png"; sourceTree = "<group>"; };
 		E5033BD514DA65EC0049FA5D /* testContent.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = testContent.html; sourceTree = "<group>"; };
-		E5033BD714DA71770049FA5D /* ALToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALToastView.h; sourceTree = "<group>"; };
-		E5033BD814DA71780049FA5D /* ALToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALToastView.m; sourceTree = "<group>"; };
 		E5033BE214DA8CE80049FA5D /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login.png; sourceTree = "<group>"; };
 		E5129DC914D3D59100FEE0BF /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
 		E5129DCA14D3D59100FEE0BF /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
@@ -511,8 +508,6 @@
 		E5947DD014A3A12B0066723A /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				E5033BD714DA71770049FA5D /* ALToastView.h */,
-				E5033BD814DA71780049FA5D /* ALToastView.m */,
 				77E9ACC114CD0AF50089910F /* KassApi.h */,
 				77E9ACC214CD0AF50089910F /* KassApi.m */,
 				77CD5FC114CA52780013B510 /* Constants.h */,
@@ -802,7 +797,6 @@
 				E596EDC514D541B200B50F3B /* OfferChangingPriceViewController.m in Sources */,
 				E57EDB1F14D7EA0F0026D186 /* User.m in Sources */,
 				E5033BCB14DA65860049FA5D /* MTPopupWindow.m in Sources */,
-				E5033BD914DA71780049FA5D /* ALToastView.m in Sources */,
 				774F965714D8E5E200E2588A /* NSObject+AsyncRequestPerform.m in Sources */,
 				77EA15AB14DA854C00E6E45A /* UIResponder+LocateMe.m in Sources */,
 			);

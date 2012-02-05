@@ -79,6 +79,9 @@
 }
 
 - (IBAction)authButtonAction:(id)sender {
+    
+    [MTPopupWindow showWindowWithHTMLFile:@"testContent.html" insideView:self.tabBarController.view];
+    
     if ([self.authButton.title isEqualToString:UI_BUTTON_LABEL_SIGIN]) {
         if ([[VariableStore sharedInstance] signIn]) {
             self.authButton.title = UI_BUTTON_LABEL_SIGOUT;

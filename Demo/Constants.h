@@ -21,5 +21,6 @@ extern NSString * const UI_BUTTON_LABEL_SUBMIT;
 extern NSString * const UI_BUTTON_LABEL_MAP;
 extern NSString * const UI_BUTTON_LABEL_SIGIN;
 extern NSString * const UI_BUTTON_LABEL_SIGOUT;
-
+extern NSString * const UI_BUTTON_LABEL_TWITTER_SIGNIN;
+extern NSString * const UI_BUTTON_LABEL_SIGNUP;
 @end

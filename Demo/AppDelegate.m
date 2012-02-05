@@ -16,7 +16,7 @@
 {
   // Override point for customization after application launch. 
   DLog(@"AppDelegate::didFinishLaunchingWithOptions");
-  
+
   // Globally set segment and bar button color;
   //[[UISegmentedControl appearance] setTintColor:[UIColor orangeColor]];
   //[[UIBarButtonItem appearance] setTintColor:[UIColor orangeColor]];

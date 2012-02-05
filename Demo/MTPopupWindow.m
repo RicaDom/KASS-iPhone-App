@@ -72,26 +72,26 @@
     [self.bigPanelView addSubview: background];
     
     //add the web view
-    int webOffset = 10;
-    UIWebView* web = [[UIWebView alloc] initWithFrame:CGRectInset(background.frame, webOffset, webOffset)];
-    web.backgroundColor = [UIColor clearColor];
+//    int webOffset = 10;
+//    UIWebView* web = [[UIWebView alloc] initWithFrame:CGRectInset(background.frame, webOffset, webOffset)];
+//    web.backgroundColor = [UIColor clearColor];
+//    
+//    if ([fName hasPrefix:@"http"]) {
+//        //load a web page
+//        web.scalesPageToFit = YES;
+//        [web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString: fName]]];
+//    } else {
+//        //load a local file
+//        NSError* error = nil;
+//        NSString* fileContents = [NSString stringWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:fName] encoding:NSUTF8StringEncoding error: &error];
+//        if (error!=NULL) {
+//            NSLog(@"error loading %@: %@", fName, [error localizedDescription]);
+//        } else {
+//            [web loadHTMLString: fileContents baseURL:[NSURL URLWithString:@"file://"]];
+//        }
+//    }
     
-    if ([fName hasPrefix:@"http"]) {
-        //load a web page
-        web.scalesPageToFit = YES;
-        [web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString: fName]]];
-    } else {
-        //load a local file
-        NSError* error = nil;
-        NSString* fileContents = [NSString stringWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:fName] encoding:NSUTF8StringEncoding error: &error];
-        if (error!=NULL) {
-            NSLog(@"error loading %@: %@", fName, [error localizedDescription]);
-        } else {
-            [web loadHTMLString: fileContents baseURL:[NSURL URLWithString:@"file://"]];
-        }
-    }
-    
-    [self.bigPanelView addSubview: web];
+//    [self.bigPanelView addSubview: web];
     
     //add the close button
     int closeBtnOffset = 10;
@@ -105,6 +105,41 @@
     
     [closeBtn addTarget:self action:@selector(closePopupWindow) forControlEvents:UIControlEventTouchUpInside];
     [self.bigPanelView addSubview: closeBtn];
+    
+    
+    
+    UILabel *loginWelcomeMessage = [[UILabel alloc] init];
+    [loginWelcomeMessage setText:@"Get Started"];
+    [loginWelcomeMessage setTextColor:[UIColor blackColor]];
+    loginWelcomeMessage.frame = CGRectMake(background.frame.size.width/2 - 30, 40, 150, 30);
+    [self.bigPanelView addSubview:loginWelcomeMessage];
+    
+    UIButton *twitterButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    twitterButton.frame = CGRectMake(80.0, 90.0, 160.0, 40.0);
+    [twitterButton setTitle:UI_BUTTON_LABEL_TWITTER_SIGNIN forState:UIControlStateNormal];
+    [twitterButton setTitleColor: [UIColor orangeColor] forState: UIControlStateNormal];
+    [self.bigPanelView addSubview:twitterButton];
+
+    UILabel *notTwitterMessage = [[UILabel alloc] init];
+    [notTwitterMessage setText:@"没有微博，没问题。\n注册KASS或者用KASS账号登陆。"];
+    [notTwitterMessage setTextColor:[UIColor blackColor]];
+    notTwitterMessage.frame = CGRectMake(background.frame.size.width/2 - 110, 160, 150, 120);
+    notTwitterMessage.numberOfLines = 2;
+    notTwitterMessage.textAlignment = UITextAlignmentCenter;
+    [notTwitterMessage sizeToFit];
+    [self.bigPanelView addSubview:notTwitterMessage];    
+    
+    UIButton *signUpButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    signUpButton.frame = CGRectMake(70.0, 250.0, 80.0, 40.0);
+    [signUpButton setTitle:UI_BUTTON_LABEL_SIGNUP forState:UIControlStateNormal];
+    [signUpButton setTitleColor: [UIColor orangeColor] forState: UIControlStateNormal];
+    [self.bigPanelView addSubview:signUpButton];
+    
+    UIButton *signInButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    signInButton.frame = CGRectMake(170.0, 250.0, 80.0, 40.0);
+    [signInButton setTitle:UI_BUTTON_LABEL_SIGIN forState:UIControlStateNormal];
+    [signInButton setTitleColor: [UIColor orangeColor] forState: UIControlStateNormal];
+    [self.bigPanelView addSubview:signInButton];
     
 //    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 //    [button addTarget:self.mtWindow 
