@@ -47,48 +47,6 @@
 }
 */
 
-
-- (void)accountDidLogin:(NSData *)data
-{
-  DLog(@"SettingViewController::accountDidLogin");
-  NSDictionary *dict = [KassApi parseData:data];
-  DLog(@"SettingViewController::accountDidLogin:dict %@", dict);
-}
-
-- (void)accountLogin
-{
-  NSUserDefaults *standardDefaults = [NSUserDefaults standardUserDefaults];
-  NSString *username = [standardDefaults stringForKey:KassAppUsernameKey];
-  NSString *password = @"";
-  
-  if (username) {
-    NSError *error = nil;
-    password = [SFHFKeychainUtils getPasswordForUsername:username andServiceName:KassServiceName error:&error];
-    
-    DLog(@"SettingViewController::login:user=%@, password=%@", username, password);
-    
-  } else {
-    // No username. Prompt the user to enter username & password and store it
-    username = @"kass@gmail.com";
-    password = @"1111111";
-    
-    [standardDefaults setValue:username forKey:KassAppUsernameKey];    
-    
-    NSError *error = nil;
-    BOOL storeResult = [SFHFKeychainUtils storeUsername:username andPassword:password forServiceName:KassServiceName updateExisting:YES error:&error];
-    
-    DLog(@"SettingViewController::login:store=%@",  (storeResult ? @"YES" : @"NO"));
-  }
-  
-  
-  NSDictionary * userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                             username, @"email",
-                             password, @"password",
-                             nil];
-  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"accountDidLogin:"];
-  [ka login:userInfo];
-}
-
 - (void)welcomeMessage
 {
     if ([[VariableStore sharedInstance].isLoggedIn isEqualToString:@"YES"]) {     
@@ -123,13 +81,11 @@
 
 - (IBAction)authButtonAction:(id)sender {
     
-    [MTPopupWindow showWindowWithHTMLFile:@"testContent.html" insideView:self.tabBarController.view];
+    //[MTPopupWindow showWindowWithHTMLFile:@"testContent.html" insideView:self.tabBarController.view];
+    [MTPopupWindow showWindowWithUIView:self.tabBarController.view];
     
     if ([self.authButton.title isEqualToString:UI_BUTTON_LABEL_SIGIN]) {
       
-      //log user in
-      [self accountLogin];      
-    
       if ([[VariableStore sharedInstance] signIn]) {
           self.authButton.title = UI_BUTTON_LABEL_SIGOUT;
       }

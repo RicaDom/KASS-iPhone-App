@@ -77,7 +77,7 @@
 
 - (void)viewDidUnload
 {
-    [super viewDidUnload];
+    [super viewDidUnload]; 
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -89,19 +89,20 @@
 }
 
 - (void)showMessage {
-    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"KASS Get Started" 
-                                                      message:@"Buy and Sell Anything with People Nearby " 
-                                                     delegate:self 
-                                            cancelButtonTitle:@"or just skip this for now" 
-                                            otherButtonTitles:@"Sign Up", @"Login", @"Sign in with Facebook", nil];
+//    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"KASS Get Started" 
+//                                                      message:@"Buy and Sell Anything with People Nearby " 
+//                                                     delegate:self 
+//                                            cancelButtonTitle:@"or just skip this for now" 
+//                                            otherButtonTitles:@"Sign Up", @"Login", @"Sign in with Facebook", nil];
     
     //UIImageView *Image =[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"images.png"]];
     
     //[message addSubview:Image];
     
     //[message show];
-  
-    [MTPopupWindow showWindowWithHTMLFile:@"testContent.html" insideView:self.view];
+
+    //[MTPopupWindow showWindowWithHTMLFile:@"testContent.html" insideView:self.view];
+    [MTPopupWindow showWindowWithUIView:self.view];
     //[ALToastView toastInView:self.view withText:@"Hello ALToastView"];
 }
 
