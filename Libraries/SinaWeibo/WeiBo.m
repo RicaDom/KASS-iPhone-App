@@ -10,7 +10,7 @@
 #import "WBUtil.h"
 #import "SFHFKeychainUtils.h"
 
-#define WeiBoSchemePre				@"wb"
+#define WeiBoSchemePre				@"kass"
 
 #define kKeyChainServiceNameForWeiBo		@"_WeiBoUserInfo"
 
@@ -109,10 +109,12 @@ static NSString* weiboHttpRequestDomain		= @"http://api.t.sina.com.cn/";
 
 - (BOOL)handleOpenURL:(NSURL *)url
 {
+  DLog(@"WeiBo::handleOpenURL");
 	if (![[url absoluteString] hasPrefix:[self urlSchemeString]]) {
 		return NO;
 	}
 	
+  DLog(@"WeiBo::handleOpenURL:finishAuthorizeWithString");
 	//Just start the third step of OAuth when the application is reactive correctly.
 	NSString *query = [url query];
 	[_authorize finishAuthorizeWithString:query];
