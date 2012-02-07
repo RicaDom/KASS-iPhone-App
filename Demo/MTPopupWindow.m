@@ -9,6 +9,7 @@
 
 #import "MTPopupWindow.h"
 #import "UIView+ViewController.h"
+#import "SFHFKeychainUtils.h"
 
 #define kShadeViewTag 1000
 
@@ -477,6 +478,17 @@
     UIViewAnimationOptions options = UIViewAnimationOptionTransitionFlipFromRight |
     UIViewAnimationOptionAllowUserInteraction    |
     UIViewAnimationOptionBeginFromCurrentState;
+  
+    //load keychain info
+    NSUserDefaults *standardDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *email = [standardDefaults stringForKey:KassAppEmailKey];
+  
+    if (email) {
+      emailTextField.text = email;
+      NSError *error = nil;
+      NSString *pasword = [SFHFKeychainUtils getPasswordForUsername:email andServiceName:KassServiceName error:&error];
+      passwordTextField.text = pasword;
+    }
     
     //run the animation
     [UIView transitionFromView:self.bigPanelView toView:self.signInView duration:0.5 options:options completion: ^(BOOL finished) {

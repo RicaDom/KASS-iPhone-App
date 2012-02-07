@@ -49,7 +49,9 @@
 - (void)viewDidAppear:(BOOL)animated
 {
   NSLog(@"MainTabBarViewController::viewDidAppear ");
-  [self showMessage];
+  if ( ![[VariableStore sharedInstance] isLoggedIn]) {
+    [self showMessage];
+  }
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.

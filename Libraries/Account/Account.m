@@ -44,7 +44,7 @@
   
   if ( _userDbId ) {
     
-    if ( _password ) {
+    if ( _password && _email ) {
       NSUserDefaults *standardDefaults = [NSUserDefaults standardUserDefaults];
       [standardDefaults setValue:_email forKey:KassAppEmailKey]; 
       NSError *error = nil;
