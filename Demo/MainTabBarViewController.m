@@ -12,18 +12,8 @@
 
 - (void)tabBarController:(UITabBarController *)tbc didSelectViewController:(UIViewController *)vc {
     // Middle tab bar item in question.
-    NSLog(@"MainTabBarViewController tabBarController");
     if (vc == [tbc.viewControllers objectAtIndex:4]) {
-        NSLog(@"MainTabBarViewController vvvvvvvvv");
-        //ScanVC *scanView = [[ScanVC alloc] initWithNibName:@"ScanViewController" bundle:nil];
-        
-        // set properties of scanView's ivars, etc
-        
-        //UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:scanView];
-        
         [tbc presentModalViewController:vc animated:YES];
-        //[navigationController release];
-        //[scanView release];
     }
 }
 
@@ -63,7 +53,6 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {   
-  NSLog(@"MainTabBarViewController::viewDidLoad ");
   [super viewDidLoad];
 }
 

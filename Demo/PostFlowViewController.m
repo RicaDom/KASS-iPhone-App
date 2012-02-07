@@ -64,7 +64,7 @@
     [super viewDidLoad];
     [self loadCurrentPostingData];
     [self.titleTextField becomeFirstResponder];
-    
+    self.navigationController.navigationBar.tintColor = [UIColor brownColor];
 #pragma mark - TODO
     // If it's a completed post template, stack all the views
     // and show the last step of posting process

@@ -101,6 +101,13 @@
 		E59AE14C14AD09410048C7C0 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = E59AE14914AD09410048C7C0 /* background.png */; };
 		E5A0743B14AA918600885232 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A0743A14AA918600885232 /* MapKit.framework */; };
 		E5A0744A14AAA57100885232 /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A0744914AAA57100885232 /* ActivityViewController.m */; };
+		E5A4894514DFAD5300501EE2 /* gradientBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = E5A4893814DFAD5300501EE2 /* gradientBackground.png */; };
+		E5A4894914DFAD5300501EE2 /* middleRow.png in Resources */ = {isa = PBXBuildFile; fileRef = E5A4893C14DFAD5300501EE2 /* middleRow.png */; };
+		E5A4894A14DFAD5300501EE2 /* middleRowSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = E5A4893D14DFAD5300501EE2 /* middleRowSelected.png */; };
+		E5A4895414DFC27400501EE2 /* ListingTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A4895314DFC27400501EE2 /* ListingTableCell.m */; };
+		E5B2E09114E0EA0B007AB372 /* tableHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B2E09014E0EA0B007AB372 /* tableHeader.png */; };
+		E5B2E09814E0F2CB007AB372 /* PullRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B2E09714E0F2CB007AB372 /* PullRefreshTableViewController.m */; };
+		E5B2E09A14E0F3D8007AB372 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B2E09914E0F3D8007AB372 /* arrow.png */; };
 		E5C0ABE814AAC9D20021873A /* ListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C0ABE714AAC9D20021873A /* ListItem.m */; };
 		E5C0ABED14AADF130021873A /* ItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C0ABEC14AADF130021873A /* ItemViewController.m */; };
 		E5C98E9F14C51D3800319277 /* Zaarly_logo3-300x143.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C98E9E14C51D3800319277 /* Zaarly_logo3-300x143.png */; };
@@ -283,6 +290,15 @@
 		E5A0743A14AA918600885232 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E5A0744814AAA57100885232 /* ActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewController.h; sourceTree = "<group>"; };
 		E5A0744914AAA57100885232 /* ActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewController.m; sourceTree = "<group>"; };
+		E5A4893814DFAD5300501EE2 /* gradientBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gradientBackground.png; sourceTree = "<group>"; };
+		E5A4893C14DFAD5300501EE2 /* middleRow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = middleRow.png; sourceTree = "<group>"; };
+		E5A4893D14DFAD5300501EE2 /* middleRowSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = middleRowSelected.png; sourceTree = "<group>"; };
+		E5A4895214DFC27400501EE2 /* ListingTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListingTableCell.h; path = ../ListingTableCell.h; sourceTree = "<group>"; };
+		E5A4895314DFC27400501EE2 /* ListingTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListingTableCell.m; path = ../ListingTableCell.m; sourceTree = "<group>"; };
+		E5B2E09014E0EA0B007AB372 /* tableHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableHeader.png; sourceTree = "<group>"; };
+		E5B2E09614E0F2CB007AB372 /* PullRefreshTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullRefreshTableViewController.h; sourceTree = "<group>"; };
+		E5B2E09714E0F2CB007AB372 /* PullRefreshTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullRefreshTableViewController.m; sourceTree = "<group>"; };
+		E5B2E09914E0F3D8007AB372 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		E5C0ABE614AAC9D20021873A /* ListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListItem.h; sourceTree = "<group>"; };
 		E5C0ABE714AAC9D20021873A /* ListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListItem.m; sourceTree = "<group>"; };
 		E5C0ABEB14AADF130021873A /* ItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemViewController.h; sourceTree = "<group>"; };
@@ -536,6 +552,7 @@
 		77F027A314C668760065EDAA /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				E5C8BF8614E02DC8004D7FDE /* PullReloadTableView */,
 				777E4E9214DD8286002B40C3 /* SinaWeibo */,
 				777E4D1514DB8D97002B40C3 /* SFHFKeychainUtils */,
 				77506A0714C91347000494E5 /* AsiHttpRequest */,
@@ -646,6 +663,10 @@
 				E59A174E14AC513D00B7977D /* BrowseItemViewController.m */,
 				E58B992414AC5AE400A780F6 /* BrowseTableViewController.h */,
 				E58B992514AC5AE400A780F6 /* BrowseTableViewController.m */,
+				E5B2E09614E0F2CB007AB372 /* PullRefreshTableViewController.h */,
+				E5B2E09714E0F2CB007AB372 /* PullRefreshTableViewController.m */,
+				E5A4895214DFC27400501EE2 /* ListingTableCell.h */,
+				E5A4895314DFC27400501EE2 /* ListingTableCell.m */,
 				E596EDC314D541B200B50F3B /* OfferChangingPriceViewController.h */,
 				E596EDC414D541B200B50F3B /* OfferChangingPriceViewController.m */,
 				E5947E5414A4006D0066723A /* SettingViewController.h */,
@@ -723,6 +744,11 @@
 		E59AE14814AD09410048C7C0 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E5B2E09914E0F3D8007AB372 /* arrow.png */,
+				E5B2E09014E0EA0B007AB372 /* tableHeader.png */,
+				E5A4893814DFAD5300501EE2 /* gradientBackground.png */,
+				E5A4893C14DFAD5300501EE2 /* middleRow.png */,
+				E5A4893D14DFAD5300501EE2 /* middleRowSelected.png */,
 				E5033BE214DA8CE80049FA5D /* login.png */,
 				E5C98EA114C51FBC00319277 /* images.png */,
 				E5C98EA214C51FBC00319277 /* martin_luther_king-2012-hp.png */,
@@ -736,6 +762,13 @@
 				E59AE14914AD09410048C7C0 /* background.png */,
 			);
 			path = images;
+			sourceTree = "<group>";
+		};
+		E5C8BF8614E02DC8004D7FDE /* PullReloadTableView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = PullReloadTableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -848,6 +881,11 @@
 				777E4EC314DD8303002B40C3 /* delete@2x.png in Resources */,
 				777E4EC914DD8303002B40C3 /* SendViewLocalize.strings in Resources */,
 				777E4ECA14DD8303002B40C3 /* SendViewLocalize.strings in Resources */,
+				E5A4894514DFAD5300501EE2 /* gradientBackground.png in Resources */,
+				E5A4894914DFAD5300501EE2 /* middleRow.png in Resources */,
+				E5A4894A14DFAD5300501EE2 /* middleRowSelected.png in Resources */,
+				E5B2E09114E0EA0B007AB372 /* tableHeader.png in Resources */,
+				E5B2E09A14E0F3D8007AB372 /* arrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -934,6 +972,8 @@
 				777E4EDF14DE2581002B40C3 /* SBJSONParser.m in Sources */,
 				777E4EE214DE25A0002B40C3 /* SBJSONWriter.m in Sources */,
 				777E4EE514DE2D9F002B40C3 /* NSObject+SBJSON.m in Sources */,
+				E5A4895414DFC27400501EE2 /* ListingTableCell.m in Sources */,
+				E5B2E09814E0F2CB007AB372 /* PullRefreshTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -106,6 +106,7 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
 {
   [super viewDidLoad];
   [self setupArray];
+  self.navigationController.navigationBar.tintColor = [UIColor brownColor];  
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -178,20 +179,36 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
     return [currentItems count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"activityCell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    ListingTableCell *cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[ListingTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    // Configure the cell...    
+    UIImage *rowBackground = [UIImage imageNamed:@"middleRow.png"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:rowBackground];
+    cell.backgroundView = imageView;
+    
+    UIImage *selectedBackground = [UIImage imageNamed:@"middleRowSelected.png"];
+    UIImageView *selectedImageView = [[UIImageView alloc] initWithImage:selectedBackground];
+    cell.selectedBackgroundView = selectedImageView;
+    
+    // Configure the cell...
     ListItem *item = [currentItems objectAtIndex:indexPath.row];
     NSString *price = [[item askPrice] stringValue];
-    cell.textLabel.text = [[item title] stringByAppendingFormat:@" ¥%@", price];
-
+    
+    cell.title.text = [item title];
+    cell.subTitle.text = [item description];
+    [cell.price setTitle:price forState:UIControlStateNormal];
+    cell.price.enabled = NO;
+    
+    [cell.distance setTitle:@"888米" forState:UIControlStateNormal];
+    cell.distance.enabled = NO;
+    
+    [cell.duration setTitle:@"7 天" forState:UIControlStateNormal];
+    cell.duration.enabled = NO;
     return cell;
 }
 
@@ -206,6 +223,20 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+// Reloading data
+- (void)refresh {
+    [self performSelector:@selector(addItem) withObject:nil afterDelay:2.0];
+}
+
+- (void)addItem {
+    // TODO
+    // Adding item to the list
+    
+    [self.tableView reloadData];
+    
+    [self stopLoading];
 }
 
 @end

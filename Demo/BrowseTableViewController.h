@@ -13,11 +13,14 @@
 #import "BrowseItemViewController.h"
 #import "VariableStore.h"
 #import "UIResponder+LocateMe.h"
+#import "ListingTableCell.h"
+#import "PullRefreshTableViewController.h"
 
-@interface BrowseTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>{
+@interface BrowseTableViewController : PullRefreshTableViewController {
   CLLocationManager *locationManager;
 }
 @property (weak, nonatomic) IBOutlet UISegmentedControl *browseSegment;
+@property (strong, nonatomic) IBOutlet UITableView *listingTableView;
 
 - (IBAction)browseSegmentAction:(id)sender;
 - (void)setupArray;

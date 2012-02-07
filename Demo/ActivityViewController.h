@@ -11,8 +11,11 @@
 #import "Listing.h"
 #import "ItemViewController.h"
 #import "VariableStore.h"
+#import "ListingTableCell.h"
+#import "PullRefreshTableViewController.h"
 
-@interface ActivityViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>{
+@interface ActivityViewController : PullRefreshTableViewController 
+{
     __weak IBOutlet UISegmentedControl *activitySegment;
 }
 

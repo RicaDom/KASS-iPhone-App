@@ -271,6 +271,8 @@
     [self.editorPostScrollView addGestureRecognizer:singleTap];     
     NSLog(@"Self = %@", self);
    // NSLog(@"Current responder = %@", [self.view findFirstResponder]);
+    
+    //self.navigationController.navigationBar.tintColor = [UIColor brownColor];
 }
 
 

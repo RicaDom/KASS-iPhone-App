@@ -8,9 +8,9 @@
 
 #import "BrowseTableViewController.h"
 
-
 @implementation BrowseTableViewController
 @synthesize browseSegment = _browseSegment;
+@synthesize listingTableView = _listingTableView;
 
 NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
 
@@ -150,18 +150,40 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
   DLog(@"BrowseTableViewController::viewDidLoad ");
   [super viewDidLoad];
   [self locateMe];
-
+	//
+	// Create a header view. Wrap it in a container to allow us to position
+	// it better.
+	//
+//	UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(10, 20, 300, 60)];
+//	UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, 300, 40)];
+//	headerLabel.text = NSLocalizedString(@"Header for the table", @"");
+//	headerLabel.textColor = [UIColor blackColor];
+//	headerLabel.shadowColor = [UIColor grayColor];
+//	headerLabel.shadowOffset = CGSizeMake(0, 1);
+//	headerLabel.font = [UIFont boldSystemFontOfSize:22];
+//	headerLabel.backgroundColor = [UIColor clearColor];
+//	[containerView addSubview:headerLabel];
+//	self.listingTableView.tableHeaderView = containerView;
+    
   // Uncomment the following line to preserve selection between presentations.
   // self.clearsSelectionOnViewWillAppear = NO;
 
   // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
   // self.navigationItem.rightBarButtonItem = self.editButtonItem;];
-
+    UIImage *tableHeaderViewImage = [UIImage imageNamed:@"tableHeader.png"];
+    UIImageView *tableHeaderView = [[UIImageView alloc] initWithImage:tableHeaderViewImage];
+    self.listingTableView.tableHeaderView = tableHeaderView;
+    
+    UIImage *tableFooterViewImage = [UIImage imageNamed:@"login.png"];
+    UIImageView *tableFooterView = [[UIImageView alloc] initWithImage:tableFooterViewImage];
+    self.listingTableView.tableFooterView = tableFooterView;
+    self.navigationController.navigationBar.tintColor = [UIColor brownColor];
 }
 
 - (void)viewDidUnload
 {
     [self setBrowseSegment:nil];
+    [self setListingTableView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -209,20 +231,51 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
     return [currentItems count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"listCell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    ListingTableCell *cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[ListingTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+
+    UIImage *rowBackground = [UIImage imageNamed:@"middleRow.png"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:rowBackground];
+    cell.backgroundView = imageView;
+
+    UIImage *selectedBackground = [UIImage imageNamed:@"middleRowSelected.png"];
+    UIImageView *selectedImageView = [[UIImageView alloc] initWithImage:selectedBackground];
+    cell.selectedBackgroundView = selectedImageView;
     
     // Configure the cell...
     ListItem *item = [currentItems objectAtIndex:indexPath.row];
     NSString *price = [[item askPrice] stringValue];
-    cell.textLabel.text = [[item title] stringByAppendingFormat:@" ¥%@", price];
+
+    cell.title.text = [item title];
+    cell.subTitle.text = [item description];
+    [cell.price setTitle:price forState:UIControlStateNormal];
+    cell.price.enabled = NO;
+    
+    [cell.distance setTitle:@"888米" forState:UIControlStateNormal];
+    cell.distance.enabled = NO;
+    
+    [cell.duration setTitle:@"7 天" forState:UIControlStateNormal];
+    cell.duration.enabled = NO;
     return cell;
+}
+
+// Reloading data
+- (void)refresh {
+    [self performSelector:@selector(addItem) withObject:nil afterDelay:2.0];
+}
+
+- (void)addItem {
+    // TODO
+    // Adding item to the list
+    
+    [self.tableView reloadData];
+    
+    [self stopLoading];
 }
 
 #pragma mark - Table view delegate
