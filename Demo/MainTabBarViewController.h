@@ -8,16 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "VariableStore.h"
-#import "KassApi.h"
-#import "WBConnect.h"
 
-@interface MainTabBarViewController : UITabBarController <UIAlertViewDelegate, UITabBarControllerDelegate, WBSessionDelegate,WBSendViewDelegate,WBRequestDelegate>{
-  WeiBo *weibo;
-}
+@interface MainTabBarViewController : UITabBarController <UIAlertViewDelegate, UITabBarControllerDelegate>
 
-@property (nonatomic,retain,readonly) WeiBo* weibo;
-
-- (void)showMessage;
-- (void) weiboLogin;
+- (void) showMessage;
 
 @end

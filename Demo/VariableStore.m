@@ -17,7 +17,6 @@
 @synthesize myBuyingListings = _myBuyingListings;
 @synthesize mySellingListings = _mySellingListings;
 @synthesize user = _user;
-@synthesize isLoggedIn = _isLoggedIn;
 
 + (VariableStore *) sharedInstance {
     // the instance of this class is stored here
@@ -41,20 +40,39 @@
     }
 }
 
-- (BOOL) signIn {
-    self.isLoggedIn = @"YES";
+- (BOOL) isLoggedIn
+{
+  return (self.user != nil) && (self.user.userId != nil);
+}
+
+- (BOOL) signInAccount:(NSString *)email:(NSString *)password
+{
+  DLog(@"VariableStore::signInAccount:email=%@,password=%@",email,password);
+  if (!self.user) {
     self.user = [[User alloc] init];
-    self.user.userId = @"123456789";
-    self.user.name = @"zhicai";
-    self.user.email = @"zhicaiwang@gmail.com";
-    self.user.phone = @"13120649606";
-    return YES;
+  }
+  [self.user accountLogin:email:password];
+  return YES;
+}
+
+- (BOOL) signInWeibo
+{
+  DLog(@"VariableStore::signInWeibo");
+  if (!self.user) {
+    self.user = [[User alloc] init];
+  }
+  [self.user weiboLogin];
+  return YES;
 }
 
 - (BOOL) signOut {
-    self.isLoggedIn = nil;
+  DLog(@"VariableStore::signOut");
+  if ( self.user ) {
+    if (self.user.weibo)    { [self.user.weibo LogOut]; }
+    if (self.user.account)  { [self.user.account logout]; }
     self.user = nil;
-    return YES;
+  } 
+  return YES;
 }
 
 - (void) clearCurrentPostingItem {

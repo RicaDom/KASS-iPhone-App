@@ -88,7 +88,12 @@
 
 - (void)login:(NSDictionary *)dict
 {
-  _url = [NSString stringWithFormat:@"http://%s/v1/auth.json", HOST];
+  NSString *encodedData = [dict objectForKey:@"encode"];
+  if (encodedData) {
+    _url = [NSString stringWithFormat:@"http://%s/v1/weibo/auth", HOST];
+  }else{
+    _url = [NSString stringWithFormat:@"http://%s/v1/auth", HOST];
+  }
   [self postData:_url:dict];
 }
 

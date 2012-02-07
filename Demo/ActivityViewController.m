@@ -126,7 +126,7 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    if ([[VariableStore sharedInstance].isLoggedIn isEqualToString:@"YES"]) {        
+    if ([[VariableStore sharedInstance] isLoggedIn]) {        
         [self setupArray];
         [self.emptyRecordsImageView removeFromSuperview];
         self.emptyRecordsImageView = nil;

@@ -228,7 +228,9 @@
 -(void)loginWithTwitter
 {
   NSLog(@"I'm logging with Weibo");
-  [_viewController weiboLogin];
+  [[VariableStore sharedInstance] signInWeibo];
+  [[self.bigPanelView viewWithTag: kShadeViewTag] removeFromSuperview];    
+  [self performSelector:@selector(closePopupWindowAnimate) withObject:nil afterDelay:0.1];
 }
 
 /**
@@ -399,9 +401,8 @@
     
     //TODO - Validation
     
-    //    if (log in successful) {
-    //        .....
-    //    }
+    [[VariableStore sharedInstance] signInAccount:email:password];
+  
     [[self.bigPanelView viewWithTag: kShadeViewTag] removeFromSuperview];    
     [self performSelector:@selector(closePopupWindowAnimate) withObject:nil afterDelay:0.1];
 }
