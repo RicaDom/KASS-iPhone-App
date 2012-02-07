@@ -26,10 +26,12 @@
 #    define SinaWeiBoSDKDemo_APPSecret @"6f8e39f74b91d64eec43e2b4fd8d4c55"
 #    define KassServiceName @"com.kasslocal.app"
 #    define KassAppUsernameKey @"KasslocalAppUsernameKey"
+#    define KassAppEmailKey @"KasslocalAppEmailKey"
 #else
 #    define HOST "www.kass.com"
 #    define SinaWeiBoSDKDemo_APPKey @"4058848639"
 #    define SinaWeiBoSDKDemo_APPSecret @"6f8e39f74b91d64eec43e2b4fd8d4c55"
 #    define KassServiceName @"com.kass.app"
-#    define KassAppUsernameKey @"KasslocalAppUsernameKey"
+#    define KassAppUsernameKey @"KassAppUsernameKey"
+#    define KassAppEmailKey @"KassAppEmailKey"
 #endif

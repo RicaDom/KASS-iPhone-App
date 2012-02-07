@@ -9,6 +9,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Constants.h"
+#import "VariableStore.h"
 #import "MainTabBarViewController.h"
 
 @interface MTPopupWindow : NSObject

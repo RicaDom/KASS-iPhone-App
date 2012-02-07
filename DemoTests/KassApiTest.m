@@ -59,7 +59,16 @@
 - (void)testLogin
 {
   [kassApi login:nil];
-  STAssertEqualObjects([kassApi url], @"http://localhost:3000/v1/auth.json", nil);
+  STAssertEqualObjects([kassApi url], @"http://localhost:3000/v1/auth", nil);
+}
+
+- (void)testLoginWeibo
+{
+  NSDictionary * dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                               @"abc", @"encode",
+                               nil];
+  [kassApi login:dictionary];
+  STAssertEqualObjects([kassApi url], @"http://localhost:3000/v1/weibo/auth", nil);
 }
 
 @end

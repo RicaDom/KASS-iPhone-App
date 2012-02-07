@@ -48,11 +48,9 @@
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
-  MainTabBarViewController *viewController = (MainTabBarViewController *) self.window.rootViewController;
   DLog(@"AppDelegate::handleOpenURL:url=%@", url);
-	DLog(@"AppDelegate::handleOpenURL:rootViewController=%@", viewController);
-  DLog(@"AppDelegate::openURL:weibo=%@", viewController.weibo);
-  if( [viewController.weibo handleOpenURL:url] )
+  DLog(@"AppDelegate::openURL:weibo=%@", [VariableStore sharedInstance].user.weibo);
+  if( [[VariableStore sharedInstance].user.weibo handleOpenURL:url] )
 		return TRUE;
 	return TRUE;
 }
@@ -61,9 +59,8 @@
 {
   MainTabBarViewController *viewController = (MainTabBarViewController *) self.window.rootViewController;
   DLog(@"AppDelegate::openURL:url=%@", url);
-	DLog(@"AppDelegate::openURL:rootViewController=%@", viewController);
-  DLog(@"AppDelegate::openURL:weibo=%@", viewController.weibo);
-  if( [viewController.weibo handleOpenURL:url] )
+  DLog(@"AppDelegate::openURL:weibo=%@", [VariableStore sharedInstance].user.weibo);
+  if( [[VariableStore sharedInstance].user.weibo handleOpenURL:url] )
 		return TRUE;
 	return TRUE;
 }

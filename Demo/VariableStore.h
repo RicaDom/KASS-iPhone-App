@@ -23,14 +23,14 @@
 @property (strong, nonatomic) NSMutableArray *myBuyingListings;
 @property (strong, nonatomic) NSMutableArray *mySellingListings;
 @property (strong, nonatomic) User *user;
-@property (strong, nonatomic) NSString *isLoggedIn;
 
 + (VariableStore *) sharedInstance;
 - (void) clearCurrentPostingItem;
 - (void) initExpiredTime;
 - (void) initListingsData;
 
-
-- (BOOL) signIn;
+- (BOOL) isLoggedIn;
+- (BOOL) signInAccount:(NSString *)email:(NSString *)password;
+- (BOOL) signInWeibo;
 - (BOOL) signOut;
 @end

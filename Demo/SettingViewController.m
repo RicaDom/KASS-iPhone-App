@@ -49,7 +49,7 @@
 
 - (void)welcomeMessage
 {
-    if ([[VariableStore sharedInstance].isLoggedIn isEqualToString:@"YES"]) {     
+    if ([[VariableStore sharedInstance] isLoggedIn] ) {     
         self.authButton.title = UI_BUTTON_LABEL_SIGOUT;
         self.welcomeMessageLabel.text = [@"你好! " stringByAppendingString:[VariableStore sharedInstance].user.name]; 
     } else {
@@ -81,18 +81,12 @@
 
 - (IBAction)authButtonAction:(id)sender {
     
-    //[MTPopupWindow showWindowWithHTMLFile:@"testContent.html" insideView:self.tabBarController.view];
-    [MTPopupWindow showWindowWithUIView:self.tabBarController.view];
-    
     if ([self.authButton.title isEqualToString:UI_BUTTON_LABEL_SIGIN]) {
-      
-      if ([[VariableStore sharedInstance] signIn]) {
-          self.authButton.title = UI_BUTTON_LABEL_SIGOUT;
-      }
+      [MTPopupWindow showWindowWithUIView:self.tabBarController.view];
+      self.authButton.title = UI_BUTTON_LABEL_SIGOUT;
     } else {
-      if ([[VariableStore sharedInstance] signOut]) {
-          self.authButton.title = UI_BUTTON_LABEL_SIGIN;
-      }
+      [[VariableStore sharedInstance] signOut];
+      self.authButton.title = UI_BUTTON_LABEL_SIGIN;
     }
     [self welcomeMessage];
 }
