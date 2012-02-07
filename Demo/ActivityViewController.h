@@ -27,5 +27,6 @@
 - (void)setupArray;
 - (void)reloadTable;
 - (void)getBuyingItems:(NSData *)data;
+- (void)getSellingItems:(NSData *)data;
 
 @end
