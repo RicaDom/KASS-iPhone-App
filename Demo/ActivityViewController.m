@@ -19,6 +19,12 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
   [self reloadTable];
 }
 
+- (void) accountLoadData
+{
+  DLog(@"ActivityViewController::accountLoadData");
+  [self setupArray];
+}
+
 - (void)reloadTable
 {
   DLog(@"ActivityViewController::reloadTable");
@@ -96,6 +102,9 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
   [super viewDidLoad];
   
   self.navigationController.navigationBar.tintColor = [UIColor brownColor];  
+  if ( ![VariableStore sharedInstance].user.delegate ) {
+    [VariableStore sharedInstance].user.delegate = self;
+  }
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -115,10 +124,8 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
 
 - (void)viewWillAppear:(BOOL)animated
 {
-  // load data only when user is logged in and there's no current items....
-  // if user wants to refresh data, pull it ...
-    if ([[VariableStore sharedInstance] isLoggedIn] && currentItems == nil) {        
-        [self setupArray];
+//  DLog(@"VariableStore=%@,userid=%@",[VariableStore sharedInstance], [VariableStore sharedInstance].user.userId);
+    if ([[VariableStore sharedInstance] isLoggedIn]) {        
         [self.emptyRecordsImageView removeFromSuperview];
         self.emptyRecordsImageView = nil;
     } else {

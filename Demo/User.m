@@ -13,7 +13,7 @@
 
 @implementation User
 
-@synthesize weibo, account;
+@synthesize weibo, account, delegate = _delegate;
 
 @synthesize userId = _userId;
 @synthesize name = _name;
@@ -41,13 +41,29 @@
 
 - (void) accountDidLogin
 {
-  DLog(@"User::accountDidLogin:username=%@", account.userName);
+  DLog(@"User::accountDidLogin:username=%@,delegate=%@", account.userName, _delegate);
 
   _userId = account.userDbId;
   _name   = account.userName;
   _email  = account.email;
   _phone  = account.phone;
   
+  if( [_delegate respondsToSelector:@selector(accountLoadData)] )
+    [_delegate accountLoadData];
+  
+}
+
+- (void)accountLoginFailed:(NSError*)error
+{
+  DLog(@"User::accountLoginFailed:error=%@", error);
+  [self logout];
+}
+
+- (void) logout
+{
+  DLog(@"User::logout:weibo=%@,account=%@", self.weibo, self.account);
+  if (self.weibo)    { [self.weibo LogOut]; }
+  if (self.account)  { [self.account logout]; }
 }
 
 - (void) weiboLogin
@@ -115,5 +131,14 @@
 	DLog(@"User::weiboLoginFailed");
 }
 
+- (void)weiboDidLogout
+{
+  DLog(@"User::weiboDidLogout");
+}
+
+- (void)accountDidLogout
+{
+  DLog(@"User::accountDidLogout");
+}
 
 @end

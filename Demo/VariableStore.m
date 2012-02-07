@@ -34,6 +34,8 @@
             myInstance.mySellingListings = [[NSMutableArray alloc] init];
             myInstance.myBuyingListings = [[NSMutableArray alloc] init];
             [myInstance initListingsData];
+          
+            myInstance.user = [[User alloc] init];
         }
         // return the instance of this class
         return myInstance;    
@@ -48,9 +50,6 @@
 - (BOOL) signInAccount:(NSString *)email:(NSString *)password
 {
   DLog(@"VariableStore::signInAccount:email=%@,password=%@",email,password);
-  if (!self.user) {
-    self.user = [[User alloc] init];
-  }
   [self.user accountLogin:email:password];
   return YES;
 }
@@ -58,9 +57,6 @@
 - (BOOL) signInWeibo
 {
   DLog(@"VariableStore::signInWeibo");
-  if (!self.user) {
-    self.user = [[User alloc] init];
-  }
   [self.user weiboLogin];
   return YES;
 }
@@ -68,8 +64,7 @@
 - (BOOL) signOut {
   DLog(@"VariableStore::signOut");
   if ( self.user ) {
-    if (self.user.weibo)    { [self.user.weibo LogOut]; }
-    if (self.user.account)  { [self.user.account logout]; }
+    [self.user logout];
     self.user = nil;
   } 
   return YES;

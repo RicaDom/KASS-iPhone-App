@@ -10,12 +10,14 @@
 #import "KassApi.h"
 #import "WBConnect.h"
 #import "Account.h"
+#import "AccountActivityDelegate.h"
 
 @interface User : NSObject<WBSessionDelegate,WBSendViewDelegate,WBRequestDelegate, AccountSessionDelegate>{
   WeiBo *weibo;
   Account *account;
 }
 
+@property (nonatomic,assign) id<AccountActivityDelegate> delegate;
 @property (nonatomic,retain,readonly) WeiBo* weibo;
 @property (nonatomic,retain,readonly) Account* account;
 
@@ -27,5 +29,6 @@
 - (void) weiboLogin;
 - (void) accountLogin:(NSString *)email:(NSString *)password;
 - (void) accountWeiboLogin:(NSString *)encode;
+- (void) logout;
 
 @end

@@ -175,6 +175,7 @@
 		77506A8214C91631000494E5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		77506A8414C9163D000494E5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		77506A8614C9164F000494E5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		7765E88B14E12CBC00F89F60 /* AccountActivityDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountActivityDelegate.h; sourceTree = "<group>"; };
 		777E4D1614DB8D97002B40C3 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
 		777E4D1714DB8D97002B40C3 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
 		777E4D1F14DBB7ED002B40C3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -557,6 +558,7 @@
 				777E4F0714DF99F9002B40C3 /* Account.h */,
 				777E4F0814DF99F9002B40C3 /* Account.m */,
 				777E4F0A14DF9C97002B40C3 /* AccountSessionDelegate.h */,
+				7765E88B14E12CBC00F89F60 /* AccountActivityDelegate.h */,
 			);
 			name = Account;
 			sourceTree = "<group>";
