@@ -7,8 +7,15 @@
 //
 
 #import "MainTabBarViewController.h"
+#import "MTPopupWindow.h"
+
+#import "NSData+Crypto.h"
+#import "NSString+Crypto.h"
+#import "SFHFKeychainUtils.h"
 
 @implementation MainTabBarViewController
+
+@synthesize weibo;
 
 - (void)tabBarController:(UITabBarController *)tbc didSelectViewController:(UIViewController *)vc {
     // Middle tab bar item in question.
@@ -82,6 +89,7 @@
     //[message addSubview:Image];
     
     //[message show];
+
     //[MTPopupWindow showWindowWithHTMLFile:@"testContent.html" insideView:self.view];
     [MTPopupWindow showWindowWithUIView:self.view];
     //[ALToastView toastInView:self.view withText:@"Hello ALToastView"];
@@ -110,6 +118,73 @@
     {
         NSLog(@"or just skip this for now was selected.");
     }
+}
+
+- (void) weiboLogin
+{
+  if( weibo ) { weibo = nil; }
+  
+  weibo = [[WeiBo alloc]initWithAppKey:SinaWeiBoSDKDemo_APPKey 
+                         withAppSecret:SinaWeiBoSDKDemo_APPSecret];
+  weibo.delegate = self;
+  
+  DLog(@"MainTabBarViewController::weiboLogin:weibo=%@", weibo);
+  [weibo startAuthorize];
+}
+
+- (NSString*)stringFromDictionary:(NSDictionary*)info
+{
+	NSMutableArray* pairs = [NSMutableArray array];
+	
+	NSArray* keys = [info allKeys];
+	keys = [keys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+	for (NSString* key in keys) 
+	{
+		if( ([[info objectForKey:key] isKindOfClass:[NSString class]]) == FALSE)
+			continue;
+		
+		[pairs addObject:[NSString stringWithFormat:@"%@=%@", key, [[info objectForKey:key]URLEncodedString]]];
+	}
+	
+	return [pairs componentsJoinedByString:@"&"];
+}
+
+- (void)weiboDidLogin
+{
+	DLog(@"MainTabBarViewController::weiboDidLogin:userID=%@", [weibo userID]);
+	DLog(@"MainTabBarViewController::weiboDidLogin:Token=%@", [weibo accessToken]);
+	DLog(@"MainTabBarViewController::weiboDidLogin:Secret=%@", [weibo accessTokenSecret]);
+  // User logins in using weibo successfully
+  
+  NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                 [weibo accessToken],@"oauth_access_token",
+                                 [weibo accessTokenSecret],@"oauth_access_token_secret",
+                                 [weibo userID],@"oauth_customer_id",
+                                 @"AES",@"oauth_signature_method",
+                                 [NSString stringWithFormat:@"%.0f",[[NSDate date]timeIntervalSince1970]],@"oauth_timestamp",nil];
+	
+	
+	NSString* baseString = [self stringFromDictionary:params];
+	NSString* keyString = [NSString stringWithFormat:@"%@&%@",[SinaWeiBoSDKDemo_APPKey URLEncodedString],[SinaWeiBoSDKDemo_APPSecret URLEncodedString]];
+
+  DLog(@"keyString=%@", keyString);
+  
+  NSData              *plain = [baseString dataUsingEncoding: NSUTF8StringEncoding];
+  NSData              *key = [NSData dataWithBytes: [[keyString sha256] bytes] length: kCCKeySizeAES128];
+  NSData              *cipher = [plain aesEncryptedDataWithKey: key];
+  NSString            *base64 = [cipher base64Encoding];
+  
+  DLog(@"Base 64 encoded = %@",base64);
+  
+  
+  
+  //[SFHFKeychainUtils storeUsername:[weibo userID] andPassword: forServiceName:KassServiceName updateExisting:YES error:nil];
+  
+}
+
+- (void)weiboLoginFailed:(BOOL)userCancelled withError:(NSError*)error
+{
+	DLog(@"MainTabBarViewController::weiboLoginFailed");
 }
 
 @end

@@ -9,6 +9,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Constants.h"
+#import "MainTabBarViewController.h"
 
 @interface MTPopupWindow : NSObject
 //{
@@ -20,6 +21,8 @@
 @property (nonatomic, strong) UIView* signUpView;
 @property (nonatomic, strong) UIView* signInView;
 @property (nonatomic, strong) MTPopupWindow *mtWindow;
+@property (nonatomic, retain) IBOutlet MainTabBarViewController *viewController;
+
 +(void)showWindowWithHTMLFile:(NSString*)fileName insideView:(UIView*)view;
 +(void)showWindowWithUIView:(UIView*)view;
 @end

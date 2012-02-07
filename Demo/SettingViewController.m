@@ -12,7 +12,6 @@
 @implementation SettingViewController
 @synthesize welcomeMessageLabel;
 @synthesize authButton;
-@synthesize weibo = _weibo;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -67,10 +66,10 @@
 
 - (void)login
 {
-  weibo = [[WeiBo alloc]initWithAppKey:SinaWeiBoSDKDemo_APPKey 
-                         withAppSecret:SinaWeiBoSDKDemo_APPSecret];
-	weibo.delegate = self;
-	[weibo startAuthorize];
+//  weibo = [[WeiBo alloc]initWithAppKey:SinaWeiBoSDKDemo_APPKey 
+//                         withAppSecret:SinaWeiBoSDKDemo_APPSecret];
+//	weibo.delegate = self;
+//	[weibo startAuthorize];
   
 //  NSUserDefaults *standardDefaults = [NSUserDefaults standardUserDefaults];
 //  NSString *username = [standardDefaults stringForKey:@"kApplicationUserNameKey"];
@@ -143,9 +142,6 @@
     
     if ([self.authButton.title isEqualToString:UI_BUTTON_LABEL_SIGIN]) {
       
-      //log user in
-      [self login];      
-    
       if ([[VariableStore sharedInstance] signIn]) {
           self.authButton.title = UI_BUTTON_LABEL_SIGOUT;
       }

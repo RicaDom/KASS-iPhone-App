@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "MainTabBarViewController.h"
 
 @implementation AppDelegate
 
@@ -14,9 +15,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  // Override point for customization after application launch. 
-  DLog(@"AppDelegate::didFinishLaunchingWithOptions");
-
+  DLog(@"AppDelegate::didFinishLaunchingWithOptions:rootViewController=%@", self.window.rootViewController);
   // Globally set segment and bar button color;
   //[[UISegmentedControl appearance] setTintColor:[UIColor orangeColor]];
   //[[UIBarButtonItem appearance] setTintColor:[UIColor orangeColor]];
@@ -49,14 +48,24 @@
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
-	DLog(@"AppDelegate::handleOpenURL");
+  MainTabBarViewController *viewController = (MainTabBarViewController *) self.window.rootViewController;
+  DLog(@"AppDelegate::handleOpenURL:url=%@", url);
+	DLog(@"AppDelegate::handleOpenURL:rootViewController=%@", viewController);
+  DLog(@"AppDelegate::openURL:weibo=%@", viewController.weibo);
+  if( [viewController.weibo handleOpenURL:url] )
+		return TRUE;
 	return TRUE;
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-  DLog(@"AppDelegate::openURL");
-  return TRUE;
+  MainTabBarViewController *viewController = (MainTabBarViewController *) self.window.rootViewController;
+  DLog(@"AppDelegate::openURL:url=%@", url);
+	DLog(@"AppDelegate::openURL:rootViewController=%@", viewController);
+  DLog(@"AppDelegate::openURL:weibo=%@", viewController.weibo);
+  if( [viewController.weibo handleOpenURL:url] )
+		return TRUE;
+	return TRUE;
 }
 
 

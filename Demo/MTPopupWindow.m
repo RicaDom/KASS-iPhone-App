@@ -8,6 +8,7 @@
 //
 
 #import "MTPopupWindow.h"
+#import "UIView+ViewController.h"
 
 #define kShadeViewTag 1000
 
@@ -22,6 +23,8 @@
 @synthesize signUpView = _signUpView;
 @synthesize signInView = _signInView;
 @synthesize mtWindow = _mtWindow;
+@synthesize viewController = _viewController;
+
 /**
  * This is a public class method, it opens a popup window and loads the given content
  * @param NSString* fileName provide a file name to load a file from the app resources, or a URL to load a web page
@@ -29,7 +32,8 @@
  */
 +(void)showWindowWithHTMLFile:(NSString*)fileName insideView:(UIView*)view
 {
-    [[MTPopupWindow alloc] initWithSuperview:view andFile:fileName];
+  MTPopupWindow *window = [[MTPopupWindow alloc] initWithSuperview:view andFile:fileName];
+  DLog(@"MTPopupWindow::showWindowWithHTMLFile:window=%@", window);
 }
 
 +(void)showWindowWithUIView:(UIView*)view
@@ -45,13 +49,17 @@
 {
     self = [super init];
     if (self) {
-        // Initialization code here.
-        self.bgView = [[UIView alloc] initWithFrame: sview.bounds];
-        [sview addSubview: self.bgView];
+      
+      // Initialization code here.
+      self.bgView = [[UIView alloc] initWithFrame: sview.bounds];
+      [sview addSubview: self.bgView];
         
-        // retain the current mtWindow
-        self.mtWindow = self;
-        
+      
+      self.viewController = (MainTabBarViewController *)[sview firstAvailableUIViewController];
+      
+      // retain the current mtWindow
+      self.mtWindow = self;
+      
         if (nil == fName) {
             [self performSelector:@selector(doTransitionWithCustomizeView) withObject:nil afterDelay:0.1];
         } else{
@@ -59,6 +67,8 @@
             [self performSelector:@selector(doTransitionWithContentFile:) withObject:fName afterDelay:0.1];
         }
     }
+  
+    DLog(@"MTPopupWindow::initWithSuperview:viewController=%@", _viewController);
     
     return self;
 }
@@ -217,7 +227,8 @@
  */
 -(void)loginWithTwitter
 {
-    NSLog(@"I'm logging with Weibo");
+  NSLog(@"I'm logging with Weibo");
+  [_viewController weiboLogin];
 }
 
 /**
