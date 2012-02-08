@@ -33,7 +33,7 @@ NSMutableArray *currentItems;
   } else {
     currentItems = [VariableStore sharedInstance].mySellingListings;
   }
-  if (self.emptyRecordsImageView) {
+  if (self.emptyRecordsImageView && [currentItems count] > 0) {
     [self.emptyRecordsImageView removeFromSuperview];
     self.emptyRecordsImageView = nil;
   }
@@ -84,6 +84,7 @@ NSMutableArray *currentItems;
     if (self) {
         // Custom initialization
     }
+
     return self;
 }
 
@@ -128,7 +129,7 @@ NSMutableArray *currentItems;
     if ([[VariableStore sharedInstance] isLoggedIn]) {        
         [self.emptyRecordsImageView removeFromSuperview];
         self.emptyRecordsImageView = nil;
-        [self accountLoadData];
+        [self reloadTable];
     } else {
         if (self.emptyRecordsImageView == nil || self.emptyRecordsImageView.image == nil) {
             self.emptyRecordsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default.png"]];
