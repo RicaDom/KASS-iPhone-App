@@ -18,6 +18,7 @@
 @synthesize currentItem = _currentItem;
 @synthesize messageTextField = _messageTextField;
 @synthesize navigationButton = _navigationButton;
+@synthesize messageTableView = _messageTableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -71,6 +72,14 @@
                                 target:self
                                 action:@selector(OnClick_btnBack:)];
     self.navigationItem.leftBarButtonItem = btnBack;  
+    
+//    UIImage *tableHeaderViewImage = [UIImage imageNamed:@"middleRow.png"];
+//    UIImageView *tableHeaderView = [[UIImageView alloc] initWithImage:tableHeaderViewImage];
+//    self.messageTableView.tableHeaderView = tableHeaderView;
+//    
+//    UIImage *tableFooterViewImage = [UIImage imageNamed:@"middleRow.png"];
+//    UIImageView *tableFooterView = [[UIImageView alloc] initWithImage:tableFooterViewImage];
+//    self.messageTableView.tableFooterView = tableFooterView;    
 }
 
 -(IBAction)OnClick_btnBack:(id)sender  {
@@ -135,4 +144,53 @@
         [self.messageTextField resignFirstResponder];
     }
 }
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // #warning Potentially incomplete method implementation.
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // #warning Incomplete method implementation.
+    // Return the number of rows in the section.
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"myCell";
+    UITableViewCell *cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    return cell;
+}
+
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Navigation logic may go here. Create and push another view controller.
+    /*
+     // <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     // ...
+     // Pass the selected object to the new view controller.
+     [self.navigationController pushViewController:detailViewController animated:YES];
+     */
+    NSLog(@"didSelectRowAtIndexPath .... ");
+    
+    // TODO check whether is my post
+    
+    //[self performSegueWithIdentifier:@"showBrowseItem" sender:self];
+    
+    //[self performSegueWithIdentifier:@"showMyItem" sender:self];
+    
+}
+
 @end

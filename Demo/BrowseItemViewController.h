@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "ListItem.h"
 #import "Constants.h"
+#import "PullRefreshTableViewController.h"
 
-@interface BrowseItemViewController : UIViewController 
+@interface BrowseItemViewController : PullRefreshTableViewController 
+//UIViewController <UITableViewDelegate, UITableViewDataSource>
+
 @property (weak, nonatomic) IBOutlet UILabel *itemTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *itemDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *itemPriceLabel;
@@ -19,5 +22,7 @@
 @property (strong, nonatomic) ListItem *currentItem;
 @property (weak, nonatomic) IBOutlet UITextField *messageTextField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *navigationButton;
+@property (strong, nonatomic) IBOutlet UITableView *messageTableView;
+
 - (IBAction)navigationButtonAction:(id)sender;
 @end

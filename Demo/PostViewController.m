@@ -95,50 +95,7 @@
 	hotPostPageControlBeingUsed = YES;
 }
 
-//- (void) touchesEnded: (NSSet *) touches withEvent: (UIEvent *) event 
-//{
-//    if ([self isFirstResponder]){
-//        NSLog(@"Touching first responder");
-//    } else { 
-//        NSLog(@"touching... ");
-//    }
-//    
-//    UITouch *touch = [[event allTouches] anyObject];
-//    
-////    UITouch *touch2 = [touches anyObject];
-////    CGPoint tapLocation = [touch2 locationInView:self];
-////    NSLog(@"Post Location: %@", tapLocation);
-//    if ([touch view] == self.hotPostScrollView) {
-//        NSLog(@"touching... hotPostScrollView...");
-//        // do stuff here
-//    }
-//    // Process the single tap here
-//    
-//}
-//
-//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-//    // assign a UITouch object to the current touch
-//    UITouch *touch = [[event allTouches] anyObject];
-//     NSLog(@"touching... 1hotPostScrollView...");
-//    // if the view in which the touch is found is myScrollView
-//    // (assuming myScrollView is the UIScrollView and is a subview of the UIView)
-//    if ([touch view] == self.hotPostScrollView) {
-//        NSLog(@"touching... hotPostScrollView...");
-//        // do stuff here
-//    }
-//}
-//
-//- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
-//{
-//    NSLog(@"hitTest:withEvent called :");
-//    NSLog(@"Event: %@", event);
-//    NSLog(@"Point: %@", NSStringFromCGPoint(point));
-//    NSLog(@"Event Type: %d", event.type);
-//    NSLog(@"Event SubType: %d", event.subtype);
-//    NSLog(@"---");
-//    return nil;
-//    //return [super hitTest:point withEvent:event];
-//}
+
 
 - (void)singleTapGestureCaptured:(UITapGestureRecognizer *)gesture
 { 
@@ -195,17 +152,6 @@
     
     // HOT POST EXAMPLES:
 	hotPostPageControlBeingUsed = NO;	
-//	NSArray *colors = [NSArray arrayWithObjects:[UIColor redColor], [UIColor greenColor], [UIColor blueColor], nil];
-//	for (int i = 0; i < colors.count; i++) {
-//		CGRect frame;
-//		frame.origin.x = self.hotPostScrollView.frame.size.width * i;
-//		frame.origin.y = 0;
-//		frame.size = self.hotPostScrollView.frame.size;
-//		
-//		UIView *subview = [[UIView alloc] initWithFrame:frame];
-//		subview.backgroundColor = [colors objectAtIndex:i];
-//		[self.hotPostScrollView addSubview:subview];
-//	}
     CGRect frame;
     frame.origin.x = self.hotPostScrollView.frame.size.width * 0;
     frame.origin.y = 0;

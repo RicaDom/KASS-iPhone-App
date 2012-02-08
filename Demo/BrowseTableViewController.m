@@ -289,6 +289,14 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    NSLog(@"didSelectRowAtIndexPath .... ");
+    
+    // TODO check whether is my post
+    
+    [self performSegueWithIdentifier:@"showBrowseItem" sender:self];
+    
+    //[self performSegueWithIdentifier:@"showMyItem" sender:self];
+    
 }
 
 - (IBAction)browseSegmentAction:(id)sender {
