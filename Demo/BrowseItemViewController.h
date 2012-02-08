@@ -11,7 +11,8 @@
 #import "Constants.h"
 #import "PullRefreshTableViewController.h"
 
-@interface BrowseItemViewController : PullRefreshTableViewController 
+@interface BrowseItemViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+//PullRefreshTableViewController 
 //UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UILabel *itemTitleLabel;

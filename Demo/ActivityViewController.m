@@ -13,7 +13,7 @@
 @synthesize emptyRecordsImageView = _emptyRecordsImageView;
 @synthesize listingsTableView = _listingsTableView;
 
-NSMutableArray *buyingItems, *sellingItems, *currentItems;
+NSMutableArray *currentItems;
 
 - (IBAction)activityChanged:(id)sender {
   [self reloadTable];
@@ -29,9 +29,9 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
 {
   DLog(@"ActivityViewController::reloadTable");
   if ( 0 == activitySegment.selectedSegmentIndex) {
-    currentItems = buyingItems;
+    currentItems = [VariableStore sharedInstance].myBuyingListings;
   } else {
-    currentItems = sellingItems;
+    currentItems = [VariableStore sharedInstance].mySellingListings;
   }
   if (self.emptyRecordsImageView) {
     [self.emptyRecordsImageView removeFromSuperview];
@@ -45,7 +45,7 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
 {
   DLog(@"ActivityViewController::getBuyingItems");
   Listing *listing = [[Listing alloc] initWithData:data];
-  buyingItems = [listing listItems];
+  [VariableStore sharedInstance].myBuyingListings = [listing listItems];
   [self reloadTable];
 }
 
@@ -54,7 +54,7 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
 {
   DLog(@"ActivityViewController::getSellingItems");
   Listing *listing = [[Listing alloc] initWithData:data];
-  sellingItems = [listing listItems];
+  [VariableStore sharedInstance].mySellingListings = [listing listItems];
   [self reloadTable];
 }
 
@@ -128,6 +128,7 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
     if ([[VariableStore sharedInstance] isLoggedIn]) {        
         [self.emptyRecordsImageView removeFromSuperview];
         self.emptyRecordsImageView = nil;
+        [self accountLoadData];
     } else {
         if (self.emptyRecordsImageView == nil || self.emptyRecordsImageView.image == nil) {
             self.emptyRecordsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default.png"]];
