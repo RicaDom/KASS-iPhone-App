@@ -19,6 +19,12 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
   [self reloadTable];
 }
 
+- (void) accountLoadData
+{
+  DLog(@"ActivityViewController::accountLoadData");
+  [self setupArray];
+}
+
 - (void)reloadTable
 {
   DLog(@"ActivityViewController::reloadTable");
@@ -27,6 +33,11 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
   } else {
     currentItems = sellingItems;
   }
+  if (self.emptyRecordsImageView) {
+    [self.emptyRecordsImageView removeFromSuperview];
+    self.emptyRecordsImageView = nil;
+  }
+  
   [self.tableView reloadData];
 }
 
@@ -38,38 +49,22 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
   [self reloadTable];
 }
 
+
+- (void)getSellingItems:(NSData *)data
+{
+  DLog(@"ActivityViewController::getSellingItems");
+  Listing *listing = [[Listing alloc] initWithData:data];
+  sellingItems = [listing listItems];
+  [self reloadTable];
+}
+
 -(void)setupArray{
-    
-  // buying items
   // sample data
-  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getBuyingItems:"];
+  KassApi *ka  = [[KassApi alloc]initWithPerformerAndAction:self:@"getBuyingItems:"];
   [ka getAccountListings];
   
-  ListItem *item = [ListItem new];
-  // selling items
-  sellingItems = [NSMutableArray new];
-
-  item = [ListItem new];
-  [item setTitle:@"gently used kindle"];
-  [item setDescription:@"good condition with wifi"];
-  item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
-                   [[NSNumber numberWithFloat:89.75f] decimalValue]];
-  
-  [sellingItems addObject:item];
-  
-  item = [ListItem new];
-  [item setTitle:@"games for ps3"];
-  [item setDescription:@"any shooting games"];
-  item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
-                   [[NSNumber numberWithFloat:18.55f] decimalValue]];
-  
-  [sellingItems addObject:item];
-  
-  if ( 0 == activitySegment.selectedSegmentIndex) {
-      currentItems = buyingItems;
-  } else {
-      currentItems = sellingItems;
-  }
+  KassApi *ka2 = [[KassApi alloc]initWithPerformerAndAction:self:@"getSellingItems:"];
+  [ka2 getAccountListings]; //TODO: this will change to get selling stuff
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -105,8 +100,11 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  [self setupArray];
+  
   self.navigationController.navigationBar.tintColor = [UIColor brownColor];  
+  if ( ![VariableStore sharedInstance].user.delegate ) {
+    [VariableStore sharedInstance].user.delegate = self;
+  }
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -126,11 +124,10 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
 
 - (void)viewWillAppear:(BOOL)animated
 {
+//  DLog(@"VariableStore=%@,userid=%@",[VariableStore sharedInstance], [VariableStore sharedInstance].user.userId);
     if ([[VariableStore sharedInstance] isLoggedIn]) {        
-        [self setupArray];
         [self.emptyRecordsImageView removeFromSuperview];
         self.emptyRecordsImageView = nil;
-        [self.tableView reloadData];
     } else {
         if (self.emptyRecordsImageView == nil || self.emptyRecordsImageView.image == nil) {
             self.emptyRecordsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default.png"]];
@@ -143,7 +140,7 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+  [super viewDidAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -233,9 +230,7 @@ NSMutableArray *buyingItems, *sellingItems, *currentItems;
 - (void)addItem {
     // TODO
     // Adding item to the list
-    
-    [self.tableView reloadData];
-    
+    [self setupArray];
     [self stopLoading];
 }
 

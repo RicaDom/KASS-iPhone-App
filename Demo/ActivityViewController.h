@@ -13,8 +13,9 @@
 #import "VariableStore.h"
 #import "ListingTableCell.h"
 #import "PullRefreshTableViewController.h"
+#import "AccountActivityDelegate.h"
 
-@interface ActivityViewController : PullRefreshTableViewController 
+@interface ActivityViewController : PullRefreshTableViewController <AccountActivityDelegate>
 {
     __weak IBOutlet UISegmentedControl *activitySegment;
 }
@@ -27,5 +28,6 @@
 - (void)setupArray;
 - (void)reloadTable;
 - (void)getBuyingItems:(NSData *)data;
+- (void)getSellingItems:(NSData *)data;
 
 @end

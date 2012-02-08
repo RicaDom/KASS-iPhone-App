@@ -89,7 +89,6 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
   
   [priceItems addObject:item];
     
-  [self reloadTable];
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
