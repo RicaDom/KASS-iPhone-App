@@ -22,4 +22,9 @@ extern NSString * const UI_BUTTON_LABEL_SIGIN;
 extern NSString * const UI_BUTTON_LABEL_SIGOUT;
 extern NSString * const UI_BUTTON_LABEL_TWITTER_SIGNIN;
 extern NSString * const UI_BUTTON_LABEL_SIGNUP;
+extern NSString * const UI_BUTTON_LABEL_SEND;
+extern NSString * const UI_BUTTON_LABEL_SHARE;
+
+// NSNotification Center
+extern NSString * const CHANGED_PRICE_NOTIFICATION;
 @end

@@ -79,8 +79,8 @@
     ListItem *item = [ListItem new];
     
     item = [ListItem new];
-    [item setTitle:@"gently used kindle"];
-    [item setDescription:@"good condition with wifi"];
+    [item setTitle:@"求购2012年东方卫视跨年演唱会门票"];
+    [item setDescription:@"听说有很多明星，阵容强大啊，求门票啊~~ 听说有很多明星，阵容强大啊，求门票啊~~ 听说有很多明星，阵容强大啊，求门票啊~~"];
     item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
                      [[NSNumber numberWithFloat:89.75f] decimalValue]];
     
@@ -94,8 +94,8 @@
     [self.allListings addObject:item];
     
     item = [ListItem new];
-    [item setTitle:@"games for ps3"];
-    [item setDescription:@"any shooting games"];
+    [item setTitle:@"什么都不想吃了……给我找辆车让我回家吧"];
+    [item setDescription:@"什么都不想吃了……给我找辆车让我回家吧 什么都不想吃了……给我找辆车让我回家吧 什么都不想吃了……给我找辆车让我回家吧"];
     
     [comps setDay:29];
     [comps setMonth:1];

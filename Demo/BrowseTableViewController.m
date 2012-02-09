@@ -149,6 +149,8 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
   DLog(@"BrowseTableViewController::viewDidLoad ");
   [super viewDidLoad];
   [self locateMe];
+
+  [self setupArray];
 	//
 	// Create a header view. Wrap it in a container to allow us to position
 	// it better.
@@ -291,8 +293,11 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
     NSLog(@"didSelectRowAtIndexPath .... ");
     
     // TODO check whether is my post
-    
-    [self performSegueWithIdentifier:@"showBrowseItem" sender:self];
+    if(indexPath.row%2 == 0) {
+        [self performSegueWithIdentifier:@"showBrowseItem" sender:self];
+    } else {
+        [self performSegueWithIdentifier:@"showBrowseItemNoMessage" sender:self];
+    }
     
     //[self performSegueWithIdentifier:@"showMyItem" sender:self];
     
@@ -300,5 +305,11 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
 
 - (IBAction)browseSegmentAction:(id)sender {
   [self reloadTable];
+}
+
+// call back from BrowseItemNoMsgViewController
+- (void)switchBrowseItemView 
+{
+    [self performSegueWithIdentifier:@"showBrowseItem" sender:self];
 }
 @end

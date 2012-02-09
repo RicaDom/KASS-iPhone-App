@@ -21,4 +21,8 @@ NSString * const UI_BUTTON_LABEL_SIGIN = @"登陆";
 NSString * const UI_BUTTON_LABEL_SIGOUT = @"注销";
 NSString * const UI_BUTTON_LABEL_TWITTER_SIGNIN = @"用微博登陆";
 NSString * const UI_BUTTON_LABEL_SIGNUP = @"注册";
+NSString * const UI_BUTTON_LABEL_SEND = @"发送";
+NSString * const UI_BUTTON_LABEL_SHARE = @"分享";
+
+NSString * const CHANGED_PRICE_NOTIFICATION = @"CHANGED_PRICE_NOTIFICATION";
 @end

@@ -18,7 +18,9 @@
 @synthesize currentItem = _currentItem;
 @synthesize messageTextField = _messageTextField;
 @synthesize navigationButton = _navigationButton;
-@synthesize messageTableView = _messageTableView;
+@synthesize scrollView = _scrollView;
+@synthesize pull = _pull;
+@synthesize tpScrollView = _tpScrollView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,10 +49,60 @@
 */
 
 
+-(void)loadMessageView
+{
+    CGFloat yOffset = 155;
+    
+    UIImage *line = [UIImage imageNamed:@"line.png"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:line];
+    imageView.frame = CGRectMake(3, yOffset + 10, imageView.frame.size.width, imageView.frame.size.height);
+    [self.scrollView addSubview:imageView];
+    yOffset += 10;
+    
+    for (int i=0;i<20;i++) {
+        yOffset += 5;
+        UILabel* lblHeaderTitle = [[UILabel alloc] initWithFrame:CGRectMake(8, yOffset, 310, 21)];
+        [lblHeaderTitle setTextAlignment:UITextAlignmentLeft];
+        //[lblHeaderTitle setFont:[UIFont fontWithName:@"Helvetica-Bold" size:16.0f]];
+        [lblHeaderTitle setBackgroundColor:[UIColor lightGrayColor]];
+        
+        if (i%2 == 1) {
+            [lblHeaderTitle setText:@"买家： 便宜你妹。"];
+        } else {
+            [lblHeaderTitle setText:@"您： 出价太便宜了。"]; 
+        }
+
+        [lblHeaderTitle setTextColor:[UIColor blackColor]];
+        
+        [self.scrollView addSubview:lblHeaderTitle];
+        
+        UIImage *line = [UIImage imageNamed:@"line.png"];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:line];
+        imageView.frame = CGRectMake(3, yOffset + 25, imageView.frame.size.width, imageView.frame.size.height);
+        [self.scrollView addSubview:imageView];
+        
+        //INCREMNET in yOffset 
+        yOffset += 30;
+        
+        [self.scrollView setContentSize:CGSizeMake(320, yOffset)];    
+    }
+}
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.pull = [[PullToRefreshView alloc] initWithScrollView:self.scrollView];
+    [self.pull setDelegate:self];
+    [self.scrollView addSubview:self.pull];
+    [self loadMessageView];
+    
+//    self.scrollView.scrollEnabled = NO;
+//    self.scrollView.scrollEnabled = YES;
+//    self.pull = [[PullToRefreshView alloc] initWithScrollView:self.tpScrollView];
+//    [self.pull setDelegate:self];
+//    [self.tpScrollView addSubview:self.pull];    
+    
     self.itemTitleLabel.text = self.currentItem.title;
     self.itemDescriptionLabel.text = self.currentItem.description;
     self.itemPriceLabel.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
@@ -80,10 +132,28 @@
 //    UIImage *tableFooterViewImage = [UIImage imageNamed:@"middleRow.png"];
 //    UIImageView *tableFooterView = [[UIImageView alloc] initWithImage:tableFooterViewImage];
 //    self.messageTableView.tableFooterView = tableFooterView;    
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveTestNotification:) 
+                                                 name:CHANGED_PRICE_NOTIFICATION
+                                               object:nil];
+}
+
+- (void) receiveTestNotification:(NSNotification *) notification
+{
+    // [notification name] should always be @"TestNotification"
+    // unless you use this method for observation of other notifications
+    // as well.
+    
+    if ([[notification name] isEqualToString:CHANGED_PRICE_NOTIFICATION]) {
+        
+        self.itemPriceChangedToLabel.text = (NSString *)[notification object];
+        NSLog (@"Successfully received the test notification! %@", (NSString *)[notification object]);
+    }
 }
 
 -(IBAction)OnClick_btnBack:(id)sender  {
-    if (self.navigationItem.leftBarButtonItem.title == UI_BUTTON_LABEL_BACK) {
+    if ([self.navigationItem.leftBarButtonItem.title isEqualToString:UI_BUTTON_LABEL_BACK]) {
         [self.navigationController popViewControllerAnimated:YES];
     } else {
         [self.messageTextField resignFirstResponder];
@@ -99,6 +169,7 @@
     [self setItemPriceLabel:nil];
     [self setItemExpiredDate:nil];
     [self setItemPriceChangedToLabel:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:CHANGED_PRICE_NOTIFICATION object:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -135,7 +206,7 @@
 }
 
 - (IBAction)navigationButtonAction:(id)sender {
-    if (self.navigationButton.title == UI_BUTTON_LABEL_MAP) {
+    if ([self.navigationButton.title isEqualToString:UI_BUTTON_LABEL_MAP]) {
         [self performSegueWithIdentifier: @"dealMapModal" 
                                   sender: self];
     } else if (self.navigationButton.title == UI_BUTTON_LABEL_SUBMIT) {
@@ -145,52 +216,27 @@
     }
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+-(void)stopLoading
 {
-    // #warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 1;
+	[self.pull finishedLoading];
 }
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+// called when the user pulls-to-refresh
+- (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view
 {
-    // #warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    [self performSelector:@selector(stopLoading) withObject:nil afterDelay:2.0];	
 }
+// called when the date shown needs to be updated, optional
+//- (NSDate *)pullToRefreshViewLastUpdated:(PullToRefreshView *)view
+//{
+//    
+//}
 
-- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"myCell";
-    UITableViewCell *cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"changedPriceSegue"]) {
+        UINavigationController *navigationController = segue.destinationViewController;
+        OfferChangingPriceViewController *ovc = (OfferChangingPriceViewController *)navigationController.topViewController;
+        ovc.currentPrice = self.itemPriceLabel.text;
     }
-    return cell;
-}
-
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     // <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-    NSLog(@"didSelectRowAtIndexPath .... ");
-    
-    // TODO check whether is my post
-    
-    //[self performSegueWithIdentifier:@"showBrowseItem" sender:self];
-    
-    //[self performSegueWithIdentifier:@"showMyItem" sender:self];
-    
 }
 
 @end
