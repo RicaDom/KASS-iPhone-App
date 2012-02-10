@@ -50,6 +50,7 @@
 - (BOOL) signInAccount:(NSString *)email:(NSString *)password
 {
   DLog(@"VariableStore::signInAccount:email=%@,password=%@",email,password);
+  if(!self.user) self.user = [[User alloc] init];
   [self.user accountLogin:email:password];
   return YES;
 }
@@ -57,6 +58,7 @@
 - (BOOL) signInWeibo
 {
   DLog(@"VariableStore::signInWeibo");
+  if(!self.user) self.user = [[User alloc] init];
   [self.user weiboLogin];
   return YES;
 }
