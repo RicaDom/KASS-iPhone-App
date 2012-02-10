@@ -160,6 +160,8 @@ headerFieldsInfo = _headerFieldsInfo;
 - (id)parseJsonResponse:(NSData *)data error:(NSError **)error {
 	
 	NSString* responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//  DLog(@"WBRequest::parseJsonResponse:responseString=%@", responseString);
+
 	SBJSON *jsonParser = [[SBJSON alloc]init];
 	
 	NSError* parserError = nil;
@@ -205,6 +207,8 @@ headerFieldsInfo = _headerFieldsInfo;
 	
 	NSError* error = nil;
 	id result = [self parseJsonResponse:data error:&error];
+  
+//  DLog(@"WBRequest::handleResponseData:result=%@", result);
 	
 	if (error) 
 	{
@@ -228,7 +232,7 @@ headerFieldsInfo = _headerFieldsInfo;
 	
 	if ([_delegate respondsToSelector:@selector(requestLoading:)]) 
 	{
-		[_delegate requestLoading:self];
+		[_delegate requestLoading:self];//LOADINGKASS
 	}
 	
 	NSString* url = [[self class] serializeURL:_url params:_params httpMethod:_httpMethod];
@@ -272,8 +276,15 @@ headerFieldsInfo = _headerFieldsInfo;
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
 	_responseText = [[NSMutableData alloc] init];
-	
+  
+  
 	NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+  
+  
+  
+//	DLog(@"WBRequest::didReceiveResponse:response=%@", [httpResponse statusCode]);
+  
+  
 	if ([_delegate respondsToSelector:
 		 @selector(request:didReceiveResponse:)]) {
 		[_delegate request:self didReceiveResponse:httpResponse];
@@ -281,6 +292,8 @@ headerFieldsInfo = _headerFieldsInfo;
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+//	DLog(@"WBRequest::didReceiveData:data=%@", data);
+
 	[_responseText appendData:data];
 }
 

@@ -20,6 +20,23 @@
 @synthesize email = _email;
 @synthesize phone = _phone;
 
+- (NSString*)stringFromDictionary:(NSDictionary*)info
+{
+	NSMutableArray* pairs = [NSMutableArray array];
+	
+	NSArray* keys = [info allKeys];
+	keys = [keys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+	for (NSString* key in keys) 
+	{
+		if( ([[info objectForKey:key] isKindOfClass:[NSString class]]) == FALSE)
+			continue;
+		
+		[pairs addObject:[NSString stringWithFormat:@"%@=%@", key, [[info objectForKey:key]URLEncodedString]]];
+	}
+	
+	return [pairs componentsJoinedByString:@"&"];
+}
+
 
 - (void) accountLogin:(NSString *)email:(NSString *)password
 {
@@ -30,7 +47,7 @@
   [account login];
 }
 
-- (void) accountWeiboLogin:(NSString *)encode
+- (void) accountWeiboLoginRequest:(NSString *)encode
 {
   if (account) {account = nil; }
   account = [[Account alloc]initWithWeiboEncodedData:encode];
@@ -38,6 +55,40 @@
   DLog(@"User::accountWeiboLogin:account=%@", account);
   [account login];
 }
+
+- (void) accountWeiboLogin:(NSDictionary*)userInfo
+{
+  NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                 [userInfo objectForKey:@"screen_name"], @"name",
+                                 [userInfo objectForKey:@"profile_image_url"], @"image",
+                                 [userInfo objectForKey:@"id"], @"uid",
+                                 [userInfo objectForKey:@"location"], @"location",
+                                 [userInfo objectForKey:@"name"], @"real_name",
+                                 [userInfo objectForKey:@"gender"], @"gender",
+                                 [userInfo objectForKey:@"description"], @"description", 
+                                 [weibo accessToken],@"oauth_access_token",
+                                 [weibo accessTokenSecret],@"oauth_access_token_secret",
+                                 [weibo userID],@"oauth_customer_id",
+                                 @"AES",@"oauth_signature_method",
+                                 [NSString stringWithFormat:@"%.0f",[[NSDate date]timeIntervalSince1970]],@"oauth_timestamp",nil];
+	
+	
+	NSString* baseString = [self stringFromDictionary:params];
+	NSString* keyString = [NSString stringWithFormat:@"%@&%@",[SinaWeiBoSDKDemo_APPKey URLEncodedString],[SinaWeiBoSDKDemo_APPSecret URLEncodedString]];
+  
+  //DLog(@"keyString=%@", keyString);
+  
+  NSData              *plain = [baseString dataUsingEncoding: NSUTF8StringEncoding];
+  NSData              *key = [NSData dataWithBytes: [[keyString sha256] bytes] length: kCCKeySizeAES128];
+  NSData              *cipher = [plain aesEncryptedDataWithKey: key];
+  NSString            *base64 = [cipher base64Encoding];
+  
+  [self accountWeiboLoginRequest:base64];
+  
+  //DLog(@"Base 64 encoded = %@",base64);
+  //[SFHFKeychainUtils storeUsername:[weibo userID] andPassword: forServiceName:KassServiceName updateExisting:YES error:nil];
+}
+
 
 - (void) accountDidLogin
 {
@@ -79,51 +130,38 @@
   [weibo startAuthorize];
 }
 
-- (NSString*)stringFromDictionary:(NSDictionary*)info
-{
-	NSMutableArray* pairs = [NSMutableArray array];
-	
-	NSArray* keys = [info allKeys];
-	keys = [keys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
-	for (NSString* key in keys) 
-	{
-		if( ([[info objectForKey:key] isKindOfClass:[NSString class]]) == FALSE)
-			continue;
-		
-		[pairs addObject:[NSString stringWithFormat:@"%@=%@", key, [[info objectForKey:key]URLEncodedString]]];
-	}
-	
-	return [pairs componentsJoinedByString:@"&"];
-}
-
 - (void)weiboDidLogin
 {
-	DLog(@"User::weiboDidLogin:userID=%@", [weibo userID]);
+  DLog(@"User::weiboDidLogin:userID=%@", [weibo userID]);
 	DLog(@"User::weiboDidLogin:Token=%@", [weibo accessToken]);
 	DLog(@"User::weiboDidLogin:Secret=%@", [weibo accessTokenSecret]);
-  // User logins in using weibo successfully
   
-  NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                 [weibo accessToken],@"oauth_access_token",
-                                 [weibo accessTokenSecret],@"oauth_access_token_secret",
-                                 [weibo userID],@"oauth_customer_id",
-                                 @"AES",@"oauth_signature_method",
-                                 [NSString stringWithFormat:@"%.0f",[[NSDate date]timeIntervalSince1970]],@"oauth_timestamp",nil];
-	
-	
-	NSString* baseString = [self stringFromDictionary:params];
-	NSString* keyString = [NSString stringWithFormat:@"%@&%@",[SinaWeiBoSDKDemo_APPKey URLEncodedString],[SinaWeiBoSDKDemo_APPSecret URLEncodedString]];
+  //get user info users/show/#{uid}.json?source=#{@api_key}
+  NSString* showUserString = [NSString stringWithFormat:@"users/show/%@.json", [weibo userID] ];
   
-  //DLog(@"keyString=%@", keyString);
+  NSMutableDictionary* showUserparams = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                 [SinaWeiBoSDKDemo_APPKey URLEncodedString],@"source",nil];
   
-  NSData              *plain = [baseString dataUsingEncoding: NSUTF8StringEncoding];
-  NSData              *key = [NSData dataWithBytes: [[keyString sha256] bytes] length: kCCKeySizeAES128];
-  NSData              *cipher = [plain aesEncryptedDataWithKey: key];
-  NSString            *base64 = [cipher base64Encoding];
+  WBRequest* wbRequest = [weibo requestWithMethodName:showUserString 
+                  andParams:showUserparams 
+                 andHttpMethod:@"GET" 
+                   andDelegate:self];
   
-  //DLog(@"Base 64 encoded = %@",base64);
-  //[SFHFKeychainUtils storeUsername:[weibo userID] andPassword: forServiceName:KassServiceName updateExisting:YES error:nil];
-  [self accountWeiboLogin:base64];
+  DLog(@"User::weiboDidLogin:wbRequestUserInfo:%@", wbRequest);
+}
+
+
+//Received weibo request result
+- (void)request:(WBRequest *)request didLoad:(id)result
+{
+//  DLog(@"User::didLoad:result=%@", result);
+  
+  if( [result isKindOfClass:[NSDictionary class]] && [result objectForKey:@"screen_name"] && [result objectForKey:@"id"]){
+    [self accountWeiboLogin:result];
+  }
+  else{
+    [self logout];
+  }
 }
 
 - (void)weiboLoginFailed:(BOOL)userCancelled withError:(NSError*)error
