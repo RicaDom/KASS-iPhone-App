@@ -25,6 +25,7 @@
 - (IBAction)browseSegmentAction:(id)sender;
 - (void)setupArray;
 - (void)reloadTable;
+- (void)switchBrowseItemView;
 
 - (void)getNearbyItems:(NSData *)data;
 

@@ -9,6 +9,8 @@
 #import "OfferChangingPriceViewController.h"
 
 @implementation OfferChangingPriceViewController
+
+@synthesize currentPrice = _currentPrice;
 @synthesize offerPriceTextField = _offerPriceTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -43,8 +45,8 @@
 {
     [super viewDidLoad];
     self.navigationController.navigationBar.tintColor = [UIColor brownColor];
+    self.offerPriceTextField.placeholder = self.currentPrice;
     [self.offerPriceTextField becomeFirstResponder];
- 
 }
 
 
@@ -67,6 +69,12 @@
 }
 
 - (IBAction)doneChangingPriceAction:(id)sender {
+    if (self.offerPriceTextField.text.length > 0) {
+        [[NSNotificationCenter defaultCenter] 
+         postNotificationName:CHANGED_PRICE_NOTIFICATION 
+         object:self.offerPriceTextField.text];
+    }
+    
     [self.presentingViewController dismissModalViewControllerAnimated:YES];
 }
 @end

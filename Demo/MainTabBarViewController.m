@@ -51,6 +51,7 @@
   NSLog(@"MainTabBarViewController::viewDidAppear ");
   if ( ![[VariableStore sharedInstance] isLoggedIn]) {
     [self showMessage];
+    [MTPopupWindow showWindowWithUIView:self.view];
   }
 }
 
@@ -88,7 +89,7 @@
     //[message show];
 
     //[MTPopupWindow showWindowWithHTMLFile:@"testContent.html" insideView:self.view];
-    [MTPopupWindow showWindowWithUIView:self.view];
+    //[MTPopupWindow showWindowWithUIView:self.view];
     //[ALToastView toastInView:self.view withText:@"Hello ALToastView"];
 }
 

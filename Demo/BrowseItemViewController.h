@@ -9,11 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "ListItem.h"
 #import "Constants.h"
-#import "PullRefreshTableViewController.h"
-
-@interface BrowseItemViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
-//PullRefreshTableViewController 
-//UIViewController <UITableViewDelegate, UITableViewDataSource>
+#import "PullToRefreshView.h"
+#import "OfferChangingPriceViewController.h"
+#import "TPKeyboardAvoidingScrollView.h"
+@interface BrowseItemViewController : UIViewController <UIScrollViewDelegate, PullToRefreshViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *itemTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *itemDescriptionLabel;
@@ -23,7 +22,9 @@
 @property (strong, nonatomic) ListItem *currentItem;
 @property (weak, nonatomic) IBOutlet UITextField *messageTextField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *navigationButton;
-@property (strong, nonatomic) IBOutlet UITableView *messageTableView;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet TPKeyboardAvoidingScrollView *tpScrollView;
+@property (strong, nonatomic) PullToRefreshView *pull;
 
 - (IBAction)navigationButtonAction:(id)sender;
 @end
