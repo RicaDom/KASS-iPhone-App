@@ -51,6 +51,7 @@
   NSLog(@"MainTabBarViewController::viewDidAppear ");
   if ( ![[VariableStore sharedInstance] isLoggedIn]) {
     [self showMessage];
+    [MTPopupWindow showWindowWithUIView:self.view];
   }
 }
 

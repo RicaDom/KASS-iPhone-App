@@ -28,7 +28,7 @@
 
 - (void) weiboLogin;
 - (void) accountLogin:(NSString *)email:(NSString *)password;
-- (void) accountWeiboLogin:(NSString *)encode;
 - (void) logout;
+
 
 @end

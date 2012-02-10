@@ -17,3 +17,4 @@
 
  * Added asi-http-request for REST requests - @he9qi
  * Added SBJson for parsing json - @he9qi 
+ * Added SinaWeibo for login using weibo - @he9qi 

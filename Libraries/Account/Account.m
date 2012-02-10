@@ -112,8 +112,8 @@
   // remove the info stored in the keychain.
   [SFHFKeychainUtils deleteItemForUsername:_email andServiceName:KassServiceName error:nil];
   
-  // remove the info in the memory.
-  //
+  // TODO also need to logout server
+  
   if( [_delegate respondsToSelector:@selector(accountDidLogout)] )
 		[_delegate accountDidLogout];
 }
