@@ -76,7 +76,7 @@
 	NSString* baseString = [self stringFromDictionary:params];
 	NSString* keyString = [NSString stringWithFormat:@"%@&%@",[SinaWeiBoSDKDemo_APPKey URLEncodedString],[SinaWeiBoSDKDemo_APPSecret URLEncodedString]];
   
-  //DLog(@"keyString=%@", keyString);
+//  DLog(@"baseString=%@", baseString);
   
   NSData              *plain = [baseString dataUsingEncoding: NSUTF8StringEncoding];
   NSData              *key = [NSData dataWithBytes: [[keyString sha256] bytes] length: kCCKeySizeAES128];
@@ -85,7 +85,7 @@
   
   [self accountWeiboLoginRequest:base64];
   
-  //DLog(@"Base 64 encoded = %@",base64);
+//  DLog(@"Base 64 encoded = %@",base64);
   //[SFHFKeychainUtils storeUsername:[weibo userID] andPassword: forServiceName:KassServiceName updateExisting:YES error:nil];
 }
 
