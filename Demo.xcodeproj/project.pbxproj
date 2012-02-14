@@ -1092,15 +1092,12 @@
 				E5B2E09814E0F2CB007AB372 /* PullRefreshTableViewController.m in Sources */,
 				E53C868914E2923300A01D6F /* PullToRefreshView.m in Sources */,
 				E50E763E14E3ACEC00219A32 /* BrowseItemNoMsgViewController.m in Sources */,
-<<<<<<< HEAD
 				E50E765614E504E200219A32 /* ListingMapAnnotaion.m in Sources */,
 				E50E765D14E50F3000219A32 /* ListingImageAnnotationView.m in Sources */,
 				E5B3AC5014E9234700CD4C67 /* Offer.m in Sources */,
 				E5B3AC5414E9238100CD4C67 /* Message.m in Sources */,
-=======
 				77F5999014E8075100CE96C3 /* LocateMeManager.m in Sources */,
 				77F5999414E8155A00CE96C3 /* NSObject+LocateMe.m in Sources */,
->>>>>>> 003ca5ca3b121a3398c46cfc8616a6dbabd5ca28
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
