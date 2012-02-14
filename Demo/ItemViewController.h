@@ -14,5 +14,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *itemTitle;
 @property (weak, nonatomic) IBOutlet UILabel *itemDescription;
 @property (nonatomic, strong) ListItem *currentItem;
+@property (strong, nonatomic) IBOutlet UIScrollView *infoScrollView;
+@property (strong, nonatomic) IBOutlet UITableView *offerTableView;
 
+- (IBAction)backButtonAction:(id)sender;
+- (IBAction)editAction:(id)sender;
+- (IBAction)shareAction:(id)sender;
 @end

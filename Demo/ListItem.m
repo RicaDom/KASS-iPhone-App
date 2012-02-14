@@ -17,6 +17,9 @@
 @synthesize picFileName = _picFileName;
 @synthesize data = _data;
 @synthesize postDuration = _postDuration;
+@synthesize dbId = _dbId;
+@synthesize offers = _offers;
+@synthesize location = _location;
 
 - (id) initWithDictionary:(NSDictionary *) theDictionary
 {

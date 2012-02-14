@@ -8,17 +8,22 @@
 
 #import <Foundation/Foundation.h>
 #import "KassApi.h"
+#import "Location.h"
+#import "Offer.h"
 
 @interface ListItem : NSObject
 
+@property (nonatomic, strong) NSString *dbId;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *description;
 @property (nonatomic, strong) NSDate *postedDate;
 @property (nonatomic, strong) NSDecimalNumber *askPrice;
 @property (nonatomic, strong) NSString *picFileName;
 @property (nonatomic, strong) NSNumber *postDuration;  // in minutes??
+@property (nonatomic, strong) Location *location;
+@property (nonatomic, strong) NSMutableArray *offers;
 
-@property (nonatomic, retain) NSData   *data;
+@property (nonatomic, strong) NSData   *data;
 
 - (id) initWithDictionary:(NSDictionary *) theDictionary;
 - (id) initWithData:(NSData *) theData;

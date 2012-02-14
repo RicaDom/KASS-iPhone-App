@@ -69,8 +69,8 @@ NSMutableArray *currentItems;
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"ShowItem"]) {
-        ItemViewController *ivc = [segue destinationViewController];
-        
+        UINavigationController *nc = [segue destinationViewController];
+        ItemViewController *ivc = (ItemViewController *)nc.topViewController;
         NSIndexPath *path = [self.tableView indexPathForSelectedRow];
         int row = [path row];
         ListItem *item = [currentItems objectAtIndex:row];

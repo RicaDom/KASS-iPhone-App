@@ -11,6 +11,4 @@
 
 @interface MainTabBarViewController : UITabBarController <UIAlertViewDelegate, UITabBarControllerDelegate>
 
-- (void) showMessage;
-
 @end

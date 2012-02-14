@@ -72,10 +72,11 @@
                                  @"AES",@"oauth_signature_method",
                                  [NSString stringWithFormat:@"%.0f",[[NSDate date]timeIntervalSince1970]],@"oauth_timestamp",nil];
 	
-	
+	DLog(@"account weibo %@", params);
 	NSString* baseString = [self stringFromDictionary:params];
+    DLog(@"account baseString %@", baseString);
 	NSString* keyString = [NSString stringWithFormat:@"%@&%@",[SinaWeiBoSDKDemo_APPKey URLEncodedString],[SinaWeiBoSDKDemo_APPSecret URLEncodedString]];
-  
+    DLog(@"account keyString %@", keyString);
 //  DLog(@"baseString=%@", baseString);
   
   NSData              *plain = [baseString dataUsingEncoding: NSUTF8StringEncoding];

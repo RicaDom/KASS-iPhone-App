@@ -57,7 +57,7 @@
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-  MainTabBarViewController *viewController = (MainTabBarViewController *) self.window.rootViewController;
+  //MainTabBarViewController *viewController = (MainTabBarViewController *) self.window.rootViewController;
   DLog(@"AppDelegate::openURL:url=%@", url);
   DLog(@"AppDelegate::openURL:weibo=%@", [VariableStore sharedInstance].user.weibo);
   if( [[VariableStore sharedInstance].user.weibo handleOpenURL:url] )

@@ -18,8 +18,8 @@
 }
 
 @property (nonatomic,assign) id<AccountActivityDelegate> delegate;
-@property (nonatomic,retain,readonly) WeiBo* weibo;
-@property (nonatomic,retain,readonly) Account* account;
+@property (nonatomic,strong,readonly) WeiBo* weibo;
+@property (nonatomic,strong,readonly) Account* account;
 
 @property (nonatomic, strong) NSString *userId;
 @property (nonatomic, strong) NSString *name;
