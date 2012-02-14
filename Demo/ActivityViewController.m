@@ -47,6 +47,7 @@ NSMutableArray *currentItems;
   Listing *listing = [[Listing alloc] initWithData:data];
   [VariableStore sharedInstance].myBuyingListings = [listing listItems];
   [self reloadTable];
+  [DejalBezelActivityView removeViewAnimated:YES];
 }
 
 
@@ -56,15 +57,19 @@ NSMutableArray *currentItems;
   Listing *listing = [[Listing alloc] initWithData:data];
   [VariableStore sharedInstance].mySellingListings = [listing listItems];
   [self reloadTable];
+  [DejalBezelActivityView removeViewAnimated:YES];  
 }
 
 -(void)setupArray{
-  // sample data
-  KassApi *ka  = [[KassApi alloc]initWithPerformerAndAction:self:@"getBuyingItems:"];
-  [ka getAccountListings];
-  
-  KassApi *ka2 = [[KassApi alloc]initWithPerformerAndAction:self:@"getSellingItems:"];
-  [ka2 getAccountListings]; //TODO: this will change to get selling stuff
+    if ( 0 == activitySegment.selectedSegmentIndex) {
+        KassApi *ka  = [[KassApi alloc]initWithPerformerAndAction:self:@"getBuyingItems:"];
+        [ka getAccountListings];  
+        [DejalBezelActivityView activityViewForView:self.navigationController.navigationBar.superview withLabel:@"Loading..." width:100];
+    } else {
+        KassApi *ka2 = [[KassApi alloc]initWithPerformerAndAction:self:@"getSellingItems:"];
+        [ka2 getAccountListings]; //TODO: this will change to get selling stuff
+        [DejalBezelActivityView activityViewForView:self.navigationController.navigationBar.superview withLabel:@"Loading..." width:100];
+    }
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
