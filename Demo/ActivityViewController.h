@@ -27,7 +27,7 @@
 
 - (void)setupArray;
 - (void)reloadTable;
-- (void)getBuyingItems:(NSData *)data;
-- (void)getSellingItems:(NSData *)data;
+- (void)getBuyingItems:(NSDictionary *)dict;
+- (void)getSellingItems:(NSDictionary *)dict;
 
 @end

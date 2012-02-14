@@ -37,6 +37,39 @@
 	return [pairs componentsJoinedByString:@"&"];
 }
 
+// ########################### API ##############################
+- (void)getOffers
+{
+  DLog(@"User::getOffers");
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getOffersFinished:"];
+  [ka getAccountOffers];
+}
+
+- (void)getOffersFinished:(NSData *)data
+{
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"User::getOffersFinished:dict");
+  
+  if( [_delegate respondsToSelector:@selector(accountDidGetOffers:)] )
+    [_delegate accountDidGetOffers:dict];
+}
+
+- (void)getListings
+{
+  DLog(@"User::getListings");
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getListingsFinished:"];
+  [ka getAccountListings];
+}
+
+- (void)getListingsFinished:(NSData *)data
+{
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"User::getListingsFinished:dict");
+  
+  if( [_delegate respondsToSelector:@selector(accountDidGetListings:)] )
+    [_delegate accountDidGetListings:dict];
+}
+
 - (void)createListingFinished:(NSData *)data
 {
   NSDictionary *dict = [KassApi parseData:data];
@@ -52,6 +85,8 @@
   KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"createListingFinished:"];
   [ka createListing:dict];
 }
+
+// ########################### API ##############################
 
 - (void) accountLogin:(NSString *)email:(NSString *)password
 {

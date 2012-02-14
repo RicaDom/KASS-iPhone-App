@@ -26,6 +26,7 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
     currentItems = priceItems;
   }
   [self.tableView reloadData];
+  [self stopLoading];
 }
 
 - (void)getNearbyItems:(NSData *)data
@@ -255,12 +256,9 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
 }
 
 - (void)addItem {
-    // TODO
-    // Adding item to the list
-    
-    [self.tableView reloadData];
-    
-    [self stopLoading];
+  VariableStore.sharedInstance.locateMeManager.delegate = self;
+  [VariableStore.sharedInstance.locateMeManager locateMe];
+  [self reloadTable];
 }
 
 #pragma mark - Table view delegate

@@ -34,10 +34,13 @@
 - (void)postData:(NSString *)url:(NSDictionary *)dict;
 - (void)getData:(NSString *)url;
 
+- (void)createOffer:(NSDictionary *)dict;
 - (void)createListing:(NSDictionary *)dict;
 - (void)getListings:(NSDictionary *)dict;
 - (void)getListing:(NSString *)modelId;
 - (void)getAccountListings;
+- (void)getAccountOffers;
+
 - (void)login:(NSDictionary *)dict;
 - (void)logout;
 

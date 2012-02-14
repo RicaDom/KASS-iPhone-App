@@ -13,5 +13,7 @@
 @optional
 - (void)accountLoadData;
 - (void)accountDidCreateListing:(NSDictionary *)dict;
+- (void)accountDidGetListings:(NSDictionary *)dict;
+- (void)accountDidGetOffers:(NSDictionary *)dict;
 
 @end

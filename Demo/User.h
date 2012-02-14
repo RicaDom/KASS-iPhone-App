@@ -33,4 +33,9 @@
 - (void)createListing:(NSDictionary *)dict;
 - (void)createListingFinished:(NSData *)data;
 
+- (void)getListings;
+- (void)getListingsFinished:(NSData *)data;
+- (void)getOffers;
+- (void)getOffersFinished:(NSData *)data;
+
 @end

@@ -211,7 +211,10 @@
                                   sender: self];
     } else if (self.navigationButton.title == UI_BUTTON_LABEL_SUBMIT) {
         // TODO - submitting data to backend server
+          
         
+      
+      
         [self.messageTextField resignFirstResponder];
     }
 }

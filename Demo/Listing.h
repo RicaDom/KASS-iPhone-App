@@ -18,6 +18,7 @@
 @property (nonatomic, retain) Location *location;
 
 
+- (id) initWithDictionary:(NSDictionary *) theDict;
 - (id) initWithData:(NSData *) theData;
 - (void) printOut;
 

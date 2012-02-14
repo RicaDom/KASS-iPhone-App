@@ -79,8 +79,8 @@
 
 - (void)createListing:(NSDictionary *)dict
 {
-  DLog(@"KassApi::postListing:dict=%@", dict);
-  _url = [NSString stringWithFormat:@"http://%s/v1/listings.json", HOST];
+  DLog(@"KassApi::createListing:dict=%@", dict);
+  _url = [NSString stringWithFormat:@"http://%s/v1/listings", HOST];
   
   //validity check
   NSString *title = [dict valueForKey:@"title"];
@@ -92,13 +92,37 @@
   if ( title && desc && price && latlng && duration) {
     [self postData:_url:dict];
   }else{
-    DLog(@"KassApi::postListing: invalid data!");
+    DLog(@"KassApi::createListing: invalid data!");
   }
+}
+
+- (void)createOffer:(NSDictionary *)dict
+{
+  DLog(@"KassApi::createOffer:dict=%@", dict);
+  _url = [NSString stringWithFormat:@"http://%s/v1/offers", HOST];
+  
+  //validity check
+  NSString *message    = [dict valueForKey:@"message"];
+  NSString *listingId  = [dict valueForKey:@"listing_id"];
+  NSDecimalNumber *price = [NSDecimalNumber decimalNumberWithDecimal:[[dict objectForKey:@"price"] decimalValue]];
+  
+  if ( message && listingId && price ) {
+    [self postData:_url:dict];
+  }else{
+    DLog(@"KassApi::createOffer: invalid data!");
+  }
+  
 }
 
 - (void)getAccountListings
 {
   _url = [NSString stringWithFormat:@"http://%s/v1/account/listings.json", HOST];
+  [self getData:_url];
+}
+
+- (void)getAccountOffers
+{
+  _url = [NSString stringWithFormat:@"http://%s/v1/account/offers.json", HOST];
   [self getData:_url];
 }
 

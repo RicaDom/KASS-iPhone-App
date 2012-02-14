@@ -25,6 +25,18 @@ NSMutableArray *currentItems;
   [self setupArray];
 }
 
+- (void) accountDidGetListings:(NSDictionary *)dict
+{
+  DLog(@"ActivityViewController::accountDidGetListings:dict");
+  [self getBuyingItems:dict];
+}
+
+- (void) accountDidGetOffers:(NSDictionary *)dict
+{
+  DLog(@"ActivityViewController::accountDidGetOffers:dict");
+  [self getSellingItems:dict];
+}
+
 - (void)reloadTable
 {
   DLog(@"ActivityViewController::reloadTable");
@@ -41,30 +53,28 @@ NSMutableArray *currentItems;
   [self.tableView reloadData];
 }
 
-- (void)getBuyingItems:(NSData *)data
+- (void)getBuyingItems:(NSDictionary *)dict
 {
   DLog(@"ActivityViewController::getBuyingItems");
-  Listing *listing = [[Listing alloc] initWithData:data];
+  Listing *listing = [[Listing alloc] initWithDictionary:dict];
   [VariableStore sharedInstance].myBuyingListings = [listing listItems];
   [self reloadTable];
 }
 
 
-- (void)getSellingItems:(NSData *)data
+- (void)getSellingItems:(NSDictionary *)dict
 {
   DLog(@"ActivityViewController::getSellingItems");
-  Listing *listing = [[Listing alloc] initWithData:data];
+  Listing *listing = [[Listing alloc] initWithDictionary:dict];
   [VariableStore sharedInstance].mySellingListings = [listing listItems];
   [self reloadTable];
 }
 
 -(void)setupArray{
-  // sample data
-  KassApi *ka  = [[KassApi alloc]initWithPerformerAndAction:self:@"getBuyingItems:"];
-  [ka getAccountListings];
+
+  [VariableStore.sharedInstance.user getListings];
+  [VariableStore.sharedInstance.user getOffers];
   
-  KassApi *ka2 = [[KassApi alloc]initWithPerformerAndAction:self:@"getSellingItems:"];
-  [ka2 getAccountListings]; //TODO: this will change to get selling stuff
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
