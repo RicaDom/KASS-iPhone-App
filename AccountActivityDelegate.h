@@ -12,5 +12,6 @@
 
 @optional
 - (void)accountLoadData;
+- (void)accountDidCreateListing:(NSDictionary *)dict;
 
 @end

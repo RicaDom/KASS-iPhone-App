@@ -105,6 +105,11 @@
   [ka login:userInfo];
 }
 
+- (void)logoutFinished:(NSData *)data;
+{
+  DLog(@"Account::logoutFinished");
+}
+
 - (void)logout
 {
   DLog(@"Account::logout");
@@ -112,10 +117,12 @@
   // remove the info stored in the keychain.
   [SFHFKeychainUtils deleteItemForUsername:_email andServiceName:KassServiceName error:nil];
   
-  // TODO also need to logout server
+  // also need to logout server
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"logoutFinished:"];
+  [ka logout];
   
   if( [_delegate respondsToSelector:@selector(accountDidLogout)] )
-		[_delegate accountDidLogout];
+  	[_delegate accountDidLogout];
 }
 
 - (BOOL)isUserLoggedIn

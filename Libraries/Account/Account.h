@@ -24,6 +24,7 @@
 - (id)initWithWeiboEncodedData:(NSString*)encode;
 
 - (void)loginFinished:(NSData *)data;
+- (void)logoutFinished:(NSData *)data;
 - (void)login;
 - (void)logout;
 - (BOOL)isUserLoggedIn;

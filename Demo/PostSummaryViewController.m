@@ -34,6 +34,7 @@
 
 - (void)loadCurrentPostingData
 {
+  DLog(@"PostSummaryViewController::loadCurrentPostingData");
     self.postTitle.text = [VariableStore sharedInstance].currentPostingItem.title;
     self.postDescription.text = [VariableStore sharedInstance].currentPostingItem.description;
     self.postAskPrice.text = [NSString stringWithFormat:@"%@", [VariableStore sharedInstance].currentPostingItem.askPrice];
@@ -61,11 +62,19 @@
 }
 */
 
+- (void)locateMeFinished
+{
+  DLog(@"PostSummaryViewController::locateMeFinished ");
+  [self loadCurrentPostingData];
+}
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    [self loadCurrentPostingData];
+  DLog(@"PostSummaryViewController::viewDidLoad ");
+  [super viewDidLoad];
+  VariableStore.sharedInstance.locateMeManager.delegate = self;
+  [VariableStore.sharedInstance.locateMeManager locateMe];
 }
 
 - (void)viewDidUnload
@@ -95,7 +104,34 @@
     [self.presentingViewController dismissModalViewControllerAnimated:YES];
 }
 
+- (void)accountDidCreateListing:(NSDictionary *)dict
+{
+  DLog(@"PostSummaryViewController::accountDidCreateListing:dict=%@", dict);
+}
+
 - (IBAction)submitAction {
+  DLog(@"PostSummaryViewController::(IBAction)submitAction:postingItem: \n");
+  NSString *latlng = [NSString stringWithFormat:@"%+.6f,%+.6f", 
+                      VariableStore.sharedInstance.location.coordinate.latitude, 
+                      VariableStore.sharedInstance.location.coordinate.longitude]; 
+  
+  DLog(@"title=%@", [VariableStore sharedInstance].currentPostingItem.title);
+  DLog(@"description=%@", [VariableStore sharedInstance].currentPostingItem.description);
+  DLog(@"price=%@", [VariableStore sharedInstance].currentPostingItem.askPrice);
+  DLog(@"duration=%@", [VariableStore sharedInstance].currentPostingItem.postDuration);
+  DLog(@"latlng=%@", latlng);
+  
+  NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                 [VariableStore sharedInstance].currentPostingItem.title, @"title",
+                                 [VariableStore sharedInstance].currentPostingItem.description, @"description",
+                                 [VariableStore sharedInstance].currentPostingItem.askPrice, @"price",
+                                 [VariableStore sharedInstance].currentPostingItem.postDuration, @"time",
+                                 latlng, @"latlng",nil];
+  
+  // submit listing
+  [VariableStore.sharedInstance.user createListing:params];
+  
+  
     [[VariableStore sharedInstance].allListings addObject:[VariableStore sharedInstance].currentPostingItem];
     [[VariableStore sharedInstance] clearCurrentPostingItem];
     [self.presentingViewController dismissModalViewControllerAnimated:YES];
