@@ -268,7 +268,6 @@
                     <connections>
                         <outlet property="browseSegment" destination="ieo-7M-P3d" id="r35-RH-pCo"/>
                         <outlet property="listingTableView" destination="xA3-0f-oHv" id="pcp-Ld-BvN"/>
-                        <segue destination="D8U-uZ-4dB" kind="push" identifier="showMyItem" id="RAG-JS-0X7"/>
                         <segue destination="jzI-1g-RJt" kind="push" identifier="showBrowseItem" id="2B3-vl-FJ4"/>
                         <segue destination="c7F-KA-gSL" kind="push" identifier="showBrowseItemNoMessage" id="uTw-jD-8Rk"/>
                     </connections>
@@ -509,7 +508,7 @@
                                     <outlet property="price" destination="d94-jv-b4O" id="Iop-lD-q1v"/>
                                     <outlet property="subTitle" destination="uJZ-3l-EjO" id="Zlc-Hh-qXW"/>
                                     <outlet property="title" destination="Tqn-te-tFA" id="vEN-ZZ-SuG"/>
-                                    <segue destination="D8U-uZ-4dB" kind="push" identifier="ShowItem" id="2PF-42-Yj4"/>
+                                    <segue destination="hDu-UN-aV0" kind="modal" identifier="ShowItem" id="HFB-s6-oJE"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -550,48 +549,249 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ppp-yx-nEl" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="D8U-uZ-4dB" customClass="ItemViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ns5-JB-SKO">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="标题：" lineBreakMode="tailTruncation" minimumFontSize="10" id="tYx-94-11W">
-                                <rect key="frame" x="20" y="69" width="51" height="21"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" id="l8f-Py-4d0">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="151"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="标题：" lineBreakMode="tailTruncation" minimumFontSize="10" id="tYx-94-11W">
+                                        <rect key="frame" x="11" y="8" width="51" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="描述：" lineBreakMode="tailTruncation" minimumFontSize="10" id="ELM-3k-I5q">
+                                        <rect key="frame" x="11" y="37" width="97" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="MU0-01-c72">
+                                        <rect key="frame" x="61" y="8" width="52" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="fqN-uh-OI0">
+                                        <rect key="frame" x="11" y="66" width="61" height="23"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <connections>
+                                    <outlet property="delegate" destination="D8U-uZ-4dB" id="mpR-D2-D5U"/>
+                                </connections>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6VO-uL-r7z">
+                                <rect key="frame" x="7" y="386" width="144" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                <state key="normal" title="修改 / 删除">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="editAction:" destination="D8U-uZ-4dB" eventType="touchUpInside" id="VgW-fS-iP7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="XC9-OT-UrC">
+                                <rect key="frame" x="168" y="385" width="142" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                <state key="normal" title="分享">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="shareAction:" destination="D8U-uZ-4dB" eventType="touchUpInside" id="vJa-gz-XOW"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" lineBreakMode="tailTruncation" minimumFontSize="10" id="zvL-H5-Cmy">
+                                <rect key="frame" x="7" y="159" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="描述：" lineBreakMode="tailTruncation" minimumFontSize="10" id="ELM-3k-I5q">
-                                <rect key="frame" x="20" y="98" width="97" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="个出价" lineBreakMode="tailTruncation" minimumFontSize="10" id="ubX-Ns-Mjr">
+                                <rect key="frame" x="56" y="159" width="46" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="MU0-01-c72">
-                                <rect key="frame" x="70" y="69" width="230" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="fqN-uh-OI0">
-                                <rect key="frame" x="20" y="127" width="271" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="75" sectionHeaderHeight="22" sectionFooterHeight="22" id="KCR-Y0-V2u">
+                                <rect key="frame" x="0.0" y="188" width="320" height="195"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="offerCell" rowHeight="75" id="Dgg-Ag-qHr">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="75"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="74"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="background.png" id="vkZ-tb-1Og">
+                                                    <rect key="frame" x="14" y="4" width="66" height="66"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="9cM-U4-6rH">
+                                                    <rect key="frame" x="26" y="14" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="yU6-3K-8wJ">
+                                                    <rect key="frame" x="95" y="20" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="02Z-Sa-JTK">
+                                                    <rect key="frame" x="26" y="38" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <segue destination="rrf-71-T0f" kind="push" id="oKw-pA-ROa"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="D8U-uZ-4dB" id="XE8-YY-hlb"/>
+                                    <outlet property="delegate" destination="D8U-uZ-4dB" id="PGm-jW-ccZ"/>
+                                </connections>
+                            </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="描述" id="T07-mU-YNK"/>
+                    <navigationItem key="navigationItem" title="发布详情" id="4hj-9c-cko">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="dRw-es-new"/>
+                        <barButtonItem key="rightBarButtonItem" title="地图" id="BEk-02-gEk">
+                            <connections>
+                                <segue destination="XUy-mg-tBg" kind="push" id="6ov-7Q-KyR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="infoScrollView" destination="l8f-Py-4d0" id="Qbf-iu-qxw"/>
                         <outlet property="itemDescription" destination="fqN-uh-OI0" id="1MH-dd-Ll6"/>
                         <outlet property="itemTitle" destination="MU0-01-c72" id="UHq-XD-oax"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="513" y="-1123"/>
+            <point key="canvasLocation" x="768" y="-955"/>
+        </scene>
+        <scene sceneID="LNn-kQ-B9d">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H2I-Y1-qeF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="rrf-71-T0f" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aB2-0v-YDH">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Yuc-uj-Vkd">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="329"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </scrollView>
+                            <view contentMode="scaleToFill" id="dp7-37-KHS">
+                                <rect key="frame" x="0.0" y="328" width="320" height="88"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="发送讯息或价格" minimumFontSize="17" id="OZE-wz-4Td">
+                                        <rect key="frame" x="38" y="21" width="282" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="jzI-1g-RJt" id="cYE-wy-fQx"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="D3w-iO-aky">
+                                        <rect key="frame" x="0.0" y="20" width="37" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="¥">
+                                            <color key="titleColor" red="0.0" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="RL8-g6-Yll" kind="modal" id="dM3-h5-4IE"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="您现在的价位：" lineBreakMode="tailTruncation" minimumFontSize="10" id="n0o-Fi-9ew">
+                                        <rect key="frame" x="38" y="0.0" width="84" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Price" lineBreakMode="tailTruncation" minimumFontSize="10" id="f4m-Q5-7se">
+                                        <rect key="frame" x="120" y="0.0" width="42" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="－ 您随时可以更新价位" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="YMn-sO-36Y">
+                                        <rect key="frame" x="158" y="0.0" width="142" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DQK-9p-OfC">
+                                        <rect key="frame" x="0.0" y="54" width="72" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="xW0-tN-bUf">
+                        <barButtonItem key="rightBarButtonItem" title="地图" id="bUR-WI-4bn">
+                            <connections>
+                                <segue destination="XUy-mg-tBg" kind="push" id="VF9-6q-oxX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1224" y="-965"/>
         </scene>
         <scene sceneID="g45-t1-bCl">
             <objects>
@@ -614,10 +814,12 @@
                     <navigationItem key="navigationItem" id="gwF-Mi-QbY"/>
                     <connections>
                         <outlet property="currentMap" destination="6rN-NP-hpl" id="fqu-OG-7GT"/>
+                        <segue destination="jzI-1g-RJt" kind="push" identifier="messageItemSegue" id="n3r-gd-TTz"/>
+                        <segue destination="c7F-KA-gSL" kind="push" identifier="noMessageItemSegue" id="KTm-pA-bXq"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="970" y="-1111"/>
+            <point key="canvasLocation" x="2548" y="-1111"/>
         </scene>
         <scene sceneID="gQf-rS-YM8">
             <objects>
@@ -774,7 +976,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="589" y="-103"/>
+            <point key="canvasLocation" x="645" y="-83"/>
         </scene>
         <scene sceneID="Tfc-Qx-Tg3">
             <objects>
@@ -925,7 +1127,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="981" y="-273"/>
+            <point key="canvasLocation" x="1053" y="-253"/>
         </scene>
         <scene sceneID="TbS-m1-AdZ">
             <objects>
@@ -969,11 +1171,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HNW-mR-W7c" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="XUy-mg-tBg" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kO2-0q-wEb">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="AN7-bk-86O">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                         </subviews>
@@ -982,7 +1184,7 @@
                     <navigationItem key="navigationItem" id="ahI-rt-6Nc"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1806" y="-125"/>
+            <point key="canvasLocation" x="2086" y="-905"/>
         </scene>
         <scene sceneID="1BH-DW-PPI">
             <objects>
@@ -1042,7 +1244,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1798" y="-705"/>
+            <point key="canvasLocation" x="3376" y="-705"/>
         </scene>
         <scene sceneID="DtA-tP-kxv">
             <objects>
@@ -1229,24 +1431,187 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="1368" y="-697"/>
+            <point key="canvasLocation" x="2946" y="-697"/>
+        </scene>
+        <scene sceneID="y2q-W9-anL">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GQT-TB-g80" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="hDu-UN-aV0" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="5mk-rR-fgn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="D8U-uZ-4dB" kind="relationship" relationship="rootViewController" id="CQe-1b-MCo"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="620" y="-833"/>
         </scene>
     </scenes>
     <resources>
         <image name="Default.png" width="320" height="430"/>
+        <image name="background.png" width="320" height="461"/>
         <image name="house.png" width="26" height="26"/>
         <image name="mailopened1.png" width="26" height="26"/>
         <image name="preferences1.png" width="26" height="26"/>
         <image name="world1.png" width="26" height="26"/>
     </resources>
+    <classes>
+        <class className="ActivityViewController" superclassName="PullRefreshTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ActivityViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="activityChanged:"/>
+                <relationship kind="outlet" name="activitySegment" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="emptyRecordsImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="listingsTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="AppScrollView" superclassName="UIScrollView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AppScrollView.h"/>
+        </class>
+        <class className="BrowseItemNoMsgViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BrowseItemNoMsgViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="navigationButtonAction:"/>
+                <relationship kind="outlet" name="messageTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="navigationButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="BrowseItemViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BrowseItemViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="navigationButtonAction:"/>
+                <relationship kind="outlet" name="itemDescriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="itemExpiredDate" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="itemPriceChangedToLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="itemPriceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="itemTitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="messageTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="navigationButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="tpScrollView" candidateClass="TPKeyboardAvoidingScrollView"/>
+            </relationships>
+        </class>
+        <class className="BrowseTableViewController" superclassName="PullRefreshTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BrowseTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="browseSegmentAction:"/>
+                <relationship kind="outlet" name="browseSegment" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="listingTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="ItemViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ItemViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backButtonAction:"/>
+                <relationship kind="action" name="editAction:"/>
+                <relationship kind="action" name="shareAction:"/>
+                <relationship kind="outlet" name="infoScrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="itemDescription" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="itemTitle" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="offerTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="ListingTableCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ListingTableCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="distance" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="duration" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="price" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="subTitle" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="title" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="MainTabBarViewController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainTabBarViewController.h"/>
+        </class>
+        <class className="MapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="currentMap" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="OfferChangingPriceViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OfferChangingPriceViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelChangingPriceAction:"/>
+                <relationship kind="action" name="doneChangingPriceAction:"/>
+                <relationship kind="outlet" name="offerPriceTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="PostFlowPriceViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PostFlowPriceViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="priceTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="PostFlowSetDateViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PostFlowSetDateViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="PostDurationLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="PostDurationPicker" candidateClass="UIPickerView"/>
+                <relationship kind="outlet" name="PostFlowSegment" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+        <class className="PostFlowViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PostFlowViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="CancelAction:"/>
+                <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="titleTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="PostSummaryViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PostSummaryViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelAction:"/>
+                <relationship kind="action" name="submitAction"/>
+                <relationship kind="outlet" name="postAskPrice" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="postDescription" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="postDuration" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="postTitle" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="PostViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PostViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="changeEditorPostPage"/>
+                <relationship kind="action" name="changeHotPostPage"/>
+                <relationship kind="outlet" name="editorPostPageControl" candidateClass="UIPageControl"/>
+                <relationship kind="outlet" name="editorPostScrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="hotPostPageControl" candidateClass="UIPageControl"/>
+                <relationship kind="outlet" name="hotPostScrollView" candidateClass="AppScrollView"/>
+            </relationships>
+        </class>
+        <class className="PullRefreshTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PullRefreshTableViewController.h"/>
+        </class>
+        <class className="SettingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="authButtonAction:"/>
+                <relationship kind="outlet" name="authButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="welcomeMessageLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="TPKeyboardAvoidingScrollView" superclassName="UIScrollView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TPKeyboardAvoidingScrollView.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="RAG-JS-0X7"/>
-        <segue reference="8Mx-QQ-zuz"/>
+        <segue reference="2B3-vl-FJ4"/>
+        <segue reference="FyY-9X-ohZ"/>
+        <segue reference="KTm-pA-bXq"/>
         <segue reference="7lS-uD-bTm"/>
+        <segue reference="dM3-h5-4IE"/>
+        <segue reference="VF9-6q-oxX"/>
     </inferredMetricsTieBreakers>
 </document>

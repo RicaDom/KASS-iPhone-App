@@ -11,7 +11,6 @@
 
 @implementation MainTabBarViewController
 
-
 - (void)tabBarController:(UITabBarController *)tbc didSelectViewController:(UIViewController *)vc {
     // Middle tab bar item in question.
     if (vc == [tbc.viewControllers objectAtIndex:4]) {
@@ -46,19 +45,33 @@
 }
 */
 
-- (void)viewDidAppear:(BOOL)animated
-{
-  NSLog(@"MainTabBarViewController::viewDidAppear ");
-  if ( ![[VariableStore sharedInstance] isLoggedIn]) {
-    [self showMessage];
-    [MTPopupWindow showWindowWithUIView:self.view];
-  }
-}
+//- (void)viewDidAppear:(BOOL)animated
+//{ 
+////  NSLog(@"MainTabBarViewController::viewDidAppear ");
+////  if ( ![[VariableStore sharedInstance] isLoggedIn]) {
+////    //[self showMessage];
+////    [MTPopupWindow showWindowWithUIView:self.view];
+////  }
+//}
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {   
-  [super viewDidLoad];
+   [super viewDidLoad];
+    //[self.mainTabBar setBackgroundColor:[UIColor redColor]];
+   //[self.tabBarController.tabBar setBackgroundImage:[UIImage imageNamed:@"tabbar2.png"]];  
+    //UITabBar *tabBar= self.mainTabBar;
+    //[self.mainTabBar setBackgroundImage:[UIImage imageNamed:@"tabbar2.png"]];  
+//    if ([self.mainTabBar respondsToSelector:@selector(setBackgroundImage:)]) {
+//        // set it just for this instance
+//        //[tabBar setBackgroundImage:[UIImage imageNamed:@"tabbar2.png"]];
+//        [self.mainTabBar setBackgroundImage:[UIImage imageNamed:@"tabbar2.png"]];  
+//    }
+    
+   NSLog(@"MainTabBarViewController::viewDidAppear ");
+   if ( ![[VariableStore sharedInstance] isLoggedIn]) {
+       [MTPopupWindow showWindowWithUIView:self.view];
+   }
 }
 
 
@@ -75,45 +88,45 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)showMessage {
-//    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"KASS Get Started" 
-//                                                      message:@"Buy and Sell Anything with People Nearby " 
-//                                                     delegate:self 
-//                                            cancelButtonTitle:@"or just skip this for now" 
-//                                            otherButtonTitles:@"Sign Up", @"Login", @"Sign in with Facebook", nil];
-    
-    //UIImageView *Image =[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"images.png"]];
-    
-    //[message addSubview:Image];
-    
-    //[message show];
-
-    //[MTPopupWindow showWindowWithHTMLFile:@"testContent.html" insideView:self.view];
-    //[MTPopupWindow showWindowWithUIView:self.view];
-    //[ALToastView toastInView:self.view withText:@"Hello ALToastView"];
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-	NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
-	
-	if([title isEqualToString:@"Sign in with Facebook"])
-	{
-		NSLog(@"Sign in with Facebook was selected.");
-	}
-	else if([title isEqualToString:@"Sign Up"])
-	{
-		NSLog(@"Sign Up was selected.");
-	}
-	else if([title isEqualToString:@"Login"])
-	{
-    NSLog(@"Sign in: %@", [VariableStore sharedInstance].isLoggedIn);
-		NSLog(@"Login was selected.");
-	} 
-	else if([title isEqualToString:@"or just skip this for now"])
-    {
-        NSLog(@"or just skip this for now was selected.");
-    }
-}
+//- (void)showMessage {
+////    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"KASS Get Started" 
+////                                                      message:@"Buy and Sell Anything with People Nearby " 
+////                                                     delegate:self 
+////                                            cancelButtonTitle:@"or just skip this for now" 
+////                                            otherButtonTitles:@"Sign Up", @"Login", @"Sign in with Facebook", nil];
+//    
+//    //UIImageView *Image =[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"images.png"]];
+//    
+//    //[message addSubview:Image];
+//    
+//    //[message show];
+//
+//    //[MTPopupWindow showWindowWithHTMLFile:@"testContent.html" insideView:self.view];
+//    //[MTPopupWindow showWindowWithUIView:self.view];
+//    //[ALToastView toastInView:self.view withText:@"Hello ALToastView"];
+//}
+//
+//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+//{
+//	NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+//	
+//	if([title isEqualToString:@"Sign in with Facebook"])
+//	{
+//		NSLog(@"Sign in with Facebook was selected.");
+//	}
+//	else if([title isEqualToString:@"Sign Up"])
+//	{
+//		NSLog(@"Sign Up was selected.");
+//	}
+//	else if([title isEqualToString:@"Login"])
+//	{
+//    NSLog(@"Sign in: %@", [VariableStore sharedInstance].isLoggedIn);
+//		NSLog(@"Login was selected.");
+//	} 
+//	else if([title isEqualToString:@"or just skip this for now"])
+//    {
+//        NSLog(@"or just skip this for now was selected.");
+//    }
+//}
 
 @end

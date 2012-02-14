@@ -13,9 +13,9 @@
 
 @interface Listing : NSObject
 
-@property (nonatomic, retain) NSData   *data;
+@property (nonatomic, strong) NSData   *data;
 @property (nonatomic, copy  ) NSMutableArray  *listItems;
-@property (nonatomic, retain) Location *location;
+@property (nonatomic, strong) Location *location;
 
 
 - (id) initWithDictionary:(NSDictionary *) theDict;
