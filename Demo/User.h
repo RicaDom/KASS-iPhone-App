@@ -30,5 +30,7 @@
 - (void) accountLogin:(NSString *)email:(NSString *)password;
 - (void) logout;
 
+- (void)createListing:(NSDictionary *)dict;
+- (void)createListingFinished:(NSData *)data;
 
 @end

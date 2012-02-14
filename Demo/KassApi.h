@@ -34,10 +34,12 @@
 - (void)postData:(NSString *)url:(NSDictionary *)dict;
 - (void)getData:(NSString *)url;
 
+- (void)createListing:(NSDictionary *)dict;
 - (void)getListings:(NSDictionary *)dict;
 - (void)getListing:(NSString *)modelId;
 - (void)getAccountListings;
 - (void)login:(NSDictionary *)dict;
+- (void)logout;
 
 - (void)requestFinished:(ASIHTTPRequest *)request;
 - (void)requestFailed:(ASIHTTPRequest *)request;

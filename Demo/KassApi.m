@@ -66,6 +66,36 @@
   DLog(@"KassApi::getData::startAsynchronous=%@", url);
 }
 
+- (void)deleteData:(NSString *)url
+{
+  id kassSelf = self;
+  __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+  [request setCompletionBlock:^{ [kassSelf requestFinished:request]; }];
+  [request setFailedBlock:^{[kassSelf requestFailed:request];}]; 
+  [request setRequestMethod:@"DELETE"]; 
+  [request startAsynchronous];
+  DLog(@"KassApi::deleteData::startAsynchronous=%@", url);
+}
+
+- (void)createListing:(NSDictionary *)dict
+{
+  DLog(@"KassApi::postListing:dict=%@", dict);
+  _url = [NSString stringWithFormat:@"http://%s/v1/listings.json", HOST];
+  
+  //validity check
+  NSString *title = [dict valueForKey:@"title"];
+  NSString *desc  = [dict valueForKey:@"description"];
+  NSDecimalNumber *price = [NSDecimalNumber decimalNumberWithDecimal:[[dict objectForKey:@"price"] decimalValue]];
+  NSString *latlng = [dict valueForKey:@"latlng"];
+  NSString *duration = [dict valueForKey:@"time"];
+  
+  if ( title && desc && price && latlng && duration) {
+    [self postData:_url:dict];
+  }else{
+    DLog(@"KassApi::postListing: invalid data!");
+  }
+}
+
 - (void)getAccountListings
 {
   _url = [NSString stringWithFormat:@"http://%s/v1/account/listings.json", HOST];
@@ -95,6 +125,12 @@
     _url = [NSString stringWithFormat:@"http://%s/v1/auth", HOST];
   }
   [self postData:_url:dict];
+}
+
+- (void)logout
+{
+  _url = [NSString stringWithFormat:@"http://%s/v1/auth", HOST];
+  [self deleteData:_url];
 }
 
 - (void)getListing:(NSString *)modelId

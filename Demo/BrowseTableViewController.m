@@ -41,8 +41,8 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
   KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getNearbyItems:"];
   
   NSString *latlng = [NSString stringWithFormat:@"%+.6f,%+.6f", 
-                      locationManager.location.coordinate.latitude, 
-                      locationManager.location.coordinate.longitude]; 
+                      VariableStore.sharedInstance.location.coordinate.latitude, 
+                      VariableStore.sharedInstance.location.coordinate.longitude]; 
   
   NSDictionary * dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                latlng, @"center",
@@ -120,37 +120,21 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
 }
 
 #pragma mark - View lifecycle
-
-- (void)locateMe
+- (void)locateMeFinished
 {
-  DLog(@"BrowseTableViewController::locateMe");
-  // Create the location manager if this object does not
-  // already have one.
-  if (nil == locationManager)
-    locationManager = [[CLLocationManager alloc] init];
-  
-  locationManager.delegate = self;
-  locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
-  
-  // Set a movement threshold for new events.
-  locationManager.distanceFilter = 50;
-  
-  [locationManager startUpdatingLocation];
-}
-
-- (void)locateFinished
-{
-  DLog(@"BrowseTableViewController::locateFinished");
+  DLog(@"BrowseTableViewController::locateMeFinished ");
   [self setupArray];
 }
+
 
 - (void)viewDidLoad
 {
   DLog(@"BrowseTableViewController::viewDidLoad ");
   [super viewDidLoad];
-  [self locateMe];
+  
+  VariableStore.sharedInstance.locateMeManager.delegate = self;
+  [VariableStore.sharedInstance.locateMeManager locateMe];
 
-  [self setupArray];
 	//
 	// Create a header view. Wrap it in a container to allow us to position
 	// it better.

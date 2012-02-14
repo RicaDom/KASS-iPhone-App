@@ -37,6 +37,21 @@
 	return [pairs componentsJoinedByString:@"&"];
 }
 
+- (void)createListingFinished:(NSData *)data
+{
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"User::createListingFinished:dict%@", dict);
+  
+  if( [_delegate respondsToSelector:@selector(accountDidCreateListing:)] )
+    [_delegate accountDidCreateListing:dict];
+}
+
+- (void)createListing:(NSDictionary *)dict
+{
+  DLog(@"User::createListing:dict=%@", dict);
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"createListingFinished:"];
+  [ka createListing:dict];
+}
 
 - (void) accountLogin:(NSString *)email:(NSString *)password
 {

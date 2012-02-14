@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "VariableStore.h"
 
-@interface PostSummaryViewController : UIViewController
+@interface PostSummaryViewController : UIViewController <LocateMeDelegate, AccountActivityDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *postTitle;
 @property (weak, nonatomic) IBOutlet UILabel *postDescription;
 @property (weak, nonatomic) IBOutlet UILabel *postAskPrice;

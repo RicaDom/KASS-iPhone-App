@@ -6,18 +6,18 @@
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
-#import "UIResponder+LocateMe.h"
+#import "NSObject+LocateMe.h"
 
-@implementation UIResponder (LocateMe)
+@implementation NSObject (LocateMe)
 
 - (void)locateFinished
 {
-  DLog(@"UIResponder+LocateMe::locateFinished");
+  DLog(@"NSObject+LocateMe::locateFinished");
 }
 
 - (void)locateFailed
 {
-  DLog(@"UIResponder+LocateMe::locateFailed");
+  DLog(@"NSObject+LocateMe::locateFailed");
 }
 
 // Delegate method from the CLLocationManagerDelegate protocol.
@@ -25,13 +25,13 @@
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation
 {
-  DLog(@"UIResponder+LocateMe::didUpdateToLocation");
+  DLog(@"NSObject+LocateMe::didUpdateToLocation");
   // If it's a relatively recent event, turn off updates to save power
   NSDate* eventDate = newLocation.timestamp;
   NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
   if (abs(howRecent) < 15.0 )
   {
-    DLog(@"UIResponder+LocateMe::[%+.6f,%+.6f]\n",
+    DLog(@"NSObject+LocateMe::[%+.6f,%+.6f]\n",
          newLocation.coordinate.latitude,
          newLocation.coordinate.longitude);
     [self locateFinished];

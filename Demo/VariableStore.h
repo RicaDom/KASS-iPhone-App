@@ -11,8 +11,10 @@
 #import <Foundation/Foundation.h>
 #import "ListItem.h"
 #import "User.h"
+#import "LocateMeManager.h"
 
-@interface VariableStore : NSObject
+@interface VariableStore : NSObject 
+
 // Global variables
 // Current Posting Process Cache
 @property (strong, nonatomic) ListItem *currentPostingItem;
@@ -23,6 +25,7 @@
 @property (strong, nonatomic) NSMutableArray *myBuyingListings;
 @property (strong, nonatomic) NSMutableArray *mySellingListings;
 @property (strong, nonatomic) User *user;
+@property (strong, nonatomic) LocateMeManager *locateMeManager;
 
 + (VariableStore *) sharedInstance;
 - (void) clearCurrentPostingItem;
@@ -33,4 +36,6 @@
 - (BOOL) signInAccount:(NSString *)email:(NSString *)password;
 - (BOOL) signInWeibo;
 - (BOOL) signOut;
+- (CLLocation *)location;
+
 @end

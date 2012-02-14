@@ -17,6 +17,7 @@
 @synthesize myBuyingListings = _myBuyingListings;
 @synthesize mySellingListings = _mySellingListings;
 @synthesize user = _user;
+@synthesize locateMeManager = _locateMeManager;
 
 + (VariableStore *) sharedInstance {
     // the instance of this class is stored here
@@ -36,10 +37,16 @@
             [myInstance initListingsData];
           
             myInstance.user = [[User alloc] init];
+            myInstance.locateMeManager = [[LocateMeManager alloc] init];
         }
         // return the instance of this class
         return myInstance;    
     }
+}
+
+- (CLLocation *)location
+{
+  return _locateMeManager == nil ? nil : _locateMeManager.location;
 }
 
 - (BOOL) isLoggedIn
@@ -114,18 +121,18 @@
 - (void) initExpiredTime {
     // convert to seconds
     self.expiredTime = [[NSDictionary alloc] initWithObjectsAndKeys:
-                        [NSNumber numberWithInteger: 0], @"选择时间",
-                        [NSNumber numberWithInteger: 3600], @"1 小时",
-                        [NSNumber numberWithInteger: 7200], @"2 小时",
-                        [NSNumber numberWithInteger: 21600], @"6 小时", 
-                        [NSNumber numberWithInteger: 43200], @"12 小时",
-                        [NSNumber numberWithInteger: 86400], @"24 小时",
-                        [NSNumber numberWithInteger: 172800], @"2 天",
-                        [NSNumber numberWithInteger: 259200], @"3 天",
-                        [NSNumber numberWithInteger: 345600], @"4 天",
-                        [NSNumber numberWithInteger: 432000], @"5 天",
-                        [NSNumber numberWithInteger: 518400], @"6 天",
-                        [NSNumber numberWithInteger: 604800], @"7 天",
+                        @"0h", @"选择时间",
+                        @"1h", @"1 小时",
+                        @"2h", @"2 小时",
+                        @"6h", @"6 小时", 
+                        @"12h", @"12 小时",
+                        @"24h", @"24 小时",
+                        @"2d", @"2 天",
+                        @"3d", @"3 天",
+                        @"4d", @"4 天",
+                        @"5d", @"5 天",
+                        @"6d", @"6 天",
+                        @"7d", @"7 天",
                         nil];
 }
 @end

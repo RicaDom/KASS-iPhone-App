@@ -68,13 +68,14 @@
 		77CD5FC614CA52780013B510 /* VariableStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CD5FC414CA52780013B510 /* VariableStore.m */; };
 		77E9ACC314CD0AF50089910F /* KassApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E9ACC214CD0AF50089910F /* KassApi.m */; };
 		77EA15A414DA1EBC00E6E45A /* china.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 77EA15A314DA1EBC00E6E45A /* china.gpx */; };
-		77EA15AB14DA854C00E6E45A /* UIResponder+LocateMe.m in Sources */ = {isa = PBXBuildFile; fileRef = 77EA15AA14DA854B00E6E45A /* UIResponder+LocateMe.m */; };
 		77F0279C14C5BC100065EDAA /* ListItemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F0279B14C5BC100065EDAA /* ListItemTest.m */; };
 		77F0279F14C665F70065EDAA /* Listing.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F0279E14C665F60065EDAA /* Listing.m */; };
 		77F027A214C666BA0065EDAA /* ListingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F027A114C666BA0065EDAA /* ListingTest.m */; };
 		77F3D0D914CC0B4D00770E73 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F3D0D814CC0B4D00770E73 /* Location.m */; };
 		77F3D0DC14CC0C3900770E73 /* LocationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F3D0DB14CC0C3900770E73 /* LocationTest.m */; };
 		77F3D91014D00EC20009AF75 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F3D90F14D00EC20009AF75 /* QuartzCore.framework */; };
+		77F5999014E8075100CE96C3 /* LocateMeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F5998F14E8075100CE96C3 /* LocateMeManager.m */; };
+		77F5999414E8155A00CE96C3 /* NSObject+LocateMe.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F5999314E8155A00CE96C3 /* NSObject+LocateMe.m */; };
 		E5033BCB14DA65860049FA5D /* MTPopupWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = E5033BCA14DA65860049FA5D /* MTPopupWindow.m */; };
 		E5033BD114DA65A60049FA5D /* popupCloseBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = E5033BCD14DA65A60049FA5D /* popupCloseBtn.png */; };
 		E5033BD214DA65A60049FA5D /* popupCloseBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5033BCE14DA65A60049FA5D /* popupCloseBtn@2x.png */; };
@@ -255,8 +256,6 @@
 		77E9ACC114CD0AF50089910F /* KassApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KassApi.h; sourceTree = "<group>"; };
 		77E9ACC214CD0AF50089910F /* KassApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KassApi.m; sourceTree = "<group>"; };
 		77EA15A314DA1EBC00E6E45A /* china.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = china.gpx; sourceTree = "<group>"; };
-		77EA15A914DA854B00E6E45A /* UIResponder+LocateMe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+LocateMe.h"; sourceTree = "<group>"; };
-		77EA15AA14DA854B00E6E45A /* UIResponder+LocateMe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+LocateMe.m"; sourceTree = "<group>"; };
 		77F0279A14C5BC100065EDAA /* ListItemTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListItemTest.h; sourceTree = "<group>"; };
 		77F0279B14C5BC100065EDAA /* ListItemTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListItemTest.m; sourceTree = "<group>"; };
 		77F0279D14C665F60065EDAA /* Listing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Listing.h; sourceTree = "<group>"; };
@@ -268,6 +267,11 @@
 		77F3D0DA14CC0C3900770E73 /* LocationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationTest.h; sourceTree = "<group>"; };
 		77F3D0DB14CC0C3900770E73 /* LocationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTest.m; sourceTree = "<group>"; };
 		77F3D90F14D00EC20009AF75 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		77F5998E14E8075100CE96C3 /* LocateMeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocateMeManager.h; path = Libraries/LocateMe/LocateMeManager.h; sourceTree = "<group>"; };
+		77F5998F14E8075100CE96C3 /* LocateMeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocateMeManager.m; path = Libraries/LocateMe/LocateMeManager.m; sourceTree = "<group>"; };
+		77F5999114E80A6D00CE96C3 /* LocateMeDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocateMeDelegate.h; path = Libraries/LocateMe/LocateMeDelegate.h; sourceTree = "<group>"; };
+		77F5999214E8155A00CE96C3 /* NSObject+LocateMe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LocateMe.h"; sourceTree = "<group>"; };
+		77F5999314E8155A00CE96C3 /* NSObject+LocateMe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LocateMe.m"; sourceTree = "<group>"; };
 		E5033BC914DA65860049FA5D /* MTPopupWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTPopupWindow.h; sourceTree = "<group>"; };
 		E5033BCA14DA65860049FA5D /* MTPopupWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTPopupWindow.m; sourceTree = "<group>"; };
 		E5033BCD14DA65A60049FA5D /* popupCloseBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popupCloseBtn.png; sourceTree = "<group>"; };
@@ -612,6 +616,7 @@
 		77F027A314C668760065EDAA /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				77F5998C14E806EE00CE96C3 /* LocateMe */,
 				777E4F0314DF99A0002B40C3 /* Account */,
 				777E4EFC14DED772002B40C3 /* Crypto */,
 				E5C8BF8614E02DC8004D7FDE /* PullReloadTableView */,
@@ -636,6 +641,16 @@
 				777C903614E4AA0A002A80B0 /* userInfo.json */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		77F5998C14E806EE00CE96C3 /* LocateMe */ = {
+			isa = PBXGroup;
+			children = (
+				77F5998E14E8075100CE96C3 /* LocateMeManager.h */,
+				77F5998F14E8075100CE96C3 /* LocateMeManager.m */,
+				77F5999114E80A6D00CE96C3 /* LocateMeDelegate.h */,
+			);
+			name = LocateMe;
 			sourceTree = "<group>";
 		};
 		E5033BC814DA65550049FA5D /* MTPopupWindow */ = {
@@ -767,10 +782,10 @@
 				E5947DD114A3A12B0066723A /* Supporting Files */,
 				774F965514D8E5E100E2588A /* NSObject+AsyncRequestPerform.h */,
 				774F965614D8E5E200E2588A /* NSObject+AsyncRequestPerform.m */,
-				77EA15A914DA854B00E6E45A /* UIResponder+LocateMe.h */,
-				77EA15AA14DA854B00E6E45A /* UIResponder+LocateMe.m */,
 				777E4EEE14DE72CF002B40C3 /* UIView+ViewController.h */,
 				777E4EEF14DE72CF002B40C3 /* UIView+ViewController.m */,
+				77F5999214E8155A00CE96C3 /* NSObject+LocateMe.h */,
+				77F5999314E8155A00CE96C3 /* NSObject+LocateMe.m */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1057,7 +1072,6 @@
 				E57EDB1F14D7EA0F0026D186 /* User.m in Sources */,
 				E5033BCB14DA65860049FA5D /* MTPopupWindow.m in Sources */,
 				774F965714D8E5E200E2588A /* NSObject+AsyncRequestPerform.m in Sources */,
-				77EA15AB14DA854C00E6E45A /* UIResponder+LocateMe.m in Sources */,
 				777E4EC414DD8303002B40C3 /* WeiBo.m in Sources */,
 				777E4EC514DD8303002B40C3 /* WBUtil.m in Sources */,
 				777E4EC614DD8303002B40C3 /* WBSendView.m in Sources */,
@@ -1078,10 +1092,15 @@
 				E5B2E09814E0F2CB007AB372 /* PullRefreshTableViewController.m in Sources */,
 				E53C868914E2923300A01D6F /* PullToRefreshView.m in Sources */,
 				E50E763E14E3ACEC00219A32 /* BrowseItemNoMsgViewController.m in Sources */,
+<<<<<<< HEAD
 				E50E765614E504E200219A32 /* ListingMapAnnotaion.m in Sources */,
 				E50E765D14E50F3000219A32 /* ListingImageAnnotationView.m in Sources */,
 				E5B3AC5014E9234700CD4C67 /* Offer.m in Sources */,
 				E5B3AC5414E9238100CD4C67 /* Message.m in Sources */,
+=======
+				77F5999014E8075100CE96C3 /* LocateMeManager.m in Sources */,
+				77F5999414E8155A00CE96C3 /* NSObject+LocateMe.m in Sources */,
+>>>>>>> 003ca5ca3b121a3398c46cfc8616a6dbabd5ca28
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
