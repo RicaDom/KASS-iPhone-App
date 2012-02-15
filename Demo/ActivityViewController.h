@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "ListItem.h"
 #import "Listing.h"
+#import "Offers.h"
+#import "Offer.h"
 #import "ItemViewController.h"
 #import "VariableStore.h"
 #import "ListingTableCell.h"
 #import "PullRefreshTableViewController.h"
 #import "AccountActivityDelegate.h"
-#import "DejalActivityView.h"
 
 @interface ActivityViewController : PullRefreshTableViewController <AccountActivityDelegate>
 {
@@ -28,7 +29,7 @@
 
 - (void)setupArray;
 - (void)reloadTable;
-- (void)getBuyingItems:(NSData *)data;
-- (void)getSellingItems:(NSData *)data;
+- (void)getBuyingItems:(NSDictionary *)dict;
+- (void)getSellingItems:(NSDictionary *)dict;
 
 @end

@@ -20,13 +20,25 @@
   [super tearDown];
 }
 
+- (void)testNSDateTimeWithRubyTime
+{
+  NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+  [dateFormat setDateFormat:RUBY_DATETIME_FORMAT];
+  NSDate *dateTime = [dateFormat dateFromString:@"2012-02-17T07:50:16+0800"];
+  NSString *dateTimeString = [dateFormat stringFromDate:dateTime];
+  
+  STAssertEqualObjects(@"2012-02-17T07:50:16+0800", dateTimeString, nil);
+}
+
 // All code under test must be linked into the Unit Test bundle
 - (void)testListItem
 {
-  
+  NSArray *latlng = [[NSArray alloc] initWithObjects: @"30.645333", @"104.011199", nil];
   NSDictionary * dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                @"i am an item", @"title",
                                @"i am a description", @"description",
+                               @"2012-02-17T07:50:16+0800", @"time",
+                               latlng, @"latlng",
                                @"50.0", @"price",
                                nil];
   
@@ -37,6 +49,17 @@
                             [[NSNumber numberWithDouble:50.0] decimalValue]];
   
   STAssertEqualObjects([listItem askPrice], price, nil);
+  
+  NSDecimalNumber *lat = [NSDecimalNumber decimalNumberWithDecimal:
+                            [[NSNumber numberWithDouble:30.645333] decimalValue]];
+  
+  STAssertEqualObjects(listItem.location.latitude, lat, nil);
+  
+  NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+  [dateFormat setDateFormat:RUBY_DATETIME_FORMAT];
+  NSString *dateTimeString = [dateFormat stringFromDate:listItem.endedAt];
+  
+  STAssertEqualObjects(@"2012-02-17T07:50:16+0800", dateTimeString, nil);
 }
 
 - (void)testInitWithData

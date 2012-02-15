@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		77458EDE14EBB24C00B19F50 /* UIViewController+ActivityIndicate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77458EDD14EBB24C00B19F50 /* UIViewController+ActivityIndicate.m */; };
+		77458EE214EBC2E100B19F50 /* Offers.m in Sources */ = {isa = PBXBuildFile; fileRef = 77458EE114EBC2E100B19F50 /* Offers.m */; };
 		774F965414D8D8EE00E2588A /* KassApiTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 774F965214D8D8EE00E2588A /* KassApiTest.m */; };
 		774F965714D8E5E200E2588A /* NSObject+AsyncRequestPerform.m in Sources */ = {isa = PBXBuildFile; fileRef = 774F965614D8E5E200E2588A /* NSObject+AsyncRequestPerform.m */; };
 		775069EF14C80ADE000494E5 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 775069EE14C80ADE000494E5 /* README.markdown */; };
@@ -165,6 +167,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		77458EDC14EBB24B00B19F50 /* UIViewController+ActivityIndicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ActivityIndicate.h"; sourceTree = "<group>"; };
+		77458EDD14EBB24C00B19F50 /* UIViewController+ActivityIndicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ActivityIndicate.m"; sourceTree = "<group>"; };
+		77458EE014EBC2E100B19F50 /* Offers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Offers.h; sourceTree = "<group>"; };
+		77458EE114EBC2E100B19F50 /* Offers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Offers.m; sourceTree = "<group>"; };
 		774F965114D8D8EE00E2588A /* KassApiTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KassApiTest.h; sourceTree = "<group>"; };
 		774F965214D8D8EE00E2588A /* KassApiTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KassApiTest.m; sourceTree = "<group>"; };
 		774F965514D8E5E100E2588A /* NSObject+AsyncRequestPerform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AsyncRequestPerform.h"; sourceTree = "<group>"; };
@@ -809,6 +815,8 @@
 				777E4EEF14DE72CF002B40C3 /* UIView+ViewController.m */,
 				77F5999214E8155A00CE96C3 /* NSObject+LocateMe.h */,
 				77F5999314E8155A00CE96C3 /* NSObject+LocateMe.m */,
+				77458EDC14EBB24B00B19F50 /* UIViewController+ActivityIndicate.h */,
+				77458EDD14EBB24C00B19F50 /* UIViewController+ActivityIndicate.m */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -902,6 +910,8 @@
 				77F3D0D814CC0B4D00770E73 /* Location.m */,
 				E57EDB1D14D7EA0F0026D186 /* User.h */,
 				E57EDB1E14D7EA0F0026D186 /* User.m */,
+				77458EE014EBC2E100B19F50 /* Offers.h */,
+				77458EE114EBC2E100B19F50 /* Offers.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1166,6 +1176,8 @@
 				E5B3AC6B14EB95D700CD4C67 /* OfferTableCell.m in Sources */,
 				E5B3AC7714EBB71F00CD4C67 /* EGORefreshTableHeaderView.m in Sources */,
 				E5B3AC8A14EBBDCD00CD4C67 /* ActivityOfferMessageViewController.m in Sources */,
+				77458EDE14EBB24C00B19F50 /* UIViewController+ActivityIndicate.m in Sources */,
+				77458EE214EBC2E100B19F50 /* Offers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -32,5 +32,22 @@
 
 - (void)createListing:(NSDictionary *)dict;
 - (void)createListingFinished:(NSData *)data;
+- (void)createOffer:(NSDictionary *)dict;
+- (void)createOfferFinished:(NSData *)data;
+- (void)createOfferMessage:(NSDictionary *)dict:(NSString *)modelId;
+- (void)createOfferMessageFinished:(NSData *)data;
+
+- (void)getListing:(NSString *)dbId;
+- (void)getListingFinished:(NSData *)data;
+- (void)getListings;
+- (void)getListingsFinished:(NSData *)data;
+- (void)getOffer:(NSString *)dbId;
+- (void)getOfferFinished:(NSData *)data;
+- (void)getOffers;
+- (void)getOffersFinished:(NSData *)data;
+- (void)modifyOffer:(NSDictionary *)dict:(NSString *)modelId;
+- (void)modifyOfferFinished:(NSData *)data;
+- (void)getOfferMessages:(NSString *)offerId;
+- (void)getOfferMessagesFinished:(NSData *)data;
 
 @end

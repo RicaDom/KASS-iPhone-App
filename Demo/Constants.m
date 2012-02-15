@@ -32,4 +32,6 @@ NSString * const UI_BUTTON_LABEL_SEND_EMAIL = @"发邮件";
 NSString * const UI_BUTTON_LABEL_SHARE_WITH_FRIEND = @"与好友分享";
 
 NSString * const CHANGED_PRICE_NOTIFICATION = @"CHANGED_PRICE_NOTIFICATION";
+NSString * const RUBY_DATETIME_FORMAT = @"yyyy-MM-dd'T'HH:mm:ssZ";
+
 @end

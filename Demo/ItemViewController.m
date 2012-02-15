@@ -299,7 +299,8 @@
     
     // Configure the cell...
     Offer *offer = [self.offers objectAtIndex:indexPath.row];
-    cell.price.text = [offer.price stringByAppendingFormat:@"元"];
+    cell.price.text = @"XX 元";
+    //[offer.price stringValue];
     cell.distance.text = [offer.distance stringValue];
     cell.title.text = offer.lastMessage.body;
     return cell;

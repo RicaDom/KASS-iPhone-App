@@ -7,6 +7,7 @@
 //
 
 #import "BrowseItemViewController.h"
+#import "VariableStore.h"
 
 @implementation BrowseItemViewController
 
@@ -211,9 +212,35 @@
                                   sender: self];
     } else if (self.navigationButton.title == UI_BUTTON_LABEL_SUBMIT) {
         // TODO - submitting data to backend server
-        
-        [self.messageTextField resignFirstResponder];
+          
+      DLog(@"BrowseItemViewController::(IBAction)navigationButtonAction:postingOffer: \n");
+
+      
+      NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                     self.itemPriceLabel.text, @"price",
+                                     self.messageTextField.text, @"message",
+                                     _currentItem.dbId, @"listing_id",nil];
+      
+      // submit listing
+      VariableStore.sharedInstance.user.delegate = self;
+      [VariableStore.sharedInstance.user createOffer:params];
+      [self.messageTextField resignFirstResponder];
     }
+}
+
+
+- (void)accountDidGetOffer:(NSDictionary *)dict
+{
+  DLog(@"BrowseItemViewController::accountDidGetOffer:dict=%@", dict);  
+}
+
+- (void)accountDidCreateOffer:(NSDictionary *)dict
+{
+  DLog(@"BrowseItemViewController::accountDidCreateOffer:dict=%@", dict);
+  NSDictionary *offer = [dict objectForKey:@"offer"] ;
+  
+  VariableStore.sharedInstance.user.delegate = self;
+  [VariableStore.sharedInstance.user getOffer:[offer objectForKey:@"id"]];
 }
 
 -(void)stopLoading

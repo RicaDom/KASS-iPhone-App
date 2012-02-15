@@ -41,6 +41,20 @@
   DLog(@"KassApi::requestFailed %@", [request error]);
 }
 
+- (void)putData:(NSString *)url:(NSDictionary *)dict
+{
+  id kassSelf = self;
+  __block ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:url]];
+  [request setCompletionBlock:^{ [kassSelf requestFinished:request]; }];
+  [request setFailedBlock:^{[kassSelf requestFailed:request];}];
+  [request setRequestMethod:@"PUT"];
+  for (id key in dict){
+    [request setPostValue:[dict objectForKey:key] forKey:key];
+  }
+  [request startAsynchronous];
+  DLog(@"KassApi::putData::startAsynchronous=%@", url);
+}
+
 - (void)postData:(NSString *)url:(NSDictionary *)dict
 {
   id kassSelf = self;
@@ -79,8 +93,8 @@
 
 - (void)createListing:(NSDictionary *)dict
 {
-  DLog(@"KassApi::postListing:dict=%@", dict);
-  _url = [NSString stringWithFormat:@"http://%s/v1/listings.json", HOST];
+  DLog(@"KassApi::createListing:dict=%@", dict);
+  _url = [NSString stringWithFormat:@"http://%s/v1/listings", HOST];
   
   //validity check
   NSString *title = [dict valueForKey:@"title"];
@@ -92,19 +106,77 @@
   if ( title && desc && price && latlng && duration) {
     [self postData:_url:dict];
   }else{
-    DLog(@"KassApi::postListing: invalid data!");
+    DLog(@"KassApi::createListing: invalid data!");
   }
+}
+
+- (void)modifyOffer:(NSDictionary *)dict:(NSString *)modelId
+{
+  DLog(@"KassApi::modifyOffer:id=%@,dict=%@", modelId, dict);
+  _url = [NSString stringWithFormat:@"http://%s/v1/offers/%@", HOST, modelId];
+  [self putData:_url:dict];  
+}
+
+- (void)acceptOffer:(NSDictionary *)dict:(NSString *)modelId
+{
+  DLog(@"KassApi::acceptOffer:id=%@,dict=%@", modelId, dict);
+  _url = [NSString stringWithFormat:@"http://%s/v1/offers/%@/accept", HOST, modelId];
+  [self postData:_url:dict];  
+}
+
+- (void)createOfferMessage:(NSDictionary *)dict:(NSString *)offerId
+{
+  DLog(@"KassApi::createOfferMessage:id=%@,dict=%@", offerId, dict);
+  _url = [NSString stringWithFormat:@"http://%s/v1/offers/%@/Messages", HOST, offerId];
+  [self postData:_url:dict];
+}
+
+- (void)getOfferMessages:(NSString *)offerId
+{
+  DLog(@"KassApi::getOfferMessages:id=%@", offerId);
+  _url = [NSString stringWithFormat:@"http://%s/v1/offers/%@/messages", HOST, offerId];
+  [self getData:_url];  
+}
+
+- (void)createOffer:(NSDictionary *)dict
+{
+  DLog(@"KassApi::createOffer:dict=%@", dict);
+  _url = [NSString stringWithFormat:@"http://%s/v1/offers", HOST];
+  
+  //validity check
+  NSString *message    = [dict valueForKey:@"message"];
+  NSString *listingId  = [dict valueForKey:@"listing_id"];
+  NSDecimalNumber *price = [NSDecimalNumber decimalNumberWithDecimal:[[dict objectForKey:@"price"] decimalValue]];
+  
+  if ( message && listingId && price ) {
+    [self postData:_url:dict];
+  }else{
+    DLog(@"KassApi::createOffer: invalid data!");
+  }
+  
 }
 
 - (void)getAccountListings
 {
-  _url = [NSString stringWithFormat:@"http://%s/v1/account/listings.json", HOST];
+  _url = [NSString stringWithFormat:@"http://%s/v1/account/listings", HOST];
+  [self getData:_url];
+}
+
+- (void)getAccountOffers
+{
+  _url = [NSString stringWithFormat:@"http://%s/v1/account/offers", HOST];
+  [self getData:_url];
+}
+
+- (void)getAccountOffer:(NSString *)modelId
+{
+  _url = [NSString stringWithFormat:@"http://%s/v1/account/offers/%@", HOST, modelId];
   [self getData:_url];
 }
 
 - (void)getListings:(NSDictionary *)dict
 {
-  _url = [NSString stringWithFormat:@"http://%s/v1/listings.json", HOST];
+  _url = [NSString stringWithFormat:@"http://%s/v1/listings", HOST];
   NSString *params = @"";
   for (id key in dict){
     NSString *param = [NSString stringWithFormat:@"%@=%@", key, [dict objectForKey:key]];
@@ -135,7 +207,8 @@
 
 - (void)getListing:(NSString *)modelId
 {
-  _url = [NSString stringWithFormat:@"http://%s/v1/listings/%@.json", HOST, modelId];
+  _url = [NSString stringWithFormat:@"http://%s/v1/listings/%@", HOST, modelId];
+  [self getData:_url];
 }
 
 /////// CLASS METHODS - SYNCHRONOUS CALLS ////////

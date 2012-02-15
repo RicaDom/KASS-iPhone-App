@@ -7,6 +7,7 @@
 //
 
 #import "ActivityViewController.h"
+#import "UIViewController+ActivityIndicate.h"
 
 
 @implementation ActivityViewController
@@ -16,13 +17,30 @@
 NSMutableArray *currentItems;
 
 - (IBAction)activityChanged:(id)sender {
-  [self reloadTable];
+  DLog(@"ActivityViewController::(IBAction)activityChanged");
+  if ( [[VariableStore sharedInstance].myBuyingListings count] == 0 || [[VariableStore sharedInstance].mySellingListings count] == 0) {
+    [self setupArray];
+  }else{
+    [self reloadTable];
+  }
 }
 
 - (void) accountLoadData
 {
   DLog(@"ActivityViewController::accountLoadData");
   [self setupArray];
+}
+
+- (void) accountDidGetListings:(NSDictionary *)dict
+{
+  DLog(@"ActivityViewController::accountDidGetListings:dict");
+  [self getBuyingItems:dict];
+}
+
+- (void) accountDidGetOffers:(NSDictionary *)dict
+{
+  DLog(@"ActivityViewController::accountDidGetOffers:dict");
+  [self getSellingItems:dict];
 }
 
 - (void)reloadTable
@@ -39,37 +57,35 @@ NSMutableArray *currentItems;
   }
   
   [self.tableView reloadData];
+  [self stopLoading];
+  [self hideIndicator];
 }
 
-- (void)getBuyingItems:(NSData *)data
+- (void)getBuyingItems:(NSDictionary *)dict
 {
   DLog(@"ActivityViewController::getBuyingItems");
-  Listing *listing = [[Listing alloc] initWithData:data];
+  Listing *listing = [[Listing alloc] initWithDictionary:dict];
   [VariableStore sharedInstance].myBuyingListings = [listing listItems];
   [self reloadTable];
-  [DejalBezelActivityView removeViewAnimated:YES];
 }
 
 
-- (void)getSellingItems:(NSData *)data
+- (void)getSellingItems:(NSDictionary *)dict
 {
   DLog(@"ActivityViewController::getSellingItems");
-  Listing *listing = [[Listing alloc] initWithData:data];
-  [VariableStore sharedInstance].mySellingListings = [listing listItems];
+  Offers *offers = [[Offers alloc] initWithDictionary:dict];
+  [VariableStore sharedInstance].mySellingListings = [offers offers];
   [self reloadTable];
-  [DejalBezelActivityView removeViewAnimated:YES];  
 }
 
 -(void)setupArray{
-    if ( 0 == activitySegment.selectedSegmentIndex) {
-        KassApi *ka  = [[KassApi alloc]initWithPerformerAndAction:self:@"getBuyingItems:"];
-        [ka getAccountListings];  
-        [DejalBezelActivityView activityViewForView:self.navigationController.navigationBar.superview withLabel:@"Loading..." width:100];
-    } else {
-        KassApi *ka2 = [[KassApi alloc]initWithPerformerAndAction:self:@"getSellingItems:"];
-        [ka2 getAccountListings]; //TODO: this will change to get selling stuff
-        [DejalBezelActivityView activityViewForView:self.navigationController.navigationBar.superview withLabel:@"Loading..." width:100];
-    }
+  [self showLoadingIndicator];
+  VariableStore.sharedInstance.user.delegate = self;
+  if ( 0 == activitySegment.selectedSegmentIndex) {
+    [VariableStore.sharedInstance.user getListings]; 
+  } else {
+    [VariableStore.sharedInstance.user getOffers];
+  }
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -231,14 +247,7 @@ NSMutableArray *currentItems;
 
 // Reloading data
 - (void)refresh {
-    [self performSelector:@selector(addItem) withObject:nil afterDelay:2.0];
-}
-
-- (void)addItem {
-    // TODO
-    // Adding item to the list
-    [self setupArray];
-    [self stopLoading];
+    [self performSelector:@selector(setupArray) withObject:nil afterDelay:2.0];
 }
 
 @end

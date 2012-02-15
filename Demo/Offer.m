@@ -20,4 +20,18 @@
 @synthesize userId = _userId;
 @synthesize distance = _distance;
 
+- (id) initWithDictionary:(NSDictionary *) theDictionary
+{
+  if (self = [super init]) {
+    _listingId    = [theDictionary objectForKey:@"listing_id"];
+    _state        = [theDictionary objectForKey:@"state"];
+    _dbId         = [theDictionary objectForKey:@"id"];
+    _price     = [NSDecimalNumber decimalNumberWithDecimal:[[theDictionary objectForKey:@"price"] decimalValue]];
+    
+    
+//    _lastMessage     = [[Message alloc] init];
+  }
+  return self;
+}
+
 @end

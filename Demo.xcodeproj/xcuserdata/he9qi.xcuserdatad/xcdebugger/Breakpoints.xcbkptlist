@@ -9,13 +9,13 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/ActivityViewController.m"
-         timestampString = "350306482.529262"
+         timestampString = "351000985.337422"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "125"
-         endingLineNumber = "125"
-         landmarkName = "@implementation ActivityViewController"
-         landmarkType = "3">
+         startingLineNumber = "132"
+         endingLineNumber = "132"
+         landmarkName = "-viewDidLoad"
+         landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

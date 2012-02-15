@@ -1,27 +1,27 @@
 //
-//  Listing.m
+//  Offers.m
 //  Demo
 //
-//  Created by Qi He on 12-1-18.
+//  Created by Qi He on 12-2-15.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
-#import "Listing.h"
+#import "Offers.h"
 
-@implementation Listing : NSObject 
+@implementation Offers
 
 @synthesize data = _data;
-@synthesize listItems = _listItems;
+@synthesize offers = _offers;
 @synthesize location = _location;
 
-- (void) buildListing:(NSDictionary *) theDict
+- (void) buildOffers:(NSDictionary *) theDict
 {
-  NSArray *listings = [theDict objectForKey:@"listings"];
-  for(id listing in listings)
+  NSArray *offers = [theDict objectForKey:@"listings"];
+  for(id ioffer in offers)
   {
-    NSDictionary *listDict = listing; 
-    ListItem *listItem = [[ListItem alloc] initWithDictionary:listDict ];
-    [_listItems addObject:listItem];
+    NSDictionary *offerDict = ioffer; 
+    Offer *offer = [[Offer alloc] initWithDictionary:offerDict];
+    [_offers addObject:offer];
   }
   
   NSDictionary *locDict = [theDict objectForKey:@"location"];
@@ -33,8 +33,8 @@
 - (id) initWithDictionary:(NSDictionary *) theDict
 {
   if (self = [super init]) {
-    _listItems = [NSMutableArray new];
-    [self buildListing:theDict];
+    _offers = [NSMutableArray new];
+    [self buildOffers:theDict];
   }
   return self;
 }
@@ -43,10 +43,10 @@
 {
   if (self = [super init]) {
     _data = theData;
-    _listItems = [NSMutableArray new];
+    _offers = [NSMutableArray new];
     
     NSDictionary *dict = [KassApi parseData:_data];  
-    [self buildListing:dict];    
+    [self buildOffers:dict];    
   }
   return self;
 }
@@ -54,9 +54,9 @@
 - (void) printOut
 {
   NSLog(@"------- Listing ------- \n");
-  for(id listItem in _listItems)
+  for(id offer in _offers)
   {
-    NSLog(@"> %@ \n", [listItem title]);
+    NSLog(@"> %@ \n", [offer title]);
   }
   NSLog(@"------- ------- ------- \n");
 }

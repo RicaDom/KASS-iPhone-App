@@ -20,13 +20,29 @@
 @synthesize dbId = _dbId;
 @synthesize offers = _offers;
 @synthesize location = _location;
+@synthesize userId = _userId;
+@synthesize state = _state;
+@synthesize endedAt = _endedAt;
 
 - (id) initWithDictionary:(NSDictionary *) theDictionary
 {
   if (self = [super init]) {
     _title        = [theDictionary objectForKey:@"title"];
     _description  = [theDictionary objectForKey:@"description"];
+    _state        = [theDictionary objectForKey:@"state"];
+    _dbId         = [theDictionary objectForKey:@"id"];
+    _userId       = [theDictionary objectForKey:@"user_id"];
+    
     _askPrice     = [NSDecimalNumber decimalNumberWithDecimal:[[theDictionary objectForKey:@"price"] decimalValue]];
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:RUBY_DATETIME_FORMAT]; //2012-02-17T07:50:16+0000 
+    _endedAt = [dateFormat dateFromString:[theDictionary objectForKey:@"time"]];
+    
+    NSArray *latlng = [theDictionary objectForKey:@"latlng"]; 
+    _location     = [[Location alloc] init];
+    _location.latitude  = [NSDecimalNumber decimalNumberWithDecimal:[[latlng objectAtIndex:0] decimalValue]];
+    _location.longitude = [NSDecimalNumber decimalNumberWithDecimal:[[latlng objectAtIndex:1] decimalValue]];
   }
   return self;
 }
@@ -42,6 +58,7 @@
     _title        = [listDict objectForKey:@"title"];
     _description  = [listDict objectForKey:@"description"];
     _askPrice     = [NSDecimalNumber decimalNumberWithDecimal:[[listDict objectForKey:@"price"] decimalValue]];
+    _location     = [[Location alloc] init];
   }
   return self;
 }

@@ -37,6 +37,152 @@
 	return [pairs componentsJoinedByString:@"&"];
 }
 
+// ########################### API ##############################
+- (void)getOfferMessages:(NSString *)offerId
+{
+  DLog(@"User::acceptOffer:id=%@", offerId);
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getOfferMessagesFinished:"];
+  [ka getOfferMessages:offerId];
+}
+
+- (void)getOfferMessagesFinished:(NSData *)data
+{
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"User::getOfferMessagesFinished:dict");
+  
+  if( [_delegate respondsToSelector:@selector(accountDidGetOfferMessages:)] )
+    [_delegate accountDidGetOfferMessages:dict];
+}
+
+- (void)acceptOffer:(NSDictionary *)dict:(NSString *)modelId
+{
+  DLog(@"User::acceptOffer:id=%@,dict=%@", modelId, dict);
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"acceptOfferFinished:"];
+  [ka acceptOffer:dict:modelId];
+  
+}
+
+- (void)acceptOfferFinished:(NSData *)data
+{
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"User::acceptOfferFinished:dict");
+  
+  if( [_delegate respondsToSelector:@selector(accountDidAcceptOffer:)] )
+    [_delegate accountDidAcceptOffer:dict];
+}
+
+- (void)createOfferMessage:(NSDictionary *)dict:(NSString *)offerId
+{
+  DLog(@"User::createOfferMessage:dict=%@", dict);
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"createOfferMessageFinished:"];
+  [ka createOfferMessage:dict:offerId];
+}
+
+- (void)createOfferMessageFinished:(NSData *)data
+{
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"User::createOfferMessageFinished:dict");
+  
+  if( [_delegate respondsToSelector:@selector(accountDidCreateOfferMessage:)] )
+    [_delegate accountDidCreateOfferMessage:dict];
+}
+
+- (void)modifyOffer:(NSDictionary *)dict:(NSString *)modelId
+{
+  DLog(@"User::modifyOffer:id=%@,dict=%@", modelId, dict);
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"modifyOfferFinished:"];
+  [ka modifyOffer:dict:modelId];
+}
+
+- (void)modifyOfferFinished:(NSData *)data
+{
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"User::modifyOfferFinished:dict");
+  
+  if( [_delegate respondsToSelector:@selector(accountDidModifyOffer:)] )
+    [_delegate accountDidModifyOffer:dict];
+}
+
+- (void)createOffer:(NSDictionary *)dict
+{
+  DLog(@"User::createOffer:dict=%@", dict);
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"createOfferFinished:"];
+  [ka createOffer:dict];
+}
+
+- (void)createOfferFinished:(NSData *)data
+{
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"User::createOfferFinished:dict");
+  
+  if( [_delegate respondsToSelector:@selector(accountDidCreateOffer:)] )
+    [_delegate accountDidCreateOffer:dict];
+}
+
+- (void)getOffers
+{
+  DLog(@"User::getOffers");
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getOffersFinished:"];
+  [ka getAccountOffers];
+}
+
+- (void)getOffersFinished:(NSData *)data
+{
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"User::getOffersFinished:dict");
+  
+  if( [_delegate respondsToSelector:@selector(accountDidGetOffers:)] )
+    [_delegate accountDidGetOffers:dict];
+}
+
+- (void)getOffer:(NSString *)dbId
+{
+  DLog(@"User::getOffer:dbId=%@", dbId);
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getOfferFinished:"];
+  [ka getAccountOffer:dbId];
+}
+
+- (void)getOfferFinished:(NSData *)data
+{
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"User::getOffer:dict");
+  
+  if( [_delegate respondsToSelector:@selector(accountDidGetOffer:)] )
+    [_delegate accountDidGetOffer:dict];
+}
+
+- (void)getListing:(NSString *)dbId
+{
+  DLog(@"User::getListing:dbId=%@", dbId);
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getListingFinished:"];
+  [ka getListing:dbId];
+}
+
+- (void)getListingFinished:(NSData *)data
+{
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"User::getListingFinished:dict");
+  
+  if( [_delegate respondsToSelector:@selector(accountDidGetListing:)] )
+    [_delegate accountDidGetListing:dict];
+}
+
+- (void)getListings
+{
+  DLog(@"User::getListings");
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getListingsFinished:"];
+  [ka getAccountListings];
+}
+
+- (void)getListingsFinished:(NSData *)data
+{
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"User::getListingsFinished:dict");
+  
+  if( [_delegate respondsToSelector:@selector(accountDidGetListings:)] )
+    [_delegate accountDidGetListings:dict];
+}
+
 - (void)createListingFinished:(NSData *)data
 {
   NSDictionary *dict = [KassApi parseData:data];
@@ -52,6 +198,8 @@
   KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"createListingFinished:"];
   [ka createListing:dict];
 }
+
+// ########################### API ##############################
 
 - (void) accountLogin:(NSString *)email:(NSString *)password
 {

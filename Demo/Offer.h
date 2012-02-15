@@ -12,7 +12,7 @@
 @interface Offer : NSObject
 
 @property (nonatomic, strong) NSString *dbId;
-@property (nonatomic, strong) NSString *price;
+@property (nonatomic, strong) NSDecimalNumber *price;
 @property (nonatomic, strong) NSMutableArray *messages;
 @property (nonatomic, strong) NSDate *createdAt;
 @property (nonatomic, strong) NSString *state;
@@ -20,5 +20,8 @@
 @property (nonatomic, strong) Message *lastMessage;
 @property (nonatomic, strong) NSString *userId;
 @property (nonatomic, strong) NSNumber *distance;
+
+
+- (id) initWithDictionary:(NSDictionary *) theDictionary;
 
 @end
