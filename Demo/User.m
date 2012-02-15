@@ -155,7 +155,7 @@
 {
   DLog(@"User::getListing:dbId=%@", dbId);
   KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getListingFinished:"];
-  [ka getListing:dbId];
+  [ka getAccountListing:dbId];
 }
 
 - (void)getListingFinished:(NSData *)data

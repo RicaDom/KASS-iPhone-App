@@ -162,6 +162,12 @@
   [self getData:_url];
 }
 
+- (void)getAccountListing:(NSString *)modelId
+{
+  _url = [NSString stringWithFormat:@"http://%s/v1/account/listings/%@", HOST, modelId];
+  [self getData:_url];
+}
+
 - (void)getAccountOffers
 {
   _url = [NSString stringWithFormat:@"http://%s/v1/account/offers", HOST];
