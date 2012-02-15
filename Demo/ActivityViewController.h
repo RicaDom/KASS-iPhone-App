@@ -14,6 +14,7 @@
 #import "ListingTableCell.h"
 #import "PullRefreshTableViewController.h"
 #import "AccountActivityDelegate.h"
+#import "DejalActivityView.h"
 
 @interface ActivityViewController : PullRefreshTableViewController <AccountActivityDelegate>
 {

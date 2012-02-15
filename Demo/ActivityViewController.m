@@ -59,6 +59,7 @@ NSMutableArray *currentItems;
   Listing *listing = [[Listing alloc] initWithDictionary:dict];
   [VariableStore sharedInstance].myBuyingListings = [listing listItems];
   [self reloadTable];
+  [DejalBezelActivityView removeViewAnimated:YES];
 }
 
 
@@ -68,13 +69,20 @@ NSMutableArray *currentItems;
   Listing *listing = [[Listing alloc] initWithDictionary:dict];
   [VariableStore sharedInstance].mySellingListings = [listing listItems];
   [self reloadTable];
+  [DejalBezelActivityView removeViewAnimated:YES];  
 }
 
 -(void)setupArray{
-  VariableStore.sharedInstance.user.delegate = self;
-  [VariableStore.sharedInstance.user getListings];
-  [VariableStore.sharedInstance.user getOffers];
-  
+
+  if ( 0 == activitySegment.selectedSegmentIndex) {
+      VariableStore.sharedInstance.user.delegate = self;
+      [VariableStore.sharedInstance.user getListings]; 
+      [DejalBezelActivityView activityViewForView:self.navigationController.navigationBar.superview withLabel:@"Loading..." width:100];
+  } else {
+      VariableStore.sharedInstance.user.delegate = self;
+      [VariableStore.sharedInstance.user getOffers];
+      [DejalBezelActivityView activityViewForView:self.navigationController.navigationBar.superview withLabel:@"Loading..." width:100];
+  }
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
