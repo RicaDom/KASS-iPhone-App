@@ -7,6 +7,7 @@
 //
 
 #import "BrowseTableViewController.h"
+#import "UIViewController+ActivityIndicate.h"
 
 @implementation BrowseTableViewController
 @synthesize browseSegment = _browseSegment;
@@ -27,6 +28,7 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
   }
   [self.tableView reloadData];
   [self stopLoading];
+  [self hideIndicator];
 }
 
 - (void)getNearbyItems:(NSData *)data
@@ -37,59 +39,27 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
   [self reloadTable];
 }
 
+- (void)getRecentItems:(NSData *)data
+{
+  DLog(@"ActivityViewController::getRecentItems");
+  Listing *listing = [[Listing alloc] initWithData:data];
+  recentItems = [listing listItems];
+  [self reloadTable];
+}
+
+- (void)getMostPriceItems:(NSData *)data
+{
+  DLog(@"ActivityViewController::getMostPriceItems");
+  Listing *listing = [[Listing alloc] initWithData:data];
+  priceItems = [listing listItems];
+  [self reloadTable];
+}
+
+// we need to locate user position before getting data
 - (void)setupArray {
-  // near by items
-  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getNearbyItems:"];
-  
-  NSString *latlng = [NSString stringWithFormat:@"%+.6f,%+.6f", 
-                      VariableStore.sharedInstance.location.coordinate.latitude, 
-                      VariableStore.sharedInstance.location.coordinate.longitude]; 
-  
-  NSDictionary * dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                               latlng, @"center",
-                               @"10", @"radius",
-                               nil];
-  [ka getListings:dictionary];
-    
-  // sample data
-//  NSData *data = [NSData dataWithContentsOfFile:
-//                  [[NSBundle mainBundle] pathForResource:@"listings" ofType:@"json"] ]; 
-  
-  ListItem *item = [ListItem new];
-  
-  // most recent items
-  // recentItems = [NSMutableArray new];
-  
-  // TESTING DATA - GLOBAL ARRAY FOR USER SUBMITTING NEW LISTING
-  recentItems = [VariableStore sharedInstance].allListings;
-  
-  // price sorted items
-  priceItems = [NSMutableArray new];
-  
-  item = [ListItem new];
-  [item setTitle:@"Professionally clean outdoor grill"];
-  [item setDescription:@"Grand Turbo gas grill. Need someone to clean all parts of it to make it look like new"];
-  item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
-                   [[NSNumber numberWithFloat:59.75f] decimalValue]];
-  
-  [priceItems addObject:item];
-  
-  item = [ListItem new];
-  [item setTitle:@"External harddrive 500GB"];
-  [item setDescription:@"500GB"];
-  item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
-                   [[NSNumber numberWithFloat:18.55f] decimalValue]];
-  
-  [priceItems addObject:item];
-  
-  item = [ListItem new];
-  [item setTitle:@"Samsung galaxy"];
-  [item setDescription:@"I broke mine I need one that works!"];
-  item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
-                   [[NSNumber numberWithFloat:18.55f] decimalValue]];
-  
-  [priceItems addObject:item];
-    
+  DLog(@"BrowseTableViewController::setupArray");
+  [self showLoadingIndicator];
+  [self locateMe];
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -124,7 +94,28 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
 - (void)locateMeFinished
 {
   DLog(@"BrowseTableViewController::locateMeFinished ");
-  [self setupArray];
+  NSString *latlng = [NSString stringWithFormat:@"%+.6f,%+.6f", 
+                      VariableStore.sharedInstance.location.coordinate.latitude, 
+                      VariableStore.sharedInstance.location.coordinate.longitude]; 
+  
+  NSMutableDictionary * dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latlng, @"center",
+                                      @"10", @"radius",
+                                      nil];
+  
+  if ( 0 == _browseSegment.selectedSegmentIndex) {
+    KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getNearbyItems:"];
+    [ka getListings:dictionary];
+    
+  } else if ( 1 == _browseSegment.selectedSegmentIndex) {
+    [dictionary setObject:@"ended_at" forKey:@"sort"];
+    KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getRecentItems:"];
+    [ka getListings:dictionary];
+  } else {
+    [dictionary setObject:@"price" forKey:@"sort"];
+    KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getMostPriceItems:"];
+    [ka getListings:dictionary];
+  }
+
 }
 
 
@@ -133,8 +124,7 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
   DLog(@"BrowseTableViewController::viewDidLoad ");
   [super viewDidLoad];
   
-  VariableStore.sharedInstance.locateMeManager.delegate = self;
-  [VariableStore.sharedInstance.locateMeManager locateMe];
+  [self setupArray];
 
 	//
 	// Create a header view. Wrap it in a container to allow us to position
@@ -252,13 +242,12 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
 
 // Reloading data
 - (void)refresh {
-    [self performSelector:@selector(addItem) withObject:nil afterDelay:2.0];
+    [self performSelector:@selector(setupArray) withObject:nil afterDelay:1.0];
 }
 
-- (void)addItem {
+- (void)locateMe {
   VariableStore.sharedInstance.locateMeManager.delegate = self;
   [VariableStore.sharedInstance.locateMeManager locateMe];
-  [self reloadTable];
 }
 
 #pragma mark - Table view delegate
@@ -270,7 +259,7 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
     // <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
      // ...
      // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
+     [self.navigationController push-ViewController:detailViewController animated:YES];
      */
     NSLog(@"didSelectRowAtIndexPath .... ");
     
@@ -286,7 +275,12 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
 }
 
 - (IBAction)browseSegmentAction:(id)sender {
-  [self reloadTable];
+  DLog(@"BrowseTableViewController::(IBAction)browseSegmentAction");
+  if ( !recentItems || !priceItems || !nearByItems) {
+    [self setupArray];
+  }else{
+    [self reloadTable]; //reload ui
+  }
 }
 
 // call back from BrowseItemNoMsgViewController

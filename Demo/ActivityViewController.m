@@ -7,6 +7,7 @@
 //
 
 #import "ActivityViewController.h"
+#import "UIViewController+ActivityIndicate.h"
 
 
 @implementation ActivityViewController
@@ -16,7 +17,12 @@
 NSMutableArray *currentItems;
 
 - (IBAction)activityChanged:(id)sender {
-  [self reloadTable];
+  DLog(@"ActivityViewController::(IBAction)activityChanged");
+  if ( [[VariableStore sharedInstance].myBuyingListings count] == 0 || [[VariableStore sharedInstance].mySellingListings count] == 0) {
+    [self setupArray];
+  }else{
+    [self reloadTable];
+  }
 }
 
 - (void) accountLoadData
@@ -51,6 +57,8 @@ NSMutableArray *currentItems;
   }
   
   [self.tableView reloadData];
+  [self stopLoading];
+  [self hideIndicator];
 }
 
 - (void)getBuyingItems:(NSDictionary *)dict
@@ -59,29 +67,24 @@ NSMutableArray *currentItems;
   Listing *listing = [[Listing alloc] initWithDictionary:dict];
   [VariableStore sharedInstance].myBuyingListings = [listing listItems];
   [self reloadTable];
-  [DejalBezelActivityView removeViewAnimated:YES];
 }
 
 
 - (void)getSellingItems:(NSDictionary *)dict
 {
   DLog(@"ActivityViewController::getSellingItems");
-  Listing *listing = [[Listing alloc] initWithDictionary:dict];
-  [VariableStore sharedInstance].mySellingListings = [listing listItems];
+  Offers *offers = [[Offers alloc] initWithDictionary:dict];
+  [VariableStore sharedInstance].mySellingListings = [offers offers];
   [self reloadTable];
-  [DejalBezelActivityView removeViewAnimated:YES];  
 }
 
 -(void)setupArray{
-
+  [self showLoadingIndicator];
+  VariableStore.sharedInstance.user.delegate = self;
   if ( 0 == activitySegment.selectedSegmentIndex) {
-      VariableStore.sharedInstance.user.delegate = self;
-      [VariableStore.sharedInstance.user getListings]; 
-      [DejalBezelActivityView activityViewForView:self.navigationController.navigationBar.superview withLabel:@"Loading..." width:100];
+    [VariableStore.sharedInstance.user getListings]; 
   } else {
-      VariableStore.sharedInstance.user.delegate = self;
-      [VariableStore.sharedInstance.user getOffers];
-      [DejalBezelActivityView activityViewForView:self.navigationController.navigationBar.superview withLabel:@"Loading..." width:100];
+    [VariableStore.sharedInstance.user getOffers];
   }
 }
 
@@ -244,14 +247,7 @@ NSMutableArray *currentItems;
 
 // Reloading data
 - (void)refresh {
-    [self performSelector:@selector(addItem) withObject:nil afterDelay:2.0];
-}
-
-- (void)addItem {
-    // TODO
-    // Adding item to the list
-    [self setupArray];
-    [self stopLoading];
+    [self performSelector:@selector(setupArray) withObject:nil afterDelay:2.0];
 }
 
 @end

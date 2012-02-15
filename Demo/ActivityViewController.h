@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "ListItem.h"
 #import "Listing.h"
+#import "Offers.h"
+#import "Offer.h"
 #import "ItemViewController.h"
 #import "VariableStore.h"
 #import "ListingTableCell.h"
 #import "PullRefreshTableViewController.h"
 #import "AccountActivityDelegate.h"
-#import "DejalActivityView.h"
 
 @interface ActivityViewController : PullRefreshTableViewController <AccountActivityDelegate>
 {
