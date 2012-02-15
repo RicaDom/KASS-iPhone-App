@@ -12,7 +12,9 @@
 #import "PullToRefreshView.h"
 #import "OfferChangingPriceViewController.h"
 #import "TPKeyboardAvoidingScrollView.h"
-@interface BrowseItemViewController : UIViewController <UIScrollViewDelegate, PullToRefreshViewDelegate>
+#import "AccountActivityDelegate.h"
+
+@interface BrowseItemViewController : UIViewController <UIScrollViewDelegate, PullToRefreshViewDelegate, AccountActivityDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *itemTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *itemDescriptionLabel;

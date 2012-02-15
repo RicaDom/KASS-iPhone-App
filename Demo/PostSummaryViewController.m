@@ -107,7 +107,8 @@
 - (void)accountDidCreateListing:(NSDictionary *)dict
 {
   DLog(@"PostSummaryViewController::accountDidCreateListing:dict=%@", dict);
-  [[VariableStore sharedInstance].allListings addObject:[VariableStore sharedInstance].currentPostingItem];
+  ListItem *listItem = [listItem initWithDictionary:dict];
+  [[VariableStore sharedInstance].allListings addObject:listItem];
   [[VariableStore sharedInstance] clearCurrentPostingItem];
   [self.presentingViewController dismissModalViewControllerAnimated:YES];
 }
@@ -132,6 +133,7 @@
                                  latlng, @"latlng",nil];
   
   // submit listing
+  VariableStore.sharedInstance.user.delegate = self;
   [VariableStore.sharedInstance.user createListing:params];
 }
 

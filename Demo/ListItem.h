@@ -22,6 +22,9 @@
 @property (nonatomic, strong) NSNumber *postDuration;  // in minutes??
 @property (nonatomic, strong) Location *location;
 @property (nonatomic, strong) NSMutableArray *offers;
+@property (nonatomic, strong) NSString *userId;
+@property (nonatomic, strong) NSString *state;
+@property (nonatomic, strong) NSDate *endedAt;
 
 @property (nonatomic, strong) NSData   *data;
 

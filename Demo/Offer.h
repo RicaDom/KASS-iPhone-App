@@ -12,11 +12,14 @@
 @interface Offer : NSObject
 
 @property (nonatomic, strong) NSString *dbId;
-@property (nonatomic, strong) NSString *price;
+@property (nonatomic, strong) NSDecimalNumber *price;
 @property (nonatomic, strong) NSMutableArray *messages;
 @property (nonatomic, strong) NSDate *createdAt;
 @property (nonatomic, strong) NSString *state;
 @property (nonatomic, strong) NSString *listingId;
 @property (nonatomic, strong) Message *lastMessage;
+
+
+- (id) initWithDictionary:(NSDictionary *) theDictionary;
 
 @end

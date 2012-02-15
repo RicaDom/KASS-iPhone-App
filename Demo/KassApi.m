@@ -116,19 +116,25 @@
 
 - (void)getAccountListings
 {
-  _url = [NSString stringWithFormat:@"http://%s/v1/account/listings.json", HOST];
+  _url = [NSString stringWithFormat:@"http://%s/v1/account/listings", HOST];
   [self getData:_url];
 }
 
 - (void)getAccountOffers
 {
-  _url = [NSString stringWithFormat:@"http://%s/v1/account/offers.json", HOST];
+  _url = [NSString stringWithFormat:@"http://%s/v1/account/offers", HOST];
+  [self getData:_url];
+}
+
+- (void)getAccountOffer:(NSString *)modelId
+{
+  _url = [NSString stringWithFormat:@"http://%s/v1/account/offers/%@", HOST, modelId];
   [self getData:_url];
 }
 
 - (void)getListings:(NSDictionary *)dict
 {
-  _url = [NSString stringWithFormat:@"http://%s/v1/listings.json", HOST];
+  _url = [NSString stringWithFormat:@"http://%s/v1/listings", HOST];
   NSString *params = @"";
   for (id key in dict){
     NSString *param = [NSString stringWithFormat:@"%@=%@", key, [dict objectForKey:key]];
@@ -160,6 +166,7 @@
 - (void)getListing:(NSString *)modelId
 {
   _url = [NSString stringWithFormat:@"http://%s/v1/listings/%@.json", HOST, modelId];
+  [self getData:_url];
 }
 
 /////// CLASS METHODS - SYNCHRONOUS CALLS ////////

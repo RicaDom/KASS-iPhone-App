@@ -71,7 +71,7 @@ NSMutableArray *currentItems;
 }
 
 -(void)setupArray{
-
+  VariableStore.sharedInstance.user.delegate = self;
   [VariableStore.sharedInstance.user getListings];
   [VariableStore.sharedInstance.user getOffers];
   

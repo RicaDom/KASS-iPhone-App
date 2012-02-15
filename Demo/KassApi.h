@@ -40,6 +40,7 @@
 - (void)getListing:(NSString *)modelId;
 - (void)getAccountListings;
 - (void)getAccountOffers;
+- (void)getAccountOffer:(NSString *)modelId;
 
 - (void)login:(NSDictionary *)dict;
 - (void)logout;
