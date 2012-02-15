@@ -225,11 +225,6 @@
 {
     [self performSelector:@selector(stopLoading) withObject:nil afterDelay:2.0];	
 }
-// called when the date shown needs to be updated, optional
-//- (NSDate *)pullToRefreshViewLastUpdated:(PullToRefreshView *)view
-//{
-//    
-//}
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"changedPriceSegue"]) {

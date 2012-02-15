@@ -17,5 +17,7 @@
 @synthesize state = _state;
 @synthesize listingId = _listingId;
 @synthesize lastMessage = _lastMessage;
+@synthesize userId = _userId;
+@synthesize distance = _distance;
 
 @end

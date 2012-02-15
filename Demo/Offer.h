@@ -18,5 +18,7 @@
 @property (nonatomic, strong) NSString *state;
 @property (nonatomic, strong) NSString *listingId;
 @property (nonatomic, strong) Message *lastMessage;
+@property (nonatomic, strong) NSString *userId;
+@property (nonatomic, strong) NSNumber *distance;
 
 @end

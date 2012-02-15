@@ -124,6 +124,17 @@
 		E5B3AC5414E9238100CD4C67 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B3AC5314E9238100CD4C67 /* Message.m */; };
 		E5B3AC6614EA4E6700CD4C67 /* DejalActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B3AC6514EA4E6700CD4C67 /* DejalActivityView.m */; };
 		E5B3AC6814EA4EFE00CD4C67 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B3AC6714EA4EFE00CD4C67 /* Icon.png */; };
+		E5B3AC6B14EB95D700CD4C67 /* OfferTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B3AC6A14EB95D600CD4C67 /* OfferTableCell.m */; };
+		E5B3AC7714EBB71F00CD4C67 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B3AC7614EBB71E00CD4C67 /* EGORefreshTableHeaderView.m */; };
+		E5B3AC8014EBB7BB00CD4C67 /* grayArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B3AC7814EBB7BA00CD4C67 /* grayArrow.png */; };
+		E5B3AC8114EBB7BB00CD4C67 /* grayArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B3AC7914EBB7BA00CD4C67 /* grayArrow@2x.png */; };
+		E5B3AC8214EBB7BB00CD4C67 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B3AC7A14EBB7BA00CD4C67 /* blackArrow.png */; };
+		E5B3AC8314EBB7BB00CD4C67 /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B3AC7B14EBB7BA00CD4C67 /* blackArrow@2x.png */; };
+		E5B3AC8414EBB7BB00CD4C67 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B3AC7C14EBB7BA00CD4C67 /* blueArrow.png */; };
+		E5B3AC8514EBB7BB00CD4C67 /* blueArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B3AC7D14EBB7BB00CD4C67 /* blueArrow@2x.png */; };
+		E5B3AC8614EBB7BB00CD4C67 /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B3AC7E14EBB7BB00CD4C67 /* whiteArrow.png */; };
+		E5B3AC8714EBB7BB00CD4C67 /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B3AC7F14EBB7BB00CD4C67 /* whiteArrow@2x.png */; };
+		E5B3AC8A14EBBDCD00CD4C67 /* ActivityOfferMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B3AC8914EBBDC900CD4C67 /* ActivityOfferMessageViewController.m */; };
 		E5C0ABE814AAC9D20021873A /* ListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C0ABE714AAC9D20021873A /* ListItem.m */; };
 		E5C0ABED14AADF130021873A /* ItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C0ABEC14AADF130021873A /* ItemViewController.m */; };
 		E5C98E9F14C51D3800319277 /* Zaarly_logo3-300x143.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C98E9E14C51D3800319277 /* Zaarly_logo3-300x143.png */; };
@@ -346,6 +357,20 @@
 		E5B3AC6414EA4E6700CD4C67 /* DejalActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DejalActivityView.h; sourceTree = "<group>"; };
 		E5B3AC6514EA4E6700CD4C67 /* DejalActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DejalActivityView.m; sourceTree = "<group>"; };
 		E5B3AC6714EA4EFE00CD4C67 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		E5B3AC6914EB95D600CD4C67 /* OfferTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfferTableCell.h; sourceTree = "<group>"; };
+		E5B3AC6A14EB95D600CD4C67 /* OfferTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfferTableCell.m; sourceTree = "<group>"; };
+		E5B3AC7514EBB71D00CD4C67 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
+		E5B3AC7614EBB71E00CD4C67 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		E5B3AC7814EBB7BA00CD4C67 /* grayArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grayArrow.png; sourceTree = "<group>"; };
+		E5B3AC7914EBB7BA00CD4C67 /* grayArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grayArrow@2x.png"; sourceTree = "<group>"; };
+		E5B3AC7A14EBB7BA00CD4C67 /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
+		E5B3AC7B14EBB7BA00CD4C67 /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
+		E5B3AC7C14EBB7BA00CD4C67 /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
+		E5B3AC7D14EBB7BB00CD4C67 /* blueArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueArrow@2x.png"; sourceTree = "<group>"; };
+		E5B3AC7E14EBB7BB00CD4C67 /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
+		E5B3AC7F14EBB7BB00CD4C67 /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
+		E5B3AC8814EBBDC500CD4C67 /* ActivityOfferMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityOfferMessageViewController.h; sourceTree = "<group>"; };
+		E5B3AC8914EBBDC900CD4C67 /* ActivityOfferMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityOfferMessageViewController.m; sourceTree = "<group>"; };
 		E5C0ABE614AAC9D20021873A /* ListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListItem.h; sourceTree = "<group>"; };
 		E5C0ABE714AAC9D20021873A /* ListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListItem.m; sourceTree = "<group>"; };
 		E5C0ABEB14AADF130021873A /* ItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemViewController.h; sourceTree = "<group>"; };
@@ -736,6 +761,7 @@
 			children = (
 				E5B3AC6214EA4E4E00CD4C67 /* ActionLibs */,
 				E5B3AC5514E9238700CD4C67 /* Models */,
+				E5B3AC6C14EB981400CD4C67 /* CustomViews */,
 				E50E764B14E4FB8C00219A32 /* Map */,
 				E5033BC814DA65550049FA5D /* MTPopupWindow */,
 				E5947DD114A3A12B0066723A /* Supporting Files */,
@@ -747,22 +773,18 @@
 				77CD5FC414CA52780013B510 /* VariableStore.m */,
 				E5947DD914A3A12B0066723A /* AppDelegate.h */,
 				E5947DDA14A3A12B0066723A /* AppDelegate.m */,
-				E5D7C4AC14B53C3F00E29463 /* AppScrollView.h */,
-				E5D7C4AD14B53C3F00E29463 /* AppScrollView.m */,
-				E5129DC914D3D59100FEE0BF /* TPKeyboardAvoidingScrollView.h */,
-				E5129DCA14D3D59100FEE0BF /* TPKeyboardAvoidingScrollView.m */,
 				E5A0744814AAA57100885232 /* ActivityViewController.h */,
 				E5A0744914AAA57100885232 /* ActivityViewController.m */,
 				E5C0ABEB14AADF130021873A /* ItemViewController.h */,
 				E5C0ABEC14AADF130021873A /* ItemViewController.m */,
+				E5B3AC8814EBBDC500CD4C67 /* ActivityOfferMessageViewController.h */,
+				E5B3AC8914EBBDC900CD4C67 /* ActivityOfferMessageViewController.m */,
 				E59A174D14AC513D00B7977D /* BrowseItemViewController.h */,
 				E59A174E14AC513D00B7977D /* BrowseItemViewController.m */,
 				E50E763C14E3ACEC00219A32 /* BrowseItemNoMsgViewController.h */,
 				E50E763D14E3ACEC00219A32 /* BrowseItemNoMsgViewController.m */,
 				E58B992414AC5AE400A780F6 /* BrowseTableViewController.h */,
 				E58B992514AC5AE400A780F6 /* BrowseTableViewController.m */,
-				E5A4895214DFC27400501EE2 /* ListingTableCell.h */,
-				E5A4895314DFC27400501EE2 /* ListingTableCell.m */,
 				E596EDC314D541B200B50F3B /* OfferChangingPriceViewController.h */,
 				E596EDC414D541B200B50F3B /* OfferChangingPriceViewController.m */,
 				E5947E5414A4006D0066723A /* SettingViewController.h */,
@@ -834,6 +856,14 @@
 		E59AE14814AD09410048C7C0 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E5B3AC7814EBB7BA00CD4C67 /* grayArrow.png */,
+				E5B3AC7914EBB7BA00CD4C67 /* grayArrow@2x.png */,
+				E5B3AC7A14EBB7BA00CD4C67 /* blackArrow.png */,
+				E5B3AC7B14EBB7BA00CD4C67 /* blackArrow@2x.png */,
+				E5B3AC7C14EBB7BA00CD4C67 /* blueArrow.png */,
+				E5B3AC7D14EBB7BB00CD4C67 /* blueArrow@2x.png */,
+				E5B3AC7E14EBB7BB00CD4C67 /* whiteArrow.png */,
+				E5B3AC7F14EBB7BB00CD4C67 /* whiteArrow@2x.png */,
 				E5B3AC6714EA4EFE00CD4C67 /* Icon.png */,
 				E50E765E14E519C000219A32 /* mapPin.png */,
 				E50E763A14E388CA00219A32 /* line.png */,
@@ -885,8 +915,25 @@
 				E5B2E09714E0F2CB007AB372 /* PullRefreshTableViewController.m */,
 				E5B3AC6414EA4E6700CD4C67 /* DejalActivityView.h */,
 				E5B3AC6514EA4E6700CD4C67 /* DejalActivityView.m */,
+				E5B3AC7514EBB71D00CD4C67 /* EGORefreshTableHeaderView.h */,
+				E5B3AC7614EBB71E00CD4C67 /* EGORefreshTableHeaderView.m */,
 			);
 			name = ActionLibs;
+			sourceTree = "<group>";
+		};
+		E5B3AC6C14EB981400CD4C67 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				E5D7C4AC14B53C3F00E29463 /* AppScrollView.h */,
+				E5D7C4AD14B53C3F00E29463 /* AppScrollView.m */,
+				E5129DC914D3D59100FEE0BF /* TPKeyboardAvoidingScrollView.h */,
+				E5129DCA14D3D59100FEE0BF /* TPKeyboardAvoidingScrollView.m */,
+				E5A4895214DFC27400501EE2 /* ListingTableCell.h */,
+				E5A4895314DFC27400501EE2 /* ListingTableCell.m */,
+				E5B3AC6914EB95D600CD4C67 /* OfferTableCell.h */,
+				E5B3AC6A14EB95D600CD4C67 /* OfferTableCell.m */,
+			);
+			name = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1008,6 +1055,14 @@
 				E50E763B14E388CA00219A32 /* line.png in Resources */,
 				E50E765F14E519C000219A32 /* mapPin.png in Resources */,
 				E5B3AC6814EA4EFE00CD4C67 /* Icon.png in Resources */,
+				E5B3AC8014EBB7BB00CD4C67 /* grayArrow.png in Resources */,
+				E5B3AC8114EBB7BB00CD4C67 /* grayArrow@2x.png in Resources */,
+				E5B3AC8214EBB7BB00CD4C67 /* blackArrow.png in Resources */,
+				E5B3AC8314EBB7BB00CD4C67 /* blackArrow@2x.png in Resources */,
+				E5B3AC8414EBB7BB00CD4C67 /* blueArrow.png in Resources */,
+				E5B3AC8514EBB7BB00CD4C67 /* blueArrow@2x.png in Resources */,
+				E5B3AC8614EBB7BB00CD4C67 /* whiteArrow.png in Resources */,
+				E5B3AC8714EBB7BB00CD4C67 /* whiteArrow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1108,6 +1163,9 @@
 				77F5999014E8075100CE96C3 /* LocateMeManager.m in Sources */,
 				77F5999414E8155A00CE96C3 /* NSObject+LocateMe.m in Sources */,
 				E5B3AC6614EA4E6700CD4C67 /* DejalActivityView.m in Sources */,
+				E5B3AC6B14EB95D700CD4C67 /* OfferTableCell.m in Sources */,
+				E5B3AC7714EBB71F00CD4C67 /* EGORefreshTableHeaderView.m in Sources */,
+				E5B3AC8A14EBBDCD00CD4C67 /* ActivityOfferMessageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
