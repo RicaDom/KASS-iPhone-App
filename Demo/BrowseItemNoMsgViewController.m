@@ -98,7 +98,7 @@
 
 
 -(IBAction)showActionSheet:(id)sender {
-    UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"与好友分享一下" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"发布到微博", @"发讯息", @"发邮件", nil];
+    UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:UI_BUTTON_LABEL_SHARE_WITH_FRIEND delegate:self cancelButtonTitle:UI_BUTTON_LABEL_CANCEL destructiveButtonTitle:nil otherButtonTitles:UI_BUTTON_LABEL_WEIBO_SHARE, UI_BUTTON_LABEL_SEND_MESSAGE, UI_BUTTON_LABEL_SEND_EMAIL, nil];
     popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
     [popupQuery showInView:self.view];
 }

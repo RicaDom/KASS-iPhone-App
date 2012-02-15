@@ -25,6 +25,13 @@ extern NSString * const UI_BUTTON_LABEL_SIGNUP;
 extern NSString * const UI_BUTTON_LABEL_SEND;
 extern NSString * const UI_BUTTON_LABEL_SHARE;
 
+extern NSString * const UI_BUTTON_LABEL_UPDATE;
+extern NSString * const UI_BUTTON_LABEL_DELETE;
+extern NSString * const UI_BUTTON_LABEL_WEIBO_SHARE;
+extern NSString * const UI_BUTTON_LABEL_SEND_MESSAGE;
+extern NSString * const UI_BUTTON_LABEL_SEND_EMAIL;
+extern NSString * const UI_BUTTON_LABEL_SHARE_WITH_FRIEND;
+
 // NSNotification Center
 extern NSString * const CHANGED_PRICE_NOTIFICATION;
 
