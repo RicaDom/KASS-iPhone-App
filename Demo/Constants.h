@@ -28,4 +28,6 @@ extern NSString * const UI_BUTTON_LABEL_SHARE;
 // NSNotification Center
 extern NSString * const CHANGED_PRICE_NOTIFICATION;
 
+extern NSString * const RUBY_DATETIME_FORMAT;
+
 @end

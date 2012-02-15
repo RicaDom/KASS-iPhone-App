@@ -36,7 +36,7 @@
     _askPrice     = [NSDecimalNumber decimalNumberWithDecimal:[[theDictionary objectForKey:@"price"] decimalValue]];
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"]; //2012-02-17T07:50:16+00:00
+    [dateFormat setDateFormat:RUBY_DATETIME_FORMAT]; //2012-02-17T07:50:16+0000 
     _endedAt = [dateFormat dateFromString:[theDictionary objectForKey:@"time"]];
     
     NSArray *latlng = [theDictionary objectForKey:@"latlng"]; 

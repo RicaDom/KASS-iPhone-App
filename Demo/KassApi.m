@@ -41,6 +41,20 @@
   DLog(@"KassApi::requestFailed %@", [request error]);
 }
 
+- (void)putData:(NSString *)url:(NSDictionary *)dict
+{
+  id kassSelf = self;
+  __block ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:url]];
+  [request setCompletionBlock:^{ [kassSelf requestFinished:request]; }];
+  [request setFailedBlock:^{[kassSelf requestFailed:request];}];
+  [request setRequestMethod:@"PUT"];
+  for (id key in dict){
+    [request setPostValue:[dict objectForKey:key] forKey:key];
+  }
+  [request startAsynchronous];
+  DLog(@"KassApi::putData::startAsynchronous=%@", url);
+}
+
 - (void)postData:(NSString *)url:(NSDictionary *)dict
 {
   id kassSelf = self;
@@ -94,6 +108,34 @@
   }else{
     DLog(@"KassApi::createListing: invalid data!");
   }
+}
+
+- (void)modifyOffer:(NSDictionary *)dict:(NSString *)modelId
+{
+  DLog(@"KassApi::modifyOffer:id=%@,dict=%@", modelId, dict);
+  _url = [NSString stringWithFormat:@"http://%s/v1/offers/%@", HOST, modelId];
+  [self putData:_url:dict];  
+}
+
+- (void)acceptOffer:(NSDictionary *)dict:(NSString *)modelId
+{
+  DLog(@"KassApi::acceptOffer:id=%@,dict=%@", modelId, dict);
+  _url = [NSString stringWithFormat:@"http://%s/v1/offers/%@/accept", HOST, modelId];
+  [self postData:_url:dict];  
+}
+
+- (void)createOfferMessage:(NSDictionary *)dict:(NSString *)offerId
+{
+  DLog(@"KassApi::createOfferMessage:id=%@,dict=%@", offerId, dict);
+  _url = [NSString stringWithFormat:@"http://%s/v1/offers/%@/Messages", HOST, offerId];
+  [self postData:_url:dict];
+}
+
+- (void)getOfferMessages:(NSString *)offerId
+{
+  DLog(@"KassApi::getOfferMessages:id=%@", offerId);
+  _url = [NSString stringWithFormat:@"http://%s/v1/offers/%@/messages", HOST, offerId];
+  [self getData:_url];  
 }
 
 - (void)createOffer:(NSDictionary *)dict
@@ -165,7 +207,7 @@
 
 - (void)getListing:(NSString *)modelId
 {
-  _url = [NSString stringWithFormat:@"http://%s/v1/listings/%@.json", HOST, modelId];
+  _url = [NSString stringWithFormat:@"http://%s/v1/listings/%@", HOST, modelId];
   [self getData:_url];
 }
 

@@ -41,6 +41,10 @@
 - (void)getAccountListings;
 - (void)getAccountOffers;
 - (void)getAccountOffer:(NSString *)modelId;
+- (void)modifyOffer:(NSDictionary *)dict:(NSString *)modelId;
+- (void)acceptOffer:(NSDictionary *)dict:(NSString *)modelId;
+- (void)getOfferMessages:(NSString *)offerId;
+- (void)createOfferMessage:(NSDictionary *)dict:(NSString *)offerId;
 
 - (void)login:(NSDictionary *)dict;
 - (void)logout;

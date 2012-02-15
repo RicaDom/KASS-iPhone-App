@@ -38,6 +38,71 @@
 }
 
 // ########################### API ##############################
+- (void)getOfferMessages:(NSString *)offerId
+{
+  DLog(@"User::acceptOffer:id=%@", offerId);
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getOfferMessagesFinished:"];
+  [ka getOfferMessages:offerId];
+}
+
+- (void)getOfferMessagesFinished:(NSData *)data
+{
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"User::getOfferMessagesFinished:dict");
+  
+  if( [_delegate respondsToSelector:@selector(accountDidGetOfferMessages:)] )
+    [_delegate accountDidGetOfferMessages:dict];
+}
+
+- (void)acceptOffer:(NSDictionary *)dict:(NSString *)modelId
+{
+  DLog(@"User::acceptOffer:id=%@,dict=%@", modelId, dict);
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"acceptOfferFinished:"];
+  [ka acceptOffer:dict:modelId];
+  
+}
+
+- (void)acceptOfferFinished:(NSData *)data
+{
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"User::acceptOfferFinished:dict");
+  
+  if( [_delegate respondsToSelector:@selector(accountDidAcceptOffer:)] )
+    [_delegate accountDidAcceptOffer:dict];
+}
+
+- (void)createOfferMessage:(NSDictionary *)dict:(NSString *)offerId
+{
+  DLog(@"User::createOfferMessage:dict=%@", dict);
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"createOfferMessageFinished:"];
+  [ka createOfferMessage:dict:offerId];
+}
+
+- (void)createOfferMessageFinished:(NSData *)data
+{
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"User::createOfferMessageFinished:dict");
+  
+  if( [_delegate respondsToSelector:@selector(accountDidCreateOfferMessage:)] )
+    [_delegate accountDidCreateOfferMessage:dict];
+}
+
+- (void)modifyOffer:(NSDictionary *)dict:(NSString *)modelId
+{
+  DLog(@"User::modifyOffer:id=%@,dict=%@", modelId, dict);
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"modifyOfferFinished:"];
+  [ka modifyOffer:dict:modelId];
+}
+
+- (void)modifyOfferFinished:(NSData *)data
+{
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"User::modifyOfferFinished:dict");
+  
+  if( [_delegate respondsToSelector:@selector(accountDidModifyOffer:)] )
+    [_delegate accountDidModifyOffer:dict];
+}
+
 - (void)createOffer:(NSDictionary *)dict
 {
   DLog(@"User::createOffer:dict=%@", dict);
