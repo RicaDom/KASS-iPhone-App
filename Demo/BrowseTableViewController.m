@@ -254,23 +254,29 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-    // <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController push-ViewController:detailViewController animated:YES];
-     */
-    NSLog(@"didSelectRowAtIndexPath .... ");
+  int row = [indexPath row];
+  ListItem *item = [currentItems objectAtIndex:row];
     
-    // TODO check whether is my post
-    if(indexPath.row%2 == 0) {
-        [self performSegueWithIdentifier:@"showBrowseItem" sender:self];
-    } else {
-        [self performSegueWithIdentifier:@"showBrowseItemNoMessage" sender:self];
-    }
+    // if you are the buyer or you are one of the sellers
+    // show your messages  
     
-    //[self performSegueWithIdentifier:@"showMyItem" sender:self];
+    // if not login
+  if ( !VariableStore.sharedInstance.isLoggedIn ) {
+    DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:not login");
+    [self performSegueWithIdentifier:@"showBrowseItemUnlogin" sender:self];
+  }else if ( VariableStore.sharedInstance.user.userId == item.userId ){
+    //go to buyers listing page
+    DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:you are buyer");
+    [self performSegueWithIdentifier:@"showItem" sender:self];
+  }else if ( [item.offererIds indexOfObject:VariableStore.sharedInstance.user.userId] != NSNotFound){
+    //you've offered this listing, go to the offer page
+    DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:you've offered!");
+    [self performSegueWithIdentifier:@"showOffer" sender:self];
+  }else{
+    //you are not buyer and you've not offered
+    DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:logged in user");
+    [self performSegueWithIdentifier:@"showBrowseItem" sender:self];
+  }
     
 }
 
