@@ -25,27 +25,47 @@
 @synthesize endedAt = _endedAt;
 @synthesize acceptedPrice = _acceptedPrice;
 
+- (void) buildData:(NSDictionary *) theDictionary
+{
+  _title        = [theDictionary objectForKey:@"title"];
+  _description  = [theDictionary objectForKey:@"description"];
+  _state        = [theDictionary objectForKey:@"state"];
+  _dbId         = [theDictionary objectForKey:@"id"];
+  _userId       = [theDictionary objectForKey:@"user_id"];
+  
+  _askPrice     = [NSDecimalNumber decimalNumberWithDecimal:[[theDictionary objectForKey:@"price"] decimalValue]];
+  
+  NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+  [dateFormat setDateFormat:RUBY_DATETIME_FORMAT]; //2012-02-17T07:50:16+0000 
+  _endedAt = [dateFormat dateFromString:[theDictionary objectForKey:@"time"]];
+  
+  NSArray *latlng = [theDictionary objectForKey:@"latlng"]; 
+  _location     = [[Location alloc] init];
+  _location.latitude  = [NSDecimalNumber decimalNumberWithDecimal:[[latlng objectAtIndex:0] decimalValue]];
+  _location.longitude = [NSDecimalNumber decimalNumberWithDecimal:[[latlng objectAtIndex:1] decimalValue]];
+  
+  NSArray *offers = [theDictionary objectForKey:@"offers"];
+  _offers     = [[NSMutableArray alloc] init];
+  for(id ioffer in offers)
+  {
+    NSDictionary *offerDict = ioffer; 
+    Offer *offer = [[Offer alloc] initWithDictionary:offerDict];
+    [_offers addObject:offer];
+  }
+
+}
+
 - (id) initWithDictionary:(NSDictionary *) theDictionary
 {
   if (self = [super init]) {
-    _title        = [theDictionary objectForKey:@"title"];
-    _description  = [theDictionary objectForKey:@"description"];
-    _state        = [theDictionary objectForKey:@"state"];
-    _dbId         = [theDictionary objectForKey:@"id"];
-    _userId       = [theDictionary objectForKey:@"user_id"];
-    
-    _askPrice     = [NSDecimalNumber decimalNumberWithDecimal:[[theDictionary objectForKey:@"price"] decimalValue]];
-    
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:RUBY_DATETIME_FORMAT]; //2012-02-17T07:50:16+0000 
-    _endedAt = [dateFormat dateFromString:[theDictionary objectForKey:@"time"]];
-    
-    NSArray *latlng = [theDictionary objectForKey:@"latlng"]; 
-    _location     = [[Location alloc] init];
-    _location.latitude  = [NSDecimalNumber decimalNumberWithDecimal:[[latlng objectAtIndex:0] decimalValue]];
-    _location.longitude = [NSDecimalNumber decimalNumberWithDecimal:[[latlng objectAtIndex:1] decimalValue]];
+    [self buildData:theDictionary];
   }
   return self;
+}
+
+- (NSDecimalNumber *) price
+{
+  return _askPrice; 
 }
 
 - (id) initWithData:(NSData *) theData
@@ -55,11 +75,7 @@
     
     NSDictionary *dict = [KassApi parseData:_data];  
     NSDictionary *listDict = [dict objectForKey:@"listing"];
-    
-    _title        = [listDict objectForKey:@"title"];
-    _description  = [listDict objectForKey:@"description"];
-    _askPrice     = [NSDecimalNumber decimalNumberWithDecimal:[[listDict objectForKey:@"price"] decimalValue]];
-    _location     = [[Location alloc] init];
+    [self buildData:listDict];
   }
   return self;
 }

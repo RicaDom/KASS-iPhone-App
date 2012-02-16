@@ -7,12 +7,12 @@
 //
 
 #import "ActivityOfferMessageViewController.h"
+#import "UIViewController+ActivityIndicate.h"
 
 @implementation ActivityOfferMessageViewController
 
 @synthesize scrollView = _scrollView;
 @synthesize pull = _pull;
-@synthesize currentItem = _currentItem;
 @synthesize currentOffer = _currentOffer;
 @synthesize listingTitle = _listingTitle;
 @synthesize listingDescription = _listingDescription;
@@ -46,35 +46,53 @@
     [self.scrollView addSubview:imageView];
     yOffset += 10;
     
-    for (int i=0;i<20;i++) {
-        yOffset += 5;
-        UILabel* lblHeaderTitle = [[UILabel alloc] initWithFrame:CGRectMake(8, yOffset, 310, 21)];
-        [lblHeaderTitle setTextAlignment:UITextAlignmentLeft];
-        //[lblHeaderTitle setFont:[UIFont fontWithName:@"Helvetica-Bold" size:16.0f]];
-        [lblHeaderTitle setBackgroundColor:[UIColor lightGrayColor]];
-        
-        if (i%2 == 1) {
-            [lblHeaderTitle setText:@"买家： 便宜你妹。"];
-        } else {
-            [lblHeaderTitle setText:@"您： 出价太便宜了。"]; 
-        }
-        
-        [lblHeaderTitle setTextColor:[UIColor blackColor]];
-        
-        [self.scrollView addSubview:lblHeaderTitle];
-        
-        UIImage *line = [UIImage imageNamed:@"line.png"];
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:line];
-        imageView.frame = CGRectMake(3, yOffset + 25, imageView.frame.size.width, imageView.frame.size.height);
-        [self.scrollView addSubview:imageView];
-        
-        //INCREMNET in yOffset 
-        yOffset += 30;
-        
-        [self.scrollView setContentSize:CGSizeMake(320, yOffset)];    
+    for (int i=0; i< [_currentOffer.messages count]; i++) {
+      yOffset += 5;
+      UILabel* lblHeaderTitle = [[UILabel alloc] initWithFrame:CGRectMake(8, yOffset, 310, 21)];
+      [lblHeaderTitle setTextAlignment:UITextAlignmentLeft];
+      //[lblHeaderTitle setFont:[UIFont fontWithName:@"Helvetica-Bold" size:16.0f]];
+      [lblHeaderTitle setBackgroundColor:[UIColor lightGrayColor]];
+      
+      Message *message = [_currentOffer.messages objectAtIndex:i];
+      
+      NSString *title;
+      
+      if (VariableStore.sharedInstance.user.userId == message.dbId) {
+        title = @"您";
+      }else if(_currentOffer.buyerId == message.dbId) {
+        title = @"买家";
+      }else{
+        title = @"卖家";
+      }
+      
+      [lblHeaderTitle setText:[NSString stringWithFormat:@"%@ %@", title, message.body]];
+      
+      [lblHeaderTitle setTextColor:[UIColor blackColor]];
+      
+      [self.scrollView addSubview:lblHeaderTitle];
+      
+      UIImage *line = [UIImage imageNamed:@"line.png"];
+      UIImageView *imageView = [[UIImageView alloc] initWithImage:line];
+      imageView.frame = CGRectMake(3, yOffset + 25, imageView.frame.size.width, imageView.frame.size.height);
+      [self.scrollView addSubview:imageView];
+      
+      //INCREMNET in yOffset 
+      yOffset += 30;
+      
+      [self.scrollView setContentSize:CGSizeMake(320, yOffset)];    
     }
 }
 
+-(void)stopLoading
+{
+	[self.pull finishedLoading];
+}
+
+// called when the user pulls-to-refresh
+- (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view
+{
+  [self performSelector:@selector(loadOffer) withObject:nil afterDelay:2.0];	
+}
 
 #pragma mark - View lifecycle
 
@@ -84,6 +102,21 @@
 {
 }
 */
+- (void) accountDidGetOffer:(NSDictionary *)dict{
+  NSDictionary *offer = [dict objectForKey:@"offer"];
+  _currentOffer = [[Offer alloc]initWithDictionary:offer];
+  [self loadMessageView];
+  [self hideIndicator];
+  [self stopLoading];
+}
+
+- (void)loadOffer
+{
+  DLog(@"ActivityOfferMessageViewController::loadingOffer");
+  [self showLoadingIndicator];
+  VariableStore.sharedInstance.user.delegate = self;
+  [VariableStore.sharedInstance.user getOffer:self.currentOffer.dbId];
+}
 
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -91,16 +124,16 @@
 {
     [super viewDidLoad];
     
-    self.listingTitle.text = self.currentItem.title;
-    self.listingDescription.text = self.currentItem.description;
-    self.offerPrice.text = [self.currentOffer.price stringValue];
+    self.listingTitle.text = self.currentOffer.title;
+    self.listingDescription.text = self.currentOffer.description;
+    self.offerPrice.text = [NSString stringWithFormat:@"%@ 元", [self.currentOffer.price stringValue]]; 
     self.listingExpiredDate.text = @"TODO 7 Days";
     
     self.pull = [[PullToRefreshView alloc] initWithScrollView:self.scrollView];
     [self.pull setDelegate:self];
     [self.scrollView addSubview:self.pull];
     
-    [self loadMessageView];
+    [self loadOffer];
 }
 
 
@@ -119,16 +152,6 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
--(void)stopLoading
-{
-	[self.pull finishedLoading];
-}
-// called when the user pulls-to-refresh
-- (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view
-{
-    [self performSelector:@selector(stopLoading) withObject:nil afterDelay:2.0];	
 }
 
 - (IBAction)sellerInfoAction:(id)sender {

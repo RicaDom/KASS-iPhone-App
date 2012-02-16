@@ -16,7 +16,7 @@
 
 - (void) buildOffers:(NSDictionary *) theDict
 {
-  NSArray *offers = [theDict objectForKey:@"listings"];
+  NSArray *offers = [theDict objectForKey:@"offers"];
   for(id ioffer in offers)
   {
     NSDictionary *offerDict = ioffer; 

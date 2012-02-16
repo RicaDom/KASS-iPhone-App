@@ -11,12 +11,14 @@
 #import "ListItem.h"
 #import "Offer.h"
 #import "Message.h"
+#import "VariableStore.h"
+#import "AccountActivityDelegate.h"
 
-@interface ActivityOfferMessageViewController : UIViewController <UIScrollViewDelegate, PullToRefreshViewDelegate>
+@interface ActivityOfferMessageViewController : UIViewController <UIScrollViewDelegate, PullToRefreshViewDelegate, AccountActivityDelegate>
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) PullToRefreshView *pull;
-@property (strong, nonatomic) ListItem *currentItem;
+//@property (strong, nonatomic) ListItem *currentItem;
 @property (strong, nonatomic) Offer *currentOffer;
 @property (strong, nonatomic) IBOutlet UILabel *listingTitle;
 @property (strong, nonatomic) IBOutlet UILabel *listingDescription;

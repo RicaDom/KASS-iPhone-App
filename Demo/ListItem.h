@@ -29,6 +29,7 @@
 
 @property (nonatomic, strong) NSData   *data;
 
+- (NSDecimalNumber *) price;
 - (id) initWithDictionary:(NSDictionary *) theDictionary;
 - (id) initWithData:(NSData *) theData;
 

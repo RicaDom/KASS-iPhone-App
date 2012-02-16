@@ -39,6 +39,7 @@
 - (void)getListings:(NSDictionary *)dict;
 - (void)getListing:(NSString *)modelId;
 - (void)getAccountListings;
+- (void)getAccountListing:(NSString *)modelId;
 - (void)getAccountOffers;
 - (void)getAccountOffer:(NSString *)modelId;
 - (void)modifyOffer:(NSDictionary *)dict:(NSString *)modelId;

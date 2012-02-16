@@ -7,6 +7,7 @@
 //
 
 #import "ItemViewController.h"
+#import "UIViewController+ActivityIndicate.h"
 
 @implementation ItemViewController
 
@@ -37,6 +38,38 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+#pragma mark -
+#pragma mark Data Source Loading / Reloading Methods
+
+- (void)reloadTableViewDataSource{
+	
+	//  should be calling your tableviews data source model to reload
+	//  put here just for demo
+	_reloading = YES;
+	
+}
+
+- (void)doneLoadingTableViewData{
+	
+	//  model should call this when its done loading
+	_reloading = NO;
+	[_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.offerTableView];
+	
+}
+
+
+- (void) accountDidGetListing:(NSDictionary *)dict{
+  NSDictionary *listing = [dict objectForKey:@"listing"];
+  Offers *xoffers = [[Offers alloc] initWithDictionary:listing];
+  DLog(@"ItemViewController::accountDidGetListing:xoffers=%@", xoffers);
+  self.offers = xoffers.offers;
+  self.offersCount.text = [NSString stringWithFormat:@"%d",[self.offers count]] ;
+  [self.offerTableView reloadData];
+ 
+  [self hideIndicator];
+  [self doneLoadingTableViewData];
+}
+
 - (BOOL) loadingOffers
 {
     // TODO
@@ -46,28 +79,36 @@
 //    } 
 //    return NO;
     
-    self.offers = [[NSMutableArray alloc] init];
-    Offer *offer = [Offer new];
-    offer.price = [NSDecimalNumber decimalNumberWithDecimal:
-                   [[NSNumber numberWithDouble:30] decimalValue]];
-    offer.distance = [NSNumber numberWithInt:80];
-    Message *lastMessage = [Message new ];
-    lastMessage.body = @"太贵了吧";
-    offer.lastMessage = lastMessage;
-    [self.offers addObject:offer];
-    
-    offer = [Offer new];
-    offer.price = [NSDecimalNumber decimalNumberWithDecimal:
-                   [[NSNumber numberWithDouble:50] decimalValue]];
-    offer.distance = [NSNumber numberWithInt:100];
-    lastMessage = [Message new ];
-    lastMessage.body = @"SBSBSB";
-    offer.lastMessage = lastMessage;
-    [self.offers addObject:offer];
-    
-    self.offersCount.text = [NSString stringWithFormat:@"%d",[self.offers count]] ;
-    [self.offerTableView reloadData];
-    return YES;
+//    self.offers = [[NSMutableArray alloc] init];
+//    Offer *offer = [Offer new];
+//    offer.price = [NSDecimalNumber decimalNumberWithDecimal:
+//                   [[NSNumber numberWithDouble:30] decimalValue]];
+//    offer.distance = [NSNumber numberWithInt:80];
+//    Message *lastMessage = [Message new ];
+//    lastMessage.body = @"太贵了吧";
+//    offer.lastMessage = lastMessage;
+//    [self.offers addObject:offer];
+//    
+//    offer = [Offer new];
+//    offer.price = [NSDecimalNumber decimalNumberWithDecimal:
+//                   [[NSNumber numberWithDouble:50] decimalValue]];
+//    offer.distance = [NSNumber numberWithInt:100];
+//    lastMessage = [Message new ];
+//    lastMessage.body = @"SBSBSB";
+//    offer.lastMessage = lastMessage;
+//    [self.offers addObject:offer];
+//    
+//    self.offersCount.text = [NSString stringWithFormat:@"%d",[self.offers count]] ;
+//    [self.offerTableView reloadData];
+//    return YES;
+
+  DLog(@"ItemViewController::loadingOffers");
+  [self showLoadingIndicator];
+  VariableStore.sharedInstance.user.delegate = self;
+  [VariableStore.sharedInstance.user getListing:self.currentItem.dbId];
+
+  return YES;
+
 }
 
 #pragma mark - View lifecycle
@@ -96,44 +137,19 @@
                                 action:@selector(OnClick_btnBack:)];
     self.navigationItem.leftBarButtonItem = btnBack;  
     
-    // Loading Offer
-    // TODO
-    if ([self loadingOffers]) {
-
-    }
+  if (!self.offers) { [self loadingOffers]; }
     
-    if (_refreshHeaderView == nil) {
-		
-		EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.offerTableView.bounds.size.height, self.view.frame.size.width, self.offerTableView.bounds.size.height)];
-		view.delegate = self;
-		[self.offerTableView addSubview:view];
-		_refreshHeaderView = view;
-		
-	}
+  if (_refreshHeaderView == nil) {
+    EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.offerTableView.bounds.size.height, self.view.frame.size.width, self.offerTableView.bounds.size.height)];
+    view.delegate = self;
+    [self.offerTableView addSubview:view];
+    _refreshHeaderView = view;
+  }
+	
 	
 	//  update the last update date
 	[_refreshHeaderView refreshLastUpdatedDate];
 }
-
-#pragma mark -
-#pragma mark Data Source Loading / Reloading Methods
-
-- (void)reloadTableViewDataSource{
-	
-	//  should be calling your tableviews data source model to reload
-	//  put here just for demo
-	_reloading = YES;
-	
-}
-
-- (void)doneLoadingTableViewData{
-	
-	//  model should call this when its done loading
-	_reloading = NO;
-	[_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.offerTableView];
-	
-}
-
 
 #pragma mark -
 #pragma mark UIScrollViewDelegate Methods
@@ -155,10 +171,8 @@
 #pragma mark EGORefreshTableHeaderDelegate Methods
 
 - (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
-	
 	[self reloadTableViewDataSource];
-	[self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:2.0];
-	
+  [self performSelector:@selector(loadingOffers) withObject:nil afterDelay:2.0];
 }
 
 - (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
@@ -256,12 +270,12 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"offerMessageSegue"]) {
+      DLog(@"ItemViewController::prepareForSegue:offerMessageSegue");
         ActivityOfferMessageViewController  *avc = [segue destinationViewController];
         
         NSIndexPath *path = [self.offerTableView indexPathForSelectedRow];
         int row = [path row];
         avc.currentOffer = [self.offers objectAtIndex:row];
-        avc.currentItem = self.currentItem;
     }
 }
 
@@ -301,7 +315,12 @@
     
     // Configure the cell...
     Offer *offer = [self.offers objectAtIndex:indexPath.row];
-    cell.price.text = [offer.price stringValue];
+
+    //cell.price.text = [offer.price stringValue];
+
+    NSString *priceText =  [NSString stringWithFormat:@"%@ 元", [offer.price stringValue]];
+    cell.price.text = priceText;
+
     cell.distance.text = [offer.distance stringValue];
     cell.title.text = offer.lastMessage.body;
     return cell;

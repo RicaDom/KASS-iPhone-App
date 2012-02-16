@@ -40,6 +40,4 @@ NSString * const UI_LABEL_ACCEPTED = @"成交";
 NSString * const UI_LABEL_WAITING_FOR_OFFER = @"等待出价";
 
 NSString * const CHANGED_PRICE_NOTIFICATION = @"CHANGED_PRICE_NOTIFICATION";
-NSString * const RUBY_DATETIME_FORMAT = @"yyyy-MM-dd'T'HH:mm:ssZ";
-
 @end

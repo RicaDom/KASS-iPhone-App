@@ -21,6 +21,9 @@
 @property (nonatomic, strong) NSString *userId;
 @property (nonatomic, strong) NSNumber *distance;
 
+@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *description;
+@property (nonatomic, strong) NSString *buyerId;
 
 - (id) initWithDictionary:(NSDictionary *) theDictionary;
 
