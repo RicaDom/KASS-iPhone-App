@@ -25,7 +25,7 @@
 @property (nonatomic, strong) NSString *userId;
 @property (nonatomic, strong) NSString *state;
 @property (nonatomic, strong) NSDate *endedAt;
-@property (nonatomic, strong) NSMutableArray *offerIds;
+@property (nonatomic, strong) NSMutableArray *offererIds;
 @property (nonatomic, strong) NSDecimalNumber *acceptedPrice;
 
 @property (nonatomic, strong) NSData   *data;

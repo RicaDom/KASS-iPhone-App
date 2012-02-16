@@ -23,7 +23,7 @@
 @synthesize userId = _userId;
 @synthesize state = _state;
 @synthesize endedAt = _endedAt;
-@synthesize offerIds = _offerIds;
+@synthesize offererIds = _offererIds;
 @synthesize acceptedPrice = _acceptedPrice;
 
 - (void) buildData:(NSDictionary *) theDictionary
@@ -53,7 +53,7 @@
     Offer *offer = [[Offer alloc] initWithDictionary:offerDict];
     [_offers addObject:offer];
   }
-  _offerIds = [theDictionary objectForKey:@"offer_ids"];
+  _offererIds = [theDictionary objectForKey:@"offerer_ids"];
 }
 
 - (id) initWithDictionary:(NSDictionary *) theDictionary
