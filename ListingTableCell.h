@@ -15,4 +15,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *distance;
 @property (weak, nonatomic) IBOutlet UIButton *duration;
 @property (weak, nonatomic) IBOutlet UIButton *price;
+@property (weak, nonatomic) IBOutlet UIView *infoView;
+
 @end

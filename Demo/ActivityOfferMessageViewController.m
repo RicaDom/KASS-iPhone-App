@@ -93,7 +93,7 @@
     
     self.listingTitle.text = self.currentItem.title;
     self.listingDescription.text = self.currentItem.description;
-    self.offerPrice.text = self.currentOffer.price;
+    self.offerPrice.text = [self.currentOffer.price stringValue];
     self.listingExpiredDate.text = @"TODO 7 Days";
     
     self.pull = [[PullToRefreshView alloc] initWithScrollView:self.scrollView];

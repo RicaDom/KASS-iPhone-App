@@ -30,6 +30,14 @@ NSString * const UI_BUTTON_LABEL_WEIBO_SHARE = @"发布到微博";
 NSString * const UI_BUTTON_LABEL_SEND_MESSAGE = @"发讯息";
 NSString * const UI_BUTTON_LABEL_SEND_EMAIL = @"发邮件";
 NSString * const UI_BUTTON_LABEL_SHARE_WITH_FRIEND = @"与好友分享";
+NSString * const UI_BUTTON_LABEL_PAY_NOW = @"支付";
+
+NSString * const UI_LABEL_NEEDS_REVIEW = @"请查阅";
+NSString * const UI_LABEL_OFFER = @"出价";
+NSString * const UI_LABEL_EXPIRED = @"过期";
+NSString * const UI_LABEL_YOU_OFFERED = @"您的出价";
+NSString * const UI_LABEL_ACCEPTED = @"成交";
+NSString * const UI_LABEL_WAITING_FOR_OFFER = @"等待出价";
 
 NSString * const CHANGED_PRICE_NOTIFICATION = @"CHANGED_PRICE_NOTIFICATION";
 NSString * const RUBY_DATETIME_FORMAT = @"yyyy-MM-dd'T'HH:mm:ssZ";

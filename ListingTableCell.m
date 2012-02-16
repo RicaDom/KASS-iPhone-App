@@ -15,6 +15,7 @@
 @synthesize distance = _distance;
 @synthesize duration = _duration;
 @synthesize price = _price;
+@synthesize infoView = _infoView;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

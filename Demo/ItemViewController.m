@@ -48,7 +48,8 @@
     
     self.offers = [[NSMutableArray alloc] init];
     Offer *offer = [Offer new];
-    offer.price = @"56";
+    offer.price = [NSDecimalNumber decimalNumberWithDecimal:
+                   [[NSNumber numberWithDouble:30] decimalValue]];
     offer.distance = [NSNumber numberWithInt:80];
     Message *lastMessage = [Message new ];
     lastMessage.body = @"太贵了吧";
@@ -56,7 +57,8 @@
     [self.offers addObject:offer];
     
     offer = [Offer new];
-    offer.price = @"76";
+    offer.price = [NSDecimalNumber decimalNumberWithDecimal:
+                   [[NSNumber numberWithDouble:50] decimalValue]];
     offer.distance = [NSNumber numberWithInt:100];
     lastMessage = [Message new ];
     lastMessage.body = @"SBSBSB";
@@ -299,8 +301,7 @@
     
     // Configure the cell...
     Offer *offer = [self.offers objectAtIndex:indexPath.row];
-    cell.price.text = @"XX 元";
-    //[offer.price stringValue];
+    cell.price.text = [offer.price stringValue];
     cell.distance.text = [offer.distance stringValue];
     cell.title.text = offer.lastMessage.body;
     return cell;

@@ -23,6 +23,7 @@
 @synthesize userId = _userId;
 @synthesize state = _state;
 @synthesize endedAt = _endedAt;
+@synthesize acceptedPrice = _acceptedPrice;
 
 - (id) initWithDictionary:(NSDictionary *) theDictionary
 {
