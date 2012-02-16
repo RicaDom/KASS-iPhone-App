@@ -43,6 +43,16 @@
     _location     = [[Location alloc] init];
     _location.latitude  = [NSDecimalNumber decimalNumberWithDecimal:[[latlng objectAtIndex:0] decimalValue]];
     _location.longitude = [NSDecimalNumber decimalNumberWithDecimal:[[latlng objectAtIndex:1] decimalValue]];
+    
+    NSArray *offers = [theDictionary objectForKey:@"offers"];
+    _offers     = [[NSMutableArray alloc] init];
+    for(id ioffer in offers)
+    {
+      NSDictionary *offerDict = ioffer; 
+      Offer *offer = [[Offer alloc] initWithDictionary:offerDict];
+      [_offers addObject:offer];
+    }
+
   }
   return self;
 }
