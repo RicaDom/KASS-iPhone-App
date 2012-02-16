@@ -31,6 +31,14 @@ extern NSString * const UI_BUTTON_LABEL_WEIBO_SHARE;
 extern NSString * const UI_BUTTON_LABEL_SEND_MESSAGE;
 extern NSString * const UI_BUTTON_LABEL_SEND_EMAIL;
 extern NSString * const UI_BUTTON_LABEL_SHARE_WITH_FRIEND;
+extern NSString * const UI_BUTTON_LABEL_PAY_NOW;
+
+extern NSString * const UI_LABEL_NEEDS_REVIEW;
+extern NSString * const UI_LABEL_OFFER;
+extern NSString * const UI_LABEL_EXPIRED;
+extern NSString * const UI_LABEL_YOU_OFFERED;
+extern NSString * const UI_LABEL_ACCEPTED;
+extern NSString * const UI_LABEL_WAITING_FOR_OFFER;
 
 // NSNotification Center
 extern NSString * const CHANGED_PRICE_NOTIFICATION;

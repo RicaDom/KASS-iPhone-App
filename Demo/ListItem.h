@@ -26,6 +26,7 @@
 @property (nonatomic, strong) NSString *state;
 @property (nonatomic, strong) NSDate *endedAt;
 @property (nonatomic, strong) NSMutableArray *offerIds;
+@property (nonatomic, strong) NSDecimalNumber *acceptedPrice;
 
 @property (nonatomic, strong) NSData   *data;
 

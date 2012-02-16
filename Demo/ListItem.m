@@ -24,6 +24,7 @@
 @synthesize state = _state;
 @synthesize endedAt = _endedAt;
 @synthesize offerIds = _offerIds;
+@synthesize acceptedPrice = _acceptedPrice;
 
 - (void) buildData:(NSDictionary *) theDictionary
 {

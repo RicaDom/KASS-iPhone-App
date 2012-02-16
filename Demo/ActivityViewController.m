@@ -224,6 +224,92 @@ NSMutableArray *currentItems;
     UIImageView *selectedImageView = [[UIImageView alloc] initWithImage:selectedBackground];
     cell.selectedBackgroundView = selectedImageView;
     
+    // customize table cell listing view
+    if ( 0 == activitySegment.selectedSegmentIndex ) {
+        int row = [indexPath row];
+        ListItem *item = [currentItems objectAtIndex:row];
+        //item.acceptedPrice = [NSDecimalNumber decimalNumberWithDecimal:
+        //                 [[NSNumber numberWithDouble:50] decimalValue]];
+        // if user already accepted any offer, show pay now icon
+        if (item.acceptedPrice != nil && item.acceptedPrice > 0) {
+        
+            UIButton *buttonPayNow = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            buttonPayNow.frame = CGRectMake(2, 2, 70.0, 20.0);
+            [buttonPayNow setTitle:UI_BUTTON_LABEL_PAY_NOW forState:UIControlStateNormal];
+            [buttonPayNow setTitleColor: [UIColor orangeColor] forState: UIControlStateNormal];
+            [cell.infoView addSubview:buttonPayNow];     
+            
+            UILabel *labelAskPrice = [[UILabel alloc] init];
+            [labelAskPrice setText:[item.askPrice stringValue]];
+            [labelAskPrice setTextColor:[UIColor blackColor]];
+            labelAskPrice.frame = CGRectMake(cell.infoView.frame.size.width/2 - 5, cell.infoView.frame.size.height/2, cell.infoView.frame.size.width - 2, cell.infoView.frame.size.height / 2 - 5);
+            labelAskPrice.textAlignment = UITextAlignmentCenter;
+            [labelAskPrice sizeToFit];
+            [cell.infoView addSubview:labelAskPrice];             
+        } else {
+            int offersCount = [item.offers count];
+            // if the listing has offers
+            if (offersCount > 0) {
+                UILabel *labelNeedsReview = [[UILabel alloc] init];
+                [labelNeedsReview setText:UI_LABEL_NEEDS_REVIEW];
+                [labelNeedsReview setTextColor:[UIColor blackColor]];
+                labelNeedsReview.frame = CGRectMake(2, 2, cell.infoView.frame.size.width - 2, cell.infoView.frame.size.height / 2 - 5);
+                labelNeedsReview.textAlignment = UITextAlignmentCenter;
+                [labelNeedsReview sizeToFit];
+                [cell.infoView addSubview:labelNeedsReview];    
+                
+                UILabel *labelOffersCount = [[UILabel alloc] init];
+                [labelOffersCount setText:[[NSString alloc] initWithFormat:@"%d %@", offersCount, UI_LABEL_OFFER]];
+                [labelOffersCount setTextColor:[UIColor blackColor]];
+                labelOffersCount.frame = CGRectMake(cell.infoView.frame.size.width/2 - 10, cell.infoView.frame.size.height/2 - 10, cell.infoView.frame.size.width - 2, cell.infoView.frame.size.height / 2 - 5);
+                labelOffersCount.textAlignment = UITextAlignmentCenter;
+                [labelOffersCount sizeToFit];
+                [cell.infoView addSubview:labelOffersCount];  
+                
+            } else { // otherwise show pending states                               
+                UILabel *labelWaiting = [[UILabel alloc] init];
+                [labelWaiting setText:UI_LABEL_WAITING_FOR_OFFER];
+                [labelWaiting setTextColor:[UIColor blackColor]];
+                
+                DLog(@"x: %f, y: %f, w: %f, h: %f", cell.infoView.frame.origin.x, cell.infoView.frame.origin.y, cell.infoView.frame.size.width - 2, cell.infoView.frame.size.height / 2 - 5);
+                
+                labelWaiting.frame = CGRectMake(2, 2, cell.infoView.frame.size.width - 2, cell.infoView.frame.size.height / 2 - 5);
+                labelWaiting.textAlignment = UITextAlignmentCenter;
+                [labelWaiting sizeToFit];
+                //labelWaiting.center = CGPointMake(cell.infoView.frame.size.width/2, 2);
+                [cell.infoView addSubview:labelWaiting]; 
+                
+                UILabel *labelAskPrice = [[UILabel alloc] init];
+                [labelAskPrice setText:[item.askPrice stringValue]];
+                [labelAskPrice setTextColor:[UIColor blackColor]];
+                labelAskPrice.frame = CGRectMake(cell.infoView.frame.size.width/2 - 5, cell.infoView.frame.size.height/2 - 10, cell.infoView.frame.size.width - 2, cell.infoView.frame.size.height / 2 - 5);
+                labelAskPrice.textAlignment = UITextAlignmentCenter;
+                //labelAskPrice.center = CGPointMake(cell.infoView.frame.size.width/2, cell.infoView.frame.size.height/2 + 3);
+                [labelAskPrice sizeToFit];
+                [cell.infoView addSubview:labelAskPrice]; 
+                
+                //TODO
+                UILabel *labelExpiredDate = [[UILabel alloc] init];
+                [labelExpiredDate setText:@"3天到期"];
+                [labelExpiredDate setTextColor:[UIColor blackColor]];
+                labelExpiredDate.frame = CGRectMake(2, cell.infoView.frame.size.height/2 + 12, cell.infoView.frame.size.width - 2, cell.infoView.frame.size.height / 2 - 5);
+                labelExpiredDate.textAlignment = UITextAlignmentCenter;
+                //labelExpiredDate.center = CGPointMake(cell.infoView.frame.size.width/2, cell.infoView.frame.size.height/2 + 3);
+                [labelExpiredDate sizeToFit];
+                [cell.infoView addSubview:labelExpiredDate]; 
+            }
+        }
+    } else {
+       
+        
+        
+        
+    
+    
+    }
+    
+    
+    
     // Configure the cell...
     ListItem *item = [currentItems objectAtIndex:indexPath.row];
     NSString *price = [[item price] stringValue];
