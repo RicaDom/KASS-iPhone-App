@@ -47,6 +47,11 @@
   return self;
 }
 
+- (NSDecimalNumber *) price
+{
+  return _askPrice; 
+}
+
 - (id) initWithData:(NSData *) theData
 {
   if (self = [super init]) {

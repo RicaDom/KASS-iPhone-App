@@ -10,9 +10,23 @@
 
 @implementation Message
 
-@synthesize dbId = _dbId;
-@synthesize user = _user;
-@synthesize body = _body;
+@synthesize dbId    = _dbId;
+@synthesize userId  = _userId;
+@synthesize body    = _body;
 @synthesize createdAt = _createdAt;
+
+- (id) initWithDictionary:(NSDictionary *) theDictionary
+{
+  if (self = [super init]) {
+    _body    = [theDictionary objectForKey:@"body"];
+    _userId        = [theDictionary objectForKey:@"user_id"];
+    _dbId         = [theDictionary objectForKey:@"id"];
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:RUBY_DATETIME_FORMAT]; 
+    _createdAt = [dateFormat dateFromString:[theDictionary objectForKey:@"created_at"]];
+  }
+  return self;
+}
 
 @end

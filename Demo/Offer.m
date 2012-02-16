@@ -26,10 +26,18 @@
     _listingId    = [theDictionary objectForKey:@"listing_id"];
     _state        = [theDictionary objectForKey:@"state"];
     _dbId         = [theDictionary objectForKey:@"id"];
-    _price     = [NSDecimalNumber decimalNumberWithDecimal:[[theDictionary objectForKey:@"price"] decimalValue]];
+    _price        = [NSDecimalNumber decimalNumberWithDecimal:[[theDictionary objectForKey:@"price"] decimalValue]];
+    _lastMessage     = [[Message alloc] init];
+    _lastMessage.body = [theDictionary objectForKey:@"message"];
     
-    
-//    _lastMessage     = [[Message alloc] init];
+    NSArray *messages = [theDictionary objectForKey:@"messages"];
+    _messages     = [[NSMutableArray alloc] init];
+    for(id imessage in messages)
+    {
+      NSDictionary *messageDict = imessage; 
+      Message *message = [[Message alloc] initWithDictionary:messageDict];
+      [_messages addObject:message];
+    }
   }
   return self;
 }

@@ -217,7 +217,7 @@ NSMutableArray *currentItems;
     
     // Configure the cell...
     ListItem *item = [currentItems objectAtIndex:indexPath.row];
-    NSString *price = [[item askPrice] stringValue];
+    NSString *price = [[item price] stringValue];
     
     cell.title.text = [item title];
     cell.subTitle.text = [item description];

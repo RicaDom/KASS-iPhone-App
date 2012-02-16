@@ -9,14 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "ListItem.h"
 #import "Offer.h"
+#import "Offers.h"
 #import "Message.h"
 #import "OfferTableCell.h"
 #import "PullRefreshTableViewController.h"
 #import "Constants.h"
 #import "EGORefreshTableHeaderView.h"
 #import "ActivityOfferMessageViewController.h"
+#import "VariableStore.h"
+#import "AccountActivityDelegate.h"
 
-@interface ItemViewController : UIViewController <UIActionSheetDelegate, EGORefreshTableHeaderDelegate>{
+@interface ItemViewController : UIViewController <UIActionSheetDelegate, EGORefreshTableHeaderDelegate, AccountActivityDelegate>{
 	
 	EGORefreshTableHeaderView *_refreshHeaderView;
 	
