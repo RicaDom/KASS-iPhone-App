@@ -39,7 +39,12 @@ extern NSString * const UI_LABEL_EXPIRED;
 extern NSString * const UI_LABEL_YOU_OFFERED;
 extern NSString * const UI_LABEL_ACCEPTED;
 extern NSString * const UI_LABEL_WAITING_FOR_OFFER;
+extern NSString * const UI_LABEL_OFFER_PENDING;
+extern NSString * const UI_LABEL_BUYER_OFFERED;
 
+extern NSString * const OFFER_STATE_ACCEPTED;
+extern NSString * const OFFER_STATE_REJECTED;
+extern NSString * const OFFER_STATE_IDLE;
 // NSNotification Center
 extern NSString * const CHANGED_PRICE_NOTIFICATION;
 

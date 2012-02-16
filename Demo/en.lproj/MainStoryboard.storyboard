@@ -270,6 +270,7 @@
                         <outlet property="listingTableView" destination="xA3-0f-oHv" id="pcp-Ld-BvN"/>
                         <segue destination="jzI-1g-RJt" kind="push" identifier="showBrowseItem" id="2B3-vl-FJ4"/>
                         <segue destination="c7F-KA-gSL" kind="push" identifier="showBrowseItemNoMessage" id="uTw-jD-8Rk"/>
+                        <segue destination="mfO-2n-fuE" kind="modal" id="nzB-nt-Iox"/>
                     </connections>
                 </tableViewController>
             </objects>
@@ -502,6 +503,8 @@
                         <outlet property="activitySegment" destination="voB-zd-hpM" id="NiD-2m-Hlc"/>
                         <outlet property="emptyRecordsImageView" destination="OD1-Ja-Hhb" id="9tA-hQ-hEQ"/>
                         <outlet property="listingsTableView" destination="z4A-CG-KCI" id="Miu-or-foe"/>
+                        <segue destination="jzI-1g-RJt" kind="push" id="GbK-KJ-XDJ"/>
+                        <segue destination="mfO-2n-fuE" kind="modal" id="fhm-h2-6Oc"/>
                     </connections>
                 </tableViewController>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="OD1-Ja-Hhb">
@@ -838,7 +841,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="xW0-tN-bUf">
+                    <navigationItem key="navigationItem" title="联系卖家" id="xW0-tN-bUf">
                         <barButtonItem key="rightBarButtonItem" title="地图" id="bUR-WI-4bn">
                             <connections>
                                 <segue destination="XUy-mg-tBg" kind="push" id="VF9-6q-oxX"/>
@@ -855,6 +858,34 @@
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1224" y="-965"/>
+        </scene>
+        <scene sceneID="8UW-Sx-uG9">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iQc-4K-a28" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="b2J-eF-Ocx" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7QR-YX-CYL">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AwB-My-Fke">
+                                <rect key="frame" x="124" y="157" width="72" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="PAY">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="联系卖家" id="g3t-pG-8g5"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1088" y="-1520"/>
         </scene>
         <scene sceneID="g45-t1-bCl">
             <objects>
@@ -882,7 +913,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2548" y="-1111"/>
+            <point key="canvasLocation" x="3074" y="-1111"/>
         </scene>
         <scene sceneID="gQf-rS-YM8">
             <objects>
@@ -1019,7 +1050,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="交易版" id="dl3-r4-N9Y">
+                    <navigationItem key="navigationItem" title="联系买家" id="dl3-r4-N9Y">
                         <barButtonItem key="rightBarButtonItem" title="地图" id="Qei-wT-vVK">
                             <connections>
                                 <action selector="navigationButtonAction:" destination="jzI-1g-RJt" id="abn-jY-PJU"/>
@@ -1177,7 +1208,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="交易版" id="uWt-f2-xfr">
+                    <navigationItem key="navigationItem" title="联系买家" id="uWt-f2-xfr">
                         <barButtonItem key="rightBarButtonItem" title="分享" id="uyL-tx-qUf">
                             <connections>
                                 <action selector="navigationButtonAction:" destination="c7F-KA-gSL" id="w1v-oR-cXe"/>
@@ -1513,6 +1544,23 @@
             </objects>
             <point key="canvasLocation" x="620" y="-833"/>
         </scene>
+        <scene sceneID="8uT-Eq-FuH">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6w3-IM-paa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="mfO-2n-fuE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="2VE-yC-TnO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="b2J-eF-Ocx" kind="relationship" relationship="rootViewController" id="jZL-lV-I7n"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="610" y="-1508"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Default.png" width="320" height="430"/>
@@ -1522,17 +1570,183 @@
         <image name="preferences1.png" width="26" height="26"/>
         <image name="world1.png" width="26" height="26"/>
     </resources>
+    <classes>
+        <class className="ActivityOfferMessageViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ActivityOfferMessageViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="sellerInfoAction:"/>
+                <relationship kind="outlet" name="listingDescription" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="listingExpiredDate" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="listingTitle" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="offerPrice" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="ActivityViewController" superclassName="PullRefreshTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ActivityViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="activityChanged:"/>
+                <relationship kind="outlet" name="activitySegment" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="emptyRecordsImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="listingsTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="AppScrollView" superclassName="UIScrollView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AppScrollView.h"/>
+        </class>
+        <class className="BrowseItemNoMsgViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BrowseItemNoMsgViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="navigationButtonAction:"/>
+                <relationship kind="outlet" name="messageTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="navigationButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="BrowseItemViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BrowseItemViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="navigationButtonAction:"/>
+                <relationship kind="outlet" name="itemDescriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="itemExpiredDate" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="itemPriceChangedToLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="itemPriceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="itemTitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="messageTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="navigationButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="tpScrollView" candidateClass="TPKeyboardAvoidingScrollView"/>
+            </relationships>
+        </class>
+        <class className="BrowseTableViewController" superclassName="PullRefreshTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BrowseTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="browseSegmentAction:"/>
+                <relationship kind="outlet" name="browseSegment" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="listingTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="ItemViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ItemViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backButtonAction:"/>
+                <relationship kind="action" name="editAction:"/>
+                <relationship kind="action" name="shareAction:"/>
+                <relationship kind="outlet" name="infoScrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="itemDescription" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="itemExpiredDate" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="itemPrice" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="itemTitle" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="offerTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="offersCount" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ListingTableCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ListingTableCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="distance" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="duration" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="infoView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="price" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="subTitle" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="title" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="MainTabBarViewController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainTabBarViewController.h"/>
+        </class>
+        <class className="MapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="currentMap" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="OfferChangingPriceViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OfferChangingPriceViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelChangingPriceAction:"/>
+                <relationship kind="action" name="doneChangingPriceAction:"/>
+                <relationship kind="outlet" name="offerPriceTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="OfferTableCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OfferTableCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="distance" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="price" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="title" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="PostFlowPriceViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PostFlowPriceViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="priceTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="PostFlowSetDateViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PostFlowSetDateViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="PostDurationLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="PostDurationPicker" candidateClass="UIPickerView"/>
+                <relationship kind="outlet" name="PostFlowSegment" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+        <class className="PostFlowViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PostFlowViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="CancelAction:"/>
+                <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="titleTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="PostSummaryViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PostSummaryViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelAction:"/>
+                <relationship kind="action" name="submitAction"/>
+                <relationship kind="outlet" name="postAskPrice" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="postDescription" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="postDuration" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="postTitle" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="PostViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PostViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="changeEditorPostPage"/>
+                <relationship kind="action" name="changeHotPostPage"/>
+                <relationship kind="outlet" name="editorPostPageControl" candidateClass="UIPageControl"/>
+                <relationship kind="outlet" name="editorPostScrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="hotPostPageControl" candidateClass="UIPageControl"/>
+                <relationship kind="outlet" name="hotPostScrollView" candidateClass="AppScrollView"/>
+            </relationships>
+        </class>
+        <class className="PullRefreshTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PullRefreshTableViewController.h"/>
+        </class>
+        <class className="SettingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="authButtonAction:"/>
+                <relationship kind="outlet" name="authButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="welcomeMessageLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="TPKeyboardAvoidingScrollView" superclassName="UIScrollView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TPKeyboardAvoidingScrollView.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="6ov-7Q-KyR"/>
+        <segue reference="GbK-KJ-XDJ"/>
+        <segue reference="VF9-6q-oxX"/>
         <segue reference="dM3-h5-4IE"/>
         <segue reference="rFr-R7-ktR"/>
+        <segue reference="nzB-nt-Iox"/>
         <segue reference="uTw-jD-8Rk"/>
-        <segue reference="2B3-vl-FJ4"/>
         <segue reference="7lS-uD-bTm"/>
     </inferredMetricsTieBreakers>
 </document>
