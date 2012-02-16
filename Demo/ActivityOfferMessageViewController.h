@@ -18,7 +18,7 @@
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) PullToRefreshView *pull;
-@property (strong, nonatomic) ListItem *currentItem;
+//@property (strong, nonatomic) ListItem *currentItem;
 @property (strong, nonatomic) Offer *currentOffer;
 @property (strong, nonatomic) IBOutlet UILabel *listingTitle;
 @property (strong, nonatomic) IBOutlet UILabel *listingDescription;

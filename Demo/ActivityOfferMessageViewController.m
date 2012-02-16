@@ -13,7 +13,6 @@
 
 @synthesize scrollView = _scrollView;
 @synthesize pull = _pull;
-@synthesize currentItem = _currentItem;
 @synthesize currentOffer = _currentOffer;
 @synthesize listingTitle = _listingTitle;
 @synthesize listingDescription = _listingDescription;
@@ -60,7 +59,7 @@
       
       if (VariableStore.sharedInstance.user.userId == message.dbId) {
         title = @"您";
-      }else if(_currentItem.userId == message.dbId) {
+      }else if(_currentOffer.buyerId == message.dbId) {
         title = @"买家";
       }else{
         title = @"卖家";
@@ -125,8 +124,8 @@
 {
     [super viewDidLoad];
     
-    self.listingTitle.text = self.currentItem.title;
-    self.listingDescription.text = self.currentItem.description;
+    self.listingTitle.text = self.currentOffer.title;
+    self.listingDescription.text = self.currentOffer.description;
     self.offerPrice.text = [NSString stringWithFormat:@"%@ 元", [self.currentOffer.price stringValue]]; 
     self.listingExpiredDate.text = @"TODO 7 Days";
     

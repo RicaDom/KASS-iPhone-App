@@ -96,7 +96,16 @@ NSMutableArray *currentItems;
         int row = [path row];
         ListItem *item = [currentItems objectAtIndex:row];
         ivc.currentItem = item;
+      
+    }else if ([segue.identifier isEqualToString:@"offerMessageSegue"]) {
+      DLog(@"ActivityViewController::prepareForSegue:offerMessageSegue");
+      ActivityOfferMessageViewController  *avc = [segue destinationViewController];
+      
+      NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+      int row = [path row];
+      avc.currentOffer = [currentItems objectAtIndex:row];
     }
+
 }
 
 - (id)initWithStyle:(UITableViewStyle)style

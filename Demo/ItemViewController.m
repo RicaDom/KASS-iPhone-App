@@ -245,7 +245,6 @@
         NSIndexPath *path = [self.offerTableView indexPathForSelectedRow];
         int row = [path row];
         avc.currentOffer = [self.offers objectAtIndex:row];
-        avc.currentItem = self.currentItem;
     }
 }
 
