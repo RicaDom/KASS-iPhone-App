@@ -263,7 +263,10 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
      */
     NSLog(@"didSelectRowAtIndexPath .... ");
     
-    // TODO check whether is my post
+    // if you are the buyer or you are one of the sellers
+    // show your messages  
+    
+  
     if(indexPath.row%2 == 0) {
         [self performSegueWithIdentifier:@"showBrowseItem" sender:self];
     } else {
