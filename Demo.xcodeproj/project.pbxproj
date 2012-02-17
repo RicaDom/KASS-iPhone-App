@@ -649,6 +649,58 @@
 			path = OCMock;
 			sourceTree = "<group>";
 		};
+		77EC03B014EE37E800180069 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				774F965514D8E5E100E2588A /* NSObject+AsyncRequestPerform.h */,
+				774F965614D8E5E200E2588A /* NSObject+AsyncRequestPerform.m */,
+				777E4EEE14DE72CF002B40C3 /* UIView+ViewController.h */,
+				777E4EEF14DE72CF002B40C3 /* UIView+ViewController.m */,
+				77F5999214E8155A00CE96C3 /* NSObject+LocateMe.h */,
+				77F5999314E8155A00CE96C3 /* NSObject+LocateMe.m */,
+				77458EDC14EBB24B00B19F50 /* UIViewController+ActivityIndicate.h */,
+				77458EDD14EBB24C00B19F50 /* UIViewController+ActivityIndicate.m */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		77EC03B114EE39BF00180069 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E5A0744814AAA57100885232 /* ActivityViewController.h */,
+				E5A0744914AAA57100885232 /* ActivityViewController.m */,
+				E5C0ABEB14AADF130021873A /* ItemViewController.h */,
+				E5C0ABEC14AADF130021873A /* ItemViewController.m */,
+				E5B3AC8814EBBDC500CD4C67 /* ActivityOfferMessageViewController.h */,
+				E5B3AC8914EBBDC900CD4C67 /* ActivityOfferMessageViewController.m */,
+				E59A174D14AC513D00B7977D /* BrowseItemViewController.h */,
+				E59A174E14AC513D00B7977D /* BrowseItemViewController.m */,
+				E50E763C14E3ACEC00219A32 /* BrowseItemNoMsgViewController.h */,
+				E50E763D14E3ACEC00219A32 /* BrowseItemNoMsgViewController.m */,
+				E58B992414AC5AE400A780F6 /* BrowseTableViewController.h */,
+				E58B992514AC5AE400A780F6 /* BrowseTableViewController.m */,
+				E596EDC314D541B200B50F3B /* OfferChangingPriceViewController.h */,
+				E596EDC414D541B200B50F3B /* OfferChangingPriceViewController.m */,
+				E5947E5414A4006D0066723A /* SettingViewController.h */,
+				E5947E5514A4006D0066723A /* SettingViewController.m */,
+				E5E6AA3614A41B6D00A0CF86 /* MapViewController.h */,
+				E5E6AA3714A41B6D00A0CF86 /* MapViewController.m */,
+				E5D7C49A14B508D600E29463 /* PostViewController.h */,
+				E5D7C49B14B508D600E29463 /* PostViewController.m */,
+				E59A174214ABC03300B7977D /* PostFlowViewController.h */,
+				E59A174314ABC03300B7977D /* PostFlowViewController.m */,
+				E5D69EFE14AD99CA00D552F6 /* PostFlowPriceViewController.h */,
+				E5D69EFF14AD99CA00D552F6 /* PostFlowPriceViewController.m */,
+				E5D69F0114AD99F700D552F6 /* PostFlowSetDateViewController.h */,
+				E5D69F0214AD99F700D552F6 /* PostFlowSetDateViewController.m */,
+				E59A174A14AC482800B7977D /* PostSummaryViewController.h */,
+				E59A174B14AC482800B7977D /* PostSummaryViewController.m */,
+				E5D69EDB14AD0DB900D552F6 /* MainTabBarViewController.h */,
+				E5D69EDC14AD0DB900D552F6 /* MainTabBarViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		77F027A314C668760065EDAA /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -765,6 +817,8 @@
 		E5947DD014A3A12B0066723A /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				77EC03B114EE39BF00180069 /* Controllers */,
+				77EC03B014EE37E800180069 /* Extensions */,
 				E5B3AC6214EA4E4E00CD4C67 /* ActionLibs */,
 				E5B3AC5514E9238700CD4C67 /* Models */,
 				E5B3AC6C14EB981400CD4C67 /* CustomViews */,
@@ -779,44 +833,6 @@
 				77CD5FC414CA52780013B510 /* VariableStore.m */,
 				E5947DD914A3A12B0066723A /* AppDelegate.h */,
 				E5947DDA14A3A12B0066723A /* AppDelegate.m */,
-				E5A0744814AAA57100885232 /* ActivityViewController.h */,
-				E5A0744914AAA57100885232 /* ActivityViewController.m */,
-				E5C0ABEB14AADF130021873A /* ItemViewController.h */,
-				E5C0ABEC14AADF130021873A /* ItemViewController.m */,
-				E5B3AC8814EBBDC500CD4C67 /* ActivityOfferMessageViewController.h */,
-				E5B3AC8914EBBDC900CD4C67 /* ActivityOfferMessageViewController.m */,
-				E59A174D14AC513D00B7977D /* BrowseItemViewController.h */,
-				E59A174E14AC513D00B7977D /* BrowseItemViewController.m */,
-				E50E763C14E3ACEC00219A32 /* BrowseItemNoMsgViewController.h */,
-				E50E763D14E3ACEC00219A32 /* BrowseItemNoMsgViewController.m */,
-				E58B992414AC5AE400A780F6 /* BrowseTableViewController.h */,
-				E58B992514AC5AE400A780F6 /* BrowseTableViewController.m */,
-				E596EDC314D541B200B50F3B /* OfferChangingPriceViewController.h */,
-				E596EDC414D541B200B50F3B /* OfferChangingPriceViewController.m */,
-				E5947E5414A4006D0066723A /* SettingViewController.h */,
-				E5947E5514A4006D0066723A /* SettingViewController.m */,
-				E5E6AA3614A41B6D00A0CF86 /* MapViewController.h */,
-				E5E6AA3714A41B6D00A0CF86 /* MapViewController.m */,
-				E5D7C49A14B508D600E29463 /* PostViewController.h */,
-				E5D7C49B14B508D600E29463 /* PostViewController.m */,
-				E59A174214ABC03300B7977D /* PostFlowViewController.h */,
-				E59A174314ABC03300B7977D /* PostFlowViewController.m */,
-				E5D69EFE14AD99CA00D552F6 /* PostFlowPriceViewController.h */,
-				E5D69EFF14AD99CA00D552F6 /* PostFlowPriceViewController.m */,
-				E5D69F0114AD99F700D552F6 /* PostFlowSetDateViewController.h */,
-				E5D69F0214AD99F700D552F6 /* PostFlowSetDateViewController.m */,
-				E59A174A14AC482800B7977D /* PostSummaryViewController.h */,
-				E59A174B14AC482800B7977D /* PostSummaryViewController.m */,
-				E5D69EDB14AD0DB900D552F6 /* MainTabBarViewController.h */,
-				E5D69EDC14AD0DB900D552F6 /* MainTabBarViewController.m */,
-				774F965514D8E5E100E2588A /* NSObject+AsyncRequestPerform.h */,
-				774F965614D8E5E200E2588A /* NSObject+AsyncRequestPerform.m */,
-				777E4EEE14DE72CF002B40C3 /* UIView+ViewController.h */,
-				777E4EEF14DE72CF002B40C3 /* UIView+ViewController.m */,
-				77F5999214E8155A00CE96C3 /* NSObject+LocateMe.h */,
-				77F5999314E8155A00CE96C3 /* NSObject+LocateMe.m */,
-				77458EDC14EBB24B00B19F50 /* UIViewController+ActivityIndicate.h */,
-				77458EDD14EBB24C00B19F50 /* UIViewController+ActivityIndicate.m */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
