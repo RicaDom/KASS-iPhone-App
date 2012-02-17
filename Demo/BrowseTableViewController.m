@@ -12,19 +12,18 @@
 @implementation BrowseTableViewController
 @synthesize browseSegment = _browseSegment;
 @synthesize listingTableView = _listingTableView;
-
-NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
+@synthesize currentListings = _currentListings;
 
 
 - (void)reloadTable
 {
   DLog(@"BrowseTableViewController::reloadTable");
   if ( 0 == self.browseSegment.selectedSegmentIndex ) {
-    currentItems = nearByItems;
+    self.currentListings = [VariableStore sharedInstance].nearBrowseListings;
   } else if ( 1 == self.browseSegment.selectedSegmentIndex ){
-    currentItems = recentItems;
+    self.currentListings = [VariableStore sharedInstance].recentBrowseListings;
   } else {
-    currentItems = priceItems;
+    self.currentListings = [VariableStore sharedInstance].priceBrowseListings;
   }
   [self.tableView reloadData];
   [self stopLoading];
@@ -35,7 +34,7 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
 {
   DLog(@"ActivityViewController::getNearbyItems");
   Listing *listing = [[Listing alloc] initWithData:data];
-  nearByItems = [listing listItems];
+  [VariableStore sharedInstance].nearBrowseListings = [listing listItems];
   [self reloadTable];
 }
 
@@ -43,7 +42,7 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
 {
   DLog(@"ActivityViewController::getRecentItems");
   Listing *listing = [[Listing alloc] initWithData:data];
-  recentItems = [listing listItems];
+  [VariableStore sharedInstance].recentBrowseListings = [listing listItems];
   [self reloadTable];
 }
 
@@ -51,7 +50,7 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
 {
   DLog(@"ActivityViewController::getMostPriceItems");
   Listing *listing = [[Listing alloc] initWithData:data];
-  priceItems = [listing listItems];
+  [VariableStore sharedInstance].priceBrowseListings = [listing listItems];
   [self reloadTable];
 }
 
@@ -64,12 +63,36 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showBrowseItem"]) {
-        BrowseItemViewController *bvc = [segue destinationViewController];
-        
+        BrowseItemViewController *bvc = [segue destinationViewController];        
         NSIndexPath *path = [self.tableView indexPathForSelectedRow];
         int row = [path row];
-        ListItem *item = [currentItems objectAtIndex:row];
+        ListItem *item = [self.currentListings objectAtIndex:row];
         bvc.currentItem = item;
+        
+    } else if ([segue.identifier isEqualToString:@"BrowseListingToBuyerOffers"]) {
+        UINavigationController *nc = [segue destinationViewController];
+        ItemViewController *ivc = (ItemViewController *)nc.topViewController;
+        NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+        int row = [path row];
+        ListItem *item = [self.currentListings objectAtIndex:row];
+        ivc.currentItem = item;
+        
+    } else if ([segue.identifier isEqualToString:@"showBrowseItemUnlogin"]) {
+        BrowseItemNoMsgViewController *bvc = [segue destinationViewController];
+        NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+        int row = [path row];
+        ListItem *item = [self.currentListings objectAtIndex:row];
+        bvc.currentItem = item;
+        
+    } else if ([segue.identifier isEqualToString:@"showBrowseItemNoMessage"]) {
+        BrowseItemNoMsgViewController *bvc = [segue destinationViewController];
+        NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+        int row = [path row];
+        ListItem *item = [self.currentListings objectAtIndex:row];
+        bvc.currentItem = item;
+        
+    } else if ([segue.identifier isEqualToString:@"BrowseListingToBuyerPay"]) {
+        
     }
 }
 
@@ -121,31 +144,11 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
 
 - (void)viewDidLoad
 {
-  DLog(@"BrowseTableViewController::viewDidLoad ");
-  [super viewDidLoad];
-  
-  [self setupArray];
+    DLog(@"BrowseTableViewController::viewDidLoad ");
+    [super viewDidLoad];
 
-	//
-	// Create a header view. Wrap it in a container to allow us to position
-	// it better.
-	//
-//	UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(10, 20, 300, 60)];
-//	UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, 300, 40)];
-//	headerLabel.text = NSLocalizedString(@"Header for the table", @"");
-//	headerLabel.textColor = [UIColor blackColor];
-//	headerLabel.shadowColor = [UIColor grayColor];
-//	headerLabel.shadowOffset = CGSizeMake(0, 1);
-//	headerLabel.font = [UIFont boldSystemFontOfSize:22];
-//	headerLabel.backgroundColor = [UIColor clearColor];
-//	[containerView addSubview:headerLabel];
-//	self.listingTableView.tableHeaderView = containerView;
-    
-  // Uncomment the following line to preserve selection between presentations.
-  // self.clearsSelectionOnViewWillAppear = NO;
+    [self setupArray];
 
-  // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-  // self.navigationItem.rightBarButtonItem = self.editButtonItem;];
     UIImage *tableHeaderViewImage = [UIImage imageNamed:@"tableHeader.png"];
     UIImageView *tableHeaderView = [[UIImageView alloc] initWithImage:tableHeaderViewImage];
     self.listingTableView.tableHeaderView = tableHeaderView;
@@ -204,12 +207,12 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
 {
     // #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [currentItems count];
+    return [self.currentListings count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"listCell";
+    static NSString *CellIdentifier = @"browseListingTableCell";
     ListingTableCell *cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[ListingTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
@@ -224,12 +227,15 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
     cell.selectedBackgroundView = selectedImageView;
     
     // Configure the cell...
-    ListItem *item = [currentItems objectAtIndex:indexPath.row];
-    NSString *price = [[item askPrice] stringValue];
-
-    cell.title.text = [item title];
-    cell.subTitle.text = [item description];
-    [cell.price setTitle:price forState:UIControlStateNormal];
+    ListItem *item = [self.currentListings objectAtIndex:indexPath.row];
+    
+    if (item.askPrice != nil) {
+        NSString *price = [[item askPrice] stringValue];
+        
+        cell.title.text = [item title];
+        cell.subTitle.text = [item description];
+        [cell.price setTitle:price forState:UIControlStateNormal];
+    }
     cell.price.enabled = NO;
     
     [cell.distance setTitle:@"888米" forState:UIControlStateNormal];
@@ -255,7 +261,7 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   int row = [indexPath row];
-  ListItem *item = [currentItems objectAtIndex:row];
+  ListItem *item = [self.currentListings objectAtIndex:row];
     
     // if you are the buyer or you are one of the sellers
     // show your messages  
@@ -265,24 +271,31 @@ NSMutableArray *nearByItems, *recentItems, *priceItems, *currentItems;
     DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:not login");
     [self performSegueWithIdentifier:@"showBrowseItemUnlogin" sender:self];
   }else if ( VariableStore.sharedInstance.user.userId == item.userId ){
-    //go to buyers listing page
+    //if buyer already accepted an offer, go to pay_now page
+
+// TODO      
+      
+    //otherwise go to buyers listing page
     DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:you are buyer");
-    [self performSegueWithIdentifier:@"showItem" sender:self];
+    [self performSegueWithIdentifier:@"BrowseListingToBuyerOffers" sender:self];
+      
+      
   }else if ( [item.offererIds indexOfObject:VariableStore.sharedInstance.user.userId] != NSNotFound){
     //you've offered this listing, go to the offer page
     DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:you've offered!");
-    [self performSegueWithIdentifier:@"showOffer" sender:self];
+    [self performSegueWithIdentifier:@"showBrowseItem" sender:self];
   }else{
     //you are not buyer and you've not offered
     DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:logged in user");
-    [self performSegueWithIdentifier:@"showBrowseItem" sender:self];
+    [self performSegueWithIdentifier:@"showBrowseItemNoMessage" sender:self];
   }
     
 }
 
 - (IBAction)browseSegmentAction:(id)sender {
   DLog(@"BrowseTableViewController::(IBAction)browseSegmentAction");
-  if ( !recentItems || !priceItems || !nearByItems) {
+  if ( ![VariableStore sharedInstance].recentBrowseListings || 
+       ![VariableStore sharedInstance].priceBrowseListings || ![VariableStore sharedInstance].nearBrowseListings) {
     [self setupArray];
   }else{
     [self reloadTable]; //reload ui

@@ -22,6 +22,7 @@
 @synthesize scrollView = _scrollView;
 @synthesize pull = _pull;
 @synthesize tpScrollView = _tpScrollView;
+@synthesize currentOffer = _currentOffer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -98,58 +99,51 @@
     [self.scrollView addSubview:self.pull];
     [self loadMessageView];
     
-//    self.scrollView.scrollEnabled = NO;
-//    self.scrollView.scrollEnabled = YES;
-//    self.pull = [[PullToRefreshView alloc] initWithScrollView:self.tpScrollView];
-//    [self.pull setDelegate:self];
-//    [self.tpScrollView addSubview:self.pull];    
-    
-    self.itemTitleLabel.text = self.currentItem.title;
-    self.itemDescriptionLabel.text = self.currentItem.description;
-    self.itemPriceLabel.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
-    self.itemPriceChangedToLabel.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
-    
-    NSTimeInterval theTimeInterval = [self.currentItem.postDuration integerValue];
-    NSDate *postedDate = [[NSDate alloc] initWithTimeInterval:theTimeInterval sinceDate:self.currentItem.postedDate];
-     
-    //Set the required date format
-    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-    
-    //Get the string date
-    self.itemExpiredDate.text = [formatter stringFromDate:postedDate];   
-    
+    if (self.currentItem != nil) {
+        self.itemTitleLabel.text = self.currentItem.title;
+        self.itemDescriptionLabel.text = self.currentItem.description;
+        self.itemPriceLabel.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
+        self.itemPriceChangedToLabel.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
+        
+        NSTimeInterval theTimeInterval = [self.currentItem.postDuration integerValue];
+        NSDate *postedDate = [[NSDate alloc] initWithTimeInterval:theTimeInterval sinceDate:self.currentItem.postedDate];
+        
+        //Set the required date format
+        NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+        
+        //Get the string date
+        self.itemExpiredDate.text = [formatter stringFromDate:postedDate];          
+    } else if (self.currentOffer != nil) {
+        self.itemTitleLabel.text = self.currentOffer.title;
+        self.itemDescriptionLabel.text = self.currentOffer.description;
+        self.itemPriceLabel.text = [NSString stringWithFormat:@"%@", self.currentOffer.price];
+        self.itemPriceChangedToLabel.text = [NSString stringWithFormat:@"%@", self.currentOffer.price];
+    }
+ 
     UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]
                                 initWithTitle:UI_BUTTON_LABEL_BACK
                                 style:UIBarButtonItemStyleBordered
                                 target:self
                                 action:@selector(OnClick_btnBack:)];
-    self.navigationItem.leftBarButtonItem = btnBack;  
-    
-//    UIImage *tableHeaderViewImage = [UIImage imageNamed:@"middleRow.png"];
-//    UIImageView *tableHeaderView = [[UIImageView alloc] initWithImage:tableHeaderViewImage];
-//    self.messageTableView.tableHeaderView = tableHeaderView;
-//    
-//    UIImage *tableFooterViewImage = [UIImage imageNamed:@"middleRow.png"];
-//    UIImageView *tableFooterView = [[UIImageView alloc] initWithImage:tableFooterViewImage];
-//    self.messageTableView.tableFooterView = tableFooterView;    
+    self.navigationItem.leftBarButtonItem = btnBack;   
 
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(receiveTestNotification:) 
+                                             selector:@selector(receivePriceChangedNotification:) 
                                                  name:CHANGED_PRICE_NOTIFICATION
                                                object:nil];
 }
 
-- (void) receiveTestNotification:(NSNotification *) notification
+- (void) receivePriceChangedNotification:(NSNotification *) notification
 {
-    // [notification name] should always be @"TestNotification"
+    // [notification name] should always be CHANGED_PRICE_NOTIFICATION
     // unless you use this method for observation of other notifications
     // as well.
     
     if ([[notification name] isEqualToString:CHANGED_PRICE_NOTIFICATION]) {
         
         self.itemPriceChangedToLabel.text = (NSString *)[notification object];
-        NSLog (@"Successfully received the test notification! %@", (NSString *)[notification object]);
+        DLog (@"Successfully received price changed notification! %@", (NSString *)[notification object]);
     }
 }
 
@@ -159,7 +153,6 @@
     } else {
         [self.messageTextField resignFirstResponder];
     }
-    //[self.navigationController pushViewController:self.navigationController.parentViewController animated:YES];
 }
 
 - (void)viewDidUnload

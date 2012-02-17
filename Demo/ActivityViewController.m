@@ -89,7 +89,7 @@ NSMutableArray *currentItems;
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"ShowItem"]) {
+    if ([segue.identifier isEqualToString:@"ActBuyingListToOffers"]) {
         UINavigationController *nc = [segue destinationViewController];
         ItemViewController *ivc = (ItemViewController *)nc.topViewController;
         NSIndexPath *path = [self.tableView indexPathForSelectedRow];
@@ -97,15 +97,17 @@ NSMutableArray *currentItems;
         ListItem *item = [currentItems objectAtIndex:row];
         ivc.currentItem = item;
       
-    }else if ([segue.identifier isEqualToString:@"offerMessageSegue"]) {
-      DLog(@"ActivityViewController::prepareForSegue:offerMessageSegue");
-      ActivityOfferMessageViewController  *avc = [segue destinationViewController];
+    } else if ([segue.identifier isEqualToString:@"ActSellingListToMessageBuyer"]) {
+      DLog(@"ActivityViewController::prepareForSegue:ActSellingListToMessageBuyer");
+      BrowseItemViewController *bvc = [segue destinationViewController];
       
       NSIndexPath *path = [self.tableView indexPathForSelectedRow];
       int row = [path row];
-      avc.currentOffer = [currentItems objectAtIndex:row];
+      bvc.currentOffer = [currentItems objectAtIndex:row];
+        
+    } else if ([segue.identifier isEqualToString:@"ActBuyingListToPayView"]) {
+        
     }
-
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -444,6 +446,25 @@ NSMutableArray *currentItems;
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    
+    // Buying list segue
+    if ( 0 == activitySegment.selectedSegmentIndex) {
+        int row = [indexPath row];
+        ListItem *item = [currentItems objectAtIndex:row];
+//        item.acceptedPrice = [NSDecimalNumber decimalNumberWithDecimal:
+//                        [[NSNumber numberWithDouble:50] decimalValue]];
+        // if listing already has accepted offer, got to pay page
+        if (item.acceptedPrice != nil && item.acceptedPrice > 0) {
+            [self performSegueWithIdentifier:@"ActBuyingListToPayView" sender:self];
+        } else {
+            [self performSegueWithIdentifier:@"ActBuyingListToOffers" sender:self];
+        }
+    } 
+    // Selling list segue
+    else {
+        [self performSegueWithIdentifier:@"ActSellingListToMessageBuyer" sender:self];
+    }
+    
 }
 
 // Reloading data
