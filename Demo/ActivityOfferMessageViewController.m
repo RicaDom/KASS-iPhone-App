@@ -104,6 +104,7 @@
 }
 */
 - (void) accountDidGetOffer:(NSDictionary *)dict{
+  DLog(@"ActivityOfferMessageViewController::accountDidGetOffer:dict=%@", dict);
   NSDictionary *offer = [dict objectForKey:@"offer"];
   _currentOffer = [[Offer alloc]initWithDictionary:offer];
   [self loadMessageView];

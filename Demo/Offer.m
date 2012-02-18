@@ -36,6 +36,9 @@
     _title        = [listing objectForKey:@"title"];
     _description  = [listing objectForKey:@"description"];
     _buyerId      = [listing objectForKey:@"user_id"];
+    if ( !_listingId ) {
+      _listingId = [listing objectForKey:@"listing_id"];
+    }
     
     NSArray *messages = [theDictionary objectForKey:@"messages"];
     _messages     = [[NSMutableArray alloc] init];
