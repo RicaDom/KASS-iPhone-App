@@ -89,7 +89,7 @@ NSMutableArray *currentItems;
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"ShowItem"]) {
+    if ([segue.identifier isEqualToString:@"ActBuyingListToOffers"]) {
         UINavigationController *nc = [segue destinationViewController];
         ItemViewController *ivc = (ItemViewController *)nc.topViewController;
         NSIndexPath *path = [self.tableView indexPathForSelectedRow];
@@ -97,15 +97,17 @@ NSMutableArray *currentItems;
         ListItem *item = [currentItems objectAtIndex:row];
         ivc.currentItem = item;
       
-    }else if ([segue.identifier isEqualToString:@"offerMessageSegue"]) {
-      DLog(@"ActivityViewController::prepareForSegue:offerMessageSegue");
-      ActivityOfferMessageViewController  *avc = [segue destinationViewController];
+    } else if ([segue.identifier isEqualToString:@"ActSellingListToMessageBuyer"]) {
+      DLog(@"ActivityViewController::prepareForSegue:ActSellingListToMessageBuyer");
+      BrowseItemViewController *bvc = [segue destinationViewController];
       
       NSIndexPath *path = [self.tableView indexPathForSelectedRow];
       int row = [path row];
-      avc.currentOffer = [currentItems objectAtIndex:row];
+      bvc.currentOffer = [currentItems objectAtIndex:row];
+        
+    } else if ([segue.identifier isEqualToString:@"ActBuyingListToPayView"]) {
+        
     }
-
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -224,10 +226,18 @@ NSMutableArray *currentItems;
     UIImageView *selectedImageView = [[UIImageView alloc] initWithImage:selectedBackground];
     cell.selectedBackgroundView = selectedImageView;
     
+    int row = [indexPath row];
+    for (UIView *view in cell.infoView.subviews) {
+        [view removeFromSuperview];
+    }
+    // cell.infoView = [[UIView alloc] initWithFrame:CGRectMake(238, 6, 76, 76)];
     // customize table cell listing view
+    
+    // my buying list
     if ( 0 == activitySegment.selectedSegmentIndex ) {
-        int row = [indexPath row];
         ListItem *item = [currentItems objectAtIndex:row];
+        cell.title.text = item.title;
+        cell.subTitle.text = item.description;
         //item.acceptedPrice = [NSDecimalNumber decimalNumberWithDecimal:
         //                 [[NSNumber numberWithDouble:50] decimalValue]];
         // if user already accepted any offer, show pay now icon
@@ -240,7 +250,11 @@ NSMutableArray *currentItems;
             [cell.infoView addSubview:buttonPayNow];     
             
             UILabel *labelAskPrice = [[UILabel alloc] init];
-            [labelAskPrice setText:[item.askPrice stringValue]];
+            
+            if (item.askPrice != nil && item.askPrice > 0) {
+                [labelAskPrice setText:[item.askPrice stringValue]];
+            }
+            
             [labelAskPrice setTextColor:[UIColor blackColor]];
             labelAskPrice.frame = CGRectMake(cell.infoView.frame.size.width/2 - 5, cell.infoView.frame.size.height/2, cell.infoView.frame.size.width - 2, cell.infoView.frame.size.height / 2 - 5);
             labelAskPrice.textAlignment = UITextAlignmentCenter;
@@ -280,7 +294,9 @@ NSMutableArray *currentItems;
                 [cell.infoView addSubview:labelWaiting]; 
                 
                 UILabel *labelAskPrice = [[UILabel alloc] init];
-                [labelAskPrice setText:[item.askPrice stringValue]];
+                if (item.askPrice != nil && item.askPrice > 0) {
+                    [labelAskPrice setText:[item.askPrice stringValue]];
+                }
                 [labelAskPrice setTextColor:[UIColor blackColor]];
                 labelAskPrice.frame = CGRectMake(cell.infoView.frame.size.width/2 - 5, cell.infoView.frame.size.height/2 - 10, cell.infoView.frame.size.width - 2, cell.infoView.frame.size.height / 2 - 5);
                 labelAskPrice.textAlignment = UITextAlignmentCenter;
@@ -299,31 +315,123 @@ NSMutableArray *currentItems;
                 [cell.infoView addSubview:labelExpiredDate]; 
             }
         }
-    } else {
-       
-        
-        
-        
+    } 
     
-    
+    // my selling list
+    else {
+        Offer *item = [currentItems objectAtIndex:row];
+        cell.title.text = item.title;
+        cell.subTitle.text = item.description;
+
+        
+        // TODO
+        // if my offer has been accepted by buyer
+        DLog(@"Offer State: %@", item.state);
+        if ([item.state isEqualToString: OFFER_STATE_ACCEPTED] ) {
+            UILabel *labelAccepted = [[UILabel alloc] init];
+            [labelAccepted setText:UI_LABEL_ACCEPTED];
+            [labelAccepted setTextColor:[UIColor blackColor]];
+            
+            labelAccepted.frame = CGRectMake(2, 2, cell.infoView.frame.size.width - 2, cell.infoView.frame.size.height / 2 - 5);
+            labelAccepted.textAlignment = UITextAlignmentCenter;
+            [labelAccepted sizeToFit];
+            //labelAccepted.center = CGPointMake(cell.infoView.frame.size.width/2, 2);
+            [cell.infoView addSubview:labelAccepted]; 
+            
+            UILabel *labelAskPrice = [[UILabel alloc] init];
+            
+            if (item.price != nil && item.price > 0) {
+                [labelAskPrice setText:[item.price stringValue]];
+            }
+            
+            [labelAskPrice setTextColor:[UIColor blackColor]];
+            labelAskPrice.frame = CGRectMake(cell.infoView.frame.size.width/2 - 5, cell.infoView.frame.size.height/2 - 10, cell.infoView.frame.size.width - 2, cell.infoView.frame.size.height / 2 - 5);
+            labelAskPrice.textAlignment = UITextAlignmentCenter;
+            //labelAskPrice.center = CGPointMake(cell.infoView.frame.size.width/2, cell.infoView.frame.size.height/2 + 3);
+            [labelAskPrice sizeToFit];
+            [cell.infoView addSubview:labelAskPrice]; 
+            
+            //TODO
+            UILabel *labelYouOffered = [[UILabel alloc] init];
+            [labelYouOffered setText:UI_LABEL_YOU_OFFERED];
+            [labelYouOffered setTextColor:[UIColor blackColor]];
+            labelYouOffered.frame = CGRectMake(2, cell.infoView.frame.size.height/2 + 12, cell.infoView.frame.size.width - 2, cell.infoView.frame.size.height / 2 - 5);
+            labelYouOffered.textAlignment = UITextAlignmentCenter;
+            //labelExpiredDate.center = CGPointMake(cell.infoView.frame.size.width/2, cell.infoView.frame.size.height/2 + 3);
+            [labelYouOffered sizeToFit];
+            [cell.infoView addSubview:labelYouOffered]; 
+        } else {
+            // TODO
+            // if the listing is expired
+            if (1 != 1) {
+                UILabel *labelExpired = [[UILabel alloc] init];
+                [labelExpired setText:UI_LABEL_EXPIRED];
+                [labelExpired setTextColor:[UIColor blackColor]];
+                
+                labelExpired.frame = CGRectMake(2, 2, cell.infoView.frame.size.width - 2, cell.infoView.frame.size.height / 2 - 5);
+                labelExpired.textAlignment = UITextAlignmentCenter;
+                [labelExpired sizeToFit];
+                //labelWaiting.center = CGPointMake(cell.infoView.frame.size.width/2, 2);
+                [cell.infoView addSubview:labelExpired]; 
+                
+                UILabel *labelAskPrice = [[UILabel alloc] init];
+                
+                if (item.price != nil && item.price > 0) {
+                    [labelAskPrice setText:[item.price stringValue]];
+                }
+                
+                [labelAskPrice setTextColor:[UIColor blackColor]];
+                labelAskPrice.frame = CGRectMake(cell.infoView.frame.size.width/2 - 5, cell.infoView.frame.size.height/2 - 10, cell.infoView.frame.size.width - 2, cell.infoView.frame.size.height / 2 - 5);
+                labelAskPrice.textAlignment = UITextAlignmentCenter;
+                [labelAskPrice sizeToFit];
+                [cell.infoView addSubview:labelAskPrice]; 
+                
+                //TODO
+                UILabel *labelYouOffered = [[UILabel alloc] init];
+                [labelYouOffered setText:UI_LABEL_YOU_OFFERED];
+                [labelYouOffered setTextColor:[UIColor blackColor]];
+                labelYouOffered.frame = CGRectMake(2, cell.infoView.frame.size.height/2 + 12, cell.infoView.frame.size.width - 2, cell.infoView.frame.size.height / 2 - 5);
+                labelYouOffered.textAlignment = UITextAlignmentCenter;
+                [labelYouOffered sizeToFit];
+                [cell.infoView addSubview:labelYouOffered]; 
+            } 
+            // if the offer is pending
+            else {
+                UILabel *labelPending = [[UILabel alloc] init];
+                [labelPending setText:UI_LABEL_OFFER_PENDING];
+                [labelPending setTextColor:[UIColor blackColor]];
+                
+                labelPending.frame = CGRectMake(2, 2, cell.infoView.frame.size.width - 2, cell.infoView.frame.size.height / 2 - 5);
+                labelPending.textAlignment = UITextAlignmentCenter;
+                [labelPending sizeToFit];
+                //labelPending.center = CGPointMake(cell.infoView.frame.size.width/2, 2);
+                [cell.infoView addSubview:labelPending]; 
+                
+                UILabel *labelAskPrice = [[UILabel alloc] init];
+                
+                if (item.price != nil && item.price > 0) {
+                    [labelAskPrice setText:[item.price stringValue]];
+                }
+                
+                [labelAskPrice setTextColor:[UIColor blackColor]];
+                labelAskPrice.frame = CGRectMake(cell.infoView.frame.size.width/2 - 5, cell.infoView.frame.size.height/2 - 10, cell.infoView.frame.size.width - 2, cell.infoView.frame.size.height / 2 - 5);
+                labelAskPrice.textAlignment = UITextAlignmentCenter;
+                [labelAskPrice sizeToFit];
+                [cell.infoView addSubview:labelAskPrice]; 
+
+                UILabel *labelOfferer = [[UILabel alloc] init];
+                
+                [labelOfferer setText:([item.state isEqualToString: OFFER_STATE_REJECTED] ? UI_LABEL_BUYER_OFFERED : UI_LABEL_YOU_OFFERED)];
+                
+                [labelOfferer setTextColor:[UIColor blackColor]];
+                labelOfferer.frame = CGRectMake(2, cell.infoView.frame.size.height/2 + 12, cell.infoView.frame.size.width - 2, cell.infoView.frame.size.height / 2 - 5);
+                labelOfferer.textAlignment = UITextAlignmentCenter;
+                [labelOfferer sizeToFit];
+                [cell.infoView addSubview:labelOfferer]; 
+            }
+            
+        }
     }
-    
-    
-    
-    // Configure the cell...
-    ListItem *item = [currentItems objectAtIndex:indexPath.row];
-    NSString *price = [[item price] stringValue];
-    
-    cell.title.text = [item title];
-    cell.subTitle.text = [item description];
-    [cell.price setTitle:price forState:UIControlStateNormal];
-    cell.price.enabled = NO;
-    
-    [cell.distance setTitle:@"888米" forState:UIControlStateNormal];
-    cell.distance.enabled = NO;
-    
-    [cell.duration setTitle:@"7 天" forState:UIControlStateNormal];
-    cell.duration.enabled = NO;
     return cell;
 }
 
@@ -338,6 +446,25 @@ NSMutableArray *currentItems;
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    
+    // Buying list segue
+    if ( 0 == activitySegment.selectedSegmentIndex) {
+        int row = [indexPath row];
+        ListItem *item = [currentItems objectAtIndex:row];
+//        item.acceptedPrice = [NSDecimalNumber decimalNumberWithDecimal:
+//                        [[NSNumber numberWithDouble:50] decimalValue]];
+        // if listing already has accepted offer, got to pay page
+        if (item.acceptedPrice != nil && item.acceptedPrice > 0) {
+            [self performSegueWithIdentifier:@"ActBuyingListToPayView" sender:self];
+        } else {
+            [self performSegueWithIdentifier:@"ActBuyingListToOffers" sender:self];
+        }
+    } 
+    // Selling list segue
+    else {
+        [self performSegueWithIdentifier:@"ActSellingListToMessageBuyer" sender:self];
+    }
+    
 }
 
 // Reloading data

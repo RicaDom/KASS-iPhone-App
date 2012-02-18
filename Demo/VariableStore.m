@@ -19,6 +19,10 @@
 @synthesize user = _user;
 @synthesize locateMeManager = _locateMeManager;
 
+@synthesize recentBrowseListings = _recentBrowseListings;
+@synthesize nearBrowseListings = _nearBrowseListings;
+@synthesize priceBrowseListings = _priceBrowseListings;
+
 + (VariableStore *) sharedInstance {
     // the instance of this class is stored here
     static VariableStore *myInstance;
@@ -38,6 +42,10 @@
           
             myInstance.user = [[User alloc] init];
             myInstance.locateMeManager = [[LocateMeManager alloc] init];
+            
+//            myInstance.recentBrowseListings = [[NSMutableArray alloc] init];
+//            myInstance.nearBrowseListings = [[NSMutableArray alloc] init];
+//            myInstance.priceBrowseListings = [[NSMutableArray alloc] init];
         }
         // return the instance of this class
         return myInstance;    

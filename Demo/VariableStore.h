@@ -24,6 +24,10 @@
 @property (strong, nonatomic) NSMutableArray *allListings;
 @property (strong, nonatomic) NSMutableArray *myBuyingListings;
 @property (strong, nonatomic) NSMutableArray *mySellingListings;
+
+@property (strong, nonatomic) NSMutableArray *recentBrowseListings;
+@property (strong, nonatomic) NSMutableArray *nearBrowseListings;
+@property (strong, nonatomic) NSMutableArray *priceBrowseListings;
 @property (strong, nonatomic) User *user;
 @property (strong, nonatomic) LocateMeManager *locateMeManager;
 

@@ -36,8 +36,14 @@ NSString * const UI_LABEL_NEEDS_REVIEW = @"请查阅";
 NSString * const UI_LABEL_OFFER = @"出价";
 NSString * const UI_LABEL_EXPIRED = @"过期";
 NSString * const UI_LABEL_YOU_OFFERED = @"您的出价";
+NSString * const UI_LABEL_BUYER_OFFERED = @"买家出价";
 NSString * const UI_LABEL_ACCEPTED = @"成交";
 NSString * const UI_LABEL_WAITING_FOR_OFFER = @"等待出价";
+NSString * const UI_LABEL_OFFER_PENDING = @"等待确认";
+
+NSString * const OFFER_STATE_ACCEPTED = @"accepted";
+NSString * const OFFER_STATE_REJECTED = @"rejected";
+NSString * const OFFER_STATE_IDLE = @"idle";
 
 NSString * const CHANGED_PRICE_NOTIFICATION = @"CHANGED_PRICE_NOTIFICATION";
 @end

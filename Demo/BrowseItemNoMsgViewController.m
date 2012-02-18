@@ -13,6 +13,11 @@
 @synthesize messageTextField = _messageTextField;
 @synthesize currentItem = _currentItem;
 @synthesize navigationButton = _navigationButton;
+@synthesize listingTitle = _listingTitle;
+@synthesize listingDescription = _listingDescription;
+@synthesize listingPrice = _listingPrice;
+@synthesize listingDate = _listingDate;
+@synthesize offerPrice = _offerPrice;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -51,6 +56,49 @@
                                 target:self
                                 action:@selector(OnClick_btnBack:)];
     self.navigationItem.leftBarButtonItem = btnBack;  
+    
+    if (self.currentItem != nil) {
+        self.listingTitle.text = self.currentItem.title;
+        self.listingDescription.text = self.currentItem.description;
+        self.listingPrice.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
+        self.offerPrice.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
+        
+        NSTimeInterval theTimeInterval = [self.currentItem.postDuration integerValue];
+        NSDate *postedDate = [[NSDate alloc] initWithTimeInterval:theTimeInterval sinceDate:self.currentItem.postedDate];
+        
+        //Set the required date format
+        NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+        
+        //Get the string date
+        self.listingDate.text = [formatter stringFromDate:postedDate];          
+    }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receivePriceChangedNotification:) 
+                                                 name:CHANGED_PRICE_NOTIFICATION
+                                               object:nil];
+}
+
+- (void) receivePriceChangedNotification:(NSNotification *) notification
+{
+    // [notification name] should always be CHANGED_PRICE_NOTIFICATION
+    // unless you use this method for observation of other notifications
+    // as well.
+    
+    if ([[notification name] isEqualToString:CHANGED_PRICE_NOTIFICATION]) {
+        
+        self.offerPrice.text = (NSString *)[notification object];
+        DLog (@"Successfully received price changed notification! %@", (NSString *)[notification object]);
+    }
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"changedPriceSegue"]) {
+        UINavigationController *navigationController = segue.destinationViewController;
+        OfferChangingPriceViewController *ovc = (OfferChangingPriceViewController *)navigationController.topViewController;
+        ovc.currentPrice = self.offerPrice.text;
+    }
 }
 
 -(IBAction)OnClick_btnBack:(id)sender  {
@@ -65,6 +113,12 @@
 
 - (void)viewDidUnload
 {
+    [self setListingTitle:nil];
+    [self setListingDescription:nil];
+    [self setListingPrice:nil];
+    [self setListingDate:nil];
+    [self setOfferPrice:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:CHANGED_PRICE_NOTIFICATION object:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

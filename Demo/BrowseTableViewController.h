@@ -14,11 +14,15 @@
 #import "ListingTableCell.h"
 #import "PullRefreshTableViewController.h"
 #import "LocateMeDelegate.h"
+#import "ItemViewController.h"
+#import "BrowseItemNoMsgViewController.h"
 
 @interface BrowseTableViewController : PullRefreshTableViewController <LocateMeDelegate>
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *browseSegment;
 @property (strong, nonatomic) IBOutlet UITableView *listingTableView;
+
+@property (strong, nonatomic) NSMutableArray *currentListings;
 
 - (IBAction)browseSegmentAction:(id)sender;
 - (void)setupArray;
