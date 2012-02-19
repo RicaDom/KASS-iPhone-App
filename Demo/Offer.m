@@ -37,7 +37,7 @@
     _description  = [listing objectForKey:@"description"];
     _buyerId      = [listing objectForKey:@"user_id"];
     if ( !_listingId ) {
-      _listingId = [listing objectForKey:@"listing_id"];
+      _listingId = [listing objectForKey:@"id"];
     }
     
     NSArray *messages = [theDictionary objectForKey:@"messages"];

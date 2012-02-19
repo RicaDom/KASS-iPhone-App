@@ -19,4 +19,16 @@
     [self performSelector:theSelector withObject:data];
   }
 }
+
+- (void)requestFailed:(NSDictionary *)errors
+{
+  DLog(@"NSObject+AsyncRequestPerform::requestFailed"); 
+//  SEL theSelector = NSSelectorFromString(@"requestFailedFinished");
+//  if ([self respondsToSelector:theSelector]) 
+//  {
+//    DLog(@"NSObject+AsyncRequestPerform::requestFailedFinished::errors = %@", errors);
+//    [self performSelector:theSelector withObject:errors];
+//  }
+}
+
 @end

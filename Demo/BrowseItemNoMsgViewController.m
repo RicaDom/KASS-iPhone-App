@@ -7,6 +7,7 @@
 //
 
 #import "BrowseItemNoMsgViewController.h"
+#import "UIViewController+ActivityIndicate.h"
 
 @implementation BrowseItemNoMsgViewController
 
@@ -157,6 +158,25 @@
     [popupQuery showInView:self.view];
 }
 
+- (void)accountRequestFailed:(NSDictionary *)errors
+{
+  DLog(@"BrowseItemNoMsgViewController::requestFailed");
+  [self hideIndicator];
+}
+
+- (void)accountDidCreateOffer:(NSDictionary *)dict
+{
+  DLog(@"BrowseItemNoMsgViewController::accountDidCreateOffer:dict=%@", dict);
+
+  [self kassAddToModelDict:dict];
+  [self.messageTextField resignFirstResponder];
+  UINavigationController *navController = self.navigationController;
+  // Pop this controller and replace with another
+  [navController popViewControllerAnimated:NO];
+  [(BrowseTableViewController *)[navController.viewControllers objectAtIndex:([navController.viewControllers count]-1)] switchBrowseItemView];
+  
+}
+
 - (IBAction)navigationButtonAction:(id)sender {
     if ([self.navigationButton.title isEqualToString:UI_BUTTON_LABEL_SHARE]) {
         // TODO - share on WEIBO
@@ -165,13 +185,18 @@
         
     } else if (self.navigationButton.title == UI_BUTTON_LABEL_SEND) {
         // TODO - submitting data to backend server
-        
-        [self.messageTextField resignFirstResponder];
-        
-        UINavigationController *navController = self.navigationController;
-        // Pop this controller and replace with another
-        [navController popViewControllerAnimated:NO];
-        [(BrowseTableViewController *)[navController.viewControllers objectAtIndex:([navController.viewControllers count]-1)] switchBrowseItemView];
+      // submit listing
+      DLog(@"BrowseItemViewController::(IBAction)navigationButtonAction:createOffer:");
+      NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                     self.offerPrice.text, @"price",
+                                     self.messageTextField.text, @"message",
+                                     self.currentItem.dbId, @"listing_id",nil];
+      
+      [self showLoadingIndicator];
+      VariableStore.sharedInstance.user.delegate = self;
+      [VariableStore.sharedInstance.user createOffer:params];
+      [self.messageTextField resignFirstResponder];
+      
     }
 }
 

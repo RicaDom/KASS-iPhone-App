@@ -199,6 +199,13 @@
   [ka createListing:dict];
 }
 
+- (void)requestFailed:(NSDictionary *)errors
+{
+  DLog(@"User::requestFailed"); 
+  if( [_delegate respondsToSelector:@selector(accountRequestFailed:)] )
+    [_delegate accountRequestFailed:errors];
+}
+ 
 // ########################### API ##############################
 
 - (void) accountLogin:(NSString *)email:(NSString *)password

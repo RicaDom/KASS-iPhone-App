@@ -10,8 +10,9 @@
 #import "Constants.h"
 #import "VariableStore.h"
 #import "BrowseTableViewController.h"
+#import "UIResponder+VariableStore.h"
 
-@interface BrowseItemNoMsgViewController : UIViewController <UIActionSheetDelegate>
+@interface BrowseItemNoMsgViewController : UIViewController <UIActionSheetDelegate, AccountActivityDelegate>
 
 @property (strong, nonatomic) ListItem *currentItem;
 @property (weak, nonatomic) IBOutlet UITextField *messageTextField;

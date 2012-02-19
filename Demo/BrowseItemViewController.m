@@ -100,9 +100,8 @@
     }
 }
 
-- (void)accountDidGetOffer:(NSDictionary *)dict
+- (void)populateData:(NSDictionary *)dict
 {
-  DLog(@"BrowseItemViewController::accountDidGetOffer");  
   NSDictionary *offer = [dict objectForKey:@"offer"];
   _currentOffer = [[Offer alloc]initWithDictionary:offer];
   [self loadMessageView];
@@ -130,16 +129,36 @@
     self.itemPriceLabel.text = [NSString stringWithFormat:@"%@", self.currentOffer.price];
     self.itemPriceChangedToLabel.text = [NSString stringWithFormat:@"%@", self.currentOffer.price];
   }
-  
 }
 
+- (void)accountDidGetOffer:(NSDictionary *)dict
+{
+  DLog(@"BrowseItemViewController::accountDidGetOffer");  
+  [self populateData:dict];
+}
+
+
+- (void)accountRequestFailed:(NSDictionary *)errors
+{
+  DLog(@"BrowseItemViewController::requestFailed");
+  [self hideIndicator];
+  [self stopLoading];
+}
 
 - (void)loadOffer
 {
   DLog(@"BrowseItemViewController::loadingOffer");
   [self showLoadingIndicator];
+  
+  //check if currentOffer object is nil, if so get from kassModelDict
+  NSString *offerId = self.currentOffer.dbId;
+  
+  if (!offerId) {
+    offerId = [[self kassGetModelDict:@"offer"] objectForKey:@"id"];
+  }
+
   VariableStore.sharedInstance.user.delegate = self;
-  [VariableStore.sharedInstance.user getOffer:self.currentOffer.dbId];
+  [VariableStore.sharedInstance.user getOffer:offerId];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -229,13 +248,10 @@
     }
 }
 
-- (void)accountDidCreateOffer:(NSDictionary *)dict
+- (void)accountDidModifyOffer:(NSDictionary *)dict
 {
-  DLog(@"BrowseItemViewController::accountDidCreateOffer:dict=%@", dict);
-  NSDictionary *offer = [dict objectForKey:@"offer"] ;
-  
-  VariableStore.sharedInstance.user.delegate = self;
-  [VariableStore.sharedInstance.user getOffer:[offer objectForKey:@"id"]];
+  DLog(@"BrowseItemViewController::accountDidModifyOffer");  
+  [self populateData:dict];
 }
 
 - (IBAction)navigationButtonAction:(id)sender {
@@ -243,20 +259,16 @@
         [self performSegueWithIdentifier: @"dealMapModal" 
                                   sender: self];
     } else if (self.navigationButton.title == UI_BUTTON_LABEL_SUBMIT) {
-        // TODO - submitting data to backend server
-          
-      DLog(@"BrowseItemViewController::(IBAction)navigationButtonAction:postingOffer:");
       
-      NSString *listingId = _currentItem ? _currentItem.dbId : _currentOffer.listingId;
-      
+      DLog(@"BrowseItemViewController::(IBAction)navigationButtonAction:modifyOffer:");
       NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                      self.itemPriceLabel.text, @"price",
-                                     self.messageTextField.text, @"message",
-                                     listingId, @"listing_id",nil];
+                                     self.messageTextField.text, @"message",nil];
       
-      // submit listing
+      // modify listing
+      [self showLoadingIndicator];
       VariableStore.sharedInstance.user.delegate = self;
-      [VariableStore.sharedInstance.user createOffer:params];
+      [VariableStore.sharedInstance.user modifyOffer:params:_currentOffer.dbId];
       [self.messageTextField resignFirstResponder];
     }
 }

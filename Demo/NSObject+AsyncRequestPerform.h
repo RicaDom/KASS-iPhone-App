@@ -9,5 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface NSObject (AsyncRequestPerform)
+
 - (void)perform:(NSData *)data:(NSString *)action;
+- (void)requestFailed:(NSDictionary *)dict;
+//- (void)requestFailedFinished:(NSDictionary *)errors;
+
 @end

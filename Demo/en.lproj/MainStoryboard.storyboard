@@ -1373,7 +1373,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hWg-Ie-RHa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="qSl-ws-Clg" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Br1-bB-Ybw">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="姓名" lineBreakMode="tailTruncation" minimumFontSize="10" id="FOj-25-3s8">
@@ -1722,12 +1722,12 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="7lS-uD-bTm"/>
-        <segue reference="NEk-wT-5z2"/>
         <segue reference="nzB-nt-Iox"/>
+        <segue reference="NEk-wT-5z2"/>
         <segue reference="2B3-vl-FJ4"/>
         <segue reference="uTw-jD-8Rk"/>
-        <segue reference="rFr-R7-ktR"/>
         <segue reference="VF9-6q-oxX"/>
-        <segue reference="dM3-h5-4IE"/>
+        <segue reference="8Mx-QQ-zuz"/>
+        <segue reference="0kh-0v-gnk"/>
     </inferredMetricsTieBreakers>
 </document>

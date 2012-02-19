@@ -13,6 +13,7 @@
 #import "OfferChangingPriceViewController.h"
 #import "TPKeyboardAvoidingScrollView.h"
 #import "AccountActivityDelegate.h"
+#import "UIResponder+VariableStore.h"
 
 @interface BrowseItemViewController : UIViewController <UIScrollViewDelegate, PullToRefreshViewDelegate, AccountActivityDelegate>
 
@@ -30,4 +31,5 @@
 @property (strong, nonatomic) PullToRefreshView *pull;
 
 - (IBAction)navigationButtonAction:(id)sender;
+
 @end
