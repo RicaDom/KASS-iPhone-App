@@ -32,7 +32,14 @@
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
   DLog(@"KassApi::requestFinished::responseString %@", [request responseString]);  
-  [_performer perform:(NSData *)[request responseData]:(NSString *) _method];
+  
+  NSDictionary *dict = [KassApi parseData:[request responseData]];
+  NSDictionary *errors = [dict objectForKey:@"errors"];
+  if (errors) {
+    [_performer requestFailed:errors];
+  }else{
+    [_performer perform:(NSData *)[request responseData]:(NSString *) _method];
+  }
 }
 
 // When asynchronous call fails, log the error

@@ -23,6 +23,8 @@
 @synthesize nearBrowseListings = _nearBrowseListings;
 @synthesize priceBrowseListings = _priceBrowseListings;
 
+@synthesize modelDict = _modelDict;
+
 + (VariableStore *) sharedInstance {
     // the instance of this class is stored here
     static VariableStore *myInstance;
@@ -42,6 +44,8 @@
           
             myInstance.user = [[User alloc] init];
             myInstance.locateMeManager = [[LocateMeManager alloc] init];
+          
+            myInstance.modelDict = [[NSMutableDictionary alloc] init];
             
 //            myInstance.recentBrowseListings = [[NSMutableArray alloc] init];
 //            myInstance.nearBrowseListings = [[NSMutableArray alloc] init];
@@ -89,6 +93,26 @@
 
 - (void) clearCurrentPostingItem {
     self.currentPostingItem = [[ListItem alloc] init];
+}
+
+- (void) addToModelDict:(NSString *)controller:(NSDictionary *)model
+{
+  [_modelDict setObject:model forKey:controller];
+  DLog(@"modeldict=%@", _modelDict);
+}
+
+- (void) removeFromModelDict:(NSString *)controller
+{
+  [_modelDict removeObjectForKey:controller];
+}
+
+- (NSDictionary *) getModelDict:(NSString *)controller:(NSString *)modelName
+{  
+  NSDictionary *myModelDict = [_modelDict objectForKey:controller];
+  NSDictionary *dict = [myModelDict objectForKey:@"errors"];
+  DLog(@"dict=%@", dict);
+  if ( dict ) { return dict; } 
+  return [myModelDict objectForKey:modelName];
 }
 
 //Loading sample data, for TESTING ONLY!

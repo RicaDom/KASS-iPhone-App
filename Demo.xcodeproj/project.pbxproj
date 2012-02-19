@@ -93,7 +93,6 @@
 		E5129DCB14D3D59100FEE0BF /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5129DCA14D3D59100FEE0BF /* TPKeyboardAvoidingScrollView.m */; };
 		E53C868914E2923300A01D6F /* PullToRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = E53C868814E2923300A01D6F /* PullToRefreshView.m */; };
 		E57EDB1F14D7EA0F0026D186 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = E57EDB1E14D7EA0F0026D186 /* User.m */; };
-		E58B992614AC5AE400A780F6 /* BrowseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E58B992514AC5AE400A780F6 /* BrowseTableViewController.m */; };
 		E58B993214AC75EA00A780F6 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E58B993014AC746600A780F6 /* Default.png */; };
 		E5947DCB14A3A12B0066723A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5947DCA14A3A12B0066723A /* UIKit.framework */; };
 		E5947DCD14A3A12B0066723A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5947DCC14A3A12B0066723A /* Foundation.framework */; };
@@ -111,7 +110,6 @@
 		E596EDC514D541B200B50F3B /* OfferChangingPriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E596EDC414D541B200B50F3B /* OfferChangingPriceViewController.m */; };
 		E59A174414ABC03300B7977D /* PostFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E59A174314ABC03300B7977D /* PostFlowViewController.m */; };
 		E59A174C14AC482900B7977D /* PostSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E59A174B14AC482800B7977D /* PostSummaryViewController.m */; };
-		E59A174F14AC513D00B7977D /* BrowseItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E59A174E14AC513D00B7977D /* BrowseItemViewController.m */; };
 		E59AE14C14AD09410048C7C0 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = E59AE14914AD09410048C7C0 /* background.png */; };
 		E5A0743B14AA918600885232 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A0743A14AA918600885232 /* MapKit.framework */; };
 		E5A0744A14AAA57100885232 /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A0744914AAA57100885232 /* ActivityViewController.m */; };
@@ -154,6 +152,9 @@
 		E5D7C49C14B508D600E29463 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D7C49B14B508D600E29463 /* PostViewController.m */; };
 		E5D7C4AE14B53C3F00E29463 /* AppScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D7C4AD14B53C3F00E29463 /* AppScrollView.m */; };
 		E5E6AA3814A41B6D00A0CF86 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E6AA3714A41B6D00A0CF86 /* MapViewController.m */; };
+		E5EB944914EF8DDE0072B57B /* BrowseItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EB944414EF8DDE0072B57B /* BrowseItemViewController.m */; };
+		E5EB944A14EF8DDE0072B57B /* BrowseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EB944614EF8DDE0072B57B /* BrowseTableViewController.m */; };
+		E5EB944B14EF8DDE0072B57B /* BuyerPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EB944814EF8DDE0072B57B /* BuyerPayViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -313,8 +314,6 @@
 		E53C868814E2923300A01D6F /* PullToRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullToRefreshView.m; sourceTree = "<group>"; };
 		E57EDB1D14D7EA0F0026D186 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		E57EDB1E14D7EA0F0026D186 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		E58B992414AC5AE400A780F6 /* BrowseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseTableViewController.h; sourceTree = "<group>"; };
-		E58B992514AC5AE400A780F6 /* BrowseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseTableViewController.m; sourceTree = "<group>"; };
 		E58B993014AC746600A780F6 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../../Default.png; sourceTree = "<group>"; };
 		E5947DC614A3A12B0066723A /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5947DCA14A3A12B0066723A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -341,8 +340,6 @@
 		E59A174314ABC03300B7977D /* PostFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostFlowViewController.m; sourceTree = "<group>"; };
 		E59A174A14AC482800B7977D /* PostSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostSummaryViewController.h; sourceTree = "<group>"; };
 		E59A174B14AC482800B7977D /* PostSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostSummaryViewController.m; sourceTree = "<group>"; };
-		E59A174D14AC513D00B7977D /* BrowseItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseItemViewController.h; sourceTree = "<group>"; };
-		E59A174E14AC513D00B7977D /* BrowseItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseItemViewController.m; sourceTree = "<group>"; };
 		E59AE14914AD09410048C7C0 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		E5A0743A14AA918600885232 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E5A0744814AAA57100885232 /* ActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewController.h; sourceTree = "<group>"; };
@@ -402,6 +399,12 @@
 		E5D7C4AD14B53C3F00E29463 /* AppScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppScrollView.m; sourceTree = "<group>"; };
 		E5E6AA3614A41B6D00A0CF86 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		E5E6AA3714A41B6D00A0CF86 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		E5EB944314EF8DDE0072B57B /* BrowseItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseItemViewController.h; sourceTree = "<group>"; };
+		E5EB944414EF8DDE0072B57B /* BrowseItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseItemViewController.m; sourceTree = "<group>"; };
+		E5EB944514EF8DDE0072B57B /* BrowseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseTableViewController.h; sourceTree = "<group>"; };
+		E5EB944614EF8DDE0072B57B /* BrowseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseTableViewController.m; sourceTree = "<group>"; };
+		E5EB944714EF8DDE0072B57B /* BuyerPayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerPayViewController.h; sourceTree = "<group>"; };
+		E5EB944814EF8DDE0072B57B /* BuyerPayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyerPayViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -785,12 +788,14 @@
 				E5C0ABEC14AADF130021873A /* ItemViewController.m */,
 				E5B3AC8814EBBDC500CD4C67 /* ActivityOfferMessageViewController.h */,
 				E5B3AC8914EBBDC900CD4C67 /* ActivityOfferMessageViewController.m */,
-				E59A174D14AC513D00B7977D /* BrowseItemViewController.h */,
-				E59A174E14AC513D00B7977D /* BrowseItemViewController.m */,
 				E50E763C14E3ACEC00219A32 /* BrowseItemNoMsgViewController.h */,
 				E50E763D14E3ACEC00219A32 /* BrowseItemNoMsgViewController.m */,
-				E58B992414AC5AE400A780F6 /* BrowseTableViewController.h */,
-				E58B992514AC5AE400A780F6 /* BrowseTableViewController.m */,
+				E5EB944314EF8DDE0072B57B /* BrowseItemViewController.h */,
+				E5EB944414EF8DDE0072B57B /* BrowseItemViewController.m */,
+				E5EB944514EF8DDE0072B57B /* BrowseTableViewController.h */,
+				E5EB944614EF8DDE0072B57B /* BrowseTableViewController.m */,
+				E5EB944714EF8DDE0072B57B /* BuyerPayViewController.h */,
+				E5EB944814EF8DDE0072B57B /* BuyerPayViewController.m */,
 				E596EDC314D541B200B50F3B /* OfferChangingPriceViewController.h */,
 				E596EDC414D541B200B50F3B /* OfferChangingPriceViewController.m */,
 				E5947E5414A4006D0066723A /* SettingViewController.h */,
@@ -1120,8 +1125,6 @@
 				E5C0ABED14AADF130021873A /* ItemViewController.m in Sources */,
 				E59A174414ABC03300B7977D /* PostFlowViewController.m in Sources */,
 				E59A174C14AC482900B7977D /* PostSummaryViewController.m in Sources */,
-				E59A174F14AC513D00B7977D /* BrowseItemViewController.m in Sources */,
-				E58B992614AC5AE400A780F6 /* BrowseTableViewController.m in Sources */,
 				E5D69EDD14AD0DB900D552F6 /* MainTabBarViewController.m in Sources */,
 				E5D69F0014AD99CA00D552F6 /* PostFlowPriceViewController.m in Sources */,
 				E5D69F0314AD99F700D552F6 /* PostFlowSetDateViewController.m in Sources */,
@@ -1178,6 +1181,9 @@
 				E5B3AC8A14EBBDCD00CD4C67 /* ActivityOfferMessageViewController.m in Sources */,
 				77458EDE14EBB24C00B19F50 /* UIViewController+ActivityIndicate.m in Sources */,
 				77458EE214EBC2E100B19F50 /* Offers.m in Sources */,
+				E5EB944914EF8DDE0072B57B /* BrowseItemViewController.m in Sources */,
+				E5EB944A14EF8DDE0072B57B /* BrowseTableViewController.m in Sources */,
+				E5EB944B14EF8DDE0072B57B /* BuyerPayViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

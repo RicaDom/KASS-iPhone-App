@@ -8,6 +8,7 @@
 
 #import "BrowseItemViewController.h"
 #import "VariableStore.h"
+#import "UIViewController+ActivityIndicate.h"
 
 @implementation BrowseItemViewController
 
@@ -41,14 +42,17 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-#pragma mark - View lifecycle
 
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
+-(void)stopLoading
 {
+	[self.pull finishedLoading];
 }
-*/
+
+// called when the user pulls-to-refresh
+- (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view
+{
+  [self performSelector:@selector(loadOffer) withObject:nil afterDelay:2.0];	
+}
 
 
 -(void)loadMessageView
@@ -61,18 +65,24 @@
     [self.scrollView addSubview:imageView];
     yOffset += 10;
     
-    for (int i=0;i<20;i++) {
+    for (int i=0;i<[_currentOffer.messages count];i++) {
         yOffset += 5;
         UILabel* lblHeaderTitle = [[UILabel alloc] initWithFrame:CGRectMake(8, yOffset, 310, 21)];
         [lblHeaderTitle setTextAlignment:UITextAlignmentLeft];
         //[lblHeaderTitle setFont:[UIFont fontWithName:@"Helvetica-Bold" size:16.0f]];
         [lblHeaderTitle setBackgroundColor:[UIColor lightGrayColor]];
         
-        if (i%2 == 1) {
-            [lblHeaderTitle setText:@"买家： 便宜你妹。"];
-        } else {
-            [lblHeaderTitle setText:@"您： 出价太便宜了。"]; 
-        }
+      Message *message = [_currentOffer.messages objectAtIndex:i];
+      
+      NSString *title;
+      
+      if (VariableStore.sharedInstance.user.userId == message.dbId) {
+        title = @"您";
+      }else if(_currentOffer.buyerId == message.dbId) {
+        title = @"买家";
+      }else{
+        title = @"卖家";
+      }
 
         [lblHeaderTitle setTextColor:[UIColor blackColor]];
         
@@ -90,6 +100,67 @@
     }
 }
 
+- (void)populateData:(NSDictionary *)dict
+{
+  NSDictionary *offer = [dict objectForKey:@"offer"];
+  _currentOffer = [[Offer alloc]initWithDictionary:offer];
+  [self loadMessageView];
+  [self hideIndicator];
+  [self stopLoading];
+  
+  if (self.currentItem != nil) {
+    self.itemTitleLabel.text = self.currentItem.title;
+    self.itemDescriptionLabel.text = self.currentItem.description;
+    self.itemPriceLabel.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
+    self.itemPriceChangedToLabel.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
+    
+    NSTimeInterval theTimeInterval = [self.currentItem.postDuration integerValue];
+    NSDate *postedDate = [[NSDate alloc] initWithTimeInterval:theTimeInterval sinceDate:self.currentItem.postedDate];
+    
+    //Set the required date format
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    
+    //Get the string date
+    self.itemExpiredDate.text = [formatter stringFromDate:postedDate];          
+  } else if (self.currentOffer != nil) {
+    self.itemTitleLabel.text = self.currentOffer.title;
+    self.itemDescriptionLabel.text = self.currentOffer.description;
+    self.itemPriceLabel.text = [NSString stringWithFormat:@"%@", self.currentOffer.price];
+    self.itemPriceChangedToLabel.text = [NSString stringWithFormat:@"%@", self.currentOffer.price];
+  }
+}
+
+- (void)accountDidGetOffer:(NSDictionary *)dict
+{
+  DLog(@"BrowseItemViewController::accountDidGetOffer");  
+  [self populateData:dict];
+}
+
+
+- (void)accountRequestFailed:(NSDictionary *)errors
+{
+  DLog(@"BrowseItemViewController::requestFailed");
+  [self hideIndicator];
+  [self stopLoading];
+}
+
+- (void)loadOffer
+{
+  DLog(@"BrowseItemViewController::loadingOffer");
+  [self showLoadingIndicator];
+  
+  //check if currentOffer object is nil, if so get from kassModelDict
+  NSString *offerId = self.currentOffer.dbId;
+  
+  if (!offerId) {
+    offerId = [[self kassGetModelDict:@"offer"] objectForKey:@"id"];
+  }
+
+  VariableStore.sharedInstance.user.delegate = self;
+  [VariableStore.sharedInstance.user getOffer:offerId];
+}
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
@@ -97,29 +168,7 @@
     self.pull = [[PullToRefreshView alloc] initWithScrollView:self.scrollView];
     [self.pull setDelegate:self];
     [self.scrollView addSubview:self.pull];
-    [self loadMessageView];
-    
-    if (self.currentItem != nil) {
-        self.itemTitleLabel.text = self.currentItem.title;
-        self.itemDescriptionLabel.text = self.currentItem.description;
-        self.itemPriceLabel.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
-        self.itemPriceChangedToLabel.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
-        
-        NSTimeInterval theTimeInterval = [self.currentItem.postDuration integerValue];
-        NSDate *postedDate = [[NSDate alloc] initWithTimeInterval:theTimeInterval sinceDate:self.currentItem.postedDate];
-        
-        //Set the required date format
-        NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-        
-        //Get the string date
-        self.itemExpiredDate.text = [formatter stringFromDate:postedDate];          
-    } else if (self.currentOffer != nil) {
-        self.itemTitleLabel.text = self.currentOffer.title;
-        self.itemDescriptionLabel.text = self.currentOffer.description;
-        self.itemPriceLabel.text = [NSString stringWithFormat:@"%@", self.currentOffer.price];
-        self.itemPriceChangedToLabel.text = [NSString stringWithFormat:@"%@", self.currentOffer.price];
-    }
+    [self loadOffer];
  
     UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]
                                 initWithTitle:UI_BUTTON_LABEL_BACK
@@ -199,51 +248,29 @@
     }
 }
 
+- (void)accountDidModifyOffer:(NSDictionary *)dict
+{
+  DLog(@"BrowseItemViewController::accountDidModifyOffer");  
+  [self populateData:dict];
+}
+
 - (IBAction)navigationButtonAction:(id)sender {
     if ([self.navigationButton.title isEqualToString:UI_BUTTON_LABEL_MAP]) {
         [self performSegueWithIdentifier: @"dealMapModal" 
                                   sender: self];
     } else if (self.navigationButton.title == UI_BUTTON_LABEL_SUBMIT) {
-        // TODO - submitting data to backend server
-          
-      DLog(@"BrowseItemViewController::(IBAction)navigationButtonAction:postingOffer: \n");
-
       
+      DLog(@"BrowseItemViewController::(IBAction)navigationButtonAction:modifyOffer:");
       NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                      self.itemPriceLabel.text, @"price",
-                                     self.messageTextField.text, @"message",
-                                     _currentItem.dbId, @"listing_id",nil];
+                                     self.messageTextField.text, @"message",nil];
       
-      // submit listing
+      // modify listing
+      [self showLoadingIndicator];
       VariableStore.sharedInstance.user.delegate = self;
-      [VariableStore.sharedInstance.user createOffer:params];
+      [VariableStore.sharedInstance.user modifyOffer:params:_currentOffer.dbId];
       [self.messageTextField resignFirstResponder];
     }
-}
-
-
-- (void)accountDidGetOffer:(NSDictionary *)dict
-{
-  DLog(@"BrowseItemViewController::accountDidGetOffer:dict=%@", dict);  
-}
-
-- (void)accountDidCreateOffer:(NSDictionary *)dict
-{
-  DLog(@"BrowseItemViewController::accountDidCreateOffer:dict=%@", dict);
-  NSDictionary *offer = [dict objectForKey:@"offer"] ;
-  
-  VariableStore.sharedInstance.user.delegate = self;
-  [VariableStore.sharedInstance.user getOffer:[offer objectForKey:@"id"]];
-}
-
--(void)stopLoading
-{
-	[self.pull finishedLoading];
-}
-// called when the user pulls-to-refresh
-- (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view
-{
-    [self performSelector:@selector(stopLoading) withObject:nil afterDelay:2.0];	
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

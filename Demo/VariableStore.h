@@ -28,8 +28,11 @@
 @property (strong, nonatomic) NSMutableArray *recentBrowseListings;
 @property (strong, nonatomic) NSMutableArray *nearBrowseListings;
 @property (strong, nonatomic) NSMutableArray *priceBrowseListings;
+
 @property (strong, nonatomic) User *user;
 @property (strong, nonatomic) LocateMeManager *locateMeManager;
+
+@property (strong, nonatomic) NSMutableDictionary *modelDict;
 
 + (VariableStore *) sharedInstance;
 - (void) clearCurrentPostingItem;
@@ -41,5 +44,9 @@
 - (BOOL) signInWeibo;
 - (BOOL) signOut;
 - (CLLocation *)location;
+
+- (void) addToModelDict:(NSString *)controller:(NSDictionary *)model;
+- (NSDictionary *) getModelDict:(NSString *)controller:(NSString *)modelName;
+- (void) removeFromModelDict:(NSString *)controller;
 
 @end

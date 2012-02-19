@@ -23,4 +23,6 @@
 - (void)accountDidGetOfferMessages:(NSDictionary *)dict;
 - (void)accountDidCreateOfferMessage:(NSDictionary *)dict;
 
+- (void)accountRequestFailed:(NSDictionary *)errors;
+
 @end
