@@ -129,4 +129,23 @@
 //    }
 //}
 
+-(void)offerMessageToPayPage{
+    DLog(@"BrowseTableViewController::offerMessageToPayPage");
+    DLog(@"BrowseTableViewController::offerMessageToPayPage");
+    DLog(@"BrowseTableViewController::offerMessageToPayPage");
+    DLog(@"BrowseTableViewController::offerMessageToPayPage");
+    DLog(@"BrowseTableViewController::offerMessageToPayPage");
+    DLog(@"BrowseTableViewController::offerMessageToPayPage");
+    DLog(@"BrowseTableViewController::offerMessageToPayPage");
+    DLog(@"BrowseTableViewController::offerMessageToPayPage");
+    DLog(@"BrowseTableViewController::offerMessageToPayPage");
+    DLog(@"BrowseTableViewController::offerMessageToPayPage");
+    DLog(@"BrowseTableViewController::offerMessageToPayPage");
+    DLog(@"BrowseTableViewController::offerMessageToPayPage");
+    DLog(@"BrowseTableViewController::offerMessageToPayPage");
+    DLog(@"BrowseTableViewController::offerMessageToPayPage");
+    DLog(@"BrowseTableViewController::offerMessageToPayPage");
+}
+
+
 @end

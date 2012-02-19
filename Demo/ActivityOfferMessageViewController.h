@@ -26,6 +26,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *offerPrice;
 @property (strong, nonatomic) IBOutlet UILabel *listingExpiredDate;
 @property (strong, nonatomic) IBOutlet UILabel *changingPrice;
+
 - (IBAction)sellerInfoAction:(id)sender;
+- (IBAction)confirmDealAction:(id)sender;
 
 @end
+

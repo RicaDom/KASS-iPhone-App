@@ -148,8 +148,7 @@
     // unless you use this method for observation of other notifications
     // as well.
     
-    if ([[notification name] isEqualToString:CHANGED_PRICE_NOTIFICATION]) {
-        
+    if ([[notification name] isEqualToString:CHANGED_PRICE_NOTIFICATION]) {        
         self.changingPrice.text = (NSString *)[notification object];
         DLog (@"Successfully received price changed notification! %@", (NSString *)[notification object]);
     }
@@ -178,11 +177,24 @@
 - (IBAction)sellerInfoAction:(id)sender {
 }
 
+- (IBAction)confirmDealAction:(id)sender {
+    
+    // TODO if confirm deal successful, then go to pay page
+    //[self performSegueWithIdentifier:@"OfferMessageToPayView" sender:self];
+    UINavigationController *navController = self.navigationController;
+    [navController dismissModalViewControllerAnimated:NO];
+    
+    [[NSNotificationCenter defaultCenter] 
+     postNotificationName:OFFER_TO_PAY_VIEW_NOTIFICATION 
+     object:self.currentOffer];
+}
+
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"changedPriceSegue"]) {
         UINavigationController *navigationController = segue.destinationViewController;
         OfferChangingPriceViewController *ovc = (OfferChangingPriceViewController *)navigationController.topViewController;
         ovc.currentPrice = self.changingPrice.text;
-    }
+    } 
 }
+
 @end

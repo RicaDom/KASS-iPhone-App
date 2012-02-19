@@ -19,7 +19,7 @@
 @property (nonatomic, strong) NSDate *postedDate;
 @property (nonatomic, strong) NSDecimalNumber *askPrice;
 @property (nonatomic, strong) NSString *picFileName;
-@property (nonatomic, strong) NSNumber *postDuration;  // in minutes??
+@property (nonatomic, strong) NSNumber *postDuration; 
 @property (nonatomic, strong) Location *location;
 @property (nonatomic, strong) NSMutableArray *offers;
 @property (nonatomic, strong) NSString *userId;

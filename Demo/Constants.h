@@ -47,5 +47,5 @@ extern NSString * const OFFER_STATE_REJECTED;
 extern NSString * const OFFER_STATE_IDLE;
 // NSNotification Center
 extern NSString * const CHANGED_PRICE_NOTIFICATION;
-
+extern NSString * const OFFER_TO_PAY_VIEW_NOTIFICATION;
 @end

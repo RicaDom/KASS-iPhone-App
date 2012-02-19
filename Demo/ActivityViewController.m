@@ -13,6 +13,7 @@
 @implementation ActivityViewController
 @synthesize emptyRecordsImageView = _emptyRecordsImageView;
 @synthesize listingsTableView = _listingsTableView;
+@synthesize messageFromOfferView = _messageFromOfferView;
 
 NSMutableArray *currentItems;
 
@@ -106,7 +107,9 @@ NSMutableArray *currentItems;
       bvc.currentOffer = [currentItems objectAtIndex:row];
         
     } else if ([segue.identifier isEqualToString:@"ActBuyingListToPayView"]) {
-        
+        UINavigationController *nc = [segue destinationViewController];
+        BuyerPayViewController *bvc = (BuyerPayViewController *)nc.topViewController;
+        bvc.currentOffer = self.messageFromOfferView;
     }
 }
 
@@ -138,11 +141,27 @@ NSMutableArray *currentItems;
   if ( ![VariableStore sharedInstance].user.delegate ) {
     [VariableStore sharedInstance].user.delegate = self;
   }
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+  
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                        selector:@selector(receivedFromOfferViewNotification:) 
+                                        name:OFFER_TO_PAY_VIEW_NOTIFICATION
+                                        object:nil];
+}
+
+- (void) receivedFromOfferViewNotification:(NSNotification *) notification
+{
+    // [notification name] should always be OFFER_TO_PAY_VIEW_NOTIFICATION
+    // unless you use this method for observation of other notifications
+    // as well.
+    
+    if ([[notification name] isEqualToString:OFFER_TO_PAY_VIEW_NOTIFICATION]) {
+        Offer *offer = (Offer *)[notification object];       
+        if (offer) {
+            self.messageFromOfferView = offer;
+            DLog (@"Successfully received from Offer View notification! %@", offer);
+            [self performSegueWithIdentifier:@"ActBuyingListToPayView" sender:self];
+        }
+    }
 }
 
 - (void)viewDidUnload
@@ -470,6 +489,25 @@ NSMutableArray *currentItems;
 // Reloading data
 - (void)refresh {
     [self performSelector:@selector(setupArray) withObject:nil afterDelay:2.0];
+}
+
+
+-(void)offerMessageToPayPage{
+    DLog(@"BrowseTableViewController::offerMessageToPayPage");
+    DLog(@"BrowseTableViewController::offerMessageToPayPage");
+    DLog(@"BrowseTableViewController::offerMessageToPayPage");
+    DLog(@"BrowseTableViewController::offerMessageToPayPage");
+    DLog(@"BrowseTableViewController::offerMessageToPayPage");
+    DLog(@"BrowseTableViewController::offerMessageToPayPage");
+    DLog(@"BrowseTableViewController::offerMessageToPayPage");
+    DLog(@"BrowseTableViewController::offerMessageToPayPage");
+    DLog(@"BrowseTableViewController::offerMessageToPayPage");
+    DLog(@"BrowseTableViewController::offerMessageToPayPage");
+    DLog(@"BrowseTableViewController::offerMessageToPayPage");
+    DLog(@"BrowseTableViewController::offerMessageToPayPage");
+    DLog(@"BrowseTableViewController::offerMessageToPayPage");
+    DLog(@"BrowseTableViewController::offerMessageToPayPage");
+    DLog(@"BrowseTableViewController::offerMessageToPayPage");
 }
 
 @end

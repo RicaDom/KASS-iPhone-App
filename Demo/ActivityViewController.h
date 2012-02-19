@@ -17,6 +17,7 @@
 #import "PullRefreshTableViewController.h"
 #import "AccountActivityDelegate.h"
 #import "BrowseItemViewController.h"
+#import "BuyerPayViewController.h"
 
 @interface ActivityViewController : PullRefreshTableViewController <AccountActivityDelegate>
 {
@@ -27,6 +28,7 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *emptyRecordsImageView;
 @property (weak, nonatomic) IBOutlet UITableView *listingsTableView;
+@property (strong, nonatomic) Offer *messageFromOfferView;
 
 - (void)setupArray;
 - (void)reloadTable;

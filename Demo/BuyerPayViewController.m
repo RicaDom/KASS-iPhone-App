@@ -35,6 +35,17 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)loadSegueData
+{
+    self.listingTitle.text = self.currentOffer.title;
+    self.listingDescription.text = self.currentOffer.description;
+    
+    if (self.currentOffer.price) {
+        self.offerPrice.text = [self.currentOffer.price stringValue];
+    }
+    
+}
+
 #pragma mark - View lifecycle
 
 /*
@@ -58,7 +69,9 @@
                                 style:UIBarButtonItemStyleBordered
                                 target:self
                                 action:@selector(OnClick_btnBack:)];
-    self.navigationItem.leftBarButtonItem = btnBack;  
+    self.navigationItem.leftBarButtonItem = btnBack; 
+    
+    [self loadSegueData];
 }
 
 -(IBAction)OnClick_btnBack:(id)sender  {
@@ -90,5 +103,4 @@
 {
     [self performSelector:@selector(stopLoading) withObject:nil afterDelay:2.0];	
 }
-
 @end

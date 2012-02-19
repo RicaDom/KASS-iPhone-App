@@ -92,7 +92,7 @@
         bvc.currentItem = item;
         
     } else if ([segue.identifier isEqualToString:@"BrowseListingToBuyerPay"]) {
-        
+
     }
 }
 
@@ -157,6 +157,7 @@
     UIImageView *tableFooterView = [[UIImageView alloc] initWithImage:tableFooterViewImage];
     self.listingTableView.tableFooterView = tableFooterView;
     self.navigationController.navigationBar.tintColor = [UIColor brownColor];
+    
 }
 
 - (void)viewDidUnload
@@ -272,7 +273,7 @@
     [self performSegueWithIdentifier:@"showBrowseItemUnlogin" sender:self];
   }else if ( VariableStore.sharedInstance.user.userId == item.userId ){
     //if buyer already accepted an offer, go to pay_now page
-
+      //[self performSegueWithIdentifier:@"ActBuyingListToPayView" sender:self];
 // TODO      
       
     //otherwise go to buyers listing page
