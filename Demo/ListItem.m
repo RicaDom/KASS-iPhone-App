@@ -60,6 +60,7 @@
       [_offererIds addObject:offer.userId];
       if ( [acceptedOfferId isPresent] && offer.dbId && [acceptedOfferId isEqualToString:offer.dbId] ) { 
         self.acceptedOffer = offer; 
+        self.acceptedPrice = offer.price;
       }
     }
   }

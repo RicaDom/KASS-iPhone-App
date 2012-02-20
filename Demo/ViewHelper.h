@@ -10,11 +10,21 @@
 #import "Offer.h"
 #import "Message.h"
 #import "User.h"
+#import "ListingTableCell.h"
 
 @interface ViewHelper : NSObject
 
 + (NSString *)getTitleFromOfferMessage:(User *)user:(Offer *)offer:(int)index;
-+ (void) buildOfferScrollView:(IBOutlet UIScrollView *)scrollView:(User *)user:(Offer *)offer;
 
+// offers
++ (void) buildOfferScrollView:(IBOutlet UIScrollView *)scrollView:(User *)user:(Offer *)offer;
++ (void) buildOfferAcceptedCell:(Offer *)item:(ListingTableCell *)cell;
++ (void) buildOfferExpiredCell:(Offer *)item:(ListingTableCell *)cell;
++ (void) buildOfferExpiredCell:(Offer *)item:(ListingTableCell *)cell;
+
+// listItems
++ (void) buildListItemPayNowCell:(ListItem *)item:(ListingTableCell *)cell;
++ (void) buildListItemHasOffersCell:(ListItem *)item:(ListingTableCell *)cell;
++ (void) buildListItemNoOffersCell:(ListItem *)item:(ListingTableCell *)cell;
 
 @end
