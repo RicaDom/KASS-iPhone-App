@@ -8,6 +8,7 @@
 
 #import "BrowseItemViewController.h"
 #import "VariableStore.h"
+#import "ViewHelper.h"
 #import "UIViewController+ActivityIndicate.h"
 
 @implementation BrowseItemViewController
@@ -66,37 +67,28 @@
     yOffset += 10;
     
     for (int i=0;i<[_currentOffer.messages count];i++) {
-        yOffset += 5;
-        UILabel* lblHeaderTitle = [[UILabel alloc] initWithFrame:CGRectMake(8, yOffset, 310, 21)];
-        [lblHeaderTitle setTextAlignment:UITextAlignmentLeft];
-        //[lblHeaderTitle setFont:[UIFont fontWithName:@"Helvetica-Bold" size:16.0f]];
-        [lblHeaderTitle setBackgroundColor:[UIColor lightGrayColor]];
-        
-      Message *message = [_currentOffer.messages objectAtIndex:i];
-      
-      NSString *title;
-      
-      if (VariableStore.sharedInstance.user.userId == message.dbId) {
-        title = @"您";
-      }else if(_currentOffer.buyerId == message.dbId) {
-        title = @"买家";
-      }else{
-        title = @"卖家";
-      }
+      yOffset += 5;
+      UILabel* lblHeaderTitle = [[UILabel alloc] initWithFrame:CGRectMake(8, yOffset, 310, 21)];
+      [lblHeaderTitle setTextAlignment:UITextAlignmentLeft];
+      //[lblHeaderTitle setFont:[UIFont fontWithName:@"Helvetica-Bold" size:16.0f]];
+      [lblHeaderTitle setBackgroundColor:[UIColor lightGrayColor]];
 
-        [lblHeaderTitle setTextColor:[UIColor blackColor]];
-        
-        [self.scrollView addSubview:lblHeaderTitle];
-        
-        UIImage *line = [UIImage imageNamed:@"line.png"];
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:line];
-        imageView.frame = CGRectMake(3, yOffset + 25, imageView.frame.size.width, imageView.frame.size.height);
-        [self.scrollView addSubview:imageView];
-        
-        //INCREMNET in yOffset 
-        yOffset += 30;
-        
-        [self.scrollView setContentSize:CGSizeMake(320, yOffset)];    
+      Message *message = [_currentOffer.messages objectAtIndex:i];
+      NSString *title = [ViewHelper getTitleFromOfferMessage:[self kassVS].user:_currentOffer:i];
+      [lblHeaderTitle setText:[NSString stringWithFormat:@"%@ %@", title, message.body]];
+      [lblHeaderTitle setTextColor:[UIColor blackColor]];
+      
+      [self.scrollView addSubview:lblHeaderTitle];
+      
+      UIImage *line = [UIImage imageNamed:@"line.png"];
+      UIImageView *imageView = [[UIImageView alloc] initWithImage:line];
+      imageView.frame = CGRectMake(3, yOffset + 25, imageView.frame.size.width, imageView.frame.size.height);
+      [self.scrollView addSubview:imageView];
+      
+      //INCREMNET in yOffset 
+      yOffset += 30;
+      
+      [self.scrollView setContentSize:CGSizeMake(320, yOffset)];    
     }
 }
 

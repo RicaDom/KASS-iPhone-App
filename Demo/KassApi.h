@@ -14,6 +14,9 @@
 #import "Listing.h"
 #import "ListItem.h"
 
+#import "NSString+ModelHelper.h"
+#import "NSNull+ModelHelper.h"
+
 @interface KassApi : NSObject
 
 @property (nonatomic, strong) NSString *method;

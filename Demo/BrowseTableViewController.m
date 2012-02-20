@@ -63,6 +63,7 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showBrowseItem"]) {
+      
         BrowseItemViewController *bvc = [segue destinationViewController];        
         NSIndexPath *path = [self.tableView indexPathForSelectedRow];
         int row = [path row];
@@ -263,28 +264,33 @@
 {
   int row = [indexPath row];
   ListItem *item = [self.currentListings objectAtIndex:row];
-    
-    // if you are the buyer or you are one of the sellers
-    // show your messages  
-    
+
     // if not login
-  if ( !VariableStore.sharedInstance.isLoggedIn ) {
+  if ( ![self kassVS].isLoggedIn ) {
     DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:not login");
     [self performSegueWithIdentifier:@"showBrowseItemUnlogin" sender:self];
-  }else if ( VariableStore.sharedInstance.user.userId == item.userId ){
-    //if buyer already accepted an offer, go to pay_now page
-      //[self performSegueWithIdentifier:@"ActBuyingListToPayView" sender:self];
-// TODO      
-      
-    //otherwise go to buyers listing page
+  }else if ( [[self kassVS ].user hasListItem:item] ){
+     //if you are the buyer go to buyers listing page
     DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:you are buyer");
     [self performSegueWithIdentifier:@"BrowseListingToBuyerOffers" sender:self];
-      
-      
-  }else if ( [item.offererIds indexOfObject:VariableStore.sharedInstance.user.userId] != NSNotFound){
-    //you've offered this listing, go to the offer page
-    DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:you've offered!");
-    [self performSegueWithIdentifier:@"showBrowseItem" sender:self];
+  }else if ( [item hasOfferer:[self currentUser]]){
+    
+    Offer *offer = [item getOfferFromOfferer:[self currentUser]];
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys: offer.dbId, @"id", nil];
+    NSMutableDictionary* offerDict = [NSMutableDictionary dictionaryWithObjectsAndKeys: params, @"offer", nil];
+    
+    if ( item.acceptedOffer ) {
+      [self kassAddToModelDict:@"BuyerPayViewController":offerDict];
+      DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:you've accepted!");
+      //if buyer already accepted an offer, go to pay_now page
+      [self performSegueWithIdentifier:@"ActBuyingListToPayView" sender:self];
+    }else{
+      //you've offered this listing, go to the offer page
+      DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:you've offered!");
+      [self kassAddToModelDict:@"BrowseItemViewController":offerDict];
+      [self performSegueWithIdentifier:@"showBrowseItem" sender:self];
+    }
+  
   }else{
     //you are not buyer and you've not offered
     DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:logged in user");

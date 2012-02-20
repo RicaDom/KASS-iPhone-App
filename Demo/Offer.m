@@ -29,6 +29,7 @@
     _listingId    = [theDictionary objectForKey:@"listing_id"];
     _state        = [theDictionary objectForKey:@"state"];
     _dbId         = [theDictionary objectForKey:@"id"];
+    _userId       = [theDictionary objectForKey:@"user_id"];
     _price        = [NSDecimalNumber decimalNumberWithDecimal:[[theDictionary objectForKey:@"price"] decimalValue]];
     _lastMessage     = [[Message alloc] init];
     _lastMessage.body = [theDictionary objectForKey:@"message"];
@@ -51,5 +52,7 @@
   }
   return self;
 }
+
+///////////////////////// model helper methods ///////////////////////////////////////
 
 @end

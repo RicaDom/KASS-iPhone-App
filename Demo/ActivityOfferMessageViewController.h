@@ -14,6 +14,7 @@
 #import "VariableStore.h"
 #import "AccountActivityDelegate.h"
 #import "OfferChangingPriceViewController.h"
+#import "UIResponder+VariableStore.h"
 
 @interface ActivityOfferMessageViewController : UIViewController <UIScrollViewDelegate, PullToRefreshViewDelegate, AccountActivityDelegate>
 

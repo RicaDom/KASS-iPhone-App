@@ -325,7 +325,7 @@
 //Received weibo request result
 - (void)request:(WBRequest *)request didLoad:(id)result
 {
-//  DLog(@"User::didLoad:result=%@", result);
+  DLog(@"User::didLoad:result=%@", result);
   
   if( [result isKindOfClass:[NSDictionary class]] && [result objectForKey:@"screen_name"] && [result objectForKey:@"id"]){
     [self accountWeiboLogin:result];
@@ -348,6 +348,13 @@
 - (void)accountDidLogout
 {
   DLog(@"User::accountDidLogout");
+}
+
+///////////////////////// model helper methods ///////////////////////////////////////
+- (BOOL)hasListItem:(ListItem *)listItem
+{
+  return [self.userId isPresent] && 
+    listItem && [listItem.userId isPresent] && [self.userId isEqualToString:listItem.userId];
 }
 
 @end

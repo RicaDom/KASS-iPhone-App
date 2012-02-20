@@ -107,10 +107,12 @@
 - (void)accountDidCreateListing:(NSDictionary *)dict
 {
   DLog(@"PostSummaryViewController::accountDidCreateListing:dict=%@", dict);
-  ListItem *listItem = [listItem initWithDictionary:dict];
+  ListItem *listItem = [[ListItem alloc] initWithDictionary:dict];
   [[VariableStore sharedInstance].allListings addObject:listItem];
   [[VariableStore sharedInstance] clearCurrentPostingItem];
   [self.presentingViewController dismissModalViewControllerAnimated:YES];
+  
+  //show success popup!! TODO
 }
 
 - (IBAction)submitAction {

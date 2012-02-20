@@ -27,4 +27,6 @@
 
 - (id) initWithDictionary:(NSDictionary *) theDictionary;
 
+//// model helper methods
+
 @end

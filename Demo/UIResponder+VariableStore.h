@@ -13,8 +13,10 @@
 
 - (VariableStore *) kassVS;
 
-- (void) kassAddToModelDict:(NSDictionary *)model;
+- (void) kassAddToModelDict:(NSString *)controller:(NSDictionary *)model;
 - (NSDictionary *) kassGetModelDict:(NSString *)modelName;
 - (void) kassRemoveFromModelDict;
+
+- (User *) currentUser;
 
 @end
