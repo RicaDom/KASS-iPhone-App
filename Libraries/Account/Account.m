@@ -32,6 +32,13 @@
 	return self;
 }
 
+- (void)requestFailed:(NSDictionary *)error
+{
+  DLog(@"Account::requestFailed:error=%@", error);
+  if( [_delegate respondsToSelector:@selector(requestFailed:)] )
+    [_delegate requestFailed:error];
+}
+
 - (void)loginFinished:(NSData *)data
 {
   NSDictionary *dict = [KassApi parseData:data];
@@ -55,8 +62,10 @@
     if( [_delegate respondsToSelector:@selector(accountDidLogin)] )
       [_delegate accountDidLogin];
   }else{
-    if( [_delegate respondsToSelector:@selector(accountLoginFailed:)] )
-      [_delegate accountLoginFailed:nil];
+    if( [_delegate respondsToSelector:@selector(accountLoginFailed:)] ){
+      NSDictionary *error = [[NSDictionary alloc] initWithObjectsAndKeys:@"没有找到此用户", @"description", nil];
+      [_delegate accountLoginFailed:error];
+    }
   }
 
 }

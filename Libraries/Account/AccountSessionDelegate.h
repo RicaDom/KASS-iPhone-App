@@ -12,7 +12,9 @@
 
 @optional
 - (void)accountDidLogin;
-- (void)accountLoginFailed:(NSError*)error;
+- (void)accountLoginFailed:(NSDictionary *)error;
 - (void)accountDidLogout;
+
+- (void)requestFailed:(NSDictionary *)errors;
 
 @end

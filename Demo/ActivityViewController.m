@@ -27,9 +27,9 @@ NSMutableArray *currentItems;
   }
 }
 
-- (void) accountLoadData
+- (void) accountLoginFinished
 {
-  DLog(@"ActivityViewController::accountLoadData");
+  DLog(@"ActivityViewController::accountLoginFinished");
   [self setupArray];
 }
 

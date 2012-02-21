@@ -201,7 +201,7 @@
 
 - (void)requestFailed:(NSDictionary *)errors
 {
-  DLog(@"User::requestFailed"); 
+  DLog(@"User::requestFailed:delegate=%@", _delegate); 
   if( [_delegate respondsToSelector:@selector(accountRequestFailed:)] )
     [_delegate accountRequestFailed:errors];
 }
@@ -214,6 +214,8 @@
   account = [[Account alloc]initWithEmailAndPassword:email:password];
   account.delegate = self;
   DLog(@"User::accountLogin:account=%@", account);
+  if( [_delegate respondsToSelector:@selector(accountRequestStarted)] )
+    [_delegate accountRequestStarted];
   [account login];
 }
 
@@ -270,12 +272,12 @@
   _email  = account.email;
   _phone  = account.phone;
   
-  if( [_delegate respondsToSelector:@selector(accountLoadData)] )
-    [_delegate accountLoadData];
+  if( [_delegate respondsToSelector:@selector(accountLoginFinished)] )
+    [_delegate accountLoginFinished];
   
 }
 
-- (void)accountLoginFailed:(NSError*)error
+- (void)accountLoginFailed:(NSDictionary *)error
 {
   DLog(@"User::accountLoginFailed:error=%@", error);
   [self logout];

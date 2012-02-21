@@ -10,8 +10,9 @@
 #import "VariableStore.h"
 #import "Constants.h"
 #import "MTPopupWindow.h"
+#import "AccountActivityDelegate.h"
 
-@interface SettingViewController : UIViewController
+@interface SettingViewController : UIViewController <AccountActivityDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *welcomeMessageLabel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *authButton;
