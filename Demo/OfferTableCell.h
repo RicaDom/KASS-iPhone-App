@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Offer.h"
 
 @interface OfferTableCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UILabel *price;
 @property (weak, nonatomic) IBOutlet UILabel *distance;
+
+- (void)buildCellByOffer:(Offer *)offer;
 
 @end

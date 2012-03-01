@@ -24,6 +24,7 @@
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *description;
 @property (nonatomic, strong) NSString *buyerId;
+@property (nonatomic, strong) NSDate *listItemEndedAt;
 
 - (id) initWithDictionary:(NSDictionary *) theDictionary;
 

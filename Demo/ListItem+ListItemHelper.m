@@ -10,26 +10,15 @@
 
 @implementation ListItem (ListItemHelper)
 
-
-- (NSString *) getTimeFromNowText:(NSDate *)fromDate:(NSDate *)toDate
+- (NSString *) getPriceText
 {
-  NSTimeInterval diff = [ toDate timeIntervalSinceDate: fromDate];
-  
-  if (diff / 86400 + 0.5 > 1) {
-    return [[NSString alloc] initWithFormat:@"%d天", (int)(diff / 86400)];
-  } else if ( diff / 3600 + 0.5 > 1 ) {
-    return [[NSString alloc] initWithFormat:@"%d小时", (int)(diff / 3600)];
-  } else if ( diff / 60 + 0.5 > 1 ) {
-    return [[NSString alloc] initWithFormat:@"%d分钟", (int)(diff / 60)];
-  } else {
-    return [[NSString alloc] initWithFormat:@"少于1分钟"];
-  }
-
+  return [NSString stringWithFormat:@"￥%@", self.askPrice];
 }
+
 
 - (NSString *) getTimeLeftText
 {
-  return [self getTimeFromNowText:[NSDate date]:[self endedAt]];
+  return [BaseHelper getTimeFromNowText:[NSDate date]:[self endedAt]];
 }
 
 - (NSString *) getTimeLeftTextlong

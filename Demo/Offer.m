@@ -22,6 +22,7 @@
 @synthesize title = _title;
 @synthesize description = _description;
 @synthesize buyerId = _buyerId;
+@synthesize listItemEndedAt = _listItemEndedAt;
 
 - (id) initWithDictionary:(NSDictionary *) theDictionary
 {
@@ -37,6 +38,11 @@
     _title        = [listing objectForKey:@"title"];
     _description  = [listing objectForKey:@"description"];
     _buyerId      = [listing objectForKey:@"user_id"];
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:RUBY_DATETIME_FORMAT]; //2012-02-17T07:50:16+0000 
+    _listItemEndedAt = [dateFormat dateFromString:[listing objectForKey:@"time"]];
+    
     if ( !_listingId ) {
       _listingId = [listing objectForKey:@"id"];
     }
