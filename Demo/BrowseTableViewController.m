@@ -216,35 +216,14 @@
 {
     static NSString *CellIdentifier = @"browseListingTableCell";
     ListingTableCell *cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+  
     if (cell == nil) {
         cell = [[ListingTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+  
+    //set cell using data
+    [cell buildCellByListItem:[self.currentListings objectAtIndex:indexPath.row]];
 
-    UIImage *rowBackground = [UIImage imageNamed:@"middleRow.png"];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:rowBackground];
-    cell.backgroundView = imageView;
-
-    UIImage *selectedBackground = [UIImage imageNamed:@"middleRowSelected.png"];
-    UIImageView *selectedImageView = [[UIImageView alloc] initWithImage:selectedBackground];
-    cell.selectedBackgroundView = selectedImageView;
-    
-    // Configure the cell...
-    ListItem *item = [self.currentListings objectAtIndex:indexPath.row];
-    
-    if (item.askPrice != nil) {
-        NSString *price = [[item askPrice] stringValue];
-        
-        cell.title.text = [item title];
-        cell.subTitle.text = [item description];
-        [cell.price setTitle:price forState:UIControlStateNormal];
-    }
-    cell.price.enabled = NO;
-    
-    [cell.distance setTitle:@"888米" forState:UIControlStateNormal];
-    cell.distance.enabled = NO;
-    
-    [cell.duration setTitle:@"7 天" forState:UIControlStateNormal];
-    cell.duration.enabled = NO;
     return cell;
 }
 

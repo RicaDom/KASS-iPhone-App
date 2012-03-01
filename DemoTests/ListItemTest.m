@@ -30,6 +30,25 @@
   STAssertEqualObjects(@"2012-02-17T07:50:16+0800", dateTimeString, nil);
 }
 
+- (void)testTimeFromText
+{
+  ListItem *li = [[ListItem alloc] initWithDictionary:[NSDictionary dictionaryWithObjectsAndKeys: @"i am an item", @"title",nil]];
+  NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+  [dateFormat setDateFormat:RUBY_DATETIME_FORMAT];
+  NSDate *fromTime = [dateFormat dateFromString:@"2012-02-17T07:50:16+0800"];
+  NSDate *toTime = [dateFormat dateFromString:@"2012-02-18T07:50:16+0800"];
+  
+  STAssertEqualObjects(@"1天", [li getTimeFromNowText:fromTime:toTime], nil);
+}
+
+- (void)testGetTimeLeftText
+{
+  ListItem *li = [[ListItem alloc] initWithDictionary:[NSDictionary dictionaryWithObjectsAndKeys: @"i am an item", @"title",nil]];
+  
+  li.endedAt = [NSDate date];
+  STAssertEqualObjects(@"少于1分钟", [li getTimeLeftText], nil);
+}
+
 // All code under test must be linked into the Unit Test bundle
 - (void)testListItem
 {
