@@ -10,6 +10,8 @@
 
 @interface Constants : NSObject
 
+#define _UIKeyboardFrameEndUserInfoKey (&UIKeyboardFrameEndUserInfoKey != NULL ? UIKeyboardFrameEndUserInfoKey : @"UIKeyboardBoundsUserInfoKey")
+
 extern NSString * const POST_TYPE;
 
 // UI BUTTON LABEL

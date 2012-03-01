@@ -704,11 +704,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" id="Yuc-uj-Vkd">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="329"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="330"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="qrN-bX-6uv">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="151"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="3" minimumFontSize="10" id="QXN-Pm-Tot">
@@ -849,17 +849,21 @@
                     <navigationItem key="navigationItem" title="联系卖家" id="xW0-tN-bUf">
                         <barButtonItem key="rightBarButtonItem" title="地图" id="bUR-WI-4bn">
                             <connections>
-                                <segue destination="XUy-mg-tBg" kind="push" id="VF9-6q-oxX"/>
+                                <action selector="sendMessageOrMapAction:" destination="rrf-71-T0f" id="htF-IN-eFP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="buttomView" destination="dp7-37-KHS" id="07V-a2-VqS"/>
                         <outlet property="changingPrice" destination="f4m-Q5-7se" id="EjM-A0-U4r"/>
                         <outlet property="listingDescription" destination="ikq-jN-mVF" id="ykz-1C-uQu"/>
                         <outlet property="listingExpiredDate" destination="4cT-hJ-YNv" id="2hO-CG-OK4"/>
                         <outlet property="listingTitle" destination="QXN-Pm-Tot" id="Uxh-gT-tiA"/>
+                        <outlet property="mainView" destination="aB2-0v-YDH" id="Dtg-tr-gdA"/>
                         <outlet property="offerPrice" destination="G7C-S5-aYA" id="nNV-lg-kGJ"/>
                         <outlet property="scrollView" destination="Yuc-uj-Vkd" id="cqk-Rx-OfH"/>
+                        <outlet property="sendMessageTextField" destination="OZE-wz-4Td" id="7ta-7i-dDg"/>
+                        <segue destination="XUy-mg-tBg" kind="push" identifier="ActOfferToMapView" id="SDw-zv-tcg"/>
                     </connections>
                 </viewController>
             </objects>
@@ -1725,12 +1729,12 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="7lS-uD-bTm"/>
+        <segue reference="KTm-pA-bXq"/>
+        <segue reference="n3r-gd-TTz"/>
         <segue reference="fjZ-HN-yhn"/>
         <segue reference="fhm-h2-6Oc"/>
         <segue reference="dM3-h5-4IE"/>
+        <segue reference="SDw-zv-tcg"/>
         <segue reference="rFr-R7-ktR"/>
-        <segue reference="VF9-6q-oxX"/>
-        <segue reference="vrW-tF-Jr9"/>
-        <segue reference="2B3-vl-FJ4"/>
     </inferredMetricsTieBreakers>
 </document>

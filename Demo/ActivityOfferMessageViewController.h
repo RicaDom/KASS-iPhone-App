@@ -16,6 +16,10 @@
 #import "OfferChangingPriceViewController.h"
 
 @interface ActivityOfferMessageViewController : UIViewController <UIScrollViewDelegate, PullToRefreshViewDelegate, AccountActivityDelegate>
+{
+    CGRect _keyboardRect; // for keyboard avoiding
+}
+
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) PullToRefreshView *pull;
@@ -26,9 +30,13 @@
 @property (strong, nonatomic) IBOutlet UILabel *offerPrice;
 @property (strong, nonatomic) IBOutlet UILabel *listingExpiredDate;
 @property (strong, nonatomic) IBOutlet UILabel *changingPrice;
+@property (strong, nonatomic) IBOutlet UITextField *sendMessageTextField;
+@property (strong, nonatomic) IBOutlet UIView *mainView;
+@property (strong, nonatomic) IBOutlet UIView *buttomView;
 
 - (IBAction)sellerInfoAction:(id)sender;
 - (IBAction)confirmDealAction:(id)sender;
+- (IBAction)sendMessageOrMapAction:(UIBarButtonItem *)sender;
 
 @end
 

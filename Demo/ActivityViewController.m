@@ -169,6 +169,7 @@ NSMutableArray *currentItems;
     activitySegment = nil;
     [self setEmptyRecordsImageView:nil];
     [self setListingsTableView:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:OFFER_TO_PAY_VIEW_NOTIFICATION object:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

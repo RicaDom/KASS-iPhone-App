@@ -19,6 +19,9 @@
 @synthesize offerPrice = _offerPrice;
 @synthesize listingExpiredDate = _listingExpiredDate;
 @synthesize changingPrice = _changingPrice;
+@synthesize sendMessageTextField = _sendMessageTextField;
+@synthesize mainView = _mainView;
+@synthesize buttomView = _buttomView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -141,6 +144,13 @@
                                              selector:@selector(receivePriceChangedNotification:) 
                                                  name:CHANGED_PRICE_NOTIFICATION
                                                object:nil];
+    
+    UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]
+                                initWithTitle:UI_BUTTON_LABEL_BACK
+                                style:UIBarButtonItemStyleBordered
+                                target:self
+                                action:@selector(OnClick_btnBack:)];
+    self.navigationItem.leftBarButtonItem = btnBack;   
 }
 
 - (void) receivePriceChangedNotification:(NSNotification *) notification
@@ -164,6 +174,8 @@
     [self setListingExpiredDate:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:CHANGED_PRICE_NOTIFICATION object:nil];
     [self setChangingPrice:nil];
+    [self setSendMessageTextField:nil];
+    [self setMainView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -173,6 +185,100 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+/* Keyboard avoiding start */
+
+//method to move the view up/down whenever the keyboard is shown/dismissed
+-(void)setViewMovedUp:(BOOL)movedUp
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.5]; // if you want to slide up the view
+    
+    CGRect rect = self.mainView.frame;
+
+    if (movedUp){
+        // 1. move the view's origin up so that the text field that will be hidden come above the keyboard 
+        // 2. increase the size of the view so that the area behind the keyboard is covered up.
+        rect.origin.y -= _keyboardRect.size.height;
+        rect.size.height += _keyboardRect.size.height;
+        self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_CANCEL;
+        self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_SEND;
+    }else{
+        // revert back to the normal state.
+        rect.origin.y += _keyboardRect.size.height;
+        rect.size.height -= _keyboardRect.size.height;
+        self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_BACK;
+        self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_MAP;
+    }
+    self.mainView.frame = rect;
+ 
+    // use the above if else will not work
+    if (movedUp) {
+        CGRect scrollViewRect = self.scrollView.frame;
+        DLog(@"Scoll View move up Before: (%f, %f, %f, %f) ", scrollViewRect.origin.x, scrollViewRect.origin.y, scrollViewRect.size.width, scrollViewRect.size.height );
+        scrollViewRect.origin.y = _keyboardRect.size.height;
+        scrollViewRect.size.height = rect.size.height - _keyboardRect.size.height*2 - self.buttomView.frame.size.height;
+        DLog(@"Scoll View move up After: (%f, %f, %f, %f) ", scrollViewRect.origin.x, scrollViewRect.origin.y, scrollViewRect.size.width, scrollViewRect.size.height );
+        self.scrollView.frame = scrollViewRect;
+    } else {
+        CGRect scrollViewRect = self.scrollView.frame;
+        DLog(@"Scoll View move down Before: (%f, %f, %f, %f) ", scrollViewRect.origin.x, scrollViewRect.origin.y, scrollViewRect.size.width, scrollViewRect.size.height );
+        scrollViewRect.origin.y = 0;
+        scrollViewRect.size.height = rect.size.height - self.buttomView.frame.size.height;
+        DLog(@"Scoll View move down After: (%f, %f, %f, %f) ", scrollViewRect.origin.x, scrollViewRect.origin.y, scrollViewRect.size.width, scrollViewRect.size.height );
+        self.scrollView.frame = scrollViewRect;        
+    }
+
+    [UIView commitAnimations];
+//    DLog(@"After: (%f, %f, %f, %f) ", scrollViewRect.origin.x, scrollViewRect.origin.y, scrollViewRect.size.width, scrollViewRect.size.height );
+}
+
+-(void)textFieldDidBeginEditing:(UITextField *)sender
+{
+    if ([sender isEqual:_sendMessageTextField])
+    {
+        //move the main view, so that the keyboard does not hide it.
+        if  (self.mainView.frame.origin.y >= 0)
+        {
+            [self setViewMovedUp:YES];
+        }
+    }
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification
+{
+    //keyboard will be shown now. depending for which textfield is active, move up or move down the view appropriately
+     _keyboardRect = [[[notification userInfo] objectForKey:_UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    
+    if ([_sendMessageTextField isFirstResponder] && self.mainView.frame.origin.y >= 0)
+    {
+        [self setViewMovedUp:YES];
+    }
+}
+
+/* Keyboard avoiding end */
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    // register for keyboard notifications
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) 
+                                                 name:UIKeyboardWillShowNotification object:self.view.window]; 
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    // unregister for keyboard notifications while not visible.
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil]; 
+}
+
+-(IBAction)OnClick_btnBack:(id)sender  {
+    if ([self.navigationItem.leftBarButtonItem.title isEqualToString:UI_BUTTON_LABEL_BACK]) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        [self.sendMessageTextField resignFirstResponder];
+        [self setViewMovedUp:NO];
+    }
 }
 
 - (IBAction)sellerInfoAction:(id)sender {
@@ -190,12 +296,26 @@
      object:self.currentOffer];
 }
 
+- (IBAction)sendMessageOrMapAction:(UIBarButtonItem *)sender {
+    if ([sender.title isEqualToString:UI_BUTTON_LABEL_MAP]) {
+        // TODO get the lat/alt and segue to map
+        
+        [self performSegueWithIdentifier:@"ActOfferToMapView" sender:self];
+    } else if ([sender.title isEqualToString:UI_BUTTON_LABEL_SEND]){
+        // TODO submitting message
+        
+    }
+}
+
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"changedPriceSegue"]) {
         UINavigationController *navigationController = segue.destinationViewController;
         OfferChangingPriceViewController *ovc = (OfferChangingPriceViewController *)navigationController.topViewController;
         ovc.currentPrice = self.changingPrice.text;
-    } 
+        
+    } else if ([segue.identifier isEqualToString:@"ActOfferToMapView"]) {
+        
+    }
 }
 
 @end
