@@ -23,7 +23,6 @@
   } else {
     return [[NSString alloc] initWithFormat:@"少于1分钟"];
   }
-  
 }
 
 @end
