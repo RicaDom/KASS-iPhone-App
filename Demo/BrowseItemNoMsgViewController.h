@@ -11,8 +11,12 @@
 #import "VariableStore.h"
 #import "BrowseTableViewController.h"
 #import "UIResponder+VariableStore.h"
+#import "PullToRefreshView.h"
 
-@interface BrowseItemNoMsgViewController : UIViewController <UIActionSheetDelegate, AccountActivityDelegate>
+@interface BrowseItemNoMsgViewController : UIViewController <UIActionSheetDelegate, AccountActivityDelegate, UIScrollViewDelegate>
+{
+    CGRect _keyboardRect; // for keyboard avoiding
+}
 
 @property (strong, nonatomic) ListItem *currentItem;
 @property (weak, nonatomic) IBOutlet UITextField *messageTextField;
@@ -22,6 +26,12 @@
 @property (strong, nonatomic) IBOutlet UILabel *listingPrice;
 @property (strong, nonatomic) IBOutlet UILabel *listingDate;
 @property (strong, nonatomic) IBOutlet UILabel *offerPrice;
+
+@property (strong, nonatomic) IBOutlet UIView *mainView;
+@property (strong, nonatomic) IBOutlet UIView *buttomView;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@property (strong, nonatomic) PullToRefreshView *pull;
 
 - (IBAction)navigationButtonAction:(id)sender;
 @end

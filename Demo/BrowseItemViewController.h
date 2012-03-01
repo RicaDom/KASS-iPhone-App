@@ -16,6 +16,9 @@
 #import "UIResponder+VariableStore.h"
 
 @interface BrowseItemViewController : UIViewController <UIScrollViewDelegate, PullToRefreshViewDelegate, AccountActivityDelegate>
+{
+    CGRect _keyboardRect; // for keyboard avoiding
+}
 
 @property (weak, nonatomic) IBOutlet UILabel *itemTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *itemDescriptionLabel;
@@ -29,6 +32,9 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet TPKeyboardAvoidingScrollView *tpScrollView;
 @property (strong, nonatomic) PullToRefreshView *pull;
+@property (strong, nonatomic) IBOutlet UIView *mainView;
+@property (strong, nonatomic) IBOutlet UIView *buttomView;
+@property (strong, nonatomic) IBOutlet UIView *topView;
 
 - (IBAction)navigationButtonAction:(id)sender;
 

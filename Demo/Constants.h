@@ -12,6 +12,8 @@
 
 #define _UIKeyboardFrameEndUserInfoKey (&UIKeyboardFrameEndUserInfoKey != NULL ? UIKeyboardFrameEndUserInfoKey : @"UIKeyboardBoundsUserInfoKey")
 
+#define _ScrollViewContentSizeX 320  
+
 extern NSString * const POST_TYPE;
 
 // UI BUTTON LABEL
