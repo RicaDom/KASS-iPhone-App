@@ -50,4 +50,7 @@
 - (void)getOfferMessages:(NSString *)offerId;
 - (void)getOfferMessagesFinished:(NSData *)data;
 
+//// model helper methods
+- (BOOL)hasListItem:(ListItem *)listItem;
+
 @end

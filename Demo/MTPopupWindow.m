@@ -401,8 +401,7 @@
     NSLog(@"Sign In Info: %@ \n %@", email, password);
     
     //TODO - Validation
-    
-    [[VariableStore sharedInstance] signInAccount:email:password];
+  [[VariableStore sharedInstance] signInAccount:email:password];
   
     [[self.bigPanelView viewWithTag: kShadeViewTag] removeFromSuperview];    
     [self performSelector:@selector(closePopupWindowAnimate) withObject:nil afterDelay:0.1];

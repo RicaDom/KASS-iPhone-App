@@ -72,43 +72,12 @@
 
 - (BOOL) loadingOffers
 {
-    // TODO
-    // get data from API using self.currentItem.dbId
-//    if (Successful) {
-//        return YES;
-//    } 
-//    return NO;
-    
-//    self.offers = [[NSMutableArray alloc] init];
-//    Offer *offer = [Offer new];
-//    offer.price = [NSDecimalNumber decimalNumberWithDecimal:
-//                   [[NSNumber numberWithDouble:30] decimalValue]];
-//    offer.distance = [NSNumber numberWithInt:80];
-//    Message *lastMessage = [Message new ];
-//    lastMessage.body = @"太贵了吧";
-//    offer.lastMessage = lastMessage;
-//    [self.offers addObject:offer];
-//    
-//    offer = [Offer new];
-//    offer.price = [NSDecimalNumber decimalNumberWithDecimal:
-//                   [[NSNumber numberWithDouble:50] decimalValue]];
-//    offer.distance = [NSNumber numberWithInt:100];
-//    lastMessage = [Message new ];
-//    lastMessage.body = @"SBSBSB";
-//    offer.lastMessage = lastMessage;
-//    [self.offers addObject:offer];
-//    
-//    self.offersCount.text = [NSString stringWithFormat:@"%d",[self.offers count]] ;
-//    [self.offerTableView reloadData];
-//    return YES;
-
   DLog(@"ItemViewController::loadingOffers");
   [self showLoadingIndicator];
   VariableStore.sharedInstance.user.delegate = self;
   [VariableStore.sharedInstance.user getListing:self.currentItem.dbId];
 
   return YES;
-
 }
 
 #pragma mark - View lifecycle

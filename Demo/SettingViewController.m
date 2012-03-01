@@ -7,6 +7,7 @@
 //
 
 #import "SettingViewController.h"
+#import "UIViewController+ActivityIndicate.h"
 
 
 @implementation SettingViewController
@@ -39,11 +40,17 @@
 }
 */
 
+- (void) accountLoginFinished
+{
+  DLog(@"SettingViewController::accountLoginFinished");
+}
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    self.navigationController.navigationBar.tintColor = [UIColor brownColor];
+  [super viewDidLoad];
+  self.navigationController.navigationBar.tintColor = [UIColor brownColor];
+//  [VariableStore sharedInstance].user.delegate = self;
 }
 
 - (void)welcomeMessage

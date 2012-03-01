@@ -11,7 +11,6 @@
 @protocol AccountActivityDelegate <NSObject>
 
 @optional
-- (void)accountLoadData;
 - (void)accountDidCreateListing:(NSDictionary *)dict;
 - (void)accountDidGetListings:(NSDictionary *)dict;
 - (void)accountDidGetListing:(NSDictionary *)dict;
@@ -24,5 +23,8 @@
 - (void)accountDidCreateOfferMessage:(NSDictionary *)dict;
 
 - (void)accountRequestFailed:(NSDictionary *)errors;
+- (void)accountRequestStarted;
+
+- (void)accountLoginFinished;
 
 @end

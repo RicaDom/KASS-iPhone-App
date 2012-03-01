@@ -45,7 +45,13 @@
 // When asynchronous call fails, log the error
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
+  NSError *error = [request error];
   DLog(@"KassApi::requestFailed %@", [request error]);
+  NSDictionary *errorDict = [[NSDictionary alloc]initWithObjectsAndKeys:
+                              [NSString stringWithFormat:@"%d", [error code]], @"code",
+                              (NSString *)_method, @"method",
+                              [error description], @"description", nil];
+  [_performer requestFailed:errorDict];
 }
 
 - (void)putData:(NSString *)url:(NSDictionary *)dict

@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AccountActivityDelegate.h"
 
-@interface UIViewController (ActivityIndicate)
+@interface UIViewController (ActivityIndicate) <AccountActivityDelegate>
 
 - (void) showLoadingIndicator;
 - (void) showIndicator:(NSString *)msg;
 - (void) hideIndicator;
+
+- (void) viewDidLoad;
 
 @end

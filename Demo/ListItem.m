@@ -7,6 +7,7 @@
 //
 
 #import "ListItem.h"
+#import "User.h"
 
 @implementation ListItem
 
@@ -25,6 +26,7 @@
 @synthesize endedAt = _endedAt;
 @synthesize offererIds = _offererIds;
 @synthesize acceptedPrice = _acceptedPrice;
+@synthesize acceptedOffer = _acceptedOffer;
 
 - (void) buildData:(NSDictionary *) theDictionary
 {
@@ -45,15 +47,23 @@
   _location.latitude  = [NSDecimalNumber decimalNumberWithDecimal:[[latlng objectAtIndex:0] decimalValue]];
   _location.longitude = [NSDecimalNumber decimalNumberWithDecimal:[[latlng objectAtIndex:1] decimalValue]];
   
+  NSString *acceptedOfferId = [theDictionary objectForKey:@"accepted_offer_id"];
   NSArray *offers = [theDictionary objectForKey:@"offers"];
   _offers     = [[NSMutableArray alloc] init];
+  _offererIds = [[NSMutableArray alloc] init];
   for(id ioffer in offers)
   {
     NSDictionary *offerDict = ioffer; 
     Offer *offer = [[Offer alloc] initWithDictionary:offerDict];
-    [_offers addObject:offer];
+    if (offer && offer.userId) {
+      [_offers addObject:offer];
+      [_offererIds addObject:offer.userId];
+      if ( [acceptedOfferId isPresent] && offer.dbId && [acceptedOfferId isEqualToString:offer.dbId] ) { 
+        self.acceptedOffer = offer; 
+        self.acceptedPrice = offer.price;
+      }
+    }
   }
-  _offererIds = [theDictionary objectForKey:@"offerer_ids"];
 }
 
 - (id) initWithDictionary:(NSDictionary *) theDictionary
@@ -79,6 +89,18 @@
     [self buildData:listDict];
   }
   return self;
+}
+
+////////////////////////////// model helper methods ////////////////////////////////////////////////////
+
+- (BOOL) hasOfferer:(User *)user
+{
+  return [self.offererIds indexOfObject:user.userId] != NSNotFound;
+}
+
+- (Offer *) getOfferFromOfferer:(User *)user
+{
+  return [self.offers objectAtIndex:[self.offererIds indexOfObject:user.userId]];
 }
 
 @end

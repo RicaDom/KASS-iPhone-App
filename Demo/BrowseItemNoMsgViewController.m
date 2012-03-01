@@ -168,7 +168,7 @@
 {
   DLog(@"BrowseItemNoMsgViewController::accountDidCreateOffer:dict=%@", dict);
 
-  [self kassAddToModelDict:dict];
+  [self kassAddToModelDict:@"BrowseItemViewController":dict];
   [self.messageTextField resignFirstResponder];
   UINavigationController *navController = self.navigationController;
   // Pop this controller and replace with another
