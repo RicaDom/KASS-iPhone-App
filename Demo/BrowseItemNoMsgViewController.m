@@ -63,16 +63,7 @@
         self.listingDescription.text = self.currentItem.description;
         self.listingPrice.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
         self.offerPrice.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
-        
-        NSTimeInterval theTimeInterval = [self.currentItem.postDuration integerValue];
-        NSDate *postedDate = [[NSDate alloc] initWithTimeInterval:theTimeInterval sinceDate:self.currentItem.postedDate];
-        
-        //Set the required date format
-        NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-        
-        //Get the string date
-        self.listingDate.text = [formatter stringFromDate:postedDate];          
+      self.listingDate.text = [self.currentItem getTimeLeftTextlong];       
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self

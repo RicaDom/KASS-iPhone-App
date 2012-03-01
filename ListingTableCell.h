@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ListItem+ListItemHelper.h"
 
 @interface ListingTableCell : UITableViewCell
 
@@ -16,5 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *duration;
 @property (weak, nonatomic) IBOutlet UIButton *price;
 @property (weak, nonatomic) IBOutlet UIView *infoView;
+
+- (void)buildCellByListItem:(ListItem *)item;
 
 @end

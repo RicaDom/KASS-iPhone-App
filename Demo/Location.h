@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface Location : NSObject
 
@@ -15,5 +16,6 @@
 @property (nonatomic, strong) NSDecimalNumber *longitude;
 
 - (id) initWithDictionary:(NSDictionary *) theDictionary;
+- (CLLocation *) toCLLocation;
 
 @end

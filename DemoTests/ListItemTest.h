@@ -12,6 +12,7 @@
 #import <SenTestingKit/SenTestingKit.h>
 #include <OCMock/OCMock.h>
 #import "ListItem.h"
+#import "ListItem+ListItemHelper.h"
 
 @interface ListItemTest : SenTestCase{
   ListItem *listItem;

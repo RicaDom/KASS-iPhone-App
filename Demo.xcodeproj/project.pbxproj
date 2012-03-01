@@ -66,6 +66,8 @@
 		77899CA614C6AF4D00C6484B /* listings.json in Resources */ = {isa = PBXBuildFile; fileRef = 77899C4414C67EAE00C6484B /* listings.json */; };
 		77899CB114C70CD900C6484B /* myListings.json in Resources */ = {isa = PBXBuildFile; fileRef = 77899CB014C70CD900C6484B /* myListings.json */; };
 		77899CB214C70CD900C6484B /* myListings.json in Resources */ = {isa = PBXBuildFile; fileRef = 77899CB014C70CD900C6484B /* myListings.json */; };
+		77A195BB14FF5A050058C34F /* china-hangzhou.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 77A195BA14FF5A040058C34F /* china-hangzhou.gpx */; };
+		77A195C314FF6DF60058C34F /* ListItem+ListItemHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A195C214FF6DF60058C34F /* ListItem+ListItemHelper.m */; };
 		77CD5FC514CA52780013B510 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CD5FC214CA52780013B510 /* Constants.m */; };
 		77CD5FC614CA52780013B510 /* VariableStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CD5FC414CA52780013B510 /* VariableStore.m */; };
 		77E3101914F20C60000E9567 /* UIResponder+VariableStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E3101814F20C60000E9567 /* UIResponder+VariableStore.m */; };
@@ -73,7 +75,7 @@
 		77E3102214F23E1F000E9567 /* NSString+ModelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E3102114F23E1F000E9567 /* NSString+ModelHelper.m */; };
 		77E3102514F240A6000E9567 /* NSNull+ModelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E3102414F240A6000E9567 /* NSNull+ModelHelper.m */; };
 		77E9ACC314CD0AF50089910F /* KassApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E9ACC214CD0AF50089910F /* KassApi.m */; };
-		77EA15A414DA1EBC00E6E45A /* china.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 77EA15A314DA1EBC00E6E45A /* china.gpx */; };
+		77EA15A414DA1EBC00E6E45A /* china-chengdu.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 77EA15A314DA1EBC00E6E45A /* china-chengdu.gpx */; };
 		77F0279C14C5BC100065EDAA /* ListItemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F0279B14C5BC100065EDAA /* ListItemTest.m */; };
 		77F0279F14C665F70065EDAA /* Listing.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F0279E14C665F60065EDAA /* Listing.m */; };
 		77F027A214C666BA0065EDAA /* ListingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F027A114C666BA0065EDAA /* ListingTest.m */; };
@@ -273,6 +275,9 @@
 		77899CA014C68E5100C6484B /* OCMockRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockRecorder.h; sourceTree = "<group>"; };
 		77899CA114C68E5100C6484B /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = Libraries/libOCMock.a; sourceTree = "<group>"; };
 		77899CB014C70CD900C6484B /* myListings.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = myListings.json; path = Resources/myListings.json; sourceTree = "<group>"; };
+		77A195BA14FF5A040058C34F /* china-hangzhou.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "china-hangzhou.gpx"; sourceTree = "<group>"; };
+		77A195C114FF6DF60058C34F /* ListItem+ListItemHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ListItem+ListItemHelper.h"; sourceTree = "<group>"; };
+		77A195C214FF6DF60058C34F /* ListItem+ListItemHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ListItem+ListItemHelper.m"; sourceTree = "<group>"; };
 		77CD5FC114CA52780013B510 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		77CD5FC214CA52780013B510 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		77CD5FC314CA52780013B510 /* VariableStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VariableStore.h; sourceTree = "<group>"; };
@@ -287,7 +292,7 @@
 		77E3102414F240A6000E9567 /* NSNull+ModelHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNull+ModelHelper.m"; sourceTree = "<group>"; };
 		77E9ACC114CD0AF50089910F /* KassApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KassApi.h; sourceTree = "<group>"; };
 		77E9ACC214CD0AF50089910F /* KassApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KassApi.m; sourceTree = "<group>"; };
-		77EA15A314DA1EBC00E6E45A /* china.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = china.gpx; sourceTree = "<group>"; };
+		77EA15A314DA1EBC00E6E45A /* china-chengdu.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "china-chengdu.gpx"; sourceTree = "<group>"; };
 		77F0279A14C5BC100065EDAA /* ListItemTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListItemTest.h; sourceTree = "<group>"; };
 		77F0279B14C5BC100065EDAA /* ListItemTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListItemTest.m; sourceTree = "<group>"; };
 		77F0279D14C665F60065EDAA /* Listing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Listing.h; sourceTree = "<group>"; };
@@ -664,6 +669,17 @@
 			path = OCMock;
 			sourceTree = "<group>";
 		};
+		77A195BD14FF5FEC0058C34F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				77E3101A14F235ED000E9567 /* ViewHelper.h */,
+				77E3101B14F235EE000E9567 /* ViewHelper.m */,
+				77A195C114FF6DF60058C34F /* ListItem+ListItemHelper.h */,
+				77A195C214FF6DF60058C34F /* ListItem+ListItemHelper.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		77E30FB414F13817000E9567 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -747,8 +763,9 @@
 				775069F114C83FAF000494E5 /* listing.json */,
 				77899CB014C70CD900C6484B /* myListings.json */,
 				77899C4414C67EAE00C6484B /* listings.json */,
-				77EA15A314DA1EBC00E6E45A /* china.gpx */,
+				77EA15A314DA1EBC00E6E45A /* china-chengdu.gpx */,
 				777C903614E4AA0A002A80B0 /* userInfo.json */,
+				77A195BA14FF5A040058C34F /* china-hangzhou.gpx */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -840,6 +857,7 @@
 		E5947DD014A3A12B0066723A /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				77A195BD14FF5FEC0058C34F /* Helpers */,
 				77E30FB614F13831000E9567 /* Controllers */,
 				77E30FB414F13817000E9567 /* Extensions */,
 				E5B3AC6214EA4E4E00CD4C67 /* ActionLibs */,
@@ -856,8 +874,6 @@
 				77CD5FC414CA52780013B510 /* VariableStore.m */,
 				E5947DD914A3A12B0066723A /* AppDelegate.h */,
 				E5947DDA14A3A12B0066723A /* AppDelegate.m */,
-				77E3101A14F235ED000E9567 /* ViewHelper.h */,
-				77E3101B14F235EE000E9567 /* ViewHelper.m */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -1082,7 +1098,7 @@
 				E5033BD414DA65A60049FA5D /* popupWindowBack@2x.png in Resources */,
 				E5033BD614DA65EC0049FA5D /* testContent.html in Resources */,
 				E5033BE314DA8CE80049FA5D /* login.png in Resources */,
-				77EA15A414DA1EBC00E6E45A /* china.gpx in Resources */,
+				77EA15A414DA1EBC00E6E45A /* china-chengdu.gpx in Resources */,
 				777E4EB814DD8303002B40C3 /* SendViewLocalizable.strings in Resources */,
 				777E4EB914DD8303002B40C3 /* SendViewLocalize.strings in Resources */,
 				777E4EBA14DD8303002B40C3 /* bg.png in Resources */,
@@ -1114,6 +1130,7 @@
 				E5B3AC8514EBB7BB00CD4C67 /* blueArrow@2x.png in Resources */,
 				E5B3AC8614EBB7BB00CD4C67 /* whiteArrow.png in Resources */,
 				E5B3AC8714EBB7BB00CD4C67 /* whiteArrow@2x.png in Resources */,
+				77A195BB14FF5A050058C34F /* china-hangzhou.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1224,6 +1241,7 @@
 				77E3101C14F235EF000E9567 /* ViewHelper.m in Sources */,
 				77E3102214F23E1F000E9567 /* NSString+ModelHelper.m in Sources */,
 				77E3102514F240A6000E9567 /* NSNull+ModelHelper.m in Sources */,
+				77A195C314FF6DF60058C34F /* ListItem+ListItemHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

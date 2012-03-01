@@ -69,16 +69,8 @@
     self.itemDescriptionLabel.text = self.currentItem.description;
     self.itemPriceLabel.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
     self.itemPriceChangedToLabel.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
+    self.itemExpiredDate.text = [self.currentItem getTimeLeftTextlong];   
     
-    NSTimeInterval theTimeInterval = [self.currentItem.postDuration integerValue];
-    NSDate *postedDate = [[NSDate alloc] initWithTimeInterval:theTimeInterval sinceDate:self.currentItem.postedDate];
-    
-    //Set the required date format
-    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-    
-    //Get the string date
-    self.itemExpiredDate.text = [formatter stringFromDate:postedDate];          
   } else if (self.currentOffer != nil) {
     self.itemTitleLabel.text = self.currentOffer.title;
     self.itemDescriptionLabel.text = self.currentOffer.description;

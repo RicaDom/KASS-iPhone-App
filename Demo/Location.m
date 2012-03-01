@@ -24,4 +24,9 @@
   return self;
 }
 
+- (CLLocation *) toCLLocation
+{
+  return [[CLLocation alloc] initWithLatitude:[_latitude doubleValue]longitude:[_longitude doubleValue]];
+}
+
 @end

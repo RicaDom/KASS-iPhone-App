@@ -7,6 +7,7 @@
 //
 
 #import "ListingTableCell.h"
+#import "VariableStore.h"
 
 @implementation ListingTableCell
 
@@ -24,6 +25,33 @@
         // Custom initialization
     }
     return self;
+}
+
+- (void)buildCellByListItem:(ListItem *)item
+{
+  
+  UIImage *rowBackground = [UIImage imageNamed:@"middleRow.png"];
+  UIImageView *imageView = [[UIImageView alloc] initWithImage:rowBackground];
+  self.backgroundView = imageView;
+  
+  UIImage *selectedBackground = [UIImage imageNamed:@"middleRowSelected.png"];
+  UIImageView *selectedImageView = [[UIImageView alloc] initWithImage:selectedBackground];
+  self.selectedBackgroundView = selectedImageView;
+  
+  if (item.askPrice != nil) {
+    NSString *price = [[item askPrice] stringValue];
+    
+    self.title.text = [item title];
+    self.subTitle.text = [item description];
+    [self.price setTitle:price forState:UIControlStateNormal];
+  }
+  self.price.enabled = NO;
+  
+  [self.distance setTitle:[item getDistanceFromLocationText:VariableStore.sharedInstance.location] forState:UIControlStateNormal];
+  self.distance.enabled = NO;
+  
+  [self.duration setTitle:[item getTimeLeftText]forState:UIControlStateNormal];
+  self.duration.enabled = NO;
 }
 
 @end
