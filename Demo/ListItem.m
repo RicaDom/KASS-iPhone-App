@@ -98,6 +98,11 @@
   return [self.offererIds indexOfObject:user.userId] != NSNotFound;
 }
 
+- (BOOL) isAccepted
+{
+  return self.acceptedPrice != nil && self.acceptedPrice > 0;
+}
+
 - (Offer *) getOfferFromOfferer:(User *)user
 {
   return [self.offers objectAtIndex:[self.offererIds indexOfObject:user.userId]];

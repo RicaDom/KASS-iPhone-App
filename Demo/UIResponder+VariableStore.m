@@ -34,6 +34,8 @@
 
 - (User *) currentUser
 {
+  DLog(@"UIResponder+VariableStore::currentUser:delegate=%@", NSStringFromClass(self.class));
+  [self kassVS].user.delegate = self;
   return [self kassVS].user;
 }
 

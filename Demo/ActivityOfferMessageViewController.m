@@ -244,16 +244,21 @@
 - (IBAction)sellerInfoAction:(id)sender {
 }
 
+- (void)accountDidAcceptOffer:(NSDictionary *)dict
+{
+  DLog(@"ActivityOfferMessageViewController::accountDidAcceptOffer");  
+  
+  UINavigationController *navController = self.navigationController;
+  [navController dismissModalViewControllerAnimated:NO];
+  
+  [[NSNotificationCenter defaultCenter] 
+   postNotificationName:OFFER_TO_PAY_VIEW_NOTIFICATION 
+   object:self.currentOffer];
+}
+
 - (IBAction)confirmDealAction:(id)sender {
-    
-    // TODO if confirm deal successful, then go to pay page
-    //[self performSegueWithIdentifier:@"OfferMessageToPayView" sender:self];
-    UINavigationController *navController = self.navigationController;
-    [navController dismissModalViewControllerAnimated:NO];
-    
-    [[NSNotificationCenter defaultCenter] 
-     postNotificationName:OFFER_TO_PAY_VIEW_NOTIFICATION 
-     object:self.currentOffer];
+  DLog(@"ActivityOfferMessageViewController::confirmDealAction");
+  [[self currentUser] acceptOffer:_currentOffer.dbId];
 }
 
 - (IBAction)sendMessageOrMapAction:(UIBarButtonItem *)sender {

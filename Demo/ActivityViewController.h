@@ -28,7 +28,6 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *emptyRecordsImageView;
 @property (weak, nonatomic) IBOutlet UITableView *listingsTableView;
-@property (strong, nonatomic) Offer *messageFromOfferView;
 
 - (void)setupArray;
 - (void)reloadTable;

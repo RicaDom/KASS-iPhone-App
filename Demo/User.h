@@ -49,6 +49,8 @@
 - (void)modifyOfferFinished:(NSData *)data;
 - (void)getOfferMessages:(NSString *)offerId;
 - (void)getOfferMessagesFinished:(NSData *)data;
+- (void)acceptOffer:(NSString *)offerId;
+- (void)acceptOfferFinished:(NSData *)data;
 
 //// model helper methods
 - (BOOL)hasListItem:(ListItem *)listItem;

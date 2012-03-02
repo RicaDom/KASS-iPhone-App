@@ -59,6 +59,13 @@
   return self;
 }
 
+- (NSDictionary *)toJson
+{
+  NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys: self.dbId, @"id", nil];
+  NSMutableDictionary* offerDict = [NSMutableDictionary dictionaryWithObjectsAndKeys: params, @"offer", nil];
+  return offerDict;
+}
+
 ///////////////////////// model helper methods ///////////////////////////////////////
 
 @end

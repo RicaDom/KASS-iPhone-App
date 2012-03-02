@@ -19,7 +19,7 @@
 @synthesize itemPriceLabel = _itemPriceLabel;
 @synthesize itemExpiredDate = _itemExpiredDate;
 @synthesize itemPriceChangedToLabel = _itemPriceChangedToLabel;
-@synthesize currentItem = _currentItem;
+
 @synthesize messageTextField = _messageTextField;
 @synthesize navigationButton = _navigationButton;
 @synthesize scrollView = _scrollView;
@@ -68,19 +68,11 @@
   [self hideIndicator];
   [self stopLoading];
   
-  if (self.currentItem != nil) {
-    self.itemTitleLabel.text = self.currentItem.title;
-    self.itemDescriptionLabel.text = self.currentItem.description;
-    self.itemPriceLabel.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
-    self.itemPriceChangedToLabel.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
-    self.itemExpiredDate.text = [self.currentItem getTimeLeftTextlong];   
-    
-  } else if (self.currentOffer != nil) {
-    self.itemTitleLabel.text = self.currentOffer.title;
-    self.itemDescriptionLabel.text = self.currentOffer.description;
-    self.itemPriceLabel.text = [NSString stringWithFormat:@"%@", self.currentOffer.price];
-    self.itemPriceChangedToLabel.text = [NSString stringWithFormat:@"%@", self.currentOffer.price];
-  }
+  self.itemTitleLabel.text = self.currentOffer.title;
+  self.itemDescriptionLabel.text = self.currentOffer.description;
+  self.itemPriceLabel.text = [NSString stringWithFormat:@"%@", self.currentOffer.price];
+  self.itemPriceChangedToLabel.text = [NSString stringWithFormat:@"%@", self.currentOffer.price];
+
 }
 
 - (void)accountDidGetOffer:(NSDictionary *)dict
@@ -147,7 +139,7 @@
     if ([[notification name] isEqualToString:CHANGED_PRICE_NOTIFICATION]) {
         
         self.itemPriceChangedToLabel.text = (NSString *)[notification object];
-        DLog (@"Successfully received price changed notification! %@", (NSString *)[notification object]);
+        DLog (@"BrowseItemViewController::receivePriceChangedNotification:%@", (NSString *)[notification object]);
     }
 }
 

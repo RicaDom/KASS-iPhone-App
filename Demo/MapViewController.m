@@ -73,7 +73,7 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"messageItemSegue"]) {
         BrowseItemViewController *bvc = [segue destinationViewController];
-        bvc.currentItem = self.currentItem;
+      
     }
 }
 
