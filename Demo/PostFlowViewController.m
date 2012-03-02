@@ -68,7 +68,7 @@
 #pragma mark - TODO
     // If it's a completed post template, stack all the views
     // and show the last step of posting process
-    if (self.postType == POST_TYPE ) {
+    if (self.postType == POST_TYPE_TEMPLATE ) {
         //[self.navigationController popToRootViewControllerAnimated:NO];
         [self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"Post Price"] animated:NO];
             
@@ -79,6 +79,12 @@
     }
 }
 
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"PostFlowTitleToPriceView"]) {
+        PostFlowPriceViewController *pvc = segue.destinationViewController;
+        pvc.postType = self.postType;
+    } 
+}
 
 - (void)viewDidUnload
 {
@@ -97,16 +103,6 @@
 
 - (IBAction)CancelAction:(id)sender {
     [self.titleTextField resignFirstResponder];
-    //NSLog(@"controller class: %@", NSStringFromClass([self.navigationController.tabBarController class]));
-    //printf("Index: %d", self.navigationController.tabBarController.selectedIndex);
-    //[self.navigationController dismissModalViewControllerAnimated:YES];
-    //[self.navigationController removeFromParentViewController];
-    //[self.navigationController dismissModalViewControllerAnimated:YES];
-    //[self dismissModalViewControllerAnimated:YES];
     [self.presentingViewController dismissModalViewControllerAnimated:YES];
-    
-    //self.navigationController.tabBarController.selectedIndex = 2;
-    //[self.navigationController.tabBarController.selectedViewController viewDidAppear:YES];
-    //[self.navigationController.tabBarController
 }
 @end

@@ -13,6 +13,8 @@
 @synthesize postDescription = _postDescription;
 @synthesize postAskPrice = _postAskPrice;
 @synthesize postDuration = _postDuration;
+@synthesize submitButton = _submitButton;
+@synthesize postType = _postType;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,7 +44,7 @@
     if ([VariableStore sharedInstance].currentPostingItem.postDuration) {
         NSArray *keys = [[VariableStore sharedInstance].expiredTime 
                          allKeysForObject:[VariableStore sharedInstance].currentPostingItem.postDuration];
-        if (keys) {
+        if (keys && [keys count] > 0) {
             NSString *selectedItem = [keys objectAtIndex:0];
             if ([selectedItem length] != 0) {
                 self.postDuration.text = selectedItem;
@@ -75,6 +77,11 @@
   [super viewDidLoad];
   VariableStore.sharedInstance.locateMeManager.delegate = self;
   [VariableStore.sharedInstance.locateMeManager locateMe];
+
+  // Update submit button label if it's an update
+  if ([self.postType isEqualToString:POST_TYPE_EDITING]) {
+    self.submitButton.titleLabel.text = UI_BUTTON_LABEL_UPDATE;
+  }
 }
 
 - (void)viewDidUnload
@@ -83,6 +90,7 @@
     [self setPostDescription:nil];
     [self setPostAskPrice:nil];
     [self setPostDuration:nil];
+    [self setSubmitButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

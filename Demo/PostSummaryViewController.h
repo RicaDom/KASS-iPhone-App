@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *postDescription;
 @property (weak, nonatomic) IBOutlet UILabel *postAskPrice;
 @property (weak, nonatomic) IBOutlet UILabel *postDuration;
+@property (strong, nonatomic) IBOutlet UIButton *submitButton;
+@property (strong, nonatomic) NSString *postType;
 - (IBAction)cancelAction:(id)sender;
 - (IBAction)submitAction;
 

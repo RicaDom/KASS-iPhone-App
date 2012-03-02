@@ -153,18 +153,18 @@
 - (void) initExpiredTime {
     // convert to seconds
     self.expiredTime = [[NSDictionary alloc] initWithObjectsAndKeys:
-                        @"0h", @"选择时间",
-                        @"1h", @"1 小时",
-                        @"2h", @"2 小时",
-                        @"6h", @"6 小时", 
-                        @"12h", @"12 小时",
-                        @"24h", @"24 小时",
-                        @"2d", @"2 天",
-                        @"3d", @"3 天",
-                        @"4d", @"4 天",
-                        @"5d", @"5 天",
-                        @"6d", @"6 天",
-                        @"7d", @"7 天",
+                        [NSNumber numberWithInt:0], @"选择时间",
+                        [NSNumber numberWithInt:3600], @"1 小时",
+                        [NSNumber numberWithInt:7200], @"2 小时",
+                        [NSNumber numberWithInt:21600], @"6 小时", 
+                        [NSNumber numberWithInt:43200], @"12 小时",
+                        [NSNumber numberWithInt:86400], @"24 小时",
+                        [NSNumber numberWithInt:172800], @"2 天",
+                        [NSNumber numberWithInt:259200], @"3 天",
+                        [NSNumber numberWithInt:345600], @"4 天",
+                        [NSNumber numberWithInt:432000], @"5 天",
+                        [NSNumber numberWithInt:518400], @"6 天",
+                        [NSNumber numberWithInt:604800], @"7 天",
                         nil];
 }
 @end
