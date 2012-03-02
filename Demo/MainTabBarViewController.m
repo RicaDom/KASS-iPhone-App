@@ -67,17 +67,45 @@
 //        //[tabBar setBackgroundImage:[UIImage imageNamed:@"tabbar2.png"]];
 //        [self.mainTabBar setBackgroundImage:[UIImage imageNamed:@"tabbar2.png"]];  
 //    }
-    
+   [VariableStore sharedInstance].mainTabBar = self;
+
    NSLog(@"MainTabBarViewController::viewDidAppear ");
    if ( ![[VariableStore sharedInstance] isLoggedIn]) {
        [MTPopupWindow showWindowWithUIView:self.view];
    }
+   
+   [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receivePriceChangedNotification:) 
+                                                 name:NEW_POST_NOTIFICATION
+                                               object:nil];
+
+}
+
+- (void) receivePriceChangedNotification:(NSNotification *) notification
+{
+    // [notification name] should always be NEW_POST_NOTIFICATION
+    // unless you use this method for observation of other notifications
+    // as well.
+    
+    if ([[notification name] isEqualToString:NEW_POST_NOTIFICATION]) {        
+        DLog (@"Successfully received NEW_POST_NOTIFICATION!");
+        self.selectedIndex = 0;
+        UINavigationController *nc = (UINavigationController *)self.selectedViewController;
+        ActivityViewController *avc = (ActivityViewController *)nc.topViewController;
+        avc.setupArray;
+        CustomImageViewPopup *pop = [[CustomImageViewPopup alloc] initWithType:POPUP_IMAGE_NEW_POST_SUCCESS];
+        [self.view addSubview: pop];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+            [pop removeFromSuperview];
+        });
+    }
 }
 
 
 - (void)viewDidUnload
 {
     [super viewDidUnload]; 
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NEW_POST_NOTIFICATION object:nil];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
