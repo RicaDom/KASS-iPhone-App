@@ -205,12 +205,10 @@
     if (actionSheet.tag == 1) {
         DLog(@"Action sheet tag 1");
         DLog(@"Action sheet tag 1 index %d", buttonIndex);
-        if (buttonIndex == 0) {
+        if (buttonIndex == 0) {// Editing Listing           
+            [self performSegueWithIdentifier:@"ActEditingToPostFlow" sender:self];
+        } else if (buttonIndex == 1) { 
             
-            //self.label.text = @"Destructive Button Clicked";
-        } else if (buttonIndex == 1) {
-
-            //self.label.text = @"Other Button 1 Clicked";
         } else if (buttonIndex == 2) {
 
             //self.label.text = @"Other Button 2 Clicked";
@@ -245,6 +243,11 @@
         NSIndexPath *path = [self.offerTableView indexPathForSelectedRow];
         int row = [path row];
         avc.currentOffer = [self.offers objectAtIndex:row];
+    } else if ([segue.identifier isEqualToString:@"ActEditingToPostFlow"]) {
+        UINavigationController *nc = [segue destinationViewController];
+        PostFlowViewController *pvc = (PostFlowViewController *) nc.topViewController;
+        pvc.postType = POST_TYPE_EDITING;
+        [VariableStore sharedInstance].currentPostingItem = self.currentItem; 
     }
 }
 

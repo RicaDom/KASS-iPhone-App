@@ -10,7 +10,8 @@
 
 @implementation Constants
 
-NSString * const POST_TYPE = @"TEMPLATE";
+NSString * const POST_TYPE_TEMPLATE = @"TEMPLATE";
+NSString * const POST_TYPE_EDITING = @"EDITING";
 
 NSString * const UI_BUTTON_LABEL_BACK = @"返回";
 NSString * const UI_BUTTON_LABEL_NEXT = @"继续";

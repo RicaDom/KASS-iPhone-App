@@ -12,6 +12,7 @@
 @synthesize PostDurationPicker = _PostDurationPicker;
 @synthesize PostDurationLabel = _PostDurationLabel;
 @synthesize PostFlowSegment = _PostFlowSegment;
+@synthesize postType = _postType;
 NSArray *arrayTimePicker;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -53,6 +54,13 @@ NSArray *arrayTimePicker;
     if (self.PostDurationLabel.text) {
         [VariableStore sharedInstance].currentPostingItem.postDuration = [[VariableStore sharedInstance].expiredTime objectForKey:self.PostDurationLabel.text];
     }
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"PostFlowSetDateToSumView"]) {
+        PostSummaryViewController *pvc = segue.destinationViewController;
+        pvc.postType = self.postType;
+    } 
 }
 
 #pragma mark - View lifecycle

@@ -14,7 +14,8 @@
 
 #define _ScrollViewContentSizeX 320  
 
-extern NSString * const POST_TYPE;
+extern NSString * const POST_TYPE_TEMPLATE;
+extern NSString * const POST_TYPE_EDITING;
 
 // UI BUTTON LABEL
 extern NSString * const UI_BUTTON_LABEL_BACK;

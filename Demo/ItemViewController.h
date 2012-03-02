@@ -18,6 +18,7 @@
 #import "ActivityOfferMessageViewController.h"
 #import "VariableStore.h"
 #import "AccountActivityDelegate.h"
+#import "PostFlowViewController.h"
 
 @interface ItemViewController : UIViewController <UIActionSheetDelegate, EGORefreshTableHeaderDelegate, AccountActivityDelegate>{
 	

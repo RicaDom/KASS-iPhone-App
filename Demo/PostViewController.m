@@ -132,7 +132,7 @@
         UINavigationController *navigationController = segue.destinationViewController;
         PostFlowViewController *pvc = (PostFlowViewController *)navigationController.topViewController;
         //pvc.delegate = self;
-        pvc.postType = POST_TYPE;
+        pvc.postType = POST_TYPE_TEMPLATE;
         [VariableStore sharedInstance].currentPostingItem.title = @"Popular post item title";
         [VariableStore sharedInstance].currentPostingItem.description = @"Popular post item description";
         [VariableStore sharedInstance].currentPostingItem.askPrice = [NSDecimalNumber decimalNumberWithString:@"888.99"];

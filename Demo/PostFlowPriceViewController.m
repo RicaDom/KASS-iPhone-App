@@ -10,6 +10,7 @@
 
 @implementation PostFlowPriceViewController
 @synthesize priceTextField = _priceTextField;
+@synthesize postType = _postType;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,6 +48,13 @@
 - (void)saveCurrentPostingData
 {
     [VariableStore sharedInstance].currentPostingItem.askPrice = [NSDecimalNumber decimalNumberWithString:self.priceTextField.text];
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"PostFlowPriceToSetDateView"]) {
+        PostFlowSetDateViewController *pvc = segue.destinationViewController;
+        pvc.postType = self.postType;
+    } 
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
