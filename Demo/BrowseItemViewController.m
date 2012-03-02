@@ -10,6 +10,7 @@
 #import "VariableStore.h"
 #import "ViewHelper.h"
 #import "UIViewController+ActivityIndicate.h"
+#import "UIViewController+KeyboardSlider.h"
 
 @implementation BrowseItemViewController
 
@@ -18,7 +19,7 @@
 @synthesize itemPriceLabel = _itemPriceLabel;
 @synthesize itemExpiredDate = _itemExpiredDate;
 @synthesize itemPriceChangedToLabel = _itemPriceChangedToLabel;
-@synthesize currentItem = _currentItem;
+
 @synthesize messageTextField = _messageTextField;
 @synthesize navigationButton = _navigationButton;
 @synthesize scrollView = _scrollView;
@@ -67,19 +68,11 @@
   [self hideIndicator];
   [self stopLoading];
   
-  if (self.currentItem != nil) {
-    self.itemTitleLabel.text = self.currentItem.title;
-    self.itemDescriptionLabel.text = self.currentItem.description;
-    self.itemPriceLabel.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
-    self.itemPriceChangedToLabel.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
-    self.itemExpiredDate.text = [self.currentItem getTimeLeftTextlong];   
-    
-  } else if (self.currentOffer != nil) {
-    self.itemTitleLabel.text = self.currentOffer.title;
-    self.itemDescriptionLabel.text = self.currentOffer.description;
-    self.itemPriceLabel.text = [NSString stringWithFormat:@"%@", self.currentOffer.price];
-    self.itemPriceChangedToLabel.text = [NSString stringWithFormat:@"%@", self.currentOffer.price];
-  }
+  self.itemTitleLabel.text = self.currentOffer.title;
+  self.itemDescriptionLabel.text = self.currentOffer.description;
+  self.itemPriceLabel.text = [NSString stringWithFormat:@"%@", self.currentOffer.price];
+  self.itemPriceChangedToLabel.text = [NSString stringWithFormat:@"%@", self.currentOffer.price];
+
 }
 
 - (void)accountDidGetOffer:(NSDictionary *)dict
@@ -146,7 +139,7 @@
     if ([[notification name] isEqualToString:CHANGED_PRICE_NOTIFICATION]) {
         
         self.itemPriceChangedToLabel.text = (NSString *)[notification object];
-        DLog (@"Successfully received price changed notification! %@", (NSString *)[notification object]);
+        DLog (@"BrowseItemViewController::receivePriceChangedNotification:%@", (NSString *)[notification object]);
     }
 }
 
@@ -188,7 +181,7 @@
     if ([self.navigationButton.title isEqualToString:UI_BUTTON_LABEL_MAP]) {
         [self performSegueWithIdentifier: @"dealMapModal" 
                                   sender: self];
-    } else if (self.navigationButton.title == UI_BUTTON_LABEL_SUBMIT) {
+    } else if (self.navigationButton.title == UI_BUTTON_LABEL_SEND) {
       
       DLog(@"BrowseItemViewController::(IBAction)navigationButtonAction:modifyOffer:");
       NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -200,6 +193,7 @@
       VariableStore.sharedInstance.user.delegate = self;
       [VariableStore.sharedInstance.user modifyOffer:params:_currentOffer.dbId];
       [self.messageTextField resignFirstResponder];
+      [self hideKeyboardAndMoveViewDown];
     }
 }
 
@@ -211,59 +205,6 @@
     }
 }
 
-/* Keyboard avoiding start */
-
-//method to move the view up/down whenever the keyboard is shown/dismissed
--(void)setViewMovedUp:(BOOL)movedUp
-{
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.5]; // if you want to slide up the view
-    
-    CGRect rect = self.mainView.frame;
-    
-    if (movedUp){
-        // 1. move the view's origin up so that the text field that will be hidden come above the keyboard 
-        // 2. increase the size of the view so that the area behind the keyboard is covered up.
-        rect.origin.y -= (_keyboardRect.size.height - self.tabBarController.tabBar.frame.size.height);
-        rect.size.height += _keyboardRect.size.height;
-        self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_CANCEL;
-        self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_SEND;
-    }else{
-        // revert back to the normal state.
-        rect.origin.y += (_keyboardRect.size.height - self.tabBarController.tabBar.frame.size.height);
-        rect.size.height -= _keyboardRect.size.height;
-        self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_BACK;
-        self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_MAP;
-    }
-    self.mainView.frame = rect;
-    
-    // use the above if else will not work
-    if (movedUp) {
-        CGRect scrollViewRect = self.scrollView.frame;
-        
-        DLog(@"Scoll View move up Before: (%f, %f, %f, %f) ", scrollViewRect.origin.x, scrollViewRect.origin.y, scrollViewRect.size.width, scrollViewRect.size.height );
-        
-        scrollViewRect.origin.y -= self.tabBarController.tabBar.frame.size.height;
-        scrollViewRect.size.height = rect.size.height - _keyboardRect.size.height*2;   
-        
-        DLog(@"Scoll View move up After: (%f, %f, %f, %f) ", scrollViewRect.origin.x, scrollViewRect.origin.y, scrollViewRect.size.width, scrollViewRect.size.height );
-        
-        self.scrollView.frame = scrollViewRect; 
-    } else {
-        CGRect scrollViewRect = self.scrollView.frame;
-        DLog(@"Scoll View move down Before: (%f, %f, %f, %f) ", scrollViewRect.origin.x, scrollViewRect.origin.y, scrollViewRect.size.width, scrollViewRect.size.height );
-        
-        scrollViewRect.origin.y = 0;
-        scrollViewRect.size.height = rect.size.height - self.buttomView.frame.size.height;
-        
-        DLog(@"Scoll View move down After: (%f, %f, %f, %f) ", scrollViewRect.origin.x, scrollViewRect.origin.y, scrollViewRect.size.width, scrollViewRect.size.height );
-        self.scrollView.frame = scrollViewRect;        
-    }
-    
-    [UIView commitAnimations];
-    //    DLog(@"After: (%f, %f, %f, %f) ", scrollViewRect.origin.x, scrollViewRect.origin.y, scrollViewRect.size.width, scrollViewRect.size.height );
-}
-
 -(void)textFieldDidBeginEditing:(UITextField *)sender
 {
     if ([sender isEqual:_messageTextField])
@@ -271,7 +212,7 @@
         //move the main view, so that the keyboard does not hide it.
         if  (self.mainView.frame.origin.y >= 0)
         {
-            [self setViewMovedUp:YES];
+            [self showKeyboardAndMoveViewUp];
         }
     }
     if ([sender isEqual:_messageTextField]) {
@@ -286,10 +227,11 @@
 {
     //keyboard will be shown now. depending for which textfield is active, move up or move down the view appropriately
     _keyboardRect = [[[notification userInfo] objectForKey:_UIKeyboardFrameEndUserInfoKey] CGRectValue];
+  [self registerKeyboardRect:_keyboardRect];
     
     if ([_messageTextField isFirstResponder] && self.mainView.frame.origin.y >= 0)
     {
-        [self setViewMovedUp:YES];
+        [self showKeyboardAndMoveViewUp];
     }
 }
 
@@ -306,6 +248,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+  [self registerKeyboardSlider:_mainView :_scrollView :_buttomView];
     // register for keyboard notifications
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) 
                                                  name:UIKeyboardWillShowNotification object:self.view.window]; 
@@ -323,7 +266,7 @@
         [self.navigationController popViewControllerAnimated:YES];
     } else {
         [self.messageTextField resignFirstResponder];
-        [self setViewMovedUp:NO];
+        [self hideKeyboardAndMoveViewDown];
     }
 }
 

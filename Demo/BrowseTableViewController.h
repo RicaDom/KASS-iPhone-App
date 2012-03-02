@@ -16,6 +16,7 @@
 #import "LocateMeDelegate.h"
 #import "ItemViewController.h"
 #import "BrowseItemNoMsgViewController.h"
+#import "BuyerPayViewController.h"
 #import "UIResponder+VariableStore.h"
 
 @interface BrowseTableViewController : PullRefreshTableViewController <LocateMeDelegate>

@@ -24,7 +24,6 @@
 @property (strong, nonatomic) IBOutlet UISegmentedControl *activitySegment;
 @property (strong, nonatomic) IBOutlet UIImageView *emptyRecordsImageView;
 @property (weak, nonatomic) IBOutlet UITableView *listingsTableView;
-@property (strong, nonatomic) Offer *messageFromOfferView;
 
 - (IBAction)activityChanged:(id)sender;
 - (void)setupArray;

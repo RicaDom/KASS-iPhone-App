@@ -27,6 +27,7 @@
 @property (nonatomic, strong) NSDate *listItemEndedAt;
 
 - (id) initWithDictionary:(NSDictionary *) theDictionary;
+- (NSDictionary *) toJson;
 
 //// model helper methods
 

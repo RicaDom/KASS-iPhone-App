@@ -25,7 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *itemPriceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *itemExpiredDate;
 @property (weak, nonatomic) IBOutlet UILabel *itemPriceChangedToLabel;
-@property (strong, nonatomic) ListItem *currentItem;
+
 @property (strong, nonatomic) Offer *currentOffer;
 @property (weak, nonatomic) IBOutlet UITextField *messageTextField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *navigationButton;

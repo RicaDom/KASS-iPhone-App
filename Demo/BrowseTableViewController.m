@@ -64,11 +64,7 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showBrowseItem"]) {
       
-        BrowseItemViewController *bvc = [segue destinationViewController];        
-        NSIndexPath *path = [self.tableView indexPathForSelectedRow];
-        int row = [path row];
-        ListItem *item = [self.currentListings objectAtIndex:row];
-        bvc.currentItem = item;
+    
         
     } else if ([segue.identifier isEqualToString:@"BrowseListingToBuyerOffers"]) {
         UINavigationController *nc = [segue destinationViewController];
@@ -93,7 +89,8 @@
         bvc.currentItem = item;
         
     } else if ([segue.identifier isEqualToString:@"BrowseListingToBuyerPay"]) {
-
+        
+      
     }
 }
 
@@ -249,27 +246,29 @@
     DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:not login");
     [self performSegueWithIdentifier:@"showBrowseItemUnlogin" sender:self];
   }else if ( [[self kassVS ].user hasListItem:item] ){
-     //if you are the buyer go to buyers listing page
-    DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:you are buyer");
-    [self performSegueWithIdentifier:@"BrowseListingToBuyerOffers" sender:self];
+    
+    //if you are the buyer and you already accepted it
+    if (item.isAccepted) {
+      DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:you already accepted! ");
+      
+      [self kassAddToModelDict:@"BuyerPayViewController":item.acceptedOffer.toJson];
+      [self performSegueWithIdentifier:@"BrowseListingToBuyerPay" sender:self];
+      
+    }else{
+      //if you are the buyer go to buyers listing page
+      DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:you are buyer");
+      [self performSegueWithIdentifier:@"BrowseListingToBuyerOffers" sender:self];
+    }
   }else if ( [item hasOfferer:[self currentUser]]){
     
     Offer *offer = [item getOfferFromOfferer:[self currentUser]];
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys: offer.dbId, @"id", nil];
-    NSMutableDictionary* offerDict = [NSMutableDictionary dictionaryWithObjectsAndKeys: params, @"offer", nil];
-    
-    if ( item.acceptedOffer ) {
-      [self kassAddToModelDict:@"BuyerPayViewController":offerDict];
-      DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:you've accepted!");
-      //if buyer already accepted an offer, go to pay_now page
-      [self performSegueWithIdentifier:@"ActBuyingListToPayView" sender:self];
-    }else{
-      //you've offered this listing, go to the offer page
-      DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:you've offered!");
-      [self kassAddToModelDict:@"BrowseItemViewController":offerDict];
-      [self performSegueWithIdentifier:@"showBrowseItem" sender:self];
-    }
+    [self kassAddToModelDict:@"BrowseItemViewController":offer.toJson];
+
+    //you've offered this listing, go to the offer page
+    DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:you've offered!");
+    [self performSegueWithIdentifier:@"showBrowseItem" sender:self];
   
+
   }else{
     //you are not buyer and you've not offered
     DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:logged in user");
@@ -291,6 +290,7 @@
 // call back from BrowseItemNoMsgViewController
 - (void)switchBrowseItemView 
 {
-    [self performSegueWithIdentifier:@"showBrowseItem" sender:self];
+  DLog(@"BrowseTableViewController::switchBrowseItemView");
+  [self performSegueWithIdentifier:@"showBrowseItem" sender:self];
 }
 @end

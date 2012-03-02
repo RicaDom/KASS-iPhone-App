@@ -7,6 +7,9 @@
 //
 
 #import "BuyerPayViewController.h"
+#import "UIViewController+ActivityIndicate.h"
+#import "UIResponder+VariableStore.h"
+#import "ViewHelper.h"
 
 @implementation BuyerPayViewController
 
@@ -35,25 +38,57 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-- (void)loadSegueData
+-(void)stopLoading
 {
-    self.listingTitle.text = self.currentOffer.title;
-    self.listingDescription.text = self.currentOffer.description;
-    
-    if (self.currentOffer.price) {
-        self.offerPrice.text = [self.currentOffer.price stringValue];
-    }
-    
+	[self.pull finishedLoading];
 }
 
-#pragma mark - View lifecycle
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
+- (void)populateData:(NSDictionary *)dict
 {
+  NSDictionary *offer = [dict objectForKey:@"offer"];
+  self.currentOffer = [[Offer alloc]initWithDictionary:offer];
+  
+  [ViewHelper buildOfferScrollView:self.scrollView:[self currentUser]:_currentOffer];
+  [self hideIndicator];
+  [self stopLoading];
+  
+  self.listingTitle.text = self.currentOffer.title;
+  self.listingDescription.text = self.currentOffer.description;
+  
+  if (self.currentOffer.price) {
+    self.offerPrice.text = [self.currentOffer.price stringValue];
+  }
 }
-*/
+
+- (void)accountDidGetOffer:(NSDictionary *)dict
+{
+  DLog(@"BuyerPayViewController::accountDidGetOffer");  
+  [self populateData:dict];
+}
+
+
+- (void)accountRequestFailed:(NSDictionary *)errors
+{
+  DLog(@"BuyerPayViewController::requestFailed");
+  [self hideIndicator];
+  [self stopLoading];
+}
+
+- (void)loadOffer
+{
+  DLog(@"BuyerPayViewController::loadingOffer");
+  [self showLoadingIndicator];
+  
+  //check if currentOffer object is nil, if so get from kassModelDict
+  NSString *offerId = self.currentOffer.dbId;
+  
+  if ( !offerId || [offerId isBlank] ) {
+    offerId = [[self kassGetModelDict:@"offer"] objectForKey:@"id"];
+  }
+  
+  [[self currentUser] getOffer:offerId];
+}
+
 
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -71,7 +106,7 @@
                                 action:@selector(OnClick_btnBack:)];
     self.navigationItem.leftBarButtonItem = btnBack; 
     
-    [self loadSegueData];
+    [self loadOffer];
 }
 
 -(IBAction)OnClick_btnBack:(id)sender  {
@@ -93,14 +128,9 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
--(void)stopLoading
-{
-	[self.pull finishedLoading];
-}
-
 // called when the user pulls-to-refresh
 - (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view
 {
-    [self performSelector:@selector(stopLoading) withObject:nil afterDelay:2.0];	
+    [self performSelector:@selector(loadOffer) withObject:nil afterDelay:2.0];	
 }
 @end

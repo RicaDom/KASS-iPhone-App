@@ -14,7 +14,6 @@
 @implementation ActivityViewController
 @synthesize emptyRecordsImageView = _emptyRecordsImageView;
 @synthesize listingsTableView = _listingsTableView;
-@synthesize messageFromOfferView = _messageFromOfferView;
 @synthesize activitySegment = _activitySegment;
 
 NSMutableArray *currentItems;
@@ -92,26 +91,26 @@ NSMutableArray *currentItems;
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+  
+  NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+  int row = [path row];
+  
     if ([segue.identifier isEqualToString:@"ActBuyingListToOffers"]) {
         UINavigationController *nc = [segue destinationViewController];
         ItemViewController *ivc = (ItemViewController *)nc.topViewController;
-        NSIndexPath *path = [self.tableView indexPathForSelectedRow];
-        int row = [path row];
+        
         ListItem *item = [currentItems objectAtIndex:row];
         ivc.currentItem = item;
       
     } else if ([segue.identifier isEqualToString:@"ActSellingListToMessageBuyer"]) {
       DLog(@"ActivityViewController::prepareForSegue:ActSellingListToMessageBuyer");
       BrowseItemViewController *bvc = [segue destinationViewController];
-      
-      NSIndexPath *path = [self.tableView indexPathForSelectedRow];
-      int row = [path row];
+    
       bvc.currentOffer = [currentItems objectAtIndex:row];
         
     } else if ([segue.identifier isEqualToString:@"ActBuyingListToPayView"]) {
-        UINavigationController *nc = [segue destinationViewController];
-        BuyerPayViewController *bvc = (BuyerPayViewController *)nc.topViewController;
-        bvc.currentOffer = self.messageFromOfferView;
+      DLog(@"ActivityViewController::prepareForSegue:ActBuyingListToPayView");
+      
     }
 }
 
@@ -158,11 +157,11 @@ NSMutableArray *currentItems;
     
     if ([[notification name] isEqualToString:OFFER_TO_PAY_VIEW_NOTIFICATION]) {
         Offer *offer = (Offer *)[notification object];       
-        if (offer) {
-            self.messageFromOfferView = offer;
-            DLog (@"Successfully received from Offer View notification! %@", offer);
-            [self performSegueWithIdentifier:@"ActBuyingListToPayView" sender:self];
-        }
+      if (offer) {
+          DLog (@"ActivityViewController::receivedFromOfferViewNotification! %@", offer);
+          [self kassAddToModelDict:@"BuyerPayViewController":offer.toJson];
+          [self performSegueWithIdentifier:@"ActBuyingListToPayView" sender:self];
+      }
     }
 }
 
@@ -323,8 +322,12 @@ NSMutableArray *currentItems;
 //        item.acceptedPrice = [NSDecimalNumber decimalNumberWithDecimal:
 //                        [[NSNumber numberWithDouble:50] decimalValue]];
         // if listing already has accepted offer, got to pay page
-        if (item.acceptedPrice != nil && item.acceptedPrice > 0) {
-            [self performSegueWithIdentifier:@"ActBuyingListToPayView" sender:self];
+        if (item.isAccepted) {
+          
+          ListItem *item = [currentItems objectAtIndex:row];
+          [self kassAddToModelDict:@"BuyerPayViewController":item.acceptedOffer.toJson];          
+          [self performSegueWithIdentifier:@"ActBuyingListToPayView" sender:self];
+          
         } else {
             [self performSegueWithIdentifier:@"ActBuyingListToOffers" sender:self];
         }

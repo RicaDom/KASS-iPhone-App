@@ -39,6 +39,7 @@
 - (id) initWithData:(NSData *) theData;
 
 ///////////////// model helper methods ////////////
+- (BOOL) isAccepted;
 - (BOOL) hasOfferer:(User *)user;
 - (Offer *) getOfferFromOfferer:(User *)user;
 

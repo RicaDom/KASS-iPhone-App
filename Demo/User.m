@@ -54,12 +54,11 @@
     [_delegate accountDidGetOfferMessages:dict];
 }
 
-- (void)acceptOffer:(NSDictionary *)dict:(NSString *)modelId
+- (void)acceptOffer:(NSString *)modelId;
 {
-  DLog(@"User::acceptOffer:id=%@,dict=%@", modelId, dict);
+  DLog(@"User::acceptOffer:id=%@", modelId);
   KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"acceptOfferFinished:"];
-  [ka acceptOffer:dict:modelId];
-  
+  [ka acceptOffer:nil:modelId];
 }
 
 - (void)acceptOfferFinished:(NSData *)data

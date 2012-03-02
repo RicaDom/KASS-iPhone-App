@@ -66,6 +66,8 @@
 		77899CA614C6AF4D00C6484B /* listings.json in Resources */ = {isa = PBXBuildFile; fileRef = 77899C4414C67EAE00C6484B /* listings.json */; };
 		77899CB114C70CD900C6484B /* myListings.json in Resources */ = {isa = PBXBuildFile; fileRef = 77899CB014C70CD900C6484B /* myListings.json */; };
 		77899CB214C70CD900C6484B /* myListings.json in Resources */ = {isa = PBXBuildFile; fileRef = 77899CB014C70CD900C6484B /* myListings.json */; };
+		7789C24F14FFC45800388247 /* UIViewController+KeyboardSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 7789C24E14FFC45800388247 /* UIViewController+KeyboardSlider.m */; };
+		7789C25615005A2F00388247 /* KeyboardSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 7789C25515005A2F00388247 /* KeyboardSlider.m */; };
 		77A195BB14FF5A050058C34F /* china-hangzhou.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 77A195BA14FF5A040058C34F /* china-hangzhou.gpx */; };
 		77A195C314FF6DF60058C34F /* ListItem+ListItemHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A195C214FF6DF60058C34F /* ListItem+ListItemHelper.m */; };
 		77A195C614FF7D710058C34F /* Offer+OfferHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A195C514FF7D710058C34F /* Offer+OfferHelper.m */; };
@@ -277,6 +279,10 @@
 		77899CA014C68E5100C6484B /* OCMockRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockRecorder.h; sourceTree = "<group>"; };
 		77899CA114C68E5100C6484B /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = Libraries/libOCMock.a; sourceTree = "<group>"; };
 		77899CB014C70CD900C6484B /* myListings.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = myListings.json; path = Resources/myListings.json; sourceTree = "<group>"; };
+		7789C24D14FFC45800388247 /* UIViewController+KeyboardSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; path = "UIViewController+KeyboardSlider.h"; sourceTree = "<group>"; };
+		7789C24E14FFC45800388247 /* UIViewController+KeyboardSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+KeyboardSlider.m"; sourceTree = "<group>"; };
+		7789C25415005A2F00388247 /* KeyboardSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardSlider.h; sourceTree = "<group>"; };
+		7789C25515005A2F00388247 /* KeyboardSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardSlider.m; sourceTree = "<group>"; };
 		77A195BA14FF5A040058C34F /* china-hangzhou.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "china-hangzhou.gpx"; sourceTree = "<group>"; };
 		77A195C114FF6DF60058C34F /* ListItem+ListItemHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ListItem+ListItemHelper.h"; sourceTree = "<group>"; };
 		77A195C214FF6DF60058C34F /* ListItem+ListItemHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ListItem+ListItemHelper.m"; sourceTree = "<group>"; };
@@ -707,6 +713,8 @@
 				77E3102114F23E1F000E9567 /* NSString+ModelHelper.m */,
 				77E3102314F240A6000E9567 /* NSNull+ModelHelper.h */,
 				77E3102414F240A6000E9567 /* NSNull+ModelHelper.m */,
+				7789C24D14FFC45800388247 /* UIViewController+KeyboardSlider.h */,
+				7789C24E14FFC45800388247 /* UIViewController+KeyboardSlider.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -994,6 +1002,8 @@
 				E5B3AC6514EA4E6700CD4C67 /* DejalActivityView.m */,
 				E5B3AC7514EBB71D00CD4C67 /* EGORefreshTableHeaderView.h */,
 				E5B3AC7614EBB71E00CD4C67 /* EGORefreshTableHeaderView.m */,
+				7789C25415005A2F00388247 /* KeyboardSlider.h */,
+				7789C25515005A2F00388247 /* KeyboardSlider.m */,
 			);
 			name = ActionLibs;
 			sourceTree = "<group>";
@@ -1254,6 +1264,8 @@
 				77A195C314FF6DF60058C34F /* ListItem+ListItemHelper.m in Sources */,
 				77A195C614FF7D710058C34F /* Offer+OfferHelper.m in Sources */,
 				77A195C914FF80E40058C34F /* BaseHelper.m in Sources */,
+				7789C24F14FFC45800388247 /* UIViewController+KeyboardSlider.m in Sources */,
+				7789C25615005A2F00388247 /* KeyboardSlider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

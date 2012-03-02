@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "VariableStore.h"
 
-@interface UIResponder (VariableStore)
+@interface UIResponder (VariableStore) <AccountActivityDelegate>
 
 - (VariableStore *) kassVS;
 

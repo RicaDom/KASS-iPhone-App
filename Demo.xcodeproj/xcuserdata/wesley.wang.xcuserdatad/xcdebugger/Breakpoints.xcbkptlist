@@ -56,20 +56,6 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "96"
          endingLineNumber = "96"
-         landmarkName = "-prepareForSegue:sender:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Demo/ActivityViewController.m"
-         timestampString = "352361936.3559"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "30"
-         endingLineNumber = "30"
          landmarkName = "@implementation ActivityViewController"
          landmarkType = "3">
       </FileBreakpoint>
@@ -82,9 +68,23 @@
          timestampString = "352361936.3559"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "30"
+         endingLineNumber = "30"
+         landmarkName = "-activityChanged:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/ActivityViewController.m"
+         timestampString = "352361936.3559"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
          startingLineNumber = "32"
          endingLineNumber = "32"
-         landmarkName = "-accountLoginFinished"
+         landmarkName = "-activityChanged:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -364,8 +364,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "39"
          endingLineNumber = "39"
-         landmarkName = "-accountDidGetListings:"
-         landmarkType = "5">
+         landmarkName = "@implementation ActivityViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -434,8 +434,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "48"
          endingLineNumber = "48"
-         landmarkName = "@implementation ActivityViewController"
-         landmarkType = "3">
+         landmarkName = "-accountDidGetOffers:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -868,7 +868,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "95"
          endingLineNumber = "95"
-         landmarkName = "-prepareForSegue:sender:"
+         landmarkName = "-setupArray"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
