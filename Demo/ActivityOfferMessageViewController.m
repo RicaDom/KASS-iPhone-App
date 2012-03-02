@@ -121,7 +121,7 @@
     
     if ([[notification name] isEqualToString:CHANGED_PRICE_NOTIFICATION]) {        
         self.changingPrice.text = (NSString *)[notification object];
-        DLog (@"Successfully received price changed notification! %@", (NSString *)[notification object]);
+        DLog (@"ActivityOfferMessageViewController::receivePriceChangedNotification:%@", (NSString *)[notification object]);
     }
 }
 
