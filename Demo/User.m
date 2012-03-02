@@ -326,14 +326,16 @@
 
 - (void)weiboShare:(ListItem *)listItem
 {
+  DLog(@"User::weiboShare:listItem.baiduMapUrl=%@", [listItem getBaiduMapUrl]);
   NSString* status = [NSString stringWithFormat:@"【街区】》%@ ·【价钱】》%@ ·【期限】》%@ -- %@",
                         listItem.description, listItem.price, listItem.getTimeLeftText, listItem.getUrl];
   
   // statuses/update.json?source=#{@api_key}
-  NSString* updateStatusString = [NSString stringWithFormat:@"statuses/update.json"];
+  NSString* updateStatusString = [NSString stringWithFormat:@"statuses/upload_url_text.json"];
   
   NSMutableDictionary* updateStatusParams = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                          status, @"status",
+                                         @"http://jieqoo.com/images/head_logo.png", @"url",
                                          [SinaWeiBoSDKDemo_APPKey URLEncodedString],@"source",nil];
   wAction = wUpdate;
   WBRequest* wbRequest = [weibo requestWithMethodName:updateStatusString 

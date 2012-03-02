@@ -78,6 +78,7 @@
 		77E3101C14F235EF000E9567 /* ViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E3101B14F235EE000E9567 /* ViewHelper.m */; };
 		77E3102214F23E1F000E9567 /* NSString+ModelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E3102114F23E1F000E9567 /* NSString+ModelHelper.m */; };
 		77E3102514F240A6000E9567 /* NSNull+ModelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E3102414F240A6000E9567 /* NSNull+ModelHelper.m */; };
+		77E766AD1500D75200A4E0D0 /* CustomImageViewPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E766AC1500D75200A4E0D0 /* CustomImageViewPopup.m */; };
 		77E9ACC314CD0AF50089910F /* KassApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E9ACC214CD0AF50089910F /* KassApi.m */; };
 		77EA15A414DA1EBC00E6E45A /* china-chengdu.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 77EA15A314DA1EBC00E6E45A /* china-chengdu.gpx */; };
 		77F0279C14C5BC100065EDAA /* ListItemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F0279B14C5BC100065EDAA /* ListItemTest.m */; };
@@ -302,6 +303,8 @@
 		77E3102114F23E1F000E9567 /* NSString+ModelHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ModelHelper.m"; sourceTree = "<group>"; };
 		77E3102314F240A6000E9567 /* NSNull+ModelHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNull+ModelHelper.h"; sourceTree = "<group>"; };
 		77E3102414F240A6000E9567 /* NSNull+ModelHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNull+ModelHelper.m"; sourceTree = "<group>"; };
+		77E766AB1500D75200A4E0D0 /* CustomImageViewPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomImageViewPopup.h; sourceTree = "<group>"; };
+		77E766AC1500D75200A4E0D0 /* CustomImageViewPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomImageViewPopup.m; sourceTree = "<group>"; };
 		77E9ACC114CD0AF50089910F /* KassApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KassApi.h; sourceTree = "<group>"; };
 		77E9ACC214CD0AF50089910F /* KassApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KassApi.m; sourceTree = "<group>"; };
 		77EA15A314DA1EBC00E6E45A /* china-chengdu.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "china-chengdu.gpx"; sourceTree = "<group>"; };
@@ -1011,6 +1014,8 @@
 		E5B3AC6C14EB981400CD4C67 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				77E766AB1500D75200A4E0D0 /* CustomImageViewPopup.h */,
+				77E766AC1500D75200A4E0D0 /* CustomImageViewPopup.m */,
 				E5D7C4AC14B53C3F00E29463 /* AppScrollView.h */,
 				E5D7C4AD14B53C3F00E29463 /* AppScrollView.m */,
 				E5129DC914D3D59100FEE0BF /* TPKeyboardAvoidingScrollView.h */,
@@ -1266,6 +1271,7 @@
 				77A195C914FF80E40058C34F /* BaseHelper.m in Sources */,
 				7789C24F14FFC45800388247 /* UIViewController+KeyboardSlider.m in Sources */,
 				7789C25615005A2F00388247 /* KeyboardSlider.m in Sources */,
+				77E766AD1500D75200A4E0D0 /* CustomImageViewPopup.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

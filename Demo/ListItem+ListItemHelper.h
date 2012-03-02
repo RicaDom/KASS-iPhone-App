@@ -17,5 +17,6 @@
 - (NSString *) getDistanceFromLocationText:(CLLocation *)loc;
 - (NSString *) getPriceText;
 - (NSString *) getUrl;
+- (NSString *) getBaiduMapUrl;
 
 @end

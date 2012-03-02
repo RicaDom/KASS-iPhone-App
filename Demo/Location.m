@@ -29,4 +29,9 @@
   return [[CLLocation alloc] initWithLatitude:[_latitude doubleValue]longitude:[_longitude doubleValue]];
 }
 
+- (NSString *) toString
+{
+  return [[NSString alloc] initWithFormat:@"%@,%@", _longitude, _latitude];
+}
+
 @end
