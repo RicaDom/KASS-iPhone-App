@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ListItem.h"
+#import "ListItem+ListItemHelper.h"
 #import "Offer.h"
 #import "Offers.h"
 #import "Message.h"

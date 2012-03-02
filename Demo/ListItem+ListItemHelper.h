@@ -7,6 +7,7 @@
 //
 
 #import "ListItem.h"
+#import "BaseHelper.h"
 
 @interface ListItem (ListItemHelper)
 
@@ -14,6 +15,6 @@
 - (NSString *) getTimeLeftText;
 - (NSString *) getTimeLeftTextlong;
 - (NSString *) getDistanceFromLocationText:(CLLocation *)loc;
-- (NSString *) getTimeFromNowText:(NSDate *)fromDate:(NSDate *)toDate;
+- (NSString *) getPriceText;
 
 @end

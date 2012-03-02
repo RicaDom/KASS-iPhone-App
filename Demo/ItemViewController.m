@@ -93,10 +93,10 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
-    self.itemTitle.text = self.currentItem.title;
-    self.itemDescription.text = self.currentItem.description;
-    self.itemPrice.text =[NSString stringWithFormat:@"%@", self.currentItem.askPrice];
-    self.itemExpiredDate.text = @"TODO 7 天";
+  self.itemTitle.text = self.currentItem.title;
+  self.itemDescription.text = self.currentItem.description;
+  self.itemPrice.text = [self.currentItem getPriceText];
+  self.itemExpiredDate.text = [self.currentItem getTimeLeftTextlong];
     
     [super viewDidLoad];
     UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]
@@ -270,32 +270,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"offerCell";
-    OfferTableCell *cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+  static NSString *CellIdentifier = @"offerCell";
+  OfferTableCell *cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
-    if (cell == nil) {
-        cell = [[OfferTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
+  if (cell == nil) {
+      cell = [[OfferTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+  }
+  
+  [cell buildCellByOffer:[self.offers objectAtIndex:indexPath.row]];
     
-    UIImage *rowBackground = [UIImage imageNamed:@"middleRow.png"];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:rowBackground];
-    cell.backgroundView = imageView;
-    
-    UIImage *selectedBackground = [UIImage imageNamed:@"middleRowSelected.png"];
-    UIImageView *selectedImageView = [[UIImageView alloc] initWithImage:selectedBackground];
-    cell.selectedBackgroundView = selectedImageView;
-    
-    // Configure the cell...
-    Offer *offer = [self.offers objectAtIndex:indexPath.row];
-
-    //cell.price.text = [offer.price stringValue];
-
-    NSString *priceText =  [NSString stringWithFormat:@"%@ 元", [offer.price stringValue]];
-    cell.price.text = priceText;
-
-    cell.distance.text = [offer.distance stringValue];
-    cell.title.text = offer.lastMessage.body;
-    return cell;
+  return cell;
 }
 
 #pragma mark - Table view delegate

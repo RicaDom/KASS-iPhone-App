@@ -90,9 +90,10 @@
     
     self.listingTitle.text = self.currentOffer.title;
     self.listingDescription.text = self.currentOffer.description;
-    self.offerPrice.text = [NSString stringWithFormat:@"%@ 元", [self.currentOffer.price stringValue]]; 
-    self.listingExpiredDate.text = @"TODO 7 Days";
-    self.changingPrice.text = [self.currentOffer.price stringValue];
+    self.listingExpiredDate.text = [self.currentOffer getListItemTimeLeftTextlong];
+  
+    self.offerPrice.text = [self.currentOffer getPriceText]; 
+    self.changingPrice.text = [self.currentOffer getPriceText]; 
     
     self.pull = [[PullToRefreshView alloc] initWithScrollView:self.scrollView];
     [self.pull setDelegate:self];

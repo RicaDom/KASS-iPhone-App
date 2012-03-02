@@ -23,4 +23,21 @@
     return self;
 }
 
+- (void)buildCellByOffer:(Offer *)offer
+{
+  UIImage *rowBackground = [UIImage imageNamed:@"middleRow.png"];
+  UIImageView *imageView = [[UIImageView alloc] initWithImage:rowBackground];
+  self.backgroundView = imageView;
+  
+  UIImage *selectedBackground = [UIImage imageNamed:@"middleRowSelected.png"];
+  UIImageView *selectedImageView = [[UIImageView alloc] initWithImage:selectedBackground];
+  self.selectedBackgroundView = selectedImageView;
+
+  NSString *priceText =  [NSString stringWithFormat:@"%@ 元", [offer.price stringValue]];
+  self.price.text = priceText;
+  
+  self.distance.text = [offer.distance stringValue];
+  self.title.text = offer.lastMessage.body;
+}
+
 @end

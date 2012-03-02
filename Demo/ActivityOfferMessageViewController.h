@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PullToRefreshView.h"
 #import "ListItem.h"
-#import "Offer.h"
+#import "Offer+OfferHelper.h"
 #import "Message.h"
 #import "VariableStore.h"
 #import "AccountActivityDelegate.h"

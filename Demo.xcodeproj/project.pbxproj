@@ -68,6 +68,8 @@
 		77899CB214C70CD900C6484B /* myListings.json in Resources */ = {isa = PBXBuildFile; fileRef = 77899CB014C70CD900C6484B /* myListings.json */; };
 		77A195BB14FF5A050058C34F /* china-hangzhou.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 77A195BA14FF5A040058C34F /* china-hangzhou.gpx */; };
 		77A195C314FF6DF60058C34F /* ListItem+ListItemHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A195C214FF6DF60058C34F /* ListItem+ListItemHelper.m */; };
+		77A195C614FF7D710058C34F /* Offer+OfferHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A195C514FF7D710058C34F /* Offer+OfferHelper.m */; };
+		77A195C914FF80E40058C34F /* BaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A195C814FF80E40058C34F /* BaseHelper.m */; };
 		77CD5FC514CA52780013B510 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CD5FC214CA52780013B510 /* Constants.m */; };
 		77CD5FC614CA52780013B510 /* VariableStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CD5FC414CA52780013B510 /* VariableStore.m */; };
 		77E3101914F20C60000E9567 /* UIResponder+VariableStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E3101814F20C60000E9567 /* UIResponder+VariableStore.m */; };
@@ -278,6 +280,10 @@
 		77A195BA14FF5A040058C34F /* china-hangzhou.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "china-hangzhou.gpx"; sourceTree = "<group>"; };
 		77A195C114FF6DF60058C34F /* ListItem+ListItemHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ListItem+ListItemHelper.h"; sourceTree = "<group>"; };
 		77A195C214FF6DF60058C34F /* ListItem+ListItemHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ListItem+ListItemHelper.m"; sourceTree = "<group>"; };
+		77A195C414FF7D710058C34F /* Offer+OfferHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Offer+OfferHelper.h"; sourceTree = "<group>"; };
+		77A195C514FF7D710058C34F /* Offer+OfferHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Offer+OfferHelper.m"; sourceTree = "<group>"; };
+		77A195C714FF80E40058C34F /* BaseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseHelper.h; sourceTree = "<group>"; };
+		77A195C814FF80E40058C34F /* BaseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseHelper.m; sourceTree = "<group>"; };
 		77CD5FC114CA52780013B510 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		77CD5FC214CA52780013B510 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		77CD5FC314CA52780013B510 /* VariableStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VariableStore.h; sourceTree = "<group>"; };
@@ -676,6 +682,10 @@
 				77E3101B14F235EE000E9567 /* ViewHelper.m */,
 				77A195C114FF6DF60058C34F /* ListItem+ListItemHelper.h */,
 				77A195C214FF6DF60058C34F /* ListItem+ListItemHelper.m */,
+				77A195C414FF7D710058C34F /* Offer+OfferHelper.h */,
+				77A195C514FF7D710058C34F /* Offer+OfferHelper.m */,
+				77A195C714FF80E40058C34F /* BaseHelper.h */,
+				77A195C814FF80E40058C34F /* BaseHelper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -1242,6 +1252,8 @@
 				77E3102214F23E1F000E9567 /* NSString+ModelHelper.m in Sources */,
 				77E3102514F240A6000E9567 /* NSNull+ModelHelper.m in Sources */,
 				77A195C314FF6DF60058C34F /* ListItem+ListItemHelper.m in Sources */,
+				77A195C614FF7D710058C34F /* Offer+OfferHelper.m in Sources */,
+				77A195C914FF80E40058C34F /* BaseHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
