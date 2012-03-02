@@ -34,4 +34,5 @@
 @property (strong, nonatomic) PullToRefreshView *pull;
 
 - (IBAction)navigationButtonAction:(id)sender;
+
 @end
