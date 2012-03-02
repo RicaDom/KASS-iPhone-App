@@ -10,6 +10,7 @@
 #import "NSData+Crypto.h"
 #import "NSString+Crypto.h"
 #import "SFHFKeychainUtils.h"
+#import "ListItem+ListItemHelper.h"
 
 @implementation User
 
@@ -314,6 +315,7 @@
   NSMutableDictionary* showUserparams = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  [SinaWeiBoSDKDemo_APPKey URLEncodedString],@"source",nil];
   
+  wAction = wLogin;
   WBRequest* wbRequest = [weibo requestWithMethodName:showUserString 
                   andParams:showUserparams 
                  andHttpMethod:@"GET" 
@@ -322,17 +324,70 @@
   DLog(@"User::weiboDidLogin:wbRequestUserInfo:%@", wbRequest);
 }
 
+- (void)weiboShare:(ListItem *)listItem
+{
+  DLog(@"User::weiboShare:listItem.baiduMapUrl=%@", [listItem getBaiduMapUrl]);
+  NSString* status = [NSString stringWithFormat:@"【街区】》%@ ·【价钱】》%@ ·【期限】》%@ -- %@",
+                        listItem.description, listItem.price, listItem.getTimeLeftText, listItem.getUrl];
+  
+  // statuses/update.json?source=#{@api_key}
+  NSString* updateStatusString = [NSString stringWithFormat:@"statuses/upload_url_text.json"];
+  
+  NSMutableDictionary* updateStatusParams = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                         status, @"status",
+                                         @"http://jieqoo.com/images/head_logo.png", @"url",
+                                         [SinaWeiBoSDKDemo_APPKey URLEncodedString],@"source",nil];
+  wAction = wUpdate;
+  WBRequest* wbRequest = [weibo requestWithMethodName:updateStatusString 
+                                            andParams:updateStatusParams 
+                                        andHttpMethod:@"POST" 
+                                          andDelegate:self];
+  
+  DLog(@"User::weiboShare:wbRequestUserInfo:%@", wbRequest);
+}
+
+- (void)weiboDidShare
+{
+  DLog(@"User::weiboDidShare");
+  if( [_delegate respondsToSelector:@selector(accountWeiboShareFinished)] )
+    [_delegate accountWeiboShareFinished];
+}
+
+- (BOOL)isShareResult:(id)result
+{
+  return [result isKindOfClass:[NSDictionary class]] && [result objectForKey:@"id"];
+}
+
+- (BOOL)isLoginResult:(id)result
+{
+  return [result isKindOfClass:[NSDictionary class]] && [result objectForKey:@"screen_name"] && [result objectForKey:@"id"];
+}
+
+- (void)request:(WBRequest *)request didFailWithError:(NSError *)error
+{
+  DLog(@"User::didFailWithError:request=%@,error=%@", request.url, error);
+}
 
 //Received weibo request result
 - (void)request:(WBRequest *)request didLoad:(id)result
 {
-  DLog(@"User::didLoad:result=%@", result);
+  DLog(@"User::didLoad:request=%@,result=%@", request.url, result);
+  WeiboAction mAction = wAction;
+  wAction = wIdle; 
   
-  if( [result isKindOfClass:[NSDictionary class]] && [result objectForKey:@"screen_name"] && [result objectForKey:@"id"]){
-    [self accountWeiboLogin:result];
+  if( mAction == wLogin) {
+    if( [self isLoginResult:result] ){
+      [self accountWeiboLogin:result];
+    }else{
+      [self logout];
+    }
   }
-  else{
-    [self logout];
+  else if ( mAction == wUpdate ){
+    if( [self isShareResult:result] ){
+      [self weiboDidShare];
+    }else{
+      
+    }
   }
 }
 

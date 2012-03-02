@@ -17,5 +17,6 @@
 
 - (id) initWithDictionary:(NSDictionary *) theDictionary;
 - (CLLocation *) toCLLocation;
+- (NSString *) toString;
 
 @end

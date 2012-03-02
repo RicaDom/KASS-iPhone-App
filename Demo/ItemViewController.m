@@ -201,6 +201,12 @@
     [popupQuery showInView:self.view];
 }
 
+- (void) accountWeiboShareFinished
+{
+  DLog(@"ItemViewController::accountWeiboShareFinished");
+  
+}
+
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (actionSheet.tag == 1) {
         DLog(@"Action sheet tag 1");
@@ -221,6 +227,9 @@
         DLog(@"Action sheet tag 2 index %d", buttonIndex);
         if (buttonIndex == 0) {
             
+          //share weibo
+          [[self currentUser] weiboShare:_currentItem];
+          
             //self.label.text = @"Destructive Button Clicked";
         } else if (buttonIndex == 1) {
             
