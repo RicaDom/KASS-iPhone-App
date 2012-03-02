@@ -12,9 +12,16 @@
 #import "Account.h"
 #import "AccountActivityDelegate.h"
 
+typedef enum {
+  wUpdate,
+  wLogin,
+  wIdle
+} WeiboAction ;
+
 @interface User : NSObject<WBSessionDelegate,WBSendViewDelegate,WBRequestDelegate, AccountSessionDelegate>{
   WeiBo *weibo;
   Account *account;
+  WeiboAction wAction;
 }
 
 @property (nonatomic,assign) id<AccountActivityDelegate> delegate;
@@ -29,6 +36,9 @@
 - (void) weiboLogin;
 - (void) accountLogin:(NSString *)email:(NSString *)password;
 - (void) logout;
+
+- (void)weiboShare:(ListItem *)listItem;
+- (void)weiboDidShare;
 
 - (void)createListing:(NSDictionary *)dict;
 - (void)createListingFinished:(NSData *)data;

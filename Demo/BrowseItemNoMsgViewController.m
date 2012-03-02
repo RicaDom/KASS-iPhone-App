@@ -178,9 +178,18 @@
     }
 }
 
+- (void) accountWeiboShareFinished
+{
+  DLog(@"BrowseItemNoMsgViewController::accountWeiboShareFinished");
+  
+}
+
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {
-        //self.label.text = @"Destructive Button Clicked";
+       
+      //share weibo
+      [[self currentUser] weiboShare:_currentItem];
+      
     } else if (buttonIndex == 1) {
         //self.label.text = @"Other Button 1 Clicked";
     } else if (buttonIndex == 2) {
@@ -189,53 +198,6 @@
         //self.label.text = @"Cancel Button Clicked";
     }
 }
-
-/* Keyboard avoiding start */
-
-//method to move the view up/down whenever the keyboard is shown/dismissed
-//-(void)setViewMovedUp:(BOOL)movedUp
-//{
-//    [UIView beginAnimations:nil context:NULL];
-//    [UIView setAnimationDuration:0.5]; // if you want to slide up the view
-//    
-//    CGRect rect = self.mainView.frame;
-//    
-//    if (movedUp){
-//        // 1. move the view's origin up so that the text field that will be hidden come above the keyboard 
-//        // 2. increase the size of the view so that the area behind the keyboard is covered up.
-//        rect.origin.y -= (_keyboardRect.size.height - self.tabBarController.tabBar.frame.size.height);
-//        rect.size.height += _keyboardRect.size.height;
-//        self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_CANCEL;
-//        self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_SEND;
-//    }else{
-//        // revert back to the normal state.
-//        rect.origin.y += (_keyboardRect.size.height - self.tabBarController.tabBar.frame.size.height);
-//        rect.size.height -= _keyboardRect.size.height;
-//        self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_BACK;
-//        self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_MAP;
-//    }
-//    self.mainView.frame = rect;
-//    
-//    // use the above if else will not work
-//    if (movedUp) {
-//        CGRect scrollViewRect = self.scrollView.frame;
-//        
-//        scrollViewRect.origin.y -= self.tabBarController.tabBar.frame.size.height;
-//        scrollViewRect.size.height = rect.size.height - _keyboardRect.size.height*2; 
-//        
-//        self.scrollView.frame = scrollViewRect;
-//    } else {
-//        CGRect scrollViewRect = self.scrollView.frame;
-//        
-//        scrollViewRect.origin.y = 0;
-//        scrollViewRect.size.height = rect.size.height - self.buttomView.frame.size.height;
-//        
-//        self.scrollView.frame = scrollViewRect;        
-//    }
-//    
-//    [UIView commitAnimations];
-//    //    DLog(@"After: (%f, %f, %f, %f) ", scrollViewRect.origin.x, scrollViewRect.origin.y, scrollViewRect.size.width, scrollViewRect.size.height );
-//}
 
 -(void)textFieldDidBeginEditing:(UITextField *)sender
 {

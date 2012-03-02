@@ -26,6 +26,10 @@
   return [[NSString alloc] initWithFormat:@"还有 %@", [self getTimeLeftText]];
 }
 
+- (NSString *) getUrl
+{
+  return [[NSString alloc] initWithFormat:@"http://%s/browse/%@", HOST, self.dbId];
+}
 
 - (NSString *) getDistanceFromLocationText:(CLLocation *)loc
 {

@@ -16,5 +16,6 @@
 - (NSString *) getTimeLeftTextlong;
 - (NSString *) getDistanceFromLocationText:(CLLocation *)loc;
 - (NSString *) getPriceText;
+- (NSString *) getUrl;
 
 @end

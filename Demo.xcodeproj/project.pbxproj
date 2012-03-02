@@ -279,7 +279,7 @@
 		77899CA014C68E5100C6484B /* OCMockRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockRecorder.h; sourceTree = "<group>"; };
 		77899CA114C68E5100C6484B /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = Libraries/libOCMock.a; sourceTree = "<group>"; };
 		77899CB014C70CD900C6484B /* myListings.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = myListings.json; path = Resources/myListings.json; sourceTree = "<group>"; };
-		7789C24D14FFC45800388247 /* UIViewController+KeyboardSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; path = "UIViewController+KeyboardSlider.h"; sourceTree = "<group>"; };
+		7789C24D14FFC45800388247 /* UIViewController+KeyboardSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+KeyboardSlider.h"; sourceTree = "<group>"; };
 		7789C24E14FFC45800388247 /* UIViewController+KeyboardSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+KeyboardSlider.m"; sourceTree = "<group>"; };
 		7789C25415005A2F00388247 /* KeyboardSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardSlider.h; sourceTree = "<group>"; };
 		7789C25515005A2F00388247 /* KeyboardSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardSlider.m; sourceTree = "<group>"; };

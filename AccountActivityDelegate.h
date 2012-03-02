@@ -26,5 +26,6 @@
 - (void)accountRequestStarted;
 
 - (void)accountLoginFinished;
+- (void)accountWeiboShareFinished;
 
 @end
