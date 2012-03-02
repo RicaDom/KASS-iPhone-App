@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "UIViewController+ActivityIndicate.h"
 #import "VariableStore.h"
+#import "ActivityViewController.h"
+#import "CustomImageViewPopup.h"
 
 @interface MainTabBarViewController : UITabBarController <UIAlertViewDelegate, UITabBarControllerDelegate>
 

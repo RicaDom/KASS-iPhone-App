@@ -19,6 +19,7 @@
 // Current Posting Process Cache
 @property (strong, nonatomic) ListItem *currentPostingItem;
 @property (strong, nonatomic) NSDictionary *expiredTime;
+@property (strong, nonatomic) NSDictionary *durationToServerDic;
 
 #pragma mark - Testing Array -
 @property (strong, nonatomic) NSMutableArray *allListings;
@@ -33,6 +34,8 @@
 @property (strong, nonatomic) LocateMeManager *locateMeManager;
 
 @property (strong, nonatomic) NSMutableDictionary *modelDict;
+
+@property (strong, nonatomic) UITabBarController *mainTabBar;
 
 + (VariableStore *) sharedInstance;
 - (void) clearCurrentPostingItem;

@@ -15,6 +15,7 @@
 @synthesize emptyRecordsImageView = _emptyRecordsImageView;
 @synthesize listingsTableView = _listingsTableView;
 @synthesize messageFromOfferView = _messageFromOfferView;
+@synthesize activitySegment = _activitySegment;
 
 NSMutableArray *currentItems;
 
@@ -48,7 +49,7 @@ NSMutableArray *currentItems;
 - (void)reloadTable
 {
   DLog(@"ActivityViewController::reloadTable");
-  if ( 0 == activitySegment.selectedSegmentIndex) {
+  if ( 0 == self.activitySegment.selectedSegmentIndex) {
     currentItems = [VariableStore sharedInstance].myBuyingListings;
   } else {
     currentItems = [VariableStore sharedInstance].mySellingListings;
@@ -83,7 +84,7 @@ NSMutableArray *currentItems;
 -(void)setupArray{
   [self showLoadingIndicator];
   VariableStore.sharedInstance.user.delegate = self;
-  if ( 0 == activitySegment.selectedSegmentIndex) {
+  if ( 0 == self.activitySegment.selectedSegmentIndex) {
     [VariableStore.sharedInstance.user getListings]; 
   } else {
     [VariableStore.sharedInstance.user getOffers];
@@ -167,7 +168,7 @@ NSMutableArray *currentItems;
 
 - (void)viewDidUnload
 {
-    activitySegment = nil;
+    self.activitySegment = nil;
     [self setEmptyRecordsImageView:nil];
     [self setListingsTableView:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OFFER_TO_PAY_VIEW_NOTIFICATION object:nil];
@@ -255,7 +256,7 @@ NSMutableArray *currentItems;
     // customize table cell listing view
     
     // my buying list
-    if ( 0 == activitySegment.selectedSegmentIndex ) {
+    if ( 0 == self.activitySegment.selectedSegmentIndex ) {
         ListItem *item = [currentItems objectAtIndex:row];
         cell.title.text = item.title;
         cell.subTitle.text = item.description;
@@ -316,7 +317,7 @@ NSMutableArray *currentItems;
      */
     
     // Buying list segue
-    if ( 0 == activitySegment.selectedSegmentIndex) {
+    if ( 0 == self.activitySegment.selectedSegmentIndex) {
         int row = [indexPath row];
         ListItem *item = [currentItems objectAtIndex:row];
 //        item.acceptedPrice = [NSDecimalNumber decimalNumberWithDecimal:
@@ -338,25 +339,6 @@ NSMutableArray *currentItems;
 // Reloading data
 - (void)refresh {
     [self performSelector:@selector(setupArray) withObject:nil afterDelay:2.0];
-}
-
-
--(void)offerMessageToPayPage{
-    DLog(@"BrowseTableViewController::offerMessageToPayPage");
-    DLog(@"BrowseTableViewController::offerMessageToPayPage");
-    DLog(@"BrowseTableViewController::offerMessageToPayPage");
-    DLog(@"BrowseTableViewController::offerMessageToPayPage");
-    DLog(@"BrowseTableViewController::offerMessageToPayPage");
-    DLog(@"BrowseTableViewController::offerMessageToPayPage");
-    DLog(@"BrowseTableViewController::offerMessageToPayPage");
-    DLog(@"BrowseTableViewController::offerMessageToPayPage");
-    DLog(@"BrowseTableViewController::offerMessageToPayPage");
-    DLog(@"BrowseTableViewController::offerMessageToPayPage");
-    DLog(@"BrowseTableViewController::offerMessageToPayPage");
-    DLog(@"BrowseTableViewController::offerMessageToPayPage");
-    DLog(@"BrowseTableViewController::offerMessageToPayPage");
-    DLog(@"BrowseTableViewController::offerMessageToPayPage");
-    DLog(@"BrowseTableViewController::offerMessageToPayPage");
 }
 
 @end

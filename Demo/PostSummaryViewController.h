@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "VariableStore.h"
+#import "NSString+ModelHelper.h"
 
 @interface PostSummaryViewController : UIViewController <LocateMeDelegate, AccountActivityDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *postTitle;

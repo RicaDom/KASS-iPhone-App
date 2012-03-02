@@ -12,6 +12,7 @@
 
 @synthesize currentPostingItem = _currentPostingItem;
 @synthesize expiredTime = _expiredTime;
+@synthesize durationToServerDic = _durationToServerDic;
 
 @synthesize allListings = _allListings;
 @synthesize myBuyingListings = _myBuyingListings;
@@ -24,6 +25,7 @@
 @synthesize priceBrowseListings = _priceBrowseListings;
 
 @synthesize modelDict = _modelDict;
+@synthesize mainTabBar = _mainTabBar;
 
 + (VariableStore *) sharedInstance {
     // the instance of this class is stored here
@@ -166,5 +168,20 @@
                         [NSNumber numberWithInt:518400], @"6 天",
                         [NSNumber numberWithInt:604800], @"7 天",
                         nil];
+    
+    self.durationToServerDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                @"0h", [NSNumber numberWithInt:0], 
+                                @"1h", [NSNumber numberWithInt:3600],
+                                @"2h", [NSNumber numberWithInt:7200],
+                                @"6h", [NSNumber numberWithInt:21600], 
+                                @"12h",[NSNumber numberWithInt:43200], 
+                                @"24h",[NSNumber numberWithInt:86400],
+                                @"2d", [NSNumber numberWithInt:172800],
+                                @"3d", [NSNumber numberWithInt:259200],
+                                @"4d", [NSNumber numberWithInt:345600],
+                                @"5d", [NSNumber numberWithInt:432000], 
+                                @"6d", [NSNumber numberWithInt:518400], 
+                                @"7d", [NSNumber numberWithInt:604800],
+                                nil];
 }
 @end

@@ -118,28 +118,49 @@
   ListItem *listItem = [[ListItem alloc] initWithDictionary:dict];
   [[VariableStore sharedInstance].allListings addObject:listItem];
   [[VariableStore sharedInstance] clearCurrentPostingItem];
+
   [self.presentingViewController dismissModalViewControllerAnimated:YES];
-  
-  //show success popup!! TODO
+  [[NSNotificationCenter defaultCenter] postNotificationName: NEW_POST_NOTIFICATION 
+														object: nil];
 }
 
 - (IBAction)submitAction {
+    
+  // TODO
+  // IF IT"S AN UPDATE
+//    if ([self.postType isEqualToString:POST_TYPE_EDITING] && [[VariableStore sharedInstance].currentPostingItem.dbId length] > 0) {
+//        // UPDATE
+//    }
+    
+    
   DLog(@"PostSummaryViewController::(IBAction)submitAction:postingItem: \n");
   NSString *latlng = [NSString stringWithFormat:@"%+.6f,%+.6f", 
                       VariableStore.sharedInstance.location.coordinate.latitude, 
                       VariableStore.sharedInstance.location.coordinate.longitude]; 
-  
+    
+  DLog(@"Duration Dic: %@", [VariableStore sharedInstance].durationToServerDic);
+  NSString * durationStr = 
+    (NSString *)[[VariableStore sharedInstance].durationToServerDic objectForKey:(NSNumber *)[VariableStore sharedInstance].currentPostingItem.postDuration];
+
+  if ([durationStr length] <= 0) {
+     // TODO
+     // Error Message
+     DLog(@"Failed to get duration... \nlocal duration=%@", [VariableStore sharedInstance].currentPostingItem.postDuration);
+     DLog(@"server duration=%@", durationStr);   
+  }
+    
   DLog(@"title=%@", [VariableStore sharedInstance].currentPostingItem.title);
   DLog(@"description=%@", [VariableStore sharedInstance].currentPostingItem.description);
   DLog(@"price=%@", [VariableStore sharedInstance].currentPostingItem.askPrice);
-  DLog(@"duration=%@", [VariableStore sharedInstance].currentPostingItem.postDuration);
+  DLog(@"local duration=%@", [VariableStore sharedInstance].currentPostingItem.postDuration);
+  DLog(@"server duration=%@", [durationStr class]);    
   DLog(@"latlng=%@", latlng);
   
   NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  [VariableStore sharedInstance].currentPostingItem.title, @"title",
                                  [VariableStore sharedInstance].currentPostingItem.description, @"description",
                                  [VariableStore sharedInstance].currentPostingItem.askPrice, @"price",
-                                 [VariableStore sharedInstance].currentPostingItem.postDuration, @"time",
+                                 durationStr, @"time",
                                  latlng, @"latlng",nil];
   
   // submit listing

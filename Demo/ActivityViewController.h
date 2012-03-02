@@ -20,16 +20,13 @@
 #import "BuyerPayViewController.h"
 
 @interface ActivityViewController : PullRefreshTableViewController <AccountActivityDelegate>
-{
-    __weak IBOutlet UISegmentedControl *activitySegment;
-}
 
-- (IBAction)activityChanged:(id)sender;
-
+@property (strong, nonatomic) IBOutlet UISegmentedControl *activitySegment;
 @property (strong, nonatomic) IBOutlet UIImageView *emptyRecordsImageView;
 @property (weak, nonatomic) IBOutlet UITableView *listingsTableView;
 @property (strong, nonatomic) Offer *messageFromOfferView;
 
+- (IBAction)activityChanged:(id)sender;
 - (void)setupArray;
 - (void)reloadTable;
 - (void)getBuyingItems:(NSDictionary *)dict;

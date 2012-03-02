@@ -53,4 +53,9 @@ extern NSString * const OFFER_STATE_IDLE;
 // NSNotification Center
 extern NSString * const CHANGED_PRICE_NOTIFICATION;
 extern NSString * const OFFER_TO_PAY_VIEW_NOTIFICATION;
+extern NSString * const NEW_POST_NOTIFICATION;
+
+// Popup image
+extern NSString * const POPUP_IMAGE_NEW_POST_SUCCESS;
+
 @end

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "VariableStore.h"
 #import "PostSummaryViewController.h"
+#import "BaseHelper.h"
 
 @interface PostFlowSetDateViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIPickerView *PostDurationPicker;
