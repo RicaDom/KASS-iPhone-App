@@ -41,6 +41,7 @@
 - (void) clearCurrentPostingItem;
 - (void) initExpiredTime;
 - (void) initListingsData;
+- (void) appendPostingItemToListings:(NSDictionary *)dict;
 
 - (BOOL) isLoggedIn;
 - (BOOL) signInAccount:(NSString *)email:(NSString *)password;

@@ -50,7 +50,6 @@
 {
   [super viewDidLoad];
   self.navigationController.navigationBar.tintColor = [UIColor brownColor];
-//  [VariableStore sharedInstance].user.delegate = self;
 }
 
 - (void)welcomeMessage

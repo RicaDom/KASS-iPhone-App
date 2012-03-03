@@ -18,5 +18,6 @@
 - (void) kassRemoveFromModelDict;
 
 - (User *) currentUser;
+- (ListItem *) postingItem;
 
 @end

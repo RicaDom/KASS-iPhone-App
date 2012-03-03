@@ -40,6 +40,7 @@
 
 ///////////////// model helper methods ////////////
 - (BOOL) isAccepted;
+- (BOOL) isPersisted;
 - (BOOL) hasOfferer:(User *)user;
 - (Offer *) getOfferFromOfferer:(User *)user;
 

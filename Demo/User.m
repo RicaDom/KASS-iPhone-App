@@ -87,6 +87,23 @@
     [_delegate accountDidCreateOfferMessage:dict];
 }
 
+- (void)modifyListing:(NSDictionary *)dict:(NSString *)modelId
+{
+  DLog(@"User::modifyListing:id=%@,dict=%@", modelId, dict);
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"modifyListingFinished:"];
+  [ka modifyListing:dict:modelId];
+}
+
+- (void)modifyListingFinished:(NSData *)data
+{
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"User::modifyListingFinished:dict");
+  
+  if( [_delegate respondsToSelector:@selector(accountDidModifyListing:)] )
+    [_delegate accountDidModifyListing:dict];
+}
+
+
 - (void)modifyOffer:(NSDictionary *)dict:(NSString *)modelId
 {
   DLog(@"User::modifyOffer:id=%@,dict=%@", modelId, dict);

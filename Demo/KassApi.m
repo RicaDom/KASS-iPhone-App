@@ -123,6 +123,13 @@
   }
 }
 
+- (void)modifyListing:(NSDictionary *)dict:(NSString *)modelId
+{
+  DLog(@"KassApi::modifyListing:id=%@,dict=%@", modelId, dict);
+  _url = [NSString stringWithFormat:@"http://%s/v1/listings/%@", HOST, modelId];
+  [self putData:_url:dict];  
+}
+
 - (void)modifyOffer:(NSDictionary *)dict:(NSString *)modelId
 {
   DLog(@"KassApi::modifyOffer:id=%@,dict=%@", modelId, dict);

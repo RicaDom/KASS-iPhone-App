@@ -21,7 +21,7 @@ NSMutableArray *currentItems;
 - (IBAction)activityChanged:(id)sender {
   DLog(@"ActivityViewController::(IBAction)activityChanged");
   if ( [[VariableStore sharedInstance].myBuyingListings count] == 0 || [[VariableStore sharedInstance].mySellingListings count] == 0) {
-    [self setupArray];
+    [self loadDataSource];
   }else{
     [self reloadTable];
   }
@@ -30,7 +30,7 @@ NSMutableArray *currentItems;
 - (void) accountLoginFinished
 {
   DLog(@"ActivityViewController::accountLoginFinished");
-  [self setupArray];
+  [self loadDataSource];
 }
 
 - (void) accountDidGetListings:(NSDictionary *)dict
@@ -80,13 +80,14 @@ NSMutableArray *currentItems;
   [self reloadTable];
 }
 
--(void)setupArray{
+-(void)loadDataSource{
+  if (![[self kassVS] isLoggedIn]) { return; }
+  
   [self showLoadingIndicator];
-  VariableStore.sharedInstance.user.delegate = self;
   if ( 0 == self.activitySegment.selectedSegmentIndex) {
-    [VariableStore.sharedInstance.user getListings]; 
+    [self.currentUser getListings]; 
   } else {
-    [VariableStore.sharedInstance.user getOffers];
+    [self.currentUser getOffers];
   }
 }
 
@@ -137,11 +138,9 @@ NSMutableArray *currentItems;
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  [self loadDataSource];
   
   self.navigationController.navigationBar.tintColor = [UIColor brownColor];  
-  if ( ![VariableStore sharedInstance].user.delegate ) {
-    [VariableStore sharedInstance].user.delegate = self;
-  }
   
   [[NSNotificationCenter defaultCenter] addObserver:self
                                         selector:@selector(receivedFromOfferViewNotification:) 
@@ -341,7 +340,7 @@ NSMutableArray *currentItems;
 
 // Reloading data
 - (void)refresh {
-    [self performSelector:@selector(setupArray) withObject:nil afterDelay:2.0];
+    [self performSelector:@selector(loadDataSource) withObject:nil afterDelay:2.0];
 }
 
 @end

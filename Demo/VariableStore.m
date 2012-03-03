@@ -117,6 +117,17 @@
   return [myModelDict objectForKey:modelName];
 }
 
+- (void)appendPostingItemToListings:(NSDictionary *)dict
+{
+  ListItem *listItem = [[ListItem alloc] initWithDictionary:dict];
+  [self.allListings addObject:listItem];
+  [self clearCurrentPostingItem];
+}
+
+
+
+
+
 //Loading sample data, for TESTING ONLY!
 - (void) initListingsData {
     ListItem *item = [ListItem new];

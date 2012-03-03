@@ -26,7 +26,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *listingsTableView;
 
 - (IBAction)activityChanged:(id)sender;
-- (void)setupArray;
+- (void)loadDataSource;
 - (void)reloadTable;
 - (void)getBuyingItems:(NSDictionary *)dict;
 - (void)getSellingItems:(NSDictionary *)dict;

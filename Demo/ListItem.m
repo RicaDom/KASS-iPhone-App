@@ -103,6 +103,11 @@
   return self.acceptedPrice != nil && self.acceptedPrice > 0;
 }
 
+- (BOOL) isPersisted
+{
+  return [self.dbId length] > 0;
+}
+
 - (Offer *) getOfferFromOfferer:(User *)user
 {
   return [self.offers objectAtIndex:[self.offererIds indexOfObject:user.userId]];

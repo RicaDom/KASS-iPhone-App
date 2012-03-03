@@ -39,4 +39,9 @@
   return [self kassVS].user;
 }
 
+- (ListItem *) postingItem
+{
+  return [self kassVS].currentPostingItem;
+}
+
 @end

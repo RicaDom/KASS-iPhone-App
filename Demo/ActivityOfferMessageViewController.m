@@ -78,8 +78,7 @@
 {
   DLog(@"ActivityOfferMessageViewController::loadingOffer");
   [self showLoadingIndicator];
-  VariableStore.sharedInstance.user.delegate = self;
-  [VariableStore.sharedInstance.user getOffer:self.currentOffer.dbId];
+  [self.currentUser getOffer:self.currentOffer.dbId];
 }
 
 
