@@ -27,6 +27,8 @@
 @synthesize modelDict = _modelDict;
 @synthesize mainTabBar = _mainTabBar;
 
+@synthesize currentViewControllerDelegate = _currentViewControllerDelegate;
+
 + (VariableStore *) sharedInstance {
     // the instance of this class is stored here
     static VariableStore *myInstance;

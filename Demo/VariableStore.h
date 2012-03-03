@@ -37,6 +37,8 @@
 
 @property (strong, nonatomic) UITabBarController *mainTabBar;
 
+@property (nonatomic,assign) id<AccountActivityDelegate> currentViewControllerDelegate;
+
 + (VariableStore *) sharedInstance;
 - (void) clearCurrentPostingItem;
 - (void) initExpiredTime;

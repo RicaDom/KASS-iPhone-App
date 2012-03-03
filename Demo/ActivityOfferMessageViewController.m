@@ -69,12 +69,20 @@
   DLog(@"ActivityOfferMessageViewController::accountDidGetOffer:dict=%@", dict);
   NSDictionary *offer = [dict objectForKey:@"offer"];
   _currentOffer = [[Offer alloc]initWithDictionary:offer];
+  
+  self.listingTitle.text = self.currentOffer.title;
+  self.listingDescription.text = self.currentOffer.description;
+  self.listingExpiredDate.text = [self.currentOffer getListItemTimeLeftTextlong];
+  
+  self.offerPrice.text = [self.currentOffer getPriceText]; 
+  self.changingPrice.text = [self.currentOffer getPriceText]; 
+  
   [self loadMessageView];
   [self hideIndicator];
   [self stopLoading];
 }
 
-- (void)loadOffer
+- (void)loadDataSource
 {
   DLog(@"ActivityOfferMessageViewController::loadingOffer");
   [self showLoadingIndicator];
@@ -87,18 +95,10 @@
 {
     [super viewDidLoad];
     
-    self.listingTitle.text = self.currentOffer.title;
-    self.listingDescription.text = self.currentOffer.description;
-    self.listingExpiredDate.text = [self.currentOffer getListItemTimeLeftTextlong];
-  
-    self.offerPrice.text = [self.currentOffer getPriceText]; 
-    self.changingPrice.text = [self.currentOffer getPriceText]; 
-    
     self.pull = [[PullToRefreshView alloc] initWithScrollView:self.scrollView];
     [self.pull setDelegate:self];
     [self.scrollView addSubview:self.pull];
     
-    [self loadOffer];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receivePriceChangedNotification:) 
                                                  name:CHANGED_PRICE_NOTIFICATION

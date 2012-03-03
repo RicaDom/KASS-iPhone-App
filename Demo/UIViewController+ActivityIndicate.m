@@ -39,6 +39,13 @@
   [self showLoadingIndicator];
 }
 
+//this ensures you have a delegate
+- (void)viewWillAppear:(BOOL)animated
+{
+  DLog(@"UIViewController (ActivityIndicate)::viewWillAppear:currentViewController=%@", self);
+  VariableStore.sharedInstance.currentViewControllerDelegate = self;
+}
+
 - (void)viewDidLoad
 {
 // this was to make sure that the indicator hides when it should

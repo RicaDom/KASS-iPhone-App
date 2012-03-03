@@ -15,8 +15,9 @@
 #import "AccountActivityDelegate.h"
 #import "OfferChangingPriceViewController.h"
 #import "UIResponder+VariableStore.h"
+#import "DataSourceViewController.h"
 
-@interface ActivityOfferMessageViewController : UIViewController <UIScrollViewDelegate, PullToRefreshViewDelegate, AccountActivityDelegate>
+@interface ActivityOfferMessageViewController : DataSourceViewController <UIScrollViewDelegate, PullToRefreshViewDelegate, AccountActivityDelegate>
 {
     CGRect _keyboardRect; // for keyboard avoiding
 }
@@ -24,7 +25,6 @@
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) PullToRefreshView *pull;
-//@property (strong, nonatomic) ListItem *currentItem;
 @property (strong, nonatomic) Offer *currentOffer;
 @property (strong, nonatomic) IBOutlet UILabel *listingTitle;
 @property (strong, nonatomic) IBOutlet UILabel *listingDescription;

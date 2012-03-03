@@ -11,6 +11,7 @@
 #import "NSString+Crypto.h"
 #import "SFHFKeychainUtils.h"
 #import "ListItem+ListItemHelper.h"
+#import "VariableStore.h"
 
 @implementation User
 
@@ -284,6 +285,11 @@
 {
   DLog(@"User::accountDidLogin:username=%@,delegate=%@", account.userName, _delegate);
 
+  if(!_delegate){
+    _delegate = [VariableStore sharedInstance].currentViewControllerDelegate;
+    DLog(@"User::accountDidLogin:currentViewControllerDelegate=%@", _delegate);
+  }
+  
   _userId = account.userDbId;
   _name   = account.userName;
   _email  = account.email;
