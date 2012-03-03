@@ -63,6 +63,15 @@
     [super viewDidLoad];
     [self loadCurrentPostingData];
     [self.priceTextField becomeFirstResponder];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(UITextFieldTextDidChangeNotification:) name:UITextFieldTextDidChangeNotification object:nil];
+    
+    int intValue = [self.priceTextField.text intValue];
+    if (self.priceTextField.text.length > 0 
+        && intValue > 0
+        && [[NSString stringWithFormat:@"%d",intValue] isEqualToString:self.priceTextField.text]) {
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+    } 
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -74,6 +83,8 @@
 {
     [self setPriceTextField:nil];
     [super viewDidUnload];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:nil];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -84,4 +95,16 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)UITextFieldTextDidChangeNotification:(NSNotification *)notification {
+    if ([notification object] == self.priceTextField) {
+        int intValue = [self.priceTextField.text intValue];
+        if (self.priceTextField.text.length > 0 
+            && intValue > 0
+            && [[NSString stringWithFormat:@"%d",intValue] isEqualToString:self.priceTextField.text]) {
+            self.navigationItem.rightBarButtonItem.enabled = YES;
+        } else {
+            self.navigationItem.rightBarButtonItem.enabled = NO;
+        }
+    }
+}
 @end

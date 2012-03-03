@@ -81,6 +81,11 @@ NSArray *arrayTimePicker;
         return [(NSNumber *)obj1 compare:(NSNumber *)obj2];
     }];
     [self loadCurrentPostingData];
+    
+    if ([self.PostDurationPicker selectedRowInComponent:0] != 0) {
+       self.navigationItem.rightBarButtonItem.enabled = YES; 
+    }
+    
 }
 
 - (void)viewDidUnload
@@ -124,7 +129,14 @@ NSArray *arrayTimePicker;
 
 - (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
 	self.PostDurationLabel.text = [arrayTimePicker objectAtIndex:row];
-	NSLog(@"Selected Color: %@. Index of selected color: %i", [arrayTimePicker objectAtIndex:row], row);
+	DLog(@"Selected Color: %@. Index of selected color: %i", [arrayTimePicker objectAtIndex:row], row);
+    if (0 == row) {
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+    } else {
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+    }
 }
+
+
 
 @end

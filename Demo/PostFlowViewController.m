@@ -77,6 +77,12 @@
         [self.navigationController pushViewController:
          [self.storyboard instantiateViewControllerWithIdentifier:@"Post Summary"] animated:NO];
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(UITextFieldTextDidChangeNotification:) name:UITextFieldTextDidChangeNotification object:nil];
+    
+    if (self.titleTextField.text.length > 0) {
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+    }
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -91,6 +97,7 @@
     [self setTitleTextField:nil];
     [self setDescriptionTextField:nil];
     [super viewDidUnload];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:nil];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -105,4 +112,15 @@
     [self.titleTextField resignFirstResponder];
     [self.presentingViewController dismissModalViewControllerAnimated:YES];
 }
+
+- (void)UITextFieldTextDidChangeNotification:(NSNotification *)notification {
+    if ([notification object] == self.titleTextField) {
+        if (self.titleTextField.text.length > 0) {
+            self.navigationItem.rightBarButtonItem.enabled = YES;
+        } else {
+            self.navigationItem.rightBarButtonItem.enabled = NO;
+        }
+    }
+}
+
 @end
