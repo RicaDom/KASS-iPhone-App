@@ -131,6 +131,7 @@
 		E5A4894914DFAD5300501EE2 /* middleRow.png in Resources */ = {isa = PBXBuildFile; fileRef = E5A4893C14DFAD5300501EE2 /* middleRow.png */; };
 		E5A4894A14DFAD5300501EE2 /* middleRowSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = E5A4893D14DFAD5300501EE2 /* middleRowSelected.png */; };
 		E5A4895414DFC27400501EE2 /* ListingTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A4895314DFC27400501EE2 /* ListingTableCell.m */; };
+		E5A9FBB6150310C600AC5F0E /* PostTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9FBB5150310C600AC5F0E /* PostTemplate.m */; };
 		E5B2E09114E0EA0B007AB372 /* tableHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B2E09014E0EA0B007AB372 /* tableHeader.png */; };
 		E5B2E09814E0F2CB007AB372 /* PullRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B2E09714E0F2CB007AB372 /* PullRefreshTableViewController.m */; };
 		E5B2E09A14E0F3D8007AB372 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B2E09914E0F3D8007AB372 /* arrow.png */; };
@@ -391,6 +392,8 @@
 		E5A4893D14DFAD5300501EE2 /* middleRowSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = middleRowSelected.png; sourceTree = "<group>"; };
 		E5A4895214DFC27400501EE2 /* ListingTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListingTableCell.h; path = ../ListingTableCell.h; sourceTree = "<group>"; };
 		E5A4895314DFC27400501EE2 /* ListingTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListingTableCell.m; path = ../ListingTableCell.m; sourceTree = "<group>"; };
+		E5A9FBB4150310C600AC5F0E /* PostTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostTemplate.h; sourceTree = "<group>"; };
+		E5A9FBB5150310C600AC5F0E /* PostTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostTemplate.m; sourceTree = "<group>"; };
 		E5B2E09014E0EA0B007AB372 /* tableHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableHeader.png; sourceTree = "<group>"; };
 		E5B2E09614E0F2CB007AB372 /* PullRefreshTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullRefreshTableViewController.h; sourceTree = "<group>"; };
 		E5B2E09714E0F2CB007AB372 /* PullRefreshTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullRefreshTableViewController.m; sourceTree = "<group>"; };
@@ -1015,6 +1018,8 @@
 				E57EDB1E14D7EA0F0026D186 /* User.m */,
 				77458EE014EBC2E100B19F50 /* Offers.h */,
 				77458EE114EBC2E100B19F50 /* Offers.m */,
+				E5A9FBB4150310C600AC5F0E /* PostTemplate.h */,
+				E5A9FBB5150310C600AC5F0E /* PostTemplate.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1300,6 +1305,7 @@
 				77E766BA1501C05F00A4E0D0 /* DataSource.m in Sources */,
 				77E766BD1501C68400A4E0D0 /* DataSourceManager.m in Sources */,
 				77E766C61502352F00A4E0D0 /* DataSourceViewController.m in Sources */,
+				E5A9FBB6150310C600AC5F0E /* PostTemplate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
