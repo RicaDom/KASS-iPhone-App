@@ -57,27 +57,19 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {   
-   [super viewDidLoad];
-    //[self.mainTabBar setBackgroundColor:[UIColor redColor]];
-   //[self.tabBarController.tabBar setBackgroundImage:[UIImage imageNamed:@"tabbar2.png"]];  
-    //UITabBar *tabBar= self.mainTabBar;
-    //[self.mainTabBar setBackgroundImage:[UIImage imageNamed:@"tabbar2.png"]];  
-//    if ([self.mainTabBar respondsToSelector:@selector(setBackgroundImage:)]) {
-//        // set it just for this instance
-//        //[tabBar setBackgroundImage:[UIImage imageNamed:@"tabbar2.png"]];
-//        [self.mainTabBar setBackgroundImage:[UIImage imageNamed:@"tabbar2.png"]];  
-//    }
-   [VariableStore sharedInstance].mainTabBar = self;
+  DLog(@"MainTabBarViewController::viewDidLoad ");
+ [super viewDidLoad];
 
-   NSLog(@"MainTabBarViewController::viewDidAppear ");
-   if ( ![[VariableStore sharedInstance] isLoggedIn]) {
-       [MTPopupWindow showWindowWithUIView:self.view];
-   }
-   
-   [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(receivePriceChangedNotification:) 
-                                                 name:NEW_POST_NOTIFICATION
-                                               object:nil];
+ [VariableStore sharedInstance].mainTabBar = self;
+
+ if ( ![[VariableStore sharedInstance] isLoggedIn]) {
+     [MTPopupWindow showWindowWithUIView:self.view];
+ }
+ 
+ [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(receivePriceChangedNotification:) 
+                                               name:NEW_POST_NOTIFICATION
+                                             object:nil];
 
 }
 
@@ -88,11 +80,8 @@
     // as well.
     
     if ([[notification name] isEqualToString:NEW_POST_NOTIFICATION]) {        
-        DLog (@"Successfully received NEW_POST_NOTIFICATION!");
+        DLog (@"MainTabBarViewController::receivePriceChangedNotification");
         self.selectedIndex = 0;
-        UINavigationController *nc = (UINavigationController *)self.selectedViewController;
-        ActivityViewController *avc = (ActivityViewController *)nc.topViewController;
-//        avc.setupArray;
         CustomImageViewPopup *pop = [[CustomImageViewPopup alloc] initWithType:POPUP_IMAGE_NEW_POST_SUCCESS];
         [self.view addSubview: pop];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{

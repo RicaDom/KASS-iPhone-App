@@ -13,6 +13,7 @@
 @synthesize currentPostingItem = _currentPostingItem;
 @synthesize expiredTime = _expiredTime;
 @synthesize durationToServerDic = _durationToServerDic;
+@synthesize postTemplatesDict = _postTemplatesDict;
 
 @synthesize allListings = _allListings;
 @synthesize myBuyingListings = _myBuyingListings;
@@ -39,17 +40,18 @@
             myInstance  = [[[self class] alloc] init];
             // initialize variables here
             myInstance.currentPostingItem = [[ListItem alloc] init];
-            [myInstance initExpiredTime];
             
             myInstance.allListings = [[NSMutableArray alloc] init];
             myInstance.mySellingListings = [[NSMutableArray alloc] init];
             myInstance.myBuyingListings = [[NSMutableArray alloc] init];
-            [myInstance initListingsData];
           
             myInstance.user = [[User alloc] init];
             myInstance.locateMeManager = [[LocateMeManager alloc] init];
           
             myInstance.modelDict = [[NSMutableDictionary alloc] init];
+          
+            myInstance.durationToServerDic = [[NSMutableDictionary alloc] init];
+            myInstance.expiredTime = [[NSMutableDictionary alloc] init];
             
 //            myInstance.recentBrowseListings = [[NSMutableArray alloc] init];
 //            myInstance.nearBrowseListings = [[NSMutableArray alloc] init];
@@ -113,10 +115,10 @@
 
 - (NSDictionary *) getModelDict:(NSString *)controller:(NSString *)modelName
 {  
-  DLog(@"VariableStore:getModelDict:controller=%@,modelName=%@", controller, modelName);
+  DLog(@"VariableStore::getModelDict:controller=%@,modelName=%@", controller, modelName);
   NSDictionary *myModelDict = [_modelDict objectForKey:controller];
   NSDictionary *dict = [myModelDict objectForKey:@"errors"];
-  DLog(@"VariableStore:getModelDict:dictForError=%@", dict);
+  DLog(@"VariableStore::getModelDict:dictForError=%@", dict);
   if ( dict ) { return dict; } 
   return [myModelDict objectForKey:modelName];
 }
@@ -128,75 +130,26 @@
   [self clearCurrentPostingItem];
 }
 
-
-
-
-
-//Loading sample data, for TESTING ONLY!
-- (void) initListingsData {
-    ListItem *item = [ListItem new];
-    
-    item = [ListItem new];
-    [item setTitle:@"求购2012年东方卫视跨年演唱会门票"];
-    [item setDescription:@"听说有很多明星，阵容强大啊，求门票啊~~ 听说有很多明星，阵容强大啊，求门票啊~~ 听说有很多明星，阵容强大啊，求门票啊~~"];
-    item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
-                     [[NSNumber numberWithFloat:89.75f] decimalValue]];
-    
-    NSDateComponents *comps = [[NSDateComponents alloc] init];
-    [comps setDay:22];
-    [comps setMonth:1];
-    [comps setYear:2012];
-    item.postedDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
-
-    item.postDuration = [NSNumber numberWithInt:172800];
-    [self.allListings addObject:item];
-    
-    item = [ListItem new];
-    [item setTitle:@"什么都不想吃了……给我找辆车让我回家吧"];
-    [item setDescription:@"什么都不想吃了……给我找辆车让我回家吧 什么都不想吃了……给我找辆车让我回家吧 什么都不想吃了……给我找辆车让我回家吧"];
-    
-    [comps setDay:29];
-    [comps setMonth:1];
-    [comps setYear:2012];
-    item.postedDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
-    
-    item.postDuration = [NSNumber numberWithInt:43200];
-    item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
-                     [[NSNumber numberWithFloat:18.55f] decimalValue]];
-    
-    [self.allListings addObject:item];
+- (void)storeSettings:(NSDictionary *)dict
+{
+  DLog(@"VariableStore::storeSettings:dict");
+  
+  // save to variable store
+  NSDictionary *settings = [dict objectForKey:@"settings"];
+  NSDictionary *duration = [settings objectForKey:@"duration"];
+  
+  NSDictionary *secToString = [duration objectForKey:@"sec_string"];
+  NSDictionary *secToText   = [duration objectForKey:@"sec_text"];
+  
+  for (id key in secToString) {
+    [self.durationToServerDic setObject:[secToString objectForKey:key] forKey:[NSNumber numberWithInt:[key intValue]]];
+  }
+  
+  for (id key in secToText) {
+    [self.expiredTime setObject:[NSNumber numberWithInt:[key intValue]] forKey:[secToText objectForKey:key]];
+  }
+  
+  self.postTemplatesDict = [settings objectForKey:@"post_templates"];
 }
 
-- (void) initExpiredTime {
-    // convert to seconds
-    self.expiredTime = [[NSDictionary alloc] initWithObjectsAndKeys:
-                        [NSNumber numberWithInt:0], @"选择时间",
-                        [NSNumber numberWithInt:3600], @"1 小时",
-                        [NSNumber numberWithInt:7200], @"2 小时",
-                        [NSNumber numberWithInt:21600], @"6 小时", 
-                        [NSNumber numberWithInt:43200], @"12 小时",
-                        [NSNumber numberWithInt:86400], @"24 小时",
-                        [NSNumber numberWithInt:172800], @"2 天",
-                        [NSNumber numberWithInt:259200], @"3 天",
-                        [NSNumber numberWithInt:345600], @"4 天",
-                        [NSNumber numberWithInt:432000], @"5 天",
-                        [NSNumber numberWithInt:518400], @"6 天",
-                        [NSNumber numberWithInt:604800], @"7 天",
-                        nil];
-    
-    self.durationToServerDic = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                @"0h", [NSNumber numberWithInt:0], 
-                                @"1h", [NSNumber numberWithInt:3600],
-                                @"2h", [NSNumber numberWithInt:7200],
-                                @"6h", [NSNumber numberWithInt:21600], 
-                                @"12h",[NSNumber numberWithInt:43200], 
-                                @"24h",[NSNumber numberWithInt:86400],
-                                @"2d", [NSNumber numberWithInt:172800],
-                                @"3d", [NSNumber numberWithInt:259200],
-                                @"4d", [NSNumber numberWithInt:345600],
-                                @"5d", [NSNumber numberWithInt:432000], 
-                                @"6d", [NSNumber numberWithInt:518400], 
-                                @"7d", [NSNumber numberWithInt:604800],
-                                nil];
-}
 @end

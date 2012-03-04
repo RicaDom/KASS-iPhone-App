@@ -16,4 +16,6 @@
 @property (strong, nonatomic) NSString *picPath;
 @property (strong, nonatomic) ListItem *listItem;
 
+- (id) initWithDictionaryAndCategory:(NSDictionary *)theDict:(NSString *)category;
+
 @end
