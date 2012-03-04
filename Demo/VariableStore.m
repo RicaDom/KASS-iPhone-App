@@ -103,7 +103,7 @@
 - (void) addToModelDict:(NSString *)controller:(NSDictionary *)model
 {
   [_modelDict setObject:model forKey:controller];
-  DLog(@"modeldict=%@", _modelDict);
+  DLog(@"VariableStore:addToModelDict:modelDict=%@", _modelDict);
 }
 
 - (void) removeFromModelDict:(NSString *)controller
@@ -113,9 +113,10 @@
 
 - (NSDictionary *) getModelDict:(NSString *)controller:(NSString *)modelName
 {  
+  DLog(@"VariableStore:getModelDict:controller=%@,modelName=%@", controller, modelName);
   NSDictionary *myModelDict = [_modelDict objectForKey:controller];
   NSDictionary *dict = [myModelDict objectForKey:@"errors"];
-  DLog(@"dict=%@", dict);
+  DLog(@"VariableStore:getModelDict:dictForError=%@", dict);
   if ( dict ) { return dict; } 
   return [myModelDict objectForKey:modelName];
 }
