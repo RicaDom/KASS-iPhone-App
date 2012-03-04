@@ -16,6 +16,9 @@
 
 extern NSString * const POST_TYPE_TEMPLATE;
 extern NSString * const POST_TYPE_EDITING;
+extern NSString * const POST_TEMPLATE_CATEGORY_POPULAR;
+extern NSString * const POST_TEMPLATE_CATEGORY_EDITOR;
+extern NSString * const POST_TEMPLATE_CATEGORY_CREATIVE;
 
 // UI BUTTON LABEL
 extern NSString * const UI_BUTTON_LABEL_BACK;
