@@ -18,6 +18,48 @@
 
 NSMutableArray *currentItems;
 
+#pragma mark -
+#pragma mark Data Source Loading / Reloading Methods
+
+- (void)reloadTableViewDataSource{	
+	//  should be calling your tableviews data source model to reload
+	//  put here just for demo
+	_reloading = YES;	
+}
+
+- (void)doneLoadingTableViewData{	
+	//  model should call this when its done loading
+	_reloading = NO;
+	[_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];	
+}
+#pragma mark -
+#pragma mark UIScrollViewDelegate Methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{		
+	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{	
+	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];	
+}
+
+
+#pragma mark -
+#pragma mark EGORefreshTableHeaderDelegate Methods
+
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
+	[self reloadTableViewDataSource];
+    [self performSelector:@selector(loadDataSource) withObject:nil afterDelay:1.0];
+}
+
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{	
+	return _reloading; // should return if data source model is reloading	
+}
+
+- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{	
+	return [NSDate date]; // should return date data source was last changed	
+}
+
 - (IBAction)activityChanged:(id)sender {
   DLog(@"ActivityViewController::(IBAction)activityChanged");
   if ( [[VariableStore sharedInstance].myBuyingListings count] == 0 || [[VariableStore sharedInstance].mySellingListings count] == 0) {
@@ -65,7 +107,8 @@ NSMutableArray *currentItems;
   }
   
   [self.tableView reloadData];
-  [self stopLoading];
+  //[self stopLoading];
+  [self doneLoadingTableViewData];
   [self hideIndicator];
 }
 
@@ -158,6 +201,16 @@ NSMutableArray *currentItems;
                                         selector:@selector(receivedFromOfferViewNotification:) 
                                         name:OFFER_TO_PAY_VIEW_NOTIFICATION
                                         object:nil];
+    
+    if (_refreshHeaderView == nil) {
+        EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
+        view.delegate = self;
+        [self.tableView addSubview:view];
+        _refreshHeaderView = view;
+    }
+	
+	//  update the last update date
+	[_refreshHeaderView refreshLastUpdatedDate];
 }
 
 - (void) receivedFromOfferViewNotification:(NSNotification *) notification
@@ -351,8 +404,8 @@ NSMutableArray *currentItems;
 }
 
 // Reloading data
-- (void)refresh {
-    [self performSelector:@selector(loadDataSource) withObject:nil afterDelay:2.0];
-}
+//- (void)refresh {
+//    [self performSelector:@selector(loadDataSource) withObject:nil afterDelay:2.0];
+//}
 
 @end
