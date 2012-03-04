@@ -44,6 +44,7 @@
 {
   DLog(@"UIViewController (ActivityIndicate)::viewWillAppear:currentViewController=%@", self);
   VariableStore.sharedInstance.currentViewControllerDelegate = self;
+  self.kassVS.user.delegate = self;
 }
 
 - (void)viewDidLoad

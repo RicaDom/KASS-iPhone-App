@@ -113,7 +113,7 @@
     twitterButton.frame = CGRectMake(80.0, 90.0, 160.0, 40.0);
     [twitterButton setTitle:UI_BUTTON_LABEL_TWITTER_SIGNIN forState:UIControlStateNormal];
     [twitterButton setTitleColor: [UIColor orangeColor] forState: UIControlStateNormal];
-    [twitterButton addTarget:self action:@selector(loginWithTwitter) forControlEvents:UIControlEventTouchUpInside];
+    [twitterButton addTarget:self action:@selector(loginWithWeibo) forControlEvents:UIControlEventTouchUpInside];
     [self.bigPanelView addSubview:twitterButton];
     
     UILabel *notTwitterMessage = [[UILabel alloc] init];
@@ -226,9 +226,9 @@
 /**
  * Login with Weibo trigger function
  */
--(void)loginWithTwitter
+-(void)loginWithWeibo
 {
-  NSLog(@"I'm logging with Weibo");
+  NSLog(@"MTPopupWindow::loginWithWeibo");
   [[VariableStore sharedInstance] signInWeibo];
   [[self.bigPanelView viewWithTag: kShadeViewTag] removeFromSuperview];    
   [self performSelector:@selector(closePopupWindowAnimate) withObject:nil afterDelay:0.1];

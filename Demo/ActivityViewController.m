@@ -27,6 +27,12 @@ NSMutableArray *currentItems;
   }
 }
 
+- (void)accountLogoutFinished
+{
+  DLog(@"ActivityViewController::accountLogoutFinished");
+  [self loadDataSource];
+}
+
 - (void) accountLoginFinished
 {
   DLog(@"ActivityViewController::accountLoginFinished");
@@ -81,7 +87,13 @@ NSMutableArray *currentItems;
 }
 
 -(void)loadDataSource{
-  if (![[self kassVS] isLoggedIn]) { return; }
+  if (![[self kassVS] isLoggedIn]) { 
+    if (self.emptyRecordsImageView == nil || self.emptyRecordsImageView.image == nil) {
+      self.emptyRecordsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default.png"]];
+      [self.view addSubview:self.emptyRecordsImageView];
+    }
+    return; 
+  }
   
   [self showLoadingIndicator];
   if ( 0 == self.activitySegment.selectedSegmentIndex) {
@@ -178,16 +190,16 @@ NSMutableArray *currentItems;
 - (void)viewWillAppear:(BOOL)animated
 {
 //  DLog(@"VariableStore=%@,userid=%@",[VariableStore sharedInstance], [VariableStore sharedInstance].user.userId);
-    if ([[VariableStore sharedInstance] isLoggedIn]) {        
-        [self.emptyRecordsImageView removeFromSuperview];
-        self.emptyRecordsImageView = nil;
-        [self reloadTable];
-    } else {
-        if (self.emptyRecordsImageView == nil || self.emptyRecordsImageView.image == nil) {
-            self.emptyRecordsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default.png"]];
-            [self.view addSubview:self.emptyRecordsImageView];
-        }
-    }
+//    if ([[VariableStore sharedInstance] isLoggedIn]) {        
+//        [self.emptyRecordsImageView removeFromSuperview];
+//        self.emptyRecordsImageView = nil;
+//        [self reloadTable];
+//    } else {
+//        if (self.emptyRecordsImageView == nil || self.emptyRecordsImageView.image == nil) {
+//            self.emptyRecordsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default.png"]];
+//            [self.view addSubview:self.emptyRecordsImageView];
+//        }
+//    }
     
     [super viewWillAppear:animated];
 }

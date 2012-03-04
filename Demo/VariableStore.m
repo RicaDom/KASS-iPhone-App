@@ -73,7 +73,9 @@
 - (BOOL) signInAccount:(NSString *)email:(NSString *)password
 {
   DLog(@"VariableStore::signInAccount:email=%@,password=%@",email,password);
-  if(!self.user) self.user = [[User alloc] init];
+  if( !self.user ) self.user = [[User alloc] init];
+  if( !self.user.delegate ) self.user.delegate = _currentViewControllerDelegate;
+  
   [self.user accountLogin:email:password];
   return YES;
 }
@@ -90,7 +92,6 @@
   DLog(@"VariableStore::signOut");
   if ( self.user ) {
     [self.user logout];
-    self.user = nil;
   } 
   return YES;
 }

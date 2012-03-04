@@ -33,6 +33,7 @@ typedef enum {
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *phone;
 
+- (id) initWithDelegate:(id<AccountActivityDelegate>)delegate;
 - (void) weiboLogin;
 - (void) accountLogin:(NSString *)email:(NSString *)password;
 - (void) logout;

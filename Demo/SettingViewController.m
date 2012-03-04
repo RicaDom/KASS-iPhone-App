@@ -31,20 +31,6 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-#pragma mark - View lifecycle
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
-}
-*/
-
-- (void) accountLoginFinished
-{
-  DLog(@"SettingViewController::accountLoginFinished");
-}
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
@@ -52,7 +38,7 @@
   self.navigationController.navigationBar.tintColor = [UIColor brownColor];
 }
 
-- (void)welcomeMessage
+- (void)loadDataSource
 {
     if ([[VariableStore sharedInstance] isLoggedIn] ) {     
         self.authButton.title = UI_BUTTON_LABEL_SIGOUT;
@@ -61,12 +47,25 @@
         self.authButton.title = UI_BUTTON_LABEL_SIGIN;
         self.welcomeMessageLabel.text = @"欢迎来到全世界最帅的KASS！！"; 
     }
+    [self hideIndicator];
+}
+
+- (void) accountLoginFinished
+{
+  DLog(@"SettingViewController::accountLoginFinished");
+  [self loadDataSource];
+}
+
+- (void)accountLogoutFinished
+{
+  DLog(@"SettingViewController::accountLogoutFinished");
+  [self loadDataSource];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self welcomeMessage];
+    [self loadDataSource];
 }
 
 - (void)viewDidUnload
@@ -85,14 +84,10 @@
 }
 
 - (IBAction)authButtonAction:(id)sender {
-    
-    if ([self.authButton.title isEqualToString:UI_BUTTON_LABEL_SIGIN]) {
-      [MTPopupWindow showWindowWithUIView:self.tabBarController.view];
-      self.authButton.title = UI_BUTTON_LABEL_SIGOUT;
-    } else {
-      [[VariableStore sharedInstance] signOut];
-      self.authButton.title = UI_BUTTON_LABEL_SIGIN;
-    }
-    [self welcomeMessage];
+  if ([self.authButton.title isEqualToString:UI_BUTTON_LABEL_SIGIN]) {
+    [MTPopupWindow showWindowWithUIView:self.tabBarController.view];
+  } else {
+    [[VariableStore sharedInstance] signOut];
+  }
 }
 @end
