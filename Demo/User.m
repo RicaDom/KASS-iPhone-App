@@ -11,6 +11,7 @@
 #import "NSString+Crypto.h"
 #import "SFHFKeychainUtils.h"
 #import "ListItem+ListItemHelper.h"
+#import "VariableStore.h"
 
 @implementation User
 
@@ -20,6 +21,14 @@
 @synthesize name = _name;
 @synthesize email = _email;
 @synthesize phone = _phone;
+
+- (id) initWithDelegate:(id<AccountActivityDelegate>)delegate
+{
+  if (self = [super init]) {
+    self.delegate = delegate;
+  }
+  return self;
+}
 
 - (NSString*)stringFromDictionary:(NSDictionary*)info
 {
@@ -86,6 +95,23 @@
   if( [_delegate respondsToSelector:@selector(accountDidCreateOfferMessage:)] )
     [_delegate accountDidCreateOfferMessage:dict];
 }
+
+- (void)modifyListing:(NSDictionary *)dict:(NSString *)modelId
+{
+  DLog(@"User::modifyListing:id=%@,dict=%@", modelId, dict);
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"modifyListingFinished:"];
+  [ka modifyListing:dict:modelId];
+}
+
+- (void)modifyListingFinished:(NSData *)data
+{
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"User::modifyListingFinished:dict");
+  
+  if( [_delegate respondsToSelector:@selector(accountDidModifyListing:)] )
+    [_delegate accountDidModifyListing:dict];
+}
+
 
 - (void)modifyOffer:(NSDictionary *)dict:(NSString *)modelId
 {
@@ -213,7 +239,7 @@
   if (account) {account = nil; }
   account = [[Account alloc]initWithEmailAndPassword:email:password];
   account.delegate = self;
-  DLog(@"User::accountLogin:account=%@", account);
+  DLog(@"User::accountLogin:account=%@,delegate=%@", account, _delegate);
   if( [_delegate respondsToSelector:@selector(accountRequestStarted)] )
     [_delegate accountRequestStarted];
   [account login];
@@ -225,6 +251,7 @@
   account = [[Account alloc]initWithWeiboEncodedData:encode];
   account.delegate = self;
   DLog(@"User::accountWeiboLogin:account=%@", account);
+  
   [account login];
 }
 
@@ -266,7 +293,7 @@
 - (void) accountDidLogin
 {
   DLog(@"User::accountDidLogin:username=%@,delegate=%@", account.userName, _delegate);
-
+  
   _userId = account.userDbId;
   _name   = account.userName;
   _email  = account.email;
@@ -285,7 +312,7 @@
 
 - (void) logout
 {
-  DLog(@"User::logout:weibo=%@,account=%@", self.weibo, self.account);
+  DLog(@"User::logout:weibo=%@,account=%@,delegate=%@", self.weibo, self.account, _delegate);
   if (self.weibo)    { [self.weibo LogOut]; }
   if (self.account)  { [self.account logout]; }
 }
@@ -299,7 +326,9 @@
   
   weibo.delegate = self;
   
-  DLog(@"User::weiboLogin:weibo=%@", weibo);
+  DLog(@"User::weiboLogin:weibo=%@,delegate=%@", weibo, _delegate);
+  if( [_delegate respondsToSelector:@selector(accountRequestStarted)] )
+    [_delegate accountRequestStarted];
   [weibo startAuthorize];
 }
 
@@ -401,9 +430,22 @@
   DLog(@"User::weiboDidLogout");
 }
 
+- (void)clear
+{
+  weibo   = nil;
+  account = nil;
+  self.userId = nil;
+  self.name   = nil;
+  self.email  = nil;
+  self.phone  = nil;
+}
+
 - (void)accountDidLogout
 {
-  DLog(@"User::accountDidLogout");
+  DLog(@"User::accountDidLogout:delegate=%@", _delegate);
+  [self clear];
+  if( [_delegate respondsToSelector:@selector(accountLogoutFinished)] )
+    [_delegate accountLogoutFinished];
 }
 
 ///////////////////////// model helper methods ///////////////////////////////////////

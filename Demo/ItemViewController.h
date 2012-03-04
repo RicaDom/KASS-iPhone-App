@@ -19,14 +19,16 @@
 #import "VariableStore.h"
 #import "AccountActivityDelegate.h"
 #import "PostFlowViewController.h"
+#import "DataSourceViewController.h"
 
-@interface ItemViewController : UIViewController <UIActionSheetDelegate, EGORefreshTableHeaderDelegate, AccountActivityDelegate>{
+@interface ItemViewController : DataSourceViewController <UIActionSheetDelegate, EGORefreshTableHeaderDelegate, AccountActivityDelegate>{
 	
 	EGORefreshTableHeaderView *_refreshHeaderView;
 	
 	//  Reloading var should really be your tableviews datasource
 	//  Putting it here for demo purposes 
 	BOOL _reloading;
+  
 }
 
 

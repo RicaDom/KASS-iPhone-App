@@ -7,6 +7,7 @@
 //
 
 #import "PostSummaryViewController.h"
+#import "UIResponder+VariableStore.h"
 
 @implementation PostSummaryViewController
 @synthesize postTitle = _postTitle;
@@ -115,24 +116,25 @@
 - (void)accountDidCreateListing:(NSDictionary *)dict
 {
   DLog(@"PostSummaryViewController::accountDidCreateListing:dict=%@", dict);
-  ListItem *listItem = [[ListItem alloc] initWithDictionary:dict];
-  [[VariableStore sharedInstance].allListings addObject:listItem];
-  [[VariableStore sharedInstance] clearCurrentPostingItem];
+  [[self kassVS] appendPostingItemToListings:dict];
 
   [self.presentingViewController dismissModalViewControllerAnimated:YES];
   [[NSNotificationCenter defaultCenter] postNotificationName: NEW_POST_NOTIFICATION 
 														object: nil];
 }
 
+- (void)accountDidModifyListing:(NSDictionary *)dict
+{
+  DLog(@"PostSummaryViewController::accountDidModifyListing:dict=%@", dict);
+  [[self kassVS] appendPostingItemToListings:dict];
+  
+  [self.presentingViewController dismissModalViewControllerAnimated:YES];
+  [[NSNotificationCenter defaultCenter] postNotificationName: NEW_POST_NOTIFICATION 
+                                                      object: nil];
+}
+
+
 - (IBAction)submitAction {
-    
-  // TODO
-  // IF IT"S AN UPDATE
-//    if ([self.postType isEqualToString:POST_TYPE_EDITING] && [[VariableStore sharedInstance].currentPostingItem.dbId length] > 0) {
-//        // UPDATE
-//    }
-    
-    
   DLog(@"PostSummaryViewController::(IBAction)submitAction:postingItem: \n");
   NSString *latlng = [NSString stringWithFormat:@"%+.6f,%+.6f", 
                       VariableStore.sharedInstance.location.coordinate.latitude, 
@@ -163,9 +165,12 @@
                                  durationStr, @"time",
                                  latlng, @"latlng",nil];
   
-  // submit listing
-  VariableStore.sharedInstance.user.delegate = self;
-  [VariableStore.sharedInstance.user createListing:params];
+  if ([self.postType isEqualToString:POST_TYPE_EDITING] && self.postingItem.isPersisted) {
+    [self.currentUser modifyListing:params:self.postingItem.dbId];
+  }else{
+    [self.currentUser createListing:params];
+  }
+  
 }
 
 @end

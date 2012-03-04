@@ -101,8 +101,7 @@
     offerId = [[self kassGetModelDict:@"offer"] objectForKey:@"id"];
   }
 
-  VariableStore.sharedInstance.user.delegate = self;
-  [VariableStore.sharedInstance.user getOffer:offerId];
+  [self.currentUser getOffer:offerId];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -190,8 +189,7 @@
       
       // modify listing
       [self showLoadingIndicator];
-      VariableStore.sharedInstance.user.delegate = self;
-      [VariableStore.sharedInstance.user modifyOffer:params:_currentOffer.dbId];
+      [self.currentUser modifyOffer:params:_currentOffer.dbId];
       [self.messageTextField resignFirstResponder];
       [self hideKeyboardAndMoveViewDown];
     }

@@ -170,8 +170,7 @@
                                      self.currentItem.dbId, @"listing_id",nil];
       
       [self showLoadingIndicator];
-      VariableStore.sharedInstance.user.delegate = self;
-      [VariableStore.sharedInstance.user createOffer:params];
+      [self.currentUser createOffer:params];
       [self.messageTextField resignFirstResponder];
       [self hideKeyboardAndMoveViewDown];
       

@@ -116,7 +116,9 @@
 
 - (void)logoutFinished:(NSData *)data;
 {
-  DLog(@"Account::logoutFinished");
+  DLog(@"Account::logoutFinished:delegate=%@",_delegate);
+  if( [_delegate respondsToSelector:@selector(accountDidLogout)] )
+  	[_delegate accountDidLogout];
 }
 
 - (void)logout
@@ -129,9 +131,6 @@
   // also need to logout server
   KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"logoutFinished:"];
   [ka logout];
-  
-  if( [_delegate respondsToSelector:@selector(accountDidLogout)] )
-  	[_delegate accountDidLogout];
 }
 
 - (BOOL)isUserLoggedIn

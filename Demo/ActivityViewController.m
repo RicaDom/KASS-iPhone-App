@@ -21,16 +21,22 @@ NSMutableArray *currentItems;
 - (IBAction)activityChanged:(id)sender {
   DLog(@"ActivityViewController::(IBAction)activityChanged");
   if ( [[VariableStore sharedInstance].myBuyingListings count] == 0 || [[VariableStore sharedInstance].mySellingListings count] == 0) {
-    [self setupArray];
+    [self loadDataSource];
   }else{
     [self reloadTable];
   }
 }
 
+- (void)accountLogoutFinished
+{
+  DLog(@"ActivityViewController::accountLogoutFinished");
+  [self loadDataSource];
+}
+
 - (void) accountLoginFinished
 {
   DLog(@"ActivityViewController::accountLoginFinished");
-  [self setupArray];
+  [self loadDataSource];
 }
 
 - (void) accountDidGetListings:(NSDictionary *)dict
@@ -80,13 +86,20 @@ NSMutableArray *currentItems;
   [self reloadTable];
 }
 
--(void)setupArray{
+-(void)loadDataSource{
+  if (![[self kassVS] isLoggedIn]) { 
+    if (self.emptyRecordsImageView == nil || self.emptyRecordsImageView.image == nil) {
+      self.emptyRecordsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default.png"]];
+      [self.view addSubview:self.emptyRecordsImageView];
+    }
+    return; 
+  }
+  
   [self showLoadingIndicator];
-  VariableStore.sharedInstance.user.delegate = self;
   if ( 0 == self.activitySegment.selectedSegmentIndex) {
-    [VariableStore.sharedInstance.user getListings]; 
+    [self.currentUser getListings]; 
   } else {
-    [VariableStore.sharedInstance.user getOffers];
+    [self.currentUser getOffers];
   }
 }
 
@@ -137,11 +150,9 @@ NSMutableArray *currentItems;
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  [self loadDataSource];
   
   self.navigationController.navigationBar.tintColor = [UIColor brownColor];  
-  if ( ![VariableStore sharedInstance].user.delegate ) {
-    [VariableStore sharedInstance].user.delegate = self;
-  }
   
   [[NSNotificationCenter defaultCenter] addObserver:self
                                         selector:@selector(receivedFromOfferViewNotification:) 
@@ -179,16 +190,16 @@ NSMutableArray *currentItems;
 - (void)viewWillAppear:(BOOL)animated
 {
 //  DLog(@"VariableStore=%@,userid=%@",[VariableStore sharedInstance], [VariableStore sharedInstance].user.userId);
-    if ([[VariableStore sharedInstance] isLoggedIn]) {        
-        [self.emptyRecordsImageView removeFromSuperview];
-        self.emptyRecordsImageView = nil;
-        [self reloadTable];
-    } else {
-        if (self.emptyRecordsImageView == nil || self.emptyRecordsImageView.image == nil) {
-            self.emptyRecordsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default.png"]];
-            [self.view addSubview:self.emptyRecordsImageView];
-        }
-    }
+//    if ([[VariableStore sharedInstance] isLoggedIn]) {        
+//        [self.emptyRecordsImageView removeFromSuperview];
+//        self.emptyRecordsImageView = nil;
+//        [self reloadTable];
+//    } else {
+//        if (self.emptyRecordsImageView == nil || self.emptyRecordsImageView.image == nil) {
+//            self.emptyRecordsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default.png"]];
+//            [self.view addSubview:self.emptyRecordsImageView];
+//        }
+//    }
     
     [super viewWillAppear:animated];
 }
@@ -341,7 +352,7 @@ NSMutableArray *currentItems;
 
 // Reloading data
 - (void)refresh {
-    [self performSelector:@selector(setupArray) withObject:nil afterDelay:2.0];
+    [self performSelector:@selector(loadDataSource) withObject:nil afterDelay:2.0];
 }
 
 @end

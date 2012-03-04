@@ -8,6 +8,7 @@
 
 #import "ItemViewController.h"
 #import "UIViewController+ActivityIndicate.h"
+//#import "UIViewController+DataSource.h"
 
 @implementation ItemViewController
 
@@ -58,11 +59,18 @@
 }
 
 
-- (void) accountDidGetListing:(NSDictionary *)dict{
+- (void) accountDidGetListing:(NSDictionary *)dict
+{
+  DLog(@"ItemViewController::accountDidGetListing:dict=%@", dict);
   NSDictionary *listing = [dict objectForKey:@"listing"];
-  Offers *xoffers = [[Offers alloc] initWithDictionary:listing];
-  DLog(@"ItemViewController::accountDidGetListing:xoffers=%@", xoffers);
-  self.offers = xoffers.offers;
+  self.currentItem = [[ListItem alloc] initWithDictionary:listing];
+  
+  self.itemTitle.text = self.currentItem.title;
+  self.itemDescription.text = self.currentItem.description;
+  self.itemPrice.text = [self.currentItem getPriceText];
+  self.itemExpiredDate.text = [self.currentItem getTimeLeftTextlong];
+  
+  self.offers = [[Offers alloc] initWithDictionary:listing].offers;
   self.offersCount.text = [NSString stringWithFormat:@"%d",[self.offers count]] ;
   [self.offerTableView reloadData];
  
@@ -70,43 +78,34 @@
   [self doneLoadingTableViewData];
 }
 
-- (BOOL) loadingOffers
+- (void) loadDataSource
 {
-  DLog(@"ItemViewController::loadingOffers");
+  DLog(@"ItemViewController::loadDataSource");
   [self showLoadingIndicator];
-  VariableStore.sharedInstance.user.delegate = self;
-  [VariableStore.sharedInstance.user getListing:self.currentItem.dbId];
+  
+  NSString *listItemId = self.currentItem.dbId;
+  
+  if ( !listItemId || [listItemId isBlank] ) {
+    listItemId = [[self kassGetModelDict:@"listItem"] objectForKey:@"id"];
+  }
+  
+  [self.currentUser getListing:listItemId];
 
-  return YES;
 }
-
-#pragma mark - View lifecycle
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
-}
-*/
-
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
-  self.itemTitle.text = self.currentItem.title;
-  self.itemDescription.text = self.currentItem.description;
-  self.itemPrice.text = [self.currentItem getPriceText];
-  self.itemExpiredDate.text = [self.currentItem getTimeLeftTextlong];
+  DLog(@"ItemViewController::viewDidLoad");
+  [super viewDidLoad];
+  
+  UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]
+                              initWithTitle:UI_BUTTON_LABEL_BACK
+                              style:UIBarButtonItemStyleBordered
+                              target:self
+                              action:@selector(OnClick_btnBack:)];
+  self.navigationItem.leftBarButtonItem = btnBack;  
     
-    [super viewDidLoad];
-    UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]
-                                initWithTitle:UI_BUTTON_LABEL_BACK
-                                style:UIBarButtonItemStyleBordered
-                                target:self
-                                action:@selector(OnClick_btnBack:)];
-    self.navigationItem.leftBarButtonItem = btnBack;  
-    
-  if (!self.offers) { [self loadingOffers]; }
     
   if (_refreshHeaderView == nil) {
     EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.offerTableView.bounds.size.height, self.view.frame.size.width, self.offerTableView.bounds.size.height)];
@@ -174,7 +173,7 @@
     [self setItemExpiredDate:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+  // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

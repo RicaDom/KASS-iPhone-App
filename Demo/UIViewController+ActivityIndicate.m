@@ -39,11 +39,20 @@
   [self showLoadingIndicator];
 }
 
+//this ensures you have a delegate
+- (void)viewWillAppear:(BOOL)animated
+{
+  DLog(@"UIViewController (ActivityIndicate)::viewWillAppear:currentViewController=%@", self);
+  VariableStore.sharedInstance.currentViewControllerDelegate = self;
+  self.kassVS.user.delegate = self;
+}
+
 - (void)viewDidLoad
 {
-  DLog(@"UIViewController (ActivityIndicate)::viewDidLoad:delegate=%@", self);
-  if( [self kassVS] && [[self kassVS] isLoggedIn ] )
-    [self currentUser].delegate = self;
+// this was to make sure that the indicator hides when it should
+//  DLog(@"UIViewController (ActivityIndicate)::viewDidLoad:delegate=%@", self);
+//  if( [self kassVS] && [[self kassVS] isLoggedIn ] )
+//    [self currentUser].delegate = self;
 }
 
 @end
