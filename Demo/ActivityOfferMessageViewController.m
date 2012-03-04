@@ -54,7 +54,7 @@
 // called when the user pulls-to-refresh
 - (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view
 {
-  [self performSelector:@selector(loadOffer) withObject:nil afterDelay:2.0];	
+  [self performSelector:@selector(loadDataSource) withObject:nil afterDelay:2.0];	
 }
 
 #pragma mark - View lifecycle

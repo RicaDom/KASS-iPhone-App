@@ -13,7 +13,50 @@
 @synthesize browseSegment = _browseSegment;
 @synthesize listingTableView = _listingTableView;
 @synthesize currentListings = _currentListings;
+@synthesize filteredListContent = _filteredListContent;
 
+
+#pragma mark -
+#pragma mark Data Source Loading / Reloading Methods
+
+- (void)reloadTableViewDataSource{	
+	//  should be calling your tableviews data source model to reload
+	//  put here just for demo
+	_reloading = YES;	
+}
+
+- (void)doneLoadingTableViewData{	
+	//  model should call this when its done loading
+	_reloading = NO;
+	[_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];	
+}
+#pragma mark -
+#pragma mark UIScrollViewDelegate Methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{		
+	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{	
+	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];	
+}
+
+
+#pragma mark -
+#pragma mark EGORefreshTableHeaderDelegate Methods
+
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
+	[self reloadTableViewDataSource];
+    [self performSelector:@selector(setupArray) withObject:nil afterDelay:1.0];
+}
+
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{	
+	return _reloading; // should return if data source model is reloading	
+}
+
+- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{	
+	return [NSDate date]; // should return date data source was last changed	
+}
 
 - (void)reloadTable
 {
@@ -26,7 +69,8 @@
     self.currentListings = [VariableStore sharedInstance].priceBrowseListings;
   }
   [self.tableView reloadData];
-  [self stopLoading];
+  [self doneLoadingTableViewData];
+//  [self stopLoading];
   [self hideIndicator];
 }
 
@@ -139,7 +183,6 @@
 
 }
 
-
 - (void)viewDidLoad
 {
     DLog(@"BrowseTableViewController::viewDidLoad ");
@@ -147,15 +190,23 @@
 
     [self setupArray];
 
-    UIImage *tableHeaderViewImage = [UIImage imageNamed:@"tableHeader.png"];
-    UIImageView *tableHeaderView = [[UIImageView alloc] initWithImage:tableHeaderViewImage];
-    self.listingTableView.tableHeaderView = tableHeaderView;
+//    UIImage *tableHeaderViewImage = [UIImage imageNamed:@"tableHeader.png"];
+//    UIImageView *tableHeaderView = [[UIImageView alloc] initWithImage:tableHeaderViewImage];
+//    self.listingTableView.tableHeaderView = tableHeaderView;
     
-    UIImage *tableFooterViewImage = [UIImage imageNamed:@"login.png"];
-    UIImageView *tableFooterView = [[UIImageView alloc] initWithImage:tableFooterViewImage];
-    self.listingTableView.tableFooterView = tableFooterView;
-    self.navigationController.navigationBar.tintColor = [UIColor brownColor];
-    
+//    UIImage *tableFooterViewImage = [UIImage imageNamed:@"login.png"];
+//    UIImageView *tableFooterView = [[UIImageView alloc] initWithImage:tableFooterViewImage];
+//    self.listingTableView.tableFooterView = tableFooterView;
+//    self.navigationController.navigationBar.tintColor = [UIColor brownColor];
+    if (_refreshHeaderView == nil) {
+        EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
+        view.delegate = self;
+        [self.tableView addSubview:view];
+        _refreshHeaderView = view;
+    }
+	
+	//  update the last update date
+	[_refreshHeaderView refreshLastUpdatedDate];
 }
 
 - (void)viewDidUnload
@@ -204,9 +255,18 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // #warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return [self.currentListings count];
+	/*
+	 If the requesting table view is the search display controller's table view, return the count of
+     the filtered list, otherwise return the count of the main list.
+	 */
+	if (tableView == self.searchDisplayController.searchResultsTableView)
+	{
+        return [self.filteredListContent count];
+    }
+	else
+	{
+        return [self.currentListings count];
+    }    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -217,17 +277,23 @@
     if (cell == nil) {
         cell = [[ListingTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-  
+    
+    DLog(@"Cell: %@", cell);
+    DLog(@"Index Path: %d", indexPath.row);
     //set cell using data
-    [cell buildCellByListItem:[self.currentListings objectAtIndex:indexPath.row]];
+    if (aTableView == self.searchDisplayController.searchResultsTableView) {
+        [cell buildCellByListItem:[self.filteredListContent objectAtIndex:indexPath.row]];
+    } else {
+        [cell buildCellByListItem:[self.currentListings objectAtIndex:indexPath.row]];
+    }
 
     return cell;
 }
 
 // Reloading data
-- (void)refresh {
-    [self performSelector:@selector(setupArray) withObject:nil afterDelay:1.0];
-}
+//- (void)refresh {
+//    [self performSelector:@selector(setupArray) withObject:nil afterDelay:1.0];
+//}
 
 - (void)locateMe {
   VariableStore.sharedInstance.locateMeManager.delegate = self;
@@ -293,4 +359,90 @@
   DLog(@"BrowseTableViewController::switchBrowseItemView");
   [self performSegueWithIdentifier:@"showBrowseItem" sender:self];
 }
+
+#pragma mark -
+#pragma mark Content Filtering
+
+//Loading sample data, for TESTING ONLY!
+- (void) initListingsData {
+    ListItem *item = [ListItem new];
+    
+    item = [ListItem new];
+    [item setTitle:@"求购2012年东方卫视跨年演唱会门票"];
+    [item setDescription:@"听说有很多明星，阵容强大啊，求门票啊~~ 听说有很多明星，阵容强大啊，求门票啊~~ 听说有很多明星，阵容强大啊，求门票啊~~"];
+    item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
+                     [[NSNumber numberWithFloat:89.75f] decimalValue]];
+    
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setDay:22];
+    [comps setMonth:1];
+    [comps setYear:2012];
+    item.postedDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
+    
+    item.postDuration = [NSNumber numberWithInt:172800];
+    [self.filteredListContent addObject:item];
+    
+    item = [ListItem new];
+    [item setTitle:@"什么都不想吃了……给我找辆车让我回家吧"];
+    [item setDescription:@"什么都不想吃了……给我找辆车让我回家吧 什么都不想吃了……给我找辆车让我回家吧 什么都不想吃了……给我找辆车让我回家吧"];
+    
+    [comps setDay:29];
+    [comps setMonth:1];
+    [comps setYear:2012];
+    item.postedDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
+    
+    item.postDuration = [NSNumber numberWithInt:43200];
+    item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
+                     [[NSNumber numberWithFloat:18.55f] decimalValue]];
+    
+    [self.filteredListContent addObject:item];
+}
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+	/*
+	 Update the filtered array based on the search text and scope.
+	 */
+	
+	[self.filteredListContent removeAllObjects]; // First clear the filtered array.
+	[self initListingsData];
+    [self.tableView reloadData];
+	/*
+	 Search the main list for products whose type matches the scope (if selected) and whose name matches searchText; add items that match to the filtered array.
+	 */
+//	for (Product *product in listContent)
+//	{
+//		if ([scope isEqualToString:@"All"] || [product.type isEqualToString:scope])
+//		{
+//			NSComparisonResult result = [product.name compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
+//            if (result == NSOrderedSame)
+//			{
+//				[self.filteredListContent addObject:product];
+//            }
+//		}
+//	}
+}
+
+
+#pragma mark -
+#pragma mark UISearchDisplayController Delegate Methods
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString scope:
+     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+    
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
+
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
+{
+    [self filterContentForSearchText:[self.searchDisplayController.searchBar text] scope:
+     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
+    
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
+
 @end

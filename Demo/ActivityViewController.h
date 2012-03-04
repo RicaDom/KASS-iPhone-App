@@ -19,7 +19,15 @@
 #import "BrowseItemViewController.h"
 #import "BuyerPayViewController.h"
 
-@interface ActivityViewController : PullRefreshTableViewController <AccountActivityDelegate>
+@interface ActivityViewController : UITableViewController <AccountActivityDelegate, EGORefreshTableHeaderDelegate>
+{
+	EGORefreshTableHeaderView *_refreshHeaderView;
+	
+	//  Reloading var should really be your tableviews datasource
+	//  Putting it here for demo purposes 
+	BOOL _reloading;
+}
+
 
 @property (strong, nonatomic) IBOutlet UISegmentedControl *activitySegment;
 @property (strong, nonatomic) IBOutlet UIImageView *emptyRecordsImageView;

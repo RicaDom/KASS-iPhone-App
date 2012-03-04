@@ -12,19 +12,26 @@
 #import "BrowseItemViewController.h"
 #import "VariableStore.h"
 #import "ListingTableCell.h"
-#import "PullRefreshTableViewController.h"
 #import "LocateMeDelegate.h"
 #import "ItemViewController.h"
 #import "BrowseItemNoMsgViewController.h"
 #import "BuyerPayViewController.h"
 #import "UIResponder+VariableStore.h"
 
-@interface BrowseTableViewController : PullRefreshTableViewController <LocateMeDelegate>
+@interface BrowseTableViewController : UITableViewController <UISearchDisplayDelegate, UISearchBarDelegate, EGORefreshTableHeaderDelegate,LocateMeDelegate> {
+	
+	EGORefreshTableHeaderView *_refreshHeaderView;
+	
+	//  Reloading var should really be your tableviews datasource
+	//  Putting it here for demo purposes 
+	BOOL _reloading;
+}
+
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *browseSegment;
 @property (strong, nonatomic) IBOutlet UITableView *listingTableView;
-
 @property (strong, nonatomic) NSMutableArray *currentListings;
+@property (strong, nonatomic) NSMutableArray *filteredListContent;
 
 - (IBAction)browseSegmentAction:(id)sender;
 - (void)setupArray;
