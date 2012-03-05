@@ -233,7 +233,7 @@
     [self loadPostTemplates:[self kassVS].postTemplatesDict];
   
     // init scroll view content size
-    self.mainScrollView.contentSize = CGSizeMake(_ScrollViewContentSizeX, 600);
+    self.mainScrollView.contentSize = CGSizeMake(_ScrollViewContentSizeX, self.contentView.frame.size.height-self.contentView.frame.origin.y);
 
     // self.mainScrollView.contentInset = UIEdgeInsetsMake(150, 0, 0, 0);    
     self.mainView.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"Default.png"]];
