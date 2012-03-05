@@ -11,7 +11,7 @@
 #import "ListItem.h"
 #import "Constants.h"
 #import "PostFlowViewController.h"
-#import "PostTemplate.h"
+#import "PostTemplate+PostTemplateHelper.h"
 
 @interface PostViewController : UIViewController <UIScrollViewDelegate> {
     @private
@@ -22,16 +22,16 @@
 
 @property (weak, nonatomic) IBOutlet AppScrollView *hotPostScrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl *hotPostPageControl;
-@property (weak, nonatomic) IBOutlet UIScrollView *editorPostScrollView;
+@property (weak, nonatomic) IBOutlet AppScrollView *editorPostScrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl *editorPostPageControl;
-@property (strong, nonatomic) IBOutlet UIScrollView *creativePostScrollView;
+@property (strong, nonatomic) IBOutlet AppScrollView *creativePostScrollView;
 @property (strong, nonatomic) IBOutlet UIPageControl *creativePostPageControl;
 @property (strong, nonatomic) IBOutlet UIScrollView *mainScrollView;
 @property (strong, nonatomic) IBOutlet UIView *mainView;
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (strong, nonatomic) IBOutlet UILabel *greetingLabel;
 
-@property (strong, nonatomic) NSMutableArray *postTemplates;
+//@property (strong, nonatomic) NSMutableArray *postTemplates;
 @property (strong, nonatomic) NSMutableArray *popularTemplates;
 @property (strong, nonatomic) NSMutableArray *editorTemplates;
 @property (strong, nonatomic) NSMutableArray *creativeTemplates;

@@ -12,13 +12,23 @@
 @implementation KassApp
 
 @synthesize delegate = _delegate;
+@synthesize kaObjManager = _kaObjManager;
 
 - (id)initWithDelegate:(id<KassAppDelegate>)delegate
 {
 	if (self = [super init]) {
-		_delegate	= delegate;
+		_delegate     = delegate;
+    _kaObjManager = KassAppObjManager.sharedInstance;
 	}
 	return self;
+}
+
+- (id)init
+{
+  if (self = [super init]) {
+    _kaObjManager = KassAppObjManager.sharedInstance;
+  }
+  return self;
 }
 
 - (void)loadSettings
@@ -41,5 +51,9 @@
     [_delegate settingsDidLoad:[KassApi parseData:data]];
 }
 
+- (BOOL)manageObj:(id<HJMOUser>)user
+{
+  return [_kaObjManager manage:user];
+}
 
 @end

@@ -22,7 +22,7 @@
 @synthesize contentView = _contentView;
 @synthesize greetingLabel = _greetingLabel;
 
-@synthesize postTemplates = _postTemplates;
+//@synthesize postTemplates = _postTemplates;
 @synthesize popularTemplates = _popularTemplates;
 @synthesize editorTemplates = _editorTemplates;
 @synthesize creativeTemplates = _creativeTemplates;
@@ -80,59 +80,56 @@
     }		
 }
 
+- (void)showManagedImageView:(NSMutableArray *)templates:(UIPageControl *)pageControl
+{
+  PostTemplate *pt = [templates objectAtIndex:pageControl.currentPage];
+  [[self kassApp] manageObj:pt.getHJManagedImageView];
+}
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     if (scrollView == self.hotPostScrollView) {
-        hotPostPageControlBeingUsed = NO;
+      hotPostPageControlBeingUsed = NO;
+      
+      [self showManagedImageView:_popularTemplates:_hotPostPageControl];
+      
     } else if (scrollView == self.editorPostScrollView) {
-        editorPostPageControlBeingUsed = NO;
+      editorPostPageControlBeingUsed = NO;
+      
+      [self showManagedImageView:_editorTemplates:_editorPostPageControl];
+      
     } else if (scrollView == self.creativePostScrollView) {
-        creativePostPageControlBeingUsed = NO;
+      creativePostPageControlBeingUsed = NO;
+      
+      [self showManagedImageView:_creativeTemplates:_creativePostPageControl];
     }		
 }
 
-- (IBAction)changeCreativePostPage {
-    // Update the scroll view to the appropriate page
+- (void)updateFrameView:(IBOutlet AppScrollView *)scrollView:(UIPageControl *)pageControl:(BOOL *)controlBeingUsed
+{
+  // Update the scroll view to the appropriate page
 	CGRect frame;
-	frame.origin.x = self.creativePostScrollView.frame.size.width * self.creativePostPageControl.currentPage;
+	frame.origin.x = scrollView.frame.size.width * pageControl.currentPage;
 	frame.origin.y = 0;
-	frame.size = self.creativePostScrollView.frame.size;
-	[self.creativePostScrollView scrollRectToVisible:frame animated:YES];
+	frame.size = scrollView.frame.size;
+	[scrollView scrollRectToVisible:frame animated:YES];
 	
 	// Keep track of when scrolls happen in response to the page control
 	// value changing. If we don't do this, a noticeable "flashing" occurs
 	// as the the scroll delegate will temporarily switch back the page
 	// number.
-	creativePostPageControlBeingUsed = YES;        
+	*controlBeingUsed = YES;     
+}
+
+- (IBAction)changeCreativePostPage {
+  [self updateFrameView:_creativePostScrollView:_creativePostPageControl:&creativePostPageControlBeingUsed];      
 }
 
 - (IBAction)changeEditorPostPage {
-    // Update the scroll view to the appropriate page
-	CGRect frame;
-	frame.origin.x = self.editorPostScrollView.frame.size.width * self.editorPostPageControl.currentPage;
-	frame.origin.y = 0;
-	frame.size = self.editorPostScrollView.frame.size;
-	[self.editorPostScrollView scrollRectToVisible:frame animated:YES];
-	
-	// Keep track of when scrolls happen in response to the page control
-	// value changing. If we don't do this, a noticeable "flashing" occurs
-	// as the the scroll delegate will temporarily switch back the page
-	// number.
-	editorPostPageControlBeingUsed = YES;    
+  [self updateFrameView:_editorPostScrollView:_editorPostPageControl:&editorPostPageControlBeingUsed];    
 }
 
 - (IBAction)changeHotPostPage {
-    // Update the scroll view to the appropriate page
-	CGRect frame;
-	frame.origin.x = self.hotPostScrollView.frame.size.width * self.hotPostPageControl.currentPage;
-	frame.origin.y = 0;
-	frame.size = self.hotPostScrollView.frame.size;
-	[self.hotPostScrollView scrollRectToVisible:frame animated:YES];
-	
-	// Keep track of when scrolls happen in response to the page control
-	// value changing. If we don't do this, a noticeable "flashing" occurs
-	// as the the scroll delegate will temporarily switch back the page
-	// number.
-	hotPostPageControlBeingUsed = YES;
+  [self updateFrameView:_hotPostScrollView:_hotPostPageControl:&hotPostPageControlBeingUsed]; 
 }
 
 - (void)singleTapGestureCaptured:(UITapGestureRecognizer *)gesture
@@ -205,113 +202,27 @@
 }
 
 // Loading data from server
-- (void)postTemplatesDataLoad
+- (void)loadPostTemplates:(NSDictionary *)dict
 {
+  NSArray *popularTemplates  = [dict objectForKey:@"popular"];
+  NSArray *editorTemplates   = [dict objectForKey:@"editor"];
+  NSArray *creativeTemplates = [dict objectForKey:@"creative"];
   
-  NSArray *popularTemplates  = [[self kassVS].postTemplatesDict objectForKey:@"popular"];
-  NSArray *editorTemplates   = [[self kassVS].postTemplatesDict objectForKey:@"editor"];
-  NSArray *creativeTemplates = [[self kassVS].postTemplatesDict objectForKey:@"creative"];
+  self.popularTemplates     = [PostTemplate getTemplatesByCategory:popularTemplates:POST_TEMPLATE_CATEGORY_POPULAR];
+  self.editorTemplates      = [PostTemplate getTemplatesByCategory:editorTemplates:POST_TEMPLATE_CATEGORY_EDITOR];
+  self.creativeTemplates    = [PostTemplate getTemplatesByCategory:creativeTemplates:POST_TEMPLATE_CATEGORY_CREATIVE];
   
-  DLog(@"PostViewController::postTemplatesDataLoad:popularTemplates=%@", popularTemplates);
+  [PostTemplate buildTemplatesView:_hotPostScrollView:_popularTemplates:_hotPostPageControl:&hotPostPageControlBeingUsed];
+  [PostTemplate buildTemplatesView:_editorPostScrollView:_editorTemplates:_editorPostPageControl:&editorPostPageControlBeingUsed];
+  [PostTemplate buildTemplatesView:_creativePostScrollView:_creativeTemplates:_creativePostPageControl:&creativePostPageControlBeingUsed];
   
-  self.postTemplates = [NSMutableArray new];
+  [_hotPostScrollView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureCaptured:)]]; 
+  [_editorPostScrollView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureCaptured:)]]; 
+  [_creativePostScrollView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureCaptured:)]]; 
   
-  for(int i = 0; i < [popularTemplates count]; i++){
-    NSDictionary *popularTemplateDict = [popularTemplates objectAtIndex:i];
-    PostTemplate *temp = [[PostTemplate alloc] initWithDictionaryAndCategory:popularTemplateDict:POST_TEMPLATE_CATEGORY_POPULAR];
-    [self.postTemplates addObject:temp];
-  }
-  
-  for(int i = 0; i < [editorTemplates count]; i++){
-    NSDictionary *editorTemplateDict = [editorTemplates objectAtIndex:i];
-    PostTemplate *temp = [[PostTemplate alloc] initWithDictionaryAndCategory:editorTemplateDict:POST_TEMPLATE_CATEGORY_EDITOR];
-    [self.postTemplates addObject:temp];
-  }
-  
-  for(int i = 0; i < [creativeTemplates count]; i++){
-    NSDictionary *creativeTemplateDict = [creativeTemplates objectAtIndex:i];
-    PostTemplate *temp = [[PostTemplate alloc] initWithDictionaryAndCategory:creativeTemplateDict:POST_TEMPLATE_CATEGORY_CREATIVE];
-    [self.postTemplates addObject:temp];
-  }
-    
-}
-
-- (void)postTemplatesViewLoad
-{
-    if ([self.postTemplates count] > 0) {
-        int popularCounter = 0;
-        int editorCounter = 0;
-        int creativeCounter = 0;
-        self.popularTemplates = [NSMutableArray new];
-        self.editorTemplates = [NSMutableArray new];
-        self.creativeTemplates = [NSMutableArray new];
-        
-        for (PostTemplate *temp in self.postTemplates) {
-            CGRect frame;
-            frame.origin.y = 0;
-            
-            if ([temp.category isEqualToString:POST_TEMPLATE_CATEGORY_POPULAR]) {
-                // Popular Post Template
-                frame.origin.x = self.hotPostScrollView.frame.size.width * popularCounter;
-                frame.size = self.hotPostScrollView.frame.size;
-                
-                popularCounter++;
-                
-                UIView *subview = [[UIView alloc] initWithFrame:frame];
-                subview.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:temp.picPath]];
-                [self.hotPostScrollView addSubview:subview];                                
-                self.hotPostScrollView.contentSize = CGSizeMake(self.hotPostScrollView.frame.size.width * popularCounter, self.hotPostScrollView.frame.size.height);
-                 
-                [self.popularTemplates addObject:temp];
-                
-            } else if ([temp.category isEqualToString:POST_TEMPLATE_CATEGORY_EDITOR]) {
-                // Editor Post Template
-                frame.origin.x = self.editorPostScrollView.frame.size.width * editorCounter;
-                frame.size = self.editorPostScrollView.frame.size;
-                
-                editorCounter++;
-                
-                UIView *subview = [[UIView alloc] initWithFrame:frame];
-                subview.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:temp.picPath]];
-                [self.editorPostScrollView addSubview:subview];                                
-                self.editorPostScrollView.contentSize = CGSizeMake(self.editorPostScrollView.frame.size.width * editorCounter, self.editorPostScrollView.frame.size.height);
-                
-                [self.editorTemplates addObject:temp];
-                
-            } else if ([temp.category isEqualToString:POST_TEMPLATE_CATEGORY_CREATIVE]) {
-                // Creative Post Template
-                frame.origin.x = self.creativePostScrollView.frame.size.width * creativeCounter;
-                frame.size = self.creativePostScrollView.frame.size;
-                
-                creativeCounter++;
-                
-                UIView *subview = [[UIView alloc] initWithFrame:frame];
-                subview.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:temp.picPath]];
-                [self.creativePostScrollView addSubview:subview];                                
-                self.creativePostScrollView.contentSize = CGSizeMake(self.creativePostScrollView.frame.size.width * creativeCounter, self.creativePostScrollView.frame.size.height);    
-                
-                [self.creativeTemplates addObject:temp];
-            }
-        }
-        
-        hotPostPageControlBeingUsed = NO;
-        self.hotPostPageControl.currentPage = 0;
-        self.hotPostPageControl.numberOfPages = popularCounter;
-        UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureCaptured:)];
-        [self.hotPostScrollView addGestureRecognizer:singleTap];   
-        
-        editorPostPageControlBeingUsed = NO;
-        self.editorPostPageControl.currentPage = 0;
-        self.editorPostPageControl.numberOfPages = editorCounter;
-        singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureCaptured:)];
-        [self.editorPostScrollView addGestureRecognizer:singleTap]; 
-        
-        creativePostPageControlBeingUsed = NO;
-        self.creativePostPageControl.currentPage = 0;
-        self.creativePostPageControl.numberOfPages = creativeCounter;
-        singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureCaptured:)];
-        [self.creativePostScrollView addGestureRecognizer:singleTap]; 
-    }
+  [self showManagedImageView:_popularTemplates:_hotPostPageControl];
+  [self showManagedImageView:_editorTemplates:_editorPostPageControl];
+  [self showManagedImageView:_creativeTemplates:_creativePostPageControl];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -319,11 +230,10 @@
 {
     [super viewDidLoad];
 
-    [self postTemplatesDataLoad];
-    [self postTemplatesViewLoad];
-    
+    [self loadPostTemplates:[self kassVS].postTemplatesDict];
+  
     // init scroll view content size
-    self.mainScrollView.contentSize = CGSizeMake(_ScrollViewContentSizeX, 600);
+    self.mainScrollView.contentSize = CGSizeMake(_ScrollViewContentSizeX, self.contentView.frame.size.height-self.contentView.frame.origin.y);
 
     // self.mainScrollView.contentInset = UIEdgeInsetsMake(150, 0, 0, 0);    
     self.mainView.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"Default.png"]];

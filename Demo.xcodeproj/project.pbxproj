@@ -77,6 +77,17 @@
 		77D566A915036A72003BA8DB /* settings.json in Resources */ = {isa = PBXBuildFile; fileRef = 77D566A815036A72003BA8DB /* settings.json */; };
 		77D566BA150377A3003BA8DB /* KassApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D566B9150377A3003BA8DB /* KassApp.m */; };
 		77D566BD1503C455003BA8DB /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = 77D566BC1503C455003BA8DB /* image.png */; };
+		77D566D715044BFF003BA8DB /* HJCircularBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D566C415044BFF003BA8DB /* HJCircularBuffer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		77D566D815044BFF003BA8DB /* HJManagedImageV.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D566C615044BFF003BA8DB /* HJManagedImageV.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		77D566D915044BFF003BA8DB /* HJMOBigFileCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D566C915044BFF003BA8DB /* HJMOBigFileCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		77D566DA15044BFF003BA8DB /* HJMOFileCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D566CB15044BFF003BA8DB /* HJMOFileCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		77D566DB15044BFF003BA8DB /* HJMOHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D566CD15044BFF003BA8DB /* HJMOHandler.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		77D566DC15044BFF003BA8DB /* HJMOPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D566CF15044BFF003BA8DB /* HJMOPolicy.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		77D566DD15044BFF003BA8DB /* HJMOUserBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D566D215044BFF003BA8DB /* HJMOUserBase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		77D566DE15044BFF003BA8DB /* HJObjManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D566D415044BFF003BA8DB /* HJObjManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		77D566DF15044BFF003BA8DB /* HJWeakMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D566D615044BFF003BA8DB /* HJWeakMutableArray.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		77D566E215046989003BA8DB /* KassAppObjManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D566E115046989003BA8DB /* KassAppObjManager.m */; };
+		77D566E81504A081003BA8DB /* PostTemplate+PostTemplateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D566E71504A080003BA8DB /* PostTemplate+PostTemplateHelper.m */; };
 		77E3101914F20C60000E9567 /* UIResponder+VariableStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E3101814F20C60000E9567 /* UIResponder+VariableStore.m */; };
 		77E3101C14F235EF000E9567 /* ViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E3101B14F235EE000E9567 /* ViewHelper.m */; };
 		77E3102214F23E1F000E9567 /* NSString+ModelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E3102114F23E1F000E9567 /* NSString+ModelHelper.m */; };
@@ -317,6 +328,30 @@
 		77D566B9150377A3003BA8DB /* KassApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KassApp.m; path = Libraries/KassApp/KassApp.m; sourceTree = "<group>"; };
 		77D566BB150377FB003BA8DB /* KassAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KassAppDelegate.h; path = Libraries/KassApp/KassAppDelegate.h; sourceTree = "<group>"; };
 		77D566BC1503C455003BA8DB /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
+		77D566C315044BFF003BA8DB /* HJCircularBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HJCircularBuffer.h; path = Libraries/HJCache/HJCircularBuffer.h; sourceTree = "<group>"; };
+		77D566C415044BFF003BA8DB /* HJCircularBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HJCircularBuffer.m; path = Libraries/HJCache/HJCircularBuffer.m; sourceTree = "<group>"; };
+		77D566C515044BFF003BA8DB /* HJManagedImageV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HJManagedImageV.h; path = Libraries/HJCache/HJManagedImageV.h; sourceTree = "<group>"; };
+		77D566C615044BFF003BA8DB /* HJManagedImageV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HJManagedImageV.m; path = Libraries/HJCache/HJManagedImageV.m; sourceTree = "<group>"; };
+		77D566C715044BFF003BA8DB /* HJManagedImageVDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HJManagedImageVDelegate.h; path = Libraries/HJCache/HJManagedImageVDelegate.h; sourceTree = "<group>"; };
+		77D566C815044BFF003BA8DB /* HJMOBigFileCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HJMOBigFileCache.h; path = Libraries/HJCache/HJMOBigFileCache.h; sourceTree = "<group>"; };
+		77D566C915044BFF003BA8DB /* HJMOBigFileCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HJMOBigFileCache.m; path = Libraries/HJCache/HJMOBigFileCache.m; sourceTree = "<group>"; };
+		77D566CA15044BFF003BA8DB /* HJMOFileCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HJMOFileCache.h; path = Libraries/HJCache/HJMOFileCache.h; sourceTree = "<group>"; };
+		77D566CB15044BFF003BA8DB /* HJMOFileCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HJMOFileCache.m; path = Libraries/HJCache/HJMOFileCache.m; sourceTree = "<group>"; };
+		77D566CC15044BFF003BA8DB /* HJMOHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HJMOHandler.h; path = Libraries/HJCache/HJMOHandler.h; sourceTree = "<group>"; };
+		77D566CD15044BFF003BA8DB /* HJMOHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HJMOHandler.m; path = Libraries/HJCache/HJMOHandler.m; sourceTree = "<group>"; };
+		77D566CE15044BFF003BA8DB /* HJMOPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HJMOPolicy.h; path = Libraries/HJCache/HJMOPolicy.h; sourceTree = "<group>"; };
+		77D566CF15044BFF003BA8DB /* HJMOPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HJMOPolicy.m; path = Libraries/HJCache/HJMOPolicy.m; sourceTree = "<group>"; };
+		77D566D015044BFF003BA8DB /* HJMOUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HJMOUser.h; path = Libraries/HJCache/HJMOUser.h; sourceTree = "<group>"; };
+		77D566D115044BFF003BA8DB /* HJMOUserBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HJMOUserBase.h; path = Libraries/HJCache/HJMOUserBase.h; sourceTree = "<group>"; };
+		77D566D215044BFF003BA8DB /* HJMOUserBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HJMOUserBase.m; path = Libraries/HJCache/HJMOUserBase.m; sourceTree = "<group>"; };
+		77D566D315044BFF003BA8DB /* HJObjManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HJObjManager.h; path = Libraries/HJCache/HJObjManager.h; sourceTree = "<group>"; };
+		77D566D415044BFF003BA8DB /* HJObjManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HJObjManager.m; path = Libraries/HJCache/HJObjManager.m; sourceTree = "<group>"; };
+		77D566D515044BFF003BA8DB /* HJWeakMutableArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HJWeakMutableArray.h; path = Libraries/HJCache/HJWeakMutableArray.h; sourceTree = "<group>"; };
+		77D566D615044BFF003BA8DB /* HJWeakMutableArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HJWeakMutableArray.m; path = Libraries/HJCache/HJWeakMutableArray.m; sourceTree = "<group>"; };
+		77D566E015046988003BA8DB /* KassAppObjManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KassAppObjManager.h; path = Libraries/KassApp/KassAppObjManager.h; sourceTree = "<group>"; };
+		77D566E115046989003BA8DB /* KassAppObjManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KassAppObjManager.m; path = Libraries/KassApp/KassAppObjManager.m; sourceTree = "<group>"; };
+		77D566E61504A080003BA8DB /* PostTemplate+PostTemplateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; path = "PostTemplate+PostTemplateHelper.h"; sourceTree = "<group>"; };
+		77D566E71504A080003BA8DB /* PostTemplate+PostTemplateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PostTemplate+PostTemplateHelper.m"; sourceTree = "<group>"; };
 		77E3101714F20C60000E9567 /* UIResponder+VariableStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+VariableStore.h"; sourceTree = "<group>"; };
 		77E3101814F20C60000E9567 /* UIResponder+VariableStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+VariableStore.m"; sourceTree = "<group>"; };
 		77E3101A14F235ED000E9567 /* ViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewHelper.h; sourceTree = "<group>"; };
@@ -736,6 +771,8 @@
 				77A195C514FF7D710058C34F /* Offer+OfferHelper.m */,
 				77A195C714FF80E40058C34F /* BaseHelper.h */,
 				77A195C814FF80E40058C34F /* BaseHelper.m */,
+				77D566E61504A080003BA8DB /* PostTemplate+PostTemplateHelper.h */,
+				77D566E71504A080003BA8DB /* PostTemplate+PostTemplateHelper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -746,8 +783,37 @@
 				77D566B8150377A3003BA8DB /* KassApp.h */,
 				77D566B9150377A3003BA8DB /* KassApp.m */,
 				77D566BB150377FB003BA8DB /* KassAppDelegate.h */,
+				77D566E015046988003BA8DB /* KassAppObjManager.h */,
+				77D566E115046989003BA8DB /* KassAppObjManager.m */,
 			);
 			name = KassApp;
+			sourceTree = "<group>";
+		};
+		77D566C215044BE7003BA8DB /* HJCache */ = {
+			isa = PBXGroup;
+			children = (
+				77D566C315044BFF003BA8DB /* HJCircularBuffer.h */,
+				77D566C415044BFF003BA8DB /* HJCircularBuffer.m */,
+				77D566C515044BFF003BA8DB /* HJManagedImageV.h */,
+				77D566C615044BFF003BA8DB /* HJManagedImageV.m */,
+				77D566C715044BFF003BA8DB /* HJManagedImageVDelegate.h */,
+				77D566C815044BFF003BA8DB /* HJMOBigFileCache.h */,
+				77D566C915044BFF003BA8DB /* HJMOBigFileCache.m */,
+				77D566CA15044BFF003BA8DB /* HJMOFileCache.h */,
+				77D566CB15044BFF003BA8DB /* HJMOFileCache.m */,
+				77D566CC15044BFF003BA8DB /* HJMOHandler.h */,
+				77D566CD15044BFF003BA8DB /* HJMOHandler.m */,
+				77D566CE15044BFF003BA8DB /* HJMOPolicy.h */,
+				77D566CF15044BFF003BA8DB /* HJMOPolicy.m */,
+				77D566D015044BFF003BA8DB /* HJMOUser.h */,
+				77D566D115044BFF003BA8DB /* HJMOUserBase.h */,
+				77D566D215044BFF003BA8DB /* HJMOUserBase.m */,
+				77D566D315044BFF003BA8DB /* HJObjManager.h */,
+				77D566D415044BFF003BA8DB /* HJObjManager.m */,
+				77D566D515044BFF003BA8DB /* HJWeakMutableArray.h */,
+				77D566D615044BFF003BA8DB /* HJWeakMutableArray.m */,
+			);
+			name = HJCache;
 			sourceTree = "<group>";
 		};
 		77E30FB414F13817000E9567 /* Extensions */ = {
@@ -829,6 +895,7 @@
 		77F027A314C668760065EDAA /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				77D566C215044BE7003BA8DB /* HJCache */,
 				77D566B1150376A3003BA8DB /* KassApp */,
 				77E766B215012FE300A4E0D0 /* DataSource */,
 				77F5998C14E806EE00CE96C3 /* LocateMe */,
@@ -1386,6 +1453,17 @@
 				77E766C61502352F00A4E0D0 /* DataSourceViewController.m in Sources */,
 				E5A9FBB6150310C600AC5F0E /* PostTemplate.m in Sources */,
 				77D566BA150377A3003BA8DB /* KassApp.m in Sources */,
+				77D566D715044BFF003BA8DB /* HJCircularBuffer.m in Sources */,
+				77D566D815044BFF003BA8DB /* HJManagedImageV.m in Sources */,
+				77D566D915044BFF003BA8DB /* HJMOBigFileCache.m in Sources */,
+				77D566DA15044BFF003BA8DB /* HJMOFileCache.m in Sources */,
+				77D566DB15044BFF003BA8DB /* HJMOHandler.m in Sources */,
+				77D566DC15044BFF003BA8DB /* HJMOPolicy.m in Sources */,
+				77D566DD15044BFF003BA8DB /* HJMOUserBase.m in Sources */,
+				77D566DE15044BFF003BA8DB /* HJObjManager.m in Sources */,
+				77D566DF15044BFF003BA8DB /* HJWeakMutableArray.m in Sources */,
+				77D566E215046989003BA8DB /* KassAppObjManager.m in Sources */,
+				77D566E81504A081003BA8DB /* PostTemplate+PostTemplateHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

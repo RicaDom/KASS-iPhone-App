@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "ListItem.h"
+#import "HJManagedImageV.h"
 
-@interface PostTemplate : NSObject
+@interface PostTemplate : NSObject{
+  HJManagedImageV *hjManagedImageView;
+}
 
 @property (strong, nonatomic) NSString *dbId;
 @property (strong, nonatomic) NSString *category; //popular post, editor, creative ideas

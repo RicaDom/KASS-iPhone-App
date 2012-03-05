@@ -16,12 +16,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   DLog(@"AppDelegate::didFinishLaunchingWithOptions:rootViewController=%@", self.window.rootViewController);
-  // Globally set segment and bar button color;
-  //[[UISegmentedControl appearance] setTintColor:[UIColor orangeColor]];
-  //[[UIBarButtonItem appearance] setTintColor:[UIColor orangeColor]];
-  KassApp *ka = [[KassApp alloc] initWithDelegate:self];
-  [ka loadAndStoreSettings];
-  
+  [VariableStore.sharedInstance loadAndStoreSettings:self];
   DLog(@"AppDelegate::doneLoading");
   return YES;
 }
