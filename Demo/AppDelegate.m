@@ -19,7 +19,6 @@
   // Globally set segment and bar button color;
   //[[UISegmentedControl appearance] setTintColor:[UIColor orangeColor]];
   //[[UIBarButtonItem appearance] setTintColor:[UIColor orangeColor]];
-
   return YES;
 }
 
@@ -64,7 +63,6 @@
 		return TRUE;
 	return TRUE;
 }
-
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
