@@ -26,7 +26,7 @@
 
 - (id) initWithPerformerAndAction:(NSObject *)thePerformer:(NSString *)theAction;
 
-//+ (NSData *)getData:(NSString *)url;
++ (NSData *)getData:(NSString *)url;
 //+ (NSData *)postData:(NSString *)url:(NSDictionary *)dict;
 //+ (NSData *)getListings:(NSString *)box;
 //+ (NSData *)getListing:(NSString *)modelId;
@@ -50,11 +50,14 @@
 - (void)acceptOffer:(NSDictionary *)dict:(NSString *)modelId;
 - (void)getOfferMessages:(NSString *)offerId;
 - (void)createOfferMessage:(NSDictionary *)dict:(NSString *)offerId;
+- (void)loadSettings;
 
 - (void)login:(NSDictionary *)dict;
 - (void)logout;
 
 - (void)requestFinished:(ASIHTTPRequest *)request;
 - (void)requestFailed:(ASIHTTPRequest *)request;
+
++ (NSData *)loadSettings;
 
 @end

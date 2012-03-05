@@ -18,8 +18,8 @@
 // Global variables
 // Current Posting Process Cache
 @property (strong, nonatomic) ListItem *currentPostingItem;
-@property (strong, nonatomic) NSDictionary *expiredTime;
-@property (strong, nonatomic) NSDictionary *durationToServerDic;
+@property (strong, nonatomic) NSMutableDictionary *expiredTime;
+@property (strong, nonatomic) NSMutableDictionary *durationToServerDic;
 
 #pragma mark - Testing Array -
 @property (strong, nonatomic) NSMutableArray *allListings;
@@ -34,6 +34,7 @@
 @property (strong, nonatomic) LocateMeManager *locateMeManager;
 
 @property (strong, nonatomic) NSMutableDictionary *modelDict;
+@property (strong, nonatomic) NSMutableDictionary *postTemplatesDict;
 
 @property (strong, nonatomic) UITabBarController *mainTabBar;
 
@@ -41,8 +42,7 @@
 
 + (VariableStore *) sharedInstance;
 - (void) clearCurrentPostingItem;
-- (void) initExpiredTime;
-- (void) initListingsData;
+- (void)storeSettings:(NSDictionary *)dict;
 - (void) appendPostingItemToListings:(NSDictionary *)dict;
 
 - (BOOL) isLoggedIn;

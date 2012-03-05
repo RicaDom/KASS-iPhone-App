@@ -27,6 +27,31 @@
   [super tearDown];
 }
 
+- (void)testParseSettingsJson
+{
+  NSString *filePath = [[NSBundle mainBundle] pathForResource:@"settings" ofType:@"json"];  
+  NSData *data = [NSData dataWithContentsOfFile:filePath]; 
+  NSDictionary *dict = [KassApi parseData:data];  
+  
+  NSDictionary *settings = [dict objectForKey:@"settings"];
+  NSDictionary *duration = [settings objectForKey:@"duration"];
+  DLog(@"duration=%@", duration);
+  
+  NSDictionary *secToString = [duration objectForKey:@"sec_string"];
+  NSDictionary *secToText   = [duration objectForKey:@"sec_text"];
+  
+  NSMutableDictionary *secTime = [[NSMutableDictionary alloc]init ];
+  for (id key in secToString) {
+    [secTime setObject:[secToString objectForKey:key] forKey:[NSNumber numberWithInt:[key intValue]]];
+  }
+  
+  NSMutableDictionary *secText = [[NSMutableDictionary alloc]init ];
+  for (id key in secToText) {
+    [secText setObject:[NSNumber numberWithInt:[key intValue]] forKey:[secToText objectForKey:key]];
+  }
+  
+  
+}
 
 - (void)testGetListings
 {

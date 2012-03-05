@@ -123,6 +123,13 @@
   }
 }
 
+- (void)loadSettings
+{
+  DLog(@"KassApi::loadSettings");
+  _url = [NSString stringWithFormat:@"http://%s/v1/settings", HOST];
+  [self getData:_url];  
+}
+
 - (void)modifyListing:(NSDictionary *)dict:(NSString *)modelId
 {
   DLog(@"KassApi::modifyListing:id=%@,dict=%@", modelId, dict);
@@ -273,19 +280,25 @@
 //  }
 //}
 //
-//+ (NSData *)getData:(NSString *)url
-//{
-//  ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
-//  [request startSynchronous];
-//  NSError *error = [request error];
-//  if (!error) {
-//    NSData *data = [request responseData];
-//    DLog(@"----- GET DATA ... ------ \n %@ ", [request responseString]);
-//    return data;
-//  }else{
-//    return nil;
-//  }
-//}
++ (NSData *)getData:(NSString *)url
+{
+  ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+  [request startSynchronous];
+  NSError *error = [request error];
+  if (!error) {
+    NSData *data = [request responseData];
+    DLog(@"----- GET DATA SYNCHRONOUSLY ------ \n %@ ", [request responseString]);
+    return data;
+  }else{
+    return nil;
+  }
+}
+
++ (NSData *)loadSettings
+{
+  DLog(@"KassApiKlass::loadSettings");
+  return [KassApi getData:[NSString stringWithFormat:@"http://%s/v1/settings", HOST]]; 
+}
 
 + (NSDictionary *)parseData:(NSData *)data
 {

@@ -13,7 +13,7 @@
 #import "UIResponder+VariableStore.h"
 #import "PullToRefreshView.h"
 
-@interface BrowseItemNoMsgViewController : UIViewController <UIActionSheetDelegate, AccountActivityDelegate, UIScrollViewDelegate>
+@interface BrowseItemNoMsgViewController : UIViewController <UIActionSheetDelegate, AccountActivityDelegate, UIScrollViewDelegate, PullToRefreshViewDelegate>
 {
     CGRect _keyboardRect; // for keyboard avoiding
 }

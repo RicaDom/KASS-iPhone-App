@@ -74,6 +74,9 @@
 		77A195C914FF80E40058C34F /* BaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A195C814FF80E40058C34F /* BaseHelper.m */; };
 		77CD5FC514CA52780013B510 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CD5FC214CA52780013B510 /* Constants.m */; };
 		77CD5FC614CA52780013B510 /* VariableStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CD5FC414CA52780013B510 /* VariableStore.m */; };
+		77D566A915036A72003BA8DB /* settings.json in Resources */ = {isa = PBXBuildFile; fileRef = 77D566A815036A72003BA8DB /* settings.json */; };
+		77D566BA150377A3003BA8DB /* KassApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D566B9150377A3003BA8DB /* KassApp.m */; };
+		77D566BD1503C455003BA8DB /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = 77D566BC1503C455003BA8DB /* image.png */; };
 		77E3101914F20C60000E9567 /* UIResponder+VariableStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E3101814F20C60000E9567 /* UIResponder+VariableStore.m */; };
 		77E3101C14F235EF000E9567 /* ViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E3101B14F235EE000E9567 /* ViewHelper.m */; };
 		77E3102214F23E1F000E9567 /* NSString+ModelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E3102114F23E1F000E9567 /* NSString+ModelHelper.m */; };
@@ -153,7 +156,6 @@
 		E5C0ABE814AAC9D20021873A /* ListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C0ABE714AAC9D20021873A /* ListItem.m */; };
 		E5C0ABED14AADF130021873A /* ItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C0ABEC14AADF130021873A /* ItemViewController.m */; };
 		E5C98E9F14C51D3800319277 /* Zaarly_logo3-300x143.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C98E9E14C51D3800319277 /* Zaarly_logo3-300x143.png */; };
-		E5C98EA314C51FBC00319277 /* images.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C98EA114C51FBC00319277 /* images.png */; };
 		E5C98EA414C51FBC00319277 /* martin_luther_king-2012-hp.png in Resources */ = {isa = PBXBuildFile; fileRef = E5C98EA214C51FBC00319277 /* martin_luther_king-2012-hp.png */; };
 		E5D69EDD14AD0DB900D552F6 /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D69EDC14AD0DB900D552F6 /* MainTabBarViewController.m */; };
 		E5D69EEB14AD1A6700D552F6 /* world1.png in Resources */ = {isa = PBXBuildFile; fileRef = E5D69EEA14AD1A6700D552F6 /* world1.png */; };
@@ -299,6 +301,11 @@
 		77CD5FC214CA52780013B510 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		77CD5FC314CA52780013B510 /* VariableStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VariableStore.h; sourceTree = "<group>"; };
 		77CD5FC414CA52780013B510 /* VariableStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VariableStore.m; sourceTree = "<group>"; };
+		77D566A815036A72003BA8DB /* settings.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = settings.json; path = Resources/settings.json; sourceTree = "<group>"; };
+		77D566B8150377A3003BA8DB /* KassApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KassApp.h; path = Libraries/KassApp/KassApp.h; sourceTree = "<group>"; };
+		77D566B9150377A3003BA8DB /* KassApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KassApp.m; path = Libraries/KassApp/KassApp.m; sourceTree = "<group>"; };
+		77D566BB150377FB003BA8DB /* KassAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KassAppDelegate.h; path = Libraries/KassApp/KassAppDelegate.h; sourceTree = "<group>"; };
+		77D566BC1503C455003BA8DB /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
 		77E3101714F20C60000E9567 /* UIResponder+VariableStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+VariableStore.h"; sourceTree = "<group>"; };
 		77E3101814F20C60000E9567 /* UIResponder+VariableStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+VariableStore.m"; sourceTree = "<group>"; };
 		77E3101A14F235ED000E9567 /* ViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewHelper.h; sourceTree = "<group>"; };
@@ -424,7 +431,6 @@
 		E5C0ABEB14AADF130021873A /* ItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemViewController.h; sourceTree = "<group>"; };
 		E5C0ABEC14AADF130021873A /* ItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemViewController.m; sourceTree = "<group>"; };
 		E5C98E9E14C51D3800319277 /* Zaarly_logo3-300x143.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Zaarly_logo3-300x143.png"; sourceTree = "<group>"; };
-		E5C98EA114C51FBC00319277 /* images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = images.png; sourceTree = "<group>"; };
 		E5C98EA214C51FBC00319277 /* martin_luther_king-2012-hp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "martin_luther_king-2012-hp.png"; sourceTree = "<group>"; };
 		E5D69EDB14AD0DB900D552F6 /* MainTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarViewController.h; sourceTree = "<group>"; };
 		E5D69EDC14AD0DB900D552F6 /* MainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewController.m; sourceTree = "<group>"; };
@@ -712,6 +718,16 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
+		77D566B1150376A3003BA8DB /* KassApp */ = {
+			isa = PBXGroup;
+			children = (
+				77D566B8150377A3003BA8DB /* KassApp.h */,
+				77D566B9150377A3003BA8DB /* KassApp.m */,
+				77D566BB150377FB003BA8DB /* KassAppDelegate.h */,
+			);
+			name = KassApp;
+			sourceTree = "<group>";
+		};
 		77E30FB414F13817000E9567 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -791,6 +807,7 @@
 		77F027A314C668760065EDAA /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				77D566B1150376A3003BA8DB /* KassApp */,
 				77E766B215012FE300A4E0D0 /* DataSource */,
 				77F5998C14E806EE00CE96C3 /* LocateMe */,
 				777E4F0314DF99A0002B40C3 /* Account */,
@@ -815,6 +832,7 @@
 				77EA15A314DA1EBC00E6E45A /* china-chengdu.gpx */,
 				777C903614E4AA0A002A80B0 /* userInfo.json */,
 				77A195BA14FF5A040058C34F /* china-hangzhou.gpx */,
+				77D566A815036A72003BA8DB /* settings.json */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -970,6 +988,7 @@
 		E59AE14814AD09410048C7C0 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				77D566BC1503C455003BA8DB /* image.png */,
 				E5B3AC7814EBB7BA00CD4C67 /* grayArrow.png */,
 				E5B3AC7914EBB7BA00CD4C67 /* grayArrow@2x.png */,
 				E5B3AC7A14EBB7BA00CD4C67 /* blackArrow.png */,
@@ -987,7 +1006,6 @@
 				E5A4893C14DFAD5300501EE2 /* middleRow.png */,
 				E5A4893D14DFAD5300501EE2 /* middleRowSelected.png */,
 				E5033BE214DA8CE80049FA5D /* login.png */,
-				E5C98EA114C51FBC00319277 /* images.png */,
 				E5C98EA214C51FBC00319277 /* martin_luther_king-2012-hp.png */,
 				E5C98E9E14C51D3800319277 /* Zaarly_logo3-300x143.png */,
 				E5D69EF214AD54E100D552F6 /* house.png */,
@@ -1142,7 +1160,6 @@
 				E5D69EF114AD1ACB00D552F6 /* mailopened1.png in Resources */,
 				E5D69EF314AD54E100D552F6 /* house.png in Resources */,
 				E5C98E9F14C51D3800319277 /* Zaarly_logo3-300x143.png in Resources */,
-				E5C98EA314C51FBC00319277 /* images.png in Resources */,
 				E5C98EA414C51FBC00319277 /* martin_luther_king-2012-hp.png in Resources */,
 				77899CB114C70CD900C6484B /* myListings.json in Resources */,
 				775069EF14C80ADE000494E5 /* README.markdown in Resources */,
@@ -1186,6 +1203,8 @@
 				E5B3AC8614EBB7BB00CD4C67 /* whiteArrow.png in Resources */,
 				E5B3AC8714EBB7BB00CD4C67 /* whiteArrow@2x.png in Resources */,
 				77A195BB14FF5A050058C34F /* china-hangzhou.gpx in Resources */,
+				77D566A915036A72003BA8DB /* settings.json in Resources */,
+				77D566BD1503C455003BA8DB /* image.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1306,6 +1325,7 @@
 				77E766BD1501C68400A4E0D0 /* DataSourceManager.m in Sources */,
 				77E766C61502352F00A4E0D0 /* DataSourceViewController.m in Sources */,
 				E5A9FBB6150310C600AC5F0E /* PostTemplate.m in Sources */,
+				77D566BA150377A3003BA8DB /* KassApp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

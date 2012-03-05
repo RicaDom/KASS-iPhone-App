@@ -7,6 +7,7 @@
 //
 
 #import "PostViewController.h"
+#import "UIResponder+VariableStore.h"
 
 @implementation PostViewController
 
@@ -206,150 +207,33 @@
 // Loading data from server
 - (void)postTemplatesDataLoad
 {
-    self.postTemplates = [NSMutableArray new];
-    
-    PostTemplate *temp = [PostTemplate new];
-    temp.dbId = @"abc1";
-    temp.category = POST_TEMPLATE_CATEGORY_POPULAR;
-    temp.picPath = @"Zaarly_logo3-300x143.png";
-    
-    ListItem *item = [ListItem new];
-    item.title = @"Popular post item title1";
-    item.description = @"Popular post item description1";
-    item.askPrice = [NSDecimalNumber decimalNumberWithString:@"888.99"];
-    item.postDuration = [NSNumber numberWithInt:7200];
-    
-    temp.listItem = item;
-    
+  
+  NSArray *popularTemplates  = [[self kassVS].postTemplatesDict objectForKey:@"popular"];
+  NSArray *editorTemplates   = [[self kassVS].postTemplatesDict objectForKey:@"editor"];
+  NSArray *creativeTemplates = [[self kassVS].postTemplatesDict objectForKey:@"creative"];
+  
+  DLog(@"PostViewController::postTemplatesDataLoad:popularTemplates=%@", popularTemplates);
+  
+  self.postTemplates = [NSMutableArray new];
+  
+  for(int i = 0; i < [popularTemplates count]; i++){
+    NSDictionary *popularTemplateDict = [popularTemplates objectAtIndex:i];
+    PostTemplate *temp = [[PostTemplate alloc] initWithDictionaryAndCategory:popularTemplateDict:POST_TEMPLATE_CATEGORY_POPULAR];
     [self.postTemplates addObject:temp];
-    
-    //////////////////////////////////////
-    temp = [PostTemplate new];
-    temp.dbId = @"abc2";
-    temp.category = POST_TEMPLATE_CATEGORY_POPULAR;
-    temp.picPath = @"martin_luther_king-2012-hp.png";
-    
-    item = [ListItem new];
-    item.title = @"Popular post item title2";
-    item.description = @"Popular post item description2";
-    item.askPrice = [NSDecimalNumber decimalNumberWithString:@"888.99"];
-    item.postDuration = [NSNumber numberWithInt:7200];
-    
-    temp.listItem = item;
-
+  }
+  
+  for(int i = 0; i < [editorTemplates count]; i++){
+    NSDictionary *editorTemplateDict = [editorTemplates objectAtIndex:i];
+    PostTemplate *temp = [[PostTemplate alloc] initWithDictionaryAndCategory:editorTemplateDict:POST_TEMPLATE_CATEGORY_EDITOR];
     [self.postTemplates addObject:temp];
-    
-    //////////////////////////////////////
-    temp = [PostTemplate new];
-    temp.dbId = @"abc3";
-    temp.category = POST_TEMPLATE_CATEGORY_POPULAR;
-    temp.picPath = @"images.png";
-    
-    item = [ListItem new];
-    item.title = @"Popular post item title3";
-    item.description = @"Popular post item description3";
-    item.askPrice = [NSDecimalNumber decimalNumberWithString:@"888.99"];
-    item.postDuration = [NSNumber numberWithInt:7200];
-    
-    temp.listItem = item;
-
+  }
+  
+  for(int i = 0; i < [creativeTemplates count]; i++){
+    NSDictionary *creativeTemplateDict = [creativeTemplates objectAtIndex:i];
+    PostTemplate *temp = [[PostTemplate alloc] initWithDictionaryAndCategory:creativeTemplateDict:POST_TEMPLATE_CATEGORY_CREATIVE];
     [self.postTemplates addObject:temp];
+  }
     
-    /* Editor examples */
-    temp = [PostTemplate new];
-    temp.dbId = @"Editorabc1";
-    temp.category = POST_TEMPLATE_CATEGORY_EDITOR;
-    temp.picPath = @"Zaarly_logo3-300x143.png";
-    
-    item = [ListItem new];
-    item.title = @"Editor post item title1";
-    item.description = @"Editor post item description1";
-    item.askPrice = [NSDecimalNumber decimalNumberWithString:@"888.99"];
-    item.postDuration = [NSNumber numberWithInt:7200];
-    
-    temp.listItem = item;
-    
-    [self.postTemplates addObject:temp];
-    
-    //////////////////////////////////////
-    temp = [PostTemplate new];
-    temp.dbId = @"Editorabc2";
-    temp.category = POST_TEMPLATE_CATEGORY_EDITOR;
-    temp.picPath = @"martin_luther_king-2012-hp.png";
-    
-    item = [ListItem new];
-    item.title = @"Editor post item title2";
-    item.description = @"Editor post item description2";
-    item.askPrice = [NSDecimalNumber decimalNumberWithString:@"888.99"];
-    item.postDuration = [NSNumber numberWithInt:7200];
-    
-    temp.listItem = item;
-    
-    [self.postTemplates addObject:temp];
-    
-    //////////////////////////////////////
-    temp = [PostTemplate new];
-    temp.dbId = @"Editorabc3";
-    temp.category = POST_TEMPLATE_CATEGORY_EDITOR;
-    temp.picPath = @"images.png";
-    
-    item = [ListItem new];
-    item.title = @"Editor post item title3";
-    item.description = @"Editor post item description3";
-    item.askPrice = [NSDecimalNumber decimalNumberWithString:@"888.99"];
-    item.postDuration = [NSNumber numberWithInt:7200];
-    
-    temp.listItem = item;
-    
-    [self.postTemplates addObject:temp];
-
-    /* Creative examples */
-    temp = [PostTemplate new];
-    temp.dbId = @"Creativeabc1";
-    temp.category = POST_TEMPLATE_CATEGORY_CREATIVE;
-    temp.picPath = @"Zaarly_logo3-300x143.png";
-    
-    item = [ListItem new];
-    item.title = @"Creative post item title1";
-    item.description = @"Creative post item description1";
-    item.askPrice = [NSDecimalNumber decimalNumberWithString:@"888.99"];
-    item.postDuration = [NSNumber numberWithInt:7200];
-    
-    temp.listItem = item;
-    
-    [self.postTemplates addObject:temp];
-    
-    //////////////////////////////////////
-    temp = [PostTemplate new];
-    temp.dbId = @"Creativeabc2";
-    temp.category = POST_TEMPLATE_CATEGORY_CREATIVE;
-    temp.picPath = @"martin_luther_king-2012-hp.png";
-    
-    item = [ListItem new];
-    item.title = @"Creative post item title2";
-    item.description = @"Creative post item description2";
-    item.askPrice = [NSDecimalNumber decimalNumberWithString:@"888.99"];
-    item.postDuration = [NSNumber numberWithInt:7200];
-    
-    temp.listItem = item;
-    
-    [self.postTemplates addObject:temp];
-    
-    //////////////////////////////////////
-    temp = [PostTemplate new];
-    temp.dbId = @"Creativeabc3";
-    temp.category = POST_TEMPLATE_CATEGORY_CREATIVE;
-    temp.picPath = @"images.png";
-    
-    item = [ListItem new];
-    item.title = @"Creative post item title3";
-    item.description = @"Creative post item description3";
-    item.askPrice = [NSDecimalNumber decimalNumberWithString:@"888.99"];
-    item.postDuration = [NSNumber numberWithInt:7200];
-    
-    temp.listItem = item;
-    
-    [self.postTemplates addObject:temp];
 }
 
 - (void)postTemplatesViewLoad
