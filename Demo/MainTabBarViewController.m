@@ -52,6 +52,7 @@
         // set it just for this instance
         [[self tabBar] setBackgroundImage:[UIImage imageNamed:UI_IMAGE_TABBAR_BACKGROUND]];
         [self tabBar].selectionIndicatorImage = [UIImage imageNamed:UI_IMAGE_TABBAR_SELECTED_TRANS];
+        //[[[[self tabBar] items] objectAtIndex:0] setBadgeValue:@"77"];
         //[[self tabBar] setBackgroundColor:[UIColor redColor]];
         // set for all
         // [[UITabBar appearance] setBackgroundImage: ...
