@@ -186,8 +186,10 @@
 {
     DLog(@"BrowseTableViewController::viewDidLoad ");
     [super viewDidLoad];
-
     [self setupArray];
+
+    // navigation bar background color
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
 
 //    UIImage *tableHeaderViewImage = [UIImage imageNamed:@"tableHeader.png"];
 //    UIImageView *tableHeaderView = [[UIImageView alloc] initWithImage:tableHeaderViewImage];
@@ -196,7 +198,7 @@
     UIImage *tableFooterViewImage = [UIImage imageNamed:@"login.png"];
     UIImageView *tableFooterView = [[UIImageView alloc] initWithImage:tableFooterViewImage];
     self.listingTableView.tableFooterView = tableFooterView;
-    self.navigationController.navigationBar.tintColor = [UIColor brownColor];
+
     if (_refreshHeaderView == nil) {
         EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
         view.delegate = self;

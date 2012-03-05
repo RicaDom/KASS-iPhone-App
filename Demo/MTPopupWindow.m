@@ -85,9 +85,9 @@
     self.bigPanelView.center = CGPointMake( self.bgView.frame.size.width/2, self.bgView.frame.size.height/2);
     
     //add the window background
-    UIImageView* background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"popupWindowBack.png"]];
+    UIImageView* background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:UI_IMAGE_LOGIN_BACKGROUND]];
     //UIImageView* background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login.png"]];
-    background.center = CGPointMake(self.bigPanelView.frame.size.width/2, self.bigPanelView.frame.size.height/2);
+    background.center = CGPointMake(self.bigPanelView.frame.size.width/2, self.bigPanelView.frame.size.height/2 - 20);
     [self.bigPanelView addSubview: background];
     
     //add the close button
@@ -103,45 +103,55 @@
     [closeBtn addTarget:self action:@selector(closePopupWindow) forControlEvents:UIControlEventTouchUpInside];
     [self.bigPanelView addSubview: closeBtn];
     
-    UILabel *loginWelcomeMessage = [[UILabel alloc] init];
-    [loginWelcomeMessage setText:@"欢迎来到KASS！"];
-    [loginWelcomeMessage setTextColor:[UIColor blackColor]];
-    loginWelcomeMessage.frame = CGRectMake(background.frame.size.width/2 - 50, 40, 150, 30);
-    [self.bigPanelView addSubview:loginWelcomeMessage];
+//    UILabel *loginWelcomeMessage = [[UILabel alloc] init];
+//    [loginWelcomeMessage setText:@"欢迎来到KASS！"];
+//    [loginWelcomeMessage setTextColor:[UIColor blackColor]];
+//    loginWelcomeMessage.frame = CGRectMake(background.frame.size.width/2 - 50, 40, 150, 30);
+//    [self.bigPanelView addSubview:loginWelcomeMessage];
     
-    UIButton *twitterButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    twitterButton.frame = CGRectMake(80.0, 90.0, 160.0, 40.0);
-    [twitterButton setTitle:UI_BUTTON_LABEL_TWITTER_SIGNIN forState:UIControlStateNormal];
-    [twitterButton setTitleColor: [UIColor orangeColor] forState: UIControlStateNormal];
+    UIImage* twitterButtonImg = [UIImage imageNamed:UI_IMAGE_WEIBO_BUTTON];
+    UIImage* twitterButtonPressImg = [UIImage imageNamed:UI_IMAGE_WEIBO_BUTTON_PRESS];
+    UIButton* twitterButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [twitterButton setImage:twitterButtonImg forState:UIControlStateNormal];
+    [twitterButton setImage:twitterButtonPressImg forState:UIControlStateHighlighted];
+    twitterButton.frame = CGRectMake((self.bigPanelView.frame.size.width - twitterButtonImg.size.width) / 2, 140.0, twitterButtonImg.size.width, twitterButtonImg.size.height);
+//    [twitterButton setTitle:UI_BUTTON_LABEL_TWITTER_SIGNIN forState:UIControlStateNormal];
+//    [twitterButton setTitleColor: [UIColor orangeColor] forState: UIControlStateNormal];
     [twitterButton addTarget:self action:@selector(loginWithWeibo) forControlEvents:UIControlEventTouchUpInside];
     [self.bigPanelView addSubview:twitterButton];
     
-    UILabel *notTwitterMessage = [[UILabel alloc] init];
-    [notTwitterMessage setText:@"没有微博，没问题。\n注册KASS或者用KASS账号登陆。"];
-    [notTwitterMessage setTextColor:[UIColor blackColor]];
-    notTwitterMessage.frame = CGRectMake(background.frame.size.width/2 - 110, 160, 150, 120);
-    notTwitterMessage.numberOfLines = 2;
-    notTwitterMessage.textAlignment = UITextAlignmentCenter;
-    [notTwitterMessage sizeToFit];
-    [self.bigPanelView addSubview:notTwitterMessage];    
+//    UILabel *notTwitterMessage = [[UILabel alloc] init];
+//    [notTwitterMessage setText:@"没有微博，没问题。\n注册KASS或者用KASS账号登陆。"];
+//    [notTwitterMessage setTextColor:[UIColor blackColor]];
+//    notTwitterMessage.frame = CGRectMake(background.frame.size.width/2 - 110, 160, 150, 120);
+//    notTwitterMessage.numberOfLines = 2;
+//    notTwitterMessage.textAlignment = UITextAlignmentCenter;
+//    [notTwitterMessage sizeToFit];
+//    [self.bigPanelView addSubview:notTwitterMessage];    
     
-    UIButton *signUpButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    signUpButton.frame = CGRectMake(70.0, 250.0, 80.0, 40.0);
-    [signUpButton setTitle:UI_BUTTON_LABEL_SIGNUP forState:UIControlStateNormal];
-    [signUpButton setTitleColor: [UIColor orangeColor] forState: UIControlStateNormal];
+
+    UIImage* signUpButtonImg = [UIImage imageNamed:UI_IMAGE_SIGNUP_BUTTON];
+    UIImage* signUpButtonPressImg = [UIImage imageNamed:UI_IMAGE_SIGNUP_BUTTON_PRESS];
+    UIButton* signUpButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [signUpButton setImage:signUpButtonImg forState:UIControlStateNormal];
+    [signUpButton setImage:signUpButtonPressImg forState:UIControlStateHighlighted];
+    signUpButton.frame = CGRectMake(45.0, 280.0, signUpButtonImg.size.width, signUpButtonImg.size.height);
     [signUpButton addTarget:self action:@selector(toSignUpViewAction) forControlEvents:UIControlEventTouchUpInside];
     [self.bigPanelView addSubview:signUpButton];
     
-    UIButton *signInButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    signInButton.frame = CGRectMake(170.0, 250.0, 80.0, 40.0);
-    [signInButton setTitle:UI_BUTTON_LABEL_SIGIN forState:UIControlStateNormal];
-    [signInButton setTitleColor: [UIColor orangeColor] forState: UIControlStateNormal];
+    UIImage* signInButtonImg = [UIImage imageNamed:UI_IMAGE_SIGNIN_BUTTON];
+    UIImage* signInButtonPressImg = [UIImage imageNamed:UI_IMAGE_SIGNIN_BUTTON_PRESS];
+    UIButton* signInButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [signInButton setImage:signInButtonImg forState:UIControlStateNormal];
+    [signInButton setImage:signInButtonPressImg forState:UIControlStateHighlighted];
+    signInButton.frame = CGRectMake(170.0, 280.0, signUpButtonImg.size.width, signUpButtonImg.size.height);
     [signInButton addTarget:self action:@selector(toSignInViewAction) forControlEvents:UIControlEventTouchUpInside];
     [self.bigPanelView addSubview:signInButton];
     
-    UIButton *startButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    startButton.frame = CGRectMake(60.0, 400.0, 210.0, 20.0);
-    [startButton setTitle:@"开始" forState:UIControlStateNormal];
+    UIImage* startImg = [UIImage imageNamed:UI_IMAGE_LOGIN_SKIP_TEXT];
+    UIButton *startButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [startButton setImage:startImg forState:UIControlStateNormal];
+    startButton.frame = CGRectMake((self.bigPanelView.frame.size.width - startImg.size.width) / 2, 360.0, startImg.size.width, startImg.size.height);
     [startButton addTarget:self action:@selector(startButtonAction) forControlEvents:UIControlEventTouchUpInside];
     [self.bigPanelView addSubview:startButton];   
     
@@ -246,7 +256,7 @@
     self.signUpView.center = CGPointMake( self.bgView.frame.size.width/2, self.bgView.frame.size.height/2);
     
     //add the window background
-    UIImageView* background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"popupWindowBack.png"]];
+    UIImageView* background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg.png"]];
     //UIImageView* background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login.png"]];
     background.center = CGPointMake(self.signUpView.frame.size.width/2, self.signUpView.frame.size.height/2);
     [self.signUpView addSubview: background];    

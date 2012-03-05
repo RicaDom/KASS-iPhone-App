@@ -81,7 +81,7 @@ static DejalActivityView *dejalActivityView = nil;
 
 + (DejalActivityView *)activityViewForView:(UIView *)addToView;
 {
-    return [self activityViewForView:addToView withLabel:NSLocalizedString(@"Loading...", @"Default DejalActivtyView label text") width:0];
+    return [self activityViewForView:addToView withLabel:NSLocalizedString(@"加载中...", @"Default DejalActivtyView label text") width:0];
 }
 
 /*
@@ -694,7 +694,7 @@ static DejalActivityView *dejalActivityView = nil;
 
 + (DejalKeyboardActivityView *)activityView;
 {
-    return [self activityViewWithLabel:NSLocalizedString(@"Loading...", @"Default DejalActivtyView label text")];
+    return [self activityViewWithLabel:NSLocalizedString(@"加载中...", @"Default DejalActivtyView label text")];
 }
 
 /*

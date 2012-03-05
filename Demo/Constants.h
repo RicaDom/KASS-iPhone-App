@@ -12,7 +12,12 @@
 
 #define _UIKeyboardFrameEndUserInfoKey (&UIKeyboardFrameEndUserInfoKey != NULL ? UIKeyboardFrameEndUserInfoKey : @"UIKeyboardBoundsUserInfoKey")
 
-#define _ScrollViewContentSizeX 320  
+#define _ScrollViewContentSizeX 320 
+
+#define NAVIGATION_BAR_BACKGROUND_COLOR_RED 0.98
+#define NAVIGATION_BAR_BACKGROUND_COLOR_GREEN 0.6
+#define NAVIGATION_BAR_BACKGROUND_COLOR_BLUE 0.4
+#define NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA 1.0
 
 extern NSString * const POST_TYPE_TEMPLATE;
 extern NSString * const POST_TYPE_EDITING;
@@ -58,7 +63,19 @@ extern NSString * const CHANGED_PRICE_NOTIFICATION;
 extern NSString * const OFFER_TO_PAY_VIEW_NOTIFICATION;
 extern NSString * const NEW_POST_NOTIFICATION;
 
-// Popup image
+// UI image
 extern NSString * const POPUP_IMAGE_NEW_POST_SUCCESS;
+extern NSString * const UI_IMAGE_TABBAR_BACKGROUND;
+extern NSString * const UI_IMAGE_TABBAR_SELECTED_TRANS;
+
+extern NSString * const UI_IMAGE_LOGIN_BACKGROUND;
+extern NSString * const UI_IMAGE_WEIBO_BUTTON;
+extern NSString * const UI_IMAGE_WEIBO_BUTTON_PRESS;
+extern NSString * const UI_IMAGE_SIGNUP_BUTTON;
+extern NSString * const UI_IMAGE_SIGNUP_BUTTON_PRESS;
+extern NSString * const UI_IMAGE_SIGNIN_BUTTON;
+extern NSString * const UI_IMAGE_SIGNIN_BUTTON_PRESS;
+extern NSString * const UI_IMAGE_LOGIN_SKIP_TEXT;
+extern NSString * const UI_IMAGE_ACTIVITY_BACKGROUND;
 
 @end
