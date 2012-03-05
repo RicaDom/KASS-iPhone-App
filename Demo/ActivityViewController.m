@@ -132,7 +132,7 @@ NSMutableArray *currentItems;
 -(void)loadDataSource{
   if (![[self kassVS] isLoggedIn]) { 
     if (self.emptyRecordsImageView == nil || self.emptyRecordsImageView.image == nil) {
-      self.emptyRecordsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default.png"]];
+      self.emptyRecordsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:UI_IMAGE_ACTIVITY_BACKGROUND]];
       [self.view addSubview:self.emptyRecordsImageView];
     }
     return; 
@@ -195,8 +195,10 @@ NSMutableArray *currentItems;
   [super viewDidLoad];
   [self loadDataSource];
   
-  self.navigationController.navigationBar.tintColor = [UIColor brownColor];  
-  
+  // navigation bar background color
+  self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
+  // [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:NAVIGATION_BAR_BACKGROUND_IMAGE] forBarMetrics:UIBarMetricsDefault];
+    
   [[NSNotificationCenter defaultCenter] addObserver:self
                                         selector:@selector(receivedFromOfferViewNotification:) 
                                         name:OFFER_TO_PAY_VIEW_NOTIFICATION

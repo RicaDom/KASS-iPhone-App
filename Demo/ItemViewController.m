@@ -95,27 +95,30 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
-  DLog(@"ItemViewController::viewDidLoad");
-  [super viewDidLoad];
-  
-  UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]
+    DLog(@"ItemViewController::viewDidLoad");
+    [super viewDidLoad];
+    
+    // navigation bar background color
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
+
+    UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]
                               initWithTitle:UI_BUTTON_LABEL_BACK
                               style:UIBarButtonItemStyleBordered
                               target:self
                               action:@selector(OnClick_btnBack:)];
-  self.navigationItem.leftBarButtonItem = btnBack;  
-    
-    
-  if (_refreshHeaderView == nil) {
+    self.navigationItem.leftBarButtonItem = btnBack;  
+
+
+    if (_refreshHeaderView == nil) {
     EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.offerTableView.bounds.size.height, self.view.frame.size.width, self.offerTableView.bounds.size.height)];
     view.delegate = self;
     [self.offerTableView addSubview:view];
     _refreshHeaderView = view;
-  }
-	
-	
-	//  update the last update date
-	[_refreshHeaderView refreshLastUpdatedDate];
+    }
+
+
+    //  update the last update date
+    [_refreshHeaderView refreshLastUpdatedDate];
 }
 
 #pragma mark -

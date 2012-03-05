@@ -17,7 +17,6 @@
 {
   DLog(@"AppDelegate::didFinishLaunchingWithOptions:rootViewController=%@", self.window.rootViewController);
   [VariableStore.sharedInstance loadAndStoreSettings:self];
-  
   DLog(@"AppDelegate::doneLoading");
   return YES;
 }
@@ -69,7 +68,6 @@
 		return TRUE;
 	return TRUE;
 }
-
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {

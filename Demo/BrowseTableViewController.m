@@ -15,7 +15,6 @@
 @synthesize currentListings = _currentListings;
 @synthesize filteredListContent = _filteredListContent;
 
-
 #pragma mark -
 #pragma mark Data Source Loading / Reloading Methods
 
@@ -187,17 +186,19 @@
 {
     DLog(@"BrowseTableViewController::viewDidLoad ");
     [super viewDidLoad];
-
     [self setupArray];
+
+    // navigation bar background color
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
 
 //    UIImage *tableHeaderViewImage = [UIImage imageNamed:@"tableHeader.png"];
 //    UIImageView *tableHeaderView = [[UIImageView alloc] initWithImage:tableHeaderViewImage];
 //    self.listingTableView.tableHeaderView = tableHeaderView;
     
-//    UIImage *tableFooterViewImage = [UIImage imageNamed:@"login.png"];
-//    UIImageView *tableFooterView = [[UIImageView alloc] initWithImage:tableFooterViewImage];
-//    self.listingTableView.tableFooterView = tableFooterView;
-//    self.navigationController.navigationBar.tintColor = [UIColor brownColor];
+    UIImage *tableFooterViewImage = [UIImage imageNamed:@"login.png"];
+    UIImageView *tableFooterView = [[UIImageView alloc] initWithImage:tableFooterViewImage];
+    self.listingTableView.tableFooterView = tableFooterView;
+
     if (_refreshHeaderView == nil) {
         EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
         view.delegate = self;
@@ -207,6 +208,10 @@
 	
 	//  update the last update date
 	[_refreshHeaderView refreshLastUpdatedDate];
+    
+    
+    self.filteredListContent = [[NSMutableArray alloc] init];
+	[self.tableView reloadData];
 }
 
 - (void)viewDidUnload
@@ -259,7 +264,7 @@
 	 If the requesting table view is the search display controller's table view, return the count of
      the filtered list, otherwise return the count of the main list.
 	 */
-	if (tableView == self.searchDisplayController.searchResultsTableView)
+	if ([tableView isEqual:self.searchDisplayController.searchResultsTableView])
 	{
         return [self.filteredListContent count];
     }
@@ -271,23 +276,32 @@
 
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"browseListingTableCell";
-    ListingTableCell *cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-  
-    if (cell == nil) {
-        cell = [[ListingTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    
-    DLog(@"Cell: %@", cell);
-    DLog(@"Index Path: %d", indexPath.row);
-    //set cell using data
-    if (aTableView == self.searchDisplayController.searchResultsTableView) {
-        [cell buildCellByListItem:[self.filteredListContent objectAtIndex:indexPath.row]];
+    if ([aTableView isEqual:self.searchDisplayController.searchResultsTableView]) {
+        static NSString *CellIdentifier = @"browseListingTableCell";
+        UITableViewCell *cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
+        
+        //set cell using data
+        cell.textLabel.text = ((ListItem *)[self.filteredListContent objectAtIndex:indexPath.row]).title;
+        //[cell buildCellByListItem:[self.currentListings objectAtIndex:indexPath.row]];
+        return cell;
     } else {
+        static NSString *CellIdentifier = @"browseListingTableCell";
+        ListingTableCell *cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (cell == nil) {
+            cell = [[ListingTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+        
+        //set cell using data
+        
         [cell buildCellByListItem:[self.currentListings objectAtIndex:indexPath.row]];
+        return cell;        
     }
-
-    return cell;
 }
 
 // Reloading data
@@ -305,7 +319,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   int row = [indexPath row];
-  ListItem *item = [self.currentListings objectAtIndex:row];
+    
+  // check table view  
+  ListItem *item = ([tableView isEqual:self.searchDisplayController.searchResultsTableView])?
+    [self.filteredListContent objectAtIndex:row]:[self.currentListings objectAtIndex:row];
+    
+    DLog(@"Selected Item Title: %@", item.title);
 
     // if not login
   if ( ![self kassVS].isLoggedIn ) {
@@ -366,8 +385,6 @@
 //Loading sample data, for TESTING ONLY!
 - (void) initListingsData {
     ListItem *item = [ListItem new];
-    
-    item = [ListItem new];
     [item setTitle:@"求购2012年东方卫视跨年演唱会门票"];
     [item setDescription:@"听说有很多明星，阵容强大啊，求门票啊~~ 听说有很多明星，阵容强大啊，求门票啊~~ 听说有很多明星，阵容强大啊，求门票啊~~"];
     item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
@@ -396,7 +413,13 @@
                      [[NSNumber numberWithFloat:18.55f] decimalValue]];
     
     [self.filteredListContent addObject:item];
+    
+    DLog(@"filtered content: %@, number: %d", self.filteredListContent, [self.filteredListContent count]);
 }
+
+
+#pragma mark - TODO - based on searchText, server should return a list of results 
+
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
 	/*
@@ -405,21 +428,7 @@
 	
 	[self.filteredListContent removeAllObjects]; // First clear the filtered array.
 	[self initListingsData];
-    [self.tableView reloadData];
-	/*
-	 Search the main list for products whose type matches the scope (if selected) and whose name matches searchText; add items that match to the filtered array.
-	 */
-//	for (Product *product in listContent)
-//	{
-//		if ([scope isEqualToString:@"All"] || [product.type isEqualToString:scope])
-//		{
-//			NSComparisonResult result = [product.name compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
-//            if (result == NSOrderedSame)
-//			{
-//				[self.filteredListContent addObject:product];
-//            }
-//		}
-//	}
+
 }
 
 

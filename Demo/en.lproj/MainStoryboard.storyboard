@@ -516,6 +516,7 @@
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="voB-zd-hpM">
                             <rect key="frame" x="5" y="7" width="310" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <segments>
                                 <segment title="我的需求表"/>
                                 <segment title="我的供给表"/>
@@ -1405,7 +1406,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hWg-Ie-RHa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="qSl-ws-Clg" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Br1-bB-Ybw">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="姓名" lineBreakMode="tailTruncation" minimumFontSize="10" id="FOj-25-3s8">
@@ -1542,7 +1543,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ciu-h5-rwC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="e2b-4s-db1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="个人中心" image="house.png" id="m3F-Md-LaH"/>
+                    <tabBarItem key="tabBarItem" title="" id="m3F-Md-LaH"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="mLl-aq-mco">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1560,7 +1561,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PBk-be-dIC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="kWd-N3-yN7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="浏览" image="world1.png" id="QHd-kp-yr5"/>
+                    <tabBarItem key="tabBarItem" title="" id="QHd-kp-yr5"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="pgR-Td-GeT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1578,7 +1579,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="34B-fh-gGp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="klJ-6H-JRD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="设置" image="preferences1.png" id="ORy-sK-ckT"/>
+                    <tabBarItem key="tabBarItem" title="" id="ORy-sK-ckT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="VfJ-th-gat">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1702,7 +1703,7 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="发布需求" image="mailopened1.png" id="d5j-AA-FWb"/>
+                    <tabBarItem key="tabBarItem" title="" id="d5j-AA-FWb"/>
                     <connections>
                         <outlet property="contentView" destination="fFe-7o-AsK" id="UKw-Dq-qM1"/>
                         <outlet property="creativePostPageControl" destination="gw0-pP-mEg" id="aat-CC-9dM"/>
@@ -1779,10 +1780,6 @@
     <resources>
         <image name="Default.png" width="320" height="430"/>
         <image name="background.png" width="320" height="461"/>
-        <image name="house.png" width="26" height="26"/>
-        <image name="mailopened1.png" width="26" height="26"/>
-        <image name="preferences1.png" width="26" height="26"/>
-        <image name="world1.png" width="26" height="26"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -1790,13 +1787,13 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="2B3-vl-FJ4"/>
-        <segue reference="nzB-nt-Iox"/>
-        <segue reference="NEk-wT-5z2"/>
-        <segue reference="vrW-tF-Jr9"/>
-        <segue reference="6ov-7Q-KyR"/>
-        <segue reference="0kh-0v-gnk"/>
-        <segue reference="8Mx-QQ-zuz"/>
+        <segue reference="fhm-h2-6Oc"/>
+        <segue reference="GbK-KJ-XDJ"/>
+        <segue reference="fjZ-HN-yhn"/>
+        <segue reference="rFr-R7-ktR"/>
+        <segue reference="dM3-h5-4IE"/>
+        <segue reference="SDw-zv-tcg"/>
         <segue reference="nl2-Xy-OWc"/>
+        <segue reference="vrW-tF-Jr9"/>
     </inferredMetricsTieBreakers>
 </document>

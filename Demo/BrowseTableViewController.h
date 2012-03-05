@@ -27,7 +27,6 @@
 	BOOL _reloading;
 }
 
-
 @property (weak, nonatomic) IBOutlet UISegmentedControl *browseSegment;
 @property (strong, nonatomic) IBOutlet UITableView *listingTableView;
 @property (strong, nonatomic) NSMutableArray *currentListings;

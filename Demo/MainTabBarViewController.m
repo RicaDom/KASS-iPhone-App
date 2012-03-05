@@ -45,32 +45,41 @@
 }
 */
 
-//- (void)viewDidAppear:(BOOL)animated
-//{ 
-////  NSLog(@"MainTabBarViewController::viewDidAppear ");
-////  if ( ![[VariableStore sharedInstance] isLoggedIn]) {
-////    //[self showMessage];
-////    [MTPopupWindow showWindowWithUIView:self.view];
-////  }
-//}
+- (void)viewSetup
+{
+    if ([[self tabBar] respondsToSelector:@selector(setBackgroundImage:)])
+    {
+        // set it just for this instance
+        [[self tabBar] setBackgroundImage:[UIImage imageNamed:UI_IMAGE_TABBAR_BACKGROUND]];
+        [self tabBar].selectionIndicatorImage = [UIImage imageNamed:UI_IMAGE_TABBAR_SELECTED_TRANS];
+        //[[self tabBar] setBackgroundColor:[UIColor redColor]];
+        // set for all
+        // [[UITabBar appearance] setBackgroundImage: ...
+    }
+    else
+    {
+        // ios 4 code here
+    }    
+}
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {   
-  DLog(@"MainTabBarViewController::viewDidLoad ");
- [super viewDidLoad];
+    DLog(@"MainTabBarViewController::viewDidLoad ");
+    [super viewDidLoad];
+    [self viewSetup];
 
- [VariableStore sharedInstance].mainTabBar = self;
+    [VariableStore sharedInstance].mainTabBar = self;
 
- if ( ![[VariableStore sharedInstance] isLoggedIn]) {
-     [MTPopupWindow showWindowWithUIView:self.view];
- }
- 
- [[NSNotificationCenter defaultCenter] addObserver:self
+    if ( ![[VariableStore sharedInstance] isLoggedIn]) {
+        [MTPopupWindow showWindowWithUIView:self.view];
+    }
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
                                            selector:@selector(receivePriceChangedNotification:) 
                                                name:NEW_POST_NOTIFICATION
                                              object:nil];
-
+    
 }
 
 - (void) receivePriceChangedNotification:(NSNotification *) notification
@@ -104,65 +113,5 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
-//- (void)showMessage {
-////    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"KASS Get Started" 
-////                                                      message:@"Buy and Sell Anything with People Nearby " 
-////                                                     delegate:self 
-////                                            cancelButtonTitle:@"or just skip this for now" 
-////                                            otherButtonTitles:@"Sign Up", @"Login", @"Sign in with Facebook", nil];
-//    
-//    //UIImageView *Image =[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"images.png"]];
-//    
-//    //[message addSubview:Image];
-//    
-//    //[message show];
-//
-//    //[MTPopupWindow showWindowWithHTMLFile:@"testContent.html" insideView:self.view];
-//    //[MTPopupWindow showWindowWithUIView:self.view];
-//    //[ALToastView toastInView:self.view withText:@"Hello ALToastView"];
-//}
-//
-//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-//{
-//	NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
-//	
-//	if([title isEqualToString:@"Sign in with Facebook"])
-//	{
-//		NSLog(@"Sign in with Facebook was selected.");
-//	}
-//	else if([title isEqualToString:@"Sign Up"])
-//	{
-//		NSLog(@"Sign Up was selected.");
-//	}
-//	else if([title isEqualToString:@"Login"])
-//	{
-//    NSLog(@"Sign in: %@", [VariableStore sharedInstance].isLoggedIn);
-//		NSLog(@"Login was selected.");
-//	} 
-//	else if([title isEqualToString:@"or just skip this for now"])
-//    {
-//        NSLog(@"or just skip this for now was selected.");
-//    }
-//}
-
--(void)offerMessageToPayPage{
-    DLog(@"BrowseTableViewController::offerMessageToPayPage");
-    DLog(@"BrowseTableViewController::offerMessageToPayPage");
-    DLog(@"BrowseTableViewController::offerMessageToPayPage");
-    DLog(@"BrowseTableViewController::offerMessageToPayPage");
-    DLog(@"BrowseTableViewController::offerMessageToPayPage");
-    DLog(@"BrowseTableViewController::offerMessageToPayPage");
-    DLog(@"BrowseTableViewController::offerMessageToPayPage");
-    DLog(@"BrowseTableViewController::offerMessageToPayPage");
-    DLog(@"BrowseTableViewController::offerMessageToPayPage");
-    DLog(@"BrowseTableViewController::offerMessageToPayPage");
-    DLog(@"BrowseTableViewController::offerMessageToPayPage");
-    DLog(@"BrowseTableViewController::offerMessageToPayPage");
-    DLog(@"BrowseTableViewController::offerMessageToPayPage");
-    DLog(@"BrowseTableViewController::offerMessageToPayPage");
-    DLog(@"BrowseTableViewController::offerMessageToPayPage");
-}
-
 
 @end

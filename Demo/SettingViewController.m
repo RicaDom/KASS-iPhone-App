@@ -34,8 +34,10 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
-  [super viewDidLoad];
-  self.navigationController.navigationBar.tintColor = [UIColor brownColor];
+    [super viewDidLoad];
+    
+    // navigation bar background color
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
 }
 
 - (void)loadDataSource
