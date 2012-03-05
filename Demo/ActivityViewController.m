@@ -213,6 +213,7 @@ NSMutableArray *currentItems;
 	
 	//  update the last update date
 	[_refreshHeaderView refreshLastUpdatedDate];
+    
 }
 
 - (void) receivedFromOfferViewNotification:(NSNotification *) notification

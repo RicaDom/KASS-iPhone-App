@@ -58,13 +58,13 @@ NSString * const POPUP_IMAGE_NEW_POST_SUCCESS = @"POPUP_IMAGE_NEW_POST_SUCCESS";
 NSString * const UI_IMAGE_TABBAR_BACKGROUND = @"nav.png";
 NSString * const UI_IMAGE_TABBAR_SELECTED_TRANS = @"btn_transwhite.png";
 NSString * const UI_IMAGE_LOGIN_BACKGROUND = @"login_bg.png";
-NSString * const UI_IMAGE_WEIBO_BUTTON = @"btn_sina_1.png";
-NSString * const UI_IMAGE_WEIBO_BUTTON_PRESS = @"btn_sina_2.png";
+NSString * const UI_IMAGE_WEIBO_BUTTON = @"btn_sina_11.png";
+NSString * const UI_IMAGE_WEIBO_BUTTON_PRESS = @"btn_sina_22.png";
 NSString * const UI_IMAGE_SIGNUP_BUTTON = @"btn_signup_1.png";
 NSString * const UI_IMAGE_SIGNUP_BUTTON_PRESS = @"btn_signup_2.png";
 NSString * const UI_IMAGE_SIGNIN_BUTTON = @"btn_login_1.png";
 NSString * const UI_IMAGE_SIGNIN_BUTTON_PRESS = @"btn_login_2.png";
 NSString * const UI_IMAGE_LOGIN_SKIP_TEXT = @"skip.gif";
 
-NSString * const UI_IMAGE_ACTIVITY_BACKGROUND = @"bg_sky.jpg";
+NSString * const UI_IMAGE_ACTIVITY_BACKGROUND = @"bg_sky.png";
 @end

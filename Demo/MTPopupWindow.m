@@ -114,7 +114,7 @@
     UIButton* twitterButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [twitterButton setImage:twitterButtonImg forState:UIControlStateNormal];
     [twitterButton setImage:twitterButtonPressImg forState:UIControlStateHighlighted];
-    twitterButton.frame = CGRectMake((self.bigPanelView.frame.size.width - twitterButtonImg.size.width) / 2, 140.0, twitterButtonImg.size.width, twitterButtonImg.size.height);
+    twitterButton.frame = CGRectMake((self.bigPanelView.frame.size.width - twitterButtonImg.size.width) / 2, 130.0, twitterButtonImg.size.width, twitterButtonImg.size.height);
 //    [twitterButton setTitle:UI_BUTTON_LABEL_TWITTER_SIGNIN forState:UIControlStateNormal];
 //    [twitterButton setTitleColor: [UIColor orangeColor] forState: UIControlStateNormal];
     [twitterButton addTarget:self action:@selector(loginWithWeibo) forControlEvents:UIControlEventTouchUpInside];
