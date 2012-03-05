@@ -34,9 +34,16 @@
 
 - (User *) currentUser
 {
-  DLog(@"UIResponder+VariableStore::currentUser:delegate=%@", NSStringFromClass(self.class));
+//  DLog(@"UIResponder+VariableStore::currentUser:delegate=%@", NSStringFromClass(self.class));
   [self kassVS].user.delegate = self;
   return [self kassVS].user;
+}
+
+- (KassApp *) kassApp
+{
+//  DLog(@"UIResponder+VariableStore::kassApp:delegate=%@", NSStringFromClass(self.class));
+  [self kassVS].kassApp.delegate = self;
+  return [self kassVS].kassApp;
 }
 
 - (ListItem *) postingItem

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "KassApp.h"
+#import "KassAppDelegate.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, KassAppDelegate>
 

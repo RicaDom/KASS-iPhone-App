@@ -12,6 +12,7 @@
 #import "ListItem.h"
 #import "User.h"
 #import "LocateMeManager.h"
+#import "KassApp.h"
 
 @interface VariableStore : NSObject 
 
@@ -32,6 +33,7 @@
 
 @property (strong, nonatomic) User *user;
 @property (strong, nonatomic) LocateMeManager *locateMeManager;
+@property (strong, nonatomic) KassApp *kassApp;
 
 @property (strong, nonatomic) NSMutableDictionary *modelDict;
 @property (strong, nonatomic) NSMutableDictionary *postTemplatesDict;
@@ -43,6 +45,7 @@
 + (VariableStore *) sharedInstance;
 - (void) clearCurrentPostingItem;
 - (void)storeSettings:(NSDictionary *)dict;
+- (void)loadAndStoreSettings:(id<KassAppDelegate>)delegate;
 - (void) appendPostingItemToListings:(NSDictionary *)dict;
 
 - (BOOL) isLoggedIn;

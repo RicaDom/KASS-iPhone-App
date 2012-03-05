@@ -27,6 +27,7 @@
 
 @synthesize modelDict = _modelDict;
 @synthesize mainTabBar = _mainTabBar;
+@synthesize kassApp = _kassApp;
 
 @synthesize currentViewControllerDelegate = _currentViewControllerDelegate;
 
@@ -52,6 +53,8 @@
           
             myInstance.durationToServerDic = [[NSMutableDictionary alloc] init];
             myInstance.expiredTime = [[NSMutableDictionary alloc] init];
+          
+            myInstance.kassApp = [[KassApp alloc] init];
             
 //            myInstance.recentBrowseListings = [[NSMutableArray alloc] init];
 //            myInstance.nearBrowseListings = [[NSMutableArray alloc] init];
@@ -128,6 +131,12 @@
   ListItem *listItem = [[ListItem alloc] initWithDictionary:dict];
   [self.allListings addObject:listItem];
   [self clearCurrentPostingItem];
+}
+
+- (void)loadAndStoreSettings:(id<KassAppDelegate>)delegate
+{
+  self.kassApp.delegate = delegate;
+  [self.kassApp loadAndStoreSettings];
 }
 
 - (void)storeSettings:(NSDictionary *)dict

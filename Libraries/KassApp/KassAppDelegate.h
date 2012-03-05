@@ -10,6 +10,7 @@
 
 @protocol KassAppDelegate <NSObject>
 
+@optional
 - (void)settingsDidLoad:(NSDictionary *)dict;
 
 @end

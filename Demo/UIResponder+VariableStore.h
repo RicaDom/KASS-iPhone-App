@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "VariableStore.h"
 
-@interface UIResponder (VariableStore) <AccountActivityDelegate>
+@interface UIResponder (VariableStore) <AccountActivityDelegate, KassAppDelegate>
 
 - (VariableStore *) kassVS;
 
@@ -18,6 +18,7 @@
 - (void) kassRemoveFromModelDict;
 
 - (User *) currentUser;
+- (KassApp *) kassApp;
 - (ListItem *) postingItem;
 
 @end

@@ -42,7 +42,7 @@
 //this ensures you have a delegate
 - (void)viewWillAppear:(BOOL)animated
 {
-  DLog(@"UIViewController (ActivityIndicate)::viewWillAppear:currentViewController=%@", self);
+//  DLog(@"UIViewController (ActivityIndicate)::viewWillAppear:currentViewController=%@", self);
   VariableStore.sharedInstance.currentViewControllerDelegate = self;
   self.kassVS.user.delegate = self;
 }
