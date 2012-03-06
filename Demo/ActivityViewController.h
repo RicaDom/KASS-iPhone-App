@@ -28,7 +28,7 @@
 	BOOL _reloading;
 }
 
-
+@property (strong, nonatomic) NSString *userId;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *activitySegment;
 @property (strong, nonatomic) IBOutlet UIImageView *emptyRecordsImageView;
 @property (weak, nonatomic) IBOutlet UITableView *listingsTableView;
@@ -38,5 +38,6 @@
 - (void)reloadTable;
 - (void)getBuyingItems:(NSDictionary *)dict;
 - (void)getSellingItems:(NSDictionary *)dict;
+- (void)updateTableView;
 
 @end

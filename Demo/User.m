@@ -455,4 +455,9 @@
     listItem && [listItem.userId isPresent] && [self.userId isEqualToString:listItem.userId];
 }
 
+- (BOOL) isSameUser:(NSString *)userId
+{
+  return userId != nil && [userId isEqualToString:self.userId];
+}
+
 @end

@@ -37,6 +37,7 @@ typedef enum {
 - (void) weiboLogin;
 - (void) accountLogin:(NSString *)email:(NSString *)password;
 - (void) logout;
+- (BOOL) isSameUser:(NSString *)userId;
 
 - (void)weiboShare:(ListItem *)listItem;
 - (void)weiboDidShare;
