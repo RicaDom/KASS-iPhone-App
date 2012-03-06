@@ -67,4 +67,7 @@ NSString * const UI_IMAGE_SIGNIN_BUTTON_PRESS = @"btn_login_2.png";
 NSString * const UI_IMAGE_LOGIN_SKIP_TEXT = @"skip.gif";
 
 NSString * const UI_IMAGE_ACTIVITY_BACKGROUND = @"bg_sky.png";
+
+NSString * const UI_IMAGE_BROWSE_POST_BUTTON = @"post_btn.png";
+NSString * const UI_IMAGE_BROWSE_POST_SLOGAN = @"post_slogan.png";
 @end

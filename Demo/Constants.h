@@ -78,4 +78,7 @@ extern NSString * const UI_IMAGE_SIGNIN_BUTTON_PRESS;
 extern NSString * const UI_IMAGE_LOGIN_SKIP_TEXT;
 extern NSString * const UI_IMAGE_ACTIVITY_BACKGROUND;
 
+extern NSString * const UI_IMAGE_BROWSE_POST_BUTTON;
+extern NSString * const UI_IMAGE_BROWSE_POST_SLOGAN;
+
 @end

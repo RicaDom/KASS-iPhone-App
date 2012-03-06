@@ -36,6 +36,9 @@
 @property (strong, nonatomic) NSMutableArray *editorTemplates;
 @property (strong, nonatomic) NSMutableArray *creativeTemplates;
 @property (strong, nonatomic) ListItem *segueTemplate;
+@property (strong, nonatomic) IBOutlet UIView *addPostBackgroundView;
+@property (strong, nonatomic) IBOutlet UIButton *addPostButton;
+@property (strong, nonatomic) IBOutlet UILabel *addPostSloganLabel;
 
 - (IBAction)changeCreativePostPage;
 - (IBAction)changeEditorPostPage;
