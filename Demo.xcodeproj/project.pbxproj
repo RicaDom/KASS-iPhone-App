@@ -157,6 +157,8 @@
 		E5A9FBFA1504B8AD00AC5F0E /* btn_transwhite.png in Resources */ = {isa = PBXBuildFile; fileRef = E5A9FBF91504B8AC00AC5F0E /* btn_transwhite.png */; };
 		E5A9FC401504D7F800AC5F0E /* btn_sina_11.png in Resources */ = {isa = PBXBuildFile; fileRef = E5A9FC3E1504D7F800AC5F0E /* btn_sina_11.png */; };
 		E5A9FC411504D7F800AC5F0E /* btn_sina_22.png in Resources */ = {isa = PBXBuildFile; fileRef = E5A9FC3F1504D7F800AC5F0E /* btn_sina_22.png */; };
+		E5A9FC4E1505BCB700AC5F0E /* post_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = E5A9FC4C1505BCB700AC5F0E /* post_btn.png */; };
+		E5A9FC551505CCDE00AC5F0E /* post_slogan.png in Resources */ = {isa = PBXBuildFile; fileRef = E5A9FC541505CCDE00AC5F0E /* post_slogan.png */; };
 		E5B2E09114E0EA0B007AB372 /* tableHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B2E09014E0EA0B007AB372 /* tableHeader.png */; };
 		E5B2E09814E0F2CB007AB372 /* PullRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5B2E09714E0F2CB007AB372 /* PullRefreshTableViewController.m */; };
 		E5B2E09A14E0F3D8007AB372 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B2E09914E0F3D8007AB372 /* arrow.png */; };
@@ -350,7 +352,7 @@
 		77D566D615044BFF003BA8DB /* HJWeakMutableArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HJWeakMutableArray.m; path = Libraries/HJCache/HJWeakMutableArray.m; sourceTree = "<group>"; };
 		77D566E015046988003BA8DB /* KassAppObjManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KassAppObjManager.h; path = Libraries/KassApp/KassAppObjManager.h; sourceTree = "<group>"; };
 		77D566E115046989003BA8DB /* KassAppObjManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KassAppObjManager.m; path = Libraries/KassApp/KassAppObjManager.m; sourceTree = "<group>"; };
-		77D566E61504A080003BA8DB /* PostTemplate+PostTemplateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; path = "PostTemplate+PostTemplateHelper.h"; sourceTree = "<group>"; };
+		77D566E61504A080003BA8DB /* PostTemplate+PostTemplateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PostTemplate+PostTemplateHelper.h"; sourceTree = "<group>"; };
 		77D566E71504A080003BA8DB /* PostTemplate+PostTemplateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PostTemplate+PostTemplateHelper.m"; sourceTree = "<group>"; };
 		77E3101714F20C60000E9567 /* UIResponder+VariableStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+VariableStore.h"; sourceTree = "<group>"; };
 		77E3101814F20C60000E9567 /* UIResponder+VariableStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+VariableStore.m"; sourceTree = "<group>"; };
@@ -458,6 +460,8 @@
 		E5A9FBF91504B8AC00AC5F0E /* btn_transwhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_transwhite.png; sourceTree = "<group>"; };
 		E5A9FC3E1504D7F800AC5F0E /* btn_sina_11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_sina_11.png; sourceTree = "<group>"; };
 		E5A9FC3F1504D7F800AC5F0E /* btn_sina_22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_sina_22.png; sourceTree = "<group>"; };
+		E5A9FC4C1505BCB700AC5F0E /* post_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = post_btn.png; sourceTree = "<group>"; };
+		E5A9FC541505CCDE00AC5F0E /* post_slogan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = post_slogan.png; sourceTree = "<group>"; };
 		E5B2E09014E0EA0B007AB372 /* tableHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableHeader.png; sourceTree = "<group>"; };
 		E5B2E09614E0F2CB007AB372 /* PullRefreshTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullRefreshTableViewController.h; sourceTree = "<group>"; };
 		E5B2E09714E0F2CB007AB372 /* PullRefreshTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullRefreshTableViewController.m; sourceTree = "<group>"; };
@@ -1077,6 +1081,7 @@
 		E59AE14814AD09410048C7C0 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E5A9FC4A1505BC9E00AC5F0E /* browse */,
 				E5A9FBEE1504A52F00AC5F0E /* activity */,
 				E5A9FBD7150480B200AC5F0E /* login */,
 				77D566BC1503C455003BA8DB /* image.png */,
@@ -1133,6 +1138,15 @@
 				E5A9FBEF1504A55400AC5F0E /* bg_sky.png */,
 			);
 			name = activity;
+			sourceTree = "<group>";
+		};
+		E5A9FC4A1505BC9E00AC5F0E /* browse */ = {
+			isa = PBXGroup;
+			children = (
+				E5A9FC541505CCDE00AC5F0E /* post_slogan.png */,
+				E5A9FC4C1505BCB700AC5F0E /* post_btn.png */,
+			);
+			name = browse;
 			sourceTree = "<group>";
 		};
 		E5B3AC5514E9238700CD4C67 /* Models */ = {
@@ -1332,6 +1346,8 @@
 				E5A9FBFA1504B8AD00AC5F0E /* btn_transwhite.png in Resources */,
 				E5A9FC401504D7F800AC5F0E /* btn_sina_11.png in Resources */,
 				E5A9FC411504D7F800AC5F0E /* btn_sina_22.png in Resources */,
+				E5A9FC4E1505BCB700AC5F0E /* post_btn.png in Resources */,
+				E5A9FC551505CCDE00AC5F0E /* post_slogan.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

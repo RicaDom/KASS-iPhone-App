@@ -27,6 +27,9 @@
 @synthesize editorTemplates = _editorTemplates;
 @synthesize creativeTemplates = _creativeTemplates;
 @synthesize segueTemplate = _segueTemplate;
+@synthesize addPostBackgroundView = _addPostBackgroundView;
+@synthesize addPostButton = _addPostButton;
+@synthesize addPostSloganLabel = _addPostSloganLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -67,7 +70,21 @@
             int page = floor((self.creativePostScrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
             self.creativePostPageControl.currentPage = page;
         }
-    }		
+    } else if (sender == self.mainScrollView) {
+		if (self.mainScrollView.contentOffset.y > (self.mainScrollView.contentSize.height - self.mainScrollView.bounds.size.height - 20)) {
+            [UIView beginAnimations:nil context:nil];
+            [UIView setAnimationDuration:0.2];
+            self.addPostBackgroundView.frame = CGRectMake((self.contentView.frame.size.width - self.addPostBackgroundView.frame.size.width) /2 , self.addPostButton.frame.origin.y - 7, self.addPostBackgroundView.frame.size.width, self.addPostBackgroundView.frame.size.height);
+            self.addPostSloganLabel.hidden = NO;
+            [UIView commitAnimations];
+        } else {
+            [UIView beginAnimations:nil context:nil];
+            [UIView setAnimationDuration:0.2];
+            self.addPostBackgroundView.frame = CGRectMake(self.addPostButton.frame.origin.x - 5, self.addPostButton.frame.origin.y - 7, self.addPostBackgroundView.frame.size.width, self.addPostBackgroundView.frame.size.height);
+            self.addPostSloganLabel.hidden = YES;
+            [UIView commitAnimations];
+        }
+    }	
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
@@ -77,7 +94,7 @@
         editorPostPageControlBeingUsed = NO;
     } else if (scrollView == self.creativePostScrollView) {
         creativePostPageControlBeingUsed = NO;
-    }		
+    }
 }
 
 - (void)showManagedImageView:(NSMutableArray *)templates:(UIPageControl *)pageControl
@@ -233,10 +250,13 @@
     [self loadPostTemplates:[self kassVS].postTemplatesDict];
   
     // init scroll view content size
-    self.mainScrollView.contentSize = CGSizeMake(_ScrollViewContentSizeX, self.contentView.frame.size.height-self.contentView.frame.origin.y);
-
-    // self.mainScrollView.contentInset = UIEdgeInsetsMake(150, 0, 0, 0);    
+    self.mainScrollView.contentSize = CGSizeMake(_ScrollViewContentSizeX, self.contentView.frame.size.height - self.addPostSloganLabel.frame.size.height/2);   
     self.mainView.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"Default.png"]];
+    
+    UIImage *slogan = [UIImage imageNamed:UI_IMAGE_BROWSE_POST_SLOGAN];
+    self.addPostBackgroundView.frame = CGRectMake(self.addPostButton.frame.origin.x - 5, self.addPostButton.frame.origin.y - 7, slogan.size.width, slogan.size.height);
+    self.addPostBackgroundView.backgroundColor = [[UIColor alloc] initWithPatternImage:slogan];
+    self.addPostSloganLabel.hidden = YES;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -262,6 +282,9 @@
     [self setGreetingLabel:nil];
     [self setCreativePostScrollView:nil];
     [self setCreativePostPageControl:nil];
+    [self setAddPostBackgroundView:nil];
+    [self setAddPostButton:nil];
+    [self setAddPostSloganLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
