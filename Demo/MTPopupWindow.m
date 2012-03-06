@@ -249,7 +249,7 @@
  */
 -(void)toSignUpViewAction
 {
-    NSLog(@"Openning sign up view");
+    DLog(@"Openning sign up view");
     //faux view
     self.signUpView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, self.bgView.frame.size.width, self.bgView.frame.size.height)];
     //[self.bgView addSubview: self.signUpView];
@@ -422,43 +422,49 @@
  */
 -(void)toSignInViewAction
 {
-    NSLog(@"Openning sign in view");
+    DLog(@"Openning sign in view");
     //faux view
     self.signInView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, self.bgView.frame.size.width, self.bgView.frame.size.height)];
-    //[self.bgView addSubview: self.signUpView];
-    self.signInView.center = CGPointMake( self.bgView.frame.size.width/2, self.bgView.frame.size.height/2);
+    self.signInView.center = CGPointMake( self.bgView.frame.size.width/2, self.bgView.frame.size.height/2 - 30);
     
     //add the window background
-    UIImageView* background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"popupWindowBack.png"]];
-    //UIImageView* background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login.png"]];
+    UIImageView* background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:UI_IMAGE_LOGIN_FORM_BACKGROUND]];
     background.center = CGPointMake(self.signInView.frame.size.width/2, self.signInView.frame.size.height/2);
     [self.signInView addSubview: background];    
+
+    UIImage* loginLabelButtonImg = [UIImage imageNamed:UI_IMAGE_LOGIN_LABEL];
+    UIButton* loginLabelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [loginLabelButton setImage:loginLabelButtonImg forState:UIControlStateNormal];
+    loginLabelButton.frame = CGRectMake((self.signInView.frame.size.width - loginLabelButtonImg.size.width)/2, 75, loginLabelButtonImg.size.width, loginLabelButtonImg.size.height);
+    loginLabelButton.enabled = NO;
+    [self.signInView addSubview:loginLabelButton];
     
-    UILabel *loginWelcomeMessage = [[UILabel alloc] init];
-    [loginWelcomeMessage setText:UI_BUTTON_LABEL_SIGIN];
-    [loginWelcomeMessage setTextColor:[UIColor blackColor]];
-    loginWelcomeMessage.frame = CGRectMake(140, 40, 150, 30);
-    [self.signInView addSubview:loginWelcomeMessage];
+    UIImage* forgotPasswordImg = [UIImage imageNamed:UI_IMAGE_LOGIN_FORGOT_PASS];
+    UIButton* forgotPasswordButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [forgotPasswordButton setImage:forgotPasswordImg forState:UIControlStateNormal];
+    forgotPasswordButton.frame = CGRectMake((self.signInView.frame.size.width - forgotPasswordImg.size.width)/2, 265, forgotPasswordImg.size.width, forgotPasswordImg.size.height);
+    [forgotPasswordButton addTarget:self action:@selector(forgotPasswordAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.signInView addSubview:forgotPasswordButton];
     
-    UILabel *forgotPassword = [[UILabel alloc] init];
-    [forgotPassword setText:@"忘记密码了？"];
-    [forgotPassword setTextColor:[UIColor redColor]];
-    forgotPassword.frame = CGRectMake(100, 200, 150, 30);
-    [self.signInView addSubview:forgotPassword];
-    
-    UIButton *signInButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    signInButton.frame = CGRectMake(225.0, 40.0, 50.0, 30.0);
-    [signInButton setTitle:UI_BUTTON_LABEL_SIGIN forState:UIControlStateNormal];
+    UIImage* signInButtonImg = [UIImage imageNamed:UI_IMAGE_LOGIN_BUTTON];
+    UIImage* signInButtonPressImg = [UIImage imageNamed:UI_IMAGE_LOGIN_BUTTON_PRESS];
+    UIButton* signInButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [signInButton setImage:signInButtonImg forState:UIControlStateNormal];
+    [signInButton setImage:signInButtonPressImg forState:UIControlStateHighlighted];
+    signInButton.frame = CGRectMake(235, 80, signInButtonImg.size.width, signInButtonImg.size.height);
     [signInButton addTarget:self action:@selector(signInSubmitAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.signInView addSubview:signInButton];
     
-    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    backButton.frame = CGRectMake(40.0, 40.0, 50.0, 30.0);
-    [backButton setTitle:UI_BUTTON_LABEL_BACK forState:UIControlStateNormal];
+    UIImage* backButtonImg = [UIImage imageNamed:UI_IMAGE_LOGIN_BACK_BUTTON];
+    UIImage* backButtonPressImg = [UIImage imageNamed:UI_IMAGE_LOGIN_BACK_BUTTON_PRESS];
+    UIButton* backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backButton setImage:backButtonImg forState:UIControlStateNormal];
+    [backButton setImage:backButtonPressImg forState:UIControlStateHighlighted];
+    backButton.frame = CGRectMake(25, 80, backButtonImg.size.width, backButtonImg.size.height);
     [backButton addTarget:self action:@selector(signInBackButtonAction) forControlEvents:UIControlEventTouchUpInside];
     [self.signInView addSubview:backButton];
     
-    UITextField *emailTextField = [[UITextField alloc] initWithFrame:CGRectMake(30, 80, 260, 40)];
+    UITextField *emailTextField = [[UITextField alloc] initWithFrame:CGRectMake(30, 150, 260, 40)];
     emailTextField.placeholder = @"邮箱";
     emailTextField.borderStyle = UITextBorderStyleRoundedRect;
     emailTextField.keyboardType = UIKeyboardTypeEmailAddress;
@@ -471,7 +477,7 @@
     [self.signInView addSubview:emailTextField];
     
     
-    UITextField *passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(30, 120, 260, 40)];
+    UITextField *passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(30, 200, 260, 40)];
     passwordTextField.placeholder = @"密码";
     passwordTextField.borderStyle = UITextBorderStyleRoundedRect;
     passwordTextField.keyboardType = UIKeyboardTypeDefault;

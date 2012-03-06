@@ -14,6 +14,8 @@
 @synthesize listingTableView = _listingTableView;
 @synthesize currentListings = _currentListings;
 @synthesize filteredListContent = _filteredListContent;
+@synthesize mapButton = _mapButton;
+@synthesize leftButton = _leftButton;
 
 #pragma mark -
 #pragma mark Data Source Loading / Reloading Methods
@@ -118,14 +120,16 @@
         ivc.currentItem = item;
         
     } else if ([segue.identifier isEqualToString:@"showBrowseItemUnlogin"]) {
-        BrowseItemNoMsgViewController *bvc = [segue destinationViewController];
+        UINavigationController *nc = [segue destinationViewController];        
+        BrowseItemNoMsgViewController *bvc = (BrowseItemNoMsgViewController *)nc.topViewController;
         NSIndexPath *path = [self.tableView indexPathForSelectedRow];
         int row = [path row];
         ListItem *item = [self.currentListings objectAtIndex:row];
         bvc.currentItem = item;
         
     } else if ([segue.identifier isEqualToString:@"showBrowseItemNoMessage"]) {
-        BrowseItemNoMsgViewController *bvc = [segue destinationViewController];
+        UINavigationController *nc = [segue destinationViewController];  
+        BrowseItemNoMsgViewController *bvc = (BrowseItemNoMsgViewController *) nc.topViewController;
         NSIndexPath *path = [self.tableView indexPathForSelectedRow];
         int row = [path row];
         ListItem *item = [self.currentListings objectAtIndex:row];
@@ -208,16 +212,27 @@
 	
 	//  update the last update date
 	[_refreshHeaderView refreshLastUpdatedDate];
-    
-    
+        
     self.filteredListContent = [[NSMutableArray alloc] init];
 	[self.tableView reloadData];
+    
+    // init segment control view
+    UIImage* img = [UIImage imageNamed:UI_IMAGE_BROWSE_SEGMENT_DIVIDER];
+    UIImage* tempImg = [UIImage imageNamed:UI_IMAGE_BROWSE_DATE];
+    [self.browseSegment setDividerImage:img forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];    
+    self.browseSegment.frame = CGRectMake(0, self.browseSegment.frame.origin.y, tempImg.size.width*3+12, tempImg.size.height);
+    [self browseSegmentAction:self];    
+    UIImage *mapImg = [UIImage imageNamed:UI_IMAGE_BROWSE_MAP];
+    [self.mapButton setImage:mapImg forState:UIControlStateNormal];
+    self.mapButton.frame = CGRectMake(200, self.mapButton.frame.origin.y, mapImg.size.width+20, mapImg.size.height);
 }
 
 - (void)viewDidUnload
 {
     [self setBrowseSegment:nil];
     [self setListingTableView:nil];
+    [self setMapButton:nil];
+    [self setLeftButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -363,13 +378,27 @@
 }
 
 - (IBAction)browseSegmentAction:(id)sender {
-  DLog(@"BrowseTableViewController::(IBAction)browseSegmentAction");
-  if ( ![VariableStore sharedInstance].recentBrowseListings || 
+    DLog(@"BrowseTableViewController::(IBAction)browseSegmentAction");
+    if ( ![VariableStore sharedInstance].recentBrowseListings || 
        ![VariableStore sharedInstance].priceBrowseListings || ![VariableStore sharedInstance].nearBrowseListings) {
     [self setupArray];
-  }else{
+    }else{
     [self reloadTable]; //reload ui
-  }
+    }
+    
+    if (0 == self.browseSegment.selectedSegmentIndex) {
+        [self.browseSegment setImage:[UIImage imageNamed:UI_IMAGE_BROWSE_NEAR_DOWN] forSegmentAtIndex:0];
+        [self.browseSegment setImage:[UIImage imageNamed:UI_IMAGE_BROWSE_DATE] forSegmentAtIndex:1];
+        [self.browseSegment setImage:[UIImage imageNamed:UI_IMAGE_BROWSE_MONEY] forSegmentAtIndex:2];
+    } else if (1 == self.browseSegment.selectedSegmentIndex) {
+        [self.browseSegment setImage:[UIImage imageNamed:UI_IMAGE_BROWSE_NEAR] forSegmentAtIndex:0];
+        [self.browseSegment setImage:[UIImage imageNamed:UI_IMAGE_BROWSE_DATE_DOWN] forSegmentAtIndex:1];
+        [self.browseSegment setImage:[UIImage imageNamed:UI_IMAGE_BROWSE_MONEY] forSegmentAtIndex:2];        
+    } else if (2 == self.browseSegment.selectedSegmentIndex) {
+        [self.browseSegment setImage:[UIImage imageNamed:UI_IMAGE_BROWSE_NEAR] forSegmentAtIndex:0];
+        [self.browseSegment setImage:[UIImage imageNamed:UI_IMAGE_BROWSE_DATE] forSegmentAtIndex:1];
+        [self.browseSegment setImage:[UIImage imageNamed:UI_IMAGE_BROWSE_MONEY_DOWN] forSegmentAtIndex:2];        
+    }
 }
 
 // call back from BrowseItemNoMsgViewController

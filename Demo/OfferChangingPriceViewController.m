@@ -47,6 +47,9 @@
     self.navigationController.navigationBar.tintColor = [UIColor brownColor];
     self.offerPriceTextField.placeholder = self.currentPrice;
     [self.offerPriceTextField becomeFirstResponder];
+    
+    // navigation bar background color
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
 }
 
 

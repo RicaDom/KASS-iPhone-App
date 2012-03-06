@@ -31,6 +31,8 @@
 @property (strong, nonatomic) IBOutlet UITableView *listingTableView;
 @property (strong, nonatomic) NSMutableArray *currentListings;
 @property (strong, nonatomic) NSMutableArray *filteredListContent;
+@property (strong, nonatomic) IBOutlet UIButton *mapButton;
+@property (strong, nonatomic) IBOutlet UIButton *leftButton;
 
 - (IBAction)browseSegmentAction:(id)sender;
 - (void)setupArray;
