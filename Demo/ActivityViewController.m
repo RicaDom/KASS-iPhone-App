@@ -352,7 +352,7 @@ NSMutableArray *currentItems;
     // customize table cell listing view
     
     // my buying list
-    if ( 0 == self.activitySegment.selectedSegmentIndex ) {
+    if ( [self isBuyingTabSelected] ) {
         ListItem *item = [currentItems objectAtIndex:row];
         cell.title.text = item.title;
         cell.subTitle.text = item.description;
@@ -413,7 +413,7 @@ NSMutableArray *currentItems;
      */
     
     // Buying list segue
-    if ( 0 == self.activitySegment.selectedSegmentIndex) {
+    if ( [self isBuyingTabSelected] ) {
         int row = [indexPath row];
         ListItem *item = [currentItems objectAtIndex:row];
 //        item.acceptedPrice = [NSDecimalNumber decimalNumberWithDecimal:
