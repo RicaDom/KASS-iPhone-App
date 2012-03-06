@@ -31,7 +31,9 @@
 @property (strong, nonatomic) IBOutlet UIView *buttomView;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
+@property (strong, nonatomic) IBOutlet UIButton *priceButton;
 @property (strong, nonatomic) PullToRefreshView *pull;
+@property (strong, nonatomic) IBOutlet UIButton *userInfoButton;
 
 - (IBAction)navigationButtonAction:(id)sender;
 

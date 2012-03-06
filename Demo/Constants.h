@@ -76,9 +76,33 @@ extern NSString * const UI_IMAGE_SIGNUP_BUTTON_PRESS;
 extern NSString * const UI_IMAGE_SIGNIN_BUTTON;
 extern NSString * const UI_IMAGE_SIGNIN_BUTTON_PRESS;
 extern NSString * const UI_IMAGE_LOGIN_SKIP_TEXT;
+extern NSString * const UI_IMAGE_LOGIN_BACK_BUTTON;
+extern NSString * const UI_IMAGE_LOGIN_BACK_BUTTON_PRESS;
+extern NSString * const UI_IMAGE_LOGIN_BUTTON;
+extern NSString * const UI_IMAGE_LOGIN_BUTTON_PRESS;
+extern NSString * const UI_IMAGE_LOGIN_FORGOT_PASS;
+extern NSString * const UI_IMAGE_LOGIN_FORM_BACKGROUND;
+extern NSString * const UI_IMAGE_LOGIN_LABEL;
+
 extern NSString * const UI_IMAGE_ACTIVITY_BACKGROUND;
 
 extern NSString * const UI_IMAGE_BROWSE_POST_BUTTON;
 extern NSString * const UI_IMAGE_BROWSE_POST_SLOGAN;
+extern NSString * const UI_IMAGE_BROWSE_DATE;
+extern NSString * const UI_IMAGE_BROWSE_DATE_DOWN;
+extern NSString * const UI_IMAGE_BROWSE_MAP;
+extern NSString * const UI_IMAGE_BROWSE_MAP_DOWN;
+extern NSString * const UI_IMAGE_BROWSE_MONEY;
+extern NSString * const UI_IMAGE_BROWSE_MONEY_DOWN;
+extern NSString * const UI_IMAGE_BROWSE_NEAR;
+extern NSString * const UI_IMAGE_BROWSE_NEAR_DOWN;
+extern NSString * const UI_IMAGE_BROWSE_SEGMENT_DIVIDER;
 
+extern NSString * const UI_IMAGE_SEND_MESSAGE_BACKGROUND;
+extern NSString * const UI_IMAGE_SEND_MESSAGE_PRICE;
+extern NSString * const UI_IMAGE_SEND_MESSAGE_PRICE_PRESS;
+
+extern NSString * const UI_IMAGE_PRICE_BACKGROUND;
+extern NSString * const UI_IMAGE_USER_INFO_BUTTON_DARK;
+extern NSString * const UI_IMAGE_USER_INFO_BUTTON_GREEN;
 @end

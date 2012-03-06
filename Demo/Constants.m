@@ -65,9 +65,35 @@ NSString * const UI_IMAGE_SIGNUP_BUTTON_PRESS = @"btn_signup_2.png";
 NSString * const UI_IMAGE_SIGNIN_BUTTON = @"btn_login_1.png";
 NSString * const UI_IMAGE_SIGNIN_BUTTON_PRESS = @"btn_login_2.png";
 NSString * const UI_IMAGE_LOGIN_SKIP_TEXT = @"skip.gif";
+NSString * const UI_IMAGE_LOGIN_BACK_BUTTON = @"btn_back1.png";
+NSString * const UI_IMAGE_LOGIN_BACK_BUTTON_PRESS = @"btn_back2.png";
+NSString * const UI_IMAGE_LOGIN_BUTTON = @"btn_log1.png";
+NSString * const UI_IMAGE_LOGIN_BUTTON_PRESS = @"btn_log2.png";
+NSString * const UI_IMAGE_LOGIN_FORGOT_PASS = @"forgetpw.gif";
+NSString * const UI_IMAGE_LOGIN_FORM_BACKGROUND = @"log_bgwithline1.png";
+NSString * const UI_IMAGE_LOGIN_LABEL = @"button_login_label.png";
+
 
 NSString * const UI_IMAGE_ACTIVITY_BACKGROUND = @"bg_sky.png";
 
 NSString * const UI_IMAGE_BROWSE_POST_BUTTON = @"post_btn.png";
 NSString * const UI_IMAGE_BROWSE_POST_SLOGAN = @"post_slogan.png";
+
+NSString * const UI_IMAGE_BROWSE_DATE = @"btn_date.png";
+NSString * const UI_IMAGE_BROWSE_DATE_DOWN = @"btn_date_down.png";
+NSString * const UI_IMAGE_BROWSE_MAP = @"btn_map.png";
+NSString * const UI_IMAGE_BROWSE_MAP_DOWN = @"btn_map_down.png";
+NSString * const UI_IMAGE_BROWSE_MONEY = @"btn_money.png";
+NSString * const UI_IMAGE_BROWSE_MONEY_DOWN = @"btn_money_down.png";
+NSString * const UI_IMAGE_BROWSE_NEAR = @"btn_near.png";
+NSString * const UI_IMAGE_BROWSE_NEAR_DOWN = @"btn_near_down.png";
+NSString * const UI_IMAGE_BROWSE_SEGMENT_DIVIDER = @"segment_divider.png";
+
+NSString * const UI_IMAGE_SEND_MESSAGE_BACKGROUND = @"iphone_47.png";
+NSString * const UI_IMAGE_SEND_MESSAGE_PRICE = @"iphone_43.png";
+NSString * const UI_IMAGE_SEND_MESSAGE_PRICE_PRESS = @"iphone_41.png";
+
+NSString * const UI_IMAGE_PRICE_BACKGROUND = @"price_bg.png";
+NSString * const UI_IMAGE_USER_INFO_BUTTON_DARK = @"iphone_33.png";
+NSString * const UI_IMAGE_USER_INFO_BUTTON_GREEN = @"iphone_39.png";
 @end

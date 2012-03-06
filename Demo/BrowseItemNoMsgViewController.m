@@ -23,7 +23,9 @@
 @synthesize mainView = _mainView;
 @synthesize buttomView = _buttomView;
 @synthesize scrollView = _scrollView;
+@synthesize priceButton = _priceButton;
 @synthesize pull = _pull;
+@synthesize userInfoButton = _userInfoButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -83,6 +85,31 @@
                                              selector:@selector(receivePriceChangedNotification:) 
                                                  name:CHANGED_PRICE_NOTIFICATION
                                                object:nil];
+
+    // navigation bar background color
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
+    
+    // Bottom view load
+    UIImage *bottomViewImg = [UIImage imageNamed:UI_IMAGE_SEND_MESSAGE_BACKGROUND];
+    self.buttomView.frame = CGRectMake(0, self.buttomView.frame.origin.y, bottomViewImg.size.width, bottomViewImg.size.height + 15);
+    [self.buttomView setBackgroundColor:[[UIColor alloc] initWithPatternImage:bottomViewImg]];
+
+    UIImage *priceButtonImg = [UIImage imageNamed:UI_IMAGE_SEND_MESSAGE_PRICE];
+    UIImage *priceButtonPressImg = [UIImage imageNamed:UI_IMAGE_SEND_MESSAGE_PRICE_PRESS];
+    self.priceButton.frame = CGRectMake(self.priceButton.frame.origin.x, self.priceButton.frame.origin.y, priceButtonImg.size.width, priceButtonImg.size.height);
+    [self.priceButton setImage:priceButtonImg forState:UIControlStateNormal];
+    [self.priceButton setImage:priceButtonPressImg forState:UIControlStateSelected];
+    [self.priceButton setBackgroundColor:[[UIColor alloc] initWithPatternImage:[UIImage imageNamed:UI_IMAGE_SEND_MESSAGE_PRICE]]];
+    
+    self.messageTextField.frame = CGRectMake(self.priceButton.frame.size.width + 15, self.priceButton.frame.origin.y, self.buttomView.frame.size.width - self.priceButton.frame.size.width - 20, self.priceButton.frame.size.height);
+    
+    
+    // User info button
+    UIImage *userButtonImg = [UIImage imageNamed:UI_IMAGE_USER_INFO_BUTTON_GREEN];
+    UIImage *userButtonPressImg = [UIImage imageNamed:UI_IMAGE_USER_INFO_BUTTON_DARK];
+    self.userInfoButton.frame = CGRectMake(self.userInfoButton.frame.origin.x, self.userInfoButton.frame.origin.y, userButtonImg.size.width, userButtonImg.size.height);
+    [self.userInfoButton setImage:userButtonImg forState:UIControlStateNormal];
+    [self.userInfoButton setImage:userButtonPressImg forState:UIControlStateSelected];
 }
 
 - (void) receivePriceChangedNotification:(NSNotification *) notification
@@ -114,6 +141,8 @@
     [self setListingDate:nil];
     [self setOfferPrice:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:CHANGED_PRICE_NOTIFICATION object:nil];
+    [self setPriceButton:nil];
+    [self setUserInfoButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -266,7 +295,8 @@
 
 -(IBAction)OnClick_btnBack:(id)sender  {
     if ([self.navigationItem.leftBarButtonItem.title isEqualToString:UI_BUTTON_LABEL_BACK]) {
-        [self.navigationController popViewControllerAnimated:YES];
+        [self dismissModalViewControllerAnimated:YES];
+        //[self.navigationController popViewControllerAnimated:YES];
     } else {
         [self.messageTextField resignFirstResponder];
         [self hideKeyboardAndMoveViewDown];
