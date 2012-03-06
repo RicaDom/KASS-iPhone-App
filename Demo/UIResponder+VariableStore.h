@@ -20,5 +20,6 @@
 - (User *) currentUser;
 - (KassApp *) kassApp;
 - (ListItem *) postingItem;
+- (Settings *) settings;
 
 @end

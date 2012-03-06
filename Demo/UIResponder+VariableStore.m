@@ -51,4 +51,9 @@
   return [self kassVS].currentPostingItem;
 }
 
+- (Settings *) settings
+{
+  return [self kassVS].settings;
+}
+
 @end

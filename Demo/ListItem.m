@@ -108,6 +108,11 @@
   return [self.dbId length] > 0;
 }
 
+- (BOOL) isExpired
+{
+  return [_endedAt timeIntervalSinceNow] < 0;
+}
+
 - (Offer *) getOfferFromOfferer:(User *)user
 {
   return [self.offers objectAtIndex:[self.offererIds indexOfObject:user.userId]];

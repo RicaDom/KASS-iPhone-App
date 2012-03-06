@@ -39,6 +39,7 @@
 - (id) initWithData:(NSData *) theData;
 
 ///////////////// model helper methods ////////////
+- (BOOL) isExpired;
 - (BOOL) isAccepted;
 - (BOOL) isPersisted;
 - (BOOL) hasOfferer:(User *)user;

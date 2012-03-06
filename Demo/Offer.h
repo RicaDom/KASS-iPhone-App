@@ -30,5 +30,6 @@
 - (NSDictionary *) toJson;
 
 //// model helper methods
+- (BOOL) isExpired;
 
 @end

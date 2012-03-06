@@ -43,7 +43,7 @@
     self.postAskPrice.text = [NSString stringWithFormat:@"%@", [VariableStore sharedInstance].currentPostingItem.askPrice];
 
     if ([VariableStore sharedInstance].currentPostingItem.postDuration) {
-        NSArray *keys = [[VariableStore sharedInstance].expiredTime 
+        NSArray *keys = [self.settings.expiredTimeDict 
                          allKeysForObject:[VariableStore sharedInstance].currentPostingItem.postDuration];
         if (keys && [keys count] > 0) {
             NSString *selectedItem = [keys objectAtIndex:0];
@@ -140,9 +140,9 @@
                       VariableStore.sharedInstance.location.coordinate.latitude, 
                       VariableStore.sharedInstance.location.coordinate.longitude]; 
     
-  DLog(@"Duration Dic: %@", [VariableStore sharedInstance].durationToServerDic);
+  DLog(@"Duration Dic: %@", self.settings.durationToServerDic);
   NSString * durationStr = 
-    (NSString *)[[VariableStore sharedInstance].durationToServerDic objectForKey:(NSNumber *)[VariableStore sharedInstance].currentPostingItem.postDuration];
+    (NSString *)[self.settings.durationToServerDic objectForKey:(NSNumber *)[VariableStore sharedInstance].currentPostingItem.postDuration];
 
   if ([durationStr length] <= 0) {
      // TODO

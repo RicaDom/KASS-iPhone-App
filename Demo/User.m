@@ -456,11 +456,17 @@
 }
 
 - (void) messageReceived:(NSDictionary *)messageDict {
-  DLog(@"message recieved %@", messageDict);
-//  if([messageDict objectForKey:@"message"]) {    
-//    self.messageView.text = [self.messageView.text stringByAppendingString:[NSString stringWithFormat:@"%@\n", [messageDict objectForKey:@"message"]]]; 
-//    //[self.messagesText insertText:[NSString stringWithFormat:@"%@\n", [messageDict objectForKey:@"message"]]];
-//  }
+  DLog(@"message recieved %@", messageDict);  
+  NSDictionary *data = [messageDict valueForKey:@"data"];
+  
+  UIAlertView *alert = [[UIAlertView alloc] init];
+	[alert setTitle:[data valueForKey:@"event"]];
+	[alert setMessage:[data valueForKey:@"body"]];
+	[alert setDelegate:self];
+	[alert addButtonWithTitle:@"Dismiss"];
+	[alert addButtonWithTitle:@"View"];
+	[alert show];
+  
 }
 
 - (void)connectedToServer {

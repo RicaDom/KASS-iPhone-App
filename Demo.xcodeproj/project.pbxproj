@@ -29,6 +29,7 @@
 		77502EC21505F89B0019E93A /* changes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 77502EAD1505F89B0019E93A /* changes.txt */; };
 		77502EC31505F89B0019E93A /* ZTWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 77502EB21505F89B0019E93A /* ZTWebSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		77502EC715064F3B0019E93A /* PrivatePubClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 77502EC615064F3B0019E93A /* PrivatePubClient.m */; };
+		77502ED115067A330019E93A /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 77502ED015067A330019E93A /* Settings.m */; };
 		775069EF14C80ADE000494E5 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 775069EE14C80ADE000494E5 /* README.markdown */; };
 		775069F214C83FAF000494E5 /* listing.json in Resources */ = {isa = PBXBuildFile; fileRef = 775069F114C83FAF000494E5 /* listing.json */; };
 		775069F314C83FAF000494E5 /* listing.json in Resources */ = {isa = PBXBuildFile; fileRef = 775069F114C83FAF000494E5 /* listing.json */; };
@@ -314,6 +315,8 @@
 		77502EB21505F89B0019E93A /* ZTWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZTWebSocket.m; sourceTree = "<group>"; };
 		77502EC515064F3B0019E93A /* PrivatePubClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrivatePubClient.h; path = Libraries/PrivatePub/PrivatePubClient.h; sourceTree = "<group>"; };
 		77502EC615064F3B0019E93A /* PrivatePubClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PrivatePubClient.m; path = Libraries/PrivatePub/PrivatePubClient.m; sourceTree = "<group>"; };
+		77502ECF15067A330019E93A /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		77502ED015067A330019E93A /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		775069EE14C80ADE000494E5 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		775069F114C83FAF000494E5 /* listing.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = listing.json; path = Resources/listing.json; sourceTree = "<group>"; };
 		77506A0014C9131A000494E5 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHUnitIOS.framework; sourceTree = "<group>"; };
@@ -1462,6 +1465,8 @@
 				77458EE114EBC2E100B19F50 /* Offers.m */,
 				E5A9FBB4150310C600AC5F0E /* PostTemplate.h */,
 				E5A9FBB5150310C600AC5F0E /* PostTemplate.m */,
+				77502ECF15067A330019E93A /* Settings.h */,
+				77502ED015067A330019E93A /* Settings.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1835,6 +1840,7 @@
 				77502EC11505F89B0019E93A /* AsyncUdpSocket.m in Sources */,
 				77502EC31505F89B0019E93A /* ZTWebSocket.m in Sources */,
 				77502EC715064F3B0019E93A /* PrivatePubClient.m in Sources */,
+				77502ED115067A330019E93A /* Settings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

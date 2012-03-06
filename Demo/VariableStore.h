@@ -13,14 +13,16 @@
 #import "User.h"
 #import "LocateMeManager.h"
 #import "KassApp.h"
+#import "Settings.h"
 
 @interface VariableStore : NSObject 
 
 // Global variables
 // Current Posting Process Cache
 @property (strong, nonatomic) ListItem *currentPostingItem;
-@property (strong, nonatomic) NSMutableDictionary *expiredTime;
-@property (strong, nonatomic) NSMutableDictionary *durationToServerDic;
+
+//settings
+@property (strong, nonatomic) Settings *settings;
 
 #pragma mark - Testing Array -
 @property (strong, nonatomic) NSMutableArray *allListings;
@@ -36,7 +38,6 @@
 @property (strong, nonatomic) KassApp *kassApp;
 
 @property (strong, nonatomic) NSMutableDictionary *modelDict;
-@property (strong, nonatomic) NSMutableDictionary *postTemplatesDict;
 
 @property (strong, nonatomic) UITabBarController *mainTabBar;
 
