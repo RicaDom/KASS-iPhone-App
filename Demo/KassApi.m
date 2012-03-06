@@ -33,13 +33,22 @@
 {
   DLog(@"KassApi::requestFinished::responseString %@", [request responseString]);  
   
-  NSDictionary *dict = [KassApi parseData:[request responseData]];
-  NSDictionary *errors = [dict objectForKey:@"errors"];
-  if (errors) {
-    [_performer requestFailed:errors];
-  }else{
+  NSDictionary *result = [KassApi parseData:[request responseData]];
+
+  if ([result isKindOfClass:[NSArray class]]){
     [_performer perform:(NSData *)[request responseData]:(NSString *) _method];
+  }else if( [result isKindOfClass:[NSDictionary class]] ){
+    NSDictionary *errors = [result objectForKey:@"errors"];
+    if (errors) {
+      [_performer requestFailed:errors];
+    }else{
+      [_performer perform:(NSData *)[request responseData]:(NSString *) _method];
+    }
+  }else{
+    NSDictionary *errors = [[NSDictionary alloc]initWithObjectsAndKeys:@"Invalid Response", @"Request", nil];
+    [_performer requestFailed:errors];
   }
+
 }
 
 // When asynchronous call fails, log the error
@@ -241,6 +250,12 @@
 - (void)getListing:(NSString *)modelId
 {
   _url = [NSString stringWithFormat:@"http://%s/v1/listings/%@", HOST, modelId];
+  [self getData:_url];
+}
+
+- (void)getPrivatePub
+{
+  _url = [NSString stringWithFormat:@"http://%s/private_pub.json", HOST];
   [self getData:_url];
 }
 
