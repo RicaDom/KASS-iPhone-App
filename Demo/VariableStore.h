@@ -48,6 +48,7 @@
 - (void)loadAndStoreSettings:(id<KassAppDelegate>)delegate;
 - (void) appendPostingItemToListings:(NSDictionary *)dict;
 
+- (BOOL) isCurrentUser:(NSString *)userId;
 - (BOOL) isLoggedIn;
 - (BOOL) signInAccount:(NSString *)email:(NSString *)password;
 - (BOOL) signInWeibo;

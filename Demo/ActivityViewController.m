@@ -15,6 +15,7 @@
 @synthesize emptyRecordsImageView = _emptyRecordsImageView;
 @synthesize listingsTableView = _listingsTableView;
 @synthesize activitySegment = _activitySegment;
+@synthesize userId = _userId;
 
 NSMutableArray *currentItems;
 
@@ -60,25 +61,16 @@ NSMutableArray *currentItems;
 	return [NSDate date]; // should return date data source was last changed	
 }
 
-- (IBAction)activityChanged:(id)sender {
-  DLog(@"ActivityViewController::(IBAction)activityChanged");
-  if ( [[VariableStore sharedInstance].myBuyingListings count] == 0 || [[VariableStore sharedInstance].mySellingListings count] == 0) {
-    [self loadDataSource];
-  }else{
-    [self reloadTable];
-  }
-}
-
 - (void)accountLogoutFinished
 {
   DLog(@"ActivityViewController::accountLogoutFinished");
-  [self loadDataSource];
+  [self updateTableView];
 }
 
 - (void) accountLoginFinished
 {
   DLog(@"ActivityViewController::accountLoginFinished");
-  [self loadDataSource];
+  [self updateTableView];
 }
 
 - (void) accountDidGetListings:(NSDictionary *)dict
@@ -93,19 +85,72 @@ NSMutableArray *currentItems;
   [self getSellingItems:dict];
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+- (BOOL) isBuyingTabSelected
+{
+  return 0 == self.activitySegment.selectedSegmentIndex;
+}
+
+- (BOOL) isSellingTabSelected
+{
+  return 1 == self.activitySegment.selectedSegmentIndex;
+}
+
+- (void)showBackground
+{
+  if (self.emptyRecordsImageView == nil || self.emptyRecordsImageView.image == nil) {
+    self.emptyRecordsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:UI_IMAGE_ACTIVITY_BACKGROUND]];
+    [self.view addSubview:self.emptyRecordsImageView];
+  }
+  [self hideIndicator];
+}
+
+- (void)reset
+{
+  [VariableStore sharedInstance].myBuyingListings = nil;
+  [VariableStore sharedInstance].mySellingListings = nil;
+}
+
+- (void)hideBackground
+{
+  if( self.emptyRecordsImageView && [currentItems count] > 0){
+    [self.emptyRecordsImageView removeFromSuperview];
+    self.emptyRecordsImageView = nil;
+  }
+}
+
+- (void)updateTableView
+{
+  if (![VariableStore.sharedInstance isLoggedIn]){
+    [self showBackground];
+  } else if (![VariableStore.sharedInstance isCurrentUser:_userId]) {     
+    _userId = VariableStore.sharedInstance.user.userId;
+    [self reset];
+    [self loadDataSource];
+  } else if ( (!VariableStore.sharedInstance.myBuyingListings && [self isBuyingTabSelected]) || 
+              (!VariableStore.sharedInstance.mySellingListings && [self isSellingTabSelected]) ) {
+    [self loadDataSource];
+  } else {
+    [self reloadTable];
+  }
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+- (IBAction)activityChanged:(id)sender {
+  DLog(@"ActivityViewController::(IBAction)activityChanged");
+  [self updateTableView];
+}
+
 - (void)reloadTable
 {
   DLog(@"ActivityViewController::reloadTable");
-  if ( 0 == self.activitySegment.selectedSegmentIndex) {
+  if ( [self isBuyingTabSelected]) {
     currentItems = [VariableStore sharedInstance].myBuyingListings;
   } else {
     currentItems = [VariableStore sharedInstance].mySellingListings;
   }
-  if (self.emptyRecordsImageView && [currentItems count] > 0) {
-    [self.emptyRecordsImageView removeFromSuperview];
-    self.emptyRecordsImageView = nil;
-  }
   
+  [self hideBackground];
   [self.tableView reloadData];
   //[self stopLoading];
   [self doneLoadingTableViewData];
@@ -131,15 +176,11 @@ NSMutableArray *currentItems;
 
 -(void)loadDataSource{
   if (![[self kassVS] isLoggedIn]) { 
-    if (self.emptyRecordsImageView == nil || self.emptyRecordsImageView.image == nil) {
-      self.emptyRecordsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:UI_IMAGE_ACTIVITY_BACKGROUND]];
-      [self.view addSubview:self.emptyRecordsImageView];
-    }
+    [self showBackground];
     return; 
   }
   
-  [self showLoadingIndicator];
-  if ( 0 == self.activitySegment.selectedSegmentIndex) {
+  if ( [self isBuyingTabSelected] ) {
     [self.currentUser getListings]; 
   } else {
     [self.currentUser getOffers];
@@ -193,7 +234,7 @@ NSMutableArray *currentItems;
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  [self loadDataSource];
+  [self reset];
   
   // navigation bar background color
   self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
@@ -245,19 +286,8 @@ NSMutableArray *currentItems;
 
 - (void)viewWillAppear:(BOOL)animated
 {
-//  DLog(@"VariableStore=%@,userid=%@",[VariableStore sharedInstance], [VariableStore sharedInstance].user.userId);
-//    if ([[VariableStore sharedInstance] isLoggedIn]) {        
-//        [self.emptyRecordsImageView removeFromSuperview];
-//        self.emptyRecordsImageView = nil;
-//        [self reloadTable];
-//    } else {
-//        if (self.emptyRecordsImageView == nil || self.emptyRecordsImageView.image == nil) {
-//            self.emptyRecordsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default.png"]];
-//            [self.view addSubview:self.emptyRecordsImageView];
-//        }
-//    }
-    
-    [super viewWillAppear:animated];
+  [super viewWillAppear:animated];
+  [self updateTableView];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -322,7 +352,7 @@ NSMutableArray *currentItems;
     // customize table cell listing view
     
     // my buying list
-    if ( 0 == self.activitySegment.selectedSegmentIndex ) {
+    if ( [self isBuyingTabSelected] ) {
         ListItem *item = [currentItems objectAtIndex:row];
         cell.title.text = item.title;
         cell.subTitle.text = item.description;
@@ -383,7 +413,7 @@ NSMutableArray *currentItems;
      */
     
     // Buying list segue
-    if ( 0 == self.activitySegment.selectedSegmentIndex) {
+    if ( [self isBuyingTabSelected] ) {
         int row = [indexPath row];
         ListItem *item = [currentItems objectAtIndex:row];
 //        item.acceptedPrice = [NSDecimalNumber decimalNumberWithDecimal:

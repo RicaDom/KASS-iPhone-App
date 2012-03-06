@@ -75,6 +75,11 @@
   return (self.user != nil) && (self.user.userId != nil);
 }
 
+- (BOOL) isCurrentUser:(NSString *)userId
+{
+  return [self isLoggedIn] && [self.user isSameUser:userId];
+}
+
 - (BOOL) signInAccount:(NSString *)email:(NSString *)password
 {
   DLog(@"VariableStore::signInAccount:email=%@,password=%@",email,password);
