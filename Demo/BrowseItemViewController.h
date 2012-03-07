@@ -14,6 +14,7 @@
 #import "TPKeyboardAvoidingScrollView.h"
 #import "AccountActivityDelegate.h"
 #import "UIResponder+VariableStore.h"
+#import "CommonView.h"
 
 @interface BrowseItemViewController : UIViewController <UIScrollViewDelegate, PullToRefreshViewDelegate, AccountActivityDelegate>
 {
@@ -35,6 +36,8 @@
 @property (strong, nonatomic) IBOutlet UIView *mainView;
 @property (strong, nonatomic) IBOutlet UIView *buttomView;
 @property (strong, nonatomic) IBOutlet UIView *topView;
+@property (strong, nonatomic) IBOutlet UIButton *priceButton;
+@property (strong, nonatomic) IBOutlet UIButton *userInfoButton;
 
 - (IBAction)navigationButtonAction:(id)sender;
 

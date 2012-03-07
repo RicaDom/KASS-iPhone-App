@@ -27,6 +27,8 @@
 @synthesize mainView = _mainView;
 @synthesize buttomView = _buttomView;
 @synthesize topView = _topView;
+@synthesize userInfoButton = _userInfoButton;
+@synthesize priceButton = _priceButton;
 @synthesize tpScrollView = _tpScrollView;
 @synthesize currentOffer = _currentOffer;
 
@@ -111,7 +113,9 @@
     self.pull = [[PullToRefreshView alloc] initWithScrollView:self.scrollView];
     [self.pull setDelegate:self];
     [self.scrollView addSubview:self.pull];
-    [self loadOffer];
+    
+    // navigation bar background color
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
     
     // init scroll view content size
     [self.scrollView setContentSize:CGSizeMake(_ScrollViewContentSizeX, self.scrollView.frame.size.height)];
@@ -127,6 +131,16 @@
                                              selector:@selector(receivePriceChangedNotification:) 
                                                  name:CHANGED_PRICE_NOTIFICATION
                                                object:nil];
+    
+    // Bottom view load
+    [CommonView setMessageWithPriceView:self.buttomView priceButton:self.priceButton messageField:self.messageTextField];
+    
+    // User info button
+    UIImage *userButtonImg = [UIImage imageNamed:UI_IMAGE_USER_INFO_BUTTON_GREEN];
+    UIImage *userButtonPressImg = [UIImage imageNamed:UI_IMAGE_USER_INFO_BUTTON_DARK];
+    self.userInfoButton.frame = CGRectMake(self.userInfoButton.frame.origin.x, self.userInfoButton.frame.origin.y, userButtonImg.size.width, userButtonImg.size.height);
+    [self.userInfoButton setImage:userButtonImg forState:UIControlStateNormal];
+    [self.userInfoButton setImage:userButtonPressImg forState:UIControlStateSelected];
 }
 
 - (void) receivePriceChangedNotification:(NSNotification *) notification
@@ -154,6 +168,8 @@
     [self setMainView:nil];
     [self setButtomView:nil];
     [self setTopView:nil];
+    [self setPriceButton:nil];
+    [self setUserInfoButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -246,10 +262,11 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-  [self registerKeyboardSlider:_mainView :_scrollView :_buttomView];
+    [self registerKeyboardSlider:_mainView :_scrollView :_buttomView];
     // register for keyboard notifications
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) 
                                                  name:UIKeyboardWillShowNotification object:self.view.window]; 
+    [self loadOffer];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -261,7 +278,8 @@
 
 -(IBAction)OnClick_btnBack:(id)sender  {
     if ([self.navigationItem.leftBarButtonItem.title isEqualToString:UI_BUTTON_LABEL_BACK]) {
-        [self.navigationController popViewControllerAnimated:YES];
+        [self dismissModalViewControllerAnimated:YES];
+        //[self.navigationController popViewControllerAnimated:YES];
     } else {
         [self.messageTextField resignFirstResponder];
         [self hideKeyboardAndMoveViewDown];

@@ -194,7 +194,6 @@ NSMutableArray *currentItems;
       DLog(@"ActivityViewController::prepareForSegue:ActSellingListToMessageBuyer");
     } else if ([segue.identifier isEqualToString:@"ActBuyingListToPayView"]) {
       DLog(@"ActivityViewController::prepareForSegue:ActBuyingListToPayView");
-      
     }
 }
 

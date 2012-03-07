@@ -33,7 +33,6 @@
 
 
 @property (weak, nonatomic) IBOutlet UILabel *itemTitle;
-@property (weak, nonatomic) IBOutlet UILabel *itemDescription;
 @property (nonatomic, strong) ListItem *currentItem;
 @property (strong, nonatomic) IBOutlet UIScrollView *infoScrollView;
 @property (strong, nonatomic) IBOutlet UITableView *offerTableView;
@@ -41,6 +40,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *offersCount;
 @property (strong, nonatomic) IBOutlet UILabel *itemPrice;
 @property (strong, nonatomic) IBOutlet UILabel *itemExpiredDate;
+@property (strong, nonatomic) IBOutlet UITextView *descriptionTextField;
 
 - (IBAction)backButtonAction:(id)sender;
 - (IBAction)editAction:(id)sender;

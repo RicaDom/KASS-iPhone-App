@@ -255,6 +255,8 @@
 		E5D69F0314AD99F700D552F6 /* PostFlowSetDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D69F0214AD99F700D552F6 /* PostFlowSetDateViewController.m */; };
 		E5D7C49C14B508D600E29463 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D7C49B14B508D600E29463 /* PostViewController.m */; };
 		E5D7C4AE14B53C3F00E29463 /* AppScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D7C4AD14B53C3F00E29463 /* AppScrollView.m */; };
+		E5D84A371507248800EF17E4 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D84A361507248800EF17E4 /* UserInfoViewController.m */; };
+		E5D84A3B15073CFC00EF17E4 /* CommonView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D84A3A15073CFC00EF17E4 /* CommonView.m */; };
 		E5E6AA3814A41B6D00A0CF86 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E6AA3714A41B6D00A0CF86 /* MapViewController.m */; };
 		E5EB944914EF8DDE0072B57B /* BrowseItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EB944414EF8DDE0072B57B /* BrowseItemViewController.m */; };
 		E5EB944A14EF8DDE0072B57B /* BrowseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EB944614EF8DDE0072B57B /* BrowseTableViewController.m */; };
@@ -655,6 +657,10 @@
 		E5D7C49B14B508D600E29463 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
 		E5D7C4AC14B53C3F00E29463 /* AppScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppScrollView.h; sourceTree = "<group>"; };
 		E5D7C4AD14B53C3F00E29463 /* AppScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppScrollView.m; sourceTree = "<group>"; };
+		E5D84A351507248800EF17E4 /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
+		E5D84A361507248800EF17E4 /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
+		E5D84A3915073CFC00EF17E4 /* CommonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonView.h; sourceTree = "<group>"; };
+		E5D84A3A15073CFC00EF17E4 /* CommonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonView.m; sourceTree = "<group>"; };
 		E5E6AA3614A41B6D00A0CF86 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		E5E6AA3714A41B6D00A0CF86 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		E5EB944314EF8DDE0072B57B /* BrowseItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseItemViewController.h; sourceTree = "<group>"; };
@@ -1135,6 +1141,8 @@
 				E5D69EDC14AD0DB900D552F6 /* MainTabBarViewController.m */,
 				77E766C41502352E00A4E0D0 /* DataSourceViewController.h */,
 				77E766C51502352F00A4E0D0 /* DataSourceViewController.m */,
+				E5D84A351507248800EF17E4 /* UserInfoViewController.h */,
+				E5D84A361507248800EF17E4 /* UserInfoViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1506,6 +1514,8 @@
 				E5A4895314DFC27400501EE2 /* ListingTableCell.m */,
 				E5B3AC6914EB95D600CD4C67 /* OfferTableCell.h */,
 				E5B3AC6A14EB95D600CD4C67 /* OfferTableCell.m */,
+				E5D84A3915073CFC00EF17E4 /* CommonView.h */,
+				E5D84A3A15073CFC00EF17E4 /* CommonView.m */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -1846,6 +1856,8 @@
 				77502EC31505F89B0019E93A /* ZTWebSocket.m in Sources */,
 				77502EC715064F3B0019E93A /* PrivatePubClient.m in Sources */,
 				77502ED115067A330019E93A /* Settings.m in Sources */,
+				E5D84A371507248800EF17E4 /* UserInfoViewController.m in Sources */,
+				E5D84A3B15073CFC00EF17E4 /* CommonView.m in Sources */,
 				7760FCC91507473F008D40D6 /* ActiveModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -23,6 +23,8 @@
 @synthesize sendMessageTextField = _sendMessageTextField;
 @synthesize mainView = _mainView;
 @synthesize buttomView = _buttomView;
+@synthesize userInfoButton = _userInfoButton;
+@synthesize priceButton = _priceButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -110,6 +112,16 @@
                                 target:self
                                 action:@selector(OnClick_btnBack:)];
     self.navigationItem.leftBarButtonItem = btnBack;   
+    
+    // Bottom view load
+    [CommonView setMessageWithPriceView:self.buttomView priceButton:self.priceButton messageField:self.sendMessageTextField];
+    
+    // User info button
+    UIImage *userButtonImg = [UIImage imageNamed:UI_IMAGE_USER_INFO_BUTTON_GREEN];
+    UIImage *userButtonPressImg = [UIImage imageNamed:UI_IMAGE_USER_INFO_BUTTON_DARK];
+    self.userInfoButton.frame = CGRectMake(self.userInfoButton.frame.origin.x, self.userInfoButton.frame.origin.y, userButtonImg.size.width, userButtonImg.size.height);
+    [self.userInfoButton setImage:userButtonImg forState:UIControlStateNormal];
+    [self.userInfoButton setImage:userButtonPressImg forState:UIControlStateSelected];
 }
 
 - (void) receivePriceChangedNotification:(NSNotification *) notification
@@ -135,6 +147,8 @@
     [self setChangingPrice:nil];
     [self setSendMessageTextField:nil];
     [self setMainView:nil];
+    [self setUserInfoButton:nil];
+    [self setPriceButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

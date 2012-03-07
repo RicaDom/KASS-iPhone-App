@@ -49,7 +49,7 @@ static KeyboardSlider *ks = nil;
   
   CGRect rect = _mainView.frame;
   
-  rect.origin.y += (_keyboardRect.size.height - _viewController.tabBarController.tabBar.frame.size.height);
+  rect.origin.y += _keyboardRect.size.height;
   rect.size.height -= _keyboardRect.size.height;
   _viewController.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_BACK;
   _viewController.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_MAP;
@@ -74,7 +74,7 @@ static KeyboardSlider *ks = nil;
   
   // 1. move the view's origin up so that the text field that will be hidden come above the keyboard 
   // 2. increase the size of the view so that the area behind the keyboard is covered up.
-  rect.origin.y -= (_keyboardRect.size.height - _viewController.tabBarController.tabBar.frame.size.height);
+  rect.origin.y -= _keyboardRect.size.height;
   rect.size.height += _keyboardRect.size.height;
   _viewController.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_CANCEL;
   _viewController.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_SEND;
@@ -83,9 +83,9 @@ static KeyboardSlider *ks = nil;
   
   CGRect scrollViewRect = _scrollView.frame;
   
-  scrollViewRect.origin.y -= _viewController.tabBarController.tabBar.frame.size.height;
-  scrollViewRect.size.height = rect.size.height - _keyboardRect.size.height*2; 
-  
+  scrollViewRect.origin.y = _keyboardRect.size.height;
+  scrollViewRect.size.height = rect.size.height - _keyboardRect.size.height*2 - _bottomView.frame.size.height; 
+    
   _scrollView.frame = scrollViewRect;
   
   [UIView commitAnimations];

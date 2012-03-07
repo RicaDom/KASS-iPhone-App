@@ -62,6 +62,7 @@ extern NSString * const OFFER_STATE_IDLE;
 extern NSString * const CHANGED_PRICE_NOTIFICATION;
 extern NSString * const OFFER_TO_PAY_VIEW_NOTIFICATION;
 extern NSString * const NEW_POST_NOTIFICATION;
+extern NSString * const NO_MESSAGE_TO_MESSAGE_VIEW_NOTIFICATION;
 
 // UI image
 extern NSString * const POPUP_IMAGE_NEW_POST_SUCCESS;

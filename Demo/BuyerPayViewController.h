@@ -11,6 +11,7 @@
 #import "Offer.h"
 #import "AccountActivityDelegate.h"
 #import "Constants.h"
+#import "CommonView.h"
 
 @interface BuyerPayViewController : UIViewController <UIScrollViewDelegate, PullToRefreshViewDelegate, AccountActivityDelegate>
 
@@ -21,5 +22,10 @@
 @property (strong, nonatomic) IBOutlet UILabel *listingDescription;
 @property (strong, nonatomic) IBOutlet UILabel *offerPrice;
 @property (strong, nonatomic) IBOutlet UILabel *listingExpiredDate;
+@property (strong, nonatomic) IBOutlet UIButton *userInfoButton;
+@property (strong, nonatomic) IBOutlet UIButton *priceButton;
+@property (strong, nonatomic) IBOutlet UIView *bottomView;
+@property (strong, nonatomic) IBOutlet UITextField *messageTextField;
+
 
 @end

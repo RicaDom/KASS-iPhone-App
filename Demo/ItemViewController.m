@@ -12,7 +12,6 @@
 @implementation ItemViewController
 
 @synthesize itemTitle = _itemTitle;
-@synthesize itemDescription = _itemDescription;
 @synthesize currentItem = _currentItem;
 @synthesize infoScrollView = _infoScrollView;
 @synthesize offerTableView = _offerTableView;
@@ -20,6 +19,7 @@
 @synthesize offersCount = _offersCount;
 @synthesize itemPrice = _itemPrice;
 @synthesize itemExpiredDate = _itemExpiredDate;
+@synthesize descriptionTextField = _descriptionTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -65,7 +65,7 @@
   self.currentItem = [[ListItem alloc] initWithDictionary:listing];
   
   self.itemTitle.text = self.currentItem.title;
-  self.itemDescription.text = self.currentItem.description;
+  self.descriptionTextField.text = self.currentItem.description;
   self.itemPrice.text = [self.currentItem getPriceText];
   self.itemExpiredDate.text = [self.currentItem getTimeLeftTextlong];
   
@@ -167,12 +167,12 @@
 - (void)viewDidUnload
 {    
     [self setItemTitle:nil];
-    [self setItemDescription:nil];
     [self setInfoScrollView:nil];
     [self setOfferTableView:nil];
     [self setOffersCount:nil];
     [self setItemPrice:nil];
     [self setItemExpiredDate:nil];
+    [self setDescriptionTextField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
   // e.g. self.myOutlet = nil;
