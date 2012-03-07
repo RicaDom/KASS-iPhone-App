@@ -12,8 +12,9 @@
 #import "AccountActivityDelegate.h"
 #import "Constants.h"
 #import "CommonView.h"
+#import "DataSourceViewController.h"
 
-@interface BuyerPayViewController : UIViewController <UIScrollViewDelegate, PullToRefreshViewDelegate, AccountActivityDelegate>
+@interface BuyerPayViewController : DataSourceViewController <UIScrollViewDelegate, PullToRefreshViewDelegate, AccountActivityDelegate>
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) PullToRefreshView *pull;

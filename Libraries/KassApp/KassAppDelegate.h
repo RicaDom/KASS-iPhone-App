@@ -12,5 +12,9 @@
 
 @optional
 - (void)settingsDidLoad:(NSDictionary *)dict;
+- (void)appDidGetListing:(NSDictionary *)dict;
+- (void)appDidGetListingsNearby:(NSDictionary *)dict;
+- (void)appDidGetListingsRecent:(NSDictionary *)dict;
+- (void)appDidGetListingsMostPrice:(NSDictionary *)dict;
 
 @end

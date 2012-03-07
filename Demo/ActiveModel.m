@@ -12,4 +12,24 @@
 
 @synthesize dbId = _dbId;
 
+- (id) initWithDictionary:(NSDictionary *) theDictionary
+{
+  if (self = [super init]) {
+    _dbId = [theDictionary valueForKey:@"id"];
+  }
+  return self;
+}
+- (id) initWithData:(NSData *) theData
+{
+  if (self = [super init]) {
+       
+  }
+  return self;
+}
+
+- (NSDictionary *) toJson
+{
+  return nil;
+}
+
 @end

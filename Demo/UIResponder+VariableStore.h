@@ -12,11 +12,6 @@
 @interface UIResponder (VariableStore) <AccountActivityDelegate, KassAppDelegate>
 
 - (VariableStore *) kassVS;
-
-- (void) kassAddToModelDict:(NSString *)controller:(NSDictionary *)model;
-- (NSDictionary *) kassGetModelDict:(NSString *)modelName;
-- (void) kassRemoveFromModelDict;
-
 - (User *) currentUser;
 - (KassApp *) kassApp;
 - (ListItem *) postingItem;

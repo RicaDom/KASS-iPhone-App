@@ -9,8 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "DataSourceManager.h"
 
+typedef enum {
+  dstListItem,
+  dstOffer,
+  dstNone
+} DataSourceType ;
+
 @interface DataSourceViewController : UIViewController <DataSourceDelegate>
 
+@property DataSourceType dType;
 @property (nonatomic,strong) DataSource *dataSource;
 
 - (void)unloadDataSource;

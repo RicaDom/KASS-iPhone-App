@@ -10,7 +10,7 @@
 
 @implementation DataSourceViewController
 
-@synthesize dataSource = _dataSource;
+@synthesize dataSource = _dataSource, dType = _dType;
 
 
 - (void)viewWillAppear:(BOOL)animated
@@ -23,6 +23,7 @@
 - (void)viewDidLoad
 {
   DLog(@"DataSourceViewController::viewDidLoad");
+  _dType = dstNone;
   if (!_dataSource) {
     _dataSource = [[DataSource alloc]initWithDataObjectAndDelegate:nil:self];
   }

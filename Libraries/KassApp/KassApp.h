@@ -20,6 +20,19 @@
 - (void)loadSettingsFinished:(NSData *)data;
 - (void)loadAndStoreSettings;
 
+- (void)getListing:(NSString *)dbId;
+- (void)getListingFinished:(NSData *)data;
+
+- (void)getListingsNearby:(NSMutableDictionary *)dict;
+- (void)getListingsNearbyFinished:(NSData *)data;
+
+- (void)getListingsRecent:(NSMutableDictionary *)dict;
+- (void)getListingsRecentFinished:(NSData *)data;
+
+- (void)getListingsMostPrice:(NSMutableDictionary *)dict;
+- (void)getListingsMostPricFinished:(NSData *)data;
+
+
 - (BOOL)manageObj:(id<HJMOUser>)user;
 
 @end

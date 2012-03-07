@@ -40,4 +40,6 @@
 - (void)getSellingItems:(NSDictionary *)dict;
 - (void)updateTableView;
 
+- (void)performSegueWithModelJson:(NSDictionary *)modelJson:(NSString *)identifier:(id)sender;
+
 @end

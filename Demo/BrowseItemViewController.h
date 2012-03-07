@@ -15,8 +15,9 @@
 #import "AccountActivityDelegate.h"
 #import "UIResponder+VariableStore.h"
 #import "CommonView.h"
+#import "DataSourceViewController.h"
 
-@interface BrowseItemViewController : UIViewController <UIScrollViewDelegate, PullToRefreshViewDelegate, AccountActivityDelegate>
+@interface BrowseItemViewController : DataSourceViewController <UIScrollViewDelegate, PullToRefreshViewDelegate, AccountActivityDelegate>
 {
     CGRect _keyboardRect; // for keyboard avoiding
 }

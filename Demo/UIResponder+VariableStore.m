@@ -15,23 +15,6 @@
   return VariableStore.sharedInstance;
 }
 
-- (void) kassAddToModelDict:(NSString *)controller:(NSDictionary *)model
-{
-  DLog(@"UIResponder+VariableStore::kassAddToModelDict:controller=%@", controller);
-  [[self kassVS] addToModelDict:controller:model];
-}
-
-- (NSDictionary *) kassGetModelDict:(NSString *)modelName
-{
-  DLog(@"UIResponder+VariableStore::kassGetModelDict:controller=%@", NSStringFromClass(self.class));
-  return [[self kassVS] getModelDict:NSStringFromClass(self.class):modelName];
-}
-
-- (void) kassRemoveFromModelDict
-{
-  [[self kassVS] removeFromModelDict:NSStringFromClass(self.class)];
-}
-
 - (User *) currentUser
 {
 //  DLog(@"UIResponder+VariableStore::currentUser:delegate=%@", NSStringFromClass(self.class));

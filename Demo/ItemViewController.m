@@ -8,6 +8,7 @@
 
 #import "ItemViewController.h"
 #import "UIViewController+ActivityIndicate.h"
+#import "UIViewController+SegueActiveModel.h"
 
 @implementation ItemViewController
 
@@ -82,14 +83,11 @@
   DLog(@"ItemViewController::loadDataSource");
   [self showLoadingIndicator];
   
-  NSString *listItemId = self.currentItem.dbId;
-  
-  if ( !listItemId || [listItemId isBlank] ) {
-    listItemId = [[self kassGetModelDict:@"listItem"] objectForKey:@"id"];
+  NSString *listItemId = [[self kassGetModelDict:@"listItem"] objectForKey:@"id"];
+  if ( listItemId && ![listItemId isBlank] ) {
+    [self.currentUser getListing:listItemId];
   }
   
-  [self.currentUser getListing:listItemId];
-
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.

@@ -8,6 +8,7 @@
 
 #import "ActivityViewController.h"
 #import "UIViewController+ActivityIndicate.h"
+#import "UIViewController+SegueActiveModel.h"
 #import "ViewHelper.h"
 
 
@@ -187,16 +188,6 @@ NSMutableArray *currentItems;
   }
 }
 
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-  
-    if ([segue.identifier isEqualToString:@"ActBuyingListToOffers"]) {
-    } else if ([segue.identifier isEqualToString:@"ActSellingListToMessageBuyer"]) {
-      DLog(@"ActivityViewController::prepareForSegue:ActSellingListToMessageBuyer");
-    } else if ([segue.identifier isEqualToString:@"ActBuyingListToPayView"]) {
-      DLog(@"ActivityViewController::prepareForSegue:ActBuyingListToPayView");
-    }
-}
-
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -253,8 +244,7 @@ NSMutableArray *currentItems;
         Offer *offer = (Offer *)[notification object];       
       if (offer) {
           DLog (@"ActivityViewController::receivedFromOfferViewNotification! %@", offer);
-          [self kassAddToModelDict:@"BuyerPayViewController":offer.toJson];
-          [self performSegueWithIdentifier:@"ActBuyingListToPayView" sender:self];
+          [self performSegueWithModelJson:offer.toJson:@"ActBuyingListToPayView":self];
       }
     }
 }
@@ -383,6 +373,21 @@ NSMutableArray *currentItems;
 
 #pragma mark - Table view delegate
 
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+  UINavigationController *uvc = segue.destinationViewController;
+  if ( [uvc isKindOfClass:UINavigationController.class]) {
+    NSString *controllerName = NSStringFromClass(uvc.topViewController.class);
+    [self kassAddToModelDict:controllerName:[self kassVS].modelJson];
+  }
+}
+
+- (void)performSegueWithModelJson:(NSDictionary *)modelJson:(NSString *)identifier:(id)sender
+{
+  [self kassVS].modelJson = modelJson;          
+  [self performSegueWithIdentifier:identifier sender:sender];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {    
     // Buying list segue
@@ -393,20 +398,18 @@ NSMutableArray *currentItems;
         // if listing already has accepted offer, got to pay page
         if (item.isAccepted) {
           
-          [self kassAddToModelDict:@"BuyerPayViewController":item.acceptedOffer.toJson];          
-          [self performSegueWithIdentifier:@"ActBuyingListToPayView" sender:self];
+          [self performSegueWithModelJson:item.acceptedOffer.toJson:@"ActBuyingListToPayView":self];
           
         } else {
-            [self kassAddToModelDict:@"ItemViewController":item.toJson];  
-            [self performSegueWithIdentifier:@"ActBuyingListToOffers" sender:self];
+
+          [self performSegueWithModelJson:item.toJson:@"ActBuyingListToOffers":self];
         }
     } 
     // Selling list segue
     else {
       
       Offer *offer = [currentItems objectAtIndex:[indexPath row]];
-      [self kassAddToModelDict:@"ItemViewController":offer.toJson];
-      [self performSegueWithIdentifier:@"ActSellingListToMessageBuyer" sender:self];
+      [self performSegueWithModelJson:offer.toJson:@"ActSellingListToMessageBuyer":self];
     }
     
 }

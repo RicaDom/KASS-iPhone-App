@@ -22,6 +22,7 @@
 @synthesize nearBrowseListings = _nearBrowseListings;
 @synthesize priceBrowseListings = _priceBrowseListings;
 
+@synthesize modelJson = _modelJson;
 @synthesize modelDict = _modelDict;
 @synthesize mainTabBar = _mainTabBar;
 @synthesize kassApp = _kassApp;

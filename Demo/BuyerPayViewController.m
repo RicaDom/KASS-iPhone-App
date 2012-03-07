@@ -9,6 +9,7 @@
 #import "BuyerPayViewController.h"
 #import "UIViewController+ActivityIndicate.h"
 #import "UIResponder+VariableStore.h"
+#import "UIViewController+SegueActiveModel.h"
 #import "ViewHelper.h"
 
 @implementation BuyerPayViewController
@@ -78,21 +79,16 @@
   [self stopLoading];
 }
 
-- (void)loadOffer
+- (void)loadDataSource
 {
   DLog(@"BuyerPayViewController::loadingOffer");
   [self showLoadingIndicator];
   
-  //check if currentOffer object is nil, if so get from kassModelDict
-  NSString *offerId = self.currentOffer.dbId;
-  
-  if ( !offerId || [offerId isBlank] ) {
-    offerId = [[self kassGetModelDict:@"offer"] objectForKey:@"id"];
+  NSString *offerId = [[self kassGetModelDict:@"offer"] objectForKey:@"id"];
+  if ( offerId && ![offerId isBlank]) {
+    [[self currentUser] getOffer:offerId];
   }
-  
-  [[self currentUser] getOffer:offerId];
 }
-
 
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -113,8 +109,6 @@
                                 target:self
                                 action:@selector(OnClick_btnBack:)];
     self.navigationItem.leftBarButtonItem = btnBack; 
-    
-    [self loadOffer];
     
     // Bottom view load
     [CommonView setMessageWithPriceView:self.bottomView priceButton:self.priceButton messageField:self.messageTextField];
@@ -147,6 +141,6 @@
 // called when the user pulls-to-refresh
 - (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view
 {
-    [self performSelector:@selector(loadOffer) withObject:nil afterDelay:2.0];	
+    [self performSelector:@selector(loadDataSource) withObject:nil afterDelay:2.0];	
 }
 @end
