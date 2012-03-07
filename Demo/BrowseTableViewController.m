@@ -186,11 +186,28 @@
 
 }
 
+- (void) receivedFromNOMessageNotification:(NSNotification *) notification
+{
+    // [notification name] should always be NO_MESSAGE_TO_MESSAGE_VIEW_NOTIFICATION
+    // unless you use this method for observation of other notifications
+    // as well.
+    
+    if ([[notification name] isEqualToString:OFFER_TO_PAY_VIEW_NOTIFICATION]) {
+        DLog(@"BrowseTableViewController::switchBrowseItemView");
+        [self performSegueWithIdentifier:@"showBrowseItem" sender:self];
+    }
+}
+
 - (void)viewDidLoad
 {
     DLog(@"BrowseTableViewController::viewDidLoad ");
     [super viewDidLoad];
     [self setupArray];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receivedFromNOMessageNotification:) 
+                                                 name:NO_MESSAGE_TO_MESSAGE_VIEW_NOTIFICATION
+                                               object:nil];
 
     // navigation bar background color
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
@@ -220,7 +237,7 @@
     UIImage* img = [UIImage imageNamed:UI_IMAGE_BROWSE_SEGMENT_DIVIDER];
     UIImage* tempImg = [UIImage imageNamed:UI_IMAGE_BROWSE_DATE];
     [self.browseSegment setDividerImage:img forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];    
-    self.browseSegment.frame = CGRectMake(0, self.browseSegment.frame.origin.y, tempImg.size.width*3+12, tempImg.size.height);
+    self.browseSegment.frame = CGRectMake(0, self.browseSegment.frame.origin.y, tempImg.size.width*3+8, tempImg.size.height);
     [self browseSegmentAction:self];    
     UIImage *mapImg = [UIImage imageNamed:UI_IMAGE_BROWSE_MAP];
     [self.mapButton setImage:mapImg forState:UIControlStateNormal];
@@ -233,6 +250,7 @@
     [self setListingTableView:nil];
     [self setMapButton:nil];
     [self setLeftButton:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NO_MESSAGE_TO_MESSAGE_VIEW_NOTIFICATION object:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -402,11 +420,11 @@
 }
 
 // call back from BrowseItemNoMsgViewController
-- (void)switchBrowseItemView 
-{
-  DLog(@"BrowseTableViewController::switchBrowseItemView");
-  [self performSegueWithIdentifier:@"showBrowseItem" sender:self];
-}
+//- (void)switchBrowseItemView 
+//{
+//  DLog(@"BrowseTableViewController::switchBrowseItemView");
+//  [self performSegueWithIdentifier:@"showBrowseItem" sender:self];
+//}
 
 #pragma mark -
 #pragma mark Content Filtering

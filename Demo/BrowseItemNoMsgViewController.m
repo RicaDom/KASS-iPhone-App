@@ -90,19 +90,7 @@
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
     
     // Bottom view load
-    UIImage *bottomViewImg = [UIImage imageNamed:UI_IMAGE_SEND_MESSAGE_BACKGROUND];
-    self.buttomView.frame = CGRectMake(0, self.buttomView.frame.origin.y, bottomViewImg.size.width, bottomViewImg.size.height + 15);
-    [self.buttomView setBackgroundColor:[[UIColor alloc] initWithPatternImage:bottomViewImg]];
-
-    UIImage *priceButtonImg = [UIImage imageNamed:UI_IMAGE_SEND_MESSAGE_PRICE];
-    UIImage *priceButtonPressImg = [UIImage imageNamed:UI_IMAGE_SEND_MESSAGE_PRICE_PRESS];
-    self.priceButton.frame = CGRectMake(self.priceButton.frame.origin.x, self.priceButton.frame.origin.y, priceButtonImg.size.width, priceButtonImg.size.height);
-    [self.priceButton setImage:priceButtonImg forState:UIControlStateNormal];
-    [self.priceButton setImage:priceButtonPressImg forState:UIControlStateSelected];
-    [self.priceButton setBackgroundColor:[[UIColor alloc] initWithPatternImage:[UIImage imageNamed:UI_IMAGE_SEND_MESSAGE_PRICE]]];
-    
-    self.messageTextField.frame = CGRectMake(self.priceButton.frame.size.width + 15, self.priceButton.frame.origin.y, self.buttomView.frame.size.width - self.priceButton.frame.size.width - 20, self.priceButton.frame.size.height);
-    
+    [CommonView setMessageWithPriceView:self.buttomView priceButton:self.priceButton messageField:self.messageTextField];
     
     // User info button
     UIImage *userButtonImg = [UIImage imageNamed:UI_IMAGE_USER_INFO_BUTTON_GREEN];
@@ -178,8 +166,11 @@
   
   UINavigationController *navController = self.navigationController;
   // Pop this controller and replace with another
-  [navController popViewControllerAnimated:NO];
-  [(BrowseTableViewController *)[navController.viewControllers objectAtIndex:([navController.viewControllers count]-1)] switchBrowseItemView];
+  [navController dismissModalViewControllerAnimated:YES];
+    
+  [[NSNotificationCenter defaultCenter] postNotificationName:NO_MESSAGE_TO_MESSAGE_VIEW_NOTIFICATION object:nil];
+//  [navController popViewControllerAnimated:NO];
+//  [(BrowseTableViewController *)[navController.viewControllers objectAtIndex:([navController.viewControllers count]-1)] switchBrowseItemView];
   
 }
 

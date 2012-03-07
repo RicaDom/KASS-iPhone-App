@@ -20,6 +20,10 @@
 @synthesize listingDescription = _listingDescription;
 @synthesize offerPrice = _offerPrice;
 @synthesize listingExpiredDate = _listingExpiredDate;
+@synthesize userInfoButton = _userInfoButton;
+@synthesize priceButton = _priceButton;
+@synthesize bottomView = _bottomView;
+@synthesize messageTextField = _messageTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -111,6 +115,9 @@
     self.navigationItem.leftBarButtonItem = btnBack; 
     
     [self loadOffer];
+    
+    // Bottom view load
+    [CommonView setMessageWithPriceView:self.bottomView priceButton:self.priceButton messageField:self.messageTextField];
 }
 
 -(IBAction)OnClick_btnBack:(id)sender  {
@@ -121,6 +128,11 @@
 
 - (void)viewDidUnload
 {
+    [self setUserInfoButton:nil];
+    [self setUserInfoButton:nil];
+    [self setPriceButton:nil];
+    [self setBottomView:nil];
+    [self setMessageTextField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

@@ -16,6 +16,7 @@
 #import "OfferChangingPriceViewController.h"
 #import "UIResponder+VariableStore.h"
 #import "DataSourceViewController.h"
+#import "CommonView.h"
 
 @interface ActivityOfferMessageViewController : DataSourceViewController <UIScrollViewDelegate, PullToRefreshViewDelegate, AccountActivityDelegate>
 {
@@ -34,6 +35,8 @@
 @property (strong, nonatomic) IBOutlet UITextField *sendMessageTextField;
 @property (strong, nonatomic) IBOutlet UIView *mainView;
 @property (strong, nonatomic) IBOutlet UIView *buttomView;
+@property (strong, nonatomic) IBOutlet UIButton *userInfoButton;
+@property (strong, nonatomic) IBOutlet UIButton *priceButton;
 
 - (IBAction)sellerInfoAction:(id)sender;
 - (IBAction)confirmDealAction:(id)sender;

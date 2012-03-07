@@ -201,7 +201,8 @@ NSMutableArray *currentItems;
       
     } else if ([segue.identifier isEqualToString:@"ActSellingListToMessageBuyer"]) {
       DLog(@"ActivityViewController::prepareForSegue:ActSellingListToMessageBuyer");
-      BrowseItemViewController *bvc = [segue destinationViewController];
+      UINavigationController *nc = [segue destinationViewController];
+      BrowseItemViewController *bvc = (BrowseItemViewController *)nc.topViewController; 
     
       bvc.currentOffer = [currentItems objectAtIndex:row];
         
