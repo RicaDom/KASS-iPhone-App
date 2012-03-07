@@ -20,13 +20,13 @@
 @property (strong, nonatomic) PullToRefreshView *pull;
 @property (strong, nonatomic) Offer *currentOffer;
 @property (strong, nonatomic) IBOutlet UILabel *listingTitle;
-@property (strong, nonatomic) IBOutlet UILabel *listingDescription;
 @property (strong, nonatomic) IBOutlet UILabel *offerPrice;
 @property (strong, nonatomic) IBOutlet UILabel *listingExpiredDate;
 @property (strong, nonatomic) IBOutlet UIButton *userInfoButton;
 @property (strong, nonatomic) IBOutlet UIButton *priceButton;
 @property (strong, nonatomic) IBOutlet UIView *bottomView;
 @property (strong, nonatomic) IBOutlet UITextField *messageTextField;
+@property (strong, nonatomic) IBOutlet UITextView *descriptionTextField;
 
 
 @end

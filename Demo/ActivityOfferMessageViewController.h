@@ -28,7 +28,6 @@
 @property (strong, nonatomic) PullToRefreshView *pull;
 @property (strong, nonatomic) Offer *currentOffer;
 @property (strong, nonatomic) IBOutlet UILabel *listingTitle;
-@property (strong, nonatomic) IBOutlet UILabel *listingDescription;
 @property (strong, nonatomic) IBOutlet UILabel *offerPrice;
 @property (strong, nonatomic) IBOutlet UILabel *listingExpiredDate;
 @property (strong, nonatomic) IBOutlet UILabel *changingPrice;
@@ -37,6 +36,7 @@
 @property (strong, nonatomic) IBOutlet UIView *buttomView;
 @property (strong, nonatomic) IBOutlet UIButton *userInfoButton;
 @property (strong, nonatomic) IBOutlet UIButton *priceButton;
+@property (strong, nonatomic) IBOutlet UITextView *descriptionTextField;
 
 - (IBAction)sellerInfoAction:(id)sender;
 - (IBAction)confirmDealAction:(id)sender;

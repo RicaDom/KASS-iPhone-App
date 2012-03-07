@@ -16,7 +16,6 @@
 @implementation BrowseItemViewController
 
 @synthesize itemTitleLabel = _itemTitleLabel;
-@synthesize itemDescriptionLabel = _itemDescriptionLabel;
 @synthesize itemPriceLabel = _itemPriceLabel;
 @synthesize itemExpiredDate = _itemExpiredDate;
 @synthesize itemPriceChangedToLabel = _itemPriceChangedToLabel;
@@ -29,6 +28,7 @@
 @synthesize buttomView = _buttomView;
 @synthesize topView = _topView;
 @synthesize userInfoButton = _userInfoButton;
+@synthesize descriptionTextField = _descriptionTextField;
 @synthesize priceButton = _priceButton;
 @synthesize tpScrollView = _tpScrollView;
 @synthesize currentOffer = _currentOffer;
@@ -72,7 +72,7 @@
   [self stopLoading];
   
   self.itemTitleLabel.text = self.currentOffer.title;
-  self.itemDescriptionLabel.text = self.currentOffer.description;
+  self.descriptionTextField.text = self.currentOffer.description;
   self.itemPriceLabel.text = [NSString stringWithFormat:@"%@", self.currentOffer.price];
   self.itemPriceChangedToLabel.text = [NSString stringWithFormat:@"%@", self.currentOffer.price];
 
@@ -158,7 +158,6 @@
 - (void)viewDidUnload
 {
     [self setItemTitleLabel:nil];
-    [self setItemDescriptionLabel:nil];
     [self setNavigationButton:nil];
     [self setItemPriceLabel:nil];
     [self setItemExpiredDate:nil];
@@ -169,6 +168,7 @@
     [self setTopView:nil];
     [self setPriceButton:nil];
     [self setUserInfoButton:nil];
+    [self setDescriptionTextField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

@@ -41,6 +41,10 @@
 @property (strong, nonatomic) IBOutlet UILabel *itemPrice;
 @property (strong, nonatomic) IBOutlet UILabel *itemExpiredDate;
 @property (strong, nonatomic) IBOutlet UITextView *descriptionTextField;
+@property (strong, nonatomic) IBOutlet UIButton *modifyButton;
+@property (strong, nonatomic) IBOutlet UIButton *shareButton;
+@property (strong, nonatomic) IBOutlet UIButton *backButton;
+@property (strong, nonatomic) IBOutlet UIButton *mapButton;
 
 - (IBAction)backButtonAction:(id)sender;
 - (IBAction)editAction:(id)sender;

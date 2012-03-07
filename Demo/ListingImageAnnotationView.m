@@ -8,8 +8,6 @@
 
 #import "ListingImageAnnotationView.h"
 
-#define kHeight 100
-#define kWidth  100
 #define kBorder 2
 
 @implementation ListingImageAnnotationView
@@ -18,13 +16,14 @@
 - (id)initWithAnnotation:(id <MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier
 {
 	self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier];
-	self.frame = CGRectMake(0, 0, kWidth, kHeight);
-	self.backgroundColor = [UIColor whiteColor];
-	
-	UIImage* image = [UIImage imageNamed:@"mapPin.png"];
-	_imageView = [[UIImageView alloc] initWithImage:image];
-	
-	_imageView.frame = CGRectMake(kBorder, kBorder, kWidth - 2 * kBorder, kWidth - 2 * kBorder);
+    
+	UIImage* image = [UIImage imageNamed:@"pin.png"];
+	self.frame = CGRectMake(0, 0, image.size.width, image.size.height);
+	//self.backgroundColor = [UIColor whiteColor];
+
+	_imageView = [[UIImageView alloc] initWithImage:image];	
+	//_imageView.frame = CGRectMake(kBorder, kBorder, kWidth - 2 * kBorder, kWidth - 2 * kBorder);
+    _imageView.frame = CGRectMake(kBorder, kBorder, image.size.width, image.size.height);
 	[self addSubview:_imageView];
 	
 	return self;

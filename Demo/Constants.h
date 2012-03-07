@@ -85,7 +85,18 @@ extern NSString * const UI_IMAGE_LOGIN_FORGOT_PASS;
 extern NSString * const UI_IMAGE_LOGIN_FORM_BACKGROUND;
 extern NSString * const UI_IMAGE_LOGIN_LABEL;
 
+extern NSString * const UI_IMAGE_BACK_BUTTON;
+extern NSString * const UI_IMAGE_BACK_BUTTON_PRESS;
+extern NSString * const UI_IMAGE_SHARE_BUTTON;
+extern NSString * const UI_IMAGE_SHARE_BUTTON_PRESS;
+extern NSString * const UI_IMAGE_MAP_BUTTON;
+extern NSString * const UI_IMAGE_MAP_BUTTON_PRESS;
+
 extern NSString * const UI_IMAGE_ACTIVITY_BACKGROUND;
+extern NSString * const UI_IMAGE_ACTIVITY_EDIT_BUTTON;
+extern NSString * const UI_IMAGE_ACTIVITY_EDIT_BUTTON_PRESS;
+extern NSString * const UI_IMAGE_ACTIVITY_SHARE_BUTTON;
+extern NSString * const UI_IMAGE_ACTIVITY_SHARE_BUTTON_PRESS;
 
 extern NSString * const UI_IMAGE_BROWSE_POST_BUTTON;
 extern NSString * const UI_IMAGE_BROWSE_POST_SLOGAN;
