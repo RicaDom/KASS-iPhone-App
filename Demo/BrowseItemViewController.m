@@ -75,7 +75,13 @@
   self.descriptionTextField.text = self.currentOffer.description;
   self.itemPriceLabel.text = [NSString stringWithFormat:@"%@", self.currentOffer.price];
   self.itemPriceChangedToLabel.text = [NSString stringWithFormat:@"%@", self.currentOffer.price];
-
+  
+  NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+  [formatter setAMSymbol:@"AM"];
+  [formatter setPMSymbol:@"PM"];
+  [formatter setDateFormat:@"MM/dd/yy hh:mm a"];
+  self.itemExpiredDate.text = [NSString stringWithFormat:@"%@", [formatter stringFromDate:self.currentOffer.listItemEndedAt]];
+  
 }
 
 - (void)accountDidGetOffer:(NSDictionary *)dict
