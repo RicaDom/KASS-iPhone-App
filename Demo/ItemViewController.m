@@ -20,6 +20,10 @@
 @synthesize itemPrice = _itemPrice;
 @synthesize itemExpiredDate = _itemExpiredDate;
 @synthesize descriptionTextField = _descriptionTextField;
+@synthesize modifyButton = _modifyButton;
+@synthesize shareButton = _shareButton;
+@synthesize backButton = _backButton;
+@synthesize mapButton = _mapButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -101,14 +105,6 @@
     // navigation bar background color
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
 
-    UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]
-                              initWithTitle:UI_BUTTON_LABEL_BACK
-                              style:UIBarButtonItemStyleBordered
-                              target:self
-                              action:@selector(OnClick_btnBack:)];
-    self.navigationItem.leftBarButtonItem = btnBack;  
-
-
     if (_refreshHeaderView == nil) {
     EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.offerTableView.bounds.size.height, self.view.frame.size.width, self.offerTableView.bounds.size.height)];
     view.delegate = self;
@@ -116,9 +112,29 @@
     _refreshHeaderView = view;
     }
 
-
     //  update the last update date
     [_refreshHeaderView refreshLastUpdatedDate];
+    
+    // set buttons background
+    UIImage *editButtonImg = [UIImage imageNamed:UI_IMAGE_ACTIVITY_EDIT_BUTTON];
+    UIImage *editButtonImgPress = [UIImage imageNamed:UI_IMAGE_ACTIVITY_EDIT_BUTTON_PRESS];
+    [self.modifyButton setImage:editButtonImg forState:UIControlStateNormal];
+    [self.modifyButton setImage:editButtonImgPress forState:UIControlStateSelected];
+    self.modifyButton.frame = CGRectMake((self.view.frame.size.width/2 - self.modifyButton.frame.size.width)/2, self.modifyButton.frame.origin.y, editButtonImg.size.width, editButtonImg.size.height);
+
+    UIImage *shareButtonImg = [UIImage imageNamed:UI_IMAGE_ACTIVITY_SHARE_BUTTON];
+    UIImage *shareButtonImgPress = [UIImage imageNamed:UI_IMAGE_ACTIVITY_SHARE_BUTTON_PRESS];
+    [self.shareButton setImage:shareButtonImg forState:UIControlStateNormal];
+    [self.shareButton setImage:shareButtonImgPress forState:UIControlStateSelected];
+    self.shareButton.frame = CGRectMake(self.view.frame.size.width/2 + self.modifyButton.frame.origin.x, self.shareButton.frame.origin.y, editButtonImg.size.width, editButtonImg.size.height);
+    
+    UIImage *mapImg = [UIImage imageNamed:UI_IMAGE_MAP_BUTTON];
+    [self.mapButton setImage:mapImg forState:UIControlStateNormal];
+    self.mapButton.frame = CGRectMake(0, self.mapButton.frame.origin.y, mapImg.size.width, mapImg.size.height);
+    
+    UIImage *backImg = [UIImage imageNamed:UI_IMAGE_BACK_BUTTON];
+    [self.backButton setImage:backImg forState:UIControlStateNormal];
+    self.backButton.frame = CGRectMake(0, self.backButton.frame.origin.y, backImg.size.width, backImg.size.height);
 }
 
 #pragma mark -
@@ -157,13 +173,6 @@
 	
 }
 
--(IBAction)OnClick_btnBack:(id)sender  {
-    if ([self.navigationItem.leftBarButtonItem.title isEqualToString:UI_BUTTON_LABEL_BACK]) {
-        [self dismissModalViewControllerAnimated:YES];
-        //[self.navigationController popViewControllerAnimated:YES];
-    }
-}
-
 - (void)viewDidUnload
 {    
     [self setItemTitle:nil];
@@ -173,6 +182,10 @@
     [self setItemPrice:nil];
     [self setItemExpiredDate:nil];
     [self setDescriptionTextField:nil];
+    [self setModifyButton:nil];
+    [self setShareButton:nil];
+    [self setMapButton:nil];
+    [self setBackButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
   // e.g. self.myOutlet = nil;
@@ -185,7 +198,9 @@
 }
 
 - (IBAction)backButtonAction:(id)sender {
-    //[self.navigationController popViewControllerAnimated:YES];
+    if (self.backButton == sender) {
+        [self dismissModalViewControllerAnimated:YES];
+    }
 }
 
 - (IBAction)editAction:(id)sender {

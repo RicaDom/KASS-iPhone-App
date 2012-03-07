@@ -16,7 +16,6 @@
 @synthesize pull = _pull;
 @synthesize currentOffer = _currentOffer;
 @synthesize listingTitle = _listingTitle;
-@synthesize listingDescription = _listingDescription;
 @synthesize offerPrice = _offerPrice;
 @synthesize listingExpiredDate = _listingExpiredDate;
 @synthesize changingPrice = _changingPrice;
@@ -25,6 +24,7 @@
 @synthesize buttomView = _buttomView;
 @synthesize userInfoButton = _userInfoButton;
 @synthesize priceButton = _priceButton;
+@synthesize descriptionTextField = _descriptionTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -73,7 +73,7 @@
   _currentOffer = [[Offer alloc]initWithDictionary:offer];
   
   self.listingTitle.text = self.currentOffer.title;
-  self.listingDescription.text = self.currentOffer.description;
+  self.descriptionTextField.text = self.currentOffer.description;
   self.listingExpiredDate.text = [self.currentOffer getListItemTimeLeftTextlong];
   
   self.offerPrice.text = [self.currentOffer getPriceText]; 
@@ -140,7 +140,6 @@
 - (void)viewDidUnload
 {
     [self setListingTitle:nil];
-    [self setListingDescription:nil];
     [self setOfferPrice:nil];
     [self setListingExpiredDate:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:CHANGED_PRICE_NOTIFICATION object:nil];
@@ -149,6 +148,7 @@
     [self setMainView:nil];
     [self setUserInfoButton:nil];
     [self setPriceButton:nil];
+    [self setDescriptionTextField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

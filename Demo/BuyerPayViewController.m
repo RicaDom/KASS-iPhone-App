@@ -17,13 +17,13 @@
 @synthesize pull = _pull;
 @synthesize currentOffer = _currentOffer;
 @synthesize listingTitle = _listingTitle;
-@synthesize listingDescription = _listingDescription;
 @synthesize offerPrice = _offerPrice;
 @synthesize listingExpiredDate = _listingExpiredDate;
 @synthesize userInfoButton = _userInfoButton;
 @synthesize priceButton = _priceButton;
 @synthesize bottomView = _bottomView;
 @synthesize messageTextField = _messageTextField;
+@synthesize descriptionTextField = _descriptionTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -57,7 +57,7 @@
   [self stopLoading];
   
   self.listingTitle.text = self.currentOffer.title;
-  self.listingDescription.text = self.currentOffer.description;
+  self.descriptionTextField.text = self.currentOffer.description;
   
   if (self.currentOffer.price) {
     self.offerPrice.text = [self.currentOffer.price stringValue];
@@ -133,6 +133,7 @@
     [self setPriceButton:nil];
     [self setBottomView:nil];
     [self setMessageTextField:nil];
+    [self setDescriptionTextField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

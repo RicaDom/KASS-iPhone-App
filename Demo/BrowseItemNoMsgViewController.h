@@ -18,11 +18,11 @@
     CGRect _keyboardRect; // for keyboard avoiding
 }
 
+@property (strong, nonatomic) IBOutlet UITextView *descriptionTextField;
 @property (strong, nonatomic) ListItem *currentItem;
 @property (weak, nonatomic) IBOutlet UITextField *messageTextField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *navigationButton;
 @property (strong, nonatomic) IBOutlet UILabel *listingTitle;
-@property (strong, nonatomic) IBOutlet UILabel *listingDescription;
 @property (strong, nonatomic) IBOutlet UILabel *listingPrice;
 @property (strong, nonatomic) IBOutlet UILabel *listingDate;
 @property (strong, nonatomic) IBOutlet UILabel *offerPrice;

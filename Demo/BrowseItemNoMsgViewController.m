@@ -13,10 +13,10 @@
 @implementation BrowseItemNoMsgViewController
 
 @synthesize messageTextField = _messageTextField;
+@synthesize descriptionTextField = _descriptionTextField;
 @synthesize currentItem = _currentItem;
 @synthesize navigationButton = _navigationButton;
 @synthesize listingTitle = _listingTitle;
-@synthesize listingDescription = _listingDescription;
 @synthesize listingPrice = _listingPrice;
 @synthesize listingDate = _listingDate;
 @synthesize offerPrice = _offerPrice;
@@ -75,7 +75,7 @@
     
     if (self.currentItem != nil) {
         self.listingTitle.text = self.currentItem.title;
-        self.listingDescription.text = self.currentItem.description;
+        self.descriptionTextField.text = self.currentItem.description;
         self.listingPrice.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
         self.offerPrice.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
       self.listingDate.text = [self.currentItem getTimeLeftTextlong];       
@@ -124,13 +124,13 @@
 - (void)viewDidUnload
 {
     [self setListingTitle:nil];
-    [self setListingDescription:nil];
     [self setListingPrice:nil];
     [self setListingDate:nil];
     [self setOfferPrice:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:CHANGED_PRICE_NOTIFICATION object:nil];
     [self setPriceButton:nil];
     [self setUserInfoButton:nil];
+    [self setDescriptionTextField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

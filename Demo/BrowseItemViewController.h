@@ -22,7 +22,6 @@
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *itemTitleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *itemDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *itemPriceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *itemExpiredDate;
 @property (weak, nonatomic) IBOutlet UILabel *itemPriceChangedToLabel;
@@ -38,6 +37,7 @@
 @property (strong, nonatomic) IBOutlet UIView *topView;
 @property (strong, nonatomic) IBOutlet UIButton *priceButton;
 @property (strong, nonatomic) IBOutlet UIButton *userInfoButton;
+@property (strong, nonatomic) IBOutlet UITextView *descriptionTextField;
 
 - (IBAction)navigationButtonAction:(id)sender;
 

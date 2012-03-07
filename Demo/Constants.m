@@ -75,7 +75,19 @@ NSString * const UI_IMAGE_LOGIN_FORM_BACKGROUND = @"log_bgwithline1.png";
 NSString * const UI_IMAGE_LOGIN_LABEL = @"button_login_label.png";
 
 
+NSString * const UI_IMAGE_BACK_BUTTON = @"iphone_03.png";
+NSString * const UI_IMAGE_BACK_BUTTON_PRESS = @"iphone_21.png";
+NSString * const UI_IMAGE_SHARE_BUTTON = @"iphone_05.png";
+NSString * const UI_IMAGE_SHARE_BUTTON_PRESS = @"iphone_22.png";
+NSString * const UI_IMAGE_MAP_BUTTON = @"iphone_13.png";
+NSString * const UI_IMAGE_MAP_BUTTON_PRESS = @"iphone_26.png";
+
+
 NSString * const UI_IMAGE_ACTIVITY_BACKGROUND = @"bg_sky.png";
+NSString * const UI_IMAGE_ACTIVITY_EDIT_BUTTON = @"iphone_49.png";
+NSString * const UI_IMAGE_ACTIVITY_EDIT_BUTTON_PRESS = @"iphone_51.png";
+NSString * const UI_IMAGE_ACTIVITY_SHARE_BUTTON = @"iphone_55.png";
+NSString * const UI_IMAGE_ACTIVITY_SHARE_BUTTON_PRESS = @"iphone_56.png";
 
 NSString * const UI_IMAGE_BROWSE_POST_BUTTON = @"post_btn.png";
 NSString * const UI_IMAGE_BROWSE_POST_SLOGAN = @"post_slogan.png";
