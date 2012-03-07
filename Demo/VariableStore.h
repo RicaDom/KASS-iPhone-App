@@ -32,6 +32,7 @@
 @property (strong, nonatomic) NSMutableArray *recentBrowseListings;
 @property (strong, nonatomic) NSMutableArray *nearBrowseListings;
 @property (strong, nonatomic) NSMutableArray *priceBrowseListings;
+@property (strong, nonatomic) NSMutableArray *showOnMapListings;
 
 @property (strong, nonatomic) User *user;
 @property (strong, nonatomic) LocateMeManager *locateMeManager;

@@ -371,23 +371,6 @@ NSMutableArray *currentItems;
     return cell;
 }
 
-#pragma mark - Table view delegate
-
-
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-  UINavigationController *uvc = segue.destinationViewController;
-  if ( [uvc isKindOfClass:UINavigationController.class]) {
-    NSString *controllerName = NSStringFromClass(uvc.topViewController.class);
-    [self kassAddToModelDict:controllerName:[self kassVS].modelJson];
-  }
-}
-
-- (void)performSegueWithModelJson:(NSDictionary *)modelJson:(NSString *)identifier:(id)sender
-{
-  [self kassVS].modelJson = modelJson;          
-  [self performSegueWithIdentifier:identifier sender:sender];
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {    
     // Buying list segue

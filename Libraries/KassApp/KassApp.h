@@ -30,7 +30,7 @@
 - (void)getListingsRecentFinished:(NSData *)data;
 
 - (void)getListingsMostPrice:(NSMutableDictionary *)dict;
-- (void)getListingsMostPricFinished:(NSData *)data;
+- (void)getListingsMostPriceFinished:(NSData *)data;
 
 
 - (BOOL)manageObj:(id<HJMOUser>)user;

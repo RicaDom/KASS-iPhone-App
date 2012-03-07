@@ -39,10 +39,4 @@
 - (void)reloadTable;
 - (void)locateMe;
 
-- (void)getNearbyItems:(NSData *)data;
-- (void)getRecentItems:(NSData *)data;
-- (void)getMostPriceItems:(NSData *)data;
-
-- (void)performSegueWithModelJson:(NSDictionary *)modelJson:(NSString *)identifier:(id)sender;
-
 @end

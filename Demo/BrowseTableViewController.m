@@ -99,16 +99,6 @@
   [self locateMe];
 }
 
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-  
-  UINavigationController *uvc = segue.destinationViewController;
-  if ( [uvc isKindOfClass:UINavigationController.class]) {
-    NSString *controllerName = NSStringFromClass(uvc.topViewController.class);
-    [self kassAddToModelDict:controllerName:[self kassVS].modelJson];
-  }
-  
-}
-
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -185,12 +175,6 @@
       NSDictionary *json = [notification object];
       [self performSegueWithModelJson:json:@"showBrowseItem":self];
     }
-}
-
-- (void)performSegueWithModelJson:(NSDictionary *)modelJson:(NSString *)identifier:(id)sender
-{
-  [self kassVS].modelJson = modelJson;          
-  [self performSegueWithIdentifier:identifier sender:sender];
 }
 
 - (void)viewDidLoad

@@ -21,6 +21,7 @@
 @synthesize recentBrowseListings = _recentBrowseListings;
 @synthesize nearBrowseListings = _nearBrowseListings;
 @synthesize priceBrowseListings = _priceBrowseListings;
+@synthesize showOnMapListings = _showOnMapListings;
 
 @synthesize modelJson = _modelJson;
 @synthesize modelDict = _modelDict;

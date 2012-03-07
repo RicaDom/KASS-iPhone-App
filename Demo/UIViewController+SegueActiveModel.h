@@ -11,6 +11,7 @@
 
 @interface UIViewController (SegueActiveModel)
 
+- (void)performSegueWithModelJson:(NSDictionary *)modelJson:(NSString *)identifier:(id)sender;
 - (NSDictionary *) kassGetModelDict:(NSString *)modelName;
 - (void) kassAddToModelDict:(NSString *)controller:(NSDictionary *)model;
 - (void) kassRemoveFromModelDict;
