@@ -19,7 +19,7 @@
 // offers
 + (void) buildOfferScrollView:(IBOutlet UIScrollView *)scrollView:(User *)user:(Offer *)offer;
 + (void) buildOfferAcceptedCell:(Offer *)item:(ListingTableCell *)cell;
-+ (void) buildOfferExpiredCell:(Offer *)item:(ListingTableCell *)cell;
++ (void) buildOfferPendingCell:(Offer *)item:(ListingTableCell *)cell;
 + (void) buildOfferExpiredCell:(Offer *)item:(ListingTableCell *)cell;
 
 // listItems

@@ -7,6 +7,7 @@
 //
 
 #import "PostFlowSetDateViewController.h"
+#import "UIResponder+VariableStore.h"
 
 @implementation PostFlowSetDateViewController
 @synthesize PostDurationPicker = _PostDurationPicker;
@@ -35,7 +36,7 @@ NSArray *arrayTimePicker;
 - (void)loadCurrentPostingData
 {
     if ([VariableStore sharedInstance].currentPostingItem.postDuration) {
-        NSArray *keys = [[VariableStore sharedInstance].expiredTime 
+        NSArray *keys = [self.settings.expiredTimeDict
                          allKeysForObject:[VariableStore sharedInstance].currentPostingItem.postDuration];
         if (keys) {
             NSString *selectedItem = [keys objectAtIndex:0];
@@ -52,7 +53,7 @@ NSArray *arrayTimePicker;
 - (void)saveCurrentPostingData
 {
     if (self.PostDurationLabel.text) {
-        [VariableStore sharedInstance].currentPostingItem.postDuration = [[VariableStore sharedInstance].expiredTime objectForKey:self.PostDurationLabel.text];
+        [VariableStore sharedInstance].currentPostingItem.postDuration = [self.settings.expiredTimeDict objectForKey:self.PostDurationLabel.text];
     }
 }
 
@@ -77,7 +78,7 @@ NSArray *arrayTimePicker;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    arrayTimePicker = [[VariableStore sharedInstance].expiredTime keysSortedByValueUsingComparator: ^(id obj1, id obj2) {
+    arrayTimePicker = [self.settings.expiredTimeDict keysSortedByValueUsingComparator: ^(id obj1, id obj2) {
         return [(NSNumber *)obj1 compare:(NSNumber *)obj2];
     }];
     [self loadCurrentPostingData];

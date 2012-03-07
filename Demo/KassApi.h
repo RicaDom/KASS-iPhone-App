@@ -51,6 +51,7 @@
 - (void)getOfferMessages:(NSString *)offerId;
 - (void)createOfferMessage:(NSDictionary *)dict:(NSString *)offerId;
 - (void)loadSettings;
+- (void)getPrivatePub;
 
 - (void)login:(NSDictionary *)dict;
 - (void)logout;

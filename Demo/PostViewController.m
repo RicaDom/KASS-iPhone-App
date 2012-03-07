@@ -247,7 +247,7 @@
 {
     [super viewDidLoad];
 
-    [self loadPostTemplates:[self kassVS].postTemplatesDict];
+    [self loadPostTemplates:[self settings].postTemplatesDict];
   
     // init scroll view content size
     self.mainScrollView.contentSize = CGSizeMake(_ScrollViewContentSizeX, self.contentView.frame.size.height - self.addPostSloganLabel.frame.size.height/2);   

@@ -357,8 +357,7 @@ NSMutableArray *currentItems;
         ListItem *item = [currentItems objectAtIndex:row];
         cell.title.text = item.title;
         cell.subTitle.text = item.description;
-        //item.acceptedPrice = [NSDecimalNumber decimalNumberWithDecimal:
-        //                 [[NSNumber numberWithDouble:50] decimalValue]];
+      
         // if user already accepted any offer, show pay now icon
         if (item.acceptedPrice != nil && item.acceptedPrice > 0) {
           [ViewHelper buildListItemPayNowCell:item:cell];            
@@ -379,21 +378,17 @@ NSMutableArray *currentItems;
         cell.title.text = item.title;
         cell.subTitle.text = item.description;
 
-        
-        // TODO
         // if my offer has been accepted by buyer
-        DLog(@"Offer State: %@", item.state);
         if ([item.state isEqualToString: OFFER_STATE_ACCEPTED] ) {
           [ViewHelper buildOfferAcceptedCell:item:cell];
         } else {
-            // TODO
             // if the listing is expired
-            if (1 != 1) {
+            if ([item isExpired]) {
               [ViewHelper buildOfferExpiredCell:item:cell];
             } 
             // if the offer is pending
             else {
-              [ViewHelper buildOfferExpiredCell:item:cell];
+              [ViewHelper buildOfferPendingCell:item:cell];
             }
             
         }

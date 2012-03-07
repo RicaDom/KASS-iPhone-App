@@ -67,5 +67,10 @@
 }
 
 ///////////////////////// model helper methods ///////////////////////////////////////
+- (BOOL) isExpired
+{
+  return [_listItemEndedAt timeIntervalSinceNow] < 0;
+}
+
 
 @end

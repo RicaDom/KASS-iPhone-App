@@ -12,11 +12,11 @@
 #import "SFHFKeychainUtils.h"
 #import "ListItem+ListItemHelper.h"
 #import "VariableStore.h"
+#import "FayeClient.h"
 
 @implementation User
 
-@synthesize weibo, account, delegate = _delegate;
-
+@synthesize weibo, account, ppClient, delegate = _delegate;
 @synthesize userId = _userId;
 @synthesize name = _name;
 @synthesize email = _email;
@@ -299,6 +299,8 @@
   _email  = account.email;
   _phone  = account.phone;
   
+  [self getPrivatePub];
+  
   if( [_delegate respondsToSelector:@selector(accountLoginFinished)] )
     [_delegate accountLoginFinished];
   
@@ -430,6 +432,54 @@
   DLog(@"User::weiboDidLogout");
 }
 
+- (void)getPrivatePub
+{
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getPrivatePubFinished:"];
+  [ka getPrivatePub];
+}
+
+- (void)getPrivatePubFinished:(NSData *)data
+{
+  NSArray *privatePubs = (NSArray *)[KassApi parseData:data];
+  DLog(@"User::getPrivatePubFinished:privatePubs=%@", privatePubs);
+  
+  if (ppClient) { [ppClient clear];  ppClient = nil; }
+  
+  ppClient = [[PrivatePubClient alloc] initWithDelegate:self];
+  
+  for(int i = 0; i < [privatePubs count]; i++){
+    NSDictionary *dict = [privatePubs objectAtIndex:i];
+    [ppClient addClient:dict];
+  }
+  
+  [ppClient connectClients];
+}
+
+- (void) messageReceived:(NSDictionary *)messageDict {
+  DLog(@"message recieved %@", messageDict);  
+  NSDictionary *data = [messageDict valueForKey:@"data"];
+
+  UIAlertView *alert = [[UIAlertView alloc] init];
+	[alert setTitle:  [VariableStore.sharedInstance.settings getTextForMessageType:[data valueForKey:@"event"]]];
+	[alert setMessage:[data valueForKey:@"full_message"]];
+	[alert setDelegate:self];
+	[alert addButtonWithTitle:@"Dismiss"];
+	[alert addButtonWithTitle:@"View"];
+	[alert show];
+  
+}
+
+- (void)connectedToServer {
+  DLog(@"Connected");
+//  self.connected = YES;
+}
+
+- (void)disconnectedFromServer {
+  DLog(@"Disconnected at %@", [NSDate date]);
+//  self.connected = NO;
+}
+
+
 - (void)clear
 {
   weibo   = nil;
@@ -446,6 +496,9 @@
   [self clear];
   if( [_delegate respondsToSelector:@selector(accountLogoutFinished)] )
     [_delegate accountLogoutFinished];
+  
+  [ppClient disconnectClients];
+  ppClient = nil;
 }
 
 ///////////////////////// model helper methods ///////////////////////////////////////

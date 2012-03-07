@@ -11,9 +11,6 @@
 @implementation VariableStore 
 
 @synthesize currentPostingItem = _currentPostingItem;
-@synthesize expiredTime = _expiredTime;
-@synthesize durationToServerDic = _durationToServerDic;
-@synthesize postTemplatesDict = _postTemplatesDict;
 
 @synthesize allListings = _allListings;
 @synthesize myBuyingListings = _myBuyingListings;
@@ -28,6 +25,7 @@
 @synthesize modelDict = _modelDict;
 @synthesize mainTabBar = _mainTabBar;
 @synthesize kassApp = _kassApp;
+@synthesize settings = _settings;
 
 @synthesize currentViewControllerDelegate = _currentViewControllerDelegate;
 
@@ -51,8 +49,7 @@
           
             myInstance.modelDict = [[NSMutableDictionary alloc] init];
           
-            myInstance.durationToServerDic = [[NSMutableDictionary alloc] init];
-            myInstance.expiredTime = [[NSMutableDictionary alloc] init];
+            myInstance.settings = [[Settings alloc] init];
           
             myInstance.kassApp = [[KassApp alloc] init];
             
@@ -147,23 +144,7 @@
 - (void)storeSettings:(NSDictionary *)dict
 {
   DLog(@"VariableStore::storeSettings:dict");
-  
-  // save to variable store
-  NSDictionary *settings = [dict objectForKey:@"settings"];
-  NSDictionary *duration = [settings objectForKey:@"duration"];
-  
-  NSDictionary *secToString = [duration objectForKey:@"sec_string"];
-  NSDictionary *secToText   = [duration objectForKey:@"sec_text"];
-  
-  for (id key in secToString) {
-    [self.durationToServerDic setObject:[secToString objectForKey:key] forKey:[NSNumber numberWithInt:[key intValue]]];
-  }
-  
-  for (id key in secToText) {
-    [self.expiredTime setObject:[NSNumber numberWithInt:[key intValue]] forKey:[secToText objectForKey:key]];
-  }
-  
-  self.postTemplatesDict = [settings objectForKey:@"post_templates"];
+  self.settings = [[Settings alloc] initWithDictionary:dict];
 }
 
 @end
