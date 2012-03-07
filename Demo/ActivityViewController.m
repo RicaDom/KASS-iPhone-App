@@ -189,26 +189,11 @@ NSMutableArray *currentItems;
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
   
-  NSIndexPath *path = [self.tableView indexPathForSelectedRow];
-  int row = [path row];
-  
     if ([segue.identifier isEqualToString:@"ActBuyingListToOffers"]) {
-        UINavigationController *nc = [segue destinationViewController];
-        ItemViewController *ivc = (ItemViewController *)nc.topViewController;
-        
-        ListItem *item = [currentItems objectAtIndex:row];
-        ivc.currentItem = item;
-      
     } else if ([segue.identifier isEqualToString:@"ActSellingListToMessageBuyer"]) {
       DLog(@"ActivityViewController::prepareForSegue:ActSellingListToMessageBuyer");
-      UINavigationController *nc = [segue destinationViewController];
-      BrowseItemViewController *bvc = (BrowseItemViewController *)nc.topViewController; 
-    
-      bvc.currentOffer = [currentItems objectAtIndex:row];
-        
     } else if ([segue.identifier isEqualToString:@"ActBuyingListToPayView"]) {
       DLog(@"ActivityViewController::prepareForSegue:ActBuyingListToPayView");
-      
     }
 }
 
@@ -399,35 +384,29 @@ NSMutableArray *currentItems;
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-    // <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-    
+{    
     // Buying list segue
     if ( [self isBuyingTabSelected] ) {
-        int row = [indexPath row];
-        ListItem *item = [currentItems objectAtIndex:row];
-//        item.acceptedPrice = [NSDecimalNumber decimalNumberWithDecimal:
-//                        [[NSNumber numberWithDouble:50] decimalValue]];
+        
+        ListItem *item = [currentItems objectAtIndex:[indexPath row]];
+      
         // if listing already has accepted offer, got to pay page
         if (item.isAccepted) {
           
-          ListItem *item = [currentItems objectAtIndex:row];
           [self kassAddToModelDict:@"BuyerPayViewController":item.acceptedOffer.toJson];          
           [self performSegueWithIdentifier:@"ActBuyingListToPayView" sender:self];
           
         } else {
+            [self kassAddToModelDict:@"ItemViewController":item.toJson];  
             [self performSegueWithIdentifier:@"ActBuyingListToOffers" sender:self];
         }
     } 
     // Selling list segue
     else {
-        [self performSegueWithIdentifier:@"ActSellingListToMessageBuyer" sender:self];
+      
+      Offer *offer = [currentItems objectAtIndex:[indexPath row]];
+      [self kassAddToModelDict:@"ItemViewController":offer.toJson];
+      [self performSegueWithIdentifier:@"ActSellingListToMessageBuyer" sender:self];
     }
     
 }

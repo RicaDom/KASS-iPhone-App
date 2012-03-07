@@ -7,14 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ActiveModel.h"
 
-@interface Message : NSObject
+@interface Message : ActiveModel
 
-@property (nonatomic, strong) NSString *dbId;
 @property (nonatomic, strong) NSString *userId;
 @property (nonatomic, strong) NSString *body;
 @property (nonatomic, strong) NSDate *createdAt;
-
-- (id) initWithDictionary:(NSDictionary *) theDictionary;
 
 @end

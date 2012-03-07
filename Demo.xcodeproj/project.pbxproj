@@ -47,6 +47,7 @@
 		77506A8314C91631000494E5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77506A8214C91631000494E5 /* SystemConfiguration.framework */; };
 		77506A8514C9163D000494E5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77506A8414C9163D000494E5 /* MobileCoreServices.framework */; };
 		77506A8714C9164F000494E5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 77506A8614C9164F000494E5 /* libz.dylib */; };
+		7760FCC91507473F008D40D6 /* ActiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7760FCC81507473E008D40D6 /* ActiveModel.m */; };
 		777C903714E4AA0A002A80B0 /* userInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 777C903614E4AA0A002A80B0 /* userInfo.json */; };
 		777E4D1914DB92D7002B40C3 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 777E4D1714DB8D97002B40C3 /* SFHFKeychainUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		777E4D2014DBB7ED002B40C3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777E4D1F14DBB7ED002B40C3 /* Security.framework */; };
@@ -348,6 +349,8 @@
 		77506A8214C91631000494E5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		77506A8414C9163D000494E5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		77506A8614C9164F000494E5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		7760FCC71507473E008D40D6 /* ActiveModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveModel.h; sourceTree = "<group>"; };
+		7760FCC81507473E008D40D6 /* ActiveModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveModel.m; sourceTree = "<group>"; };
 		7765E88B14E12CBC00F89F60 /* AccountActivityDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountActivityDelegate.h; sourceTree = "<group>"; };
 		777C903614E4AA0A002A80B0 /* userInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = userInfo.json; path = Resources/userInfo.json; sourceTree = "<group>"; };
 		777E4D1614DB8D97002B40C3 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
@@ -1475,6 +1478,8 @@
 				E5A9FBB5150310C600AC5F0E /* PostTemplate.m */,
 				77502ECF15067A330019E93A /* Settings.h */,
 				77502ED015067A330019E93A /* Settings.m */,
+				7760FCC71507473E008D40D6 /* ActiveModel.h */,
+				7760FCC81507473E008D40D6 /* ActiveModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1853,6 +1858,7 @@
 				77502ED115067A330019E93A /* Settings.m in Sources */,
 				E5D84A371507248800EF17E4 /* UserInfoViewController.m in Sources */,
 				E5D84A3B15073CFC00EF17E4 /* CommonView.m in Sources */,
+				7760FCC91507473F008D40D6 /* ActiveModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

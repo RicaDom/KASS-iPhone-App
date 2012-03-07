@@ -29,6 +29,7 @@
 		77502EC21505F89B0019E93A /* changes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 77502EAD1505F89B0019E93A /* changes.txt */; };
 		77502EC31505F89B0019E93A /* ZTWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 77502EB21505F89B0019E93A /* ZTWebSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		77502EC715064F3B0019E93A /* PrivatePubClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 77502EC615064F3B0019E93A /* PrivatePubClient.m */; };
+		77502ED115067A330019E93A /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 77502ED015067A330019E93A /* Settings.m */; };
 		775069EF14C80ADE000494E5 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 775069EE14C80ADE000494E5 /* README.markdown */; };
 		775069F214C83FAF000494E5 /* listing.json in Resources */ = {isa = PBXBuildFile; fileRef = 775069F114C83FAF000494E5 /* listing.json */; };
 		775069F314C83FAF000494E5 /* listing.json in Resources */ = {isa = PBXBuildFile; fileRef = 775069F114C83FAF000494E5 /* listing.json */; };
@@ -46,6 +47,7 @@
 		77506A8314C91631000494E5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77506A8214C91631000494E5 /* SystemConfiguration.framework */; };
 		77506A8514C9163D000494E5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77506A8414C9163D000494E5 /* MobileCoreServices.framework */; };
 		77506A8714C9164F000494E5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 77506A8614C9164F000494E5 /* libz.dylib */; };
+		7760FCC91507473F008D40D6 /* ActiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7760FCC81507473E008D40D6 /* ActiveModel.m */; };
 		777C903714E4AA0A002A80B0 /* userInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 777C903614E4AA0A002A80B0 /* userInfo.json */; };
 		777E4D1914DB92D7002B40C3 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 777E4D1714DB8D97002B40C3 /* SFHFKeychainUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		777E4D2014DBB7ED002B40C3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777E4D1F14DBB7ED002B40C3 /* Security.framework */; };
@@ -253,6 +255,8 @@
 		E5D69F0314AD99F700D552F6 /* PostFlowSetDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D69F0214AD99F700D552F6 /* PostFlowSetDateViewController.m */; };
 		E5D7C49C14B508D600E29463 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D7C49B14B508D600E29463 /* PostViewController.m */; };
 		E5D7C4AE14B53C3F00E29463 /* AppScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D7C4AD14B53C3F00E29463 /* AppScrollView.m */; };
+		E5D84A371507248800EF17E4 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D84A361507248800EF17E4 /* UserInfoViewController.m */; };
+		E5D84A3B15073CFC00EF17E4 /* CommonView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D84A3A15073CFC00EF17E4 /* CommonView.m */; };
 		E5E6AA3814A41B6D00A0CF86 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E6AA3714A41B6D00A0CF86 /* MapViewController.m */; };
 		E5EB944914EF8DDE0072B57B /* BrowseItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EB944414EF8DDE0072B57B /* BrowseItemViewController.m */; };
 		E5EB944A14EF8DDE0072B57B /* BrowseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EB944614EF8DDE0072B57B /* BrowseTableViewController.m */; };
@@ -314,6 +318,8 @@
 		77502EB21505F89B0019E93A /* ZTWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZTWebSocket.m; sourceTree = "<group>"; };
 		77502EC515064F3B0019E93A /* PrivatePubClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrivatePubClient.h; path = Libraries/PrivatePub/PrivatePubClient.h; sourceTree = "<group>"; };
 		77502EC615064F3B0019E93A /* PrivatePubClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PrivatePubClient.m; path = Libraries/PrivatePub/PrivatePubClient.m; sourceTree = "<group>"; };
+		77502ECF15067A330019E93A /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		77502ED015067A330019E93A /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		775069EE14C80ADE000494E5 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		775069F114C83FAF000494E5 /* listing.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = listing.json; path = Resources/listing.json; sourceTree = "<group>"; };
 		77506A0014C9131A000494E5 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GHUnitIOS.framework; sourceTree = "<group>"; };
@@ -343,6 +349,8 @@
 		77506A8214C91631000494E5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		77506A8414C9163D000494E5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		77506A8614C9164F000494E5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		7760FCC71507473E008D40D6 /* ActiveModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveModel.h; sourceTree = "<group>"; };
+		7760FCC81507473E008D40D6 /* ActiveModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveModel.m; sourceTree = "<group>"; };
 		7765E88B14E12CBC00F89F60 /* AccountActivityDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountActivityDelegate.h; sourceTree = "<group>"; };
 		777C903614E4AA0A002A80B0 /* userInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = userInfo.json; path = Resources/userInfo.json; sourceTree = "<group>"; };
 		777E4D1614DB8D97002B40C3 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
@@ -649,6 +657,10 @@
 		E5D7C49B14B508D600E29463 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
 		E5D7C4AC14B53C3F00E29463 /* AppScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppScrollView.h; sourceTree = "<group>"; };
 		E5D7C4AD14B53C3F00E29463 /* AppScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppScrollView.m; sourceTree = "<group>"; };
+		E5D84A351507248800EF17E4 /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
+		E5D84A361507248800EF17E4 /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
+		E5D84A3915073CFC00EF17E4 /* CommonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonView.h; sourceTree = "<group>"; };
+		E5D84A3A15073CFC00EF17E4 /* CommonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonView.m; sourceTree = "<group>"; };
 		E5E6AA3614A41B6D00A0CF86 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		E5E6AA3714A41B6D00A0CF86 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		E5EB944314EF8DDE0072B57B /* BrowseItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseItemViewController.h; sourceTree = "<group>"; };
@@ -1129,6 +1141,8 @@
 				E5D69EDC14AD0DB900D552F6 /* MainTabBarViewController.m */,
 				77E766C41502352E00A4E0D0 /* DataSourceViewController.h */,
 				77E766C51502352F00A4E0D0 /* DataSourceViewController.m */,
+				E5D84A351507248800EF17E4 /* UserInfoViewController.h */,
+				E5D84A361507248800EF17E4 /* UserInfoViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1462,6 +1476,10 @@
 				77458EE114EBC2E100B19F50 /* Offers.m */,
 				E5A9FBB4150310C600AC5F0E /* PostTemplate.h */,
 				E5A9FBB5150310C600AC5F0E /* PostTemplate.m */,
+				77502ECF15067A330019E93A /* Settings.h */,
+				77502ED015067A330019E93A /* Settings.m */,
+				7760FCC71507473E008D40D6 /* ActiveModel.h */,
+				7760FCC81507473E008D40D6 /* ActiveModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1496,6 +1514,8 @@
 				E5A4895314DFC27400501EE2 /* ListingTableCell.m */,
 				E5B3AC6914EB95D600CD4C67 /* OfferTableCell.h */,
 				E5B3AC6A14EB95D600CD4C67 /* OfferTableCell.m */,
+				E5D84A3915073CFC00EF17E4 /* CommonView.h */,
+				E5D84A3A15073CFC00EF17E4 /* CommonView.m */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -1642,10 +1662,6 @@
 				E5A9FC411504D7F800AC5F0E /* btn_sina_22.png in Resources */,
 				E5A9FC4E1505BCB700AC5F0E /* post_btn.png in Resources */,
 				E5A9FC551505CCDE00AC5F0E /* post_slogan.png in Resources */,
-<<<<<<< HEAD
-				77502EBF1505F89B0019E93A /* AsyncSocket Documentation.html in Resources */,
-				77502EC21505F89B0019E93A /* changes.txt in Resources */,
-=======
 				E5A9FC5D1505E64500AC5F0E /* btn_back1.png in Resources */,
 				E5A9FC5E1505E64500AC5F0E /* btn_back2.png in Resources */,
 				E5A9FC5F1505E64500AC5F0E /* btn_log1.png in Resources */,
@@ -1689,7 +1705,8 @@
 				E5A9FCAB1505F77600AC5F0E /* tag.png in Resources */,
 				E51160801505FA10002A86A0 /* log_bgwithline1.png in Resources */,
 				E511608B150608D3002A86A0 /* segment_divider.png in Resources */,
->>>>>>> 90121766515d3077ee2ffb80c3f9932160c0a073
+				77502EBF1505F89B0019E93A /* AsyncSocket Documentation.html in Resources */,
+				77502EC21505F89B0019E93A /* changes.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1838,6 +1855,13 @@
 				77502EC11505F89B0019E93A /* AsyncUdpSocket.m in Sources */,
 				77502EC31505F89B0019E93A /* ZTWebSocket.m in Sources */,
 				77502EC715064F3B0019E93A /* PrivatePubClient.m in Sources */,
+				77502ED115067A330019E93A /* Settings.m in Sources */,
+<<<<<<< HEAD
+				7760FCC91507473F008D40D6 /* ActiveModel.m in Sources */,
+=======
+				E5D84A371507248800EF17E4 /* UserInfoViewController.m in Sources */,
+				E5D84A3B15073CFC00EF17E4 /* CommonView.m in Sources */,
+>>>>>>> 39af35cdf507f9265eba228ffc8d5ab6199ad186
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
