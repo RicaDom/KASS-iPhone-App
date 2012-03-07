@@ -29,6 +29,7 @@ typedef enum {
 @property (nonatomic,assign) id<AccountActivityDelegate> delegate;
 @property (nonatomic,strong,readonly) WeiBo* weibo;
 @property (nonatomic,strong,readonly) Account* account;
+@property (nonatomic,strong,readonly) PrivatePubClient* ppClient;
 
 @property (nonatomic, strong) NSString *userId;
 @property (nonatomic, strong) NSString *name;

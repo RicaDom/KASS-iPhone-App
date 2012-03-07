@@ -16,5 +16,6 @@
 @property (strong, nonatomic) NSMutableDictionary *messageTypesDict;
 
 - (id) initWithDictionary:(NSDictionary *)dict;
+- (NSString *) getTextForMessageType:(NSString *)type;
 
 @end

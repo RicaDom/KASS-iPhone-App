@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "KassAppDelegate.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, KassAppDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, KassAppDelegate>{
+  UIBackgroundTaskIdentifier bgTask;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 

@@ -16,7 +16,7 @@
 
 @implementation User
 
-@synthesize weibo, account, delegate = _delegate;
+@synthesize weibo, account, ppClient, delegate = _delegate;
 @synthesize userId = _userId;
 @synthesize name = _name;
 @synthesize email = _email;
@@ -458,10 +458,10 @@
 - (void) messageReceived:(NSDictionary *)messageDict {
   DLog(@"message recieved %@", messageDict);  
   NSDictionary *data = [messageDict valueForKey:@"data"];
-  
+
   UIAlertView *alert = [[UIAlertView alloc] init];
-	[alert setTitle:[data valueForKey:@"event"]];
-	[alert setMessage:[data valueForKey:@"body"]];
+	[alert setTitle:  [VariableStore.sharedInstance.settings getTextForMessageType:[data valueForKey:@"event"]]];
+	[alert setMessage:[data valueForKey:@"full_message"]];
 	[alert setDelegate:self];
 	[alert addButtonWithTitle:@"Dismiss"];
 	[alert addButtonWithTitle:@"View"];

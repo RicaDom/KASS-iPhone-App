@@ -41,4 +41,9 @@
   return self;
 }
 
+- (NSString *) getTextForMessageType:(NSString *)type
+{
+  return [self.messageTypesDict objectForKey:type];
+}
+
 @end
