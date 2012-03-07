@@ -92,6 +92,11 @@
 }
 
 ////////////////////////////// model helper methods ////////////////////////////////////////////////////
+- (NSDictionary *) toJson
+{
+  NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys: self.dbId, @"id", nil];
+  return [NSMutableDictionary dictionaryWithObjectsAndKeys: params, @"listItem", nil];
+}
 
 - (BOOL) hasOfferer:(User *)user
 {

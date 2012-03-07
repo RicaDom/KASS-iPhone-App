@@ -10,12 +10,12 @@
 #import "KassApi.h"
 #import "Location.h"
 #import "Offer.h"
+#import "ActiveModel.h"
 
 @class User;
 
-@interface ListItem : NSObject
+@interface ListItem : ActiveModel
 
-@property (nonatomic, strong) NSString *dbId;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *description;
 @property (nonatomic, strong) NSDate *postedDate;
@@ -34,11 +34,9 @@
 
 @property (nonatomic, strong) NSData   *data;
 
-- (NSDecimalNumber *) price;
-- (id) initWithDictionary:(NSDictionary *) theDictionary;
-- (id) initWithData:(NSData *) theData;
 
 ///////////////// model helper methods ////////////
+- (NSDecimalNumber *) price;
 - (BOOL) isExpired;
 - (BOOL) isAccepted;
 - (BOOL) isPersisted;

@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "Message.h"
+#import "ActiveModel.h"
 
-@interface Offer : NSObject
+@interface Offer : ActiveModel
 
-@property (nonatomic, strong) NSString *dbId;
 @property (nonatomic, strong) NSDecimalNumber *price;
 @property (nonatomic, strong) NSMutableArray *messages;
 @property (nonatomic, strong) NSDate *createdAt;
@@ -26,8 +26,6 @@
 @property (nonatomic, strong) NSString *buyerId;
 @property (nonatomic, strong) NSDate *listItemEndedAt;
 
-- (id) initWithDictionary:(NSDictionary *) theDictionary;
-- (NSDictionary *) toJson;
 
 //// model helper methods
 - (BOOL) isExpired;

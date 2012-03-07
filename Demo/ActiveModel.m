@@ -10,4 +10,6 @@
 
 @implementation ActiveModel
 
+@synthesize dbId = _dbId;
+
 @end

@@ -10,4 +10,11 @@
 
 @interface ActiveModel : NSObject
 
+@property (nonatomic, strong) NSString *dbId;
+
+- (id) initWithDictionary:(NSDictionary *) theDictionary;
+- (id) initWithData:(NSData *) theData;
+
+- (NSDictionary *) toJson;
+
 @end
