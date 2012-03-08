@@ -11,6 +11,7 @@
 #import "Message.h"
 #import "User.h"
 #import "ListingTableCell.h"
+#import "Constants.h"
 
 @interface ViewHelper : NSObject
 
@@ -26,5 +27,6 @@
 + (void) buildListItemPayNowCell:(ListItem *)item:(ListingTableCell *)cell;
 + (void) buildListItemHasOffersCell:(ListItem *)item:(ListingTableCell *)cell;
 + (void) buildListItemNoOffersCell:(ListItem *)item:(ListingTableCell *)cell;
++ (void) buildListItemExpiredCell:(ListItem *)item:(ListingTableCell *)cell;
 
 @end

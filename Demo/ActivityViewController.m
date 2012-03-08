@@ -207,15 +207,15 @@ NSMutableArray *currentItems;
     }
 }
 
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    if ([segue.identifier isEqualToString:@"ActBuyingListToOffers"]) {
-    } else if ([segue.identifier isEqualToString:@"ActSellingListToMessageBuyer"]) {
-        DLog(@"ActivityViewController::prepareForSegue:ActSellingListToMessageBuyer");
-    } else if ([segue.identifier isEqualToString:@"ActBuyingListToPayView"]) {
-        DLog(@"ActivityViewController::prepareForSegue:ActBuyingListToPayView");
-    }
-}
+//- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    
+//    if ([segue.identifier isEqualToString:@"ActBuyingListToOffers"]) {
+//    } else if ([segue.identifier isEqualToString:@"ActSellingListToMessageBuyer"]) {
+//        DLog(@"ActivityViewController::prepareForSegue:ActSellingListToMessageBuyer");
+//    } else if ([segue.identifier isEqualToString:@"ActBuyingListToPayView"]) {
+//        DLog(@"ActivityViewController::prepareForSegue:ActBuyingListToPayView");
+//    }
+//}
 
 - (void)didReceiveMemoryWarning
 {
@@ -234,7 +234,7 @@ NSMutableArray *currentItems;
     
     // navigation bar background color
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
-    // [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:NAVIGATION_BAR_BACKGROUND_IMAGE] forBarMetrics:UIBarMetricsDefault];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:UI_IMAGE_ACTIVITY_TITLE]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receivedFromOfferViewNotification:) 
@@ -332,12 +332,12 @@ NSMutableArray *currentItems;
     if (cell == nil) {
         cell = [[ListingTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
-    UIImage *rowBackground = [UIImage imageNamed:@"middleRow.png"];
+
+    UIImage *rowBackground = [UIImage imageNamed:UI_IMAGE_TABLE_CELL_BG];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:rowBackground];
     cell.backgroundView = imageView;
     
-    UIImage *selectedBackground = [UIImage imageNamed:@"middleRowSelected.png"];
+    UIImage *selectedBackground = [UIImage imageNamed:UI_IMAGE_TABLE_CELL_BG_PRESS];
     UIImageView *selectedImageView = [[UIImageView alloc] initWithImage:selectedBackground];
     cell.selectedBackgroundView = selectedImageView;
     
@@ -345,8 +345,11 @@ NSMutableArray *currentItems;
     for (UIView *view in cell.infoView.subviews) {
         [view removeFromSuperview];
     }
-    // cell.infoView = [[UIView alloc] initWithFrame:CGRectMake(238, 6, 76, 76)];
+
     // customize table cell listing view
+    
+    // set cell background for all
+    [cell.infoView setBackgroundColor:[[UIColor alloc] initWithPatternImage:[UIImage imageNamed:UI_IMAGE_ACTIVITY_PRICE_BG]]];
     
     // my buying list
     if ( [self isBuyingTabSelected] ) {
@@ -354,16 +357,20 @@ NSMutableArray *currentItems;
         cell.title.text = item.title;
         cell.subTitle.text = item.description;
         
-        // if user already accepted any offer, show pay now icon
-        if (item.acceptedPrice != nil && item.acceptedPrice > 0) {
-            [ViewHelper buildListItemPayNowCell:item:cell];            
+        if (item.isExpired) {
+            [ViewHelper buildListItemExpiredCell:item:cell];
         } else {
-            int offersCount = [item.offers count];
-            // if the listing has offers
-            if (offersCount > 0) {
-                [ViewHelper buildListItemHasOffersCell:item:cell];                
-            } else { // otherwise show pending states                               
-                [ViewHelper buildListItemNoOffersCell:item:cell];
+            // if user already accepted any offer, show pay now icon
+            if (item.acceptedPrice != nil && item.acceptedPrice > 0) {
+                [ViewHelper buildListItemPayNowCell:item:cell];            
+            } else {
+                int offersCount = [item.offers count];
+                // if the listing has offers
+                if (offersCount > 0) {
+                    [ViewHelper buildListItemHasOffersCell:item:cell];                
+                } else { // otherwise show pending states                               
+                    [ViewHelper buildListItemNoOffersCell:item:cell];
+                }
             }
         }
     } 

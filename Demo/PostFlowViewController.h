@@ -16,8 +16,8 @@
 @interface PostFlowViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
-@property (weak, nonatomic) IBOutlet UITextField *descriptionTextField;
 @property (strong, nonatomic) NSString *postType;
+@property (strong, nonatomic) IBOutlet UITextView *desTextField;
 
 - (IBAction)CancelAction:(id)sender;
 

@@ -29,11 +29,11 @@
 
 - (void)buildCellByListItem:(ListItem *)item
 {
-    UIImage *rowBackground = [UIImage imageNamed:@"middleRow.png"];
+    UIImage *rowBackground = [UIImage imageNamed:UI_IMAGE_TABLE_CELL_BG];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:rowBackground];
     self.backgroundView = imageView;
       
-    UIImage *selectedBackground = [UIImage imageNamed:@"middleRowSelected.png"];
+    UIImage *selectedBackground = [UIImage imageNamed:UI_IMAGE_TABLE_CELL_BG_PRESS];
     UIImageView *selectedImageView = [[UIImageView alloc] initWithImage:selectedBackground];
     self.selectedBackgroundView = selectedImageView;
   

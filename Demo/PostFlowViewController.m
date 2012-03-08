@@ -11,8 +11,8 @@
 @implementation PostFlowViewController
 
 @synthesize titleTextField = _titleTextField;
-@synthesize descriptionTextField = _descriptionTextField;
 @synthesize postType = _postType;
+@synthesize desTextField = _desTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,14 +43,14 @@
 - (void)loadCurrentPostingData
 {
     self.titleTextField.text = [[[VariableStore sharedInstance] currentPostingItem] title];
-    self.descriptionTextField.text = [[[VariableStore sharedInstance] currentPostingItem] 
+    self.desTextField.text = [[[VariableStore sharedInstance] currentPostingItem] 
                                       description];
 }
 
 - (void)saveCurrentPostingData
 {
     [VariableStore sharedInstance].currentPostingItem.title = self.titleTextField.text;
-    [VariableStore sharedInstance].currentPostingItem.description = self.descriptionTextField.text;
+    [VariableStore sharedInstance].currentPostingItem.description = self.desTextField.text;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -64,7 +64,7 @@
     [super viewDidLoad];
     [self loadCurrentPostingData];
     [self.titleTextField becomeFirstResponder];
-
+    
     // navigation bar background color
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
     
@@ -98,7 +98,7 @@
 - (void)viewDidUnload
 {
     [self setTitleTextField:nil];
-    [self setDescriptionTextField:nil];
+    [self setDesTextField:nil];
     [super viewDidUnload];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:nil];
     // Release any retained subviews of the main view.

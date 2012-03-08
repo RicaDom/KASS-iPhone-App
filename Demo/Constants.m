@@ -41,7 +41,7 @@ NSString * const UI_LABEL_OFFER = @"出价";
 NSString * const UI_LABEL_EXPIRED = @"过期";
 NSString * const UI_LABEL_YOU_OFFERED = @"您的出价";
 NSString * const UI_LABEL_BUYER_OFFERED = @"买家出价";
-NSString * const UI_LABEL_ACCEPTED = @"成交";
+NSString * const UI_LABEL_ACCEPTED = @"交易成功";
 NSString * const UI_LABEL_WAITING_FOR_OFFER = @"等待出价";
 NSString * const UI_LABEL_OFFER_PENDING = @"等待确认";
 
@@ -81,13 +81,16 @@ NSString * const UI_IMAGE_SHARE_BUTTON = @"iphone_05.png";
 NSString * const UI_IMAGE_SHARE_BUTTON_PRESS = @"iphone_22.png";
 NSString * const UI_IMAGE_MAP_BUTTON = @"iphone_13.png";
 NSString * const UI_IMAGE_MAP_BUTTON_PRESS = @"iphone_26.png";
-
+NSString * const UI_IMAGE_TABLE_CELL_BG = @"listbg.png";
+NSString * const UI_IMAGE_TABLE_CELL_BG_PRESS = @"listbg2.png";
 
 NSString * const UI_IMAGE_ACTIVITY_BACKGROUND = @"bg_sky.png";
 NSString * const UI_IMAGE_ACTIVITY_EDIT_BUTTON = @"iphone_49.png";
 NSString * const UI_IMAGE_ACTIVITY_EDIT_BUTTON_PRESS = @"iphone_51.png";
 NSString * const UI_IMAGE_ACTIVITY_SHARE_BUTTON = @"iphone_55.png";
 NSString * const UI_IMAGE_ACTIVITY_SHARE_BUTTON_PRESS = @"iphone_56.png";
+NSString * const UI_IMAGE_ACTIVITY_PRICE_BG = @"offer_pricebg.png";
+NSString * const UI_IMAGE_ACTIVITY_TITLE = @"wodehuodong_shadow.png";
 
 NSString * const UI_IMAGE_BROWSE_POST_BUTTON = @"post_btn.png";
 NSString * const UI_IMAGE_BROWSE_POST_SLOGAN = @"post_slogan.png";

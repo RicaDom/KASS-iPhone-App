@@ -11,7 +11,7 @@
 
 @implementation PostSummaryViewController
 @synthesize postTitle = _postTitle;
-@synthesize postDescription = _postDescription;
+@synthesize postDesciptionTextField = _postDesciptionTextField;
 @synthesize postAskPrice = _postAskPrice;
 @synthesize postDuration = _postDuration;
 @synthesize submitButton = _submitButton;
@@ -39,7 +39,7 @@
 {
   DLog(@"PostSummaryViewController::loadCurrentPostingData");
     self.postTitle.text = [VariableStore sharedInstance].currentPostingItem.title;
-    self.postDescription.text = [VariableStore sharedInstance].currentPostingItem.description;
+    self.postDesciptionTextField.text = [VariableStore sharedInstance].currentPostingItem.description;
     self.postAskPrice.text = [NSString stringWithFormat:@"%@", [VariableStore sharedInstance].currentPostingItem.askPrice];
 
     if ([VariableStore sharedInstance].currentPostingItem.postDuration) {
@@ -88,7 +88,7 @@
 - (void)viewDidUnload
 {
     [self setPostTitle:nil];
-    [self setPostDescription:nil];
+    [self setPostDesciptionTextField:nil];
     [self setPostAskPrice:nil];
     [self setPostDuration:nil];
     [self setSubmitButton:nil];

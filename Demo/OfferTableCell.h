@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Offer.h"
+#import "Constants.h"
 
 @interface OfferTableCell : UITableViewCell
 

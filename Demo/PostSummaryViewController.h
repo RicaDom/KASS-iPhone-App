@@ -12,11 +12,11 @@
 
 @interface PostSummaryViewController : UIViewController <LocateMeDelegate, AccountActivityDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *postTitle;
-@property (weak, nonatomic) IBOutlet UILabel *postDescription;
 @property (weak, nonatomic) IBOutlet UILabel *postAskPrice;
 @property (weak, nonatomic) IBOutlet UILabel *postDuration;
 @property (strong, nonatomic) IBOutlet UIButton *submitButton;
 @property (strong, nonatomic) NSString *postType;
+@property (strong, nonatomic) IBOutlet UITextView *postDesciptionTextField;
 - (IBAction)cancelAction:(id)sender;
 - (IBAction)submitAction;
 

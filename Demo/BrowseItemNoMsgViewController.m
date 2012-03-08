@@ -64,6 +64,7 @@
   self.currentItem = [[ListItem alloc] initWithDictionary:dict];
   
   self.listingTitle.text = self.currentItem.title;
+  self.descriptionTextField.text = self.currentItem.description;
   self.listingPrice.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
   self.offerPrice.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
   self.listingDate.text = [self.currentItem getTimeLeftTextlong];       
