@@ -29,7 +29,12 @@
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
 {
   //save the token, before that, we need to trim the spaces and get the correct token
-  [[NSUserDefaults standardUserDefaults] setValue:deviceToken forKey:KassAppIphoneTokenKey];    
+  NSString *str = [[deviceToken description] stringByReplacingOccurrencesOfString:@"<" withString:@""]; 
+  
+  str = [str stringByReplacingOccurrencesOfString:@">" withString:@""]; 
+  str = [str stringByReplacingOccurrencesOfString: @" " withString: @""];
+  
+  [[NSUserDefaults standardUserDefaults] setValue:str forKey:KassAppIphoneTokenKey];    
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
