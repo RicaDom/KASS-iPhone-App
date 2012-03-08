@@ -52,6 +52,7 @@
 - (void)createOfferMessage:(NSDictionary *)dict:(NSString *)offerId;
 - (void)loadSettings;
 - (void)getPrivatePub;
+- (void)sendIphoneToken:(NSDictionary *)dict;
 
 - (void)login:(NSDictionary *)dict;
 - (void)logout;
