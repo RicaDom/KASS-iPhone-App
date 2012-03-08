@@ -230,6 +230,13 @@
   [self getData:_url];
 }
 
+- (void)sendIphoneToken:(NSDictionary *)dict
+{
+  DLog(@"KassApi::sendIphoneToken:dict");
+  _url = [NSString stringWithFormat:@"http://%s/v1/account/iphone_token_set", HOST];
+  [self postData:_url:dict];
+}
+
 - (void)login:(NSDictionary *)dict
 {
   NSString *encodedData = [dict objectForKey:@"encode"];

@@ -9,6 +9,7 @@
 #import "User.h"
 #import "NSData+Crypto.h"
 #import "NSString+Crypto.h"
+#import "NSString+ModelHelper.h"
 #import "SFHFKeychainUtils.h"
 #import "ListItem+ListItemHelper.h"
 #import "VariableStore.h"
@@ -21,6 +22,7 @@
 @synthesize name = _name;
 @synthesize email = _email;
 @synthesize phone = _phone;
+@synthesize iphoneToken = _iphoneToken;
 
 - (id) initWithDelegate:(id<AccountActivityDelegate>)delegate
 {
@@ -255,6 +257,15 @@
   [account login];
 }
 
+- (NSString *) getEncryptedString:(NSDictionary *)params:(NSString *)keyString
+{
+  NSString* baseString = [self stringFromDictionary:params];
+  NSData    *plain     = [baseString dataUsingEncoding: NSUTF8StringEncoding];
+  NSData    *key       = [NSData dataWithBytes: [[keyString sha256] bytes] length: kCCKeySizeAES128];
+  NSData    *cipher    = [plain aesEncryptedDataWithKey: key];
+  return [cipher base64Encoding];
+}
+
 - (void) accountWeiboLogin:(NSDictionary*)userInfo
 {
   NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -271,24 +282,39 @@
                                  @"AES",@"oauth_signature_method",
                                  [NSString stringWithFormat:@"%.0f",[[NSDate date]timeIntervalSince1970]],@"oauth_timestamp",nil];
 	
-//	DLog(@"account weibo %@", params);
-	NSString* baseString = [self stringFromDictionary:params];
-//    DLog(@"account baseString %@", baseString);
+
 	NSString* keyString = [NSString stringWithFormat:@"%@&%@",[SinaWeiBoSDKDemo_APPKey URLEncodedString],[SinaWeiBoSDKDemo_APPSecret URLEncodedString]];
-//    DLog(@"account keyString %@", keyString);
-//  DLog(@"baseString=%@", baseString);
   
-  NSData              *plain = [baseString dataUsingEncoding: NSUTF8StringEncoding];
-  NSData              *key = [NSData dataWithBytes: [[keyString sha256] bytes] length: kCCKeySizeAES128];
-  NSData              *cipher = [plain aesEncryptedDataWithKey: key];
-  NSString            *base64 = [cipher base64Encoding];
+  NSString *base64 = [self getEncryptedString:params:keyString];
   
   [self accountWeiboLoginRequest:base64];
   
-//  DLog(@"Base 64 encoded = %@",base64);
-  //[SFHFKeychainUtils storeUsername:[weibo userID] andPassword: forServiceName:KassServiceName updateExisting:YES error:nil];
 }
 
+- (void)sendIphoneToken
+{
+  if (!_iphoneToken || [_iphoneToken isBlank]) { return; }
+  
+  NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                 _iphoneToken,@"apn_iphone_token",
+                                 _userId,@"apn_user_id",
+                                 @"AES",@"apn_signature_method",
+                                 [NSString stringWithFormat:@"%.0f",[[NSDate date]timeIntervalSince1970]],@"apn_timestamp",nil];
+	
+	NSString *keyString     = [NSString stringWithFormat:@"%@",KassSecretToken];
+  NSString *base64        = [self getEncryptedString:params:keyString];
+  NSDictionary *tokenInfo = [NSDictionary dictionaryWithObjectsAndKeys: base64, @"encode", nil];
+
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"sendIphoneTokenFinished:"];
+  [ka sendIphoneToken:tokenInfo];
+
+}
+
+- (void)sendIphoneTokenFinished:(NSData *)data
+{
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"User::sendIphoneTokenFinished:dict=%@", dict);
+}
 
 - (void) accountDidLogin
 {
@@ -300,6 +326,11 @@
   _phone  = account.phone;
   
   [self getPrivatePub];
+  
+  if ( account.iphone_token_present == 0) {
+    _iphoneToken = [[NSUserDefaults standardUserDefaults] stringForKey:KassAppIphoneTokenKey];
+    [self sendIphoneToken];
+  }
   
   if( [_delegate respondsToSelector:@selector(accountLoginFinished)] )
     [_delegate accountLoginFinished];
@@ -455,6 +486,8 @@
   [ppClient connectClients];
 }
 
+
+///FAYE will be removed once APN is set
 - (void) messageReceived:(NSDictionary *)messageDict {
   DLog(@"message recieved %@", messageDict);  
   NSDictionary *data = [messageDict valueForKey:@"data"];
@@ -488,6 +521,7 @@
   self.name   = nil;
   self.email  = nil;
   self.phone  = nil;
+  self.iphoneToken = nil;
 }
 
 - (void)accountDidLogout

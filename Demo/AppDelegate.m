@@ -18,7 +18,28 @@
   DLog(@"AppDelegate::didFinishLaunchingWithOptions:rootViewController=%@", self.window.rootViewController);
   [VariableStore.sharedInstance loadAndStoreSettings:self];
   DLog(@"AppDelegate::doneLoading");
+  
+	// Let the device know we want to receive push notifications
+	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+   (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+  
   return YES;
+}
+
+- (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
+{
+  //save the token, before that, we need to trim the spaces and get the correct token
+  NSString *str = [[deviceToken description] stringByReplacingOccurrencesOfString:@"<" withString:@""]; 
+  
+  str = [str stringByReplacingOccurrencesOfString:@">" withString:@""]; 
+  str = [str stringByReplacingOccurrencesOfString: @" " withString: @""];
+  
+  [[NSUserDefaults standardUserDefaults] setValue:str forKey:KassAppIphoneTokenKey];    
+}
+
+- (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
+{
+	[[NSUserDefaults standardUserDefaults] setValue:@"fake_device_token" forKey:KassAppIphoneTokenKey];    
 }
 
 - (void)settingsDidLoad:(NSDictionary *)dict
