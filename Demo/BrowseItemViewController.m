@@ -11,6 +11,7 @@
 #import "ViewHelper.h"
 #import "UIViewController+ActivityIndicate.h"
 #import "UIViewController+KeyboardSlider.h"
+#import "UIViewController+SegueActiveModel.h"
 
 @implementation BrowseItemViewController
 
@@ -58,7 +59,7 @@
 // called when the user pulls-to-refresh
 - (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view
 {
-  [self performSelector:@selector(loadOffer) withObject:nil afterDelay:2.0];	
+  [self performSelector:@selector(loadDataSource) withObject:nil afterDelay:2.0];	
 }
 
 - (void)populateData:(NSDictionary *)dict
@@ -74,7 +75,13 @@
   self.descriptionTextField.text = self.currentOffer.description;
   self.itemPriceLabel.text = [NSString stringWithFormat:@"%@", self.currentOffer.price];
   self.itemPriceChangedToLabel.text = [NSString stringWithFormat:@"%@", self.currentOffer.price];
-
+  
+  NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+  [formatter setAMSymbol:@"AM"];
+  [formatter setPMSymbol:@"PM"];
+  [formatter setDateFormat:@"MM/dd/yy hh:mm a"];
+  self.itemExpiredDate.text = [NSString stringWithFormat:@"%@", [formatter stringFromDate:self.currentOffer.listItemEndedAt]];
+  
 }
 
 - (void)accountDidGetOffer:(NSDictionary *)dict
@@ -91,19 +98,17 @@
   [self stopLoading];
 }
 
-- (void)loadOffer
+- (void)loadDataSource
 {
   DLog(@"BrowseItemViewController::loadingOffer");
   [self showLoadingIndicator];
   
   //check if currentOffer object is nil, if so get from kassModelDict
-  NSString *offerId = self.currentOffer.dbId;
+  NSString *offerId = [[self kassGetModelDict:@"offer"] objectForKey:@"id"];
   
-  if ( !offerId || [offerId isBlank] ) {
-    offerId = [[self kassGetModelDict:@"offer"] objectForKey:@"id"];
+  if ( offerId && ![offerId isBlank] ) {
+    [self.currentUser getOffer:offerId];
   }
-
-  [self.currentUser getOffer:offerId];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -262,11 +267,12 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+  [super viewWillAppear:animated];
+  
     [self registerKeyboardSlider:_mainView :_scrollView :_buttomView];
     // register for keyboard notifications
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) 
                                                  name:UIKeyboardWillShowNotification object:self.view.window]; 
-    [self loadOffer];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

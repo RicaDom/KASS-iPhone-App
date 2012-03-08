@@ -12,7 +12,7 @@
 
 @synthesize delegate = _delegate, expired = _expired, dataObject = _dataObject;
 
-- (id)initWithDataObjectAndDelegate:(NSObject *)dataObject:(id<DataSourceDelegate>)delegate
+- (id)initWithDataObjectAndDelegate:(ActiveModel *)dataObject:(id<DataSourceDelegate>)delegate
 {
   if (self = [super init]) {
     self.delegate   = delegate;

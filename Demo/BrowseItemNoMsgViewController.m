@@ -9,6 +9,7 @@
 #import "BrowseItemNoMsgViewController.h"
 #import "UIViewController+ActivityIndicate.h"
 #import "UIViewController+KeyboardSlider.h"
+#import "UIViewController+SegueActiveModel.h"
 
 @implementation BrowseItemNoMsgViewController
 
@@ -44,15 +45,45 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-#pragma mark - View lifecycle
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
+-(void)stopLoading
 {
+	[self.pull finishedLoading];
 }
-*/
 
+// called when the user pulls-to-refresh
+- (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view
+{
+  [self performSelector:@selector(stopLoading) withObject:nil afterDelay:2.0];	
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+- (void) appDidGetListing:(NSDictionary *)dict
+{
+  DLog(@"BrowseItemNoMsgViewController::appDidGetListing:listing=%@", dict);
+  self.currentItem = [[ListItem alloc] initWithDictionary:dict];
+  
+  self.listingTitle.text = self.currentItem.title;
+  self.listingPrice.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
+  self.offerPrice.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
+  self.listingDate.text = [self.currentItem getTimeLeftTextlong];       
+  
+  [self hideIndicator];
+  [self stopLoading];
+}
+
+- (void)loadDataSource
+{
+  DLog(@"BrowseItemNoMsgViewController::loadDataSource");
+  [self showLoadingIndicator];
+  
+  NSString *listItemId = [[self kassGetModelDict:@"listItem"] objectForKey:@"id"];
+  
+  if ( listItemId && ![listItemId isBlank] ) {
+    [self.kassApp getListing:listItemId];
+  }
+  
+}
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
@@ -73,14 +104,7 @@
                                 action:@selector(OnClick_btnBack:)];
     self.navigationItem.leftBarButtonItem = btnBack;  
     
-    if (self.currentItem != nil) {
-        self.listingTitle.text = self.currentItem.title;
-        self.descriptionTextField.text = self.currentItem.description;
-        self.listingPrice.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
-        self.offerPrice.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
-      self.listingDate.text = [self.currentItem getTimeLeftTextlong];       
-    }
-    
+
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receivePriceChangedNotification:) 
                                                  name:CHANGED_PRICE_NOTIFICATION
@@ -152,23 +176,15 @@
     [popupQuery showInView:self.view];
 }
 
-- (void)accountRequestFailed:(NSDictionary *)errors
-{
-  DLog(@"BrowseItemNoMsgViewController::requestFailed");
-  [self hideIndicator];
-}
-
 - (void)accountDidCreateOffer:(NSDictionary *)dict
 {
   DLog(@"BrowseItemNoMsgViewController::accountDidCreateOffer:dict=%@", dict);
 
-  [self kassAddToModelDict:@"BrowseItemViewController":dict];
-  
   UINavigationController *navController = self.navigationController;
   // Pop this controller and replace with another
   [navController dismissModalViewControllerAnimated:YES];
     
-  [[NSNotificationCenter defaultCenter] postNotificationName:NO_MESSAGE_TO_MESSAGE_VIEW_NOTIFICATION object:nil];
+  [[NSNotificationCenter defaultCenter] postNotificationName:NO_MESSAGE_TO_MESSAGE_VIEW_NOTIFICATION object:dict];
 //  [navController popViewControllerAnimated:NO];
 //  [(BrowseTableViewController *)[navController.viewControllers objectAtIndex:([navController.viewControllers count]-1)] switchBrowseItemView];
   
@@ -271,17 +287,6 @@
 {
     // unregister for keyboard notifications while not visible.
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil]; 
-}
-
--(void)stopLoading
-{
-	[self.pull finishedLoading];
-}
-
-// called when the user pulls-to-refresh
-- (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view
-{
-    [self performSelector:@selector(stopLoading) withObject:nil afterDelay:2.0];	
 }
 
 -(IBAction)OnClick_btnBack:(id)sender  {

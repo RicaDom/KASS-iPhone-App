@@ -29,7 +29,7 @@
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
-  DLog(@"AppDelegate::applicationDidEnterBackground");
+  DLog(@"AppDelegate::applicationWillResignActive");
   
 }
 

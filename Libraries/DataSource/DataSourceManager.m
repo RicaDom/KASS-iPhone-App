@@ -71,7 +71,7 @@
   return [_dataSourceDictionary objectForKey:className];
 }
 
-- (void)setDataSourceObject:(NSString *)className:(NSObject *)obj
+- (void)setDataSourceObject:(NSString *)className:(ActiveModel *)obj
 {
   DataSource *ds = [_dataSourceDictionary objectForKey:className];
   if ( ds ) {

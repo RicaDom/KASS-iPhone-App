@@ -8,8 +8,10 @@
 
 #import "BrowseTableViewController.h"
 #import "UIViewController+ActivityIndicate.h"
+#import "UIViewController+SegueActiveModel.h"
 
 @implementation BrowseTableViewController
+
 @synthesize browseSegment = _browseSegment;
 @synthesize listingTableView = _listingTableView;
 @synthesize currentListings = _currentListings;
@@ -59,12 +61,27 @@
 	return [NSDate date]; // should return date data source was last changed	
 }
 
+- (BOOL) isNearbyTabSelected
+{
+  return 0 == self.browseSegment.selectedSegmentIndex;
+}
+
+- (BOOL) isRecentTabSelected
+{
+  return 1 == self.browseSegment.selectedSegmentIndex;
+}
+
+- (BOOL) isMostPriceTabSelected
+{
+  return 2 == self.browseSegment.selectedSegmentIndex;
+}
+
 - (void)reloadTable
 {
   DLog(@"BrowseTableViewController::reloadTable");
-  if ( 0 == self.browseSegment.selectedSegmentIndex ) {
+  if ( self.isNearbyTabSelected ) {
     self.currentListings = [VariableStore sharedInstance].nearBrowseListings;
-  } else if ( 1 == self.browseSegment.selectedSegmentIndex ){
+  } else if ( self.isRecentTabSelected ){
     self.currentListings = [VariableStore sharedInstance].recentBrowseListings;
   } else {
     self.currentListings = [VariableStore sharedInstance].priceBrowseListings;
@@ -75,70 +92,11 @@
   [self hideIndicator];
 }
 
-- (void)getNearbyItems:(NSData *)data
-{
-  DLog(@"ActivityViewController::getNearbyItems");
-  Listing *listing = [[Listing alloc] initWithData:data];
-  [VariableStore sharedInstance].nearBrowseListings = [listing listItems];
-  [self reloadTable];
-}
-
-- (void)getRecentItems:(NSData *)data
-{
-  DLog(@"ActivityViewController::getRecentItems");
-  Listing *listing = [[Listing alloc] initWithData:data];
-  [VariableStore sharedInstance].recentBrowseListings = [listing listItems];
-  [self reloadTable];
-}
-
-- (void)getMostPriceItems:(NSData *)data
-{
-  DLog(@"ActivityViewController::getMostPriceItems");
-  Listing *listing = [[Listing alloc] initWithData:data];
-  [VariableStore sharedInstance].priceBrowseListings = [listing listItems];
-  [self reloadTable];
-}
-
 // we need to locate user position before getting data
 - (void)setupArray {
   DLog(@"BrowseTableViewController::setupArray");
   [self showLoadingIndicator];
   [self locateMe];
-}
-
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"showBrowseItem"]) {
-      
-    
-        
-    } else if ([segue.identifier isEqualToString:@"BrowseListingToBuyerOffers"]) {
-        UINavigationController *nc = [segue destinationViewController];
-        ItemViewController *ivc = (ItemViewController *)nc.topViewController;
-        NSIndexPath *path = [self.tableView indexPathForSelectedRow];
-        int row = [path row];
-        ListItem *item = [self.currentListings objectAtIndex:row];
-        ivc.currentItem = item;
-        
-    } else if ([segue.identifier isEqualToString:@"showBrowseItemUnlogin"]) {
-        UINavigationController *nc = [segue destinationViewController];        
-        BrowseItemNoMsgViewController *bvc = (BrowseItemNoMsgViewController *)nc.topViewController;
-        NSIndexPath *path = [self.tableView indexPathForSelectedRow];
-        int row = [path row];
-        ListItem *item = [self.currentListings objectAtIndex:row];
-        bvc.currentItem = item;
-        
-    } else if ([segue.identifier isEqualToString:@"showBrowseItemNoMessage"]) {
-        UINavigationController *nc = [segue destinationViewController];  
-        BrowseItemNoMsgViewController *bvc = (BrowseItemNoMsgViewController *) nc.topViewController;
-        NSIndexPath *path = [self.tableView indexPathForSelectedRow];
-        int row = [path row];
-        ListItem *item = [self.currentListings objectAtIndex:row];
-        bvc.currentItem = item;
-        
-    } else if ([segue.identifier isEqualToString:@"BrowseListingToBuyerPay"]) {
-        
-      
-    }
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -158,7 +116,27 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-#pragma mark - View lifecycle
+- (void)appDidGetListingsNearby:(NSDictionary *)dict
+{
+  Listing *listing = [[Listing alloc] initWithDictionary:dict];
+  [VariableStore sharedInstance].nearBrowseListings = [listing listItems];
+  [self reloadTable];
+}
+
+- (void)appDidGetListingsRecent:(NSDictionary *)dict
+{
+  Listing *listing = [[Listing alloc] initWithDictionary:dict];
+  [VariableStore sharedInstance].recentBrowseListings = [listing listItems];
+  [self reloadTable];
+}
+
+- (void)appDidGetListingsMostPrice:(NSDictionary *)dict
+{
+  Listing *listing = [[Listing alloc] initWithDictionary:dict];
+  [VariableStore sharedInstance].priceBrowseListings = [listing listItems];
+  [self reloadTable];
+}
+
 - (void)locateMeFinished
 {
   DLog(@"BrowseTableViewController::locateMeFinished ");
@@ -170,18 +148,18 @@
                                       @"10", @"radius",
                                       nil];
   
-  if ( 0 == _browseSegment.selectedSegmentIndex) {
-    KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getNearbyItems:"];
-    [ka getListings:dictionary];
+  if ( self.isNearbyTabSelected ) {
     
-  } else if ( 1 == _browseSegment.selectedSegmentIndex) {
-    [dictionary setObject:@"ended_at" forKey:@"sort"];
-    KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getRecentItems:"];
-    [ka getListings:dictionary];
+    [[self kassApp] getListingsNearby:dictionary];
+    
+  } else if ( self.isRecentTabSelected ) {
+    
+    [[self kassApp] getListingsRecent:dictionary];
+    
   } else {
-    [dictionary setObject:@"price" forKey:@"sort"];
-    KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getMostPriceItems:"];
-    [ka getListings:dictionary];
+    
+    [[self kassApp] getListingsMostPrice:dictionary];
+    
   }
 
 }
@@ -192,9 +170,10 @@
     // unless you use this method for observation of other notifications
     // as well.
     
-    if ([[notification name] isEqualToString:OFFER_TO_PAY_VIEW_NOTIFICATION]) {
-        DLog(@"BrowseTableViewController::switchBrowseItemView");
-        [self performSegueWithIdentifier:@"showBrowseItem" sender:self];
+    if ([[notification name] isEqualToString:NO_MESSAGE_TO_MESSAGE_VIEW_NOTIFICATION]) {
+      DLog(@"BrowseTableViewController::receivedFromNOMessageNotification");
+      NSDictionary *json = [notification object];
+      [self performSegueWithModelJson:json:@"showBrowseItem":self];
     }
 }
 
@@ -357,40 +336,37 @@
   ListItem *item = ([tableView isEqual:self.searchDisplayController.searchResultsTableView])?
     [self.filteredListContent objectAtIndex:row]:[self.currentListings objectAtIndex:row];
     
-    DLog(@"Selected Item Title: %@", item.title);
-
-    // if not login
+  // if not login
   if ( ![self kassVS].isLoggedIn ) {
+    
     DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:not login");
-    [self performSegueWithIdentifier:@"showBrowseItemUnlogin" sender:self];
+    [self performSegueWithModelJson:item.toJson:@"showBrowseItemUnlogin":self];
+    
   }else if ( [[self kassVS ].user hasListItem:item] ){
     
     //if you are the buyer and you already accepted it
     if (item.isAccepted) {
-      DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:you already accepted! ");
       
-      [self kassAddToModelDict:@"BuyerPayViewController":item.acceptedOffer.toJson];
-      [self performSegueWithIdentifier:@"BrowseListingToBuyerPay" sender:self];
+      DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:you already accepted! ");
+      [self performSegueWithModelJson:item.acceptedOffer.toJson:@"BrowseListingToBuyerPay":self];
       
     }else{
       //if you are the buyer go to buyers listing page
       DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:you are buyer");
-      [self performSegueWithIdentifier:@"BrowseListingToBuyerOffers" sender:self];
+      [self performSegueWithModelJson:item.toJson:@"BrowseListingToBuyerOffers":self];
     }
   }else if ( [item hasOfferer:[self currentUser]]){
     
-    Offer *offer = [item getOfferFromOfferer:[self currentUser]];
-    [self kassAddToModelDict:@"BrowseItemViewController":offer.toJson];
-
-    //you've offered this listing, go to the offer page
+    // if you have an offer
     DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:you've offered!");
-    [self performSegueWithIdentifier:@"showBrowseItem" sender:self];
-  
+    Offer *offer = [item getOfferFromOfferer:[self currentUser]];
+    [self performSegueWithModelJson:offer.toJson:@"showBrowseItem":self];
+
 
   }else{
     //you are not buyer and you've not offered
     DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:logged in user");
-    [self performSegueWithIdentifier:@"showBrowseItemNoMessage" sender:self];
+    [self performSegueWithModelJson:item.toJson:@"showBrowseItemNoMessage":self];
   }
     
 }
@@ -399,32 +375,25 @@
     DLog(@"BrowseTableViewController::(IBAction)browseSegmentAction");
     if ( ![VariableStore sharedInstance].recentBrowseListings || 
        ![VariableStore sharedInstance].priceBrowseListings || ![VariableStore sharedInstance].nearBrowseListings) {
-    [self setupArray];
+      [self setupArray];
     }else{
-    [self reloadTable]; //reload ui
+      [self reloadTable]; //reload ui
     }
     
-    if (0 == self.browseSegment.selectedSegmentIndex) {
+    if ( self.isNearbyTabSelected ) {
         [self.browseSegment setImage:[UIImage imageNamed:UI_IMAGE_BROWSE_NEAR_DOWN] forSegmentAtIndex:0];
         [self.browseSegment setImage:[UIImage imageNamed:UI_IMAGE_BROWSE_DATE] forSegmentAtIndex:1];
         [self.browseSegment setImage:[UIImage imageNamed:UI_IMAGE_BROWSE_MONEY] forSegmentAtIndex:2];
-    } else if (1 == self.browseSegment.selectedSegmentIndex) {
+    } else if ( self.isRecentTabSelected ) {
         [self.browseSegment setImage:[UIImage imageNamed:UI_IMAGE_BROWSE_NEAR] forSegmentAtIndex:0];
         [self.browseSegment setImage:[UIImage imageNamed:UI_IMAGE_BROWSE_DATE_DOWN] forSegmentAtIndex:1];
         [self.browseSegment setImage:[UIImage imageNamed:UI_IMAGE_BROWSE_MONEY] forSegmentAtIndex:2];        
-    } else if (2 == self.browseSegment.selectedSegmentIndex) {
+    } else if ( self.isMostPriceTabSelected ) {
         [self.browseSegment setImage:[UIImage imageNamed:UI_IMAGE_BROWSE_NEAR] forSegmentAtIndex:0];
         [self.browseSegment setImage:[UIImage imageNamed:UI_IMAGE_BROWSE_DATE] forSegmentAtIndex:1];
         [self.browseSegment setImage:[UIImage imageNamed:UI_IMAGE_BROWSE_MONEY_DOWN] forSegmentAtIndex:2];        
     }
 }
-
-// call back from BrowseItemNoMsgViewController
-//- (void)switchBrowseItemView 
-//{
-//  DLog(@"BrowseTableViewController::switchBrowseItemView");
-//  [self performSegueWithIdentifier:@"showBrowseItem" sender:self];
-//}
 
 #pragma mark -
 #pragma mark Content Filtering

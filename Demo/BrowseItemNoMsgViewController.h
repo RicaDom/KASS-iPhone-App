@@ -12,8 +12,10 @@
 #import "BrowseTableViewController.h"
 #import "UIResponder+VariableStore.h"
 #import "PullToRefreshView.h"
+#import "DataSourceViewController.h"
+#import "KassApp.h"
 
-@interface BrowseItemNoMsgViewController : UIViewController <UIActionSheetDelegate, AccountActivityDelegate, UIScrollViewDelegate, PullToRefreshViewDelegate>
+@interface BrowseItemNoMsgViewController : DataSourceViewController <UIActionSheetDelegate, AccountActivityDelegate, UIScrollViewDelegate, PullToRefreshViewDelegate, KassAppDelegate>
 {
     CGRect _keyboardRect; // for keyboard avoiding
 }

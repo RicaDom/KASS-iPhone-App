@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) NSString *dbId;
 
+
 - (id) initWithDictionary:(NSDictionary *) theDictionary;
 - (id) initWithData:(NSData *) theData;
 

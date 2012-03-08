@@ -37,11 +37,6 @@
 - (IBAction)browseSegmentAction:(id)sender;
 - (void)setupArray;
 - (void)reloadTable;
-- (void)switchBrowseItemView;
 - (void)locateMe;
-
-- (void)getNearbyItems:(NSData *)data;
-- (void)getRecentItems:(NSData *)data;
-- (void)getMostPriceItems:(NSData *)data;
 
 @end
