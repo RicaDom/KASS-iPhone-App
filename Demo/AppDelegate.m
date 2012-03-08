@@ -39,7 +39,7 @@
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
 {
-	
+	[[NSUserDefaults standardUserDefaults] setValue:@"fake_device_token" forKey:KassAppIphoneTokenKey];    
 }
 
 - (void)settingsDidLoad:(NSDictionary *)dict
