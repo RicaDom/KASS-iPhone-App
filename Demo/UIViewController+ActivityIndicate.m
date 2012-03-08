@@ -27,6 +27,16 @@
   [DejalBezelActivityView removeViewAnimated:YES];
 }
 
+- (void)showErrorAlert:(NSString *)message
+{
+  UIAlertView *alert = [[UIAlertView alloc] init];
+	[alert setTitle:UI_LABEL_ERROR];
+	[alert setMessage:message];
+  [alert setDelegate:self];
+  [alert addButtonWithTitle:UI_LABEL_DISMISS];
+  [alert show];
+}
+
 - (void)accountRequestFailed:(NSDictionary *)errors
 {
   DLog(@"UIViewController (ActivityIndicate)::accountRequestFailed");

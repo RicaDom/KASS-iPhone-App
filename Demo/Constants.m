@@ -45,6 +45,9 @@ NSString * const UI_LABEL_ACCEPTED = @"成交";
 NSString * const UI_LABEL_WAITING_FOR_OFFER = @"等待出价";
 NSString * const UI_LABEL_OFFER_PENDING = @"等待确认";
 
+NSString * const UI_LABEL_ERROR   = @"错误";
+NSString * const UI_LABEL_DISMISS = @"取消";
+
 NSString * const OFFER_STATE_ACCEPTED = @"accepted";
 NSString * const OFFER_STATE_REJECTED = @"rejected";
 NSString * const OFFER_STATE_IDLE = @"idle";
