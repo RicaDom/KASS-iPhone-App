@@ -327,6 +327,11 @@
   
   [self getPrivatePub];
   
+  if ( account.iphone_token_present == 0) {
+    _iphoneToken = [[NSUserDefaults standardUserDefaults] stringForKey:KassAppIphoneTokenKey];
+    [self sendIphoneToken];
+  }
+  
   if( [_delegate respondsToSelector:@selector(accountLoginFinished)] )
     [_delegate accountLoginFinished];
   

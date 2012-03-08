@@ -30,6 +30,7 @@
 #    define KassServiceName @"com.kasslocal.app"
 #    define KassAppUsernameKey @"KasslocalAppUsernameKey"
 #    define KassAppEmailKey @"KasslocalAppEmailKey"
+#    define KassAppIphoneTokenKey @"KasslocalAppIphoneTokenKey"
 #    define PIC_CACHE_PATH @"/Library/Caches/imgcache/jieqooDevelopment/"
 #else
 #    define HOST "www.kass.com"
@@ -39,6 +40,7 @@
 #    define KassServiceName @"com.kass.app"
 #    define KassAppUsernameKey @"KassAppUsernameKey"
 #    define KassAppEmailKey @"KassAppEmailKey"
+#    define KassAppIphoneTokenKey @"KassAppIphoneTokenKey"
 #    define PIC_CACHE_PATH @"/Library/Caches/imgcache/jieqoo/"
 #endif
 
