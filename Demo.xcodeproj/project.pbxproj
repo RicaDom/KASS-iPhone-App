@@ -119,6 +119,7 @@
 		77E766C61502352F00A4E0D0 /* DataSourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E766C51502352F00A4E0D0 /* DataSourceViewController.m */; };
 		77E9ACC314CD0AF50089910F /* KassApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 77E9ACC214CD0AF50089910F /* KassApi.m */; };
 		77EA15A414DA1EBC00E6E45A /* china-chengdu.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 77EA15A314DA1EBC00E6E45A /* china-chengdu.gpx */; };
+		77EBDFDF150891A300D080D1 /* UserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77EBDFDC1508915100D080D1 /* UserTest.m */; };
 		77F0279C14C5BC100065EDAA /* ListItemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F0279B14C5BC100065EDAA /* ListItemTest.m */; };
 		77F0279F14C665F70065EDAA /* Listing.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F0279E14C665F60065EDAA /* Listing.m */; };
 		77F027A214C666BA0065EDAA /* ListingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F027A114C666BA0065EDAA /* ListingTest.m */; };
@@ -482,6 +483,8 @@
 		77E9ACC114CD0AF50089910F /* KassApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KassApi.h; sourceTree = "<group>"; };
 		77E9ACC214CD0AF50089910F /* KassApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KassApi.m; sourceTree = "<group>"; };
 		77EA15A314DA1EBC00E6E45A /* china-chengdu.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "china-chengdu.gpx"; sourceTree = "<group>"; };
+		77EBDFDB1508915100D080D1 /* UserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTest.h; sourceTree = "<group>"; };
+		77EBDFDC1508915100D080D1 /* UserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTest.m; sourceTree = "<group>"; };
 		77F0279A14C5BC100065EDAA /* ListItemTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListItemTest.h; sourceTree = "<group>"; };
 		77F0279B14C5BC100065EDAA /* ListItemTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListItemTest.m; sourceTree = "<group>"; };
 		77F0279D14C665F60065EDAA /* Listing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Listing.h; sourceTree = "<group>"; };
@@ -1335,6 +1338,8 @@
 				77F027A114C666BA0065EDAA /* ListingTest.m */,
 				77F3D0DA14CC0C3900770E73 /* LocationTest.h */,
 				77F3D0DB14CC0C3900770E73 /* LocationTest.m */,
+				77EBDFDB1508915100D080D1 /* UserTest.h */,
+				77EBDFDC1508915100D080D1 /* UserTest.m */,
 			);
 			path = DemoTests;
 			sourceTree = "<group>";
@@ -1872,6 +1877,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77EBDFDF150891A300D080D1 /* UserTest.m in Sources */,
 				E5947DF614A3A12B0066723A /* DemoTests.m in Sources */,
 				77F0279C14C5BC100065EDAA /* ListItemTest.m in Sources */,
 				77F027A214C666BA0065EDAA /* ListingTest.m in Sources */,

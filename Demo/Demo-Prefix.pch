@@ -41,3 +41,5 @@
 #    define KassAppEmailKey @"KassAppEmailKey"
 #    define PIC_CACHE_PATH @"/Library/Caches/imgcache/jieqoo/"
 #endif
+
+# define KassSecretToken @"f15beb08e2738a0ffbe106a7fffc06e83704261d7fb5303e1f380928df7a375222abebbb08da7f03f8d20c092bddd942965f71e3a7aaac48551087a000edc45b"

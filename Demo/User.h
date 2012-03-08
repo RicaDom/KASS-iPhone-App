@@ -75,5 +75,6 @@ typedef enum {
 
 //// model helper methods
 - (BOOL)hasListItem:(ListItem *)listItem;
+- (NSString*)stringFromDictionary:(NSDictionary*)info;
 
 @end
