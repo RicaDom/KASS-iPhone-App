@@ -257,6 +257,8 @@
 		E5D7C4AE14B53C3F00E29463 /* AppScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D7C4AD14B53C3F00E29463 /* AppScrollView.m */; };
 		E5D84A371507248800EF17E4 /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D84A361507248800EF17E4 /* UserInfoViewController.m */; };
 		E5D84A3B15073CFC00EF17E4 /* CommonView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D84A3A15073CFC00EF17E4 /* CommonView.m */; };
+		E5D84A4E1507B24000EF17E4 /* buying.png in Resources */ = {isa = PBXBuildFile; fileRef = E5D84A4C1507B24000EF17E4 /* buying.png */; };
+		E5D84A4F1507B24000EF17E4 /* selling.png in Resources */ = {isa = PBXBuildFile; fileRef = E5D84A4D1507B24000EF17E4 /* selling.png */; };
 		E5E6AA3814A41B6D00A0CF86 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E6AA3714A41B6D00A0CF86 /* MapViewController.m */; };
 		E5EB944914EF8DDE0072B57B /* BrowseItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EB944414EF8DDE0072B57B /* BrowseItemViewController.m */; };
 		E5EB944A14EF8DDE0072B57B /* BrowseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EB944614EF8DDE0072B57B /* BrowseTableViewController.m */; };
@@ -661,6 +663,8 @@
 		E5D84A361507248800EF17E4 /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
 		E5D84A3915073CFC00EF17E4 /* CommonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonView.h; sourceTree = "<group>"; };
 		E5D84A3A15073CFC00EF17E4 /* CommonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonView.m; sourceTree = "<group>"; };
+		E5D84A4C1507B24000EF17E4 /* buying.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buying.png; sourceTree = "<group>"; };
+		E5D84A4D1507B24000EF17E4 /* selling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selling.png; sourceTree = "<group>"; };
 		E5E6AA3614A41B6D00A0CF86 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		E5E6AA3714A41B6D00A0CF86 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		E5EB944314EF8DDE0072B57B /* BrowseItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseItemViewController.h; sourceTree = "<group>"; };
@@ -1408,6 +1412,8 @@
 		E5A9FBEE1504A52F00AC5F0E /* activity */ = {
 			isa = PBXGroup;
 			children = (
+				E5D84A4C1507B24000EF17E4 /* buying.png */,
+				E5D84A4D1507B24000EF17E4 /* selling.png */,
 				E5A9FBEF1504A55400AC5F0E /* bg_sky.png */,
 			);
 			name = activity;
@@ -1707,6 +1713,8 @@
 				E511608B150608D3002A86A0 /* segment_divider.png in Resources */,
 				77502EBF1505F89B0019E93A /* AsyncSocket Documentation.html in Resources */,
 				77502EC21505F89B0019E93A /* changes.txt in Resources */,
+				E5D84A4E1507B24000EF17E4 /* buying.png in Resources */,
+				E5D84A4F1507B24000EF17E4 /* selling.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
