@@ -1,9 +1,9 @@
 //
-//  ActivityViewController.h
+//  MyActivityViewController.h
 //  Demo
 //
-//  Created by zhicai on 12/27/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Created by Wesley Wang on 3/7/12.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -19,7 +19,7 @@
 #import "BrowseItemViewController.h"
 #import "BuyerPayViewController.h"
 
-@interface ActivityViewController : UITableViewController <AccountActivityDelegate, EGORefreshTableHeaderDelegate>
+@interface ActivityViewController : UIViewController <AccountActivityDelegate, EGORefreshTableHeaderDelegate>
 {
 	EGORefreshTableHeaderView *_refreshHeaderView;
 	
@@ -32,12 +32,17 @@
 @property (strong, nonatomic) IBOutlet UISegmentedControl *activitySegment;
 @property (strong, nonatomic) IBOutlet UIImageView *emptyRecordsImageView;
 @property (weak, nonatomic) IBOutlet UITableView *listingsTableView;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UIImageView *tabImageView;
 
-- (IBAction)activityChanged:(id)sender;
 - (void)loadDataSource;
 - (void)reloadTable;
 - (void)getBuyingItems:(NSDictionary *)dict;
 - (void)getSellingItems:(NSDictionary *)dict;
 - (void)updateTableView;
+
+- (IBAction)activityChanged:(id)sender;
+- (IBAction)pressBuyingListButton:(id)sender;
+- (IBAction)pressSellingListButton:(id)sender;
 
 @end
