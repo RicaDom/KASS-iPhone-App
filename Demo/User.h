@@ -35,6 +35,7 @@ typedef enum {
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *phone;
+@property (nonatomic, strong) NSString *iphoneToken;
 
 - (id) initWithDelegate:(id<AccountActivityDelegate>)delegate;
 - (void) weiboLogin;
@@ -72,6 +73,9 @@ typedef enum {
 
 - (void)getPrivatePub;
 - (void)getPrivatePubFinished:(NSData *)data;
+
+- (void)sendIphoneToken;
+- (void)sendIphoneTokenFinished:(NSData *)data;
 
 //// model helper methods
 - (BOOL)hasListItem:(ListItem *)listItem;

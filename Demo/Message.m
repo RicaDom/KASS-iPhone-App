@@ -19,8 +19,8 @@
 {
   if (self = [super init]) {
     _body    = [theDictionary objectForKey:@"body"];
-    _userId        = [theDictionary objectForKey:@"user_id"];
-    _dbId         = [theDictionary objectForKey:@"id"];
+    _userId  = [theDictionary objectForKey:@"user_id"];
+    _dbId    = [theDictionary objectForKey:@"id"];
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:RUBY_DATETIME_FORMAT]; 
