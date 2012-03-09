@@ -334,38 +334,7 @@
   ListItem *item = ([tableView isEqual:self.searchDisplayController.searchResultsTableView])?
     [self.filteredListContent objectAtIndex:row]:[self.currentListings objectAtIndex:row];
     
-  // if not login
-  if ( ![self kassVS].isLoggedIn ) {
-    
-    DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:not login");
-    [self performSegueWithModelJson:item.toJson:@"showBrowseItemUnlogin":self];
-    
-  }else if ( [[self kassVS ].user hasListItem:item] ){
-    
-    //if you are the buyer and you already accepted it
-    if (item.isAccepted) {
-      
-      DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:you already accepted! ");
-      [self performSegueWithModelJson:item.acceptedOffer.toJson:@"BrowseListingToBuyerPay":self];
-      
-    }else{
-      //if you are the buyer go to buyers listing page
-      DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:you are buyer");
-      [self performSegueWithModelJson:item.toJson:@"BrowseListingToBuyerOffers":self];
-    }
-  }else if ( [item hasOfferer:[self currentUser]]){
-    
-    // if you have an offer
-    DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:you've offered!");
-    Offer *offer = [item getOfferFromOfferer:[self currentUser]];
-    [self performSegueWithModelJson:offer.toJson:@"showBrowseItem":self];
-
-
-  }else{
-    //you are not buyer and you've not offered
-    DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:logged in user");
-    [self performSegueWithModelJson:item.toJson:@"showBrowseItemNoMessage":self];
-  }
+  [self performSegueByModel:item];
     
 }
 

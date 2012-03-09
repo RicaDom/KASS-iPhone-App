@@ -15,5 +15,7 @@
 - (NSDictionary *) kassGetModelDict:(NSString *)modelName;
 - (void) kassAddToModelDict:(NSString *)controller:(NSDictionary *)model;
 - (void) kassRemoveFromModelDict;
+- (NSDictionary *)getItemJsonAndSegueIdentifier:(ListItem *)item;
+- (void)performSegueByModel:(ListItem *)item;
 
 @end

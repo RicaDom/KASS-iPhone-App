@@ -63,18 +63,10 @@
   if ( [lma isKindOfClass:ListingMapAnnotaion.class]) {
     self.currentItem = lma.currentItem;
     if (self.currentItem != nil) { 
-      [self performSegueWithModelJson:self.currentItem.toJson:@"messageItemSegue":self];
-      [self performSegueWithIdentifier:@"messageItemSegue" sender:self]; 
+      [self performSegueByModel:self.currentItem];
     }
   }
 
-}
-
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"messageItemSegue"]) {
-
-      
-    }
 }
 
 //- (void)viewWillAppear:(BOOL)animated {  

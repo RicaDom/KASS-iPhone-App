@@ -139,7 +139,9 @@
   NSDictionary *dict = [myModelDict objectForKey:@"errors"];
   DLog(@"VariableStore::getModelDict:dictForError=%@", dict);
   if ( dict ) { return dict; } 
-  return [myModelDict objectForKey:modelName];
+  dict = [myModelDict objectForKey:modelName];
+  DLog(@"VariableStore::getModelDict:dictForModel=%@", dict);
+  return dict;
 }
 
 - (void)appendPostingItemToListings:(NSDictionary *)dict
