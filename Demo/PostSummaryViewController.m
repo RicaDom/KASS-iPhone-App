@@ -10,6 +10,7 @@
 #import "UIResponder+VariableStore.h"
 
 @implementation PostSummaryViewController
+
 @synthesize postTitle = _postTitle;
 @synthesize postDesciptionTextField = _postDesciptionTextField;
 @synthesize postAskPrice = _postAskPrice;
@@ -71,18 +72,27 @@
   [self loadCurrentPostingData];
 }
 
+- (void)customViewLoad
+{
+    UIImage* signUpButtonImg = [UIImage imageNamed:UI_IMAGE_POST_SEND_BUTTON];
+    UIImage* signUpButtonPressImg = [UIImage imageNamed:UI_IMAGE_POST_SEND_BUTTON_PRESS];
+    [self.submitButton setBackgroundImage:signUpButtonImg forState:UIControlStateNormal];
+    [self.submitButton setBackgroundImage:signUpButtonPressImg forState:UIControlStateSelected];
+    
+    // Update submit button label if it's an update
+    if ([self.postType isEqualToString:POST_TYPE_EDITING]) {
+        self.submitButton.titleLabel.text = UI_BUTTON_LABEL_UPDATE;
+    }
+}
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
-  DLog(@"PostSummaryViewController::viewDidLoad ");
-  [super viewDidLoad];
-  VariableStore.sharedInstance.locateMeManager.delegate = self;
-  [VariableStore.sharedInstance.locateMeManager locateMe];
-
-  // Update submit button label if it's an update
-  if ([self.postType isEqualToString:POST_TYPE_EDITING]) {
-    self.submitButton.titleLabel.text = UI_BUTTON_LABEL_UPDATE;
-  }
+    DLog(@"PostSummaryViewController::viewDidLoad ");
+    [super viewDidLoad];
+    VariableStore.sharedInstance.locateMeManager.delegate = self;
+    [VariableStore.sharedInstance.locateMeManager locateMe];
+    [self customViewLoad];
 }
 
 - (void)viewDidUnload
@@ -171,6 +181,18 @@
     [self.currentUser createListing:params];
   }
   
+}
+
+- (IBAction)iwantAction:(id)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (IBAction)ipayAction:(id)sender {
+    [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:1] animated:YES];
+}
+
+- (IBAction)idateAction:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

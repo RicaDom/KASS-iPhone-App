@@ -34,6 +34,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *listingsTableView;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIImageView *tabImageView;
+@property (strong, nonatomic) IBOutlet UIImageView *emptyImageView;
+@property (strong, nonatomic) IBOutlet UIImageView *indicatorImageView;
 
 - (void)loadDataSource;
 - (void)reloadTable;

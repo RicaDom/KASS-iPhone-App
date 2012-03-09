@@ -77,6 +77,8 @@ extern NSString * const UI_IMAGE_WEIBO_BUTTON;
 extern NSString * const UI_IMAGE_WEIBO_BUTTON_PRESS;
 extern NSString * const UI_IMAGE_SIGNUP_BUTTON;
 extern NSString * const UI_IMAGE_SIGNUP_BUTTON_PRESS;
+extern NSString * const UI_IMAGE_SIGNUP_BUTTON2;
+extern NSString * const UI_IMAGE_SIGNUP_BUTTON_PRESS2;
 extern NSString * const UI_IMAGE_SIGNIN_BUTTON;
 extern NSString * const UI_IMAGE_SIGNIN_BUTTON_PRESS;
 extern NSString * const UI_IMAGE_LOGIN_SKIP_TEXT;
@@ -87,6 +89,7 @@ extern NSString * const UI_IMAGE_LOGIN_BUTTON_PRESS;
 extern NSString * const UI_IMAGE_LOGIN_FORGOT_PASS;
 extern NSString * const UI_IMAGE_LOGIN_FORM_BACKGROUND;
 extern NSString * const UI_IMAGE_LOGIN_LABEL;
+extern NSString * const UI_IMAGE_SIGUP_LABEL;
 
 extern NSString * const UI_IMAGE_BACK_BUTTON;
 extern NSString * const UI_IMAGE_BACK_BUTTON_PRESS;
@@ -104,6 +107,10 @@ extern NSString * const UI_IMAGE_ACTIVITY_SHARE_BUTTON;
 extern NSString * const UI_IMAGE_ACTIVITY_SHARE_BUTTON_PRESS;
 extern NSString * const UI_IMAGE_ACTIVITY_PRICE_BG;
 extern NSString * const UI_IMAGE_ACTIVITY_TITLE;
+extern NSString * const UI_IMAGE_ACTIVITY_NOTE_POST;
+extern NSString * const UI_IMAGE_ACTIVITY_NOTE_BROWSE;
+extern NSString * const UI_IMAGE_ACTIVITY_ACCEPT_BUTTON;
+extern NSString * const UI_IMAGE_ACTIVITY_ACCEPT_BUTTON_PRESS;
 
 extern NSString * const UI_IMAGE_BROWSE_POST_BUTTON;
 extern NSString * const UI_IMAGE_BROWSE_POST_SLOGAN;
@@ -124,4 +131,7 @@ extern NSString * const UI_IMAGE_SEND_MESSAGE_PRICE_PRESS;
 extern NSString * const UI_IMAGE_PRICE_BACKGROUND;
 extern NSString * const UI_IMAGE_USER_INFO_BUTTON_DARK;
 extern NSString * const UI_IMAGE_USER_INFO_BUTTON_GREEN;
+
+extern NSString * const UI_IMAGE_POST_SEND_BUTTON;
+extern NSString * const UI_IMAGE_POST_SEND_BUTTON_PRESS;
 @end

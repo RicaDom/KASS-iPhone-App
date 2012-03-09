@@ -19,5 +19,8 @@
 @property (strong, nonatomic) IBOutlet UITextView *postDesciptionTextField;
 - (IBAction)cancelAction:(id)sender;
 - (IBAction)submitAction;
+- (IBAction)iwantAction:(id)sender;
+- (IBAction)ipayAction:(id)sender;
+- (IBAction)idateAction:(id)sender;
 
 @end

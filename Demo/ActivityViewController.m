@@ -15,6 +15,8 @@
 @implementation ActivityViewController
 
 @synthesize tabImageView = _tabImageView;
+@synthesize emptyImageView = _emptyImageView;
+@synthesize indicatorImageView = _indicatorImageView;
 @synthesize emptyRecordsImageView = _emptyRecordsImageView;
 @synthesize listingsTableView = _listingsTableView;
 @synthesize tableView = _tableView;
@@ -104,10 +106,10 @@ NSMutableArray *currentItems;
 
 - (void)showBackground
 {
-    if (self.emptyRecordsImageView == nil || self.emptyRecordsImageView.image == nil) {
-        self.emptyRecordsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:UI_IMAGE_ACTIVITY_BACKGROUND]];
-        [self.view addSubview:self.emptyRecordsImageView];
-    }
+//    if (self.emptyRecordsImageView == nil || self.emptyRecordsImageView.image == nil) {
+//        self.emptyRecordsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:UI_IMAGE_ACTIVITY_BACKGROUND]];
+//        [self.view addSubview:self.emptyRecordsImageView];
+//    }
     [self hideIndicator];
 }
 
@@ -117,13 +119,13 @@ NSMutableArray *currentItems;
     [VariableStore sharedInstance].mySellingListings = nil;
 }
 
-- (void)hideBackground
-{
-    if( self.emptyRecordsImageView && [currentItems count] > 0){
-        [self.emptyRecordsImageView removeFromSuperview];
-        self.emptyRecordsImageView = nil;
-    }
-}
+//- (void)hideBackground
+//{
+//    if( self.emptyRecordsImageView && [currentItems count] > 0){
+//        [self.emptyRecordsImageView removeFromSuperview];
+//        self.emptyRecordsImageView = nil;
+//    }
+//}
 
 - (void)updateTableView
 {
@@ -145,6 +147,8 @@ NSMutableArray *currentItems;
     DLog(@"MyActivityViewController::pressBuyingListButton");
     [self.tabImageView setImage:[UIImage imageNamed:@"buying.png"]];
     self.tabImageView.tag = 0;
+    
+    self.indicatorImageView.image = [UIImage imageNamed:UI_IMAGE_ACTIVITY_NOTE_POST];
     [self updateTableView];
 }
 
@@ -152,6 +156,8 @@ NSMutableArray *currentItems;
     DLog(@"MyActivityViewController::pressBuyingListButton");
     [self.tabImageView setImage:[UIImage imageNamed:@"selling.png"]];
     self.tabImageView.tag = 1;
+    
+    self.indicatorImageView.image = [UIImage imageNamed:UI_IMAGE_ACTIVITY_NOTE_BROWSE];
     [self updateTableView];
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -170,7 +176,7 @@ NSMutableArray *currentItems;
         currentItems = [VariableStore sharedInstance].mySellingListings;
     }
     
-    [self hideBackground];
+    //[self hideBackground];
     [self.tableView reloadData];
     //[self stopLoading];
     [self doneLoadingTableViewData];
@@ -232,6 +238,9 @@ NSMutableArray *currentItems;
     [super viewDidLoad];
     [self reset];
     
+    // table footer should be clear in order to see the arrow 
+    self.tableView.tableFooterView = self.emptyImageView;
+    
     // navigation bar background color
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:UI_IMAGE_ACTIVITY_TITLE]];
@@ -276,6 +285,8 @@ NSMutableArray *currentItems;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:OFFER_TO_PAY_VIEW_NOTIFICATION object:nil];
     [self setTableView:nil];
     [self setTabImageView:nil];
+    [self setEmptyImageView:nil];
+    [self setIndicatorImageView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

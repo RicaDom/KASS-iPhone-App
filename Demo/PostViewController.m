@@ -251,7 +251,7 @@
   
     // init scroll view content size
     self.mainScrollView.contentSize = CGSizeMake(_ScrollViewContentSizeX, self.contentView.frame.size.height - self.addPostSloganLabel.frame.size.height/2);   
-    self.mainView.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"Default.png"]];
+    self.mainView.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"startbg3.png"]];
     
     UIImage *slogan = [UIImage imageNamed:UI_IMAGE_BROWSE_POST_SLOGAN];
     self.addPostBackgroundView.frame = CGRectMake(self.addPostButton.frame.origin.x - 5, self.addPostButton.frame.origin.y - 7, slogan.size.width, slogan.size.height);

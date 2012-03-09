@@ -25,6 +25,8 @@
 @synthesize userInfoButton = _userInfoButton;
 @synthesize priceButton = _priceButton;
 @synthesize descriptionTextField = _descriptionTextField;
+@synthesize confirmDealButton = _confirmDealButton;
+@synthesize confirmImageView = _confirmImageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -91,21 +93,8 @@
   [self.currentUser getOffer:self.currentOffer.dbId];
 }
 
-
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad
+-(void) customViewLoad
 {
-    [super viewDidLoad];
-    
-    self.pull = [[PullToRefreshView alloc] initWithScrollView:self.scrollView];
-    [self.pull setDelegate:self];
-    [self.scrollView addSubview:self.pull];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(receivePriceChangedNotification:) 
-                                                 name:CHANGED_PRICE_NOTIFICATION
-                                               object:nil];
-    
     UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]
                                 initWithTitle:UI_BUTTON_LABEL_BACK
                                 style:UIBarButtonItemStyleBordered
@@ -121,7 +110,28 @@
     UIImage *userButtonPressImg = [UIImage imageNamed:UI_IMAGE_USER_INFO_BUTTON_DARK];
     self.userInfoButton.frame = CGRectMake(self.userInfoButton.frame.origin.x, self.userInfoButton.frame.origin.y, userButtonImg.size.width, userButtonImg.size.height);
     [self.userInfoButton setImage:userButtonImg forState:UIControlStateNormal];
-    [self.userInfoButton setImage:userButtonPressImg forState:UIControlStateSelected];
+    [self.userInfoButton setImage:userButtonPressImg forState:UIControlStateSelected];  
+
+    UIImage *acceptButtonImg = [UIImage imageNamed:UI_IMAGE_ACTIVITY_ACCEPT_BUTTON];
+    UIImage *acceptButtonPressImg = [UIImage imageNamed:UI_IMAGE_ACTIVITY_ACCEPT_BUTTON_PRESS];
+    [self.confirmDealButton setImage:acceptButtonImg forState:UIControlStateNormal];
+    [self.confirmDealButton setImage:acceptButtonPressImg forState:UIControlStateSelected];
+}
+
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.pull = [[PullToRefreshView alloc] initWithScrollView:self.scrollView];
+    [self.pull setDelegate:self];
+    [self.scrollView addSubview:self.pull];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receivePriceChangedNotification:) 
+                                                 name:CHANGED_PRICE_NOTIFICATION
+                                               object:nil];
+    [self customViewLoad];
 }
 
 - (void) receivePriceChangedNotification:(NSNotification *) notification
@@ -149,6 +159,8 @@
     [self setUserInfoButton:nil];
     [self setPriceButton:nil];
     [self setDescriptionTextField:nil];
+    [self setConfirmDealButton:nil];
+    [self setConfirmImageView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -173,13 +185,13 @@
     if (movedUp){
         // 1. move the view's origin up so that the text field that will be hidden come above the keyboard 
         // 2. increase the size of the view so that the area behind the keyboard is covered up.
-        rect.origin.y -= _keyboardRect.size.height;
+        rect.origin.y -= (_keyboardRect.size.height - self.confirmImageView.frame.size.height);
         rect.size.height += _keyboardRect.size.height;
         self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_CANCEL;
         self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_SEND;
     }else{
         // revert back to the normal state.
-        rect.origin.y += _keyboardRect.size.height;
+        rect.origin.y += (_keyboardRect.size.height - self.confirmImageView.frame.size.height);
         rect.size.height -= _keyboardRect.size.height;
         self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_BACK;
         self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_MAP;
@@ -190,7 +202,7 @@
     if (movedUp) {
         CGRect scrollViewRect = self.scrollView.frame;
         DLog(@"Scoll View move up Before: (%f, %f, %f, %f) ", scrollViewRect.origin.x, scrollViewRect.origin.y, scrollViewRect.size.width, scrollViewRect.size.height );
-        scrollViewRect.origin.y = _keyboardRect.size.height;
+        scrollViewRect.origin.y = (_keyboardRect.size.height - self.confirmImageView.frame.size.height);
         scrollViewRect.size.height = rect.size.height - _keyboardRect.size.height*2 - self.buttomView.frame.size.height;
         DLog(@"Scoll View move up After: (%f, %f, %f, %f) ", scrollViewRect.origin.x, scrollViewRect.origin.y, scrollViewRect.size.width, scrollViewRect.size.height );
         self.scrollView.frame = scrollViewRect;
@@ -269,10 +281,10 @@
    object:self.currentOffer];
 }
 
-- (IBAction)confirmDealAction:(id)sender {
-  DLog(@"ActivityOfferMessageViewController::confirmDealAction");
-  [[self currentUser] acceptOffer:_currentOffer.dbId];
-}
+//- (IBAction)confirmDealAction:(id)sender {
+//  DLog(@"ActivityOfferMessageViewController::confirmDealAction");
+//  [[self currentUser] acceptOffer:_currentOffer.dbId];
+//}
 
 - (IBAction)sendMessageOrMapAction:(UIBarButtonItem *)sender {
     if ([sender.title isEqualToString:UI_BUTTON_LABEL_MAP]) {
@@ -282,6 +294,33 @@
     } else if ([sender.title isEqualToString:UI_BUTTON_LABEL_SEND]){
         // TODO submitting message
         
+    }
+}
+
+- (IBAction)buttonDraggingAction:(UIPanGestureRecognizer*)recognizer {
+    CGPoint touchLocation = [recognizer locationInView:recognizer.view];
+    if (recognizer.state == UIGestureRecognizerStateBegan) {    
+        CGPoint touchLocationBegan = [recognizer locationInView:recognizer.view];
+        touchBegan = touchLocationBegan.x;
+        originX = self.confirmDealButton.frame.origin.x;
+    } else if (recognizer.state == UIGestureRecognizerStateChanged) {  
+        if (touchLocation.x > touchBegan && self.confirmDealButton.frame.origin.x < (self.view.frame.size.width - self.confirmDealButton.frame.size.width)) {
+            int delta = touchLocation.x - touchBegan;
+            if ((self.confirmDealButton.frame.origin.x + delta + 10) > (self.view.frame.size.width - self.confirmDealButton.frame.size.width)) {
+                self.confirmDealButton.frame = CGRectMake(self.view.frame.size.width - self.confirmDealButton.frame.size.width , self.confirmDealButton.frame.origin.y, self.confirmDealButton.frame.size.width, self.confirmDealButton.frame.size.height);
+            } else {
+                self.confirmDealButton.frame = CGRectMake(self.confirmDealButton.frame.origin.x + delta + 10 , self.confirmDealButton.frame.origin.y, self.confirmDealButton.frame.size.width, self.confirmDealButton.frame.size.height);
+            }
+            touchBegan = touchLocation.x;
+        }        
+    } else if (recognizer.state == UIGestureRecognizerStateEnded) {    
+        if ((self.confirmDealButton.frame.origin.x + self.confirmDealButton.frame.size.width) >= self.view.frame.size.width && !alreadyConfirmedDeal) {
+            DLog(@"Performing deal action...");
+            [[self currentUser] acceptOffer:_currentOffer.dbId];
+            alreadyConfirmedDeal = YES;
+        } else {
+            self.confirmDealButton.frame = CGRectMake(originX , self.confirmDealButton.frame.origin.y, self.confirmDealButton.frame.size.width, self.confirmDealButton.frame.size.height);
+        }
     }
 }
 

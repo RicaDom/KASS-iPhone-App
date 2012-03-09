@@ -252,34 +252,40 @@
     DLog(@"Openning sign up view");
     //faux view
     self.signUpView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, self.bgView.frame.size.width, self.bgView.frame.size.height)];
-    //[self.bgView addSubview: self.signUpView];
     self.signUpView.center = CGPointMake( self.bgView.frame.size.width/2, self.bgView.frame.size.height/2);
     
     //add the window background
-    UIImageView* background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg.png"]];
+    UIImageView* background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:UI_IMAGE_LOGIN_FORM_BACKGROUND]];
     //UIImageView* background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login.png"]];
-    background.center = CGPointMake(self.signUpView.frame.size.width/2, self.signUpView.frame.size.height/2);
+    background.center = CGPointMake(self.signUpView.frame.size.width/2, self.signUpView.frame.size.height/2 - 30);
     [self.signUpView addSubview: background];    
     
-    UILabel *loginWelcomeMessage = [[UILabel alloc] init];
-    [loginWelcomeMessage setText:UI_BUTTON_LABEL_SIGNUP];
-    [loginWelcomeMessage setTextColor:[UIColor blackColor]];
-    loginWelcomeMessage.frame = CGRectMake(140, 40, 150, 30);
-    [self.signUpView addSubview:loginWelcomeMessage];
+    UIImage* loginLabelButtonImg = [UIImage imageNamed:UI_IMAGE_SIGUP_LABEL];
+    UIButton* loginLabelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [loginLabelButton setImage:loginLabelButtonImg forState:UIControlStateNormal];
+    loginLabelButton.frame = CGRectMake((self.signUpView.frame.size.width - loginLabelButtonImg.size.width)/2, 50, loginLabelButtonImg.size.width, loginLabelButtonImg.size.height);
+    loginLabelButton.enabled = NO;
+    [self.signUpView addSubview:loginLabelButton];
     
-    UIButton *signUpButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    signUpButton.frame = CGRectMake(225.0, 40.0, 50.0, 30.0);
-    [signUpButton setTitle:UI_BUTTON_LABEL_SUBMIT forState:UIControlStateNormal];
+    UIImage* signUpButtonImg = [UIImage imageNamed:UI_IMAGE_SIGNUP_BUTTON2];
+    UIImage* signUpButtonPressImg = [UIImage imageNamed:UI_IMAGE_SIGNUP_BUTTON_PRESS2];
+    UIButton* signUpButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [signUpButton setImage:signUpButtonImg forState:UIControlStateNormal];
+    [signUpButton setImage:signUpButtonPressImg forState:UIControlStateHighlighted];
+    signUpButton.frame = CGRectMake(235, 50, signUpButtonImg.size.width, signUpButtonImg.size.height);
     [signUpButton addTarget:self action:@selector(signUpSubmitAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.signUpView addSubview:signUpButton];
-    
-    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    backButton.frame = CGRectMake(40.0, 40.0, 50.0, 30.0);
-    [backButton setTitle:UI_BUTTON_LABEL_BACK forState:UIControlStateNormal];
+  
+    UIImage* backButtonImg = [UIImage imageNamed:UI_IMAGE_LOGIN_BACK_BUTTON];
+    UIImage* backButtonPressImg = [UIImage imageNamed:UI_IMAGE_LOGIN_BACK_BUTTON_PRESS];
+    UIButton* backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backButton setImage:backButtonImg forState:UIControlStateNormal];
+    [backButton setImage:backButtonPressImg forState:UIControlStateHighlighted];
+    backButton.frame = CGRectMake(25,50, backButtonImg.size.width, backButtonImg.size.height);
     [backButton addTarget:self action:@selector(signUpBackButtonAction) forControlEvents:UIControlEventTouchUpInside];
     [self.signUpView addSubview:backButton];
     
-    UITextField *nameTextField = [[UITextField alloc] initWithFrame:CGRectMake(30, 80, 260, 40)];
+    UITextField *nameTextField = [[UITextField alloc] initWithFrame:CGRectMake(30, 95, 260, 40)];
     nameTextField.placeholder = @"姓名";
     nameTextField.borderStyle = UITextBorderStyleRoundedRect;
     nameTextField.keyboardType = UIKeyboardTypeDefault;
@@ -291,7 +297,7 @@
     nameTextField.delegate = self;
     [self.signUpView addSubview:nameTextField];
     
-    UITextField *emailTextField = [[UITextField alloc] initWithFrame:CGRectMake(30, 120, 260, 40)];
+    UITextField *emailTextField = [[UITextField alloc] initWithFrame:CGRectMake(30, 135, 260, 40)];
     emailTextField.placeholder = @"邮箱";
     emailTextField.borderStyle = UITextBorderStyleRoundedRect;
     emailTextField.keyboardType = UIKeyboardTypeEmailAddress;
@@ -303,7 +309,7 @@
     emailTextField.delegate = self;
     [self.signUpView addSubview:emailTextField];
     
-    UITextField *phoneTextField = [[UITextField alloc] initWithFrame:CGRectMake(30, 160, 260, 40)];
+    UITextField *phoneTextField = [[UITextField alloc] initWithFrame:CGRectMake(30, 175, 260, 40)];
     phoneTextField.placeholder = @"手机";
     phoneTextField.borderStyle = UITextBorderStyleRoundedRect;
     phoneTextField.keyboardType = UIKeyboardTypePhonePad;
@@ -315,7 +321,7 @@
     phoneTextField.delegate = self;
     [self.signUpView addSubview:phoneTextField];
     
-    UITextField *passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(30, 200, 260, 40)];
+    UITextField *passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(30, 215, 260, 40)];
     passwordTextField.placeholder = @"密码";
     passwordTextField.borderStyle = UITextBorderStyleRoundedRect;
     passwordTextField.keyboardType = UIKeyboardTypeDefault;

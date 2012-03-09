@@ -21,8 +21,10 @@
 @interface ActivityOfferMessageViewController : DataSourceViewController <UIScrollViewDelegate, PullToRefreshViewDelegate, AccountActivityDelegate>
 {
     CGRect _keyboardRect; // for keyboard avoiding
+    int touchBegan;       // for deal confirm button swiping
+    int originX;
+    BOOL alreadyConfirmedDeal;
 }
-
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) PullToRefreshView *pull;
@@ -37,10 +39,13 @@
 @property (strong, nonatomic) IBOutlet UIButton *userInfoButton;
 @property (strong, nonatomic) IBOutlet UIButton *priceButton;
 @property (strong, nonatomic) IBOutlet UITextView *descriptionTextField;
+@property (strong, nonatomic) IBOutlet UIButton *confirmDealButton;
+@property (strong, nonatomic) IBOutlet UIImageView *confirmImageView;
 
 - (IBAction)sellerInfoAction:(id)sender;
-- (IBAction)confirmDealAction:(id)sender;
+//- (IBAction)confirmDealAction:(id)sender;
 - (IBAction)sendMessageOrMapAction:(UIBarButtonItem *)sender;
+- (IBAction)buttonDraggingAction:(UIPanGestureRecognizer*)recognizer;
 
 @end
 

@@ -66,6 +66,8 @@ NSString * const UI_IMAGE_WEIBO_BUTTON = @"btn_sina_11.png";
 NSString * const UI_IMAGE_WEIBO_BUTTON_PRESS = @"btn_sina_22.png";
 NSString * const UI_IMAGE_SIGNUP_BUTTON = @"btn_signup_1.png";
 NSString * const UI_IMAGE_SIGNUP_BUTTON_PRESS = @"btn_signup_2.png";
+NSString * const UI_IMAGE_SIGNUP_BUTTON2 = @"btn_reg_07.png";
+NSString * const UI_IMAGE_SIGNUP_BUTTON_PRESS2 = @"btn_reg_14.png";
 NSString * const UI_IMAGE_SIGNIN_BUTTON = @"btn_login_1.png";
 NSString * const UI_IMAGE_SIGNIN_BUTTON_PRESS = @"btn_login_2.png";
 NSString * const UI_IMAGE_LOGIN_SKIP_TEXT = @"skip.gif";
@@ -76,7 +78,7 @@ NSString * const UI_IMAGE_LOGIN_BUTTON_PRESS = @"btn_log2.png";
 NSString * const UI_IMAGE_LOGIN_FORGOT_PASS = @"forgetpw.gif";
 NSString * const UI_IMAGE_LOGIN_FORM_BACKGROUND = @"log_bgwithline1.png";
 NSString * const UI_IMAGE_LOGIN_LABEL = @"button_login_label.png";
-
+NSString * const UI_IMAGE_SIGUP_LABEL = @"button_signup_label.png";
 
 NSString * const UI_IMAGE_BACK_BUTTON = @"iphone_03.png";
 NSString * const UI_IMAGE_BACK_BUTTON_PRESS = @"iphone_21.png";
@@ -94,6 +96,10 @@ NSString * const UI_IMAGE_ACTIVITY_SHARE_BUTTON = @"iphone_55.png";
 NSString * const UI_IMAGE_ACTIVITY_SHARE_BUTTON_PRESS = @"iphone_56.png";
 NSString * const UI_IMAGE_ACTIVITY_PRICE_BG = @"offer_pricebg.png";
 NSString * const UI_IMAGE_ACTIVITY_TITLE = @"wodehuodong_shadow.png";
+NSString * const UI_IMAGE_ACTIVITY_NOTE_POST = @"note1.png";
+NSString * const UI_IMAGE_ACTIVITY_NOTE_BROWSE = @"note2.png";
+NSString * const UI_IMAGE_ACTIVITY_ACCEPT_BUTTON = @"accept_1.png";
+NSString * const UI_IMAGE_ACTIVITY_ACCEPT_BUTTON_PRESS = @"accept_2.png";
 
 NSString * const UI_IMAGE_BROWSE_POST_BUTTON = @"post_btn.png";
 NSString * const UI_IMAGE_BROWSE_POST_SLOGAN = @"post_slogan.png";
@@ -115,4 +121,8 @@ NSString * const UI_IMAGE_SEND_MESSAGE_PRICE_PRESS = @"iphone_41.png";
 NSString * const UI_IMAGE_PRICE_BACKGROUND = @"price_bg.png";
 NSString * const UI_IMAGE_USER_INFO_BUTTON_DARK = @"iphone_33.png";
 NSString * const UI_IMAGE_USER_INFO_BUTTON_GREEN = @"iphone_39.png";
+
+NSString * const UI_IMAGE_POST_SEND_BUTTON = @"btn_big_90.png";
+NSString * const UI_IMAGE_POST_SEND_BUTTON_PRESS = @"btn_big_93.png";
+
 @end
