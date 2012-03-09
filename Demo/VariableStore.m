@@ -161,4 +161,15 @@
   self.settings = [[Settings alloc] initWithDictionary:dict];
 }
 
+- (NSMutableDictionary *)getDefaultCriteria
+{
+  NSString *latlng = [NSString stringWithFormat:@"%+.6f,%+.6f", 
+                      self.location.coordinate.latitude, 
+                      self.location.coordinate.longitude]; 
+  
+  return [NSMutableDictionary dictionaryWithObjectsAndKeys:latlng, @"center",
+                                      @"10", @"radius",
+                                      nil];
+}
+
 @end

@@ -25,6 +25,7 @@
 	//  Reloading var should really be your tableviews datasource
 	//  Putting it here for demo purposes 
 	BOOL _reloading;
+  BOOL _searching;
 }
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *browseSegment;

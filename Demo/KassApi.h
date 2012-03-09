@@ -62,5 +62,6 @@
 - (void)requestFailed:(ASIHTTPRequest *)request;
 
 + (NSData *)loadSettings;
++ (NSData *)getListings:(NSDictionary *)dict;
 
 @end
