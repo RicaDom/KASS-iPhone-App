@@ -309,4 +309,46 @@
 
 }
 
++ (void)showErrorAlert:(NSString *)message:(id)delegate
+{
+  UIAlertView *alert = [[UIAlertView alloc] init];
+	[alert setTitle:UI_LABEL_ERROR];
+	[alert setMessage:message];
+  [alert setDelegate:delegate];
+  [alert addButtonWithTitle:UI_LABEL_CONFIRM];
+  [alert show];
+}
+
++ (void)showErrorMessageAlert:(NSDictionary *)errors:(id)delegate
+{
+  NSString *errorMsgs = nil;
+  NSString *errorKey  = nil;
+  
+  errorMsgs = [errors valueForKey:@"code"];
+  if ( errorMsgs ){
+    [ViewHelper showErrorAlert:ERROR_MSG_CONNECTION_FAILURE:delegate]; 
+    return;
+  }
+  
+  for (NSString *k in errors) {
+    errorKey  = k;
+    errorMsgs = [errors valueForKey:errorKey];
+    break;
+  }
+  
+  if ( !errorMsgs || !errorKey ) { return; }
+  
+  if ( [errorMsgs isKindOfClass:NSArray.class]) {
+    NSArray *errorArray = (NSArray *)errorMsgs;
+    if ([errorArray count] > 0) {
+      NSString *err = [[NSString alloc] initWithFormat:@"%@ %@", errorKey, [errorArray objectAtIndex:0]];
+      [ViewHelper showErrorAlert:err:delegate]; 
+    }
+  }else if ( [errorMsgs isKindOfClass:NSString.class] ){ 
+    NSString *err = [[NSString alloc] initWithFormat:@"%@ %@", errorKey, errorMsgs];
+    [ViewHelper showErrorAlert:err:delegate]; 
+  }
+
+}
+
 @end

@@ -47,6 +47,13 @@ NSString * const UI_LABEL_OFFER_PENDING = @"等待确认";
 
 NSString * const UI_LABEL_ERROR   = @"错误";
 NSString * const UI_LABEL_DISMISS = @"取消";
+NSString * const UI_LABEL_CONFIRM = @"确定";
+
+NSInteger const VALIDE_USER_NAME_LENGTH_MIN = 6;
+NSInteger const VALIDE_USER_NAME_LENGTH_MAX = 118;
+NSInteger const VALIDE_USER_PHONE_LENGTH    = 11;
+
+NSString * const ERROR_MSG_CONNECTION_FAILURE = @"网络连接失败";
 
 NSString * const OFFER_STATE_ACCEPTED = @"accepted";
 NSString * const OFFER_STATE_REJECTED = @"rejected";

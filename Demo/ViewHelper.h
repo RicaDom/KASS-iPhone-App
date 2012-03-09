@@ -29,4 +29,7 @@
 + (void) buildListItemNoOffersCell:(ListItem *)item:(ListingTableCell *)cell;
 + (void) buildListItemExpiredCell:(ListItem *)item:(ListingTableCell *)cell;
 
++ (void)showErrorAlert:(NSString *)message:(id)delegate;
++ (void)showErrorMessageAlert:(NSDictionary *)errors:(id)delegate;
+
 @end

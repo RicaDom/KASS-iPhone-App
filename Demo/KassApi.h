@@ -54,6 +54,7 @@
 - (void)getPrivatePub;
 - (void)sendIphoneToken:(NSDictionary *)dict;
 
+- (void)signUp:(NSDictionary *)dict;
 - (void)login:(NSDictionary *)dict;
 - (void)logout;
 
@@ -61,5 +62,6 @@
 - (void)requestFailed:(ASIHTTPRequest *)request;
 
 + (NSData *)loadSettings;
++ (NSData *)getListings:(NSDictionary *)dict;
 
 @end

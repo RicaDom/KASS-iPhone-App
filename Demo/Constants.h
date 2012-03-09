@@ -66,6 +66,13 @@ extern NSString * const NO_MESSAGE_TO_MESSAGE_VIEW_NOTIFICATION;
 
 extern NSString * const UI_LABEL_ERROR;
 extern NSString * const UI_LABEL_DISMISS;
+extern NSString * const UI_LABEL_CONFIRM;
+
+extern NSInteger const VALIDE_USER_NAME_LENGTH_MIN;
+extern NSInteger const VALIDE_USER_NAME_LENGTH_MAX;
+extern NSInteger const VALIDE_USER_PHONE_LENGTH;
+
+extern NSString * const ERROR_MSG_CONNECTION_FAILURE;
 
 // UI image
 extern NSString * const POPUP_IMAGE_NEW_POST_SUCCESS;

@@ -42,6 +42,7 @@ typedef enum {
 - (void) accountLogin:(NSString *)email:(NSString *)password;
 - (void) logout;
 - (BOOL) isSameUser:(NSString *)userId;
+- (void) accountSignUp:(NSDictionary *)dict;
 
 - (void)weiboShare:(ListItem *)listItem;
 - (void)weiboDidShare;
@@ -80,5 +81,11 @@ typedef enum {
 //// model helper methods
 - (BOOL)hasListItem:(ListItem *)listItem;
 - (NSString*)stringFromDictionary:(NSDictionary*)info;
++ (BOOL)isEmailValid:(NSString *)email;
++ (BOOL)isNameValid:(NSString *)name;
++ (BOOL)isPhoneValid:(NSString *)phone;
+
+- (NSDictionary *)validate;
+
 
 @end

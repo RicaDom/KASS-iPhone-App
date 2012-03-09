@@ -32,7 +32,11 @@
 - (void)getListingsMostPrice:(NSMutableDictionary *)dict;
 - (void)getListingsMostPriceFinished:(NSData *)data;
 
-
+- (void)requestFailed:(NSDictionary *)errors;
 - (BOOL)manageObj:(id<HJMOUser>)user;
+
+- (void)getListingsBySearch:(NSMutableDictionary *)dictionary:(NSString *)search;
+- (void)getListingsBySearchFinished:(NSData *)data;
+- (NSDictionary *)getListingsBySearchSynchronously:(NSMutableDictionary *)dictionary:(NSString *)search;
 
 @end

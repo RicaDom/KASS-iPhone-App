@@ -21,12 +21,15 @@
 @property (nonatomic,retain,readonly) NSString* phone;
 @property NSInteger iphone_token_present;
 
+- (id)initWithDictionary:(NSDictionary *)dict;
 - (id)initWithEmailAndPassword:(NSString*)email:(NSString *)password;
 - (id)initWithWeiboEncodedData:(NSString*)encode;
 
 - (void)loginFinished:(NSData *)data;
 - (void)logoutFinished:(NSData *)data;
+- (void)signupFinished:(NSData *)data;
 - (void)login;
+- (void)signup;
 - (void)logout;
 - (BOOL)isUserLoggedIn;
 

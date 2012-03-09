@@ -140,13 +140,8 @@
 - (void)locateMeFinished
 {
   DLog(@"BrowseTableViewController::locateMeFinished ");
-  NSString *latlng = [NSString stringWithFormat:@"%+.6f,%+.6f", 
-                      VariableStore.sharedInstance.location.coordinate.latitude, 
-                      VariableStore.sharedInstance.location.coordinate.longitude]; 
   
-  NSMutableDictionary * dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latlng, @"center",
-                                      @"10", @"radius",
-                                      nil];
+  NSMutableDictionary * dictionary = [VariableStore.sharedInstance getDefaultCriteria];
   
   if ( self.isNearbyTabSelected ) {
     
@@ -180,6 +175,7 @@
 - (void)viewDidLoad
 {
     DLog(@"BrowseTableViewController::viewDidLoad ");
+    _searching = FALSE;
     [super viewDidLoad];
     [self setupArray];
     
@@ -397,58 +393,49 @@
     }
 }
 
-#pragma mark -
-#pragma mark Content Filtering
-
-//Loading sample data, for TESTING ONLY!
-- (void) initListingsData {
-    ListItem *item = [ListItem new];
-    [item setTitle:@"求购2012年东方卫视跨年演唱会门票"];
-    [item setDescription:@"听说有很多明星，阵容强大啊，求门票啊~~ 听说有很多明星，阵容强大啊，求门票啊~~ 听说有很多明星，阵容强大啊，求门票啊~~"];
-    item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
-                     [[NSNumber numberWithFloat:89.75f] decimalValue]];
-    
-    NSDateComponents *comps = [[NSDateComponents alloc] init];
-    [comps setDay:22];
-    [comps setMonth:1];
-    [comps setYear:2012];
-    item.postedDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
-    
-    item.postDuration = [NSNumber numberWithInt:172800];
-    [self.filteredListContent addObject:item];
-    
-    item = [ListItem new];
-    [item setTitle:@"什么都不想吃了……给我找辆车让我回家吧"];
-    [item setDescription:@"什么都不想吃了……给我找辆车让我回家吧 什么都不想吃了……给我找辆车让我回家吧 什么都不想吃了……给我找辆车让我回家吧"];
-    
-    [comps setDay:29];
-    [comps setMonth:1];
-    [comps setYear:2012];
-    item.postedDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
-    
-    item.postDuration = [NSNumber numberWithInt:43200];
-    item.askPrice = [NSDecimalNumber decimalNumberWithDecimal:
-                     [[NSNumber numberWithFloat:18.55f] decimalValue]];
-    
-    [self.filteredListContent addObject:item];
-    
-    DLog(@"filtered content: %@, number: %d", self.filteredListContent, [self.filteredListContent count]);
+- (void)appRequestFailed:(NSDictionary *)errors
+{
+  DLog(@"BrowseTableViewController::appRequestFailed:errors");
+  [super appRequestFailed:errors];
+  _searching = FALSE;
 }
 
+- (void)appDidGetListingsBySearch:(NSDictionary *)dict
+{
+  DLog(@"BrowseTableViewController::appDidGetListingsBySearch:dict=%@", dict);
+  
+  Listing *listing = [[Listing alloc] initWithDictionary:dict];
+  NSMutableArray *listItems = [listing listItems];
+  
+  for (int i=0; i<[listItems count]; i++) {
+    ListItem *item = (ListItem *)[listItems objectAtIndex:i];
+    [self.filteredListContent addObject:item];
+  }
+  
+  _searching = FALSE;
+  [self.searchDisplayController.searchResultsTableView reloadData];
+}
 
-#pragma mark - TODO - based on searchText, server should return a list of results 
 
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
-	/*
-	 Update the filtered array based on the search text and scope.
-	 */
-	
+//  [self.filteredListContent removeAllObjects];
+//  [self initListingsData];
+  
+  if (_searching) { DLog(@"BrowseTableViewController::filterContentForSearchText:searching ... "); return; }
+  
+  searchText = [searchText stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+  
+  if ([searchText length] <= 0) { return; }
+  
+  DLog(@"BrowseTableViewController::filterContentForSearchText:q=%@,s=%@", searchText, scope);
+  
 	[self.filteredListContent removeAllObjects]; // First clear the filtered array.
-	[self initListingsData];
-
+  _searching = TRUE;
+	
+  [[self kassApp] getListingsBySearch:[VariableStore.sharedInstance getDefaultCriteria] :searchText];
+  
 }
-
 
 #pragma mark -
 #pragma mark UISearchDisplayController Delegate Methods
@@ -458,7 +445,7 @@
     [self filterContentForSearchText:searchString scope:
      [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
     
-    // Return YES to cause the search result table view to be reloaded.
+  // Return YES to cause the search result table view to be reloaded.
     return YES;
 }
 

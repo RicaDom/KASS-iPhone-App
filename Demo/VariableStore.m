@@ -89,6 +89,18 @@
   return YES;
 }
 
+
+- (BOOL) signUpAccount:(NSDictionary *)userInfo
+{
+  DLog(@"VariableStore::signUpAccount:userInfo=%@",userInfo);
+  if( !self.user ) self.user = [[User alloc] init];
+  if( !self.user.delegate ) self.user.delegate = _currentViewControllerDelegate;
+  
+  [self.user accountSignUp:userInfo];
+
+  return YES;
+}
+
 - (BOOL) signInWeibo
 {
   DLog(@"VariableStore::signInWeibo");
@@ -147,6 +159,17 @@
 {
   DLog(@"VariableStore::storeSettings:dict");
   self.settings = [[Settings alloc] initWithDictionary:dict];
+}
+
+- (NSMutableDictionary *)getDefaultCriteria
+{
+  NSString *latlng = [NSString stringWithFormat:@"%+.6f,%+.6f", 
+                      self.location.coordinate.latitude, 
+                      self.location.coordinate.longitude]; 
+  
+  return [NSMutableDictionary dictionaryWithObjectsAndKeys:latlng, @"center",
+                                      @"10", @"radius",
+                                      nil];
 }
 
 @end

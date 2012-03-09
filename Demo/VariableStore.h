@@ -50,12 +50,14 @@
 - (void)storeSettings:(NSDictionary *)dict;
 - (void)loadAndStoreSettings:(id<KassAppDelegate>)delegate;
 - (void) appendPostingItemToListings:(NSDictionary *)dict;
+- (NSMutableDictionary *) getDefaultCriteria;
 
 - (BOOL) isCurrentUser:(NSString *)userId;
 - (BOOL) isLoggedIn;
 - (BOOL) signInAccount:(NSString *)email:(NSString *)password;
 - (BOOL) signInWeibo;
 - (BOOL) signOut;
+- (BOOL) signUpAccount:(NSDictionary *)userInfo;
 - (CLLocation *)location;
 
 - (void) addToModelDict:(NSString *)controller:(NSDictionary *)model;
