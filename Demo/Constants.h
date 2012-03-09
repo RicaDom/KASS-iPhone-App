@@ -66,6 +66,7 @@ extern NSString * const NO_MESSAGE_TO_MESSAGE_VIEW_NOTIFICATION;
 
 extern NSString * const UI_LABEL_ERROR;
 extern NSString * const UI_LABEL_DISMISS;
+extern NSString * const UI_LABEL_CONFIRM;
 
 // UI image
 extern NSString * const POPUP_IMAGE_NEW_POST_SUCCESS;

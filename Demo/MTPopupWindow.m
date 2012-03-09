@@ -392,8 +392,10 @@
     NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:name,@"name",email,@"email",
                               password, @"password", phone, @"phone", nil];
   
-  if (!email || ![User isEmailValid:email]) {
-    [ViewHelper showErrorAlert:@"email不正确":self];
+  if (!email || !password || !name) {
+    [ViewHelper showErrorAlert:@"请填写完整信息" :self];
+  }else if (!email || ![User isEmailValid:email]) {
+    [ViewHelper showErrorAlert:@"Email不正确":self];
   }else{
     [[VariableStore sharedInstance] signUpAccount:userInfo];
     [[self.bigPanelView viewWithTag: kShadeViewTag] removeFromSuperview];    

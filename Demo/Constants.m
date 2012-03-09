@@ -47,6 +47,7 @@ NSString * const UI_LABEL_OFFER_PENDING = @"等待确认";
 
 NSString * const UI_LABEL_ERROR   = @"错误";
 NSString * const UI_LABEL_DISMISS = @"取消";
+NSString * const UI_LABEL_CONFIRM = @"确定";
 
 NSString * const OFFER_STATE_ACCEPTED = @"accepted";
 NSString * const OFFER_STATE_REJECTED = @"rejected";

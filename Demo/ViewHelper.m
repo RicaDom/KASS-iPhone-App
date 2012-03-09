@@ -315,7 +315,7 @@
 	[alert setTitle:UI_LABEL_ERROR];
 	[alert setMessage:message];
   [alert setDelegate:delegate];
-  [alert addButtonWithTitle:UI_LABEL_DISMISS];
+  [alert addButtonWithTitle:UI_LABEL_CONFIRM];
   [alert show];
 }
 
