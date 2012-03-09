@@ -262,9 +262,9 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     if ([[VariableStore sharedInstance] isLoggedIn]) {
-        self.greetingLabel.text = [@"Hey " stringByAppendingFormat:[VariableStore sharedInstance].user.name];
+        self.greetingLabel.text = [@"您好! " stringByAppendingFormat:[VariableStore sharedInstance].user.name];
     } else {
-        self.greetingLabel.text = @"Hey there!";
+        self.greetingLabel.text = @"您好!";
     }
 }
 

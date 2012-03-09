@@ -233,12 +233,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/MTPopupWindow.m"
-         timestampString = "352961885.404654"
+         timestampString = "352989741.013802"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "537"
-         endingLineNumber = "537"
-         landmarkName = "-closePopupWindow"
+         startingLineNumber = "519"
+         endingLineNumber = "519"
+         landmarkName = "-toSignInViewAction"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -247,11 +247,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/MTPopupWindow.m"
-         timestampString = "352961885.404654"
+         timestampString = "352989741.013802"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "574"
-         endingLineNumber = "574"
+         startingLineNumber = "556"
+         endingLineNumber = "556"
          landmarkName = "-closePopupWindowAnimate"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1491,7 +1491,21 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/MTPopupWindow.m"
-         timestampString = "352963087.441196"
+         timestampString = "352989696.212343"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "366"
+         endingLineNumber = "366"
+         landmarkName = "-signUpSubmitAction:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/MTPopupWindow.m"
+         timestampString = "352989696.212343"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "384"
@@ -1505,25 +1519,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/MTPopupWindow.m"
-         timestampString = "352963247.462329"
+         timestampString = "352989696.212343"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "402"
-         endingLineNumber = "402"
-         landmarkName = "-signUpSubmitAction:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Demo/MTPopupWindow.m"
-         timestampString = "352963251.196533"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "403"
-         endingLineNumber = "403"
+         startingLineNumber = "385"
+         endingLineNumber = "385"
          landmarkName = "-signUpSubmitAction:"
          landmarkType = "5">
       </FileBreakpoint>
