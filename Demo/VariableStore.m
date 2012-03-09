@@ -89,6 +89,18 @@
   return YES;
 }
 
+
+- (BOOL) signUpAccount:(NSDictionary *)userInfo
+{
+  DLog(@"VariableStore::signUpAccount:userInfo=%@",userInfo);
+  if( !self.user ) self.user = [[User alloc] init];
+  if( !self.user.delegate ) self.user.delegate = _currentViewControllerDelegate;
+  
+  [self.user accountSignUp:userInfo];
+
+  return YES;
+}
+
 - (BOOL) signInWeibo
 {
   DLog(@"VariableStore::signInWeibo");

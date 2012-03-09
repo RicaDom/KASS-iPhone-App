@@ -113,6 +113,13 @@
   DLog(@"KassApi::deleteData::startAsynchronous=%@", url);
 }
 
+- (void)signUp:(NSDictionary *)dict
+{
+  DLog(@"KassApi::signUp:dict=%@", dict);
+  _url = [NSString stringWithFormat:@"http://%s/v1/account", HOST];
+  [self postData:_url:dict];  
+}
+
 - (void)createListing:(NSDictionary *)dict
 {
   DLog(@"KassApi::createListing:dict=%@", dict);

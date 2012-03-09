@@ -56,6 +56,7 @@
 - (BOOL) signInAccount:(NSString *)email:(NSString *)password;
 - (BOOL) signInWeibo;
 - (BOOL) signOut;
+- (BOOL) signUpAccount:(NSDictionary *)userInfo;
 - (CLLocation *)location;
 
 - (void) addToModelDict:(NSString *)controller:(NSDictionary *)model;

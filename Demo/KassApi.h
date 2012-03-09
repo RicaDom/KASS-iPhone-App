@@ -54,6 +54,7 @@
 - (void)getPrivatePub;
 - (void)sendIphoneToken:(NSDictionary *)dict;
 
+- (void)signUp:(NSDictionary *)dict;
 - (void)login:(NSDictionary *)dict;
 - (void)logout;
 

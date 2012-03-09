@@ -10,6 +10,7 @@
 #import "MTPopupWindow.h"
 #import "UIView+ViewController.h"
 #import "SFHFKeychainUtils.h"
+#import "ViewHelper.h"
 
 #define kShadeViewTag 1000
 
@@ -388,13 +389,16 @@
     }
     NSLog(@"Sign Up Info: %@ \n %@ \n %@ \n %@", name, email, phone, password);
     
-    //TODO - Validation
-
-//    if (log in successful) {
-//        .....
-//    }
+    NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:name,@"name",email,@"email",
+                              password, @"password", phone, @"phone", nil];
+  
+  if (!email || ![User isEmailValid:email]) {
+    [ViewHelper showErrorAlert:@"email不正确":self];
+  }else{
+    [[VariableStore sharedInstance] signUpAccount:userInfo];
     [[self.bigPanelView viewWithTag: kShadeViewTag] removeFromSuperview];    
     [self performSelector:@selector(closePopupWindowAnimate) withObject:nil afterDelay:0.1];
+  }
 }
 
 -(void)signInSubmitAction:(UIButton*)sender

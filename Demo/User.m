@@ -247,6 +247,17 @@
   [account login];
 }
 
+- (void) accountSignUp:(NSDictionary *)dict
+{
+  if (account) {account = nil; }
+  account = [[Account alloc]initWithDictionary:dict];
+  account.delegate = self;
+  DLog(@"User::accountLogin:account=%@,delegate=%@", account, _delegate);
+  if( [_delegate respondsToSelector:@selector(accountRequestStarted)] )
+    [_delegate accountRequestStarted];
+  [account signup];
+}
+
 - (void) accountWeiboLoginRequest:(NSString *)encode
 {
   if (account) {account = nil; }
@@ -545,6 +556,13 @@
 - (BOOL) isSameUser:(NSString *)userId
 {
   return userId != nil && [userId isEqualToString:self.userId];
+}
+
++ (BOOL) isEmailValid: (NSString *) candidate {
+  NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"; 
+  NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex]; 
+  
+  return [emailTest evaluateWithObject:candidate];
 }
 
 @end
