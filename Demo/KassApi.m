@@ -223,17 +223,23 @@
   [self getData:_url];
 }
 
-- (void)getListings:(NSDictionary *)dict
++ (NSString *)getListingUrl:(NSDictionary *)dict
 {
-  _url = [NSString stringWithFormat:@"http://%s/v1/listings", HOST];
+  NSString *url = [NSString stringWithFormat:@"http://%s/v1/listings", HOST];
   NSString *params = @"";
   for (id key in dict){
     NSString *param = [NSString stringWithFormat:@"%@=%@", key, [dict objectForKey:key]];
     params = params == @"" ? param : [NSString stringWithFormat:@"%@&%@", params, param];
   }
   if(params != @""){ 
-    _url = [NSString stringWithFormat:@"%@?%@", _url, params];
+    url = [NSString stringWithFormat:@"%@?%@", url, params];
   }
+  return url;
+}
+
+- (void)getListings:(NSDictionary *)dict
+{
+  _url = [KassApi getListingUrl:dict];
   [self getData:_url];
 }
 
@@ -327,6 +333,12 @@
 {
   DLog(@"KassApiKlass::loadSettings");
   return [KassApi getData:[NSString stringWithFormat:@"http://%s/v1/settings", HOST]]; 
+}
+
++ (NSData *)getListings:(NSDictionary *)dict
+{
+  NSString *url = [self getListingUrl:dict];
+  return [self getData:url];
 }
 
 + (NSDictionary *)parseData:(NSData *)data

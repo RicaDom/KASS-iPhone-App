@@ -50,6 +50,7 @@
 - (void)storeSettings:(NSDictionary *)dict;
 - (void)loadAndStoreSettings:(id<KassAppDelegate>)delegate;
 - (void) appendPostingItemToListings:(NSDictionary *)dict;
+- (NSMutableDictionary *) getDefaultCriteria;
 
 - (BOOL) isCurrentUser:(NSString *)userId;
 - (BOOL) isLoggedIn;

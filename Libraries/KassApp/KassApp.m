@@ -119,6 +119,28 @@
     [_delegate appDidGetListingsMostPrice:dict];
 }
 
+- (void)getListingsBySearch:(NSMutableDictionary *)dictionary:(NSString *)search
+{
+  [dictionary setObject:search forKey:@"q"];
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getListingsBySearchFinished:"];
+  [ka getListings:dictionary];
+}
+
+- (NSDictionary *)getListingsBySearchSynchronously:(NSMutableDictionary *)dictionary:(NSString *)search
+{
+  [dictionary setObject:search forKey:@"q"];
+  return [KassApi parseData:[KassApi getListings:dictionary]];
+}
+
+- (void)getListingsBySearchFinished:(NSData *)data
+{
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"KassApp::getListingsBySearchFinished:dict");
+  
+  if( [_delegate respondsToSelector:@selector(appDidGetListingsBySearch:)] )
+    [_delegate appDidGetListingsBySearch:dict];
+}
+
 - (void)requestFailed:(NSDictionary *)errors
 {
   DLog(@"KassApp::requestFailed:delegate=%@", _delegate); 
