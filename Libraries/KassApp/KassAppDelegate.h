@@ -16,5 +16,6 @@
 - (void)appDidGetListingsNearby:(NSDictionary *)dict;
 - (void)appDidGetListingsRecent:(NSDictionary *)dict;
 - (void)appDidGetListingsMostPrice:(NSDictionary *)dict;
+- (void)appRequestFailed:(NSDictionary *)errors;
 
 @end

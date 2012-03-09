@@ -565,4 +565,14 @@
   return [emailTest evaluateWithObject:candidate];
 }
 
++ (BOOL)isNameValid:(NSString *)name
+{
+  return [name length] >= VALIDE_USER_NAME_LENGTH_MIN && [name length] <= VALIDE_USER_NAME_LENGTH_MAX;
+}
+
++ (BOOL)isPhoneValid:(NSString *)phone
+{
+  return [phone length] == VALIDE_USER_PHONE_LENGTH;
+}
+
 @end

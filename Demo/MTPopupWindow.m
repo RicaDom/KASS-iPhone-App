@@ -393,9 +393,13 @@
                               password, @"password", phone, @"phone", nil];
   
   if (!email || !password || !name) {
-    [ViewHelper showErrorAlert:@"请填写完整信息" :self];
-  }else if (!email || ![User isEmailValid:email]) {
+    [ViewHelper showErrorAlert:@"用户信息不正确" :self];
+  }else if (![User isEmailValid:email]) {
     [ViewHelper showErrorAlert:@"Email不正确":self];
+  }else if (![User isNameValid:name]) {
+    [ViewHelper showErrorAlert:@"用户名不正确":self];
+  }else if (![User isPhoneValid:phone]) {
+    [ViewHelper showErrorAlert:@"手机不正确":self];
   }else{
     [[VariableStore sharedInstance] signUpAccount:userInfo];
     [[self.bigPanelView viewWithTag: kShadeViewTag] removeFromSuperview];    

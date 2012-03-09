@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "AccountActivityDelegate.h"
+#import "KassAppDelegate.h"
 
-@interface UIViewController (ActivityIndicate) <AccountActivityDelegate>
+@interface UIViewController (ActivityIndicate) <AccountActivityDelegate, KassAppDelegate>
 
 - (void) showLoadingIndicator;
 - (void) showIndicator:(NSString *)msg;

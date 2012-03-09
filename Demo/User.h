@@ -82,6 +82,10 @@ typedef enum {
 - (BOOL)hasListItem:(ListItem *)listItem;
 - (NSString*)stringFromDictionary:(NSDictionary*)info;
 + (BOOL)isEmailValid:(NSString *)email;
++ (BOOL)isNameValid:(NSString *)name;
++ (BOOL)isPhoneValid:(NSString *)phone;
+
+- (NSDictionary *)validate;
 
 
 @end

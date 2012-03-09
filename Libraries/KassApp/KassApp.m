@@ -119,5 +119,13 @@
     [_delegate appDidGetListingsMostPrice:dict];
 }
 
+- (void)requestFailed:(NSDictionary *)errors
+{
+  DLog(@"KassApp::requestFailed:delegate=%@", _delegate); 
+  
+  if( [_delegate respondsToSelector:@selector(appRequestFailed:)] )
+    [_delegate appRequestFailed:errors];
+}
+
 
 @end
