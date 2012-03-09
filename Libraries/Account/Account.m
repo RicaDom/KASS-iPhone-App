@@ -31,6 +31,17 @@
 	return self;
 }
 
+- (id)initWithDictionary:(NSDictionary *)dict
+{
+  if (self = [super init]) {
+		_email    = [dict valueForKey:@"email"];
+    _password = [dict valueForKey:@"password"];
+    _phone    = [dict valueForKey:@"phone"];
+    _userName = [dict valueForKey:@"name"];
+	}
+	return self;
+}
+
 - (void)requestFailed:(NSDictionary *)error
 {
   DLog(@"Account::requestFailed:error=%@", error);
@@ -68,6 +79,25 @@
     }
   }
 
+}
+
+- (void)signup
+{
+  DLog(@"Account::signup");
+  NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                            _email, @"email",
+                            _password, @"password",
+                            _phone, @"phone_number",
+                            _userName, @"name",
+                            nil];
+  
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"signupFinished:"];
+  [ka signUp:userInfo];
+}
+
+- (void)signupFinished:(NSData *)data
+{
+  [self loginFinished:data];
 }
 
 - (void)login
