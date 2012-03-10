@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Message.h"
 #import "ActiveModel.h"
+#import "Location.h"
 
 @interface Offer : ActiveModel
 
@@ -25,6 +26,7 @@
 @property (nonatomic, strong) NSString *description;
 @property (nonatomic, strong) NSString *buyerId;
 @property (nonatomic, strong) NSDate *listItemEndedAt;
+@property (nonatomic, strong) Location *listItemLocation;
 
 
 //// model helper methods

@@ -17,10 +17,7 @@
 #import "CommonView.h"
 #import "DataSourceViewController.h"
 
-@interface BrowseItemViewController : DataSourceViewController <UIScrollViewDelegate, PullToRefreshViewDelegate, AccountActivityDelegate>
-{
-    CGRect _keyboardRect; // for keyboard avoiding
-}
+@interface BrowseItemViewController : DataSourceViewController <UIScrollViewDelegate,PullToRefreshViewDelegate, AccountActivityDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *itemTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *itemPriceLabel;
@@ -38,7 +35,8 @@
 @property (strong, nonatomic) IBOutlet UIView *topView;
 @property (strong, nonatomic) IBOutlet UIButton *priceButton;
 @property (strong, nonatomic) IBOutlet UIButton *userInfoButton;
-@property (strong, nonatomic) IBOutlet UITextView *descriptionTextField;
+@property (strong, nonatomic) IBOutlet UIButton *mapButton;
+@property (strong, nonatomic) IBOutlet UITextView *descriptionTextView;
 
 - (IBAction)navigationButtonAction:(id)sender;
 

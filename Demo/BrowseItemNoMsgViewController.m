@@ -14,7 +14,7 @@
 @implementation BrowseItemNoMsgViewController
 
 @synthesize messageTextField = _messageTextField;
-@synthesize descriptionTextField = _descriptionTextField;
+@synthesize descriptionTextView = _descriptionTextView;
 @synthesize currentItem = _currentItem;
 @synthesize navigationButton = _navigationButton;
 @synthesize listingTitle = _listingTitle;
@@ -64,7 +64,7 @@
   self.currentItem = [[ListItem alloc] initWithDictionary:dict];
   
   self.listingTitle.text = self.currentItem.title;
-  self.descriptionTextField.text = self.currentItem.description;
+  self.descriptionTextView.text = self.currentItem.description;
   self.listingPrice.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
   self.offerPrice.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
   self.listingDate.text = [self.currentItem getTimeLeftTextlong];       
@@ -97,6 +97,7 @@
     self.pull = [[PullToRefreshView alloc] initWithScrollView:self.scrollView];
     [self.pull setDelegate:self];
     [self.scrollView addSubview:self.pull];
+  [self.descriptionTextView setDelegate:self];
     
     UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]
                                 initWithTitle:UI_BUTTON_LABEL_BACK
@@ -138,6 +139,16 @@
     }
 }
 
+// KeyboardSliderDelegate
+- (void) keyboardMainViewMovedDown{
+  self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_BACK;
+  self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_MAP;  
+}
+- (void) keyboardMainViewMovedUp{
+  self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_CANCEL;
+  self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_SEND; 
+}
+
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"changedPriceSegue"]) {
         UINavigationController *navigationController = segue.destinationViewController;
@@ -155,7 +166,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:CHANGED_PRICE_NOTIFICATION object:nil];
     [self setPriceButton:nil];
     [self setUserInfoButton:nil];
-    [self setDescriptionTextField:nil];
+    [self setDescriptionTextView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -255,8 +266,8 @@
 - (void)keyboardWillShow:(NSNotification *)notification
 {
     //keyboard will be shown now. depending for which textfield is active, move up or move down the view appropriately
-    _keyboardRect = [[[notification userInfo] objectForKey:_UIKeyboardFrameEndUserInfoKey] CGRectValue];
-  [self registerKeyboardRect:_keyboardRect];
+  CGRect  keyboardRect = [[[notification userInfo] objectForKey:_UIKeyboardFrameEndUserInfoKey] CGRectValue];
+  [self registerKeyboardSliderRect:keyboardRect];
     
     if ([self.messageTextField isFirstResponder] && self.mainView.frame.origin.y >= 0)
     {

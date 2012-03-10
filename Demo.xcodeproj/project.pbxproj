@@ -49,6 +49,7 @@
 		77506A8714C9164F000494E5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 77506A8614C9164F000494E5 /* libz.dylib */; };
 		7760FCC91507473F008D40D6 /* ActiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7760FCC81507473E008D40D6 /* ActiveModel.m */; };
 		7760FCD515074E6B008D40D6 /* UIViewController+SegueActiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7760FCD415074E6B008D40D6 /* UIViewController+SegueActiveModel.m */; };
+		77786AE9150AFB5F007DC016 /* RefreshViewPuller.m in Sources */ = {isa = PBXBuildFile; fileRef = 77786AE8150AFB5F007DC016 /* RefreshViewPuller.m */; };
 		777C903714E4AA0A002A80B0 /* userInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 777C903614E4AA0A002A80B0 /* userInfo.json */; };
 		777E4D1914DB92D7002B40C3 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 777E4D1714DB8D97002B40C3 /* SFHFKeychainUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		777E4D2014DBB7ED002B40C3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777E4D1F14DBB7ED002B40C3 /* Security.framework */; };
@@ -369,6 +370,9 @@
 		7760FCD315074E6B008D40D6 /* UIViewController+SegueActiveModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SegueActiveModel.h"; sourceTree = "<group>"; };
 		7760FCD415074E6B008D40D6 /* UIViewController+SegueActiveModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SegueActiveModel.m"; sourceTree = "<group>"; };
 		7765E88B14E12CBC00F89F60 /* AccountActivityDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountActivityDelegate.h; sourceTree = "<group>"; };
+		77786AE7150AFB5F007DC016 /* RefreshViewPuller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshViewPuller.h; sourceTree = "<group>"; };
+		77786AE8150AFB5F007DC016 /* RefreshViewPuller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshViewPuller.m; sourceTree = "<group>"; };
+		77786AEB150AFFA7007DC016 /* KeyboardSliderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardSliderDelegate.h; sourceTree = "<group>"; };
 		777C903614E4AA0A002A80B0 /* userInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = userInfo.json; path = Resources/userInfo.json; sourceTree = "<group>"; };
 		777E4D1614DB8D97002B40C3 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
 		777E4D1714DB8D97002B40C3 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
@@ -1530,6 +1534,9 @@
 				E5B3AC7614EBB71E00CD4C67 /* EGORefreshTableHeaderView.m */,
 				7789C25415005A2F00388247 /* KeyboardSlider.h */,
 				7789C25515005A2F00388247 /* KeyboardSlider.m */,
+				77786AE7150AFB5F007DC016 /* RefreshViewPuller.h */,
+				77786AE8150AFB5F007DC016 /* RefreshViewPuller.m */,
+				77786AEB150AFFA7007DC016 /* KeyboardSliderDelegate.h */,
 			);
 			name = ActionLibs;
 			sourceTree = "<group>";
@@ -1938,6 +1945,7 @@
 				E5D84A3B15073CFC00EF17E4 /* CommonView.m in Sources */,
 				7760FCC91507473F008D40D6 /* ActiveModel.m in Sources */,
 				7760FCD515074E6B008D40D6 /* UIViewController+SegueActiveModel.m in Sources */,
+				77786AE9150AFB5F007DC016 /* RefreshViewPuller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,7 +14,6 @@
 #import "ItemViewController.h"
 #import "VariableStore.h"
 #import "ListingTableCell.h"
-#import "PullRefreshTableViewController.h"
 #import "AccountActivityDelegate.h"
 #import "BrowseItemViewController.h"
 #import "BuyerPayViewController.h"

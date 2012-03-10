@@ -12,7 +12,6 @@
 #import "Offers.h"
 #import "Message.h"
 #import "OfferTableCell.h"
-#import "PullRefreshTableViewController.h"
 #import "Constants.h"
 #import "EGORefreshTableHeaderView.h"
 #import "ActivityOfferMessageViewController.h"

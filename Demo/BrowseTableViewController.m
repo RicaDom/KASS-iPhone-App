@@ -166,8 +166,8 @@
     // as well.
     
     if ([[notification name] isEqualToString:NO_MESSAGE_TO_MESSAGE_VIEW_NOTIFICATION]) {
-      DLog(@"BrowseTableViewController::receivedFromNOMessageNotification");
       NSDictionary *json = [notification object];
+      DLog(@"BrowseTableViewController::receivedFromNOMessageNotification:json=%@", json);
       [self performSegueWithModelJson:json:@"showBrowseItem":self];
     }
 }
