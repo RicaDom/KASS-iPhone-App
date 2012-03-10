@@ -10,6 +10,7 @@
 #import "UIViewController+ActivityIndicate.h"
 #import "UIViewController+KeyboardSlider.h"
 #import "UIViewController+SegueActiveModel.h"
+#import "UIViewController+ScrollViewRefreshPuller.h"
 
 @implementation BrowseItemNoMsgViewController
 
@@ -25,7 +26,6 @@
 @synthesize buttomView = _buttomView;
 @synthesize scrollView = _scrollView;
 @synthesize priceButton = _priceButton;
-@synthesize pull = _pull;
 @synthesize userInfoButton = _userInfoButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -43,17 +43,6 @@
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
-}
-
--(void)stopLoading
-{
-	[self.pull finishedLoading];
-}
-
-// called when the user pulls-to-refresh
-- (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view
-{
-  [self performSelector:@selector(stopLoading) withObject:nil afterDelay:2.0];	
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -94,11 +83,7 @@
     // init scroll view content size
     [self.scrollView setContentSize:CGSizeMake(_ScrollViewContentSizeX, self.scrollView.frame.size.height)];
     
-    self.pull = [[PullToRefreshView alloc] initWithScrollView:self.scrollView];
-    [self.pull setDelegate:self];
-    [self.scrollView addSubview:self.pull];
-  [self.descriptionTextView setDelegate:self];
-    
+  
     UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]
                                 initWithTitle:UI_BUTTON_LABEL_BACK
                                 style:UIBarButtonItemStyleBordered
@@ -139,7 +124,9 @@
     }
 }
 
-// KeyboardSliderDelegate
+/**
+  Keyboard Slider Delegate
+ */
 - (void) keyboardMainViewMovedDown{
   self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_BACK;
   self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_MAP;  
@@ -147,6 +134,13 @@
 - (void) keyboardMainViewMovedUp{
   self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_CANCEL;
   self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_SEND; 
+}
+
+/**
+ Scroll View Refresh Puller Delegate
+ */
+- (void)refreshing{
+  [self loadDataSource];
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -288,7 +282,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
   // register for keyboard view slider
+  [self registerScrollViewRefreshPuller:self.scrollView];
   [self registerKeyboardSlider:_mainView :_scrollView :_buttomView];
+  [self registerKeyboardSliderTextView:_descriptionTextView];
   
     // register for keyboard notifications
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) 

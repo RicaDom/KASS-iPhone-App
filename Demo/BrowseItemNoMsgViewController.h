@@ -15,7 +15,7 @@
 #import "DataSourceViewController.h"
 #import "KassApp.h"
 
-@interface BrowseItemNoMsgViewController : DataSourceViewController <UIActionSheetDelegate, AccountActivityDelegate, UIScrollViewDelegate, PullToRefreshViewDelegate, KassAppDelegate>
+@interface BrowseItemNoMsgViewController : DataSourceViewController <UIActionSheetDelegate, AccountActivityDelegate, UIScrollViewDelegate, KassAppDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextView *descriptionTextView;
 @property (strong, nonatomic) ListItem *currentItem;
@@ -31,7 +31,6 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (strong, nonatomic) IBOutlet UIButton *priceButton;
-@property (strong, nonatomic) PullToRefreshView *pull;
 @property (strong, nonatomic) IBOutlet UIButton *userInfoButton;
 
 - (IBAction)navigationButtonAction:(id)sender;
