@@ -208,7 +208,7 @@
       DLog(@"BrowseItemNoMsgViewController::(IBAction)navigationButtonAction:createOffer:");
       NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                      self.offerPrice.text, @"price",
-                                     self.messageTextField.text, @"message",
+                                     self.messageTextField.text, @"with_message",
                                      self.currentItem.dbId, @"listing_id",nil];
       
       [self showLoadingIndicator];
