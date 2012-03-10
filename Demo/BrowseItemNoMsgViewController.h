@@ -16,11 +16,8 @@
 #import "KassApp.h"
 
 @interface BrowseItemNoMsgViewController : DataSourceViewController <UIActionSheetDelegate, AccountActivityDelegate, UIScrollViewDelegate, PullToRefreshViewDelegate, KassAppDelegate>
-{
-    CGRect _keyboardRect; // for keyboard avoiding
-}
 
-@property (strong, nonatomic) IBOutlet UITextView *descriptionTextField;
+@property (strong, nonatomic) IBOutlet UITextView *descriptionTextView;
 @property (strong, nonatomic) ListItem *currentItem;
 @property (weak, nonatomic) IBOutlet UITextField *messageTextField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *navigationButton;

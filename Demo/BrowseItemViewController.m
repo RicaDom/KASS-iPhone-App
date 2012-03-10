@@ -28,7 +28,9 @@
 @synthesize buttomView = _buttomView;
 @synthesize topView = _topView;
 @synthesize userInfoButton = _userInfoButton;
-@synthesize descriptionTextField = _descriptionTextField;
+@synthesize mapButton = _mapButton;
+
+@synthesize descriptionTextView = _descriptionTextView;
 @synthesize priceButton = _priceButton;
 @synthesize tpScrollView = _tpScrollView;
 @synthesize currentOffer = _currentOffer;
@@ -72,7 +74,7 @@
   [self stopLoading];
   
   self.itemTitleLabel.text = self.currentOffer.title;
-  self.descriptionTextField.text = self.currentOffer.description;
+  self.descriptionTextView.text = self.currentOffer.description;
   self.itemPriceLabel.text = [NSString stringWithFormat:@"%@", self.currentOffer.price];
   self.itemPriceChangedToLabel.text = [NSString stringWithFormat:@"%@", self.currentOffer.price];
   
@@ -118,6 +120,9 @@
     self.pull = [[PullToRefreshView alloc] initWithScrollView:self.scrollView];
     [self.pull setDelegate:self];
     [self.scrollView addSubview:self.pull];
+  
+    [_descriptionTextView setDelegate:self];
+  
     
     // navigation bar background color
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
@@ -146,6 +151,10 @@
     self.userInfoButton.frame = CGRectMake(self.userInfoButton.frame.origin.x, self.userInfoButton.frame.origin.y, userButtonImg.size.width, userButtonImg.size.height);
     [self.userInfoButton setImage:userButtonImg forState:UIControlStateNormal];
     [self.userInfoButton setImage:userButtonPressImg forState:UIControlStateSelected];
+  
+  UIImage *mapImg = [UIImage imageNamed:UI_IMAGE_BROWSE_MAP];
+  [self.mapButton setImage:mapImg forState:UIControlStateNormal];
+  self.mapButton.frame = CGRectMake(200, self.mapButton.frame.origin.y, mapImg.size.width+20, mapImg.size.height);
 }
 
 - (void) receivePriceChangedNotification:(NSNotification *) notification
@@ -174,8 +183,9 @@
     [self setTopView:nil];
     [self setPriceButton:nil];
     [self setUserInfoButton:nil];
-    [self setDescriptionTextField:nil];
-    [super viewDidUnload];
+    [self setDescriptionTextView:nil];
+  [super viewDidUnload];
+  [self setMapButton:nil];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -199,8 +209,19 @@
 
 - (IBAction)navigationButtonAction:(id)sender {
     if ([self.navigationButton.title isEqualToString:UI_BUTTON_LABEL_MAP]) {
-        [self performSegueWithIdentifier: @"dealMapModal" 
-                                  sender: self];
+
+      NSDictionary *listing = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             _currentOffer.title, @"title", _currentOffer.description, @"description", 
+                             _currentOffer.listingId, @"id", nil ];
+      
+      ListItem *listItem = [[ListItem alloc] initWithDictionary:listing];
+      listItem.location = _currentOffer.listItemLocation;
+      
+      VariableStore.sharedInstance.showOnMapListings = [[NSMutableArray alloc] initWithObjects:listItem, nil];
+      
+      [self performSegueWithIdentifier: @"dealMapModal" 
+                                sender: self];
+  
     } else if (self.navigationButton.title == UI_BUTTON_LABEL_SEND) {
       
       DLog(@"BrowseItemViewController::(IBAction)navigationButtonAction:modifyOffer:");
@@ -215,6 +236,17 @@
       [self hideKeyboardAndMoveViewDown];
     }
 }
+
+// KeyboardSliderDelegate
+- (void) keyboardMainViewMovedDown{
+  self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_BACK;
+  self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_MAP;  
+}
+- (void) keyboardMainViewMovedUp{
+  self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_CANCEL;
+  self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_SEND; 
+}
+
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"changedPriceSegue"]) {
@@ -245,8 +277,8 @@
 - (void)keyboardWillShow:(NSNotification *)notification
 {
     //keyboard will be shown now. depending for which textfield is active, move up or move down the view appropriately
-    _keyboardRect = [[[notification userInfo] objectForKey:_UIKeyboardFrameEndUserInfoKey] CGRectValue];
-  [self registerKeyboardRect:_keyboardRect];
+  CGRect keyboardRect = [[[notification userInfo] objectForKey:_UIKeyboardFrameEndUserInfoKey] CGRectValue];
+  [self registerKeyboardSliderRect:keyboardRect];
     
     if ([_messageTextField isFirstResponder] && self.mainView.frame.origin.y >= 0)
     {

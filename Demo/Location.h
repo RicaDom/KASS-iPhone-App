@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSDecimalNumber *longitude;
 
 - (id) initWithDictionary:(NSDictionary *) theDictionary;
+- (id) initWithArray:(NSArray *)latlng;
 - (CLLocation *) toCLLocation;
 - (NSString *) toString;
 
