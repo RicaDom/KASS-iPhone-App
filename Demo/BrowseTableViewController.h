@@ -18,13 +18,10 @@
 #import "BuyerPayViewController.h"
 #import "UIResponder+VariableStore.h"
 
-@interface BrowseTableViewController : UITableViewController <UISearchDisplayDelegate, UISearchBarDelegate, EGORefreshTableHeaderDelegate,LocateMeDelegate> {
-	
-	EGORefreshTableHeaderView *_refreshHeaderView;
+@interface BrowseTableViewController : UITableViewController <UISearchDisplayDelegate, UISearchBarDelegate,LocateMeDelegate> {
 	
 	//  Reloading var should really be your tableviews datasource
 	//  Putting it here for demo purposes 
-	BOOL _reloading;
   BOOL _searching;
 }
 

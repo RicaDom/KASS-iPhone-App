@@ -19,6 +19,7 @@
 
 - (BOOL)registerKeyboardSliderRect:(CGRect)keyboardRect;
 - (BOOL)registerKeyboardSliderTextView:(UITextView *)textView;
+- (void)unregisterKeyboardSlider;
 
 
 @end

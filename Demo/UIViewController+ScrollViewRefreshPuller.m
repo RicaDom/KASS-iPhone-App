@@ -31,5 +31,9 @@
   DLog(@"UIViewController+ScrollViewRefreshPuller:refreshingNotImplemented!!");
 }
 
+- (void)unregisterScrollViewRefreshPuller
+{
+  [ScrollViewRefreshPuller.currentPuller unregister];
+}
 
 @end

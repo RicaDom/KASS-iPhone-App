@@ -45,5 +45,10 @@
   return TRUE;
 }
 
+- (void)unregisterKeyboardSlider
+{
+  [KeyboardSlider.currentSlider unregiser];
+}
+
 
 @end

@@ -43,6 +43,15 @@ static KeyboardSlider *ks = nil;
   return TRUE; 
 }
 
+- (void)unregiser
+{
+  _scrollView   = nil;
+  _mainView     = nil;
+  _bottomView   = nil;
+  _delegate     = nil;
+  ks            = nil;
+}
+
 - (void)moveViewDown
 {
   if ( _state == KeyboardSliderViewIsDown ) { return; }
