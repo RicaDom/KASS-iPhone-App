@@ -29,6 +29,10 @@
 + (void) buildListItemNoOffersCell:(ListItem *)item:(ListingTableCell *)cell;
 + (void) buildListItemExpiredCell:(ListItem *)item:(ListingTableCell *)cell;
 
++ (void) buildMapButton:(UIButton *)button;
++ (void) buildBackButton:(UIButton *)button;
++ (void) buildUserInfoButton:(UIButton *)button;
+
 + (void)showErrorAlert:(NSString *)message:(id)delegate;
 + (void)showErrorMessageAlert:(NSDictionary *)errors:(id)delegate;
 

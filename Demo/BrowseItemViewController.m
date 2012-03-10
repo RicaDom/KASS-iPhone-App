@@ -134,15 +134,9 @@
     [CommonView setMessageWithPriceView:self.buttomView priceButton:self.priceButton messageField:self.messageTextField];
     
     // User info button
-    UIImage *userButtonImg = [UIImage imageNamed:UI_IMAGE_USER_INFO_BUTTON_GREEN];
-    UIImage *userButtonPressImg = [UIImage imageNamed:UI_IMAGE_USER_INFO_BUTTON_DARK];
-    self.userInfoButton.frame = CGRectMake(self.userInfoButton.frame.origin.x, self.userInfoButton.frame.origin.y, userButtonImg.size.width, userButtonImg.size.height);
-    [self.userInfoButton setImage:userButtonImg forState:UIControlStateNormal];
-    [self.userInfoButton setImage:userButtonPressImg forState:UIControlStateSelected];
-  
-  UIImage *mapImg = [UIImage imageNamed:UI_IMAGE_BROWSE_MAP];
-  [self.mapButton setImage:mapImg forState:UIControlStateNormal];
-  self.mapButton.frame = CGRectMake(200, self.mapButton.frame.origin.y, mapImg.size.width+20, mapImg.size.height);
+  [ViewHelper buildUserInfoButton:self.userInfoButton]; 
+  [ViewHelper buildMapButton:self.mapButton];
+
 }
 
 - (void) receivePriceChangedNotification:(NSNotification *) notification
@@ -195,22 +189,23 @@
   [self populateData:dict];
 }
 
-- (IBAction)navigationButtonAction:(id)sender {
-    if ([self.navigationButton.title isEqualToString:UI_BUTTON_LABEL_MAP]) {
-
-      NSDictionary *listing = [[NSDictionary alloc] initWithObjectsAndKeys:
-                             _currentOffer.title, @"title", _currentOffer.description, @"description", 
-                             _currentOffer.listingId, @"id", nil ];
-      
-      ListItem *listItem = [[ListItem alloc] initWithDictionary:listing];
-      listItem.location = _currentOffer.listItemLocation;
-      
-      VariableStore.sharedInstance.showOnMapListings = [[NSMutableArray alloc] initWithObjects:listItem, nil];
-      
-      [self performSegueWithIdentifier: @"dealMapModal" 
-                                sender: self];
+- (IBAction)mapButtonAction:(id)sender
+{
+  NSDictionary *listing = [[NSDictionary alloc] initWithObjectsAndKeys:
+                           _currentOffer.title, @"title", _currentOffer.description, @"description", 
+                           _currentOffer.listingId, @"id", nil ];
   
-    } else if (self.navigationButton.title == UI_BUTTON_LABEL_SEND) {
+  ListItem *listItem = [[ListItem alloc] initWithDictionary:listing];
+  listItem.location = _currentOffer.listItemLocation;
+  
+  VariableStore.sharedInstance.showOnMapListings = [[NSMutableArray alloc] initWithObjects:listItem, nil];
+  
+  [self performSegueWithIdentifier: @"dealMapModal" 
+                            sender: self];
+}
+
+- (IBAction)navigationButtonAction:(id)sender {
+    if (self.navigationButton.title == UI_BUTTON_LABEL_SEND) {
       
       DLog(@"BrowseItemViewController::(IBAction)navigationButtonAction:modifyOffer:");
       NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:

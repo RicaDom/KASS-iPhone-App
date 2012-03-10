@@ -16,21 +16,32 @@
 
 - (void) loadMapDemo {
 
+  NSMutableArray *items = 
+  VariableStore.sharedInstance.showOnMapListings ? VariableStore.sharedInstance.showOnMapListings : VariableStore.sharedInstance.nearBrowseListings;
+  
+  
   CLLocationCoordinate2D userCoordinate;
-  userCoordinate.latitude = VariableStore.sharedInstance.location.coordinate.latitude;
-  userCoordinate.longitude = VariableStore.sharedInstance.location.coordinate.longitude;
+  
+  if ( VariableStore.sharedInstance.locateMeManager.hasLocation ) {
+    userCoordinate.latitude = VariableStore.sharedInstance.location.coordinate.latitude;
+    userCoordinate.longitude = VariableStore.sharedInstance.location.coordinate.longitude;
+  }else if ( [items count] > 0 ){
+    ListItem *item = (ListItem *)[items objectAtIndex:0];
+    userCoordinate.latitude = [item.location.latitude doubleValue];
+    userCoordinate.longitude = [item.location.longitude doubleValue];
+  }else{
+    DLog(@"MapViewController::Set default location?"); 
+  }
   
   MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userCoordinate ,3000, 3000);
   [self.currentMap setRegion:region animated:YES];
   self.currentMap.scrollEnabled = YES;
   self.currentMap.zoomEnabled = YES;
 
-  NSMutableArray *items = 
-    VariableStore.sharedInstance.showOnMapListings ? VariableStore.sharedInstance.showOnMapListings : VariableStore.sharedInstance.nearBrowseListings;
   
   for(int i= 0; i < [items count]; i++){
 
-    ListItem *data = (ListItem *)[VariableStore.sharedInstance.nearBrowseListings objectAtIndex:i];
+    ListItem *data = (ListItem *)[items objectAtIndex:i];
 
     CLLocationCoordinate2D newCoord = { (CGFloat)[data.location.latitude floatValue], (CGFloat)[data.location.longitude floatValue] };
       
@@ -135,14 +146,12 @@
 }
 */
 
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
-    [self loadMapDemo];
-    [super viewDidLoad];
+  [super viewDidLoad];
+  [self loadMapDemo];
 }
-
 
 - (void)viewDidUnload
 {
