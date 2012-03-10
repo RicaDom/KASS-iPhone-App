@@ -18,5 +18,6 @@
 - (void)registerScrollView:(UIScrollView *)scrollView:(id<PullToRefreshViewDelegate>)delegate;
 - (void)finishedLoading;
 - (id<PullToRefreshViewDelegate>)delegate;
+- (void)unregister;
 
 @end

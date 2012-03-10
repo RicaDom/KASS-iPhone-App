@@ -35,4 +35,6 @@ typedef enum {
 - (void)moveViewUp;
 - (void)moveViewDown;
 
+- (void)unregiser;
+
 @end

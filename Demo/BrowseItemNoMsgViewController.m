@@ -293,6 +293,8 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+  [self unregisterScrollViewRefreshPuller];
+  [self unregisterKeyboardSlider];
     // unregister for keyboard notifications while not visible.
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil]; 
 }

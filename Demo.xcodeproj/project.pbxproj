@@ -95,6 +95,8 @@
 		77A195C314FF6DF60058C34F /* ListItem+ListItemHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A195C214FF6DF60058C34F /* ListItem+ListItemHelper.m */; };
 		77A195C614FF7D710058C34F /* Offer+OfferHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A195C514FF7D710058C34F /* Offer+OfferHelper.m */; };
 		77A195C914FF80E40058C34F /* BaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A195C814FF80E40058C34F /* BaseHelper.m */; };
+		77C15294150B63C700B3B106 /* TableViewRefreshPuller.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C15293150B63C700B3B106 /* TableViewRefreshPuller.m */; };
+		77C15298150B6B0A00B3B106 /* UIViewController+TableViewRefreshPuller.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C15297150B6B0A00B3B106 /* UIViewController+TableViewRefreshPuller.m */; };
 		77CD5FC514CA52780013B510 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CD5FC214CA52780013B510 /* Constants.m */; };
 		77CD5FC614CA52780013B510 /* VariableStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CD5FC414CA52780013B510 /* VariableStore.m */; };
 		77D566A915036A72003BA8DB /* settings.json in Resources */ = {isa = PBXBuildFile; fileRef = 77D566A815036A72003BA8DB /* settings.json */; };
@@ -450,6 +452,10 @@
 		77A195C514FF7D710058C34F /* Offer+OfferHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Offer+OfferHelper.m"; sourceTree = "<group>"; };
 		77A195C714FF80E40058C34F /* BaseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseHelper.h; sourceTree = "<group>"; };
 		77A195C814FF80E40058C34F /* BaseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseHelper.m; sourceTree = "<group>"; };
+		77C15292150B63C700B3B106 /* TableViewRefreshPuller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewRefreshPuller.h; sourceTree = "<group>"; };
+		77C15293150B63C700B3B106 /* TableViewRefreshPuller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewRefreshPuller.m; sourceTree = "<group>"; };
+		77C15296150B6B0A00B3B106 /* UIViewController+TableViewRefreshPuller.h */ = {isa = PBXFileReference; fileEncoding = 4; path = "UIViewController+TableViewRefreshPuller.h"; sourceTree = "<group>"; };
+		77C15297150B6B0A00B3B106 /* UIViewController+TableViewRefreshPuller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TableViewRefreshPuller.m"; sourceTree = "<group>"; };
 		77CD5FC114CA52780013B510 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		77CD5FC214CA52780013B510 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		77CD5FC314CA52780013B510 /* VariableStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VariableStore.h; sourceTree = "<group>"; };
@@ -1143,6 +1149,8 @@
 				7760FCD415074E6B008D40D6 /* UIViewController+SegueActiveModel.m */,
 				77786AEC150B1B5E007DC016 /* UIViewController+ScrollViewRefreshPuller.h */,
 				77786AED150B1B5E007DC016 /* UIViewController+ScrollViewRefreshPuller.m */,
+				77C15296150B6B0A00B3B106 /* UIViewController+TableViewRefreshPuller.h */,
+				77C15297150B6B0A00B3B106 /* UIViewController+TableViewRefreshPuller.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1542,6 +1550,8 @@
 				77786AE7150AFB5F007DC016 /* ScrollViewRefreshPuller.h */,
 				77786AE8150AFB5F007DC016 /* ScrollViewRefreshPuller.m */,
 				77786AEB150AFFA7007DC016 /* KeyboardSliderDelegate.h */,
+				77C15292150B63C700B3B106 /* TableViewRefreshPuller.h */,
+				77C15293150B63C700B3B106 /* TableViewRefreshPuller.m */,
 			);
 			name = ActionLibs;
 			sourceTree = "<group>";
@@ -1952,6 +1962,8 @@
 				7760FCD515074E6B008D40D6 /* UIViewController+SegueActiveModel.m in Sources */,
 				77786AE9150AFB5F007DC016 /* ScrollViewRefreshPuller.m in Sources */,
 				77786AEE150B1B5E007DC016 /* UIViewController+ScrollViewRefreshPuller.m in Sources */,
+				77C15294150B63C700B3B106 /* TableViewRefreshPuller.m in Sources */,
+				77C15298150B6B0A00B3B106 /* UIViewController+TableViewRefreshPuller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

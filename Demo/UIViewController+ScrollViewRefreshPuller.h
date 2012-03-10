@@ -13,5 +13,6 @@
 
 - (void)registerScrollViewRefreshPuller:(UIScrollView *)scrollView;
 - (void)stopLoading;
+- (void)unregisterScrollViewRefreshPuller;
 
 @end

@@ -36,4 +36,11 @@ static ScrollViewRefreshPuller *rvp = nil;
 {
   [_pull finishedLoading];
 }
+
+- (void)unregister
+{
+  _pull = nil;
+  rvp   = nil;
+}
+
 @end
