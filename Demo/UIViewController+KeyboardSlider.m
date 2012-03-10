@@ -39,5 +39,11 @@
   return TRUE;
 }
 
+- (BOOL)registerKeyboardSliderTextView:(UITextView *)textView
+{
+  [textView setDelegate:self];
+  return TRUE;
+}
+
 
 @end

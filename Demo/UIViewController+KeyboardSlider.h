@@ -18,6 +18,7 @@
                               :(IBOutlet UIView *)bottomView;
 
 - (BOOL)registerKeyboardSliderRect:(CGRect)keyboardRect;
+- (BOOL)registerKeyboardSliderTextView:(UITextView *)textView;
 
 
 @end

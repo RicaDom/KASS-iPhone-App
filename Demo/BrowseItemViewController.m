@@ -12,6 +12,7 @@
 #import "UIViewController+ActivityIndicate.h"
 #import "UIViewController+KeyboardSlider.h"
 #import "UIViewController+SegueActiveModel.h"
+#import "UIViewController+ScrollViewRefreshPuller.h"
 
 @implementation BrowseItemViewController
 
@@ -23,7 +24,6 @@
 @synthesize messageTextField = _messageTextField;
 @synthesize navigationButton = _navigationButton;
 @synthesize scrollView = _scrollView;
-@synthesize pull = _pull;
 @synthesize mainView = _mainView;
 @synthesize buttomView = _buttomView;
 @synthesize topView = _topView;
@@ -32,7 +32,6 @@
 
 @synthesize descriptionTextView = _descriptionTextView;
 @synthesize priceButton = _priceButton;
-@synthesize tpScrollView = _tpScrollView;
 @synthesize currentOffer = _currentOffer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -52,16 +51,11 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-
--(void)stopLoading
-{
-	[self.pull finishedLoading];
-}
-
-// called when the user pulls-to-refresh
-- (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view
-{
-  [self performSelector:@selector(loadDataSource) withObject:nil afterDelay:2.0];	
+/**
+ Scroll View Refresh Puller Delegate
+ */
+- (void)refreshing{
+  [self loadDataSource];
 }
 
 - (void)populateData:(NSDictionary *)dict
@@ -117,12 +111,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.pull = [[PullToRefreshView alloc] initWithScrollView:self.scrollView];
-    [self.pull setDelegate:self];
-    [self.scrollView addSubview:self.pull];
-  
-    [_descriptionTextView setDelegate:self];
-  
     
     // navigation bar background color
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
@@ -301,7 +289,12 @@
 {
   [super viewWillAppear:animated];
   
-    [self registerKeyboardSlider:_mainView :_scrollView :_buttomView];
+  [self registerKeyboardSlider:_mainView :_scrollView :_buttomView];
+  [self registerKeyboardSliderTextView:_descriptionTextView];
+  [self registerScrollViewRefreshPuller:self.scrollView];
+    
+  
+  
     // register for keyboard notifications
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) 
                                                  name:UIKeyboardWillShowNotification object:self.view.window]; 
