@@ -34,6 +34,11 @@
   return locationManager == nil ? nil : locationManager.location;
 }
 
+- (BOOL) hasLocation
+{
+  return locationManager && locationManager.location;
+}
+
 - (void)locateFinished
 {
   DLog(@"LocateMeManager::locateFinished");

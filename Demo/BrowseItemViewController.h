@@ -36,5 +36,6 @@
 @property (strong, nonatomic) IBOutlet UITextView *descriptionTextView;
 
 - (IBAction)navigationButtonAction:(id)sender;
+- (IBAction)mapButtonAction:(id)sender;
 
 @end

@@ -7,8 +7,10 @@
 //
 
 #import "ItemViewController.h"
+#import "ViewHelper.h"
 #import "UIViewController+ActivityIndicate.h"
 #import "UIViewController+SegueActiveModel.h"
+#import "UIViewController+TableViewRefreshPuller.h"
 
 @implementation ItemViewController
 
@@ -42,26 +44,6 @@
     
     // Release any cached data, images, etc that aren't in use.
 }
-
-#pragma mark -
-#pragma mark Data Source Loading / Reloading Methods
-
-- (void)reloadTableViewDataSource{
-	
-	//  should be calling your tableviews data source model to reload
-	//  put here just for demo
-	_reloading = YES;
-	
-}
-
-- (void)doneLoadingTableViewData{
-	
-	//  model should call this when its done loading
-	_reloading = NO;
-	[_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.offerTableView];
-	
-}
-
 
 - (void) accountDidGetListing:(NSDictionary *)dict
 {
@@ -102,16 +84,6 @@
     
     // navigation bar background color
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
-
-    if (_refreshHeaderView == nil) {
-    EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.offerTableView.bounds.size.height, self.view.frame.size.width, self.offerTableView.bounds.size.height)];
-    view.delegate = self;
-    [self.offerTableView addSubview:view];
-    _refreshHeaderView = view;
-    }
-
-    //  update the last update date
-    [_refreshHeaderView refreshLastUpdatedDate];
     
     // set buttons background
     UIImage *editButtonImg = [UIImage imageNamed:UI_IMAGE_ACTIVITY_EDIT_BUTTON];
@@ -126,49 +98,9 @@
     [self.shareButton setImage:shareButtonImgPress forState:UIControlStateSelected];
     self.shareButton.frame = CGRectMake(self.view.frame.size.width/2 + self.modifyButton.frame.origin.x, self.shareButton.frame.origin.y, editButtonImg.size.width, editButtonImg.size.height);
     
-    UIImage *mapImg = [UIImage imageNamed:UI_IMAGE_MAP_BUTTON];
-    [self.mapButton setImage:mapImg forState:UIControlStateNormal];
-    self.mapButton.frame = CGRectMake(0, self.mapButton.frame.origin.y, mapImg.size.width, mapImg.size.height);
-    
-    UIImage *backImg = [UIImage imageNamed:UI_IMAGE_BACK_BUTTON];
-    [self.backButton setImage:backImg forState:UIControlStateNormal];
-    self.backButton.frame = CGRectMake(0, self.backButton.frame.origin.y, backImg.size.width, backImg.size.height);
-}
-
-#pragma mark -
-#pragma mark UIScrollViewDelegate Methods
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{	
-	
-	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
-    
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-	
-	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
-	
-}
-
-
-#pragma mark -
-#pragma mark EGORefreshTableHeaderDelegate Methods
-
-- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
-	[self reloadTableViewDataSource];
-  [self performSelector:@selector(loadingOffers) withObject:nil afterDelay:2.0];
-}
-
-- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
-	
-	return _reloading; // should return if data source model is reloading
-	
-}
-
-- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{
-	
-	return [NSDate date]; // should return date data source was last changed
-	
+  [ViewHelper buildMapButton:self.mapButton];  
+  [ViewHelper buildBackButton:self.backButton];
+  
 }
 
 - (void)viewDidUnload
@@ -220,6 +152,14 @@
   DLog(@"ItemViewController::accountWeiboShareFinished");
   
 }
+
+- (IBAction)mapButtonAction:(id)sender
+{
+  VariableStore.sharedInstance.showOnMapListings = [[NSMutableArray alloc] initWithObjects:_currentItem, nil];  
+  [self performSegueWithIdentifier: @"toMapSegue" 
+                            sender: self];
+}
+
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (actionSheet.tag == 1) {
@@ -316,24 +256,23 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
-    
-    
 }
 
-//// Reloading data
-//- (void)refresh {
-//    [self performSelector:@selector(addItem) withObject:nil afterDelay:2.0];
-//}
-//
-//- (void)addItem {
-//    // TODO
-//    // Adding item to the list
-//    
-//    [self.tableView reloadData];
-//    
-//    [self stopLoading];
-//}
+- (void)viewWillAppear:(BOOL)animated
+{
+  [super viewWillAppear:animated];
+  [self registerTableViewRefreshPuller:self.offerTableView:self.view];
+}
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+  [super viewWillDisappear:animated];
+  [self unregisterTableViewRefreshPuller];
+}
 
+- (void)refreshing
+{
+  [self loadDataSource];
+}
 
 @end

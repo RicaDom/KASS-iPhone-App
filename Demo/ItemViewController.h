@@ -20,15 +20,7 @@
 #import "PostFlowViewController.h"
 #import "DataSourceViewController.h"
 
-@interface ItemViewController : DataSourceViewController <UIActionSheetDelegate, EGORefreshTableHeaderDelegate, AccountActivityDelegate>{
-	
-	EGORefreshTableHeaderView *_refreshHeaderView;
-	
-	//  Reloading var should really be your tableviews datasource
-	//  Putting it here for demo purposes 
-	BOOL _reloading;
-  
-}
+@interface ItemViewController : DataSourceViewController <UIActionSheetDelegate, AccountActivityDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UILabel *itemTitle;
@@ -48,4 +40,6 @@
 - (IBAction)backButtonAction:(id)sender;
 - (IBAction)editAction:(id)sender;
 - (IBAction)shareAction:(id)sender;
+- (IBAction)mapButtonAction:(id)sender;
+
 @end

@@ -6,6 +6,7 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
+#import "ViewHelper.h"
 #import "BrowseTableViewController.h"
 #import "UIViewController+ActivityIndicate.h"
 #import "UIViewController+SegueActiveModel.h"
@@ -189,9 +190,8 @@
     [self.browseSegment setDividerImage:img forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];    
     self.browseSegment.frame = CGRectMake(0, self.browseSegment.frame.origin.y, tempImg.size.width*3+8, tempImg.size.height);
     [self browseSegmentAction:self];    
-    UIImage *mapImg = [UIImage imageNamed:UI_IMAGE_BROWSE_MAP];
-    [self.mapButton setImage:mapImg forState:UIControlStateNormal];
-    self.mapButton.frame = CGRectMake(200, self.mapButton.frame.origin.y, mapImg.size.width+20, mapImg.size.height);
+    
+  [ViewHelper buildMapButton:self.mapButton];
 }
 
 - (void)viewDidUnload
