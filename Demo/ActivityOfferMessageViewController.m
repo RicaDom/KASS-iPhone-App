@@ -110,16 +110,9 @@
     [CommonView setMessageWithPriceView:self.scrollView payImage:self.confirmImageView bottomView:self.buttomView priceButton:self.priceButton messageField:self.sendMessageTextField price:self.changingPrice.text changedPriceMessage:self.changedPriceMessage];
     
     // User info button
-    UIImage *userButtonImg = [UIImage imageNamed:UI_IMAGE_USER_INFO_BUTTON_GREEN];
-    UIImage *userButtonPressImg = [UIImage imageNamed:UI_IMAGE_USER_INFO_BUTTON_DARK];
-    self.userInfoButton.frame = CGRectMake(self.userInfoButton.frame.origin.x, self.userInfoButton.frame.origin.y, userButtonImg.size.width, userButtonImg.size.height);
-    [self.userInfoButton setImage:userButtonImg forState:UIControlStateNormal];
-    [self.userInfoButton setImage:userButtonPressImg forState:UIControlStateSelected];  
-
-    UIImage *acceptButtonImg = [UIImage imageNamed:UI_IMAGE_ACTIVITY_ACCEPT_BUTTON];
-    UIImage *acceptButtonPressImg = [UIImage imageNamed:UI_IMAGE_ACTIVITY_ACCEPT_BUTTON_PRESS];
-    [self.confirmDealButton setImage:acceptButtonImg forState:UIControlStateNormal];
-    [self.confirmDealButton setImage:acceptButtonPressImg forState:UIControlStateSelected];
+    [ViewHelper buildUserInfoButton:self.userInfoButton];
+    [ViewHelper buildAcceptButton:self.confirmDealButton];
+ 
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.

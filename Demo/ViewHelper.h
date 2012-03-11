@@ -32,6 +32,7 @@
 + (void) buildMapButton:(UIButton *)button;
 + (void) buildBackButton:(UIButton *)button;
 + (void) buildUserInfoButton:(UIButton *)button;
++ (void) buildAcceptButton:(UIButton *)button;
 
 + (void)showErrorAlert:(NSString *)message:(id)delegate;
 + (void)showErrorMessageAlert:(NSDictionary *)errors:(id)delegate;
