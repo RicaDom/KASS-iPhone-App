@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *submitButton;
 @property (strong, nonatomic) NSString *postType;
 @property (strong, nonatomic) IBOutlet UITextView *postDesciptionTextField;
+
 - (IBAction)cancelAction:(id)sender;
 - (IBAction)submitAction;
 - (IBAction)iwantAction:(id)sender;

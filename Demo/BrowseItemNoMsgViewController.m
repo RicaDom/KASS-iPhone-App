@@ -185,6 +185,8 @@
 - (void)accountDidCreateOffer:(NSDictionary *)dict
 {
   DLog(@"BrowseItemNoMsgViewController::accountDidCreateOffer:dict=%@", dict);
+  [self hideIndicator];
+  [self stopLoading];
 
   UINavigationController *navController = self.navigationController;
   // Pop this controller and replace with another
