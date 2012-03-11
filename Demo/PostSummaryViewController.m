@@ -136,7 +136,7 @@
 - (void)accountDidModifyListing:(NSDictionary *)dict
 {
   DLog(@"PostSummaryViewController::accountDidModifyListing:dict=%@", dict);
-  [[self kassVS] appendPostingItemToListings:dict];
+//  [[self kassVS] appendPostingItemToListings:dict];
   
   [self.presentingViewController dismissModalViewControllerAnimated:YES];
   [[NSNotificationCenter defaultCenter] postNotificationName: NEW_POST_NOTIFICATION 
