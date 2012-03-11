@@ -19,6 +19,6 @@
 
 - (CLLocation *)location;
 - (void)locateMe;
-
+- (BOOL) hasLocation;
 
 @end
