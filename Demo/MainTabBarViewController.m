@@ -77,20 +77,20 @@
     }
 
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(receivePriceChangedNotification:) 
+                                           selector:@selector(receiveNewPostNotification:) 
                                                name:NEW_POST_NOTIFICATION
                                              object:nil];
     
 }
 
-- (void) receivePriceChangedNotification:(NSNotification *) notification
+- (void) receiveNewPostNotification:(NSNotification *) notification
 {
     // [notification name] should always be NEW_POST_NOTIFICATION
     // unless you use this method for observation of other notifications
     // as well.
     
     if ([[notification name] isEqualToString:NEW_POST_NOTIFICATION]) {        
-        DLog (@"MainTabBarViewController::receivePriceChangedNotification");
+        DLog (@"MainTabBarViewController::receiveNewPostNotification");
         self.selectedIndex = 0;
         CustomImageViewPopup *pop = [[CustomImageViewPopup alloc] initWithType:POPUP_IMAGE_NEW_POST_SUCCESS];
         [self.view addSubview: pop];

@@ -15,14 +15,14 @@
     UIImage *image = nil;
     
     if ([type isEqualToString:POPUP_IMAGE_NEW_POST_SUCCESS]) {
-        image = [UIImage imageNamed:@"successPost.png"];
+        image = [UIImage imageNamed:@"postsuccess.png"];
     }
     
     self = [super initWithImage:image];
     if (self) {
         // custom code
         if ([type isEqualToString:POPUP_IMAGE_NEW_POST_SUCCESS]) {
-            self.frame = CGRectMake(30, 100, 250, 200);
+            self.frame = CGRectMake((320-image.size.width)/2, 80, image.size.width, image.size.height);
         }
     }
     return self;
