@@ -309,6 +309,29 @@
 
 }
 
++ (void)buildMapButton:(UIButton *)button
+{
+  UIImage *mapImg = [UIImage imageNamed:UI_IMAGE_BROWSE_MAP];
+  [button setImage:mapImg forState:UIControlStateNormal];
+  button.frame = CGRectMake(200, button.frame.origin.y, mapImg.size.width+20, mapImg.size.height);
+}
+
++ (void)buildBackButton:(UIButton *)button
+{
+  UIImage *backImg = [UIImage imageNamed:UI_IMAGE_BACK_BUTTON];
+  [button setImage:backImg forState:UIControlStateNormal];
+  button.frame = CGRectMake(0, button.frame.origin.y, backImg.size.width, backImg.size.height);
+}
+
++ (void)buildUserInfoButton:(UIButton *)button
+{
+  UIImage *userButtonImg = [UIImage imageNamed:UI_IMAGE_USER_INFO_BUTTON_GREEN];
+  UIImage *userButtonPressImg = [UIImage imageNamed:UI_IMAGE_USER_INFO_BUTTON_DARK];
+  button.frame = CGRectMake(button.frame.origin.x, button.frame.origin.y, userButtonImg.size.width, userButtonImg.size.height);
+  [button setImage:userButtonImg forState:UIControlStateNormal];
+  [button setImage:userButtonPressImg forState:UIControlStateSelected];
+}
+
 + (void)showErrorAlert:(NSString *)message:(id)delegate
 {
   UIAlertView *alert = [[UIAlertView alloc] init];

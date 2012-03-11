@@ -43,9 +43,7 @@
   _endedAt = [dateFormat dateFromString:[theDictionary objectForKey:@"time"]];
   
   NSArray *latlng = [theDictionary objectForKey:@"latlng"]; 
-  _location     = [[Location alloc] init];
-  _location.latitude  = [NSDecimalNumber decimalNumberWithDecimal:[[latlng objectAtIndex:0] decimalValue]];
-  _location.longitude = [NSDecimalNumber decimalNumberWithDecimal:[[latlng objectAtIndex:1] decimalValue]];
+  _location       = [[Location alloc] initWithArray:latlng];
   
   NSString *acceptedOfferId = [theDictionary objectForKey:@"accepted_offer_id"];
   NSArray *offers = [theDictionary objectForKey:@"offers"];

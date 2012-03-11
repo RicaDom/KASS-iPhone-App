@@ -14,19 +14,11 @@
 #import "ItemViewController.h"
 #import "VariableStore.h"
 #import "ListingTableCell.h"
-#import "PullRefreshTableViewController.h"
 #import "AccountActivityDelegate.h"
 #import "BrowseItemViewController.h"
 #import "BuyerPayViewController.h"
 
-@interface ActivityViewController : UIViewController <AccountActivityDelegate, EGORefreshTableHeaderDelegate>
-{
-	EGORefreshTableHeaderView *_refreshHeaderView;
-	
-	//  Reloading var should really be your tableviews datasource
-	//  Putting it here for demo purposes 
-	BOOL _reloading;
-}
+@interface ActivityViewController : UIViewController <AccountActivityDelegate>
 
 @property (strong, nonatomic) NSString *userId;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *activitySegment;

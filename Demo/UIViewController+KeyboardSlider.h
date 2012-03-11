@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KeyboardSliderDelegate.h"
 
-@interface UIViewController (KeyboardSlider)
+@interface UIViewController (KeyboardSlider) <KeyboardSliderDelegate, UITextViewDelegate>
 
 - (void)showKeyboardAndMoveViewUp;
 - (void)hideKeyboardAndMoveViewDown;
@@ -16,7 +17,9 @@
 - (BOOL)registerKeyboardSlider:(IBOutlet UIView *)mainView:(IBOutlet UIScrollView *)scrollView
                               :(IBOutlet UIView *)bottomView;
 
-- (BOOL)registerKeyboardRect:(CGRect)keyboardRect;
+- (BOOL)registerKeyboardSliderRect:(CGRect)keyboardRect;
+- (BOOL)registerKeyboardSliderTextView:(UITextView *)textView;
+- (void)unregisterKeyboardSlider;
 
 
 @end

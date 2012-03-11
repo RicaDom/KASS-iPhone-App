@@ -14,7 +14,7 @@
 @synthesize scrollView      = _scrollView;
 @synthesize mainView        = _mainView;
 @synthesize bottomView      = _bottomView;
-@synthesize viewController  = _viewController;
+@synthesize delegate        = _delegate;
 
 static KeyboardSlider *ks = nil;
 
@@ -26,13 +26,14 @@ static KeyboardSlider *ks = nil;
   return ks;
 }
 
-- (BOOL)registerKeyboardSlider:(UIViewController *)vc:(IBOutlet UIView *)mainView:(IBOutlet UIScrollView *)scrollView:(IBOutlet UIView *)bottomView
+- (BOOL)registerKeyboardSlider:(id<KeyboardSliderDelegate>)delegate:(IBOutlet UIView *)mainView:(IBOutlet UIScrollView *)scrollView:(IBOutlet UIView *)bottomView
 {
   _scrollView   = scrollView;
   _mainView     = mainView;
   _bottomView   = bottomView;
-  _viewController = vc;
-  
+  _delegate     = delegate;
+  _state        = KeyboardSliderViewIsDown;
+    
   return TRUE; 
 }
 
@@ -42,8 +43,19 @@ static KeyboardSlider *ks = nil;
   return TRUE; 
 }
 
+- (void)unregiser
+{
+  _scrollView   = nil;
+  _mainView     = nil;
+  _bottomView   = nil;
+  _delegate     = nil;
+  ks            = nil;
+}
+
 - (void)moveViewDown
 {
+  if ( _state == KeyboardSliderViewIsDown ) { return; }
+  
   [UIView beginAnimations:nil context:NULL];
   [UIView setAnimationDuration:0.5]; // if you want to slide up the view
   
@@ -51,8 +63,6 @@ static KeyboardSlider *ks = nil;
   
   rect.origin.y += _keyboardRect.size.height;
   rect.size.height -= _keyboardRect.size.height;
-  _viewController.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_BACK;
-  _viewController.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_MAP;
   _mainView.frame = rect;
   
   CGRect scrollViewRect = self.scrollView.frame;
@@ -63,10 +73,18 @@ static KeyboardSlider *ks = nil;
   self.scrollView.frame = scrollViewRect;      
   
   [UIView commitAnimations];
+  
+  _state = KeyboardSliderViewIsDown;
+ 
+  if( [_delegate respondsToSelector:@selector(keyboardMainViewMovedDown)] )
+    [_delegate keyboardMainViewMovedDown];
+  
 }
 
 - (void)moveViewUp
 {
+  if ( _state == KeyboardSliderViewIsUp ) { return; }
+  
   [UIView beginAnimations:nil context:NULL];
   [UIView setAnimationDuration:0.5]; // if you want to slide up the view
   
@@ -76,8 +94,6 @@ static KeyboardSlider *ks = nil;
   // 2. increase the size of the view so that the area behind the keyboard is covered up.
   rect.origin.y -= _keyboardRect.size.height;
   rect.size.height += _keyboardRect.size.height;
-  _viewController.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_CANCEL;
-  _viewController.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_SEND;
   
   _mainView.frame = rect;
   
@@ -89,7 +105,12 @@ static KeyboardSlider *ks = nil;
   _scrollView.frame = scrollViewRect;
   
   [UIView commitAnimations];
-
+  
+  _state = KeyboardSliderViewIsUp;
+  
+  if( [_delegate respondsToSelector:@selector(keyboardMainViewMovedUp)] )
+    [_delegate keyboardMainViewMovedUp];
+  
 }
 
 @end

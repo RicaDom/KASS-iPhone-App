@@ -6,9 +6,11 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
+#import "ViewHelper.h"
 #import "BrowseTableViewController.h"
 #import "UIViewController+ActivityIndicate.h"
 #import "UIViewController+SegueActiveModel.h"
+#import "UIViewController+TableViewRefreshPuller.h"
 
 @implementation BrowseTableViewController
 
@@ -22,44 +24,11 @@
 #pragma mark -
 #pragma mark Data Source Loading / Reloading Methods
 
-- (void)reloadTableViewDataSource{	
-	//  should be calling your tableviews data source model to reload
-	//  put here just for demo
-	_reloading = YES;	
-}
-
-- (void)doneLoadingTableViewData{	
-	//  model should call this when its done loading
-	_reloading = NO;
-	[_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];	
-}
-#pragma mark -
-#pragma mark UIScrollViewDelegate Methods
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{		
-	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{	
-	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];	
-}
-
 
 #pragma mark -
-#pragma mark EGORefreshTableHeaderDelegate Methods
 
-- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
-	[self reloadTableViewDataSource];
-    [self performSelector:@selector(setupArray) withObject:nil afterDelay:1.0];
-}
+#pragma mark -
 
-- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{	
-	return _reloading; // should return if data source model is reloading	
-}
-
-- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{	
-	return [NSDate date]; // should return date data source was last changed	
-}
 
 - (BOOL) isNearbyTabSelected
 {
@@ -97,6 +66,14 @@
   DLog(@"BrowseTableViewController::setupArray");
   [self showLoadingIndicator];
   [self locateMe];
+}
+
+/**
+ EGORefreshTableHeaderDelegate
+ */
+- (void)refreshing
+{
+  [self setupArray];
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -166,8 +143,8 @@
     // as well.
     
     if ([[notification name] isEqualToString:NO_MESSAGE_TO_MESSAGE_VIEW_NOTIFICATION]) {
-      DLog(@"BrowseTableViewController::receivedFromNOMessageNotification");
       NSDictionary *json = [notification object];
+      DLog(@"BrowseTableViewController::receivedFromNOMessageNotification:json=%@", json);
       [self performSegueWithModelJson:json:@"showBrowseItem":self];
     }
 }
@@ -197,16 +174,13 @@
     UIImageView *tableFooterView = [[UIImageView alloc] initWithImage:tableFooterViewImage];
     self.listingTableView.tableFooterView = tableFooterView;
 
-    if (_refreshHeaderView == nil) {
-        EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
-        view.delegate = self;
-        [self.tableView addSubview:view];
-        _refreshHeaderView = view;
-    }
-	
-	//  update the last update date
-	[_refreshHeaderView refreshLastUpdatedDate];
-        
+//    if (_refreshHeaderView == nil) {
+//        EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
+//        view.delegate = self;
+//        [self.tableView addSubview:view];
+//        _refreshHeaderView = view;
+//    }
+  
     self.filteredListContent = [[NSMutableArray alloc] init];
 	[self.tableView reloadData];
     
@@ -216,9 +190,8 @@
     [self.browseSegment setDividerImage:img forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];    
     self.browseSegment.frame = CGRectMake(0, self.browseSegment.frame.origin.y, tempImg.size.width*3+8, tempImg.size.height);
     [self browseSegmentAction:self];    
-    UIImage *mapImg = [UIImage imageNamed:UI_IMAGE_BROWSE_MAP];
-    [self.mapButton setImage:mapImg forState:UIControlStateNormal];
-    self.mapButton.frame = CGRectMake(200, self.mapButton.frame.origin.y, mapImg.size.width+20, mapImg.size.height);
+    
+  [ViewHelper buildMapButton:self.mapButton];
 }
 
 - (void)viewDidUnload
@@ -235,7 +208,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+  [super viewWillAppear:animated];
+  [self registerTableViewRefreshPuller:self.tableView:self.view];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -246,6 +220,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+  [self unregisterTableViewRefreshPuller];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -334,38 +309,7 @@
   ListItem *item = ([tableView isEqual:self.searchDisplayController.searchResultsTableView])?
     [self.filteredListContent objectAtIndex:row]:[self.currentListings objectAtIndex:row];
     
-  // if not login
-  if ( ![self kassVS].isLoggedIn ) {
-    
-    DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:not login");
-    [self performSegueWithModelJson:item.toJson:@"showBrowseItemUnlogin":self];
-    
-  }else if ( [[self kassVS ].user hasListItem:item] ){
-    
-    //if you are the buyer and you already accepted it
-    if (item.isAccepted) {
-      
-      DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:you already accepted! ");
-      [self performSegueWithModelJson:item.acceptedOffer.toJson:@"BrowseListingToBuyerPay":self];
-      
-    }else{
-      //if you are the buyer go to buyers listing page
-      DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:you are buyer");
-      [self performSegueWithModelJson:item.toJson:@"BrowseListingToBuyerOffers":self];
-    }
-  }else if ( [item hasOfferer:[self currentUser]]){
-    
-    // if you have an offer
-    DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:you've offered!");
-    Offer *offer = [item getOfferFromOfferer:[self currentUser]];
-    [self performSegueWithModelJson:offer.toJson:@"showBrowseItem":self];
-
-
-  }else{
-    //you are not buyer and you've not offered
-    DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:logged in user");
-    [self performSegueWithModelJson:item.toJson:@"showBrowseItemNoMessage":self];
-  }
+  [self performSegueByModel:item];
     
 }
 

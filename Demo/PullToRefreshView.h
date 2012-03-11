@@ -63,5 +63,6 @@ typedef enum {
 @optional
 - (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view;
 - (NSDate *)pullToRefreshViewLastUpdated:(PullToRefreshView *)view;
+- (void)refreshing;
 
 @end

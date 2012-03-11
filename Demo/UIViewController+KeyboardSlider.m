@@ -12,6 +12,11 @@
 
 @implementation UIViewController (KeyboardSlider)
 
+- (void)textViewDidChangeSelection:(UITextView *)textView
+{
+  [self hideKeyboardAndMoveViewDown];
+}
+
 - (void)showKeyboardAndMoveViewUp
 {
   [[KeyboardSlider currentSlider] moveViewUp];
@@ -28,10 +33,21 @@
   return TRUE;
 }
 
-- (BOOL)registerKeyboardRect:(CGRect)keyboardRect
+- (BOOL)registerKeyboardSliderRect:(CGRect)keyboardRect
 {
   [[KeyboardSlider currentSlider] registerKeyboardRect:keyboardRect];
   return TRUE;
+}
+
+- (BOOL)registerKeyboardSliderTextView:(UITextView *)textView
+{
+  [textView setDelegate:self];
+  return TRUE;
+}
+
+- (void)unregisterKeyboardSlider
+{
+  [KeyboardSlider.currentSlider unregiser];
 }
 
 

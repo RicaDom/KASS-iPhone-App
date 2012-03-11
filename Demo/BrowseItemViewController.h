@@ -11,16 +11,12 @@
 #import "Constants.h"
 #import "PullToRefreshView.h"
 #import "OfferChangingPriceViewController.h"
-#import "TPKeyboardAvoidingScrollView.h"
 #import "AccountActivityDelegate.h"
 #import "UIResponder+VariableStore.h"
 #import "CommonView.h"
 #import "DataSourceViewController.h"
 
-@interface BrowseItemViewController : DataSourceViewController <UIScrollViewDelegate, PullToRefreshViewDelegate, AccountActivityDelegate>
-{
-    CGRect _keyboardRect; // for keyboard avoiding
-}
+@interface BrowseItemViewController : DataSourceViewController <UIScrollViewDelegate, AccountActivityDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *itemTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *itemPriceLabel;
@@ -31,15 +27,15 @@
 @property (weak, nonatomic) IBOutlet UITextField *messageTextField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *navigationButton;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (strong, nonatomic) IBOutlet TPKeyboardAvoidingScrollView *tpScrollView;
-@property (strong, nonatomic) PullToRefreshView *pull;
 @property (strong, nonatomic) IBOutlet UIView *mainView;
 @property (strong, nonatomic) IBOutlet UIView *buttomView;
 @property (strong, nonatomic) IBOutlet UIView *topView;
 @property (strong, nonatomic) IBOutlet UIButton *priceButton;
 @property (strong, nonatomic) IBOutlet UIButton *userInfoButton;
-@property (strong, nonatomic) IBOutlet UITextView *descriptionTextField;
+@property (strong, nonatomic) IBOutlet UIButton *mapButton;
+@property (strong, nonatomic) IBOutlet UITextView *descriptionTextView;
 
 - (IBAction)navigationButtonAction:(id)sender;
+- (IBAction)mapButtonAction:(id)sender;
 
 @end

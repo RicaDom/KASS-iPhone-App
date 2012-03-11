@@ -14,6 +14,15 @@
 @synthesize longitude   = _longitude;
 @synthesize city        = _city;
 
+- (id) initWithArray:(NSArray *)latlng
+{
+  if (self = [super init]) {
+    _latitude  = [NSDecimalNumber decimalNumberWithDecimal:[[latlng objectAtIndex:0] decimalValue]];
+    _longitude = [NSDecimalNumber decimalNumberWithDecimal:[[latlng objectAtIndex:1] decimalValue]];
+  }
+  return self;
+}
+
 - (id) initWithDictionary:(NSDictionary *) theDictionary
 {
   if (self = [super init]) {

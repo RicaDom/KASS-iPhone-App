@@ -10,11 +10,12 @@
 #import "UIViewController+ActivityIndicate.h"
 #import "UIViewController+KeyboardSlider.h"
 #import "UIViewController+SegueActiveModel.h"
+#import "UIViewController+ScrollViewRefreshPuller.h"
 
 @implementation BrowseItemNoMsgViewController
 
 @synthesize messageTextField = _messageTextField;
-@synthesize descriptionTextField = _descriptionTextField;
+@synthesize descriptionTextView = _descriptionTextView;
 @synthesize currentItem = _currentItem;
 @synthesize navigationButton = _navigationButton;
 @synthesize listingTitle = _listingTitle;
@@ -25,7 +26,6 @@
 @synthesize buttomView = _buttomView;
 @synthesize scrollView = _scrollView;
 @synthesize priceButton = _priceButton;
-@synthesize pull = _pull;
 @synthesize userInfoButton = _userInfoButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -45,17 +45,6 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
--(void)stopLoading
-{
-	[self.pull finishedLoading];
-}
-
-// called when the user pulls-to-refresh
-- (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view
-{
-  [self performSelector:@selector(stopLoading) withObject:nil afterDelay:2.0];	
-}
-
 /////////////////////////////////////////////////////////////////////////////////////////
 
 - (void) appDidGetListing:(NSDictionary *)dict
@@ -64,7 +53,7 @@
   self.currentItem = [[ListItem alloc] initWithDictionary:dict];
   
   self.listingTitle.text = self.currentItem.title;
-  self.descriptionTextField.text = self.currentItem.description;
+  self.descriptionTextView.text = self.currentItem.description;
   self.listingPrice.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
   self.offerPrice.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
   self.listingDate.text = [self.currentItem getTimeLeftTextlong];       
@@ -94,10 +83,7 @@
     // init scroll view content size
     [self.scrollView setContentSize:CGSizeMake(_ScrollViewContentSizeX, self.scrollView.frame.size.height)];
     
-    self.pull = [[PullToRefreshView alloc] initWithScrollView:self.scrollView];
-    [self.pull setDelegate:self];
-    [self.scrollView addSubview:self.pull];
-    
+  
     UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]
                                 initWithTitle:UI_BUTTON_LABEL_BACK
                                 style:UIBarButtonItemStyleBordered
@@ -138,6 +124,25 @@
     }
 }
 
+/**
+  Keyboard Slider Delegate
+ */
+- (void) keyboardMainViewMovedDown{
+  self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_BACK;
+  self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_MAP;  
+}
+- (void) keyboardMainViewMovedUp{
+  self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_CANCEL;
+  self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_SEND; 
+}
+
+/**
+ Scroll View Refresh Puller Delegate
+ */
+- (void)refreshing{
+  [self loadDataSource];
+}
+
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"changedPriceSegue"]) {
         UINavigationController *navigationController = segue.destinationViewController;
@@ -155,7 +160,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:CHANGED_PRICE_NOTIFICATION object:nil];
     [self setPriceButton:nil];
     [self setUserInfoButton:nil];
-    [self setDescriptionTextField:nil];
+    [self setDescriptionTextView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -203,7 +208,7 @@
       DLog(@"BrowseItemNoMsgViewController::(IBAction)navigationButtonAction:createOffer:");
       NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                      self.offerPrice.text, @"price",
-                                     self.messageTextField.text, @"message",
+                                     self.messageTextField.text, @"with_message",
                                      self.currentItem.dbId, @"listing_id",nil];
       
       [self showLoadingIndicator];
@@ -255,8 +260,8 @@
 - (void)keyboardWillShow:(NSNotification *)notification
 {
     //keyboard will be shown now. depending for which textfield is active, move up or move down the view appropriately
-    _keyboardRect = [[[notification userInfo] objectForKey:_UIKeyboardFrameEndUserInfoKey] CGRectValue];
-  [self registerKeyboardRect:_keyboardRect];
+  CGRect  keyboardRect = [[[notification userInfo] objectForKey:_UIKeyboardFrameEndUserInfoKey] CGRectValue];
+  [self registerKeyboardSliderRect:keyboardRect];
     
     if ([self.messageTextField isFirstResponder] && self.mainView.frame.origin.y >= 0)
     {
@@ -277,7 +282,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
   // register for keyboard view slider
+  [self registerScrollViewRefreshPuller:self.scrollView];
   [self registerKeyboardSlider:_mainView :_scrollView :_buttomView];
+  [self registerKeyboardSliderTextView:_descriptionTextView];
   
     // register for keyboard notifications
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) 
@@ -286,6 +293,8 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+  [self unregisterScrollViewRefreshPuller];
+  [self unregisterKeyboardSlider];
     // unregister for keyboard notifications while not visible.
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil]; 
 }

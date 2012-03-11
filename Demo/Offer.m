@@ -23,6 +23,7 @@
 @synthesize description = _description;
 @synthesize buyerId = _buyerId;
 @synthesize listItemEndedAt = _listItemEndedAt;
+@synthesize listItemLocation = _listItemLocation;
 
 - (id) initWithDictionary:(NSDictionary *) theDictionary
 {
@@ -38,6 +39,9 @@
     _title        = [listing objectForKey:@"title"];
     _description  = [listing objectForKey:@"description"];
     _buyerId      = [listing objectForKey:@"user_id"];
+    
+    NSArray *latlng   = [listing objectForKey:@"latlng"]; 
+    _listItemLocation = [[Location alloc] initWithArray:latlng];
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:RUBY_DATETIME_FORMAT]; //2012-02-17T07:50:16+0000 

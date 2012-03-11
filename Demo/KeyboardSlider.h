@@ -7,24 +7,34 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KeyboardSliderDelegate.h"
+
+
+typedef enum {
+  KeyboardSliderViewIsDown,
+  KeyboardSliderViewIsUp
+} KeyboardSliderViewState ;
 
 @interface KeyboardSlider : NSObject
 {
   CGRect _keyboardRect; 
+  KeyboardSliderViewState _state;
 }
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIView *mainView;
 @property (strong, nonatomic) IBOutlet UIView *bottomView;
-@property (strong, nonatomic) UIViewController *viewController;
+@property (nonatomic,assign)  id<KeyboardSliderDelegate> delegate;
 
 + (KeyboardSlider *)currentSlider;
 
-- (BOOL)registerKeyboardSlider:(UIViewController *)vc:(IBOutlet UIView *)mainView:(IBOutlet UIScrollView *)scrollView:(IBOutlet UIView *)bottomView;
+- (BOOL)registerKeyboardSlider:(id<KeyboardSliderDelegate>)delegate:(IBOutlet UIView *)mainView:(IBOutlet UIScrollView *)scrollView:(IBOutlet UIView *)bottomView;
 
 - (BOOL)registerKeyboardRect:(CGRect)keyboardRect;
 
 - (void)moveViewUp;
 - (void)moveViewDown;
+
+- (void)unregiser;
 
 @end
