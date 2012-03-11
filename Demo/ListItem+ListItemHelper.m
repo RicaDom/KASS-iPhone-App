@@ -7,6 +7,8 @@
 //
 
 #import "ListItem+ListItemHelper.h"
+#import "ListingMapAnnotaion.h"
+#import "ListingImageAnnotationView.h"
 
 @implementation ListItem (ListItemHelper)
 
@@ -49,4 +51,18 @@
   return [[NSString alloc] initWithFormat:@"http://api.map.baidu.com/staticimage?center=%@&width=500&height=500&zoom=11&labels=%@&labelStyles=%@&markers=%@&markerStyles=l,", self.location.toString,  self.location.toString, self.toLabelStyle, self.location.toString];
 }
 
+- (void) buildMap:(MKMapView *)mapView
+{
+  CLLocationCoordinate2D userCoordinate;
+  userCoordinate.latitude = [self.location.latitude doubleValue];
+  userCoordinate.longitude = [self.location.longitude doubleValue];
+  
+  MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userCoordinate ,MAP_DISTANCE_LAT, MAP_DISTANCE_LNG);
+  [mapView setRegion:region animated:YES];
+  mapView.scrollEnabled = YES;
+  mapView.zoomEnabled = YES;
+  
+  ListingMapAnnotaion *listingA = [[ListingMapAnnotaion alloc] initWithCoordinate:userCoordinate title:self.title subTitle:self.description listingItemData:self];
+  [mapView addAnnotation:listingA];
+}
 @end

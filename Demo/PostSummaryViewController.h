@@ -7,16 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 #import "VariableStore.h"
 #import "NSString+ModelHelper.h"
 
-@interface PostSummaryViewController : UIViewController <LocateMeDelegate, AccountActivityDelegate>
+@interface PostSummaryViewController : UIViewController <LocateMeDelegate, AccountActivityDelegate, MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *postTitle;
 @property (weak, nonatomic) IBOutlet UILabel *postAskPrice;
 @property (weak, nonatomic) IBOutlet UILabel *postDuration;
 @property (strong, nonatomic) IBOutlet UIButton *submitButton;
 @property (strong, nonatomic) NSString *postType;
 @property (strong, nonatomic) IBOutlet UITextView *postDesciptionTextField;
+
+@property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
 - (IBAction)cancelAction:(id)sender;
 - (IBAction)submitAction;

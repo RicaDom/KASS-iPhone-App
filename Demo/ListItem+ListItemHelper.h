@@ -8,6 +8,7 @@
 
 #import "ListItem.h"
 #import "BaseHelper.h"
+#import <MapKit/MapKit.h>
 
 @interface ListItem (ListItemHelper)
 
@@ -18,5 +19,8 @@
 - (NSString *) getPriceText;
 - (NSString *) getUrl;
 - (NSString *) getBaiduMapUrl;
+
+- (void) buildMap:(MKMapView *)mapView;
+
 
 @end

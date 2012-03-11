@@ -14,6 +14,7 @@
 
 #import "ListingMapAnnotaion.h"
 #import "ListingImageAnnotationView.h"
+#import "ListItem+ListItemHelper.h"
 
 @implementation BrowseItemNoMsgViewController
 
@@ -50,38 +51,6 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-- (void)setupMap
-{
-  CLLocationCoordinate2D userCoordinate;
-  userCoordinate.latitude = [_currentItem.location.latitude doubleValue];
-  userCoordinate.longitude = [_currentItem.location.longitude doubleValue];
-  
-  MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userCoordinate ,MAP_DISTANCE_LAT, MAP_DISTANCE_LNG);
-  [self.mapView setRegion:region animated:YES];
-  self.mapView.scrollEnabled = YES;
-  self.mapView.zoomEnabled = YES;
-  
-  ListingMapAnnotaion *listingA = [[ListingMapAnnotaion alloc] initWithCoordinate:userCoordinate title:_currentItem.title subTitle:_currentItem.description listingItemData:_currentItem];
-  [self.mapView addAnnotation:listingA];
-}
-
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
-{
-  DLog(@"BrowseItemNoMsgViewController::viewForAnnotation");
-  MKAnnotationView* annotationView = nil;
-  ListingImageAnnotationView* imageAnnotationView = (ListingImageAnnotationView*)[self.mapView dequeueReusableAnnotationViewWithIdentifier:nil];
-  if(nil == imageAnnotationView)
-  {
-    imageAnnotationView = [[ListingImageAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:nil];	
-    imageAnnotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-  }
-  
-  annotationView = imageAnnotationView;
-	[annotationView setEnabled:YES];
-	[annotationView setCanShowCallout:YES];
-  return annotationView;
-}
-
 /////////////////////////////////////////////////////////////////////////////////////////
 
 - (void) appDidGetListing:(NSDictionary *)dict
@@ -95,7 +64,7 @@
   //self.offerPrice.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
   self.listingDate.text = [self.currentItem getTimeLeftTextlong];       
   
-  [self setupMap];
+  [self.currentItem buildMap:self.mapView];
   
   [self hideIndicator];
   [self stopLoading];

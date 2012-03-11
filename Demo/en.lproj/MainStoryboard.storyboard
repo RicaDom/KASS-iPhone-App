@@ -549,6 +549,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="mapView" destination="FX4-CQ-3KQ" id="FGQ-bC-i1k"/>
                         <outlet property="postAskPrice" destination="Spu-g8-8Kw" id="YIy-kx-wFv"/>
                         <outlet property="postDesciptionTextField" destination="TZg-tZ-rwW" id="99M-Er-72w"/>
                         <outlet property="postDuration" destination="Dt7-Kg-0xE" id="OEm-HM-nOr"/>
@@ -1317,11 +1318,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PEB-0q-sY1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="EOY-f8-N3n" customClass="MapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YOW-Jh-Jjz">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="6rN-NP-hpl">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="EOY-f8-N3n" id="a2l-zt-2YB"/>
@@ -2372,6 +2373,7 @@
                 <relationship kind="action" name="ipayAction:"/>
                 <relationship kind="action" name="iwantAction:"/>
                 <relationship kind="action" name="submitAction"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
                 <relationship kind="outlet" name="postAskPrice" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="postDesciptionTextField" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="postDuration" candidateClass="UILabel"/>
@@ -2419,13 +2421,13 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="nl2-Xy-OWc"/>
-        <segue reference="NEk-wT-5z2"/>
-        <segue reference="nzB-nt-Iox"/>
+        <segue reference="ado-9M-yPh"/>
         <segue reference="uTw-jD-8Rk"/>
+        <segue reference="nzB-nt-Iox"/>
         <segue reference="ckU-W5-jqf"/>
-        <segue reference="dou-bb-99d"/>
-        <segue reference="0kh-0v-gnk"/>
+        <segue reference="NEk-wT-5z2"/>
         <segue reference="8Mx-QQ-zuz"/>
-        <segue reference="W5w-q8-67l"/>
+        <segue reference="0kh-0v-gnk"/>
+        <segue reference="dou-bb-99d"/>
     </inferredMetricsTieBreakers>
 </document>
