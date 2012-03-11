@@ -203,8 +203,7 @@
   ListItem *listItem = [[ListItem alloc] initWithDictionary:listing];
   listItem.location = _currentOffer.listItemLocation;
   
-  VariableStore.sharedInstance.showOnMapListings = [[NSMutableArray alloc] initWithObjects:listItem, nil];
-  
+  VariableStore.sharedInstance.itemToShowOnMap = listItem;
   [self performSegueWithIdentifier: @"dealMapModal" 
                             sender: self];
 }

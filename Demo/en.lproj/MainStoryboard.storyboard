@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="tSz-RA-HQY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11C74" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="tSz-RA-HQY">
     <dependencies>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
@@ -1317,11 +1317,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PEB-0q-sY1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="EOY-f8-N3n" customClass="MapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YOW-Jh-Jjz">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="6rN-NP-hpl">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="EOY-f8-N3n" id="a2l-zt-2YB"/>
@@ -1682,6 +1682,7 @@
                         <outlet property="listingPrice" destination="4gH-Uq-kLa" id="0PG-xn-JfT"/>
                         <outlet property="listingTitle" destination="4SR-Pg-gYK" id="O5H-xR-SaR"/>
                         <outlet property="mainView" destination="vUD-sc-css" id="Rh5-DM-ESi"/>
+                        <outlet property="mapView" destination="b2H-BT-qEx" id="3kE-uL-Mcn"/>
                         <outlet property="messageTextField" destination="gDP-RI-qPe" id="QAa-F4-h7i"/>
                         <outlet property="navigationButton" destination="uyL-tx-qUf" id="qn6-YT-Lao"/>
                         <outlet property="offerPrice" destination="hWh-fB-o2z" id="U2h-wM-Asz"/>
@@ -2225,6 +2226,7 @@
                 <relationship kind="outlet" name="listingPrice" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="listingTitle" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="mainView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
                 <relationship kind="outlet" name="messageTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="navigationButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="offerPrice" candidateClass="UILabel"/>
@@ -2416,14 +2418,14 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ado-9M-yPh"/>
-        <segue reference="vrW-tF-Jr9"/>
-        <segue reference="ckU-W5-jqf"/>
-        <segue reference="8Mx-QQ-zuz"/>
-        <segue reference="0kh-0v-gnk"/>
-        <segue reference="AMc-4a-ghd"/>
-        <segue reference="BhZ-ht-CXE"/>
-        <segue reference="dou-bb-99d"/>
         <segue reference="nl2-Xy-OWc"/>
+        <segue reference="NEk-wT-5z2"/>
+        <segue reference="nzB-nt-Iox"/>
+        <segue reference="uTw-jD-8Rk"/>
+        <segue reference="ckU-W5-jqf"/>
+        <segue reference="dou-bb-99d"/>
+        <segue reference="0kh-0v-gnk"/>
+        <segue reference="8Mx-QQ-zuz"/>
+        <segue reference="W5w-q8-67l"/>
     </inferredMetricsTieBreakers>
 </document>

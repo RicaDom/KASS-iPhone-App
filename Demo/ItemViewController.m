@@ -155,7 +155,7 @@
 
 - (IBAction)mapButtonAction:(id)sender
 {
-  VariableStore.sharedInstance.showOnMapListings = [[NSMutableArray alloc] initWithObjects:_currentItem, nil];  
+  VariableStore.sharedInstance.itemToShowOnMap = _currentItem; 
   [self performSegueWithIdentifier: @"toMapSegue" 
                             sender: self];
 }

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 #import "Constants.h"
 #import "VariableStore.h"
 #import "BrowseTableViewController.h"
@@ -15,7 +16,7 @@
 #import "DataSourceViewController.h"
 #import "KassApp.h"
 
-@interface BrowseItemNoMsgViewController : DataSourceViewController <UIActionSheetDelegate, AccountActivityDelegate, UIScrollViewDelegate, KassAppDelegate>
+@interface BrowseItemNoMsgViewController : DataSourceViewController <UIActionSheetDelegate, AccountActivityDelegate, UIScrollViewDelegate, KassAppDelegate, MKMapViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextView *descriptionTextView;
 @property (strong, nonatomic) ListItem *currentItem;
@@ -33,6 +34,8 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *priceButton;
 @property (strong, nonatomic) IBOutlet UIButton *userInfoButton;
+
+@property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
 - (IBAction)navigationButtonAction:(id)sender;
 

@@ -17,7 +17,6 @@
 
 @interface MapViewController : UIViewController <MKMapViewDelegate>
 
-@property (strong, nonatomic) ListItem *currentItem;
 @property (weak, nonatomic) IBOutlet MKMapView *currentMap;
-- (void) loadMapDemo;
+
 @end

@@ -150,13 +150,13 @@
     }
 }
 
-//- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    if ([segue.identifier isEqualToString:@"showBrowseItem"]) {
-//        DLog(@"BrowseTableViewController :: prepareForSegue");
-//    } else if ([segue.identifier isEqualToString:@"ActOfferToMapView"]) {
-//        
-//    }
-//}
+/**
+ To clear item to show on map
+ */
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+  VariableStore.sharedInstance.itemToShowOnMap = nil;
+  [super prepareForSegue:segue sender:sender];
+}
 
 - (void)viewDidLoad
 {

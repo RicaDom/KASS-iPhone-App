@@ -12,16 +12,33 @@
 
 @implementation MapViewController
 @synthesize currentMap = _currentMap;
-@synthesize currentItem = _currentItem;
 
-- (void) loadMapDemo {
+- (void)setupMap:(CLLocationCoordinate2D)userCoordinate
+{
+  MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userCoordinate ,MAP_DISTANCE_LAT, MAP_DISTANCE_LNG);
+  [self.currentMap setRegion:region animated:YES];
+  self.currentMap.scrollEnabled = YES;
+  self.currentMap.zoomEnabled = YES;
+}
 
-  NSMutableArray *items = 
-  VariableStore.sharedInstance.showOnMapListings ? VariableStore.sharedInstance.showOnMapListings : VariableStore.sharedInstance.nearBrowseListings;
-  
+- (void) loadMapSingleItem
+{
+  ListItem *_currentItem = VariableStore.sharedInstance.itemToShowOnMap;
   
   CLLocationCoordinate2D userCoordinate;
+  userCoordinate.latitude = [_currentItem.location.latitude doubleValue];
+  userCoordinate.longitude = [_currentItem.location.longitude doubleValue];
   
+  [self setupMap:userCoordinate];
+  
+  ListingMapAnnotaion *listingA = [[ListingMapAnnotaion alloc] initWithCoordinate:userCoordinate title:_currentItem.title subTitle:_currentItem.description listingItemData:_currentItem];
+  [self.currentMap addAnnotation:listingA];
+}
+
+- (void) loadMultipleItems
+{
+  CLLocationCoordinate2D userCoordinate;
+  NSMutableArray *items = VariableStore.sharedInstance.nearBrowseListings;
   if ( VariableStore.sharedInstance.locateMeManager.hasLocation ) {
     userCoordinate.latitude = VariableStore.sharedInstance.location.coordinate.latitude;
     userCoordinate.longitude = VariableStore.sharedInstance.location.coordinate.longitude;
@@ -29,22 +46,16 @@
     ListItem *item = (ListItem *)[items objectAtIndex:0];
     userCoordinate.latitude = [item.location.latitude doubleValue];
     userCoordinate.longitude = [item.location.longitude doubleValue];
-  }else{
-    DLog(@"MapViewController::Set default location?"); 
   }
   
-  MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userCoordinate ,3000, 3000);
-  [self.currentMap setRegion:region animated:YES];
-  self.currentMap.scrollEnabled = YES;
-  self.currentMap.zoomEnabled = YES;
-
+  [self setupMap:userCoordinate];
   
   for(int i= 0; i < [items count]; i++){
-
+    
     ListItem *data = (ListItem *)[items objectAtIndex:i];
-
+    
     CLLocationCoordinate2D newCoord = { (CGFloat)[data.location.latitude floatValue], (CGFloat)[data.location.longitude floatValue] };
-      
+    
     ListingMapAnnotaion *listingA = [[ListingMapAnnotaion alloc] initWithCoordinate:newCoord title:data.title subTitle:data.description listingItemData:data];
     [self.currentMap addAnnotation:listingA];
   }
@@ -68,14 +79,11 @@
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-  
+  if ( VariableStore.sharedInstance.itemToShowOnMap ) { return; }
   ListingMapAnnotaion *lma = (ListingMapAnnotaion *)[view annotation];
   
   if ( [lma isKindOfClass:ListingMapAnnotaion.class]) {
-    self.currentItem = lma.currentItem;
-    if (self.currentItem != nil) { 
-      [self performSegueByModel:self.currentItem];
-    }
+    [self performSegueByModel:lma.currentItem];
   }
 
 }
@@ -150,13 +158,15 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  [self loadMapDemo];
+  VariableStore.sharedInstance.itemToShowOnMap ? [self loadMapSingleItem] : [self loadMultipleItems];
 }
 
 - (void)viewDidUnload
 {
-    [self setCurrentMap:nil];
-    [super viewDidUnload];
+  VariableStore.sharedInstance.itemToShowOnMap = nil;
+  
+  [self setCurrentMap:nil];
+  [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
