@@ -145,9 +145,18 @@
     if ([[notification name] isEqualToString:NO_MESSAGE_TO_MESSAGE_VIEW_NOTIFICATION]) {
       NSDictionary *json = [notification object];
       DLog(@"BrowseTableViewController::receivedFromNOMessageNotification:json=%@", json);
-      [self performSegueWithModelJson:json:@"showBrowseItem":self];
+      //[self performSegueWithModelJson:json:@"showBrowseItem":self];
+      [self performSegueWithIdentifier:@"showBrowseItem" sender:self];  
     }
 }
+
+//- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    if ([segue.identifier isEqualToString:@"showBrowseItem"]) {
+//        DLog(@"BrowseTableViewController :: prepareForSegue");
+//    } else if ([segue.identifier isEqualToString:@"ActOfferToMapView"]) {
+//        
+//    }
+//}
 
 - (void)viewDidLoad
 {

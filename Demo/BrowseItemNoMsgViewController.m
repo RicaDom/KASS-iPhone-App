@@ -27,6 +27,7 @@
 @synthesize scrollView = _scrollView;
 @synthesize priceButton = _priceButton;
 @synthesize userInfoButton = _userInfoButton;
+@synthesize changedPriceMessage = _changedPriceMessage;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -55,7 +56,7 @@
   self.listingTitle.text = self.currentItem.title;
   self.descriptionTextView.text = self.currentItem.description;
   self.listingPrice.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
-  self.offerPrice.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
+  //self.offerPrice.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
   self.listingDate.text = [self.currentItem getTimeLeftTextlong];       
   
   [self hideIndicator];
@@ -101,7 +102,9 @@
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
     
     // Bottom view load
-    [CommonView setMessageWithPriceView:self.buttomView priceButton:self.priceButton messageField:self.messageTextField];
+    [CommonView setMessageWithPriceView:self.scrollView payImage:nil bottomView:self.buttomView priceButton:self.priceButton messageField:self.messageTextField price:self.offerPrice.text changedPriceMessage:self.changedPriceMessage];
+    
+    //[CommonView setMessageWithPriceView:self.buttomView priceButton:self.priceButton messageField:self.messageTextField];
     
     // User info button
     UIImage *userButtonImg = [UIImage imageNamed:UI_IMAGE_USER_INFO_BUTTON_GREEN];
@@ -121,6 +124,7 @@
         
         self.offerPrice.text = (NSString *)[notification object];
         DLog (@"BrowseItemNoMsgViewController::receivePriceChangedNotification:%@", (NSString *)[notification object]);
+        [CommonView setMessageWithPriceView:self.scrollView payImage:nil bottomView:self.buttomView priceButton:self.priceButton messageField:self.messageTextField price:self.offerPrice.text changedPriceMessage:self.changedPriceMessage];
     }
 }
 
@@ -147,7 +151,7 @@
     if ([segue.identifier isEqualToString:@"changedPriceSegue"]) {
         UINavigationController *navigationController = segue.destinationViewController;
         OfferChangingPriceViewController *ovc = (OfferChangingPriceViewController *)navigationController.topViewController;
-        ovc.currentPrice = self.offerPrice.text;
+        ovc.currentPrice = ([self.offerPrice.text length] > 0) ? self.offerPrice.text : self.listingPrice.text;
     }
 }
 
@@ -184,15 +188,16 @@
 
 - (void)accountDidCreateOffer:(NSDictionary *)dict
 {
-  DLog(@"BrowseItemNoMsgViewController::accountDidCreateOffer:dict=%@", dict);
+    DLog(@"BrowseItemNoMsgViewController::accountDidCreateOffer:dict=%@", dict);
+    [self hideIndicator];
+    [self stopLoading];
+    UINavigationController *navController = self.navigationController;
+    // Pop this controller and replace with another
+    [navController dismissModalViewControllerAnimated:YES];
 
-  UINavigationController *navController = self.navigationController;
-  // Pop this controller and replace with another
-  [navController dismissModalViewControllerAnimated:YES];
-    
-  [[NSNotificationCenter defaultCenter] postNotificationName:NO_MESSAGE_TO_MESSAGE_VIEW_NOTIFICATION object:dict];
-//  [navController popViewControllerAnimated:NO];
-//  [(BrowseTableViewController *)[navController.viewControllers objectAtIndex:([navController.viewControllers count]-1)] switchBrowseItemView];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NO_MESSAGE_TO_MESSAGE_VIEW_NOTIFICATION object:dict];
+    //  [navController popViewControllerAnimated:NO];
+    //  [(BrowseTableViewController *)[navController.viewControllers objectAtIndex:([navController.viewControllers count]-1)] switchBrowseItemView];
   
 }
 
@@ -207,7 +212,7 @@
       // submit listing
       DLog(@"BrowseItemNoMsgViewController::(IBAction)navigationButtonAction:createOffer:");
       NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                     self.offerPrice.text, @"price",
+                                     ([self.offerPrice.text length] > 0) ? self.offerPrice.text : self.listingPrice.text, @"price",
                                      self.messageTextField.text, @"with_message",
                                      self.currentItem.dbId, @"listing_id",nil];
       

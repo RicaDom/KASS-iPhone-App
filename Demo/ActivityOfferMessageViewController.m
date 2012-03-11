@@ -27,6 +27,7 @@
 @synthesize descriptionTextField = _descriptionTextField;
 @synthesize confirmDealButton = _confirmDealButton;
 @synthesize confirmImageView = _confirmImageView;
+@synthesize changedPriceMessage = _changedPriceMessage;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -79,7 +80,7 @@
   self.listingExpiredDate.text = [self.currentOffer getListItemTimeLeftTextlong];
   
   self.offerPrice.text = [self.currentOffer getPriceText]; 
-  self.changingPrice.text = [self.currentOffer getPriceText]; 
+  //self.changingPrice.text = [self.currentOffer getPriceText]; 
   
   [self loadMessageView];
   [self hideIndicator];
@@ -102,8 +103,11 @@
                                 action:@selector(OnClick_btnBack:)];
     self.navigationItem.leftBarButtonItem = btnBack;   
     
+    // init scroll view content size
+    [self.scrollView setContentSize:CGSizeMake(_ScrollViewContentSizeX, self.scrollView.frame.size.height)];
+    
     // Bottom view load
-    [CommonView setMessageWithPriceView:self.buttomView priceButton:self.priceButton messageField:self.sendMessageTextField];
+    [CommonView setMessageWithPriceView:self.scrollView payImage:self.confirmImageView bottomView:self.buttomView priceButton:self.priceButton messageField:self.sendMessageTextField price:self.changingPrice.text changedPriceMessage:self.changedPriceMessage];
     
     // User info button
     UIImage *userButtonImg = [UIImage imageNamed:UI_IMAGE_USER_INFO_BUTTON_GREEN];
@@ -143,6 +147,7 @@
     if ([[notification name] isEqualToString:CHANGED_PRICE_NOTIFICATION]) {        
         self.changingPrice.text = (NSString *)[notification object];
         DLog (@"ActivityOfferMessageViewController::receivePriceChangedNotification:%@", (NSString *)[notification object]);
+        [CommonView setMessageWithPriceView:self.scrollView payImage:self.confirmImageView bottomView:self.buttomView priceButton:self.priceButton messageField:self.sendMessageTextField price:self.changingPrice.text changedPriceMessage:self.changedPriceMessage];
     }
 }
 
@@ -161,6 +166,7 @@
     [self setDescriptionTextField:nil];
     [self setConfirmDealButton:nil];
     [self setConfirmImageView:nil];
+    [self setChangedPriceMessage:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -328,7 +334,7 @@
     if ([segue.identifier isEqualToString:@"changedPriceSegue"]) {
         UINavigationController *navigationController = segue.destinationViewController;
         OfferChangingPriceViewController *ovc = (OfferChangingPriceViewController *)navigationController.topViewController;
-        ovc.currentPrice = self.changingPrice.text;
+        ovc.currentPrice = ([self.changingPrice.text length] <= 0)? self.offerPrice.text : self.changingPrice.text;
         
     } else if ([segue.identifier isEqualToString:@"ActOfferToMapView"]) {
         

@@ -10,30 +10,38 @@
 
 @implementation CommonView
 
-+(void) setMessageWithPriceView:(UIView *)bottomView priceButton:(UIButton *)priceButton messageField:(UITextField *)messageTextField
++(void) setMessageWithPriceView:(UIScrollView *)scrollView payImage:(UIImageView *)payImage bottomView:(UIView *)bottomView priceButton:(UIButton *)priceButton messageField:(UITextField *)messageTextField price:(NSString *)price changedPriceMessage:(UILabel *)changedPriceMessage
 {
-    NSString *price = @"abc";
-    int delta = 20;
     // Bottom view load
-    UIImage *bottomViewImg = [UIImage imageNamed:(price == nil || [price length] <= 0)?UI_IMAGE_SEND_MESSAGE_BACKGROUND:UI_IMAGE_SEND_MESSAGE_BACKGROUND];
+    UIImage *tempSmall = [UIImage imageNamed:UI_IMAGE_SEND_MESSAGE_BACKGROUND];
+    UIImage *tempLarge = [UIImage imageNamed:UI_IMAGE_SEND_MESSAGE_BACKGROUND_EXT];
+    
+    UIImage *bottomViewImg = (price == nil || [price length] <= 0)? tempSmall : tempLarge;
     [bottomView setBackgroundColor:[[UIColor alloc] initWithPatternImage:bottomViewImg]];
-    bottomView.frame = CGRectMake(0, bottomView.frame.origin.y, bottomViewImg.size.width, bottomViewImg.size.height+20);
-
+    
+    if (payImage != nil) {
+        bottomView.frame = CGRectMake(0, payImage.frame.origin.y - bottomViewImg.size.height, bottomViewImg.size.width, bottomViewImg.size.height);
+        
+        scrollView.frame = CGRectMake(scrollView.frame.origin.x, scrollView.frame.origin.y, scrollView.frame.size.width, bottomView.frame.origin.y + 64);
+    } else {
+        bottomView.frame = CGRectMake(0, ([price length] > 0 && [changedPriceMessage.text length] <= 0) ? bottomView.frame.origin.y - tempLarge.size.height + tempSmall.size.height  : bottomView.frame.origin.y, bottomViewImg.size.width, bottomViewImg.size.height);
+    }
+    
     // add text field if user changed price
     if ([price length] > 0) {
-        // Time title
-        UILabel* messageTime = [[UILabel alloc] initWithFrame:CGRectMake(0,  0, bottomView.frame.size.width, 20)];
-        [messageTime setText:@"—————— 你已经把价格调整为 ¥89 ——————"];      
-        [messageTime setTextColor:[UIColor whiteColor]];
-        messageTime.backgroundColor = [UIColor clearColor];
-        [messageTime setTextAlignment:UITextAlignmentCenter];
-        messageTime.font = [UIFont systemFontOfSize:13];
-        [bottomView addSubview:messageTime];
+        changedPriceMessage.frame = CGRectMake(0,  2, bottomView.frame.size.width, 20);
+        [changedPriceMessage setText:[@"您已经把价格调整为 ¥ " stringByAppendingFormat:price ]];      
+        [changedPriceMessage setTextColor:[UIColor lightGrayColor]];
+        changedPriceMessage.backgroundColor = [UIColor clearColor];
+        [changedPriceMessage setTextAlignment:UITextAlignmentCenter];
+        changedPriceMessage.font = [UIFont boldSystemFontOfSize:13];
+        changedPriceMessage.hidden = NO;
+        //[bottomView addSubview:changedPriceMessage];
     }
     
     UIImage *priceButtonImg = [UIImage imageNamed:UI_IMAGE_SEND_MESSAGE_PRICE];
     UIImage *priceButtonPressImg = [UIImage imageNamed:UI_IMAGE_SEND_MESSAGE_PRICE_PRESS];
-    priceButton.frame = CGRectMake(priceButton.frame.origin.x+8, priceButton.frame.origin.y+3+delta, priceButtonImg.size.width, priceButtonImg.size.height);
+    priceButton.frame = CGRectMake(8, ([price length] > 0)?32:5, priceButtonImg.size.width, priceButtonImg.size.height);
     [priceButton setImage:priceButtonImg forState:UIControlStateNormal];
     [priceButton setImage:priceButtonPressImg forState:UIControlStateSelected];
     [priceButton setBackgroundColor:[[UIColor alloc] initWithPatternImage:[UIImage imageNamed:UI_IMAGE_SEND_MESSAGE_PRICE]]];

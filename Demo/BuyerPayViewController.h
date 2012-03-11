@@ -27,6 +27,8 @@
 @property (strong, nonatomic) IBOutlet UIView *bottomView;
 @property (strong, nonatomic) IBOutlet UITextField *messageTextField;
 @property (strong, nonatomic) IBOutlet UITextView *descriptionTextField;
+@property (strong, nonatomic) IBOutlet UILabel *changedPriceLabel;
+@property (strong, nonatomic) IBOutlet UILabel *changedPriceMessage;
 
 
 @end

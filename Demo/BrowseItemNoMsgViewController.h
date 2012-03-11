@@ -25,6 +25,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *listingPrice;
 @property (strong, nonatomic) IBOutlet UILabel *listingDate;
 @property (strong, nonatomic) IBOutlet UILabel *offerPrice;
+@property (strong, nonatomic) IBOutlet UILabel *changedPriceMessage;
 
 @property (strong, nonatomic) IBOutlet UIView *mainView;
 @property (strong, nonatomic) IBOutlet UIView *buttomView;

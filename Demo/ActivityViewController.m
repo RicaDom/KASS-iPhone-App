@@ -197,7 +197,7 @@ NSMutableArray *currentItems;
     
     // Release any cached data, images, etc that aren't in use.
 }
-
+    
 //#pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -216,7 +216,6 @@ NSMutableArray *currentItems;
                                              selector:@selector(receivedFromOfferViewNotification:) 
                                                  name:OFFER_TO_PAY_VIEW_NOTIFICATION
                                                object:nil];
-    
 }
 
 - (void) receivedFromOfferViewNotification:(NSNotification *) notification

@@ -11,6 +11,6 @@
 
 @interface CommonView : NSObject
 
-+ (void) setMessageWithPriceView:(UIView *)bottomView priceButton:(UIButton *)priceButton messageField:(UITextField *)messageTextField;
++(void) setMessageWithPriceView:(UIScrollView *)scrollView payImage:(UIImageView *)payImage bottomView:(UIView *)bottomView priceButton:(UIButton *)priceButton messageField:(UITextField *)messageTextField price:(NSString *)price changedPriceMessage:(UILabel *)changedPriceMessage;
 
 @end

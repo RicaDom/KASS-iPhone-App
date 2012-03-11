@@ -122,6 +122,7 @@ NSString * const UI_IMAGE_BROWSE_NEAR_DOWN = @"btn_near_down.png";
 NSString * const UI_IMAGE_BROWSE_SEGMENT_DIVIDER = @"segment_divider.png";
 
 NSString * const UI_IMAGE_SEND_MESSAGE_BACKGROUND = @"iphone_47.png";
+NSString * const UI_IMAGE_SEND_MESSAGE_BACKGROUND_EXT = @"buyer-2_03.png";
 NSString * const UI_IMAGE_SEND_MESSAGE_PRICE = @"iphone_43.png";
 NSString * const UI_IMAGE_SEND_MESSAGE_PRICE_PRESS = @"iphone_41.png";
 

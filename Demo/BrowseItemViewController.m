@@ -31,6 +31,7 @@
 @synthesize mapButton = _mapButton;
 
 @synthesize descriptionTextView = _descriptionTextView;
+@synthesize changePriceMessage = _changePriceMessage;
 @synthesize priceButton = _priceButton;
 @synthesize currentOffer = _currentOffer;
 
@@ -70,7 +71,7 @@
   self.itemTitleLabel.text = self.currentOffer.title;
   self.descriptionTextView.text = self.currentOffer.description;
   self.itemPriceLabel.text = [NSString stringWithFormat:@"%@", self.currentOffer.price];
-  self.itemPriceChangedToLabel.text = [NSString stringWithFormat:@"%@", self.currentOffer.price];
+  //self.itemPriceChangedToLabel.text = [NSString stringWithFormat:@"%@", self.currentOffer.price];
   
   NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
   [formatter setAMSymbol:@"AM"];
@@ -107,6 +108,21 @@
   }
 }
 
+- (void) receivePriceChangedNotification:(NSNotification *) notification
+{
+    // [notification name] should always be CHANGED_PRICE_NOTIFICATION
+    // unless you use this method for observation of other notifications
+    // as well.
+    
+    if ([[notification name] isEqualToString:CHANGED_PRICE_NOTIFICATION]) {
+        
+        self.itemPriceChangedToLabel.text = (NSString *)[notification object];
+        DLog (@"BrowseItemViewController::receivePriceChangedNotification:%@", (NSString *)[notification object]);
+        DLog(@"Price changed to: %@", self.itemPriceChangedToLabel.text);
+        [CommonView setMessageWithPriceView:self.scrollView payImage:nil bottomView:self.buttomView priceButton:self.priceButton messageField:self.messageTextField price:self.itemPriceChangedToLabel.text changedPriceMessage:self.changePriceMessage];
+    }
+}
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
@@ -131,25 +147,13 @@
                                                object:nil];
     
     // Bottom view load
-    [CommonView setMessageWithPriceView:self.buttomView priceButton:self.priceButton messageField:self.messageTextField];
+    [CommonView setMessageWithPriceView:self.scrollView payImage:nil bottomView:self.buttomView priceButton:self.priceButton messageField:self.messageTextField price:self.itemPriceChangedToLabel.text changedPriceMessage:self.changePriceMessage];
+    //[CommonView setMessageWithPriceView:self.buttomView priceButton:self.priceButton messageField:self.messageTextField];
     
     // User info button
   [ViewHelper buildUserInfoButton:self.userInfoButton]; 
   [ViewHelper buildMapButton:self.mapButton];
 
-}
-
-- (void) receivePriceChangedNotification:(NSNotification *) notification
-{
-    // [notification name] should always be CHANGED_PRICE_NOTIFICATION
-    // unless you use this method for observation of other notifications
-    // as well.
-    
-    if ([[notification name] isEqualToString:CHANGED_PRICE_NOTIFICATION]) {
-        
-        self.itemPriceChangedToLabel.text = (NSString *)[notification object];
-        DLog (@"BrowseItemViewController::receivePriceChangedNotification:%@", (NSString *)[notification object]);
-    }
 }
 
 - (void)viewDidUnload
@@ -166,8 +170,9 @@
     [self setPriceButton:nil];
     [self setUserInfoButton:nil];
     [self setDescriptionTextView:nil];
-  [super viewDidUnload];
-  [self setMapButton:nil];
+    [self setChangePriceMessage:nil];
+    [super viewDidUnload];
+    [self setMapButton:nil];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -209,7 +214,7 @@
       
       DLog(@"BrowseItemViewController::(IBAction)navigationButtonAction:modifyOffer:");
       NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                     self.itemPriceLabel.text, @"price",
+                                     ([self.itemPriceChangedToLabel.text length] > 0) ? self.itemPriceChangedToLabel.text : self.itemPriceLabel.text, @"price",
                                      self.messageTextField.text, @"message",nil];
       
       // modify listing
@@ -237,7 +242,7 @@
     if ([segue.identifier isEqualToString:@"changedPriceSegue"]) {
         UINavigationController *navigationController = segue.destinationViewController;
         OfferChangingPriceViewController *ovc = (OfferChangingPriceViewController *)navigationController.topViewController;
-        ovc.currentPrice = self.itemPriceLabel.text;
+        ovc.currentPrice = [self.itemPriceChangedToLabel.text length] > 0 ? self.itemPriceChangedToLabel.text : self.itemPriceLabel.text;
     }
 }
 

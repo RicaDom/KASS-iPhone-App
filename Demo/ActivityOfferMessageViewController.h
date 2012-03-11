@@ -41,6 +41,7 @@
 @property (strong, nonatomic) IBOutlet UITextView *descriptionTextField;
 @property (strong, nonatomic) IBOutlet UIButton *confirmDealButton;
 @property (strong, nonatomic) IBOutlet UIImageView *confirmImageView;
+@property (strong, nonatomic) IBOutlet UILabel *changedPriceMessage;
 
 - (IBAction)sellerInfoAction:(id)sender;
 //- (IBAction)confirmDealAction:(id)sender;

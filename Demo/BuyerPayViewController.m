@@ -25,6 +25,8 @@
 @synthesize bottomView = _bottomView;
 @synthesize messageTextField = _messageTextField;
 @synthesize descriptionTextField = _descriptionTextField;
+@synthesize changedPriceLabel = _changedPriceLabel;
+@synthesize changedPriceMessage = _changedPriceMessage;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -111,7 +113,7 @@
     self.navigationItem.leftBarButtonItem = btnBack; 
     
     // Bottom view load
-    [CommonView setMessageWithPriceView:self.bottomView priceButton:self.priceButton messageField:self.messageTextField];
+    //[CommonView setMessageWithPriceView:self.bottomView priceButton:self.priceButton messageField:self.messageTextField ];
 }
 
 -(IBAction)OnClick_btnBack:(id)sender  {
@@ -128,6 +130,8 @@
     [self setBottomView:nil];
     [self setMessageTextField:nil];
     [self setDescriptionTextField:nil];
+    [self setChangedPriceLabel:nil];
+    [self setChangedPriceMessage:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

@@ -132,6 +132,7 @@ extern NSString * const UI_IMAGE_BROWSE_NEAR_DOWN;
 extern NSString * const UI_IMAGE_BROWSE_SEGMENT_DIVIDER;
 
 extern NSString * const UI_IMAGE_SEND_MESSAGE_BACKGROUND;
+extern NSString * const UI_IMAGE_SEND_MESSAGE_BACKGROUND_EXT;
 extern NSString * const UI_IMAGE_SEND_MESSAGE_PRICE;
 extern NSString * const UI_IMAGE_SEND_MESSAGE_PRICE_PRESS;
 
