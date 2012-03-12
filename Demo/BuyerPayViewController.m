@@ -27,6 +27,7 @@
 @synthesize descriptionTextField = _descriptionTextField;
 @synthesize changedPriceLabel = _changedPriceLabel;
 @synthesize changedPriceMessage = _changedPriceMessage;
+@synthesize backButton = _backButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -114,6 +115,7 @@
     
     // Bottom view load
     //[CommonView setMessageWithPriceView:self.bottomView priceButton:self.priceButton messageField:self.messageTextField ];
+    [ViewHelper buildBackButton:self.backButton];
 }
 
 -(IBAction)OnClick_btnBack:(id)sender  {
@@ -132,6 +134,7 @@
     [self setDescriptionTextField:nil];
     [self setChangedPriceLabel:nil];
     [self setChangedPriceMessage:nil];
+    [self setBackButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -147,5 +150,8 @@
 - (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view
 {
     [self performSelector:@selector(loadDataSource) withObject:nil afterDelay:2.0];	
+}
+- (IBAction)backButtonAction:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 @end

@@ -98,9 +98,8 @@
     [self.shareButton setImage:shareButtonImgPress forState:UIControlStateSelected];
     self.shareButton.frame = CGRectMake(self.view.frame.size.width/2 + self.modifyButton.frame.origin.x, self.shareButton.frame.origin.y, editButtonImg.size.width, editButtonImg.size.height);
     
-  [ViewHelper buildMapButton:self.mapButton];  
-  [ViewHelper buildBackButton:self.backButton];
-  
+    [ViewHelper buildMapButton:self.mapButton];  
+    [ViewHelper buildBackButton:self.backButton];
 }
 
 - (void)viewDidUnload

@@ -14,6 +14,7 @@
 @synthesize PostDurationLabel = _PostDurationLabel;
 @synthesize PostFlowSegment = _PostFlowSegment;
 @synthesize postType = _postType;
+@synthesize backButton = _backButton;
 NSArray *arrayTimePicker;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -86,7 +87,7 @@ NSArray *arrayTimePicker;
     if ([self.PostDurationPicker selectedRowInComponent:0] != 0) {
        self.navigationItem.rightBarButtonItem.enabled = YES; 
     }
-    
+    [ViewHelper buildBackButton:self.backButton];
 }
 
 - (void)viewDidUnload
@@ -94,6 +95,7 @@ NSArray *arrayTimePicker;
     [self setPostDurationPicker:nil];
     [self setPostDurationLabel:nil];
     [self setPostFlowSegment:nil];
+    [self setBackButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -138,6 +140,7 @@ NSArray *arrayTimePicker;
     }
 }
 
-
-
+- (IBAction)backButtonAction:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

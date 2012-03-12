@@ -35,8 +35,10 @@
 @property (strong, nonatomic) IBOutlet UIButton *mapButton;
 @property (strong, nonatomic) IBOutlet UITextView *descriptionTextView;
 @property (strong, nonatomic) IBOutlet UILabel *changePriceMessage;
+@property (strong, nonatomic) IBOutlet UIButton *leftButton;
 
 - (IBAction)navigationButtonAction:(id)sender;
 - (IBAction)mapButtonAction:(id)sender;
+- (IBAction)leftButtonAction:(id)sender;
 
 @end

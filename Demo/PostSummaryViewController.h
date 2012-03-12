@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "VariableStore.h"
 #import "NSString+ModelHelper.h"
+#import "ViewHelper.h"
 
 @interface PostSummaryViewController : UIViewController <LocateMeDelegate, AccountActivityDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *postTitle;
@@ -16,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *postDuration;
 @property (strong, nonatomic) IBOutlet UIButton *submitButton;
 @property (strong, nonatomic) NSString *postType;
+@property (strong, nonatomic) IBOutlet UIButton *cancelButton;
 @property (strong, nonatomic) IBOutlet UITextView *postDesciptionTextField;
 - (IBAction)cancelAction:(id)sender;
 - (IBAction)submitAction;

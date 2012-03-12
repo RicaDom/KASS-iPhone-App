@@ -42,11 +42,13 @@
 @property (strong, nonatomic) IBOutlet UIButton *confirmDealButton;
 @property (strong, nonatomic) IBOutlet UIImageView *confirmImageView;
 @property (strong, nonatomic) IBOutlet UILabel *changedPriceMessage;
+@property (strong, nonatomic) IBOutlet UIButton *leftButton;
 
 - (IBAction)sellerInfoAction:(id)sender;
 //- (IBAction)confirmDealAction:(id)sender;
 - (IBAction)sendMessageOrMapAction:(UIBarButtonItem *)sender;
 - (IBAction)buttonDraggingAction:(UIPanGestureRecognizer*)recognizer;
+- (IBAction)leftButtonAction:(id)sender;
 
 @end
 

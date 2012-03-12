@@ -11,6 +11,7 @@
 @implementation PostFlowPriceViewController
 @synthesize priceTextField = _priceTextField;
 @synthesize postType = _postType;
+@synthesize backButton = _backButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -72,6 +73,7 @@
         && [[NSString stringWithFormat:@"%d",intValue] isEqualToString:self.priceTextField.text]) {
         self.navigationItem.rightBarButtonItem.enabled = YES;
     } 
+    [ViewHelper buildBackButton:self.backButton];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -82,6 +84,7 @@
 - (void)viewDidUnload
 {
     [self setPriceTextField:nil];
+    [self setBackButton:nil];
     [super viewDidUnload];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:nil];
@@ -106,5 +109,8 @@
             self.navigationItem.rightBarButtonItem.enabled = NO;
         }
     }
+}
+- (IBAction)backButtonAction:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 @end

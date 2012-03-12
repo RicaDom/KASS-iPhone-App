@@ -313,14 +313,38 @@
 {
   UIImage *mapImg = [UIImage imageNamed:UI_IMAGE_BROWSE_MAP];
   [button setImage:mapImg forState:UIControlStateNormal];
-  button.frame = CGRectMake(200, button.frame.origin.y, mapImg.size.width+20, mapImg.size.height);
+  button.frame = CGRectMake(200, button.frame.origin.y, mapImg.size.width + 20, mapImg.size.height);
 }
 
 + (void)buildBackButton:(UIButton *)button
 {
   UIImage *backImg = [UIImage imageNamed:UI_IMAGE_BACK_BUTTON];
   [button setImage:backImg forState:UIControlStateNormal];
-  button.frame = CGRectMake(0, button.frame.origin.y, backImg.size.width, backImg.size.height);
+  button.frame = CGRectMake(5, button.frame.origin.y, backImg.size.width, backImg.size.height);
+}
+
++ (void)buildCancelButton:(UIButton *)button
+{
+    UIImage *img = [UIImage imageNamed:UI_IMAGE_CANCEL_BUTTON];
+    [button setImage:img forState:UIControlStateNormal];
+    button.frame = CGRectMake(5, button.frame.origin.y, img.size.width, img.size.height);
+}
+
++ (void)buildNextButton:(UIButton *)button
+{
+    UIImage *img = [UIImage imageNamed:UI_IMAGE_NEXT_BUTTON_ENABLE];
+    UIImage *imgPress = [UIImage imageNamed:UI_IMAGE_NEXT_BUTTON_ENABLE_PRESS];
+    [button setImage:img forState:UIControlStateNormal];
+    [button setImage:imgPress forState:UIControlStateSelected];
+    button.frame = CGRectMake(5, button.frame.origin.y, img.size.width, img.size.height);
+}
+
++ (void)buildNextButtonDis:(UIButton *)button
+{
+    UIImage *img = [UIImage imageNamed:UI_IMAGE_NEXT_BUTTON_DISABLE];
+    [button setImage:img forState:UIControlStateNormal];
+    button.frame = CGRectMake(5, button.frame.origin.y, img.size.width, img.size.height);
+    button.enabled = NO;
 }
 
 + (void)buildUserInfoButton:(UIButton *)button

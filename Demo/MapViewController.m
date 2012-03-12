@@ -12,7 +12,12 @@
 
 @implementation MapViewController
 @synthesize currentMap = _currentMap;
+@synthesize backButton = _backButton;
 @synthesize currentItem = _currentItem;
+
+- (IBAction)backButtonAction:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void) loadMapDemo {
 
@@ -151,11 +156,14 @@
 {
   [super viewDidLoad];
   [self loadMapDemo];
+    
+  [ViewHelper buildBackButton:self.backButton];
 }
 
 - (void)viewDidUnload
 {
     [self setCurrentMap:nil];
+    [self setBackButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

@@ -19,6 +19,9 @@
 #define NAVIGATION_BAR_BACKGROUND_COLOR_BLUE 0.4
 #define NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA 1.0
 
+#define LEFT_BAR_BUTTON_CANCEL 0
+#define LEFT_BAR_BUTTON_BACK   1
+
 extern NSString * const POST_TYPE_TEMPLATE;
 extern NSString * const POST_TYPE_EDITING;
 extern NSString * const POST_TEMPLATE_CATEGORY_POPULAR;
@@ -98,6 +101,10 @@ extern NSString * const UI_IMAGE_LOGIN_FORM_BACKGROUND;
 extern NSString * const UI_IMAGE_LOGIN_LABEL;
 extern NSString * const UI_IMAGE_SIGUP_LABEL;
 
+extern NSString * const UI_IMAGE_NEXT_BUTTON_DISABLE;
+extern NSString * const UI_IMAGE_NEXT_BUTTON_ENABLE;
+extern NSString * const UI_IMAGE_NEXT_BUTTON_ENABLE_PRESS;
+extern NSString * const UI_IMAGE_CANCEL_BUTTON;
 extern NSString * const UI_IMAGE_BACK_BUTTON;
 extern NSString * const UI_IMAGE_BACK_BUTTON_PRESS;
 extern NSString * const UI_IMAGE_SHARE_BUTTON;

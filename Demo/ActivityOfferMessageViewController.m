@@ -28,6 +28,7 @@
 @synthesize confirmDealButton = _confirmDealButton;
 @synthesize confirmImageView = _confirmImageView;
 @synthesize changedPriceMessage = _changedPriceMessage;
+@synthesize leftButton = _leftButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -96,12 +97,14 @@
 
 -(void) customViewLoad
 {
-    UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]
-                                initWithTitle:UI_BUTTON_LABEL_BACK
-                                style:UIBarButtonItemStyleBordered
-                                target:self
-                                action:@selector(OnClick_btnBack:)];
-    self.navigationItem.leftBarButtonItem = btnBack;   
+    [ViewHelper buildBackButton:self.leftButton];
+    self.leftButton.tag = LEFT_BAR_BUTTON_BACK;
+//    UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]
+//                                initWithTitle:UI_BUTTON_LABEL_BACK
+//                                style:UIBarButtonItemStyleBordered
+//                                target:self
+//                                action:@selector(OnClick_btnBack:)];
+//    self.navigationItem.leftBarButtonItem = btnBack;   
     
     // init scroll view content size
     [self.scrollView setContentSize:CGSizeMake(_ScrollViewContentSizeX, self.scrollView.frame.size.height)];
@@ -167,6 +170,7 @@
     [self setConfirmDealButton:nil];
     [self setConfirmImageView:nil];
     [self setChangedPriceMessage:nil];
+    [self setLeftButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -193,13 +197,19 @@
         // 2. increase the size of the view so that the area behind the keyboard is covered up.
         rect.origin.y -= (_keyboardRect.size.height - self.confirmImageView.frame.size.height);
         rect.size.height += _keyboardRect.size.height;
-        self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_CANCEL;
+        
+        [ViewHelper buildCancelButton:self.leftButton];
+        self.leftButton.tag = LEFT_BAR_BUTTON_CANCEL;
+        //self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_CANCEL;
         self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_SEND;
     }else{
         // revert back to the normal state.
         rect.origin.y += (_keyboardRect.size.height - self.confirmImageView.frame.size.height);
         rect.size.height -= _keyboardRect.size.height;
-        self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_BACK;
+        
+        [ViewHelper buildBackButton:self.leftButton];
+        self.leftButton.tag = LEFT_BAR_BUTTON_BACK;
+        //self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_BACK;
         self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_MAP;
     }
     self.mainView.frame = rect;
@@ -263,14 +273,14 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil]; 
 }
 
--(IBAction)OnClick_btnBack:(id)sender  {
-    if ([self.navigationItem.leftBarButtonItem.title isEqualToString:UI_BUTTON_LABEL_BACK]) {
-        [self.navigationController popViewControllerAnimated:YES];
-    } else {
-        [self.sendMessageTextField resignFirstResponder];
-        [self setViewMovedUp:NO];
-    }
-}
+//-(IBAction)OnClick_btnBack:(id)sender  {
+//    if ([self.navigationItem.leftBarButtonItem.title isEqualToString:UI_BUTTON_LABEL_BACK]) {
+//        [self.navigationController popViewControllerAnimated:YES];
+//    } else {
+//        [self.sendMessageTextField resignFirstResponder];
+//        [self setViewMovedUp:NO];
+//    }
+//}
 
 - (IBAction)sellerInfoAction:(id)sender {
 }
@@ -327,6 +337,15 @@
         } else {
             self.confirmDealButton.frame = CGRectMake(originX , self.confirmDealButton.frame.origin.y, self.confirmDealButton.frame.size.width, self.confirmDealButton.frame.size.height);
         }
+    }
+}
+
+- (IBAction)leftButtonAction:(id)sender {
+    if (self.leftButton.tag == LEFT_BAR_BUTTON_BACK) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        [self.sendMessageTextField resignFirstResponder];
+        [self setViewMovedUp:NO];
     }
 }
 

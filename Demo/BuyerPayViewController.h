@@ -13,6 +13,7 @@
 #import "Constants.h"
 #import "CommonView.h"
 #import "DataSourceViewController.h"
+#import "ViewHelper.h"
 
 @interface BuyerPayViewController : DataSourceViewController <UIScrollViewDelegate, PullToRefreshViewDelegate, AccountActivityDelegate>
 
@@ -29,6 +30,8 @@
 @property (strong, nonatomic) IBOutlet UITextView *descriptionTextField;
 @property (strong, nonatomic) IBOutlet UILabel *changedPriceLabel;
 @property (strong, nonatomic) IBOutlet UILabel *changedPriceMessage;
+@property (strong, nonatomic) IBOutlet UIButton *backButton;
 
+- (IBAction)backButtonAction:(id)sender;
 
 @end

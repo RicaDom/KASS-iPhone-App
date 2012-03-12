@@ -13,6 +13,8 @@
 @synthesize titleTextField = _titleTextField;
 @synthesize postType = _postType;
 @synthesize desTextField = _desTextField;
+@synthesize cancelButton = _cancelButton;
+@synthesize rightButton = _rightButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -78,7 +80,7 @@
         [self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"Post Due Date"] animated:NO];
         
         [self.navigationController pushViewController:
-         [self.storyboard instantiateViewControllerWithIdentifier:@"Post Summary"] animated:NO];
+        [self.storyboard instantiateViewControllerWithIdentifier:@"Post Summary"] animated:NO];
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(UITextFieldTextDidChangeNotification:) name:UITextFieldTextDidChangeNotification object:nil];
@@ -86,6 +88,9 @@
     if (self.titleTextField.text.length > 0) {
         self.navigationItem.rightBarButtonItem.enabled = YES;
     }
+    
+    [ViewHelper buildCancelButton:self.cancelButton];
+    [ViewHelper buildNextButtonDis:self.rightButton];
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -99,6 +104,8 @@
 {
     [self setTitleTextField:nil];
     [self setDesTextField:nil];
+    [self setCancelButton:nil];
+    [self setRightButton:nil];
     [super viewDidUnload];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:nil];
     // Release any retained subviews of the main view.
@@ -119,11 +126,17 @@
 - (void)UITextFieldTextDidChangeNotification:(NSNotification *)notification {
     if ([notification object] == self.titleTextField) {
         if (self.titleTextField.text.length > 0) {
-            self.navigationItem.rightBarButtonItem.enabled = YES;
+            // self.navigationItem.rightBarButtonItem.enabled = YES;
+            
+            [ViewHelper buildNextButton:self.rightButton];
         } else {
-            self.navigationItem.rightBarButtonItem.enabled = NO;
+            [ViewHelper buildNextButtonDis:self.rightButton];
+            
+            // self.navigationItem.rightBarButtonItem.enabled = NO;
         }
     }
 }
 
+- (IBAction)rightButtonAction:(id)sender {
+}
 @end

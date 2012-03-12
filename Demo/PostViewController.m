@@ -257,6 +257,8 @@
     self.addPostBackgroundView.frame = CGRectMake(self.addPostButton.frame.origin.x - 5, self.addPostButton.frame.origin.y - 7, slogan.size.width, slogan.size.height);
     self.addPostBackgroundView.backgroundColor = [[UIColor alloc] initWithPatternImage:slogan];
     self.addPostSloganLabel.hidden = YES;
+    
+   // ViewHelper buildCancelButton:self.
 }
 
 -(void)viewWillAppear:(BOOL)animated

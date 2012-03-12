@@ -12,6 +12,7 @@
 #import "ListingImageAnnotationView.h"
 #import "BrowseItemViewController.h"
 #import "LocateMeDelegate.h"
+#import "ViewHelper.h"
 
 #define METERS_PER_MILE 1609.344
 
@@ -19,5 +20,7 @@
 
 @property (strong, nonatomic) ListItem *currentItem;
 @property (weak, nonatomic) IBOutlet MKMapView *currentMap;
+@property (strong, nonatomic) IBOutlet UIButton *backButton;
+- (IBAction)backButtonAction:(id)sender;
 - (void) loadMapDemo;
 @end

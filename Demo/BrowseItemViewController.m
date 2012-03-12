@@ -32,6 +32,7 @@
 
 @synthesize descriptionTextView = _descriptionTextView;
 @synthesize changePriceMessage = _changePriceMessage;
+@synthesize leftButton = _leftButton;
 @synthesize priceButton = _priceButton;
 @synthesize currentOffer = _currentOffer;
 
@@ -134,12 +135,12 @@
     // init scroll view content size
     [self.scrollView setContentSize:CGSizeMake(_ScrollViewContentSizeX, self.scrollView.frame.size.height)];
  
-    UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]
-                                initWithTitle:UI_BUTTON_LABEL_BACK
-                                style:UIBarButtonItemStyleBordered
-                                target:self
-                                action:@selector(OnClick_btnBack:)];
-    self.navigationItem.leftBarButtonItem = btnBack;   
+//    UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]
+//                                initWithTitle:UI_BUTTON_LABEL_BACK
+//                                style:UIBarButtonItemStyleBordered
+//                                target:self
+//                                action:@selector(OnClick_btnBack:)];
+//    self.navigationItem.leftBarButtonItem = btnBack;   
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receivePriceChangedNotification:) 
@@ -148,12 +149,12 @@
     
     // Bottom view load
     [CommonView setMessageWithPriceView:self.scrollView payImage:nil bottomView:self.buttomView priceButton:self.priceButton messageField:self.messageTextField price:self.itemPriceChangedToLabel.text changedPriceMessage:self.changePriceMessage];
-    //[CommonView setMessageWithPriceView:self.buttomView priceButton:self.priceButton messageField:self.messageTextField];
     
     // User info button
   [ViewHelper buildUserInfoButton:self.userInfoButton]; 
   [ViewHelper buildMapButton:self.mapButton];
-
+  [ViewHelper buildBackButton:self.leftButton];
+   self.leftButton.tag = LEFT_BAR_BUTTON_BACK;
 }
 
 - (void)viewDidUnload
@@ -171,6 +172,7 @@
     [self setUserInfoButton:nil];
     [self setDescriptionTextView:nil];
     [self setChangePriceMessage:nil];
+    [self setLeftButton:nil];
     [super viewDidUnload];
     [self setMapButton:nil];
     // Release any retained subviews of the main view.
@@ -209,6 +211,16 @@
                             sender: self];
 }
 
+- (IBAction)leftButtonAction:(id)sender {
+    if (self.leftButton.tag == LEFT_BAR_BUTTON_BACK) {
+        [self dismissModalViewControllerAnimated:YES];
+        //[self.navigationController popViewControllerAnimated:YES];
+    } else {
+        [self.messageTextField resignFirstResponder];
+        [self hideKeyboardAndMoveViewDown];
+    }
+}
+
 - (IBAction)navigationButtonAction:(id)sender {
     if (self.navigationButton.title == UI_BUTTON_LABEL_SEND) {
       
@@ -229,12 +241,16 @@
  KeyboardSliderDelegate
  */
 - (void) keyboardMainViewMovedDown{
-  self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_BACK;
-  self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_MAP;  
+    [ViewHelper buildBackButton:self.leftButton];
+    self.leftButton.tag = LEFT_BAR_BUTTON_BACK;
+    //self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_BACK;
+    self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_MAP;  
 }
 - (void) keyboardMainViewMovedUp{
-  self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_CANCEL;
-  self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_SEND; 
+    [ViewHelper buildCancelButton:self.leftButton];
+    self.leftButton.tag = LEFT_BAR_BUTTON_CANCEL;
+    //self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_CANCEL;
+    self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_SEND; 
 }
 
 
@@ -257,7 +273,9 @@
         }
     }
     if ([sender isEqual:_messageTextField]) {
-        self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_CANCEL;
+        [ViewHelper buildCancelButton:self.leftButton];
+        self.leftButton.tag = LEFT_BAR_BUTTON_CANCEL;
+        //self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_CANCEL;
         //self.navigationController.navigationBar.backItem.title = @"取消";
         //self.navigationItem.leftBarButtonItem.tintColor = [UIColor redColor];
         self.navigationButton.title = UI_BUTTON_LABEL_SUBMIT;
@@ -311,14 +329,14 @@
 }
 
 
--(IBAction)OnClick_btnBack:(id)sender  {
-    if ([self.navigationItem.leftBarButtonItem.title isEqualToString:UI_BUTTON_LABEL_BACK]) {
-        [self dismissModalViewControllerAnimated:YES];
-        //[self.navigationController popViewControllerAnimated:YES];
-    } else {
-        [self.messageTextField resignFirstResponder];
-        [self hideKeyboardAndMoveViewDown];
-    }
-}
+//-(IBAction)OnClick_btnBack:(id)sender  {
+//    if ([self.navigationItem.leftBarButtonItem.title isEqualToString:UI_BUTTON_LABEL_BACK]) {
+//        [self dismissModalViewControllerAnimated:YES];
+//        //[self.navigationController popViewControllerAnimated:YES];
+//    } else {
+//        [self.messageTextField resignFirstResponder];
+//        [self hideKeyboardAndMoveViewDown];
+//    }
+//}
 
 @end

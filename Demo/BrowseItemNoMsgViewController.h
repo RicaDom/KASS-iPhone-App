@@ -14,6 +14,7 @@
 #import "PullToRefreshView.h"
 #import "DataSourceViewController.h"
 #import "KassApp.h"
+#import "ViewHelper.h"
 
 @interface BrowseItemNoMsgViewController : DataSourceViewController <UIActionSheetDelegate, AccountActivityDelegate, UIScrollViewDelegate, KassAppDelegate>
 
@@ -33,7 +34,9 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *priceButton;
 @property (strong, nonatomic) IBOutlet UIButton *userInfoButton;
+@property (strong, nonatomic) IBOutlet UIButton *leftButton;
 
 - (IBAction)navigationButtonAction:(id)sender;
+- (IBAction)leftButtonAction:(id)sender;
 
 @end

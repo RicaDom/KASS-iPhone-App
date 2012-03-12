@@ -17,6 +17,7 @@
 @synthesize postDuration = _postDuration;
 @synthesize submitButton = _submitButton;
 @synthesize postType = _postType;
+@synthesize cancelButton = _cancelButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -93,6 +94,7 @@
     VariableStore.sharedInstance.locateMeManager.delegate = self;
     [VariableStore.sharedInstance.locateMeManager locateMe];
     [self customViewLoad];
+    [ViewHelper buildCancelButton:self.cancelButton];
 }
 
 - (void)viewDidUnload
@@ -102,6 +104,7 @@
     [self setPostAskPrice:nil];
     [self setPostDuration:nil];
     [self setSubmitButton:nil];
+    [self setCancelButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

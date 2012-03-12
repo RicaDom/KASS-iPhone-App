@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "Constants.h"
+#import "ViewHelper.h"
 
 @interface OfferChangingPriceViewController : UIViewController
 
 @property (strong, nonatomic) NSString *currentPrice;
+@property (strong, nonatomic) IBOutlet UIButton *leftButton;
 @property (weak, nonatomic) IBOutlet UITextField *offerPriceTextField;
-- (IBAction)cancelChangingPriceAction:(id)sender;
+
 - (IBAction)doneChangingPriceAction:(id)sender;
+- (IBAction)leftButtonAction:(id)sender;
 
 @end
