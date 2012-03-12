@@ -10,4 +10,26 @@
 
 @implementation PriceModifier
 
+@synthesize price = _price;
+
+static PriceModifier *pm = nil;
+
++ (PriceModifier *)currentModifier
+{
+  if (pm == nil) {
+    pm = [[PriceModifier alloc] init];
+  }
+  return pm;
+}
+
+- (void)registerPriceModifier:(NSInteger)price
+{
+  _price = price;
+}
+
+- (void)unregister
+{
+  //don't release pm, because it's cross different controllers
+}
+
 @end

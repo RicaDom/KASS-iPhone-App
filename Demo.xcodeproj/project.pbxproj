@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		77122C2D150BB187006FE1B0 /* china-chengdu.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 77122C2B150BB187006FE1B0 /* china-chengdu.gpx */; };
 		77122C2E150BB187006FE1B0 /* china-hangzhou.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 77122C2C150BB187006FE1B0 /* china-hangzhou.gpx */; };
+		771AE316150DEB61009F546B /* PriceModifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 771AE315150DEB61009F546B /* PriceModifier.m */; };
+		771AE31A150DF1AB009F546B /* UIViewController+PriceModifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 771AE319150DF1AB009F546B /* UIViewController+PriceModifier.m */; };
 		77458EDE14EBB24C00B19F50 /* UIViewController+ActivityIndicate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77458EDD14EBB24C00B19F50 /* UIViewController+ActivityIndicate.m */; };
 		77458EE214EBC2E100B19F50 /* Offers.m in Sources */ = {isa = PBXBuildFile; fileRef = 77458EE114EBC2E100B19F50 /* Offers.m */; };
 		774F965414D8D8EE00E2588A /* KassApiTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 774F965214D8D8EE00E2588A /* KassApiTest.m */; };
@@ -301,6 +303,10 @@
 /* Begin PBXFileReference section */
 		77122C2B150BB187006FE1B0 /* china-chengdu.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "china-chengdu.gpx"; path = "Resources/china-chengdu.gpx"; sourceTree = "<group>"; };
 		77122C2C150BB187006FE1B0 /* china-hangzhou.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "china-hangzhou.gpx"; path = "Resources/china-hangzhou.gpx"; sourceTree = "<group>"; };
+		771AE314150DEB61009F546B /* PriceModifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriceModifier.h; sourceTree = "<group>"; };
+		771AE315150DEB61009F546B /* PriceModifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriceModifier.m; sourceTree = "<group>"; };
+		771AE318150DF1AB009F546B /* UIViewController+PriceModifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PriceModifier.h"; sourceTree = "<group>"; };
+		771AE319150DF1AB009F546B /* UIViewController+PriceModifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PriceModifier.m"; sourceTree = "<group>"; };
 		77458EDC14EBB24B00B19F50 /* UIViewController+ActivityIndicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ActivityIndicate.h"; sourceTree = "<group>"; };
 		77458EDD14EBB24C00B19F50 /* UIViewController+ActivityIndicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ActivityIndicate.m"; sourceTree = "<group>"; };
 		77458EE014EBC2E100B19F50 /* Offers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Offers.h; sourceTree = "<group>"; };
@@ -1163,6 +1169,8 @@
 				77786AED150B1B5E007DC016 /* UIViewController+ScrollViewRefreshPuller.m */,
 				77C15296150B6B0A00B3B106 /* UIViewController+TableViewRefreshPuller.h */,
 				77C15297150B6B0A00B3B106 /* UIViewController+TableViewRefreshPuller.m */,
+				771AE318150DF1AB009F546B /* UIViewController+PriceModifier.h */,
+				771AE319150DF1AB009F546B /* UIViewController+PriceModifier.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1573,6 +1581,8 @@
 				77786AEB150AFFA7007DC016 /* KeyboardSliderDelegate.h */,
 				77C15292150B63C700B3B106 /* TableViewRefreshPuller.h */,
 				77C15293150B63C700B3B106 /* TableViewRefreshPuller.m */,
+				771AE314150DEB61009F546B /* PriceModifier.h */,
+				771AE315150DEB61009F546B /* PriceModifier.m */,
 			);
 			name = ActionLibs;
 			sourceTree = "<group>";
@@ -1996,6 +2006,8 @@
 				77C15294150B63C700B3B106 /* TableViewRefreshPuller.m in Sources */,
 				77C15298150B6B0A00B3B106 /* UIViewController+TableViewRefreshPuller.m in Sources */,
 				778F4613150BB139008913FC /* ListingTableCell.m in Sources */,
+				771AE316150DEB61009F546B /* PriceModifier.m in Sources */,
+				771AE31A150DF1AB009F546B /* UIViewController+PriceModifier.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

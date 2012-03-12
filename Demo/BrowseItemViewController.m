@@ -226,7 +226,7 @@
       DLog(@"BrowseItemViewController::(IBAction)navigationButtonAction:modifyOffer:");
       NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                      ([self.itemPriceChangedToLabel.text length] > 0) ? self.itemPriceChangedToLabel.text : self.itemPriceLabel.text, @"price",
-                                     self.messageTextField.text, @"message",nil];
+                                     self.messageTextField.text, @"with_message",nil];
       
       // modify listing
       [self showLoadingIndicator];
@@ -281,16 +281,12 @@
     }
 }
 
-- (void)keyboardWillShow:(NSNotification *)notification
+/**
+ Overwrite UIViewController+KeyboardSlider shouldKeyboardViewMoveUp
+ */
+- (BOOL)shouldKeyboardViewMoveUp
 {
-    //keyboard will be shown now. depending for which textfield is active, move up or move down the view appropriately
-  CGRect keyboardRect = [[[notification userInfo] objectForKey:_UIKeyboardFrameEndUserInfoKey] CGRectValue];
-  [self registerKeyboardSliderRect:keyboardRect];
-    
-    if ([_messageTextField isFirstResponder] && self.mainView.frame.origin.y >= 0)
-    {
-        [self showKeyboardAndMoveViewUp];
-    }
+  return [_messageTextField isFirstResponder] && self.mainView.frame.origin.y >= 0;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
@@ -302,7 +298,6 @@
     }
 }
 
-/* Keyboard avoiding end */
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -311,12 +306,6 @@
   [self registerKeyboardSlider:_mainView :_scrollView :_buttomView];
   [self registerKeyboardSliderTextView:_descriptionTextView];
   [self registerScrollViewRefreshPuller:self.scrollView];
-    
-  
-  
-    // register for keyboard notifications
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) 
-                                                 name:UIKeyboardWillShowNotification object:self.view.window]; 
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -326,16 +315,5 @@
     // unregister for keyboard notifications while not visible.
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil]; 
 }
-
-
-//-(IBAction)OnClick_btnBack:(id)sender  {
-//    if ([self.navigationItem.leftBarButtonItem.title isEqualToString:UI_BUTTON_LABEL_BACK]) {
-//        [self dismissModalViewControllerAnimated:YES];
-//        //[self.navigationController popViewControllerAnimated:YES];
-//    } else {
-//        [self.messageTextField resignFirstResponder];
-//        [self hideKeyboardAndMoveViewDown];
-//    }
-//}
 
 @end

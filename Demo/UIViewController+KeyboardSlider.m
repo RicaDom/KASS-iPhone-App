@@ -30,6 +30,10 @@
 - (BOOL)registerKeyboardSlider:(IBOutlet UIView *)mainView:(IBOutlet UIScrollView *)scrollView:(IBOutlet UIView *)bottomView
 {
   [[KeyboardSlider currentSlider] registerKeyboardSlider:self :mainView :scrollView :bottomView];
+  
+  // register for keyboard notifications
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) 
+                                               name:UIKeyboardWillShowNotification object:self.view.window];
   return TRUE;
 }
 
@@ -47,7 +51,26 @@
 
 - (void)unregisterKeyboardSlider
 {
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil]; 
   [KeyboardSlider.currentSlider unregiser];
+}
+
+- (BOOL)shouldKeyboardViewMoveUp
+{
+  DLog(@"UIViewController+KeyboardSlider::shouldKeyboardShow");
+  return YES;
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification
+{
+  //keyboard will be shown now. depending for which textfield is active, move up or move down the view appropriately
+  CGRect keyboardRect = [[[notification userInfo] objectForKey:_UIKeyboardFrameEndUserInfoKey] CGRectValue];
+  [self registerKeyboardSliderRect:keyboardRect];
+  
+  if ( [self shouldKeyboardViewMoveUp] ) {
+    [self showKeyboardAndMoveViewUp];
+  }
+  
 }
 
 

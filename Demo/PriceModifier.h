@@ -10,4 +10,10 @@
 
 @interface PriceModifier : NSObject
 
+@property NSInteger price;
+
++ (PriceModifier *)currentModifier;
+- (void)registerPriceModifier:(NSInteger)price;
+- (void)unregister;
+
 @end

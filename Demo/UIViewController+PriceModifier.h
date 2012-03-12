@@ -10,4 +10,10 @@
 
 @interface UIViewController (PriceModifier)
 
+- (void) registerPriceModifier:(NSInteger)price;
+- (void) unregisterPriceModifier;
+
+- (void) priceModificationDidFinish;
+- (void) priceModifiedNotification:(NSNotification *) notification;
+
 @end
