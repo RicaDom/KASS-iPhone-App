@@ -35,6 +35,7 @@
 + (void)buildCancelButton:(UIButton *)button;
 + (void)buildNextButton:(UIButton *)button;
 + (void)buildNextButtonDis:(UIButton *)button;
++ (void) buildAcceptButton:(UIButton *)button;
 
 + (void)showErrorAlert:(NSString *)message:(id)delegate;
 + (void)showErrorMessageAlert:(NSDictionary *)errors:(id)delegate;

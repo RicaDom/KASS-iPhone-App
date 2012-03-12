@@ -647,6 +647,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cancelButton" destination="d1z-OR-7qv" id="Seh-xC-GJm"/>
+                        <outlet property="mapView" destination="FX4-CQ-3KQ" id="FGQ-bC-i1k"/>
                         <outlet property="postAskPrice" destination="Spu-g8-8Kw" id="YIy-kx-wFv"/>
                         <outlet property="postDesciptionTextField" destination="TZg-tZ-rwW" id="99M-Er-72w"/>
                         <outlet property="postDuration" destination="Dt7-Kg-0xE" id="OEm-HM-nOr"/>
@@ -1872,6 +1873,7 @@
                         <outlet property="listingPrice" destination="4gH-Uq-kLa" id="0PG-xn-JfT"/>
                         <outlet property="listingTitle" destination="4SR-Pg-gYK" id="O5H-xR-SaR"/>
                         <outlet property="mainView" destination="vUD-sc-css" id="Rh5-DM-ESi"/>
+                        <outlet property="mapView" destination="b2H-BT-qEx" id="3kE-uL-Mcn"/>
                         <outlet property="messageTextField" destination="gDP-RI-qPe" id="QAa-F4-h7i"/>
                         <outlet property="navigationButton" destination="uyL-tx-qUf" id="qn6-YT-Lao"/>
                         <outlet property="offerPrice" destination="hWh-fB-o2z" id="U2h-wM-Asz"/>
@@ -2425,6 +2427,7 @@
                 <relationship kind="outlet" name="listingPrice" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="listingTitle" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="mainView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
                 <relationship kind="outlet" name="messageTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="navigationButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="offerPrice" candidateClass="UILabel"/>
@@ -2585,6 +2588,7 @@
                 <relationship kind="action" name="iwantAction:"/>
                 <relationship kind="action" name="submitAction"/>
                 <relationship kind="outlet" name="cancelButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
                 <relationship kind="outlet" name="postAskPrice" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="postDesciptionTextField" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="postDuration" candidateClass="UILabel"/>
@@ -2631,6 +2635,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="nl2-Xy-OWc"/>
         <segue reference="ado-9M-yPh"/>
         <segue reference="vrW-tF-Jr9"/>
         <segue reference="nzB-nt-Iox"/>
@@ -2639,6 +2644,12 @@
         <segue reference="p1j-ow-HAz"/>
         <segue reference="dM3-h5-4IE"/>
         <segue reference="rFr-R7-ktR"/>
+        <segue reference="uTw-jD-8Rk"/>
+        <segue reference="nzB-nt-Iox"/>
+        <segue reference="ckU-W5-jqf"/>
+        <segue reference="NEk-wT-5z2"/>
+        <segue reference="8Mx-QQ-zuz"/>
+        <segue reference="0kh-0v-gnk"/>
         <segue reference="dou-bb-99d"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -17,6 +17,7 @@
 
 - (id) initWithDictionary:(NSDictionary *) theDictionary;
 - (id) initWithArray:(NSArray *)latlng;
+- (id) initWithCLLocation:(CLLocation *)location;
 - (CLLocation *) toCLLocation;
 - (NSString *) toString;
 

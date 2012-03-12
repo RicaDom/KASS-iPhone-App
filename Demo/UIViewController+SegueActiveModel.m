@@ -31,7 +31,6 @@
     NSString *controllerName = NSStringFromClass(uvc.topViewController.class);
     [self kassAddToModelDict:controllerName:[self kassVS].modelJson];
   }
-  DLog(@"prepareForSegue");
 }
 
 - (void) kassAddToModelDict:(NSString *)controller:(NSDictionary *)model

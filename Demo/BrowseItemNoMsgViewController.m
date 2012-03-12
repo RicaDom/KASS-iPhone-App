@@ -12,6 +12,10 @@
 #import "UIViewController+SegueActiveModel.h"
 #import "UIViewController+ScrollViewRefreshPuller.h"
 
+#import "ListingMapAnnotaion.h"
+#import "ListingImageAnnotationView.h"
+#import "ListItem+ListItemHelper.h"
+
 @implementation BrowseItemNoMsgViewController
 
 @synthesize messageTextField = _messageTextField;
@@ -29,6 +33,7 @@
 @synthesize userInfoButton = _userInfoButton;
 @synthesize leftButton = _leftButton;
 @synthesize changedPriceMessage = _changedPriceMessage;
+@synthesize mapView = _mapView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -59,6 +64,8 @@
   self.listingPrice.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
   //self.offerPrice.text = [NSString stringWithFormat:@"%@", self.currentItem.askPrice];
   self.listingDate.text = [self.currentItem getTimeLeftTextlong];       
+  
+  [self.currentItem buildMap:self.mapView];
   
   [self hideIndicator];
   [self stopLoading];

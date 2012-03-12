@@ -9,6 +9,10 @@
 #import "PostSummaryViewController.h"
 #import "UIResponder+VariableStore.h"
 
+#import "ListingMapAnnotaion.h"
+#import "ListingImageAnnotationView.h"
+#import "ListItem+ListItemHelper.h"
+
 @implementation PostSummaryViewController
 
 @synthesize postTitle = _postTitle;
@@ -18,6 +22,7 @@
 @synthesize submitButton = _submitButton;
 @synthesize postType = _postType;
 @synthesize cancelButton = _cancelButton;
+@synthesize mapView = _mapView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -71,6 +76,10 @@
 {
   DLog(@"PostSummaryViewController::locateMeFinished ");
   [self loadCurrentPostingData];
+  
+  VariableStore.sharedInstance.currentPostingItem.location = [[Location alloc] initWithCLLocation:VariableStore.sharedInstance.location];
+  
+  [VariableStore.sharedInstance.currentPostingItem buildMap:self.mapView];
 }
 
 - (void)customViewLoad
@@ -139,7 +148,7 @@
 - (void)accountDidModifyListing:(NSDictionary *)dict
 {
   DLog(@"PostSummaryViewController::accountDidModifyListing:dict=%@", dict);
-  [[self kassVS] appendPostingItemToListings:dict];
+//  [[self kassVS] appendPostingItemToListings:dict];
   
   [self.presentingViewController dismissModalViewControllerAnimated:YES];
   [[NSNotificationCenter defaultCenter] postNotificationName: NEW_POST_NOTIFICATION 

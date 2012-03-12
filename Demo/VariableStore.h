@@ -32,7 +32,6 @@
 @property (strong, nonatomic) NSMutableArray *recentBrowseListings;
 @property (strong, nonatomic) NSMutableArray *nearBrowseListings;
 @property (strong, nonatomic) NSMutableArray *priceBrowseListings;
-@property (strong, nonatomic) NSMutableArray *showOnMapListings;
 
 @property (strong, nonatomic) User *user;
 @property (strong, nonatomic) LocateMeManager *locateMeManager;
@@ -44,6 +43,8 @@
 @property (strong, nonatomic) UITabBarController *mainTabBar;
 
 @property (nonatomic,assign) id<AccountActivityDelegate> currentViewControllerDelegate;
+
+@property (strong, nonatomic) ListItem *itemToShowOnMap;
 
 + (VariableStore *) sharedInstance;
 - (void) clearCurrentPostingItem;

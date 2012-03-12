@@ -356,6 +356,14 @@
   [button setImage:userButtonPressImg forState:UIControlStateSelected];
 }
 
++ (void)buildAcceptButton:(UIButton *)button
+{
+  UIImage *acceptButtonImg = [UIImage imageNamed:UI_IMAGE_ACTIVITY_ACCEPT_BUTTON];
+  UIImage *acceptButtonPressImg = [UIImage imageNamed:UI_IMAGE_ACTIVITY_ACCEPT_BUTTON_PRESS];
+  [button setImage:acceptButtonImg forState:UIControlStateNormal];
+  [button setImage:acceptButtonPressImg forState:UIControlStateSelected];
+}
+
 + (void)showErrorAlert:(NSString *)message:(id)delegate
 {
   UIAlertView *alert = [[UIAlertView alloc] init];

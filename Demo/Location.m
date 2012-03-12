@@ -14,6 +14,19 @@
 @synthesize longitude   = _longitude;
 @synthesize city        = _city;
 
+- (id) initWithCLLocation:(CLLocation *)cl
+{
+  if (self = [super init]) {
+    
+    NSNumber *lat = [NSNumber numberWithDouble: cl.coordinate.latitude];
+    NSNumber *lng = [NSNumber numberWithDouble: cl.coordinate.longitude];
+    
+    _latitude = [NSDecimalNumber decimalNumberWithDecimal:[lat decimalValue]];
+    _longitude = [NSDecimalNumber decimalNumberWithDecimal:[lng decimalValue]];
+  }
+  return self;
+}
+
 - (id) initWithArray:(NSArray *)latlng
 {
   if (self = [super init]) {

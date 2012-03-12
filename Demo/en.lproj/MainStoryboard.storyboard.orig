@@ -65,20 +65,46 @@
                         <color key="backgroundColor" red="0.99215692281723022" green="0.99215692281723022" blue="0.97647064924240112" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="我的需求" id="1as-9o-Nb2">
-                        <barButtonItem key="backBarButtonItem" title="返回" id="Nhe-l1-Fbt"/>
-                        <barButtonItem key="leftBarButtonItem" title="取消" id="9Jg-Ah-18w">
-                            <connections>
-                                <action selector="CancelAction:" destination="Wt7-1L-Gyq" id="Sd0-D3-OXa"/>
-                            </connections>
+                        <barButtonItem key="leftBarButtonItem" title="Left Item" style="plain" id="juw-5z-mIR">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nVb-O2-3Zs">
+                                <rect key="frame" x="5" y="5" width="71" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="CancelAction:" destination="Wt7-1L-Gyq" eventType="touchUpInside" id="tzS-n9-wgc"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="下一步" id="lCT-o7-ey4">
-                            <connections>
-                                <segue destination="d2F-4g-DNs" kind="push" identifier="PostFlowTitleToPriceView" id="CyH-L9-3v7"/>
-                            </connections>
+                        <barButtonItem key="rightBarButtonItem" tag="1" title="Right Item" style="plain" id="ErQ-xV-AOM">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="HgT-pB-FUN">
+                                <rect key="frame" x="244" y="5" width="71" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="rightButtonAction:" destination="Wt7-1L-Gyq" eventType="touchUpInside" id="wjM-yE-1ll"/>
+                                    <segue destination="d2F-4g-DNs" kind="push" id="lP7-TE-bgI"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelButton" destination="nVb-O2-3Zs" id="9Mh-FU-UqS"/>
                         <outlet property="desTextField" destination="gd7-l1-w9P" id="g2O-JP-kb9"/>
+                        <outlet property="rightButton" destination="HgT-pB-FUN" id="E9I-8P-SKY"/>
                         <outlet property="titleTextField" destination="oCU-Sy-vVj" id="Z1o-is-fNv"/>
                     </connections>
                 </viewController>
@@ -147,14 +173,43 @@
                         <color key="backgroundColor" red="0.98823535442352295" green="0.99215692281723022" blue="0.97254908084869385" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="我的出价" id="bgr-tF-Wfq">
-                        <barButtonItem key="backBarButtonItem" title="返回" id="xuv-I3-1r9"/>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="下一步" id="aE8-jt-ZiY">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="wdF-6k-U1h">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wcK-Jz-j1e">
+                                <rect key="frame" x="5" y="5" width="71" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonAction:" destination="d2F-4g-DNs" eventType="touchUpInside" id="XFE-lY-yTd"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="qmD-43-Sh8">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QPS-60-FVX">
+                                <rect key="frame" x="244" y="5" width="71" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                             <connections>
-                                <segue destination="rgB-V4-I0c" kind="push" identifier="PostFlowPriceToSetDateView" id="CLn-Cr-uxO"/>
+                                <segue destination="rgB-V4-I0c" kind="push" id="qNv-3N-iKn"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backButton" destination="wcK-Jz-j1e" id="3jP-69-kQG"/>
                         <outlet property="priceTextField" destination="n9l-1Z-7EP" id="lJJ-oM-Dxb"/>
                     </connections>
                 </viewController>
@@ -212,16 +267,46 @@
                         <color key="backgroundColor" red="0.98431378602981567" green="0.98823535442352295" blue="0.96862751245498657" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="截至日期" id="YSB-qG-5qj">
-                        <barButtonItem key="backBarButtonItem" title="修改" id="bvv-Qa-qkO"/>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="下一步" id="M5V-yx-Fvm">
+                        <barButtonItem key="backBarButtonItem" title="修改" id="JOS-2Z-0dP"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="KjW-hQ-VwK">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pJr-LI-8H8">
+                                <rect key="frame" x="5" y="5" width="71" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonAction:" destination="rgB-V4-I0c" eventType="touchUpInside" id="lvu-Ty-x3a"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="BLg-sf-YNF">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DYf-0s-LxS">
+                                <rect key="frame" x="244" y="5" width="71" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                             <connections>
-                                <segue destination="aAj-Zo-Vy5" kind="push" identifier="PostFlowSetDateToSumView" id="xkH-Yh-wP3"/>
+                                <segue destination="aAj-Zo-Vy5" kind="push" id="8VI-ze-gZV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="PostDurationLabel" destination="BRl-Pp-BAc" id="xh8-Ht-ePj"/>
                         <outlet property="PostDurationPicker" destination="VQT-lY-xGB" id="bxa-MT-rbz"/>
+                        <outlet property="backButton" destination="pJr-LI-8H8" id="RfK-eT-0dD"/>
                     </connections>
                 </viewController>
             </objects>
@@ -361,7 +446,7 @@
                         <segue destination="mfO-2n-fuE" kind="modal" identifier="BrowseListingToBuyerPay" id="nzB-nt-Iox"/>
                         <segue destination="hDu-UN-aV0" kind="modal" identifier="BrowseListingToBuyerOffers" id="NEk-wT-5z2"/>
                         <segue destination="IkM-il-qrU" kind="modal" identifier="showBrowseItemUnlogin" id="vrW-tF-Jr9"/>
-                        <segue destination="w5z-HA-Kra" kind="modal" identifier="showBrowseItem" id="u5n-gC-02Z"/>
+                        <segue destination="w5z-HA-Kra" kind="modal" identifier="showBrowseItem" id="ckU-W5-jqf"/>
                     </connections>
                 </tableViewController>
                 <searchDisplayController id="suA-fL-jYi">
@@ -542,13 +627,30 @@
                         <color key="backgroundColor" red="0.98431378602981567" green="0.98823535442352295" blue="0.96862751245498657" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="需求预览" id="fsH-d8-Vyd">
-                        <barButtonItem key="rightBarButtonItem" title="取消" id="ySB-D4-bsE">
-                            <connections>
-                                <action selector="cancelAction:" destination="aAj-Zo-Vy5" id="yDz-C5-440"/>
-                            </connections>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="ivL-yH-c4H">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="d1z-OR-7qv">
+                                <rect key="frame" x="244" y="5" width="71" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelAction:" destination="aAj-Zo-Vy5" eventType="touchUpInside" id="ss5-nw-t8s"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+<<<<<<< HEAD
+                        <outlet property="cancelButton" destination="d1z-OR-7qv" id="Seh-xC-GJm"/>
+=======
+                        <outlet property="mapView" destination="FX4-CQ-3KQ" id="FGQ-bC-i1k"/>
+>>>>>>> d864eccfda05814579706f71dfa93167aefd5c56
                         <outlet property="postAskPrice" destination="Spu-g8-8Kw" id="YIy-kx-wFv"/>
                         <outlet property="postDesciptionTextField" destination="TZg-tZ-rwW" id="99M-Er-72w"/>
                         <outlet property="postDuration" destination="Dt7-Kg-0xE" id="OEm-HM-nOr"/>
@@ -909,12 +1011,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="我的任务" id="4hj-9c-cko">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="2Hc-o0-YVH">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SL3-nS-0ot">
-                                <rect key="frame" x="5" y="4" width="71" height="35"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="SL3-nS-0ot">
+                                <rect key="frame" x="5" y="8" width="57" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="返回">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
@@ -970,7 +1072,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" id="Yuc-uj-Vkd">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="262"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="318"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="qrN-bX-6uv">
@@ -1039,6 +1141,13 @@
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" minimumFontSize="10" id="n72-zh-Mn3">
+                                                <rect key="frame" x="248" y="135" width="42" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.95686280727386475" green="0.94117653369903564" blue="0.90588241815567017" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
@@ -1046,7 +1155,7 @@
                                 <color key="backgroundColor" red="0.95686280727386475" green="0.94117653369903564" blue="0.90588241815567017" alpha="1" colorSpace="deviceRGB"/>
                             </scrollView>
                             <view contentMode="scaleToFill" id="dp7-37-KHS">
-                                <rect key="frame" x="0.0" y="279" width="320" height="42"/>
+                                <rect key="frame" x="0.0" y="318" width="320" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="发送讯息或价格" minimumFontSize="17" id="OZE-wz-4Td">
@@ -1070,6 +1179,13 @@
                                             <segue destination="RL8-g6-Yll" kind="modal" identifier="changedPriceSegue" id="dM3-h5-4IE"/>
                                         </connections>
                                     </button>
+                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" minimumFontSize="10" id="2mV-gj-SFk">
+                                        <rect key="frame" x="69" y="-6" width="25" height="15"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                             </view>
@@ -1106,6 +1222,23 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="联系卖家" id="xW0-tN-bUf">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="R6L-dX-2bb">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LVg-bY-ira">
+                                <rect key="frame" x="5" y="5" width="71" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="leftButtonAction:" destination="rrf-71-T0f" eventType="touchUpInside" id="qiE-0W-HWd"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="地图" id="bUR-WI-4bn">
                             <connections>
                                 <action selector="sendMessageOrMapAction:" destination="rrf-71-T0f" id="htF-IN-eFP"/>
@@ -1114,9 +1247,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="buttomView" destination="dp7-37-KHS" id="07V-a2-VqS"/>
+                        <outlet property="changedPriceMessage" destination="2mV-gj-SFk" id="ek3-J0-prj"/>
+                        <outlet property="changingPrice" destination="n72-zh-Mn3" id="TWC-XX-3lm"/>
                         <outlet property="confirmDealButton" destination="DQK-9p-OfC" id="J7R-WU-ar4"/>
                         <outlet property="confirmImageView" destination="JS7-pt-uCE" id="2Sr-oZ-oVd"/>
                         <outlet property="descriptionTextField" destination="Y3g-sA-ceC" id="VVU-lg-Fkd"/>
+                        <outlet property="leftButton" destination="LVg-bY-ira" id="EN9-fD-aq7"/>
                         <outlet property="listingExpiredDate" destination="4cT-hJ-YNv" id="2hO-CG-OK4"/>
                         <outlet property="listingTitle" destination="QXN-Pm-Tot" id="Uxh-gT-tiA"/>
                         <outlet property="mainView" destination="aB2-0v-YDH" id="Dtg-tr-gdA"/>
@@ -1146,7 +1282,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" id="0FM-w4-91s">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="356"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="366"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="Xiy-20-gI5">
@@ -1221,11 +1357,11 @@
                                 <color key="backgroundColor" red="0.95686280729999995" green="0.94117653369999998" blue="0.90588241820000004" alpha="1" colorSpace="deviceRGB"/>
                             </scrollView>
                             <view contentMode="scaleToFill" id="e1Y-L5-vfr">
-                                <rect key="frame" x="0.0" y="355" width="320" height="61"/>
+                                <rect key="frame" x="0.0" y="366" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="发送讯息或价格" minimumFontSize="17" id="qXi-pt-Rg7">
-                                        <rect key="frame" x="38" y="29" width="282" height="31"/>
+                                    <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="发送讯息或价格" minimumFontSize="17" id="qXi-pt-Rg7">
+                                        <rect key="frame" x="303" y="9" width="17" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
@@ -1233,8 +1369,8 @@
                                             <outlet property="delegate" destination="jzI-1g-RJt" id="Ier-HW-pN1"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="uIh-Go-OLy">
-                                        <rect key="frame" x="0.0" y="29" width="37" height="32"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uIh-Go-OLy">
+                                        <rect key="frame" x="0.0" y="9" width="37" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="¥">
@@ -1245,34 +1381,51 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="您现在的价位：" lineBreakMode="tailTruncation" minimumFontSize="10" id="Aoz-Y4-U4j">
-                                        <rect key="frame" x="38" y="2" width="84" height="21"/>
+                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" minimumFontSize="10" id="mGL-8i-1GT">
+                                        <rect key="frame" x="75" y="-8" width="42" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Price" lineBreakMode="tailTruncation" minimumFontSize="10" id="Zk7-I3-icN">
-                                        <rect key="frame" x="120" y="2" width="42" height="21"/>
+                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" minimumFontSize="10" id="pfR-Av-Fzp">
+                                        <rect key="frame" x="171" y="-8" width="42" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="－ 您随时可以更新价位" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="0hH-sR-AnK">
-                                        <rect key="frame" x="153" y="0.0" width="142" height="21"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="此交易已成交, 请尽快付款!" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="jih-ce-bOa">
+                                        <rect key="frame" x="0.0" y="12" width="320" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <color key="backgroundColor" red="0.24705883860588074" green="0.19607844948768616" blue="0.19607844948768616" alpha="1" colorSpace="deviceRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="联系卖家" id="g3t-pG-8g5">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="hRZ-SB-JSo">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="W7Z-P6-IZt">
+                                <rect key="frame" x="5" y="5" width="71" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonAction:" destination="b2J-eF-Ocx" eventType="touchUpInside" id="Bab-iv-FVA"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="地图" id="mbQ-HO-Pq2">
                             <connections>
                                 <segue destination="XUy-mg-tBg" kind="push" id="dou-bb-99d"/>
@@ -1280,7 +1433,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backButton" destination="W7Z-P6-IZt" id="GvX-qT-6pW"/>
                         <outlet property="bottomView" destination="e1Y-L5-vfr" id="jdQ-fe-Pgy"/>
+                        <outlet property="changedPriceLabel" destination="mGL-8i-1GT" id="aco-3d-07j"/>
+                        <outlet property="changedPriceMessage" destination="pfR-Av-Fzp" id="rJs-ZT-wC5"/>
                         <outlet property="descriptionTextField" destination="IJV-9Y-Nl0" id="iil-9J-BwB"/>
                         <outlet property="listingExpiredDate" destination="rfu-Ts-BxJ" id="U4h-A3-rs4"/>
                         <outlet property="listingTitle" destination="uqr-lK-x6Y" id="i07-gQ-bwB"/>
@@ -1299,11 +1455,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PEB-0q-sY1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="EOY-f8-N3n" customClass="MapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YOW-Jh-Jjz">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="6rN-NP-hpl">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="EOY-f8-N3n" id="a2l-zt-2YB"/>
@@ -1312,8 +1468,27 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="gwF-Mi-QbY"/>
+                    <navigationItem key="navigationItem" id="gwF-Mi-QbY">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="eJo-k9-uRz">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uVV-YV-imm">
+                                <rect key="frame" x="5" y="8" width="57" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonAction:" destination="EOY-f8-N3n" eventType="touchUpInside" id="ihA-WJ-cYq"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="backButton" destination="uVV-YV-imm" id="N64-cH-Wq8"/>
                         <outlet property="currentMap" destination="6rN-NP-hpl" id="fqu-OG-7GT"/>
                         <segue destination="w5z-HA-Kra" kind="modal" identifier="showBrowseItem" id="n3r-gd-TTz"/>
                         <segue destination="IkM-il-qrU" kind="modal" identifier="showBrowseItemNoMessage" id="KTm-pA-bXq"/>
@@ -1333,57 +1508,8 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" id="Phu-xx-ufy">
-                                <rect key="frame" x="0.0" y="357" width="320" height="59"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="发送讯息或价格" minimumFontSize="17" id="4Mt-Md-eCi">
-                                        <rect key="frame" x="38" y="20" width="282" height="31"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="s03-rJ-2Co">
-                                        <rect key="frame" x="0.0" y="20" width="37" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="¥">
-                                            <color key="titleColor" red="0.0" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="RL8-g6-Yll" kind="modal" identifier="changedPriceSegue" id="cVP-Bc-SG3"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="您现在的价位：" lineBreakMode="tailTruncation" minimumFontSize="10" id="kRQ-Uk-dkh">
-                                        <rect key="frame" x="38" y="0.0" width="84" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Price" lineBreakMode="tailTruncation" minimumFontSize="10" id="TbE-gg-AYO">
-                                        <rect key="frame" x="120" y="0.0" width="42" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="－ 您随时可以更新价位" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="fnj-an-lLw">
-                                        <rect key="frame" x="158" y="0.0" width="142" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" id="PiL-hE-z1M">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="357"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="3Sx-yh-bK3">
@@ -1398,7 +1524,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="T8r-ch-ZFr">
-                                                <rect key="frame" x="210" y="102" width="101" height="23"/>
+                                                <rect key="frame" x="212" y="105" width="101" height="23"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -1442,7 +1568,7 @@
                                                 <color key="textColor" red="0.37647062539999998" green="0.37647062539999998" blue="0.34901961679999999" alpha="1" colorSpace="deviceRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text=" " id="whP-eN-3sE">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="whP-eN-3sE">
                                                 <rect key="frame" x="0.0" y="39" width="202" height="117"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.95686280729999995" green="0.94117653369999998" blue="0.90588241820000004" alpha="1" colorSpace="deviceRGB"/>
@@ -1450,6 +1576,7 @@
                                                     <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
                                                     <integer key="isElement" value="0"/>
                                                 </accessibility>
+                                                <string key="text"> Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <color key="textColor" red="0.37647062539999998" green="0.37647062539999998" blue="0.34901961679999999" alpha="1" colorSpace="deviceRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1460,10 +1587,69 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.95686280729999995" green="0.94117653369999998" blue="0.90588241820000004" alpha="1" colorSpace="deviceRGB"/>
                             </scrollView>
+                            <view contentMode="scaleToFill" id="Phu-xx-ufy">
+                                <rect key="frame" x="0.0" y="366" width="320" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="发送讯息或价格" minimumFontSize="17" id="4Mt-Md-eCi">
+                                        <rect key="frame" x="38" y="9" width="282" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="s03-rJ-2Co">
+                                        <rect key="frame" x="0.0" y="9" width="37" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="¥">
+                                            <color key="titleColor" red="0.0" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="RL8-g6-Yll" kind="modal" identifier="changedPriceSegue" id="cVP-Bc-SG3"/>
+                                        </connections>
+                                    </button>
+                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" minimumFontSize="10" id="1y9-rG-V29">
+                                        <rect key="frame" x="51" y="-6" width="16" height="15"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" minimumFontSize="10" id="8dr-Cx-6b4">
+                                        <rect key="frame" x="169" y="-6" width="12" height="15"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="联系买家" id="dl3-r4-N9Y">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="s3B-t9-tAr">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XkZ-rD-eHG">
+                                <rect key="frame" x="5" y="5" width="71" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="leftButtonAction:" destination="jzI-1g-RJt" eventType="touchUpInside" id="ZQK-4c-VeL"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="R9A-bB-Di3">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="x8U-FQ-pFB">
                                 <rect key="frame" x="244" y="5" width="71" height="33"/>
@@ -1484,11 +1670,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="buttomView" destination="Phu-xx-ufy" id="CgU-Xa-Pv0"/>
+                        <outlet property="changePriceMessage" destination="8dr-Cx-6b4" id="ev2-gP-464"/>
                         <outlet property="descriptionTextView" destination="whP-eN-3sE" id="E87-Ml-x07"/>
                         <outlet property="itemExpiredDate" destination="EX6-90-W0y" id="DuF-hF-gOM"/>
-                        <outlet property="itemPriceChangedToLabel" destination="TbE-gg-AYO" id="MIC-px-eZa"/>
+                        <outlet property="itemPriceChangedToLabel" destination="1y9-rG-V29" id="1dj-bO-nC8"/>
                         <outlet property="itemPriceLabel" destination="V83-Zg-OqL" id="xTc-hB-Z9V"/>
                         <outlet property="itemTitleLabel" destination="gVS-Jq-Ce4" id="Iwh-J2-gLi"/>
+                        <outlet property="leftButton" destination="XkZ-rD-eHG" id="irj-BN-c03"/>
                         <outlet property="mainView" destination="eA5-y5-9CX" id="0fs-aa-mAl"/>
                         <outlet property="mapButton" destination="x8U-FQ-pFB" id="gCi-3Q-aBH"/>
                         <outlet property="messageTextField" destination="4Mt-Md-eCi" id="dzR-GJ-Nzc"/>
@@ -1511,15 +1699,15 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" id="4pW-js-aVY">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="356"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="366"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="BVR-pb-5tX">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="356"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="366"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="bg_bottom.png" id="R9S-N3-8OZ">
-                                                <rect key="frame" x="0.0" y="264" width="326" height="161"/>
+                                                <rect key="frame" x="0.0" y="264" width="320" height="161"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="b2H-BT-qEx">
@@ -1567,7 +1755,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0eF-WT-aIw">
-                                                        <rect key="frame" x="209" y="104" width="103" height="23"/>
+                                                        <rect key="frame" x="213" y="105" width="103" height="23"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -1595,11 +1783,18 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
+                                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" minimumFontSize="10" id="hWh-fB-o2z">
+                                                        <rect key="frame" x="253" y="135" width="15" height="13"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.95686280729999995" green="0.94117653369999998" blue="0.90588241820000004" alpha="1" colorSpace="deviceRGB"/>
                                             </view>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="taidi.png" id="Ig7-O8-aXB">
-                                                <rect key="frame" x="15" y="301" width="215" height="50"/>
+                                                <rect key="frame" x="14" y="305" width="215" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                         </subviews>
@@ -1611,17 +1806,17 @@
                                 </connections>
                             </scrollView>
                             <view contentMode="scaleToFill" id="24F-4k-TIp">
-                                <rect key="frame" x="0.0" y="355" width="320" height="61"/>
+                                <rect key="frame" x="0.0" y="366" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="发送讯息或价格" minimumFontSize="17" id="gDP-RI-qPe">
-                                        <rect key="frame" x="45" y="21" width="270" height="31"/>
+                                        <rect key="frame" x="37" y="9" width="283" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hFi-2i-Jvr">
-                                        <rect key="frame" x="6" y="20" width="37" height="32"/>
+                                        <rect key="frame" x="0.0" y="9" width="37" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="¥">
@@ -1635,17 +1830,10 @@
                                             <segue destination="RL8-g6-Yll" kind="modal" identifier="changedPriceSegue" id="0kh-0v-gnk"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="您现在的价位：" lineBreakMode="tailTruncation" minimumFontSize="10" id="8Bc-i4-qd3">
-                                        <rect key="frame" x="49" y="0.0" width="84" height="21"/>
+                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" minimumFontSize="10" id="ICo-u9-NDc">
+                                        <rect key="frame" x="20" y="0.0" width="21" height="10"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Price" lineBreakMode="tailTruncation" minimumFontSize="10" id="rJd-Rh-fht">
-                                        <rect key="frame" x="131" y="0.0" width="42" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1656,6 +1844,23 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="联系买家" id="uWt-f2-xfr">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="uZ2-yi-Qz1">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Nc6-dy-4EW">
+                                <rect key="frame" x="5" y="8" width="57" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="leftButtonAction:" destination="c7F-KA-gSL" eventType="touchUpInside" id="afH-Kj-80o"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="分享" id="uyL-tx-qUf">
                             <connections>
                                 <action selector="navigationButtonAction:" destination="c7F-KA-gSL" id="w1v-oR-cXe"/>
@@ -1664,14 +1869,17 @@
                     </navigationItem>
                     <connections>
                         <outlet property="buttomView" destination="24F-4k-TIp" id="b7w-TU-ojU"/>
+                        <outlet property="changedPriceMessage" destination="ICo-u9-NDc" id="eAL-dM-8Ut"/>
                         <outlet property="descriptionTextView" destination="Zwa-jL-yyV" id="yiY-zV-l3i"/>
+                        <outlet property="leftButton" destination="Nc6-dy-4EW" id="VbZ-Ah-3Lw"/>
                         <outlet property="listingDate" destination="frh-wE-gdD" id="6bz-17-RcJ"/>
                         <outlet property="listingPrice" destination="4gH-Uq-kLa" id="0PG-xn-JfT"/>
                         <outlet property="listingTitle" destination="4SR-Pg-gYK" id="O5H-xR-SaR"/>
                         <outlet property="mainView" destination="vUD-sc-css" id="Rh5-DM-ESi"/>
+                        <outlet property="mapView" destination="b2H-BT-qEx" id="3kE-uL-Mcn"/>
                         <outlet property="messageTextField" destination="gDP-RI-qPe" id="QAa-F4-h7i"/>
                         <outlet property="navigationButton" destination="uyL-tx-qUf" id="qn6-YT-Lao"/>
-                        <outlet property="offerPrice" destination="rJd-Rh-fht" id="2HI-9V-Mgh"/>
+                        <outlet property="offerPrice" destination="hWh-fB-o2z" id="U2h-wM-Asz"/>
                         <outlet property="priceButton" destination="hFi-2i-Jvr" id="kga-a1-1Gq"/>
                         <outlet property="scrollView" destination="4pW-js-aVY" id="K2N-ja-VZy"/>
                         <outlet property="userInfoButton" destination="0eF-WT-aIw" id="XaR-2V-2oU"/>
@@ -1745,45 +1953,50 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="现在的出价是： " lineBreakMode="tailTruncation" minimumFontSize="10" id="gdb-UG-maw">
-                                <rect key="frame" x="81" y="11" width="124" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.37647062539999998" green="0.37647062539999998" blue="0.34901961679999999" alpha="1" colorSpace="deviceRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="您的理想价格是：" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="3oA-Gm-y8y">
-                                <rect key="frame" x="20" y="40" width="280" height="21"/>
+                                <rect key="frame" x="20" y="20" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.37647062539999998" green="0.37647062539999998" blue="0.34901961679999999" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="aAv-h0-U4a">
-                                <rect key="frame" x="194" y="11" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.37647062539999998" green="0.37647062539999998" blue="0.34901961679999999" alpha="1" colorSpace="deviceRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="¥ 100" textAlignment="center" minimumFontSize="37" id="Sar-p3-AF3">
-                                <rect key="frame" x="20" y="69" width="280" height="112"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="100" minimumFontSize="37" id="Sar-p3-AF3">
+                                <rect key="frame" x="113" y="49" width="207" height="132"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" red="0.37647062539999998" green="0.37647062539999998" blue="0.34901961679999999" alpha="1" colorSpace="deviceRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="88"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="88"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <connections>
                                     <outlet property="delegate" destination="fgM-38-Koe" id="ydq-Tl-GgS"/>
                                 </connections>
                             </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="¥" lineBreakMode="tailTruncation" minimumFontSize="37" id="Mew-yW-rVc">
+                                <rect key="frame" x="48" y="49" width="52" height="132"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="88"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.95686280729999995" green="0.94117653369999998" blue="0.90588241820000004" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="修改价格" id="9k1-0U-52s">
-                        <barButtonItem key="leftBarButtonItem" title="取消" id="TvE-PO-C9V">
-                            <connections>
-                                <action selector="cancelChangingPriceAction:" destination="fgM-38-Koe" id="lT8-HD-Cad"/>
-                            </connections>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="9tB-4t-GFH">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WvG-ks-2bB">
+                                <rect key="frame" x="5" y="5" width="71" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="leftButtonAction:" destination="fgM-38-Koe" eventType="touchUpInside" id="LF7-6g-RYv"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="确定" id="L9p-W5-w00">
                             <connections>
@@ -1792,6 +2005,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="leftButton" destination="WvG-ks-2bB" id="3ej-Tz-1Kh"/>
                         <outlet property="offerPriceTextField" destination="Sar-p3-AF3" id="ofB-Ia-O8V"/>
                     </connections>
                 </viewController>
@@ -1864,23 +2078,23 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="发布您的任何需求" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="7zT-YR-qLp">
-                                <rect key="frame" x="0.0" y="40" width="320" height="21"/>
+                                <rect key="frame" x="0.0" y="50" width="320" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.37647062539999998" green="0.37647062539999998" blue="0.34901961679999999" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="或您可以用到下面的例子..." textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="3B1-BF-ke1">
-                                <rect key="frame" x="0.0" y="60" width="320" height="21"/>
+                                <rect key="frame" x="0.0" y="70" width="320" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.37647062539999998" green="0.37647062539999998" blue="0.34901961679999999" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="您好!" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="NGl-X4-VLN">
-                                <rect key="frame" x="0.0" y="7" width="320" height="30"/>
+                                <rect key="frame" x="0.0" y="15" width="320" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <color key="textColor" red="0.37647062539999998" green="0.37647062539999998" blue="0.34901961679999999" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1889,7 +2103,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="fFe-7o-AsK">
-                                        <rect key="frame" x="0.0" y="92" width="320" height="770"/>
+                                        <rect key="frame" x="0.0" y="111" width="320" height="770"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="scrollViewBar.png" id="hPp-0F-yhJ">
@@ -2165,13 +2379,16 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ActivityOfferMessageViewController.h"/>
             <relationships>
                 <relationship kind="action" name="buttonDraggingAction:" candidateClass="UIPanGestureRecognizer"/>
+                <relationship kind="action" name="leftButtonAction:"/>
                 <relationship kind="action" name="sellerInfoAction:"/>
                 <relationship kind="action" name="sendMessageOrMapAction:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="buttomView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="changedPriceMessage" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="changingPrice" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="confirmDealButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="confirmImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="leftButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="listingExpiredDate" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="listingTitle" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="mainView" candidateClass="UIView"/>
@@ -2203,13 +2420,17 @@
         <class className="BrowseItemNoMsgViewController" superclassName="DataSourceViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BrowseItemNoMsgViewController.h"/>
             <relationships>
+                <relationship kind="action" name="leftButtonAction:"/>
                 <relationship kind="action" name="navigationButtonAction:"/>
                 <relationship kind="outlet" name="buttomView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="changedPriceMessage" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="descriptionTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="leftButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="listingDate" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="listingPrice" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="listingTitle" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="mainView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
                 <relationship kind="outlet" name="messageTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="navigationButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="offerPrice" candidateClass="UILabel"/>
@@ -2221,14 +2442,17 @@
         <class className="BrowseItemViewController" superclassName="DataSourceViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BrowseItemViewController.h"/>
             <relationships>
+                <relationship kind="action" name="leftButtonAction:"/>
                 <relationship kind="action" name="mapButtonAction:"/>
                 <relationship kind="action" name="navigationButtonAction:"/>
                 <relationship kind="outlet" name="buttomView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="changePriceMessage" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="descriptionTextView" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="itemExpiredDate" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="itemPriceChangedToLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="itemPriceLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="itemTitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="leftButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="mainView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="mapButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="messageTextField" candidateClass="UITextField"/>
@@ -2252,7 +2476,11 @@
         <class className="BuyerPayViewController" superclassName="DataSourceViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BuyerPayViewController.h"/>
             <relationships>
+                <relationship kind="action" name="backButtonAction:"/>
+                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="bottomView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="changedPriceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="changedPriceMessage" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="listingExpiredDate" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="listingTitle" candidateClass="UILabel"/>
@@ -2303,14 +2531,17 @@
         <class className="MapViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
             <relationships>
+                <relationship kind="action" name="backButtonAction:"/>
+                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="currentMap" candidateClass="MKMapView"/>
             </relationships>
         </class>
         <class className="OfferChangingPriceViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OfferChangingPriceViewController.h"/>
             <relationships>
-                <relationship kind="action" name="cancelChangingPriceAction:"/>
                 <relationship kind="action" name="doneChangingPriceAction:"/>
+                <relationship kind="action" name="leftButtonAction:"/>
+                <relationship kind="outlet" name="leftButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="offerPriceTextField" candidateClass="UITextField"/>
             </relationships>
         </class>
@@ -2325,22 +2556,29 @@
         <class className="PostFlowPriceViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PostFlowPriceViewController.h"/>
             <relationships>
+                <relationship kind="action" name="backButtonAction:"/>
+                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="priceTextField" candidateClass="UITextField"/>
             </relationships>
         </class>
         <class className="PostFlowSetDateViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PostFlowSetDateViewController.h"/>
             <relationships>
+                <relationship kind="action" name="backButtonAction:"/>
                 <relationship kind="outlet" name="PostDurationLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="PostDurationPicker" candidateClass="UIPickerView"/>
                 <relationship kind="outlet" name="PostFlowSegment" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="PostFlowViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PostFlowViewController.h"/>
             <relationships>
                 <relationship kind="action" name="CancelAction:"/>
+                <relationship kind="action" name="rightButtonAction:"/>
+                <relationship kind="outlet" name="cancelButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="desTextField" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="rightButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="titleTextField" candidateClass="UITextField"/>
             </relationships>
         </class>
@@ -2352,6 +2590,11 @@
                 <relationship kind="action" name="ipayAction:"/>
                 <relationship kind="action" name="iwantAction:"/>
                 <relationship kind="action" name="submitAction"/>
+<<<<<<< HEAD
+                <relationship kind="outlet" name="cancelButton" candidateClass="UIButton"/>
+=======
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+>>>>>>> d864eccfda05814579706f71dfa93167aefd5c56
                 <relationship kind="outlet" name="postAskPrice" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="postDesciptionTextField" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="postDuration" candidateClass="UILabel"/>
@@ -2398,22 +2641,24 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="vrW-tF-Jr9"/>
-        <segue reference="u5n-gC-02Z"/>
-        <segue reference="nzB-nt-Iox"/>
-        <segue reference="NEk-wT-5z2"/>
-<<<<<<< HEAD
-        <segue reference="rFr-R7-ktR"/>
-        <segue reference="dM3-h5-4IE"/>
-        <segue reference="SDw-zv-tcg"/>
-        <segue reference="UPg-Yr-5B0"/>
         <segue reference="nl2-Xy-OWc"/>
-=======
-        <segue reference="cVP-Bc-SG3"/>
-        <segue reference="FyY-9X-ohZ"/>
-        <segue reference="dou-bb-99d"/>
+        <segue reference="ado-9M-yPh"/>
+<<<<<<< HEAD
+        <segue reference="vrW-tF-Jr9"/>
+        <segue reference="nzB-nt-Iox"/>
+        <segue reference="n3r-gd-TTz"/>
+        <segue reference="wPE-BU-2L9"/>
         <segue reference="p1j-ow-HAz"/>
-        <segue reference="34A-gF-H3c"/>
->>>>>>> 06d847119a2910dd334b7782518ce1de46f146db
+        <segue reference="dM3-h5-4IE"/>
+        <segue reference="rFr-R7-ktR"/>
+=======
+        <segue reference="uTw-jD-8Rk"/>
+        <segue reference="nzB-nt-Iox"/>
+        <segue reference="ckU-W5-jqf"/>
+        <segue reference="NEk-wT-5z2"/>
+        <segue reference="8Mx-QQ-zuz"/>
+        <segue reference="0kh-0v-gnk"/>
+>>>>>>> d864eccfda05814579706f71dfa93167aefd5c56
+        <segue reference="dou-bb-99d"/>
     </inferredMetricsTieBreakers>
 </document>
