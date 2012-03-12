@@ -14,6 +14,7 @@
 @interface PostFlowPriceViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *priceTextField;
+@property (strong, nonatomic) IBOutlet UIButton *rightButton;
 @property (strong, nonatomic) NSString *postType;
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
 - (IBAction)backButtonAction:(id)sender;

@@ -25,6 +25,10 @@
 #define LEFT_BAR_BUTTON_CANCEL 0
 #define LEFT_BAR_BUTTON_BACK   1
 
+#define RIGHT_BAR_BUTTON_MAP    0
+#define RIGHT_BAR_BUTTON_SEND   1
+#define RIGHT_BAR_BUTTON_SHARE  2
+
 extern NSString * const POST_TYPE_TEMPLATE;
 extern NSString * const POST_TYPE_EDITING;
 extern NSString * const POST_TEMPLATE_CATEGORY_POPULAR;
@@ -104,6 +108,12 @@ extern NSString * const UI_IMAGE_LOGIN_FORM_BACKGROUND;
 extern NSString * const UI_IMAGE_LOGIN_LABEL;
 extern NSString * const UI_IMAGE_SIGUP_LABEL;
 
+extern NSString * const UI_IMAGE_SEND_BUTTON;
+extern NSString * const UI_IMAGE_SEND_BUTTON_PRESS;
+extern NSString * const UI_IMAGE_CONFIRM_BUTTON;
+extern NSString * const UI_IMAGE_CONFIRM_BUTTON_PRESS;
+extern NSString * const UI_IMAGE_EDIT_BUTTON;
+extern NSString * const UI_IMAGE_EDIT_BUTTON_PRESS;
 extern NSString * const UI_IMAGE_NEXT_BUTTON_DISABLE;
 extern NSString * const UI_IMAGE_NEXT_BUTTON_ENABLE;
 extern NSString * const UI_IMAGE_NEXT_BUTTON_ENABLE_PRESS;

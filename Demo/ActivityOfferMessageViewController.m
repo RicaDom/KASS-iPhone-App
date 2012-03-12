@@ -29,6 +29,7 @@
 @synthesize confirmImageView = _confirmImageView;
 @synthesize changedPriceMessage = _changedPriceMessage;
 @synthesize leftButton = _leftButton;
+@synthesize rightButton = _rightButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -99,12 +100,8 @@
 {
     [ViewHelper buildBackButton:self.leftButton];
     self.leftButton.tag = LEFT_BAR_BUTTON_BACK;
-//    UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]
-//                                initWithTitle:UI_BUTTON_LABEL_BACK
-//                                style:UIBarButtonItemStyleBordered
-//                                target:self
-//                                action:@selector(OnClick_btnBack:)];
-//    self.navigationItem.leftBarButtonItem = btnBack;   
+    [ViewHelper buildMapButton:self.rightButton];
+    self.rightButton.tag = RIGHT_BAR_BUTTON_MAP;
     
     // init scroll view content size
     [self.scrollView setContentSize:CGSizeMake(_ScrollViewContentSizeX, self.scrollView.frame.size.height)];
@@ -193,8 +190,8 @@
         
         [ViewHelper buildCancelButton:self.leftButton];
         self.leftButton.tag = LEFT_BAR_BUTTON_CANCEL;
-        //self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_CANCEL;
-        self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_SEND;
+        [ViewHelper buildSendButton:self.rightButton];
+        self.rightButton.tag = RIGHT_BAR_BUTTON_SEND;
     }else{
         // revert back to the normal state.
         rect.origin.y += (_keyboardRect.size.height - self.confirmImageView.frame.size.height);
@@ -202,8 +199,8 @@
         
         [ViewHelper buildBackButton:self.leftButton];
         self.leftButton.tag = LEFT_BAR_BUTTON_BACK;
-        //self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_BACK;
-        self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_MAP;
+        [ViewHelper buildMapButton:self.rightButton];
+        self.rightButton.tag = RIGHT_BAR_BUTTON_MAP;
     }
     self.mainView.frame = rect;
  
@@ -266,15 +263,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil]; 
 }
 
-//-(IBAction)OnClick_btnBack:(id)sender  {
-//    if ([self.navigationItem.leftBarButtonItem.title isEqualToString:UI_BUTTON_LABEL_BACK]) {
-//        [self.navigationController popViewControllerAnimated:YES];
-//    } else {
-//        [self.sendMessageTextField resignFirstResponder];
-//        [self setViewMovedUp:NO];
-//    }
-//}
-
 - (IBAction)sellerInfoAction:(id)sender {
 }
 
@@ -288,22 +276,6 @@
   [[NSNotificationCenter defaultCenter] 
    postNotificationName:OFFER_TO_PAY_VIEW_NOTIFICATION 
    object:self.currentOffer];
-}
-
-//- (IBAction)confirmDealAction:(id)sender {
-//  DLog(@"ActivityOfferMessageViewController::confirmDealAction");
-//  [[self currentUser] acceptOffer:_currentOffer.dbId];
-//}
-
-- (IBAction)sendMessageOrMapAction:(UIBarButtonItem *)sender {
-    if ([sender.title isEqualToString:UI_BUTTON_LABEL_MAP]) {
-        // TODO get the lat/alt and segue to map
-        
-        [self performSegueWithIdentifier:@"ActOfferToMapView" sender:self];
-    } else if ([sender.title isEqualToString:UI_BUTTON_LABEL_SEND]){
-        // TODO submitting message
-        
-    }
 }
 
 - (IBAction)buttonDraggingAction:(UIPanGestureRecognizer*)recognizer {
@@ -340,6 +312,17 @@
         [self.sendMessageTextField resignFirstResponder];
         [self setViewMovedUp:NO];
     }
+}
+
+- (IBAction)rightButtonAction:(id)sender {
+    if (self.rightButton.tag == RIGHT_BAR_BUTTON_MAP) {
+        // TODO get the lat/alt and segue to map
+        
+        [self performSegueWithIdentifier:@"ActOfferToMapView" sender:self];
+    } else if (self.rightButton.tag == RIGHT_BAR_BUTTON_SEND){
+        // TODO submitting message
+        
+    }    
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

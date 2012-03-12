@@ -28,6 +28,8 @@
 @synthesize changedPriceLabel = _changedPriceLabel;
 @synthesize changedPriceMessage = _changedPriceMessage;
 @synthesize backButton = _backButton;
+@synthesize leftButton = _leftButton;
+@synthesize rightButton = _rightButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -106,22 +108,9 @@
     [self.pull setDelegate:self];
     [self.scrollView addSubview:self.pull];
     
-    UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]
-                                initWithTitle:UI_BUTTON_LABEL_BACK
-                                style:UIBarButtonItemStyleBordered
-                                target:self
-                                action:@selector(OnClick_btnBack:)];
-    self.navigationItem.leftBarButtonItem = btnBack; 
-    
-    // Bottom view load
-    //[CommonView setMessageWithPriceView:self.bottomView priceButton:self.priceButton messageField:self.messageTextField ];
-    [ViewHelper buildBackButton:self.backButton];
-}
-
--(IBAction)OnClick_btnBack:(id)sender  {
-    if ([self.navigationItem.leftBarButtonItem.title isEqualToString:UI_BUTTON_LABEL_BACK]) {
-        [self dismissModalViewControllerAnimated:YES];
-    }
+    [ViewHelper buildBackButton:self.leftButton];
+    [ViewHelper buildMapButton:self.rightButton];
+    [ViewHelper buildUserInfoButton:self.userInfoButton];
 }
 
 - (void)viewDidUnload
@@ -135,6 +124,8 @@
     [self setChangedPriceLabel:nil];
     [self setChangedPriceMessage:nil];
     [self setBackButton:nil];
+    [self setLeftButton:nil];
+    [self setRightButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -151,7 +142,8 @@
 {
     [self performSelector:@selector(loadDataSource) withObject:nil afterDelay:2.0];	
 }
-- (IBAction)backButtonAction:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+- (IBAction)leftButtonAction:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];   
 }
+
 @end

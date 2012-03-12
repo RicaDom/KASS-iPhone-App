@@ -330,20 +330,51 @@
     button.frame = CGRectMake(5, button.frame.origin.y, img.size.width, img.size.height);
 }
 
++ (void)buildShareButton:(UIButton *)button
+{
+    UIImage *img = [UIImage imageNamed:UI_IMAGE_SHARE_BUTTON];
+    UIImage *imgPress = [UIImage imageNamed:UI_IMAGE_SHARE_BUTTON_PRESS];
+    [button setImage:img forState:UIControlStateNormal];
+    [button setImage:imgPress forState:UIControlStateSelected];
+    button.frame = CGRectMake(button.frame.origin.x, button.frame.origin.y, img.size.width, img.size.height);
+    button.enabled = YES;
+}
+
++ (void)buildConfirmButton:(UIButton *)button
+{
+    UIImage *img = [UIImage imageNamed:UI_IMAGE_CONFIRM_BUTTON];
+    UIImage *imgPress = [UIImage imageNamed:UI_IMAGE_CONFIRM_BUTTON_PRESS];
+    [button setImage:img forState:UIControlStateNormal];
+    [button setImage:imgPress forState:UIControlStateSelected];
+    button.frame = CGRectMake(button.frame.origin.x, button.frame.origin.y, img.size.width, img.size.height);
+    button.enabled = YES;
+}
+
++ (void)buildEditButton:(UIButton *)button
+{
+    UIImage *img = [UIImage imageNamed:UI_IMAGE_EDIT_BUTTON];
+    UIImage *imgPress = [UIImage imageNamed:UI_IMAGE_EDIT_BUTTON_PRESS];
+    [button setImage:img forState:UIControlStateNormal];
+    [button setImage:imgPress forState:UIControlStateSelected];
+    button.frame = CGRectMake(5, button.frame.origin.y, img.size.width, img.size.height);
+    button.enabled = YES;
+}
+
 + (void)buildNextButton:(UIButton *)button
 {
     UIImage *img = [UIImage imageNamed:UI_IMAGE_NEXT_BUTTON_ENABLE];
     UIImage *imgPress = [UIImage imageNamed:UI_IMAGE_NEXT_BUTTON_ENABLE_PRESS];
     [button setImage:img forState:UIControlStateNormal];
     [button setImage:imgPress forState:UIControlStateSelected];
-    button.frame = CGRectMake(5, button.frame.origin.y, img.size.width, img.size.height);
+    button.frame = CGRectMake(button.frame.origin.x, button.frame.origin.y, img.size.width, img.size.height);
+    button.enabled = YES;
 }
 
 + (void)buildNextButtonDis:(UIButton *)button
 {
     UIImage *img = [UIImage imageNamed:UI_IMAGE_NEXT_BUTTON_DISABLE];
     [button setImage:img forState:UIControlStateNormal];
-    button.frame = CGRectMake(5, button.frame.origin.y, img.size.width, img.size.height);
+    button.frame = CGRectMake(button.frame.origin.x, button.frame.origin.y, img.size.width, img.size.height);
     button.enabled = NO;
 }
 
@@ -362,6 +393,16 @@
   UIImage *acceptButtonPressImg = [UIImage imageNamed:UI_IMAGE_ACTIVITY_ACCEPT_BUTTON_PRESS];
   [button setImage:acceptButtonImg forState:UIControlStateNormal];
   [button setImage:acceptButtonPressImg forState:UIControlStateSelected];
+}
+
++ (void)buildSendButton:(UIButton *)button
+{
+    UIImage *img = [UIImage imageNamed:UI_IMAGE_SEND_BUTTON];
+    UIImage *imgPress = [UIImage imageNamed:UI_IMAGE_SEND_BUTTON_PRESS];
+    [button setImage:img forState:UIControlStateNormal];
+    [button setImage:imgPress forState:UIControlStateSelected];
+    button.frame = CGRectMake(button.frame.origin.x, button.frame.origin.y, img.size.width, img.size.height);
+    button.enabled = YES;
 }
 
 + (void)showErrorAlert:(NSString *)message:(id)delegate

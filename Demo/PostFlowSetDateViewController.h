@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *PostDurationPicker;
 @property (weak, nonatomic) IBOutlet UILabel *PostDurationLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *PostFlowSegment;
+@property (strong, nonatomic) IBOutlet UIButton *rightButton;
 @property (strong, nonatomic) NSString *postType;
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
 - (IBAction)backButtonAction:(id)sender;

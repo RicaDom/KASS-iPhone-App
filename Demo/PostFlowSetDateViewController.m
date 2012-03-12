@@ -13,6 +13,7 @@
 @synthesize PostDurationPicker = _PostDurationPicker;
 @synthesize PostDurationLabel = _PostDurationLabel;
 @synthesize PostFlowSegment = _PostFlowSegment;
+@synthesize rightButton = _rightButton;
 @synthesize postType = _postType;
 @synthesize backButton = _backButton;
 NSArray *arrayTimePicker;
@@ -84,10 +85,8 @@ NSArray *arrayTimePicker;
     }];
     [self loadCurrentPostingData];
     
-    if ([self.PostDurationPicker selectedRowInComponent:0] != 0) {
-       self.navigationItem.rightBarButtonItem.enabled = YES; 
-    }
     [ViewHelper buildBackButton:self.backButton];
+    [ViewHelper buildNextButtonDis:self.rightButton];
 }
 
 - (void)viewDidUnload
@@ -96,6 +95,7 @@ NSArray *arrayTimePicker;
     [self setPostDurationLabel:nil];
     [self setPostFlowSegment:nil];
     [self setBackButton:nil];
+    [self setRightButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -105,6 +105,14 @@ NSArray *arrayTimePicker;
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    if ([self.PostDurationPicker selectedRowInComponent:0] != 0) {
+        //self.navigationItem.rightBarButtonItem.enabled = YES; 
+        [ViewHelper buildNextButton:self.rightButton];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -134,9 +142,11 @@ NSArray *arrayTimePicker;
 	self.PostDurationLabel.text = [arrayTimePicker objectAtIndex:row];
 	DLog(@"Selected Color: %@. Index of selected color: %i", [arrayTimePicker objectAtIndex:row], row);
     if (0 == row) {
-        self.navigationItem.rightBarButtonItem.enabled = NO;
+        [ViewHelper buildNextButtonDis:self.rightButton];
+        //self.navigationItem.rightBarButtonItem.enabled = NO;
     } else {
-        self.navigationItem.rightBarButtonItem.enabled = YES;
+        [ViewHelper buildNextButton:self.rightButton];
+        //self.navigationItem.rightBarButtonItem.enabled = YES;
     }
 }
 

@@ -31,7 +31,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *changedPriceLabel;
 @property (strong, nonatomic) IBOutlet UILabel *changedPriceMessage;
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
+@property (strong, nonatomic) IBOutlet UIButton *leftButton;
+@property (strong, nonatomic) IBOutlet UIButton *rightButton;
 
-- (IBAction)backButtonAction:(id)sender;
+- (IBAction)leftButtonAction:(id)sender;
 
 @end

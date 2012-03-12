@@ -137,6 +137,4 @@
     }
 }
 
-- (IBAction)rightButtonAction:(id)sender {
-}
 @end

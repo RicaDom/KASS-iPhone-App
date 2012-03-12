@@ -22,11 +22,13 @@
 @property (strong, nonatomic) IBOutlet UITextView *postDesciptionTextField;
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) IBOutlet UIButton *leftButton;
 
 - (IBAction)cancelAction:(id)sender;
 - (IBAction)submitAction;
 - (IBAction)iwantAction:(id)sender;
 - (IBAction)ipayAction:(id)sender;
 - (IBAction)idateAction:(id)sender;
+- (IBAction)leftButtonAction:(id)sender;
 
 @end

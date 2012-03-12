@@ -36,6 +36,10 @@
 + (void)buildNextButton:(UIButton *)button;
 + (void)buildNextButtonDis:(UIButton *)button;
 + (void) buildAcceptButton:(UIButton *)button;
++ (void)buildEditButton:(UIButton *)button;
++ (void)buildShareButton:(UIButton *)button;
++ (void)buildConfirmButton:(UIButton *)button;
++ (void)buildSendButton:(UIButton *)button;
 
 + (void)showErrorAlert:(NSString *)message:(id)delegate;
 + (void)showErrorMessageAlert:(NSDictionary *)errors:(id)delegate;
