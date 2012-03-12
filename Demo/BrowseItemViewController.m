@@ -33,6 +33,7 @@
 @synthesize descriptionTextView = _descriptionTextView;
 @synthesize changePriceMessage = _changePriceMessage;
 @synthesize leftButton = _leftButton;
+@synthesize rightButton = _rightButton;
 @synthesize priceButton = _priceButton;
 @synthesize currentOffer = _currentOffer;
 
@@ -133,14 +134,7 @@
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
     
     // init scroll view content size
-    [self.scrollView setContentSize:CGSizeMake(_ScrollViewContentSizeX, self.scrollView.frame.size.height)];
- 
-//    UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]
-//                                initWithTitle:UI_BUTTON_LABEL_BACK
-//                                style:UIBarButtonItemStyleBordered
-//                                target:self
-//                                action:@selector(OnClick_btnBack:)];
-//    self.navigationItem.leftBarButtonItem = btnBack;   
+    [self.scrollView setContentSize:CGSizeMake(_ScrollViewContentSizeX, self.scrollView.frame.size.height)]; 
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receivePriceChangedNotification:) 
@@ -152,9 +146,11 @@
     
     // User info button
   [ViewHelper buildUserInfoButton:self.userInfoButton]; 
-  [ViewHelper buildMapButton:self.mapButton];
+  [ViewHelper buildMapButton:self.rightButton];
+  self.rightButton.tag = RIGHT_BAR_BUTTON_MAP;
   [ViewHelper buildBackButton:self.leftButton];
-   self.leftButton.tag = LEFT_BAR_BUTTON_BACK;
+  self.leftButton.tag = LEFT_BAR_BUTTON_BACK;
+
 }
 
 - (void)viewDidUnload
@@ -173,6 +169,7 @@
     [self setDescriptionTextView:nil];
     [self setChangePriceMessage:nil];
     [self setLeftButton:nil];
+    [self setRightButton:nil];
     [super viewDidUnload];
     [self setMapButton:nil];
     // Release any retained subviews of the main view.
@@ -196,43 +193,40 @@
   [self populateData:dict];
 }
 
-- (IBAction)mapButtonAction:(id)sender
-{
-  NSDictionary *listing = [[NSDictionary alloc] initWithObjectsAndKeys:
-                           _currentOffer.title, @"title", _currentOffer.description, @"description", 
-                           _currentOffer.listingId, @"id", nil ];
-  
-  ListItem *listItem = [[ListItem alloc] initWithDictionary:listing];
-  listItem.location = _currentOffer.listItemLocation;
-  
-  VariableStore.sharedInstance.itemToShowOnMap = listItem;
-  [self performSegueWithIdentifier: @"dealMapModal" 
-                            sender: self];
-}
-
 - (IBAction)leftButtonAction:(id)sender {
     if (self.leftButton.tag == LEFT_BAR_BUTTON_BACK) {
         [self dismissModalViewControllerAnimated:YES];
-        //[self.navigationController popViewControllerAnimated:YES];
     } else {
         [self.messageTextField resignFirstResponder];
         [self hideKeyboardAndMoveViewDown];
     }
 }
 
-- (IBAction)navigationButtonAction:(id)sender {
-    if (self.navigationButton.title == UI_BUTTON_LABEL_SEND) {
-      
-      DLog(@"BrowseItemViewController::(IBAction)navigationButtonAction:modifyOffer:");
-      NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                     ([self.itemPriceChangedToLabel.text length] > 0) ? self.itemPriceChangedToLabel.text : self.itemPriceLabel.text, @"price",
-                                     self.messageTextField.text, @"with_message",nil];
-      
-      // modify listing
-      [self showLoadingIndicator];
-      [self.currentUser modifyOffer:params:_currentOffer.dbId];
-      [self.messageTextField resignFirstResponder];
-      [self hideKeyboardAndMoveViewDown];
+
+- (IBAction)rightButtonAction:(id)sender {
+    if (self.rightButton.tag == RIGHT_BAR_BUTTON_SEND) {
+        
+        DLog(@"BrowseItemViewController::(IBAction)navigationButtonAction:modifyOffer:");
+        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                       ([self.itemPriceChangedToLabel.text length] > 0) ? self.itemPriceChangedToLabel.text : self.itemPriceLabel.text, @"price",
+                                       self.messageTextField.text, @"with_message",nil];
+        
+        // modify listing
+        [self showLoadingIndicator];
+        [self.currentUser modifyOffer:params:_currentOffer.dbId];
+        [self.messageTextField resignFirstResponder];
+        [self hideKeyboardAndMoveViewDown];
+    } else if (self.rightButton.tag == RIGHT_BAR_BUTTON_MAP) {
+        NSDictionary *listing = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                 _currentOffer.title, @"title", _currentOffer.description, @"description", 
+                                 _currentOffer.listingId, @"id", nil ];
+        
+        ListItem *listItem = [[ListItem alloc] initWithDictionary:listing];
+        listItem.location = _currentOffer.listItemLocation;
+        
+        VariableStore.sharedInstance.itemToShowOnMap = listItem;
+        [self performSegueWithIdentifier: @"dealMapModal" 
+                                  sender: self];
     }
 }
 
@@ -242,14 +236,16 @@
 - (void) keyboardMainViewMovedDown{
     [ViewHelper buildBackButton:self.leftButton];
     self.leftButton.tag = LEFT_BAR_BUTTON_BACK;
-    //self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_BACK;
-    self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_MAP;  
+    
+    [ViewHelper buildMapButton:self.rightButton];
+    self.rightButton.tag = RIGHT_BAR_BUTTON_MAP;
 }
 - (void) keyboardMainViewMovedUp{
     [ViewHelper buildCancelButton:self.leftButton];
     self.leftButton.tag = LEFT_BAR_BUTTON_CANCEL;
-    //self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_CANCEL;
-    self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_SEND; 
+
+    [ViewHelper buildSendButton:self.rightButton];
+    self.rightButton.tag = RIGHT_BAR_BUTTON_SEND;
 }
 
 
@@ -274,10 +270,6 @@
     if ([sender isEqual:_messageTextField]) {
         [ViewHelper buildCancelButton:self.leftButton];
         self.leftButton.tag = LEFT_BAR_BUTTON_CANCEL;
-        //self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_CANCEL;
-        //self.navigationController.navigationBar.backItem.title = @"取消";
-        //self.navigationItem.leftBarButtonItem.tintColor = [UIColor redColor];
-        self.navigationButton.title = UI_BUTTON_LABEL_SUBMIT;
     }
 }
 
@@ -293,11 +285,9 @@
 {
     if (textField == self.messageTextField) {
         self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_BACK;
-        //self.navigationController.navigationBar.backItem.title = @"上一步";
         self.navigationButton.title = UI_BUTTON_LABEL_MAP;
     }
 }
-
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -312,8 +302,6 @@
 {
   [self unregisterScrollViewRefreshPuller];
   [self unregisterKeyboardSlider];
-    // unregister for keyboard notifications while not visible.
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil]; 
 }
 
 @end

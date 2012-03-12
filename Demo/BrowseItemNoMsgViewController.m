@@ -34,6 +34,7 @@
 @synthesize leftButton = _leftButton;
 @synthesize changedPriceMessage = _changedPriceMessage;
 @synthesize mapView = _mapView;
+@synthesize rightButton = _rightButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -92,14 +93,6 @@
     // init scroll view content size
     [self.scrollView setContentSize:CGSizeMake(_ScrollViewContentSizeX, self.scrollView.frame.size.height)];
     
-//  
-//    UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]
-//                                initWithTitle:UI_BUTTON_LABEL_BACK
-//                                style:UIBarButtonItemStyleBordered
-//                                target:self
-//                                action:@selector(OnClick_btnBack:)];
-//    self.navigationItem.leftBarButtonItem = btnBack;  
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receivePriceChangedNotification:) 
                                                  name:CHANGED_PRICE_NOTIFICATION
@@ -111,9 +104,10 @@
     // Bottom view load
     [CommonView setMessageWithPriceView:self.scrollView payImage:nil bottomView:self.buttomView priceButton:self.priceButton messageField:self.messageTextField price:self.offerPrice.text changedPriceMessage:self.changedPriceMessage];
     
-    [ViewHelper buildBackButton:self.leftButton];
     [ViewHelper buildUserInfoButton:self.userInfoButton];
-  
+    [ViewHelper buildShareButton:self.rightButton];
+    self.rightButton.tag = RIGHT_BAR_BUTTON_SHARE;
+    [ViewHelper buildBackButton:self.leftButton];
     self.leftButton.tag = LEFT_BAR_BUTTON_BACK;
 }
 
@@ -138,13 +132,17 @@
   [ViewHelper buildBackButton:self.leftButton];
   self.leftButton.tag = LEFT_BAR_BUTTON_BACK;
   // self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_BACK;
-  self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_MAP;  
+  // self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_MAP;  
+  [ViewHelper buildShareButton:self.rightButton];
+  self.rightButton.tag = RIGHT_BAR_BUTTON_SHARE;
 }
 - (void) keyboardMainViewMovedUp{
   [ViewHelper buildCancelButton:self.leftButton];
   self.leftButton.tag = LEFT_BAR_BUTTON_CANCEL;
   //self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_CANCEL;
   self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_SEND; 
+  [ViewHelper buildSendButton:self.rightButton];
+  self.rightButton.tag = RIGHT_BAR_BUTTON_SEND;
 }
 
 /**
@@ -173,6 +171,7 @@
     [self setUserInfoButton:nil];
     [self setDescriptionTextView:nil];
     [self setLeftButton:nil];
+    [self setRightButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -210,12 +209,12 @@
 }
 
 - (IBAction)navigationButtonAction:(id)sender {
-    if ([self.navigationButton.title isEqualToString:UI_BUTTON_LABEL_SHARE]) {
+    if (self.rightButton.tag == RIGHT_BAR_BUTTON_SHARE) {
         // TODO - share on WEIBO
         [self showActionSheet:sender];
         
         
-    } else if (self.navigationButton.title == UI_BUTTON_LABEL_SEND) {
+    } else if (self.rightButton.tag == RIGHT_BAR_BUTTON_SEND) {
       
       // submit listing
       DLog(@"BrowseItemNoMsgViewController::(IBAction)navigationButtonAction:createOffer:");

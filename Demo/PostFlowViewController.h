@@ -23,6 +23,5 @@
 @property (strong, nonatomic) IBOutlet UIButton *rightButton;
 
 - (IBAction)CancelAction:(id)sender;
-- (IBAction)rightButtonAction:(id)sender;
 
 @end

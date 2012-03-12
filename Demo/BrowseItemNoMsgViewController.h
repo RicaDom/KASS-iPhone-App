@@ -38,6 +38,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) IBOutlet UIButton *rightButton;
 
 - (IBAction)navigationButtonAction:(id)sender;
 - (IBAction)leftButtonAction:(id)sender;

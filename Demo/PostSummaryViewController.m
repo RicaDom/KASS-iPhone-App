@@ -23,6 +23,7 @@
 @synthesize postType = _postType;
 @synthesize cancelButton = _cancelButton;
 @synthesize mapView = _mapView;
+@synthesize leftButton = _leftButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -104,6 +105,7 @@
     [VariableStore.sharedInstance.locateMeManager locateMe];
     [self customViewLoad];
     [ViewHelper buildCancelButton:self.cancelButton];
+    [ViewHelper buildEditButton:self.leftButton];
 }
 
 - (void)viewDidUnload
@@ -114,6 +116,8 @@
     [self setPostDuration:nil];
     [self setSubmitButton:nil];
     [self setCancelButton:nil];
+    [self setLeftButton:nil];
+    [self setLeftButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -204,6 +208,10 @@
 }
 
 - (IBAction)idateAction:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)leftButtonAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 

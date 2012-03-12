@@ -10,6 +10,7 @@
 
 @implementation PostFlowPriceViewController
 @synthesize priceTextField = _priceTextField;
+@synthesize rightButton = _rightButton;
 @synthesize postType = _postType;
 @synthesize backButton = _backButton;
 
@@ -74,6 +75,19 @@
         self.navigationItem.rightBarButtonItem.enabled = YES;
     } 
     [ViewHelper buildBackButton:self.backButton];
+    [ViewHelper buildNextButtonDis:self.rightButton];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    int intValue = [self.priceTextField.text intValue];
+    if (self.priceTextField.text.length > 0 
+        && intValue > 0
+        && [[NSString stringWithFormat:@"%d",intValue] isEqualToString:self.priceTextField.text]) {
+        
+        [ViewHelper buildNextButton:self.rightButton];
+        //self.navigationItem.rightBarButtonItem.enabled = YES;
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -85,6 +99,7 @@
 {
     [self setPriceTextField:nil];
     [self setBackButton:nil];
+    [self setRightButton:nil];
     [super viewDidUnload];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:nil];
@@ -104,9 +119,12 @@
         if (self.priceTextField.text.length > 0 
             && intValue > 0
             && [[NSString stringWithFormat:@"%d",intValue] isEqualToString:self.priceTextField.text]) {
-            self.navigationItem.rightBarButtonItem.enabled = YES;
+            
+            [ViewHelper buildNextButton:self.rightButton];
+            //self.navigationItem.rightBarButtonItem.enabled = YES;
         } else {
-            self.navigationItem.rightBarButtonItem.enabled = NO;
+            [ViewHelper buildNextButtonDis:self.rightButton];
+            //self.navigationItem.rightBarButtonItem.enabled = NO;
         }
     }
 }

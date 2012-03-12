@@ -30,6 +30,7 @@
 @synthesize confirmImageView  = _confirmImageView;
 @synthesize changedPriceMessage = _changedPriceMessage;
 @synthesize leftButton = _leftButton;
+@synthesize rightButton = _rightButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -83,12 +84,8 @@
 {
     [ViewHelper buildBackButton:self.leftButton];
     self.leftButton.tag = LEFT_BAR_BUTTON_BACK;
-//    UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]
-//                                initWithTitle:UI_BUTTON_LABEL_BACK
-//                                style:UIBarButtonItemStyleBordered
-//                                target:self
-//                                action:@selector(OnClick_btnBack:)];
-//    self.navigationItem.leftBarButtonItem = btnBack;   
+    [ViewHelper buildMapButton:self.rightButton];
+    self.rightButton.tag = RIGHT_BAR_BUTTON_MAP;
     
     // init scroll view content size
     [self.scrollView setContentSize:CGSizeMake(_ScrollViewContentSizeX, self.scrollView.frame.size.height)];
@@ -178,17 +175,17 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
--(void)textFieldDidBeginEditing:(UITextField *)sender
-{
-    if ([sender isEqual:_sendMessageTextField])
-    {
-        //move the main view, so that the keyboard does not hide it.
-        if  (self.mainView.frame.origin.y >= 0)
-        {
-            [self showKeyboardAndMoveViewUp];
-        }
-    }
-}
+//-(void)textFieldDidBeginEditing:(UITextField *)sender
+//{
+//    if ([sender isEqual:_sendMessageTextField])
+//    {
+//        //move the main view, so that the keyboard does not hide it.
+//        if  (self.mainView.frame.origin.y >= 0)
+//        {
+//            [self showKeyboardAndMoveViewUp];
+//        }
+//    }
+//}
 
 /**
  Overwrite UIViewController+KeyboardSlider shouldKeyboardViewMoveUp
@@ -225,36 +222,6 @@
   [[NSNotificationCenter defaultCenter] 
    postNotificationName:OFFER_TO_PAY_VIEW_NOTIFICATION 
    object:self.currentOffer];
-}
-
-- (IBAction)sendMessageOrMapAction:(UIBarButtonItem *)sender {
-    if ([sender.title isEqualToString:UI_BUTTON_LABEL_MAP]) {
-        
-      NSDictionary *listing = [[NSDictionary alloc] initWithObjectsAndKeys:
-                               _currentOffer.title, @"title", _currentOffer.description, @"description", 
-                               _currentOffer.listingId, @"id", nil ];
-      
-      ListItem *listItem = [[ListItem alloc] initWithDictionary:listing];
-      listItem.location = _currentOffer.listItemLocation;
-      
-      VariableStore.sharedInstance.itemToShowOnMap = listItem;
-      [self performSegueWithIdentifier:@"ActOfferToMapView" sender:self];
-      
-    } else if ([sender.title isEqualToString:UI_BUTTON_LABEL_SEND]){
-       
-      DLog(@"ActivityOfferMessageViewController::(IBAction)sendMessageOrMapAction:modifyOffer:");
-      NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                     ([self.changingPrice.text length] > 0) ? self.changingPrice.text : self.offerPrice.text, @"price",
-                                     self.sendMessageTextField.text, @"with_message",nil];
-      
-      // modify listing
-      [self showLoadingIndicator];
-      [self.currentUser modifyOffer:params:_currentOffer.dbId];
-      [self.sendMessageTextField resignFirstResponder];
-      [self hideKeyboardAndMoveViewDown];
-
-        
-    }
 }
 
 - (IBAction)buttonDraggingAction:(UIPanGestureRecognizer*)recognizer {
@@ -297,6 +264,35 @@
         [self.sendMessageTextField resignFirstResponder];
         [self hideKeyboardAndMoveViewDown];
     }
+}
+
+- (IBAction)rightButtonAction:(id)sender {
+    if (self.rightButton.tag == RIGHT_BAR_BUTTON_MAP) {
+      
+      NSDictionary *listing = [[NSDictionary alloc] initWithObjectsAndKeys:
+                               _currentOffer.title, @"title", _currentOffer.description, @"description", 
+                               _currentOffer.listingId, @"id", nil ];
+      
+      ListItem *listItem = [[ListItem alloc] initWithDictionary:listing];
+      listItem.location = _currentOffer.listItemLocation;
+      
+      VariableStore.sharedInstance.itemToShowOnMap = listItem;
+      [self performSegueWithIdentifier:@"ActOfferToMapView" sender:self];
+      
+    } else if (self.rightButton.tag == RIGHT_BAR_BUTTON_SEND){
+       
+      DLog(@"ActivityOfferMessageViewController::(IBAction)sendMessageOrMapAction:modifyOffer:");
+      NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                     ([self.changingPrice.text length] > 0) ? self.changingPrice.text : self.offerPrice.text, @"price",
+                                     self.sendMessageTextField.text, @"with_message",nil];
+      
+      // modify listing
+      [self showLoadingIndicator];
+      [self.currentUser modifyOffer:params:_currentOffer.dbId];
+      [self.sendMessageTextField resignFirstResponder];
+      [self hideKeyboardAndMoveViewDown];
+        
+    }    
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
