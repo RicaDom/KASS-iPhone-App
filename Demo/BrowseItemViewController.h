@@ -15,6 +15,7 @@
 #import "UIResponder+VariableStore.h"
 #import "CommonView.h"
 #import "DataSourceViewController.h"
+#import "Offer+OfferHelper.h"
 
 @interface BrowseItemViewController : DataSourceViewController <UIScrollViewDelegate, AccountActivityDelegate>
 

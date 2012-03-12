@@ -107,6 +107,8 @@ extern NSString * const UI_IMAGE_LOGIN_FORGOT_PASS;
 extern NSString * const UI_IMAGE_LOGIN_FORM_BACKGROUND;
 extern NSString * const UI_IMAGE_LOGIN_LABEL;
 extern NSString * const UI_IMAGE_SIGUP_LABEL;
+extern NSString * const UI_IMAGE_MESSAGE_DEFAULT_USER;
+extern NSString * const UI_IMAGE_MESSAGE_LINE;
 
 extern NSString * const UI_IMAGE_SEND_BUTTON;
 extern NSString * const UI_IMAGE_SEND_BUTTON_PRESS;

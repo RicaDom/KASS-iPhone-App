@@ -57,6 +57,8 @@ typedef enum {
 - (void)createOfferMessage:(NSDictionary *)dict:(NSString *)modelId;
 - (void)createOfferMessageFinished:(NSData *)data;
 
+- (void)deleteListing:(NSString *)dbId;
+- (void)deleteListingFinished;
 - (void)getListing:(NSString *)dbId;
 - (void)getListingFinished:(NSData *)data;
 - (void)getListings;

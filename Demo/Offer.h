@@ -21,6 +21,7 @@
 @property (nonatomic, strong) Message *lastMessage;
 @property (nonatomic, strong) NSString *userId;
 @property (nonatomic, strong) NSNumber *distance;
+@property (nonatomic, strong) NSString *message;
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *description;

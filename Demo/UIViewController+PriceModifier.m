@@ -7,30 +7,38 @@
 //
 
 #import "UIViewController+PriceModifier.h"
-#import "PriceModifier.h"
+#import "UIResponder+VariableStore.h"
 #import "Constants.h"
 
 @implementation UIViewController (PriceModifier)
 
-- (void) registerPriceModifier:(NSInteger)price
+- (void) modifyPriceModifierPrice:(NSDecimalNumber *)price
 {
-  [PriceModifier.currentModifier registerPriceModifier:price];
+  [self kassVS].priceToModify = [price intValue];
+}
+
+- (void) registerPriceModifier
+{
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(priceModifiedNotification:) 
+                                               name:CHANGED_PRICE_NOTIFICATION
+                                             object:nil];
 }
 
 - (void) unregisterPriceModifier
 {
-  [PriceModifier.currentModifier unregister];
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:CHANGED_PRICE_NOTIFICATION object:nil];
 }
 
-- (void) priceModificationDidFinish
+- (void) priceModificationDidFinish:(NSInteger)price
 {
-  DLog(@"UIViewController (PriceModifier)::priceModificationDidFinish");
+  DLog(@"UIViewController (PriceModifier)::priceModificationDidFinish:price=%@", price);
 }
 
 - (void) priceModifiedNotification:(NSNotification *) notification
 {
-  PriceModifier.currentModifier.price = [[notification object] intValue];
-  [self priceModificationDidFinish];
+  [self kassVS].priceToModify = [[notification object] intValue];
+  [self priceModificationDidFinish:[self kassVS].priceToModify];
 }
 
 @end

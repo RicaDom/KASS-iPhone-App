@@ -120,6 +120,24 @@
   [self postData:_url:dict];  
 }
 
+- (void)deleteData:(NSString *)url:(NSString *)modelId
+{
+  id kassSelf = self;
+  __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+  [request setCompletionBlock:^{ [kassSelf requestFinished:request]; }];
+  [request setFailedBlock:^{[kassSelf requestFailed:request];}];
+  [request setRequestMethod:@"DELETE"];
+  [request startAsynchronous];
+  DLog(@"KassApi::deleteData::startAsynchronous=%@", url);
+}
+
+- (void)deleteListing:(NSString *)modelId
+{
+  DLog(@"KassApi::deleteListing:modelId=%@", modelId);
+  _url = [NSString stringWithFormat:@"http://%s/v1/account/listings/%@", HOST, modelId];
+  [self deleteData:_url:modelId];
+}
+
 - (void)createListing:(NSDictionary *)dict
 {
   DLog(@"KassApi::createListing:dict=%@", dict);

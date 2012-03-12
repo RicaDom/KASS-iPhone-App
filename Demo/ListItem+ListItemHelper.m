@@ -20,12 +20,14 @@
 
 - (NSString *) getTimeLeftText
 {
-  return [BaseHelper getTimeFromNowText:[NSDate date]:[self endedAt]];
+  NSString *timeLeftText = [BaseHelper getTimeFromNowText:[NSDate date]:[self endedAt]];
+  return timeLeftText ? timeLeftText : @"已经过期";
 }
 
 - (NSString *) getTimeLeftTextlong
 {
-  return [[NSString alloc] initWithFormat:@"还有 %@", [self getTimeLeftText]];
+  NSString *timeLeftText = [BaseHelper getTimeFromNowText:[NSDate date]:[self endedAt]];
+  return timeLeftText ? [[NSString alloc] initWithFormat:@"还有 %@", timeLeftText] : @"已经过期";
 }
 
 - (NSString *) getUrl

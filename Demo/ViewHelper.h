@@ -15,7 +15,7 @@
 
 @interface ViewHelper : NSObject
 
-+ (NSString *)getTitleFromOfferMessage:(User *)user:(Offer *)offer:(int)index;
++ (NSString *)getTitleFromOfferMessage:(User *)user:(Offer *)offer:(Message *)message;
 
 // offers
 + (void) buildOfferScrollView:(IBOutlet UIScrollView *)scrollView:(User *)user:(Offer *)offer;

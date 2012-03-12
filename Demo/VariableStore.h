@@ -45,12 +45,14 @@
 @property (nonatomic,assign) id<AccountActivityDelegate> currentViewControllerDelegate;
 
 @property (strong, nonatomic) ListItem *itemToShowOnMap;
+@property NSInteger priceToModify;
 
 + (VariableStore *) sharedInstance;
 - (void) clearCurrentPostingItem;
 - (void)storeSettings:(NSDictionary *)dict;
 - (void)loadAndStoreSettings:(id<KassAppDelegate>)delegate;
 - (void) appendPostingItemToListings:(NSDictionary *)dict;
+- (void)resetActivityListings;
 - (NSMutableDictionary *) getDefaultCriteria;
 
 - (BOOL) isCurrentUser:(NSString *)userId;

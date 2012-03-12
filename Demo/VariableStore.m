@@ -27,6 +27,8 @@
 @synthesize mainTabBar = _mainTabBar;
 @synthesize kassApp = _kassApp;
 @synthesize settings = _settings;
+
+@synthesize priceToModify = _priceToModify;
 @synthesize itemToShowOnMap = _itemToShowOnMap;
 
 @synthesize currentViewControllerDelegate = _currentViewControllerDelegate;
@@ -161,6 +163,12 @@
 {
   DLog(@"VariableStore::storeSettings:dict");
   self.settings = [[Settings alloc] initWithDictionary:dict];
+}
+
+- (void)resetActivityListings
+{
+  _myBuyingListings = nil;
+  _mySellingListings= nil;
 }
 
 - (NSMutableDictionary *)getDefaultCriteria

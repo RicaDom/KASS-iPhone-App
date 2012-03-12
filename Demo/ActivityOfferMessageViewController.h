@@ -17,8 +17,6 @@
 #import "DataSourceViewController.h"
 #import "CommonView.h"
 
-#import "PriceModifier.h"
-
 @interface ActivityOfferMessageViewController : DataSourceViewController <UIScrollViewDelegate, AccountActivityDelegate>{
     int touchBegan;       // for deal confirm button swiping
     int originX;

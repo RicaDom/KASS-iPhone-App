@@ -152,6 +152,17 @@
   
 }
 
+- (void)accountDidDeleteListing
+{
+  DLog(@"ItemViewController::accountDidDeleteListing");
+  
+  [VariableStore.sharedInstance resetActivityListings];
+  
+  UINavigationController *navController = self.navigationController;
+  [navController dismissModalViewControllerAnimated:YES];
+  
+}
+
 - (IBAction)mapButtonAction:(id)sender
 {
   VariableStore.sharedInstance.itemToShowOnMap = _currentItem; 
@@ -168,6 +179,9 @@
             [self performSegueWithIdentifier:@"ActEditingToPostFlow" sender:self];
         } else if (buttonIndex == 1) { 
             
+          //delete listing
+          [[self currentUser] deleteListing:_currentItem.dbId];
+          
         } else if (buttonIndex == 2) {
 
             //self.label.text = @"Other Button 2 Clicked";

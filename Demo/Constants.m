@@ -143,5 +143,7 @@ NSString * const UI_IMAGE_USER_INFO_BUTTON_GREEN = @"iphone_39.png";
 
 NSString * const UI_IMAGE_POST_SEND_BUTTON = @"btn_big_90.png";
 NSString * const UI_IMAGE_POST_SEND_BUTTON_PRESS = @"btn_big_93.png";
+NSString * const UI_IMAGE_MESSAGE_DEFAULT_USER = @"mapPin.png";
+NSString * const UI_IMAGE_MESSAGE_LINE = @"line.png";
 
 @end

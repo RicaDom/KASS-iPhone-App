@@ -10,6 +10,7 @@
 #import "UIViewController+ActivityIndicate.h"
 #import "UIViewController+KeyboardSlider.h"
 #import "UIViewController+ScrollViewRefreshPuller.h"
+#import "UIViewController+PriceModifier.h"
 #import "ViewHelper.h"
 
 @implementation ActivityOfferMessageViewController
@@ -63,6 +64,7 @@
   self.listingExpiredDate.text    = [self.currentOffer getListItemTimeLeftTextlong];
   self.offerPrice.text            = [self.currentOffer getPriceText]; 
   
+  [self modifyPriceModifierPrice:self.currentOffer.price];
   [self loadMessageView];
   [self hideIndicator];
   [self stopLoading];
@@ -103,27 +105,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(receivePriceChangedNotification:) 
-                                                 name:CHANGED_PRICE_NOTIFICATION
-                                               object:nil];
+    [self registerPriceModifier];
     [self customViewLoad];
 }
 
-- (void) receivePriceChangedNotification:(NSNotification *) notification
+/**
+ UIViewController+PriceModifier priceModificationDidFinish
+ */
+- (void)priceModificationDidFinish:(NSInteger)price
 {
-    // [notification name] should always be CHANGED_PRICE_NOTIFICATION
-    // unless you use this method for observation of other notifications
-    // as well.
-    
-    if ([[notification name] isEqualToString:CHANGED_PRICE_NOTIFICATION]) {      
-        self.changingPrice.text = (NSString *)[notification object];
-        DLog (@"ActivityOfferMessageViewController::receivePriceChangedNotification:%@", (NSString *)[notification object]);
-        [CommonView setMessageWithPriceView:self.scrollView payImage:self.confirmImageView bottomView:self.buttomView priceButton:self.priceButton messageField:self.sendMessageTextField price:self.changingPrice.text changedPriceMessage:self.changedPriceMessage];
-    }
+  DLog (@"ActivityOfferMessageViewController::priceModificationDidFinish:%d", price);
+  self.changingPrice.text = [NSString stringWithFormat:@"%d", price];
+  
+  [CommonView setMessageWithPriceView:self.scrollView payImage:self.confirmImageView bottomView:self.buttomView priceButton:self.priceButton messageField:self.sendMessageTextField price:self.changingPrice.text changedPriceMessage:self.changedPriceMessage];
 }
-
 
 /**
  Keyboard Slider Delegate
@@ -150,10 +145,10 @@
 
 - (void)viewDidUnload
 {
+    [self unregisterPriceModifier];
     [self setListingTitle:nil];
     [self setOfferPrice:nil];
     [self setListingExpiredDate:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:CHANGED_PRICE_NOTIFICATION object:nil];
     [self setChangingPrice:nil];
     [self setSendMessageTextField:nil];
     [self setMainView:nil];
@@ -164,6 +159,7 @@
     [self setConfirmImageView:nil];
     [self setChangedPriceMessage:nil];
     [self setLeftButton:nil];
+    [self setScrollView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -269,22 +265,13 @@
 - (IBAction)rightButtonAction:(id)sender {
     if (self.rightButton.tag == RIGHT_BAR_BUTTON_MAP) {
       
-      NSDictionary *listing = [[NSDictionary alloc] initWithObjectsAndKeys:
-                               _currentOffer.title, @"title", _currentOffer.description, @"description", 
-                               _currentOffer.listingId, @"id", nil ];
-      
-      ListItem *listItem = [[ListItem alloc] initWithDictionary:listing];
-      listItem.location = _currentOffer.listItemLocation;
-      
-      VariableStore.sharedInstance.itemToShowOnMap = listItem;
+      VariableStore.sharedInstance.itemToShowOnMap = [_currentOffer getListItemToMap];
       [self performSegueWithIdentifier:@"ActOfferToMapView" sender:self];
       
     } else if (self.rightButton.tag == RIGHT_BAR_BUTTON_SEND){
        
       DLog(@"ActivityOfferMessageViewController::(IBAction)sendMessageOrMapAction:modifyOffer:");
-      NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                     ([self.changingPrice.text length] > 0) ? self.changingPrice.text : self.offerPrice.text, @"price",
-                                     self.sendMessageTextField.text, @"with_message",nil];
+      NSMutableDictionary* params = [Offer getParamsToModify:[self kassVS].priceToModify:self.sendMessageTextField.text];
       
       // modify listing
       [self showLoadingIndicator];
@@ -293,17 +280,6 @@
       [self hideKeyboardAndMoveViewDown];
         
     }    
-}
-
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"changedPriceSegue"]) {
-        UINavigationController *navigationController = segue.destinationViewController;
-        OfferChangingPriceViewController *ovc = (OfferChangingPriceViewController *)navigationController.topViewController;
-        ovc.currentPrice = ([self.changingPrice.text length] <= 0)? self.offerPrice.text : self.changingPrice.text;
-        
-    } else if ([segue.identifier isEqualToString:@"ActOfferToMapView"]) {
-        
-    }
 }
 
 @end
