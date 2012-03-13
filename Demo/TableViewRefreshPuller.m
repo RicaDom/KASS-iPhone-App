@@ -8,9 +8,15 @@
 
 #import "TableViewRefreshPuller.h"
 
+@implementation Puller
+@synthesize tableView = _tableView;
+@synthesize view = _view;
+@synthesize reloading = _reloading;
+@end
+
 @implementation TableViewRefreshPuller
 
-@synthesize reloading = _reloading;
+static NSMutableDictionary *rvps = nil;
 
 static TableViewRefreshPuller *rvp = nil;
 
@@ -18,40 +24,51 @@ static TableViewRefreshPuller *rvp = nil;
 {
   if (rvp == nil) {
     rvp   = [[TableViewRefreshPuller alloc] init];
+    rvps  = [[NSMutableDictionary alloc] init];
   }
   return rvp;
 }
 
-- (EGORefreshTableHeaderView *)view
+- (void)registerTableView:(UITableView *)tableView:(UIView *)view:(id<EGORefreshTableHeaderDelegate>)delegate:(NSString *)identifier;
 {
-  return _view;
-}
-
-- (void)registerTableView:(UITableView *)tableView:(UIView *)view:(id<EGORefreshTableHeaderDelegate>)delegate;
-{
-  _tableView = tableView;
+  Puller *puller = [[Puller alloc] init];
   
-  _view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - tableView.bounds.size.height, view.frame.size.width, tableView.bounds.size.height)];
+  EGORefreshTableHeaderView * _view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - tableView.bounds.size.height, view.frame.size.width, tableView.bounds.size.height)];
   
   _view.delegate = delegate;
-  [_tableView addSubview:_view];
+  [tableView addSubview:_view];
+  
+  puller.tableView = tableView;
+  puller.view      = _view;
+  
+  [rvps setObject:puller forKey:identifier ];
 }
 
-- (void)unregister
+- (void)unregister:(NSString *)identifier
 {
-  _tableView = nil;
-  _view      = nil;
-  rvp        = nil;
+  Puller *puller = [self getPuller:identifier];
+  puller.view = nil;
+  puller.tableView = nil;
+  puller = nil;
+  [rvps removeObjectForKey:identifier];
 }
 
-- (id<EGORefreshTableHeaderDelegate>)delegate
+- (Puller *)getPuller:(NSString *)identifier
 {
-  return _view.delegate;
+  return [rvps valueForKey:identifier];
 }
 
-- (void)finishedLoading
+- (id<EGORefreshTableHeaderDelegate>)delegate:(NSString *)identifier
 {
-  [_view egoRefreshScrollViewDataSourceDidFinishedLoading:_tableView];
+  return [self getPuller:identifier].view.delegate;
+}
+
+- (void)finishedLoading:(NSString *)identifier
+{
+  EGORefreshTableHeaderView *view = [self getPuller:identifier].view;
+  UITableView *tableView = [self getPuller:identifier].tableView;
+  
+  [view egoRefreshScrollViewDataSourceDidFinishedLoading:tableView];
 }
 
 @end
