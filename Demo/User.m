@@ -416,16 +416,24 @@
   DLog(@"User::weiboShare:listItem=%@", [listItem title]);
   
   NSString *who = [self hasListItem:listItem] ? @"我" : @"有人";
+  NSString *statusSample = [VariableStore.sharedInstance.settings valueForKey:@"share_status"];
+  NSString *siteName = [VariableStore.sharedInstance.settings valueForKey:@"name"];
+  NSString *shareImg = [VariableStore.sharedInstance.settings valueForKey:@"share_img"];
   
-  NSString *status = [NSString stringWithFormat:@"[话筒] %@ 在【街区】》%@ ·[红包]【价钱】》%@ ·[钟]【期限】%@ -- %@ - %@", 
-                      who,listItem.title, listItem.price, listItem.getTimeLeftText, listItem.description, listItem.getUrl];
+  NSString *status = [statusSample stringByReplacingOccurrencesOfString:@"[[site]]" withString: siteName];
+  status = [status stringByReplacingOccurrencesOfString:@"[[user]]" withString: who];
+  status = [status stringByReplacingOccurrencesOfString:@"[[title]]" withString: listItem.title];
+  status = [status stringByReplacingOccurrencesOfString:@"[[price]]" withString: listItem.getPriceText];
+  status = [status stringByReplacingOccurrencesOfString:@"[[time]]" withString: listItem.getTimeLeftText];
+  status = [status stringByReplacingOccurrencesOfString:@"[[description]]" withString: listItem.description];
+  status = [status stringByReplacingOccurrencesOfString:@"[[url]]" withString: listItem.getUrl];
   
   // statuses/update.json?source=#{@api_key}
   NSString* updateStatusString = [NSString stringWithFormat:@"statuses/upload_url_text.json"];
   
   NSMutableDictionary* updateStatusParams = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                          status, @"status",
-                                         WEIBO_SHARE_IMG, @"url",
+                                         shareImg, @"url",
                                          [SinaWeiBoSDKDemo_APPKey URLEncodedString],@"source",nil];
   wAction = wUpdate;
   WBRequest* wbRequest = [weibo requestWithMethodName:updateStatusString 
