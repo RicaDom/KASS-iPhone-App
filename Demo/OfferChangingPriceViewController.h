@@ -15,8 +15,9 @@
 @property (strong, nonatomic) NSString *currentPrice;
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
 @property (weak, nonatomic) IBOutlet UITextField *offerPriceTextField;
+@property (strong, nonatomic) IBOutlet UIButton *confirmButton;
 
-- (IBAction)doneChangingPriceAction:(id)sender;
 - (IBAction)leftButtonAction:(id)sender;
+- (IBAction)confirmButtonAction:(id)sender;
 
 @end

@@ -191,11 +191,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/SettingViewController.m"
-         timestampString = "352629857.789783"
+         timestampString = "353324903.229026"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "85"
-         endingLineNumber = "85"
+         startingLineNumber = "96"
+         endingLineNumber = "96"
          landmarkName = "-shouldAutorotateToInterfaceOrientation:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -205,11 +205,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/SettingViewController.m"
-         timestampString = "352629857.789783"
+         timestampString = "353324903.229026"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "84"
-         endingLineNumber = "84"
+         startingLineNumber = "95"
+         endingLineNumber = "95"
          landmarkName = "-shouldAutorotateToInterfaceOrientation:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -219,11 +219,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/SettingViewController.m"
-         timestampString = "352629857.789783"
+         timestampString = "353324903.229026"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "86"
-         endingLineNumber = "86"
+         startingLineNumber = "97"
+         endingLineNumber = "97"
          landmarkName = "-shouldAutorotateToInterfaceOrientation:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -558,8 +558,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "224"
          endingLineNumber = "224"
-         landmarkName = "@implementation ActivityOfferMessageViewController"
-         landmarkType = "3">
+         landmarkName = "-buttonDraggingAction:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -599,9 +599,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "306"
-         endingLineNumber = "306"
-         landmarkName = "-textFieldDidEndEditing:"
-         landmarkType = "5">
+         endingLineNumber = "306">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -613,9 +611,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "308"
-         endingLineNumber = "308"
-         landmarkName = "-viewWillAppear:"
-         landmarkType = "5">
+         endingLineNumber = "308">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -628,7 +624,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "256"
          endingLineNumber = "256"
-         landmarkName = "-actionSheet:clickedButtonAtIndex:"
+         landmarkName = "-textFieldDidEndEditing:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -641,9 +637,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "338"
-         endingLineNumber = "338"
-         landmarkName = "@implementation BrowseItemNoMsgViewController"
-         landmarkType = "3">
+         endingLineNumber = "338">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -655,9 +649,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "317"
-         endingLineNumber = "317"
-         landmarkName = "-viewWillAppear:"
-         landmarkType = "5">
+         endingLineNumber = "317">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -669,9 +661,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "319"
-         endingLineNumber = "319"
-         landmarkName = "@implementation BrowseItemNoMsgViewController"
-         landmarkType = "3">
+         endingLineNumber = "319">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -684,7 +674,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "258"
          endingLineNumber = "258"
-         landmarkName = "-actionSheet:clickedButtonAtIndex:"
+         landmarkName = "-textFieldDidEndEditing:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -697,9 +687,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "318"
-         endingLineNumber = "318"
-         landmarkName = "-viewWillAppear:"
-         landmarkType = "5">
+         endingLineNumber = "318">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -768,8 +756,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "280"
          endingLineNumber = "280"
-         landmarkName = "-textFieldDidBeginEditing:"
-         landmarkType = "5">
+         landmarkName = "@implementation BrowseItemNoMsgViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1171,9 +1159,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "314"
-         endingLineNumber = "314"
-         landmarkName = "-viewWillAppear:"
-         landmarkType = "5">
+         endingLineNumber = "314">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1185,9 +1171,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "310"
-         endingLineNumber = "310"
-         landmarkName = "-viewWillAppear:"
-         landmarkType = "5">
+         endingLineNumber = "310">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1199,9 +1183,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "311"
-         endingLineNumber = "311"
-         landmarkName = "-viewWillAppear:"
-         landmarkType = "5">
+         endingLineNumber = "311">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1579,13 +1561,13 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/OfferChangingPriceViewController.m"
-         timestampString = "353176511.873869"
+         timestampString = "353331283.655545"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "74"
-         endingLineNumber = "74"
-         landmarkName = "-doneChangingPriceAction:"
-         landmarkType = "5">
+         startingLineNumber = "77"
+         endingLineNumber = "77"
+         landmarkName = "@implementation OfferChangingPriceViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1682,8 +1664,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "285"
          endingLineNumber = "285"
-         landmarkName = "-rightButtonAction:"
-         landmarkType = "5">
+         landmarkName = "@implementation ActivityOfferMessageViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1710,7 +1692,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "260"
          endingLineNumber = "260"
-         landmarkName = "+buildOfferScrollView:::"
+         landmarkName = "+getOfferRow::::::"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1820,7 +1802,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "263"
          endingLineNumber = "263"
-         landmarkName = "-actionSheet:clickedButtonAtIndex:"
+         landmarkName = "-textFieldDidBeginEditing:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1834,7 +1816,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "265"
          endingLineNumber = "265"
-         landmarkName = "-actionSheet:clickedButtonAtIndex:"
+         landmarkName = "-textFieldDidBeginEditing:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1848,7 +1830,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "282"
          endingLineNumber = "282"
-         landmarkName = "-textFieldDidBeginEditing:"
+         landmarkName = "-viewWillAppear:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1876,7 +1858,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "223"
          endingLineNumber = "223"
-         landmarkName = "-navigationButtonAction:"
+         landmarkName = "-accountWeiboShareFinished"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint

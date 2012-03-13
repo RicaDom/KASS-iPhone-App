@@ -372,6 +372,26 @@
     button.enabled = YES;
 }
 
++ (void)buildLoginButton:(UIButton *)button
+{
+    UIImage *img = [UIImage imageNamed:UI_IMAGE_SETTING_LOGIN];
+    UIImage *imgPress = [UIImage imageNamed:UI_IMAGE_SETTING_LOGIN_PRESS];
+    [button setImage:img forState:UIControlStateNormal];
+    [button setImage:imgPress forState:UIControlStateSelected];
+    button.frame = CGRectMake(button.frame.origin.x, button.frame.origin.y, img.size.width, img.size.height);
+    button.enabled = YES;
+}
+
++ (void)buildLogoutButton:(UIButton *)button
+{
+    UIImage *img = [UIImage imageNamed:UI_IMAGE_SETTING_LOGOUT];
+    UIImage *imgPress = [UIImage imageNamed:UI_IMAGE_SETTING_LOGOUT_PRESS];
+    [button setImage:img forState:UIControlStateNormal];
+    [button setImage:imgPress forState:UIControlStateSelected];
+    button.frame = CGRectMake(button.frame.origin.x, button.frame.origin.y, img.size.width, img.size.height);
+    button.enabled = YES;
+}
+
 + (void)buildNextButton:(UIButton *)button
 {
     UIImage *img = [UIImage imageNamed:UI_IMAGE_NEXT_BUTTON_ENABLE];

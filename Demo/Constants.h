@@ -28,6 +28,8 @@
 #define RIGHT_BAR_BUTTON_MAP    0
 #define RIGHT_BAR_BUTTON_SEND   1
 #define RIGHT_BAR_BUTTON_SHARE  2
+#define RIGHT_BAR_BUTTON_LOGIN  3
+#define RIGHT_BAR_BUTTON_LOGOUT 4
 
 extern NSString * const POST_TYPE_TEMPLATE;
 extern NSString * const POST_TYPE_EDITING;
@@ -164,5 +166,10 @@ extern NSString * const UI_IMAGE_USER_INFO_BUTTON_GREEN;
 
 extern NSString * const UI_IMAGE_POST_SEND_BUTTON;
 extern NSString * const UI_IMAGE_POST_SEND_BUTTON_PRESS;
+
+extern NSString * const UI_IMAGE_SETTING_LOGIN;
+extern NSString * const UI_IMAGE_SETTING_LOGIN_PRESS;
+extern NSString * const UI_IMAGE_SETTING_LOGOUT;
+extern NSString * const UI_IMAGE_SETTING_LOGOUT_PRESS;
 
 @end
