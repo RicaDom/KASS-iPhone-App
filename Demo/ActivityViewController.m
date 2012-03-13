@@ -71,14 +71,14 @@ NSMutableArray *currentItems;
     //return 1 == self.activitySegment.selectedSegmentIndex;
 }
 
-- (void)showBackground
-{
+//- (void)showBackground
+//{
 //    if (self.emptyRecordsImageView == nil || self.emptyRecordsImageView.image == nil) {
 //        self.emptyRecordsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:UI_IMAGE_ACTIVITY_BACKGROUND]];
 //        [self.view addSubview:self.emptyRecordsImageView];
 //    }
-    [self hideIndicator];
-}
+//    [self hideIndicator];
+//}
 
 - (void)reset
 {
@@ -97,7 +97,8 @@ NSMutableArray *currentItems;
 - (void)updateTableView
 {
     if (![VariableStore.sharedInstance isLoggedIn]){
-        [self showBackground];
+      [self reset];
+      [self reloadTable];
     } else if (![VariableStore.sharedInstance isCurrentUser:_userId]) {     
         _userId = VariableStore.sharedInstance.user.userId;
         [self reset];
@@ -169,7 +170,8 @@ NSMutableArray *currentItems;
 
 -(void)loadDataSource{
     if (![[self kassVS] isLoggedIn]) { 
-        [self showBackground];
+        [self reset];
+        [self hideIndicator];
         return; 
     }
     

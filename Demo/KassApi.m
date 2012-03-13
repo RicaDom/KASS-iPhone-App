@@ -145,12 +145,12 @@
   
   //validity check
   NSString *title = [dict valueForKey:@"title"];
-  NSString *desc  = [dict valueForKey:@"description"];
+//  NSString *desc  = [dict valueForKey:@"description"];
   NSDecimalNumber *price = [NSDecimalNumber decimalNumberWithDecimal:[[dict objectForKey:@"price"] decimalValue]];
   NSString *latlng = [dict valueForKey:@"latlng"];
   NSString *duration = [dict valueForKey:@"time"];
   
-  if ( title && desc && price && latlng && duration) {
+  if ( title && price && latlng && duration) {
     [self postData:_url:dict];
   }else{
     DLog(@"KassApi::createListing: invalid data!");

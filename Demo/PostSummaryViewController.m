@@ -166,30 +166,20 @@
                       VariableStore.sharedInstance.location.coordinate.latitude, 
                       VariableStore.sharedInstance.location.coordinate.longitude]; 
     
-  DLog(@"Duration Dic: %@", self.settings.durationToServerDic);
-  NSString * durationStr = 
-    (NSString *)[self.settings.durationToServerDic objectForKey:(NSNumber *)[VariableStore sharedInstance].currentPostingItem.postDuration];
-
-  if ([durationStr length] <= 0) {
-     // TODO
-     // Error Message
-     DLog(@"Failed to get duration... \nlocal duration=%@", [VariableStore sharedInstance].currentPostingItem.postDuration);
-     DLog(@"server duration=%@", durationStr);   
-  }
-    
-  DLog(@"title=%@", [VariableStore sharedInstance].currentPostingItem.title);
-  DLog(@"description=%@", [VariableStore sharedInstance].currentPostingItem.description);
-  DLog(@"price=%@", [VariableStore sharedInstance].currentPostingItem.askPrice);
-  DLog(@"local duration=%@", [VariableStore sharedInstance].currentPostingItem.postDuration);
-  DLog(@"server duration=%@", [durationStr class]);    
-  DLog(@"latlng=%@", latlng);
+  ListItem *postItem = [VariableStore sharedInstance].currentPostingItem;
   
-  NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                 [VariableStore sharedInstance].currentPostingItem.title, @"title",
-                                 [VariableStore sharedInstance].currentPostingItem.description, @"description",
-                                 [VariableStore sharedInstance].currentPostingItem.askPrice, @"price",
-                                 durationStr, @"time",
-                                 latlng, @"latlng",nil];
+  NSNumber *postDuration = (NSNumber *)postItem.postDuration;
+  NSString *durationStr  = (NSString *)[self.settings.durationToServerDic objectForKey:postDuration];
+
+  NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
+  
+  [params setObject:postItem.title forKey:@"title"];
+  if (postItem.description) { [params setObject:postItem.description forKey:@"description"]; }
+  [params setObject:postItem.askPrice forKey:@"price"];
+  [params setObject:durationStr forKey:@"time"];
+  [params setObject:latlng forKey:@"latlng"];
+                              
+  DLog(@"params = %@", params);
   
   if ([self.postType isEqualToString:POST_TYPE_EDITING] && self.postingItem.isPersisted) {
     [self.currentUser modifyListing:params:self.postingItem.dbId];

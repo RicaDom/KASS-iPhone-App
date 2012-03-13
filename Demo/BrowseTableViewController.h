@@ -19,9 +19,7 @@
 #import "UIResponder+VariableStore.h"
 
 @interface BrowseTableViewController : UIViewController <UISearchDisplayDelegate, UISearchBarDelegate,LocateMeDelegate> {
-	
-	//  Reloading var should really be your tableviews datasource
-	//  Putting it here for demo purposes 
+	NSDictionary *transferJson;
   BOOL _searching;
 }
 

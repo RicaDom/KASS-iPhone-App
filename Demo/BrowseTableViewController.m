@@ -143,13 +143,7 @@
     // [notification name] should always be NO_MESSAGE_TO_MESSAGE_VIEW_NOTIFICATION
     // unless you use this method for observation of other notifications
     // as well.
-    
-    if ([[notification name] isEqualToString:NO_MESSAGE_TO_MESSAGE_VIEW_NOTIFICATION]) {
-      NSDictionary *json = [notification object];
-      DLog(@"BrowseTableViewController::receivedFromNOMessageNotification:json=%@", json);
-      [self performSegueWithModelJson:json:@"showBrowseItem":self];
-//      [self performSegueWithIdentifier:@"showBrowseItem" sender:self];  
-    }
+    transferJson = [notification object];
 }
 
 /**
@@ -192,6 +186,7 @@
     UIImage* tempImg = [UIImage imageNamed:UI_IMAGE_BROWSE_DATE];
     [self.browseSegment setDividerImage:img forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];    
     self.browseSegment.frame = CGRectMake(0, self.browseSegment.frame.origin.y, tempImg.size.width*3+8, tempImg.size.height);
+  
     [self browseSegmentAction:self];    
     
   [ViewHelper buildMapButton:self.mapButton];
@@ -219,7 +214,10 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+  [super viewDidAppear:animated];  
+  if (transferJson) {
+    [self performSegueWithModelJson:transferJson:@"showBrowseItem":self];
+  }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -231,6 +229,7 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
+  transferJson = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
