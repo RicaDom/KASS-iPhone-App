@@ -179,6 +179,20 @@
     [_delegate accountDidGetOffer:dict];
 }
 
+- (void)deleteListing:(NSString *)dbId
+{
+  DLog(@"User::deleteListing:dbId=%@", dbId);
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"deleteListingFinished"];
+  [ka deleteListing:dbId];
+}
+
+- (void)deleteListingFinished
+{
+  DLog(@"User::deleteListingFinished");
+  if( [_delegate respondsToSelector:@selector(accountDidDeleteListing)] )
+    [_delegate accountDidDeleteListing];
+}
+
 - (void)getListing:(NSString *)dbId
 {
   DLog(@"User::getListing:dbId=%@", dbId);

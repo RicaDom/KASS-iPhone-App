@@ -21,5 +21,7 @@
 - (BOOL)registerKeyboardSliderTextView:(UITextView *)textView;
 - (void)unregisterKeyboardSlider;
 
+- (void)keyboardWillShow:(NSNotification *)notification;
+- (BOOL)shouldKeyboardViewMoveUp;
 
 @end

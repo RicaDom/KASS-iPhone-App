@@ -7,6 +7,7 @@
 //
 
 #import "OfferChangingPriceViewController.h"
+#import "VariableStore.h"
 
 @implementation OfferChangingPriceViewController
 
@@ -40,12 +41,19 @@
 }
 */
 
+- (void)loadPrice
+{
+  
+}
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.navigationController.navigationBar.tintColor = [UIColor brownColor];
+  
+    self.currentPrice = [NSString stringWithFormat:@"%d", VariableStore.sharedInstance.priceToModify];
+  
     self.offerPriceTextField.placeholder = self.currentPrice;
     [self.offerPriceTextField becomeFirstResponder];
     

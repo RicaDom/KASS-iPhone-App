@@ -221,6 +221,8 @@
 // Loading data from server
 - (void)loadPostTemplates:(NSDictionary *)dict
 {
+  if ( !dict || ![dict isKindOfClass:NSDictionary.class]) return;
+  
   NSArray *popularTemplates  = [dict objectForKey:@"popular"];
   NSArray *editorTemplates   = [dict objectForKey:@"editor"];
   NSArray *creativeTemplates = [dict objectForKey:@"creative"];

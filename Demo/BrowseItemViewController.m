@@ -13,6 +13,7 @@
 #import "UIViewController+KeyboardSlider.h"
 #import "UIViewController+SegueActiveModel.h"
 #import "UIViewController+ScrollViewRefreshPuller.h"
+#import "UIViewController+PriceModifier.h"
 
 @implementation BrowseItemViewController
 
@@ -73,7 +74,8 @@
   self.itemTitleLabel.text = self.currentOffer.title;
   self.descriptionTextView.text = self.currentOffer.description;
   self.itemPriceLabel.text = [NSString stringWithFormat:@"%@", self.currentOffer.price];
-  //self.itemPriceChangedToLabel.text = [NSString stringWithFormat:@"%@", self.currentOffer.price];
+  
+  [self modifyPriceModifierPrice:self.currentOffer.price];
   
   NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
   [formatter setAMSymbol:@"AM"];
@@ -110,19 +112,12 @@
   }
 }
 
-- (void) receivePriceChangedNotification:(NSNotification *) notification
+- (void)priceModificationDidFinish:(NSInteger)price
 {
-    // [notification name] should always be CHANGED_PRICE_NOTIFICATION
-    // unless you use this method for observation of other notifications
-    // as well.
-    
-    if ([[notification name] isEqualToString:CHANGED_PRICE_NOTIFICATION]) {
-        
-        self.itemPriceChangedToLabel.text = (NSString *)[notification object];
-        DLog (@"BrowseItemViewController::receivePriceChangedNotification:%@", (NSString *)[notification object]);
-        DLog(@"Price changed to: %@", self.itemPriceChangedToLabel.text);
-        [CommonView setMessageWithPriceView:self.scrollView payImage:nil bottomView:self.buttomView priceButton:self.priceButton messageField:self.messageTextField price:self.itemPriceChangedToLabel.text changedPriceMessage:self.changePriceMessage];
-    }
+  DLog (@"BrowseItemViewController::priceModificationDidFinish:%d", price);
+  self.itemPriceChangedToLabel.text = [NSString stringWithFormat:@"%d", price];
+  
+  [CommonView setMessageWithPriceView:self.scrollView payImage:nil bottomView:self.buttomView priceButton:self.priceButton messageField:self.messageTextField price:self.itemPriceChangedToLabel.text changedPriceMessage:self.changePriceMessage];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -136,31 +131,28 @@
     // init scroll view content size
     [self.scrollView setContentSize:CGSizeMake(_ScrollViewContentSizeX, self.scrollView.frame.size.height)]; 
 
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(receivePriceChangedNotification:) 
-                                                 name:CHANGED_PRICE_NOTIFICATION
-                                               object:nil];
+    [self registerPriceModifier];
     
     // Bottom view load
     [CommonView setMessageWithPriceView:self.scrollView payImage:nil bottomView:self.buttomView priceButton:self.priceButton messageField:self.messageTextField price:self.itemPriceChangedToLabel.text changedPriceMessage:self.changePriceMessage];
     
     // User info button
-  [ViewHelper buildUserInfoButton:self.userInfoButton]; 
-  [ViewHelper buildMapButton:self.rightButton];
-  self.rightButton.tag = RIGHT_BAR_BUTTON_MAP;
-  [ViewHelper buildBackButton:self.leftButton];
-  self.leftButton.tag = LEFT_BAR_BUTTON_BACK;
+    [ViewHelper buildUserInfoButton:self.userInfoButton]; 
+    [ViewHelper buildMapButton:self.rightButton];
+    self.rightButton.tag = RIGHT_BAR_BUTTON_MAP;
+    [ViewHelper buildBackButton:self.leftButton];
+    self.leftButton.tag = LEFT_BAR_BUTTON_BACK;
 
 }
 
 - (void)viewDidUnload
 {
+    [self unregisterPriceModifier];
     [self setItemTitleLabel:nil];
     [self setNavigationButton:nil];
     [self setItemPriceLabel:nil];
     [self setItemExpiredDate:nil];
     [self setItemPriceChangedToLabel:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:CHANGED_PRICE_NOTIFICATION object:nil];
     [self setMainView:nil];
     [self setButtomView:nil];
     [self setTopView:nil];
@@ -202,29 +194,23 @@
     }
 }
 
+
 - (IBAction)rightButtonAction:(id)sender {
     if (self.rightButton.tag == RIGHT_BAR_BUTTON_SEND) {
         
-        DLog(@"BrowseItemViewController::(IBAction)navigationButtonAction:modifyOffer:");
-        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                       ([self.itemPriceChangedToLabel.text length] > 0) ? self.itemPriceChangedToLabel.text : self.itemPriceLabel.text, @"price",
-                                       self.messageTextField.text, @"with_message",nil];
-        
-        // modify listing
-        [self showLoadingIndicator];
-        [self.currentUser modifyOffer:params:_currentOffer.dbId];
-        [self.messageTextField resignFirstResponder];
-        [self hideKeyboardAndMoveViewDown];
+      DLog(@"BrowseItemViewController::(IBAction)rightButtonAction:modifyOffer:");
+      NSMutableDictionary* params = [Offer getParamsToModify:[self kassVS].priceToModify:self.messageTextField.text];
+      
+      // modify listing
+      [self showLoadingIndicator];
+      [self.currentUser modifyOffer:params:_currentOffer.dbId];
+      [self.messageTextField resignFirstResponder];
+      [self hideKeyboardAndMoveViewDown];
+      
     } else if (self.rightButton.tag == RIGHT_BAR_BUTTON_MAP) {
-        NSDictionary *listing = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                 _currentOffer.title, @"title", _currentOffer.description, @"description", 
-                                 _currentOffer.listingId, @"id", nil ];
         
-        ListItem *listItem = [[ListItem alloc] initWithDictionary:listing];
-        listItem.location = _currentOffer.listItemLocation;
-        
-        VariableStore.sharedInstance.itemToShowOnMap = listItem;
-        [self performSegueWithIdentifier: @"dealMapModal" 
+      VariableStore.sharedInstance.itemToShowOnMap = [_currentOffer getListItemToMap];
+      [self performSegueWithIdentifier: @"dealMapModal" 
                                   sender: self];
     }
 }
@@ -248,14 +234,6 @@
 }
 
 
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"changedPriceSegue"]) {
-        UINavigationController *navigationController = segue.destinationViewController;
-        OfferChangingPriceViewController *ovc = (OfferChangingPriceViewController *)navigationController.topViewController;
-        ovc.currentPrice = [self.itemPriceChangedToLabel.text length] > 0 ? self.itemPriceChangedToLabel.text : self.itemPriceLabel.text;
-    }
-}
-
 -(void)textFieldDidBeginEditing:(UITextField *)sender
 {
     if ([sender isEqual:_messageTextField])
@@ -272,16 +250,12 @@
     }
 }
 
-- (void)keyboardWillShow:(NSNotification *)notification
+/**
+ Overwrite UIViewController+KeyboardSlider shouldKeyboardViewMoveUp
+ */
+- (BOOL)shouldKeyboardViewMoveUp
 {
-    //keyboard will be shown now. depending for which textfield is active, move up or move down the view appropriately
-  CGRect keyboardRect = [[[notification userInfo] objectForKey:_UIKeyboardFrameEndUserInfoKey] CGRectValue];
-  [self registerKeyboardSliderRect:keyboardRect];
-    
-    if ([_messageTextField isFirstResponder] && self.mainView.frame.origin.y >= 0)
-    {
-        [self showKeyboardAndMoveViewUp];
-    }
+  return [_messageTextField isFirstResponder] && self.mainView.frame.origin.y >= 0;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
@@ -292,8 +266,6 @@
     }
 }
 
-/* Keyboard avoiding end */
-
 - (void)viewWillAppear:(BOOL)animated
 {
   [super viewWillAppear:animated];
@@ -301,18 +273,12 @@
   [self registerKeyboardSlider:_mainView :_scrollView :_buttomView];
   [self registerKeyboardSliderTextView:_descriptionTextView];
   [self registerScrollViewRefreshPuller:self.scrollView];
-
-    // register for keyboard notifications
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) 
-                                                 name:UIKeyboardWillShowNotification object:self.view.window]; 
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
   [self unregisterScrollViewRefreshPuller];
   [self unregisterKeyboardSlider];
-    // unregister for keyboard notifications while not visible.
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil]; 
 }
 
 @end

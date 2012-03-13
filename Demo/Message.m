@@ -7,6 +7,7 @@
 //
 
 #import "Message.h"
+#import "Offer.h"
 
 @implementation Message
 
@@ -25,6 +26,17 @@
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:RUBY_DATETIME_FORMAT]; 
     _createdAt = [dateFormat dateFromString:[theDictionary objectForKey:@"created_at"]];
+  }
+  return self;
+}
+
+- (id) initWithOffer:(Offer *)offer
+{
+  if (self = [super init]) {
+    _body    = offer.message;
+    _userId  = offer.userId;
+    _dbId    = offer.dbId;
+    _createdAt = offer.createdAt;
   }
   return self;
 }

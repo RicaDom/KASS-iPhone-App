@@ -16,6 +16,7 @@
 #import "DataSourceViewController.h"
 #import "KassApp.h"
 #import "ViewHelper.h"
+#import "Offer+OfferHelper.h"
 
 @interface BrowseItemNoMsgViewController : DataSourceViewController <UIActionSheetDelegate, AccountActivityDelegate, UIScrollViewDelegate, KassAppDelegate, MKMapViewDelegate>
 

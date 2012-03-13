@@ -11,6 +11,7 @@
 #import "UIViewController+KeyboardSlider.h"
 #import "UIViewController+SegueActiveModel.h"
 #import "UIViewController+ScrollViewRefreshPuller.h"
+#import "UIViewController+PriceModifier.h"
 
 #import "ListingMapAnnotaion.h"
 #import "ListingImageAnnotationView.h"
@@ -93,20 +94,14 @@
     // init scroll view content size
     [self.scrollView setContentSize:CGSizeMake(_ScrollViewContentSizeX, self.scrollView.frame.size.height)];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(receivePriceChangedNotification:) 
-                                                 name:CHANGED_PRICE_NOTIFICATION
-                                               object:nil];
-
+    [self registerPriceModifier];
+  
     // navigation bar background color
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
     
     // Bottom view load
     [CommonView setMessageWithPriceView:self.scrollView payImage:nil bottomView:self.buttomView priceButton:self.priceButton messageField:self.messageTextField price:self.offerPrice.text changedPriceMessage:self.changedPriceMessage];
     
-    //[CommonView setMessageWithPriceView:self.buttomView priceButton:self.priceButton messageField:self.messageTextField];
-    
-    // User info button
     [ViewHelper buildUserInfoButton:self.userInfoButton];
     [ViewHelper buildShareButton:self.rightButton];
     self.rightButton.tag = RIGHT_BAR_BUTTON_SHARE;
@@ -114,18 +109,14 @@
     self.leftButton.tag = LEFT_BAR_BUTTON_BACK;
 }
 
-- (void) receivePriceChangedNotification:(NSNotification *) notification
+/**
+ UIViewController+PriceModifier priceModificationDidFinish
+ */
+- (void)priceModificationDidFinish:(NSInteger)price
 {
-    // [notification name] should always be CHANGED_PRICE_NOTIFICATION
-    // unless you use this method for observation of other notifications
-    // as well.
-    
-    if ([[notification name] isEqualToString:CHANGED_PRICE_NOTIFICATION]) {
-        
-        self.offerPrice.text = (NSString *)[notification object];
-        DLog (@"BrowseItemNoMsgViewController::receivePriceChangedNotification:%@", (NSString *)[notification object]);
-        [CommonView setMessageWithPriceView:self.scrollView payImage:nil bottomView:self.buttomView priceButton:self.priceButton messageField:self.messageTextField price:self.offerPrice.text changedPriceMessage:self.changedPriceMessage];
-    }
+  DLog (@"BrowseItemNoMsgViewController::priceModificationDidFinish:%d", price);
+  self.offerPrice.text = [NSString stringWithFormat:@"%d", price];
+  [CommonView setMessageWithPriceView:self.scrollView payImage:nil bottomView:self.buttomView priceButton:self.priceButton messageField:self.messageTextField price:self.offerPrice.text changedPriceMessage:self.changedPriceMessage];
 }
 
 /**
@@ -155,21 +146,13 @@
   [self loadDataSource];
 }
 
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"changedPriceSegue"]) {
-        UINavigationController *navigationController = segue.destinationViewController;
-        OfferChangingPriceViewController *ovc = (OfferChangingPriceViewController *)navigationController.topViewController;
-        ovc.currentPrice = ([self.offerPrice.text length] > 0) ? self.offerPrice.text : self.listingPrice.text;
-    }
-}
-
 - (void)viewDidUnload
 {
+    [self unregisterPriceModifier];
     [self setListingTitle:nil];
     [self setListingPrice:nil];
     [self setListingDate:nil];
     [self setOfferPrice:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:CHANGED_PRICE_NOTIFICATION object:nil];
     [self setPriceButton:nil];
     [self setUserInfoButton:nil];
     [self setDescriptionTextView:nil];
@@ -213,18 +196,14 @@
 
 - (IBAction)navigationButtonAction:(id)sender {
     if (self.rightButton.tag == RIGHT_BAR_BUTTON_SHARE) {
-        // TODO - share on WEIBO
-        [self showActionSheet:sender];
         
+        [self showActionSheet:sender];
         
     } else if (self.rightButton.tag == RIGHT_BAR_BUTTON_SEND) {
       
       // submit listing
       DLog(@"BrowseItemNoMsgViewController::(IBAction)navigationButtonAction:createOffer:");
-      NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                     ([self.offerPrice.text length] > 0) ? self.offerPrice.text : self.listingPrice.text, @"price",
-                                     self.messageTextField.text, @"with_message",
-                                     self.currentItem.dbId, @"listing_id",nil];
+      NSMutableDictionary* params = [Offer getParamsToCreate:[self kassVS].priceToModify:self.messageTextField.text:self.currentItem];
       
       [self showLoadingIndicator];
       [self.currentUser createOffer:params];
@@ -265,38 +244,17 @@
     }
 }
 
--(void)textFieldDidBeginEditing:(UITextField *)sender
+/**
+ Overwrite UIViewController+KeyboardSlider shouldKeyboardViewMoveUp
+ */
+- (BOOL)shouldKeyboardViewMoveUp
 {
-    if (sender == self.messageTextField) {
-        
-        self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_CANCEL;
-        self.navigationButton.title = UI_BUTTON_LABEL_SEND;
-    }
-    
-    if ([sender isEqual:self.messageTextField])
-    {
-        //move the main view, so that the keyboard does not hide it.
-        if  (self.mainView.frame.origin.y >= 0)
-        {
-            [self showKeyboardAndMoveViewUp];
-        }
-    }
+  return [self.messageTextField isFirstResponder] && self.mainView.frame.origin.y >= 0;
 }
 
-- (void)keyboardWillShow:(NSNotification *)notification
-{
-    //keyboard will be shown now. depending for which textfield is active, move up or move down the view appropriately
-  CGRect  keyboardRect = [[[notification userInfo] objectForKey:_UIKeyboardFrameEndUserInfoKey] CGRectValue];
-  [self registerKeyboardSliderRect:keyboardRect];
-    
-    if ([self.messageTextField isFirstResponder] && self.mainView.frame.origin.y >= 0)
-    {
-        [self showKeyboardAndMoveViewUp];
-    }
-}
-
-/* Keyboard avoiding end */
-
+/**
+ TextFieldDelegate
+ */
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     if (textField == self.messageTextField) {
@@ -305,34 +263,37 @@
     }
 }
 
+-(void)textFieldDidBeginEditing:(UITextField *)sender
+{
+  if (sender == self.messageTextField) {
+    
+    self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_CANCEL;
+    self.navigationButton.title = UI_BUTTON_LABEL_SEND;
+  }
+  
+  if ([sender isEqual:self.messageTextField])
+  {
+    //move the main view, so that the keyboard does not hide it.
+    if  (self.mainView.frame.origin.y >= 0)
+    {
+      [self showKeyboardAndMoveViewUp];
+    }
+  }
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
   // register for keyboard view slider
   [self registerScrollViewRefreshPuller:self.scrollView];
   [self registerKeyboardSlider:_mainView :_scrollView :_buttomView];
   [self registerKeyboardSliderTextView:_descriptionTextView];
-  
-    // register for keyboard notifications
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) 
-                                                 name:UIKeyboardWillShowNotification object:self.view.window]; 
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
   [self unregisterScrollViewRefreshPuller];
   [self unregisterKeyboardSlider];
-    // unregister for keyboard notifications while not visible.
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil]; 
 }
 
-//-(IBAction)OnClick_btnBack:(id)sender  {
-//    if ([self.navigationItem.leftBarButtonItem.title isEqualToString:UI_BUTTON_LABEL_BACK]) {
-//        [self dismissModalViewControllerAnimated:YES];
-//        //[self.navigationController popViewControllerAnimated:YES];
-//    } else {
-//        [self.messageTextField resignFirstResponder];
-//        [self hideKeyboardAndMoveViewDown];
-//    }
-//}
 
 @end

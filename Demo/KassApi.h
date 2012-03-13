@@ -37,6 +37,7 @@
 - (void)postData:(NSString *)url:(NSDictionary *)dict;
 - (void)getData:(NSString *)url;
 
+- (void)deleteListing:(NSString *)modelId;
 - (void)createOffer:(NSDictionary *)dict;
 - (void)createListing:(NSDictionary *)dict;
 - (void)getListings:(NSDictionary *)dict;

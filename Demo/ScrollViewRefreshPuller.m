@@ -39,6 +39,7 @@ static ScrollViewRefreshPuller *rvp = nil;
 
 - (void)unregister
 {
+  [_pull removeScrollViewObserver];
   _pull = nil;
   rvp   = nil;
 }

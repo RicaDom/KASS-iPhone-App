@@ -10,10 +10,8 @@
 
 @implementation ViewHelper
 
-+ (NSString *)getTitleFromOfferMessage:(User *)user:(Offer *)offer:(int)index
++ (NSString *)getTitleFromOfferMessage:(User *)user:(Offer *)offer:(Message *)message
 {
-  Message *message = [offer.messages objectAtIndex:index];
-  
   NSString *title;
   
   if ([user.userId isEqualToString:message.userId]) {
@@ -241,12 +239,58 @@
   [cell.infoView addSubview:labelYouOffered];
 }
 
++ (UIView *)getOfferRow:(IBOutlet UIScrollView *)scrollView:(User *)user:(Offer *)offer:(CGFloat)yOffset:(Message *)message:(NSDateFormatter *)dateFormatter
+{
+  UIImage *userImg = [UIImage imageNamed:UI_IMAGE_MESSAGE_DEFAULT_USER];
+  UIImageView *userImgView = [[UIImageView alloc] initWithImage:userImg];
+  userImgView.frame = CGRectMake(5, 5, 60, 60);
+  UIView *diglogView = [[UIView alloc] initWithFrame:CGRectMake(0, yOffset, scrollView.frame.size.width, 75)];
+  [diglogView addSubview:userImgView];
+  
+  NSString *title = [ViewHelper getTitleFromOfferMessage:user:offer:message];
+  NSString *date=[dateFormatter stringFromDate:message.createdAt];
+  
+  // Header title
+  UILabel* lblHeaderTitle = [[UILabel alloc] initWithFrame:CGRectMake(userImgView.frame.size.width+15, 5, 50, 20)];
+  [lblHeaderTitle setText:title];      
+  [lblHeaderTitle setTextColor:[UIColor brownColor]];
+  lblHeaderTitle.backgroundColor = [UIColor clearColor];
+  [lblHeaderTitle setTextAlignment:UITextAlignmentLeft];
+  lblHeaderTitle.font = [UIFont boldSystemFontOfSize:13];
+  [diglogView addSubview:lblHeaderTitle];
+  
+  // Time title
+  UILabel* messageTime = [[UILabel alloc] initWithFrame:CGRectMake(userImgView.frame.size.width+15 + lblHeaderTitle.frame.size.width + 5, 5, 50, 20)];
+  [messageTime setText:date];      
+  [messageTime setTextColor:[UIColor blackColor]];
+  messageTime.backgroundColor = [UIColor clearColor];
+  [messageTime setTextAlignment:UITextAlignmentLeft];
+  messageTime.font = [UIFont systemFontOfSize:13];
+  [diglogView addSubview:messageTime];
+  
+  // Message  
+  UITextView *messageTextView = [[UITextView alloc] initWithFrame:CGRectMake(userImgView.frame.size.width+8, 25, 230, 50)];  
+  messageTextView.text = message.body;
+  messageTextView.font = [UIFont boldSystemFontOfSize:15];
+  messageTextView.textColor = [UIColor darkGrayColor];
+  messageTextView.editable = NO;
+  messageTextView.backgroundColor = [UIColor clearColor];
+  [diglogView addSubview:messageTextView];     
+  
+  // line
+  UIImage *line = [UIImage imageNamed:UI_IMAGE_MESSAGE_LINE];
+  UIImageView *imageView = [[UIImageView alloc] initWithImage:line];
+  imageView.frame = CGRectMake(0, diglogView.frame.size.height, scrollView.frame.size.width, imageView.frame.size.height);
+  [diglogView addSubview:imageView]; 
+  
+  return diglogView;
+}
 
 + (void) buildOfferScrollView:(IBOutlet UIScrollView *)scrollView:(User *)user:(Offer *)offer
 {
   CGFloat yOffset = 155;
   
-  UIImage *line = [UIImage imageNamed:@"line.png"];
+  UIImage *line = [UIImage imageNamed:UI_IMAGE_MESSAGE_LINE];
   UIImageView *imageView = [[UIImageView alloc] initWithImage:line];
   imageView.frame = CGRectMake(0, yOffset + 10, scrollView.frame.size.width, imageView.frame.size.height);
   [scrollView addSubview:imageView];
@@ -255,50 +299,18 @@
   NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
   [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
   [dateFormatter setDateStyle:NSDateFormatterLongStyle];
-    
+  
+  Message *firstMessage = [[Message alloc] initWithOffer:offer];
+  UIView *diglogView = [self getOfferRow:scrollView:user:offer:yOffset:firstMessage:dateFormatter];
+  yOffset += diglogView.frame.size.height;
+  [scrollView addSubview:diglogView];
+  [scrollView setContentSize:CGSizeMake(scrollView.frame.size.width, yOffset + 5)];  
+  
   for (int i=0; i< [offer.messages count]; i++) {
-    UIImage *userImg = [UIImage imageNamed:@"mapPin.png"];
-    UIImageView *userImgView = [[UIImageView alloc] initWithImage:userImg];
-    userImgView.frame = CGRectMake(5, 5, 60, 60);
-    UIView *diglogView = [[UIView alloc] initWithFrame:CGRectMake(0, yOffset, scrollView.frame.size.width, 75)];
-    [diglogView addSubview:userImgView];
-
+    
     Message *message = [offer.messages objectAtIndex:i];
-    NSString *title = [ViewHelper getTitleFromOfferMessage:user:offer:i];
-    NSString *date=[dateFormatter stringFromDate:message.createdAt];
-      
-    // Header title
-    UILabel* lblHeaderTitle = [[UILabel alloc] initWithFrame:CGRectMake(userImgView.frame.size.width+15, 5, 50, 20)];
-    [lblHeaderTitle setText:title];      
-    [lblHeaderTitle setTextColor:[UIColor brownColor]];
-    lblHeaderTitle.backgroundColor = [UIColor clearColor];
-    [lblHeaderTitle setTextAlignment:UITextAlignmentLeft];
-    lblHeaderTitle.font = [UIFont boldSystemFontOfSize:13];
-    [diglogView addSubview:lblHeaderTitle];
-
-      // Time title
-    UILabel* messageTime = [[UILabel alloc] initWithFrame:CGRectMake(userImgView.frame.size.width+15 + lblHeaderTitle.frame.size.width + 5, 5, 50, 20)];
-    [messageTime setText:date];      
-    [messageTime setTextColor:[UIColor blackColor]];
-    messageTime.backgroundColor = [UIColor clearColor];
-    [messageTime setTextAlignment:UITextAlignmentLeft];
-    messageTime.font = [UIFont systemFontOfSize:13];
-    [diglogView addSubview:messageTime];
-      
-    // Message  
-    UITextView *messageTextView = [[UITextView alloc] initWithFrame:CGRectMake(userImgView.frame.size.width+8, 25, 230, 50)];  
-    messageTextView.text = message.body;
-    messageTextView.font = [UIFont boldSystemFontOfSize:15];
-    messageTextView.textColor = [UIColor darkGrayColor];
-    messageTextView.editable = NO;
-    messageTextView.backgroundColor = [UIColor clearColor];
-    [diglogView addSubview:messageTextView];     
-      
-    // line
-    UIImage *line = [UIImage imageNamed:@"line.png"];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:line];
-    imageView.frame = CGRectMake(0, diglogView.frame.size.height, scrollView.frame.size.width, imageView.frame.size.height);
-    [diglogView addSubview:imageView];
+    
+    UIView *diglogView = [self getOfferRow:scrollView:user:offer:yOffset:message:dateFormatter];
     
     //INCREMNET in yOffset 
     yOffset += diglogView.frame.size.height;

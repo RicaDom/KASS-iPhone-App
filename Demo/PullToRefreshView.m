@@ -199,6 +199,11 @@
     }
 }
 
+- (void)removeScrollViewObserver
+{
+  [scrollView removeObserver:self forKeyPath:@"contentOffset"];
+}
+
 #pragma mark -
 #pragma mark Dealloc
 

@@ -8,25 +8,27 @@
 
 #import "ActivityOfferMessageViewController.h"
 #import "UIViewController+ActivityIndicate.h"
+#import "UIViewController+KeyboardSlider.h"
+#import "UIViewController+ScrollViewRefreshPuller.h"
+#import "UIViewController+PriceModifier.h"
 #import "ViewHelper.h"
 
 @implementation ActivityOfferMessageViewController
 
-@synthesize scrollView = _scrollView;
-@synthesize pull = _pull;
-@synthesize currentOffer = _currentOffer;
-@synthesize listingTitle = _listingTitle;
-@synthesize offerPrice = _offerPrice;
+@synthesize scrollView    = _scrollView;
+@synthesize currentOffer  = _currentOffer;
+@synthesize listingTitle  = _listingTitle;
+@synthesize offerPrice    = _offerPrice;
 @synthesize listingExpiredDate = _listingExpiredDate;
 @synthesize changingPrice = _changingPrice;
 @synthesize sendMessageTextField = _sendMessageTextField;
-@synthesize mainView = _mainView;
-@synthesize buttomView = _buttomView;
-@synthesize userInfoButton = _userInfoButton;
-@synthesize priceButton = _priceButton;
+@synthesize mainView      = _mainView;
+@synthesize buttomView    = _buttomView;
+@synthesize userInfoButton  = _userInfoButton;
+@synthesize priceButton     = _priceButton;
 @synthesize descriptionTextField = _descriptionTextField;
 @synthesize confirmDealButton = _confirmDealButton;
-@synthesize confirmImageView = _confirmImageView;
+@synthesize confirmImageView  = _confirmImageView;
 @synthesize changedPriceMessage = _changedPriceMessage;
 @synthesize leftButton = _leftButton;
 @synthesize rightButton = _rightButton;
@@ -53,45 +55,29 @@
   [ViewHelper buildOfferScrollView:self.scrollView:[self kassVS].user:_currentOffer];
 }
 
--(void)stopLoading
-{
-	[self.pull finishedLoading];
-}
-
-// called when the user pulls-to-refresh
-- (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view
-{
-  [self performSelector:@selector(loadDataSource) withObject:nil afterDelay:2.0];	
-}
-
-#pragma mark - View lifecycle
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
-}
-*/
-- (void) accountDidGetOffer:(NSDictionary *)dict{
-  DLog(@"ActivityOfferMessageViewController::accountDidGetOffer:dict=%@", dict);
+- (void) populateData:(NSDictionary *)dict{
   NSDictionary *offer = [dict objectForKey:@"offer"];
   _currentOffer = [[Offer alloc]initWithDictionary:offer];
   
-  self.listingTitle.text = self.currentOffer.title;
-  self.descriptionTextField.text = self.currentOffer.description;
-  self.listingExpiredDate.text = [self.currentOffer getListItemTimeLeftTextlong];
+  self.listingTitle.text          = self.currentOffer.title;
+  self.descriptionTextField.text  = self.currentOffer.description;
+  self.listingExpiredDate.text    = [self.currentOffer getListItemTimeLeftTextlong];
+  self.offerPrice.text            = [self.currentOffer getPriceText]; 
   
-  self.offerPrice.text = [self.currentOffer getPriceText]; 
-  //self.changingPrice.text = [self.currentOffer getPriceText]; 
-  
+  [self modifyPriceModifierPrice:self.currentOffer.price];
   [self loadMessageView];
   [self hideIndicator];
   [self stopLoading];
 }
 
+- (void) accountDidGetOffer:(NSDictionary *)dict{
+  DLog(@"ActivityOfferMessageViewController::accountDidGetOffer:dict=%@", dict);
+  [self populateData:dict];
+}
+
 - (void)loadDataSource
 {
-  DLog(@"ActivityOfferMessageViewController::loadingOffer");
+  DLog(@"ActivityOfferMessageViewController::loadDataSource");
   [self showLoadingIndicator];
   [self.currentUser getOffer:self.currentOffer.dbId];
 }
@@ -119,38 +105,50 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.pull = [[PullToRefreshView alloc] initWithScrollView:self.scrollView];
-    [self.pull setDelegate:self];
-    [self.scrollView addSubview:self.pull];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(receivePriceChangedNotification:) 
-                                                 name:CHANGED_PRICE_NOTIFICATION
-                                               object:nil];
+    [self registerPriceModifier];
     [self customViewLoad];
 }
 
-- (void) receivePriceChangedNotification:(NSNotification *) notification
+/**
+ UIViewController+PriceModifier priceModificationDidFinish
+ */
+- (void)priceModificationDidFinish:(NSInteger)price
 {
-    // [notification name] should always be CHANGED_PRICE_NOTIFICATION
-    // unless you use this method for observation of other notifications
-    // as well.
-    
-    if ([[notification name] isEqualToString:CHANGED_PRICE_NOTIFICATION]) {        
-        self.changingPrice.text = (NSString *)[notification object];
-        DLog (@"ActivityOfferMessageViewController::receivePriceChangedNotification:%@", (NSString *)[notification object]);
-        [CommonView setMessageWithPriceView:self.scrollView payImage:self.confirmImageView bottomView:self.buttomView priceButton:self.priceButton messageField:self.sendMessageTextField price:self.changingPrice.text changedPriceMessage:self.changedPriceMessage];
-    }
+  DLog (@"ActivityOfferMessageViewController::priceModificationDidFinish:%d", price);
+  self.changingPrice.text = [NSString stringWithFormat:@"%d", price];
+  
+  [CommonView setMessageWithPriceView:self.scrollView payImage:self.confirmImageView bottomView:self.buttomView priceButton:self.priceButton messageField:self.sendMessageTextField price:self.changingPrice.text changedPriceMessage:self.changedPriceMessage];
 }
 
+/**
+ Keyboard Slider Delegate
+ */
+- (void) keyboardMainViewMovedDown{
+  [ViewHelper buildBackButton:self.leftButton];
+  self.leftButton.tag = LEFT_BAR_BUTTON_BACK;
+  // self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_BACK;
+  self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_MAP;  
+}
+- (void) keyboardMainViewMovedUp{
+  [ViewHelper buildCancelButton:self.leftButton];
+  self.leftButton.tag = LEFT_BAR_BUTTON_CANCEL;
+  //self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_CANCEL;
+  self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_SEND; 
+}
+
+/**
+ Scroll View Refresh Puller Delegate
+ */
+- (void)refreshing{
+  [self loadDataSource];
+}
 
 - (void)viewDidUnload
 {
+    [self unregisterPriceModifier];
     [self setListingTitle:nil];
     [self setOfferPrice:nil];
     [self setListingExpiredDate:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:CHANGED_PRICE_NOTIFICATION object:nil];
     [self setChangingPrice:nil];
     [self setSendMessageTextField:nil];
     [self setMainView:nil];
@@ -161,6 +159,7 @@
     [self setConfirmImageView:nil];
     [self setChangedPriceMessage:nil];
     [self setLeftButton:nil];
+    [self setScrollView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -172,95 +171,38 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-/* Keyboard avoiding start */
+//-(void)textFieldDidBeginEditing:(UITextField *)sender
+//{
+//    if ([sender isEqual:_sendMessageTextField])
+//    {
+//        //move the main view, so that the keyboard does not hide it.
+//        if  (self.mainView.frame.origin.y >= 0)
+//        {
+//            [self showKeyboardAndMoveViewUp];
+//        }
+//    }
+//}
 
-//method to move the view up/down whenever the keyboard is shown/dismissed
--(void)setViewMovedUp:(BOOL)movedUp
+/**
+ Overwrite UIViewController+KeyboardSlider shouldKeyboardViewMoveUp
+ */
+- (BOOL)shouldKeyboardViewMoveUp
 {
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.5]; // if you want to slide up the view
-    
-    CGRect rect = self.mainView.frame;
-
-    if (movedUp){
-        // 1. move the view's origin up so that the text field that will be hidden come above the keyboard 
-        // 2. increase the size of the view so that the area behind the keyboard is covered up.
-        rect.origin.y -= (_keyboardRect.size.height - self.confirmImageView.frame.size.height);
-        rect.size.height += _keyboardRect.size.height;
-        
-        [ViewHelper buildCancelButton:self.leftButton];
-        self.leftButton.tag = LEFT_BAR_BUTTON_CANCEL;
-        [ViewHelper buildSendButton:self.rightButton];
-        self.rightButton.tag = RIGHT_BAR_BUTTON_SEND;
-    }else{
-        // revert back to the normal state.
-        rect.origin.y += (_keyboardRect.size.height - self.confirmImageView.frame.size.height);
-        rect.size.height -= _keyboardRect.size.height;
-        
-        [ViewHelper buildBackButton:self.leftButton];
-        self.leftButton.tag = LEFT_BAR_BUTTON_BACK;
-        [ViewHelper buildMapButton:self.rightButton];
-        self.rightButton.tag = RIGHT_BAR_BUTTON_MAP;
-    }
-    self.mainView.frame = rect;
- 
-    // use the above if else will not work
-    if (movedUp) {
-        CGRect scrollViewRect = self.scrollView.frame;
-        DLog(@"Scoll View move up Before: (%f, %f, %f, %f) ", scrollViewRect.origin.x, scrollViewRect.origin.y, scrollViewRect.size.width, scrollViewRect.size.height );
-        scrollViewRect.origin.y = (_keyboardRect.size.height - self.confirmImageView.frame.size.height);
-        scrollViewRect.size.height = rect.size.height - _keyboardRect.size.height*2 - self.buttomView.frame.size.height;
-        DLog(@"Scoll View move up After: (%f, %f, %f, %f) ", scrollViewRect.origin.x, scrollViewRect.origin.y, scrollViewRect.size.width, scrollViewRect.size.height );
-        self.scrollView.frame = scrollViewRect;
-    } else {
-        CGRect scrollViewRect = self.scrollView.frame;
-        DLog(@"Scoll View move down Before: (%f, %f, %f, %f) ", scrollViewRect.origin.x, scrollViewRect.origin.y, scrollViewRect.size.width, scrollViewRect.size.height );
-        scrollViewRect.origin.y = 0;
-        scrollViewRect.size.height = rect.size.height - self.buttomView.frame.size.height;
-        DLog(@"Scoll View move down After: (%f, %f, %f, %f) ", scrollViewRect.origin.x, scrollViewRect.origin.y, scrollViewRect.size.width, scrollViewRect.size.height );
-        self.scrollView.frame = scrollViewRect;        
-    }
-
-    [UIView commitAnimations];
-//    DLog(@"After: (%f, %f, %f, %f) ", scrollViewRect.origin.x, scrollViewRect.origin.y, scrollViewRect.size.width, scrollViewRect.size.height );
+  return [_sendMessageTextField isFirstResponder] && self.mainView.frame.origin.y >= 0;
 }
-
--(void)textFieldDidBeginEditing:(UITextField *)sender
-{
-    if ([sender isEqual:_sendMessageTextField])
-    {
-        //move the main view, so that the keyboard does not hide it.
-        if  (self.mainView.frame.origin.y >= 0)
-        {
-            [self setViewMovedUp:YES];
-        }
-    }
-}
-
-- (void)keyboardWillShow:(NSNotification *)notification
-{
-    //keyboard will be shown now. depending for which textfield is active, move up or move down the view appropriately
-     _keyboardRect = [[[notification userInfo] objectForKey:_UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    
-    if ([_sendMessageTextField isFirstResponder] && self.mainView.frame.origin.y >= 0)
-    {
-        [self setViewMovedUp:YES];
-    }
-}
-
-/* Keyboard avoiding end */
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    // register for keyboard notifications
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) 
-                                                 name:UIKeyboardWillShowNotification object:self.view.window]; 
+  // register for keyboard view slider
+  [self registerScrollViewRefreshPuller:self.scrollView];
+  [self registerKeyboardSlider:_mainView :_scrollView :_buttomView];
+  [self registerKeyboardSliderTextView:_descriptionTextField];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    // unregister for keyboard notifications while not visible.
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil]; 
+  [self unregisterScrollViewRefreshPuller];
+  [self unregisterKeyboardSlider];
 }
 
 - (IBAction)sellerInfoAction:(id)sender {
@@ -305,35 +247,39 @@
     }
 }
 
+- (void)accountDidModifyOffer:(NSDictionary *)dict
+{
+  DLog(@"ActivityOfferMessageViewController::accountDidModifyOffer");  
+  [self populateData:dict];
+}
+
 - (IBAction)leftButtonAction:(id)sender {
     if (self.leftButton.tag == LEFT_BAR_BUTTON_BACK) {
         [self.navigationController popViewControllerAnimated:YES];
     } else {
         [self.sendMessageTextField resignFirstResponder];
-        [self setViewMovedUp:NO];
+        [self hideKeyboardAndMoveViewDown];
     }
 }
 
 - (IBAction)rightButtonAction:(id)sender {
     if (self.rightButton.tag == RIGHT_BAR_BUTTON_MAP) {
-        // TODO get the lat/alt and segue to map
-        
-        [self performSegueWithIdentifier:@"ActOfferToMapView" sender:self];
+      
+      VariableStore.sharedInstance.itemToShowOnMap = [_currentOffer getListItemToMap];
+      [self performSegueWithIdentifier:@"ActOfferToMapView" sender:self];
+      
     } else if (self.rightButton.tag == RIGHT_BAR_BUTTON_SEND){
-        // TODO submitting message
+       
+      DLog(@"ActivityOfferMessageViewController::(IBAction)sendMessageOrMapAction:modifyOffer:");
+      NSMutableDictionary* params = [Offer getParamsToModify:[self kassVS].priceToModify:self.sendMessageTextField.text];
+      
+      // modify listing
+      [self showLoadingIndicator];
+      [self.currentUser modifyOffer:params:_currentOffer.dbId];
+      [self.sendMessageTextField resignFirstResponder];
+      [self hideKeyboardAndMoveViewDown];
         
     }    
-}
-
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"changedPriceSegue"]) {
-        UINavigationController *navigationController = segue.destinationViewController;
-        OfferChangingPriceViewController *ovc = (OfferChangingPriceViewController *)navigationController.topViewController;
-        ovc.currentPrice = ([self.changingPrice.text length] <= 0)? self.offerPrice.text : self.changingPrice.text;
-        
-    } else if ([segue.identifier isEqualToString:@"ActOfferToMapView"]) {
-        
-    }
 }
 
 @end

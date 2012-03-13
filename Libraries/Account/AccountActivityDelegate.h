@@ -22,6 +22,7 @@
 - (void)accountDidAcceptOffer:(NSDictionary *)dict;
 - (void)accountDidGetOfferMessages:(NSDictionary *)dict;
 - (void)accountDidCreateOfferMessage:(NSDictionary *)dict;
+- (void)accountDidDeleteListing;
 
 - (void)accountRequestFailed:(NSDictionary *)errors;
 - (void)accountRequestStarted;

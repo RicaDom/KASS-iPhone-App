@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PullToRefreshView.h"
 #import "ListItem.h"
 #import "Offer+OfferHelper.h"
 #import "Message.h"
@@ -18,16 +17,14 @@
 #import "DataSourceViewController.h"
 #import "CommonView.h"
 
-@interface ActivityOfferMessageViewController : DataSourceViewController <UIScrollViewDelegate, PullToRefreshViewDelegate, AccountActivityDelegate>
-{
-    CGRect _keyboardRect; // for keyboard avoiding
+@interface ActivityOfferMessageViewController : DataSourceViewController <UIScrollViewDelegate, AccountActivityDelegate>{
     int touchBegan;       // for deal confirm button swiping
     int originX;
     BOOL alreadyConfirmedDeal;
 }
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (strong, nonatomic) PullToRefreshView *pull;
+
 @property (strong, nonatomic) Offer *currentOffer;
 @property (strong, nonatomic) IBOutlet UILabel *listingTitle;
 @property (strong, nonatomic) IBOutlet UILabel *offerPrice;

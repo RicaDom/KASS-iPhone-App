@@ -53,7 +53,7 @@ typedef enum {
 
 - (void)refreshLastUpdatedDate;
 - (void)finishedLoading;
-
+- (void)removeScrollViewObserver;
 - (id)initWithScrollView:(UIScrollView *)scrollView;
 
 @end

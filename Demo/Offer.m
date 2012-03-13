@@ -24,6 +24,7 @@
 @synthesize buyerId = _buyerId;
 @synthesize listItemEndedAt = _listItemEndedAt;
 @synthesize listItemLocation = _listItemLocation;
+@synthesize message = _message;
 
 - (id) initWithDictionary:(NSDictionary *) theDictionary
 {
@@ -32,6 +33,7 @@
     _state        = [theDictionary objectForKey:@"state"];
     _dbId         = [theDictionary objectForKey:@"id"];
     _userId       = [theDictionary objectForKey:@"user_id"];
+    _message      = [theDictionary objectForKey:@"message"];
     _price        = [NSDecimalNumber decimalNumberWithDecimal:[[theDictionary objectForKey:@"price"] decimalValue]];
     _lastMessage     = [[Message alloc] init];
     _lastMessage.body = [theDictionary objectForKey:@"message"];
