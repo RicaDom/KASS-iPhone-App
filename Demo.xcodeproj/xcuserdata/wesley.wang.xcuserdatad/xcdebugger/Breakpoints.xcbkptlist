@@ -553,25 +553,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/ActivityOfferMessageViewController.m"
-         timestampString = "353233550.671346"
+         timestampString = "353300633.078747"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "222"
-         endingLineNumber = "222"
-         landmarkName = "-setViewMovedUp:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Demo/ActivityOfferMessageViewController.m"
-         timestampString = "353233550.671346"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "250"
-         endingLineNumber = "250"
+         startingLineNumber = "224"
+         endingLineNumber = "224"
          landmarkName = "@implementation ActivityOfferMessageViewController"
          landmarkType = "3">
       </FileBreakpoint>
@@ -581,12 +567,26 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/ActivityOfferMessageViewController.m"
-         timestampString = "353233550.671346"
+         timestampString = "353300633.078747"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "247"
-         endingLineNumber = "247"
-         landmarkName = "-keyboardWillShow:"
+         startingLineNumber = "252"
+         endingLineNumber = "252"
+         landmarkName = "-accountDidModifyOffer:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/ActivityOfferMessageViewController.m"
+         timestampString = "353300633.078747"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "249"
+         endingLineNumber = "249"
+         landmarkName = "-buttonDraggingAction:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -707,26 +707,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/ActivityOfferMessageViewController.m"
-         timestampString = "353233550.671346"
+         timestampString = "353300633.078747"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "251"
-         endingLineNumber = "251"
-         landmarkName = "@implementation ActivityOfferMessageViewController"
-         landmarkType = "3">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Demo/ActivityOfferMessageViewController.m"
-         timestampString = "353233550.671346"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "260"
-         endingLineNumber = "260"
-         landmarkName = "-viewWillDisappear:"
+         startingLineNumber = "253"
+         endingLineNumber = "253"
+         landmarkName = "-accountDidModifyOffer:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -735,12 +721,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/ActivityOfferMessageViewController.m"
-         timestampString = "353233550.671346"
+         timestampString = "353300633.078747"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "240"
-         endingLineNumber = "240"
-         landmarkName = "-keyboardWillShow:"
+         startingLineNumber = "262"
+         endingLineNumber = "262"
+         landmarkName = "-leftButtonAction:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -749,13 +735,27 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/ActivityOfferMessageViewController.m"
-         timestampString = "353233550.671346"
+         timestampString = "353300633.078747"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "239"
-         endingLineNumber = "239"
-         landmarkName = "@implementation ActivityOfferMessageViewController"
-         landmarkType = "3">
+         startingLineNumber = "242"
+         endingLineNumber = "242"
+         landmarkName = "-buttonDraggingAction:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/ActivityOfferMessageViewController.m"
+         timestampString = "353300633.078747"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "241"
+         endingLineNumber = "241"
+         landmarkName = "-buttonDraggingAction:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1433,27 +1433,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/ActivityOfferMessageViewController.m"
-         timestampString = "353237906.326471"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "290"
-         endingLineNumber = "290"
-         landmarkName = "-buttonDraggingAction:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Demo/ActivityOfferMessageViewController.m"
-         timestampString = "353237906.326471"
+         timestampString = "353300633.078747"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "292"
-         endingLineNumber = "292"
-         landmarkName = "-buttonDraggingAction:"
-         landmarkType = "5">
+         endingLineNumber = "292">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1461,27 +1445,35 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/ActivityOfferMessageViewController.m"
-         timestampString = "353237906.326471"
+         timestampString = "353300633.078747"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "294"
+         endingLineNumber = "294">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/ActivityOfferMessageViewController.m"
+         timestampString = "353300633.078747"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "293"
+         endingLineNumber = "293">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/ActivityOfferMessageViewController.m"
+         timestampString = "353300633.078747"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "291"
-         endingLineNumber = "291"
-         landmarkName = "-buttonDraggingAction:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Demo/ActivityOfferMessageViewController.m"
-         timestampString = "353237906.326471"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "289"
-         endingLineNumber = "289"
-         landmarkName = "-buttonDraggingAction:"
-         landmarkType = "5">
+         endingLineNumber = "291">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1657,26 +1649,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/ActivityOfferMessageViewController.m"
-         timestampString = "353233550.671346"
+         timestampString = "353300633.078747"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "227"
-         endingLineNumber = "227"
-         landmarkName = "@implementation ActivityOfferMessageViewController"
-         landmarkType = "3">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Demo/ActivityOfferMessageViewController.m"
-         timestampString = "353233550.671346"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "220"
-         endingLineNumber = "220"
-         landmarkName = "-setViewMovedUp:"
+         startingLineNumber = "229"
+         endingLineNumber = "229"
+         landmarkName = "-buttonDraggingAction:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1685,12 +1663,26 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/ActivityOfferMessageViewController.m"
-         timestampString = "353237906.326471"
+         timestampString = "353300633.078747"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "283"
-         endingLineNumber = "283"
-         landmarkName = "-buttonDraggingAction:"
+         startingLineNumber = "222"
+         endingLineNumber = "222"
+         landmarkName = "-accountDidAcceptOffer:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/ActivityOfferMessageViewController.m"
+         timestampString = "353300633.078747"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "285"
+         endingLineNumber = "285"
+         landmarkName = "-rightButtonAction:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
