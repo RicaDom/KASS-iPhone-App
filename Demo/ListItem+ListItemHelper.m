@@ -38,7 +38,12 @@
 - (NSString *) getDistanceFromLocationText:(CLLocation *)loc
 {
   CLLocationDistance distance = [[[self location] toCLLocation] distanceFromLocation:loc];
-  return [[NSString alloc] initWithFormat:@"%d米", (int)distance];
+  int d = (int)distance;
+  if ( d >= 1000 ){
+    return [[NSString alloc] initWithFormat:@"%.1f公里", (float)distance / 1000.0];
+  }else{
+    return [[NSString alloc] initWithFormat:@"%d米", d];
+  }
 }
 
 - (NSString *) toLabelStyle
