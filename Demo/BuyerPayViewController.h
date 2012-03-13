@@ -14,6 +14,7 @@
 #import "CommonView.h"
 #import "DataSourceViewController.h"
 #import "ViewHelper.h"
+#import "CustomImageViewPopup.h"
 
 @interface BuyerPayViewController : DataSourceViewController <UIScrollViewDelegate, PullToRefreshViewDelegate, AccountActivityDelegate>
 

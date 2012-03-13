@@ -229,7 +229,8 @@ NSMutableArray *currentItems;
         
       if (offer) {
           DLog (@"ActivityViewController::receivedFromOfferViewNotification! %@", offer);
-          [self performSegueWithModelJson:offer.toJson:@"ActBuyingListToPayView":self];
+          NSDictionary *offerWithSuccess = [NSDictionary dictionaryWithObjectsAndKeys:[NSDictionary dictionaryWithObjectsAndKeys:offer.dbId, @"id", OFFER_STATE_ACCEPTED, OFFER_STATE_ACCEPTED, nil] , @"offer", nil];
+          [self performSegueWithModelJson:offerWithSuccess:@"ActBuyingListToPayView":self];
       }
     }
 }
