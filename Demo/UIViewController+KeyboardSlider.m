@@ -27,6 +27,16 @@
   [[KeyboardSlider currentSlider] moveViewDown];
 }
 
+- (BOOL)registerKeyboardSliderWithConfirmView:(IBOutlet UIView *)mainView:(IBOutlet UIScrollView *)scrollView:(IBOutlet UIView *)bottomView:(UIView *)confirmView
+{
+  [[KeyboardSlider currentSlider] registerKeyboardSliderWithConfirmView:self:mainView:scrollView:bottomView:confirmView];
+  // register for keyboard notifications
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) 
+                                               name:UIKeyboardWillShowNotification object:self.view.window];
+  return TRUE;
+}
+
+
 - (BOOL)registerKeyboardSlider:(IBOutlet UIView *)mainView:(IBOutlet UIScrollView *)scrollView:(IBOutlet UIView *)bottomView
 {
   [[KeyboardSlider currentSlider] registerKeyboardSlider:self :mainView :scrollView :bottomView];
