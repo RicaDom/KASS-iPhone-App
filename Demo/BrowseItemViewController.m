@@ -219,20 +219,18 @@
  KeyboardSliderDelegate
  */
 - (void) keyboardMainViewMovedDown{
-    [ViewHelper buildBackButton:self.leftButton];
-    self.leftButton.tag = LEFT_BAR_BUTTON_BACK;
-    
-    [ViewHelper buildMapButton:self.rightButton];
-    self.rightButton.tag = RIGHT_BAR_BUTTON_MAP;
+  [ViewHelper buildBackButton:self.leftButton];
+  self.leftButton.tag = LEFT_BAR_BUTTON_BACK;
+  [ViewHelper buildMapButton:self.rightButton];
+  self.rightButton.tag = RIGHT_BAR_BUTTON_MAP;
 }
+
 - (void) keyboardMainViewMovedUp{
-    [ViewHelper buildCancelButton:self.leftButton];
-    self.leftButton.tag = LEFT_BAR_BUTTON_CANCEL;
-
-    [ViewHelper buildSendButton:self.rightButton];
-    self.rightButton.tag = RIGHT_BAR_BUTTON_SEND;
+  [ViewHelper buildCancelButton:self.leftButton];
+  self.leftButton.tag = LEFT_BAR_BUTTON_CANCEL;
+  [ViewHelper buildSendButton:self.rightButton];
+  self.rightButton.tag = RIGHT_BAR_BUTTON_SEND;
 }
-
 
 -(void)textFieldDidBeginEditing:(UITextField *)sender
 {

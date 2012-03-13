@@ -126,14 +126,15 @@
 - (void) keyboardMainViewMovedDown{
   [ViewHelper buildBackButton:self.leftButton];
   self.leftButton.tag = LEFT_BAR_BUTTON_BACK;
-  // self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_BACK;
-  self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_MAP;  
+  [ViewHelper buildMapButton:self.rightButton];
+  self.rightButton.tag = RIGHT_BAR_BUTTON_MAP;
 }
+
 - (void) keyboardMainViewMovedUp{
   [ViewHelper buildCancelButton:self.leftButton];
   self.leftButton.tag = LEFT_BAR_BUTTON_CANCEL;
-  //self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_CANCEL;
-  self.navigationItem.rightBarButtonItem.title = UI_BUTTON_LABEL_SEND; 
+  [ViewHelper buildSendButton:self.rightButton];
+  self.rightButton.tag = RIGHT_BAR_BUTTON_SEND;
 }
 
 /**
@@ -195,7 +196,7 @@
 {
   // register for keyboard view slider
   [self registerScrollViewRefreshPuller:self.scrollView];
-  [self registerKeyboardSlider:_mainView :_scrollView :_buttomView];
+  [self registerKeyboardSliderWithConfirmView:_mainView :_scrollView :_buttomView:_confirmImageView];
   [self registerKeyboardSliderTextView:_descriptionTextField];
 }
 
