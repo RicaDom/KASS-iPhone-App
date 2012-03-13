@@ -31,6 +31,8 @@
 @synthesize leftButton = _leftButton;
 @synthesize rightButton = _rightButton;
 
+NSString *popUpSuccessfulViewFlag;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -111,6 +113,23 @@
     [ViewHelper buildBackButton:self.leftButton];
     [ViewHelper buildMapButton:self.rightButton];
     [ViewHelper buildUserInfoButton:self.userInfoButton];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    popUpSuccessfulViewFlag = [[self kassGetModelDict:@"offer"] objectForKey:OFFER_STATE_ACCEPTED];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    if ([popUpSuccessfulViewFlag isEqualToString:OFFER_STATE_ACCEPTED]) {
+        CustomImageViewPopup *pop = [[CustomImageViewPopup alloc] initWithType:POPUP_IMAGE_NEW_POST_SUCCESS];
+        [self.view addSubview: pop];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+            [pop removeFromSuperview];
+        });
+        popUpSuccessfulViewFlag = nil;
+    }
 }
 
 - (void)viewDidUnload
