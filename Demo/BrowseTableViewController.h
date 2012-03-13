@@ -18,7 +18,7 @@
 #import "BuyerPayViewController.h"
 #import "UIResponder+VariableStore.h"
 
-@interface BrowseTableViewController : UITableViewController <UISearchDisplayDelegate, UISearchBarDelegate,LocateMeDelegate> {
+@interface BrowseTableViewController : UIViewController <UISearchDisplayDelegate, UISearchBarDelegate,LocateMeDelegate> {
 	
 	//  Reloading var should really be your tableviews datasource
 	//  Putting it here for demo purposes 
@@ -31,6 +31,8 @@
 @property (strong, nonatomic) NSMutableArray *filteredListContent;
 @property (strong, nonatomic) IBOutlet UIButton *mapButton;
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
+//@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UIImageView *tableFooter;
 
 - (IBAction)browseSegmentAction:(id)sender;
 - (void)setupArray;
