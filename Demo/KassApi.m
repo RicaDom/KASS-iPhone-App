@@ -205,7 +205,7 @@
   _url = [NSString stringWithFormat:@"http://%s/v1/offers", HOST];
   
   //validity check
-  NSString *message    = [dict valueForKey:@"with_message"];
+  NSString *message    = [dict valueForKey:@"message"];
   NSString *listingId  = [dict valueForKey:@"listing_id"];
   NSDecimalNumber *price = [NSDecimalNumber decimalNumberWithDecimal:[[dict objectForKey:@"price"] decimalValue]];
   

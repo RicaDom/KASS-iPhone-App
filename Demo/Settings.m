@@ -14,6 +14,8 @@
 @synthesize durationToServerDic = _durationToServerDic;
 @synthesize postTemplatesDict = _postTemplatesDict;
 @synthesize messageTypesDict = _messageTypesDict;
+@synthesize weiboShareDict = _weiboShareDict;
+@synthesize siteDict = _siteDict;
 
 - (id) initWithDictionary:(NSDictionary *)dict
 {
@@ -37,6 +39,8 @@
     
     self.postTemplatesDict = [settings objectForKey:@"post_templates"];
     self.messageTypesDict  = [settings objectForKey:@"message_types"];
+    self.weiboShareDict    = [settings objectForKey:@"weibo"];
+    self.siteDict          = [settings objectForKey:@"site"];
   }
   return self;
 }
