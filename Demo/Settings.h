@@ -14,6 +14,8 @@
 @property (strong, nonatomic) NSMutableDictionary *durationToServerDic;
 @property (strong, nonatomic) NSMutableDictionary *postTemplatesDict;
 @property (strong, nonatomic) NSMutableDictionary *messageTypesDict;
+@property (strong, nonatomic) NSMutableDictionary *weiboShareDict;
+@property (strong, nonatomic) NSMutableDictionary *siteDict;
 
 - (id) initWithDictionary:(NSDictionary *)dict;
 - (NSString *) getTextForMessageType:(NSString *)type;

@@ -69,6 +69,8 @@
   
   [self.currentItem buildMap:self.mapView];
   
+  [self modifyPriceModifierPrice:self.currentItem.price];
+  
   [self hideIndicator];
   [self stopLoading];
 }

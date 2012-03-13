@@ -13,13 +13,14 @@
 - (void)reloadTableViewDataSource{	
 	//  should be calling your tableviews data source model to reload
 	//  put here just for demo
-  TableViewRefreshPuller.currentPuller.reloading = YES;	
+  
+  [TableViewRefreshPuller.currentPuller getPuller:NSStringFromClass(self.class)].reloading = YES;	
 }
 
 - (void)doneLoadingTableViewData{	
 	//  model should call this when its done loading
-	TableViewRefreshPuller.currentPuller.reloading  = NO;
-  [TableViewRefreshPuller.currentPuller finishedLoading];
+	[TableViewRefreshPuller.currentPuller getPuller:NSStringFromClass(self.class)].reloading  = NO;
+  [TableViewRefreshPuller.currentPuller finishedLoading:NSStringFromClass(self.class)];
 }
 
 /** 
@@ -27,11 +28,13 @@
 */
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{		
-	[TableViewRefreshPuller.currentPuller.view egoRefreshScrollViewDidScroll:scrollView];
+  EGORefreshTableHeaderView *view = [TableViewRefreshPuller.currentPuller getPuller:NSStringFromClass(self.class)].view;
+	[view egoRefreshScrollViewDidScroll:scrollView];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{	
-	[TableViewRefreshPuller.currentPuller.view egoRefreshScrollViewDidEndDragging:scrollView];	
+  EGORefreshTableHeaderView *view = [TableViewRefreshPuller.currentPuller getPuller:NSStringFromClass(self.class)].view;
+	[view egoRefreshScrollViewDidEndDragging:scrollView];	
 }
 
 
@@ -45,7 +48,7 @@
 }
 
 - (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{	
-	return TableViewRefreshPuller.currentPuller.reloading ; // should return if data source model is reloading	
+	return [TableViewRefreshPuller.currentPuller getPuller:NSStringFromClass(self.class)].reloading ; // should return if data source model is reloading	
 }
 
 - (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{	
@@ -59,14 +62,14 @@
 
 - (void)registerTableViewRefreshPuller:(UITableView *)tableView:(UIView *)view
 {
-  [TableViewRefreshPuller.currentPuller registerTableView:tableView:view:self];
-  
-	[TableViewRefreshPuller.currentPuller.view refreshLastUpdatedDate];
+  [TableViewRefreshPuller.currentPuller registerTableView:tableView:view:self:NSStringFromClass(self.class)];
+  EGORefreshTableHeaderView *eview = [TableViewRefreshPuller.currentPuller getPuller:NSStringFromClass(self.class)].view;
+	[eview refreshLastUpdatedDate];
 }
 
 - (void)unregisterTableViewRefreshPuller
 {
-  [TableViewRefreshPuller.currentPuller unregister];
+  [TableViewRefreshPuller.currentPuller unregister:NSStringFromClass(self.class)];
 }
 
 @end
