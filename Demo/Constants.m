@@ -146,4 +146,9 @@ NSString * const UI_IMAGE_POST_SEND_BUTTON_PRESS = @"btn_big_93.png";
 NSString * const UI_IMAGE_MESSAGE_DEFAULT_USER = @"mapPin.png";
 NSString * const UI_IMAGE_MESSAGE_LINE = @"line.png";
 
+NSString * const UI_IMAGE_SETTING_LOGIN = @"btn_03.png";
+NSString * const UI_IMAGE_SETTING_LOGIN_PRESS = @"btn_09.png";
+NSString * const UI_IMAGE_SETTING_LOGOUT = @"btn_05.png";
+NSString * const UI_IMAGE_SETTING_LOGOUT_PRESS = @"btn_10.png";
+
 @end

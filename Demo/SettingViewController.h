@@ -14,8 +14,9 @@
 
 @interface SettingViewController : UIViewController <AccountActivityDelegate>
 
+@property (strong, nonatomic) IBOutlet UIButton *rightButton;
 @property (weak, nonatomic) IBOutlet UILabel *welcomeMessageLabel;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *authButton;
-- (IBAction)authButtonAction:(id)sender;
+
+- (IBAction)rightButtonAction:(id)sender;
 
 @end

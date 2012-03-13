@@ -14,6 +14,7 @@
 @synthesize currentPrice = _currentPrice;
 @synthesize leftButton = _leftButton;
 @synthesize offerPriceTextField = _offerPriceTextField;
+@synthesize confirmButton = _confirmButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -60,6 +61,7 @@
     // navigation bar background color
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
     [ViewHelper buildCancelButton:self.leftButton];
+    [ViewHelper buildConfirmButton:self.confirmButton];
 }
 
 
@@ -67,6 +69,7 @@
 {
     [self setOfferPriceTextField:nil];
     [self setLeftButton:nil];
+    [self setConfirmButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -78,17 +81,17 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (IBAction)doneChangingPriceAction:(id)sender {
+- (IBAction)leftButtonAction:(id)sender {
+    [self.presentingViewController dismissModalViewControllerAnimated:YES];
+}
+
+- (IBAction)confirmButtonAction:(id)sender {
     if (self.offerPriceTextField.text.length > 0) {
         [[NSNotificationCenter defaultCenter] 
          postNotificationName:CHANGED_PRICE_NOTIFICATION 
          object:self.offerPriceTextField.text];
     }
     
-    [self.presentingViewController dismissModalViewControllerAnimated:YES];
-}
-
-- (IBAction)leftButtonAction:(id)sender {
     [self.presentingViewController dismissModalViewControllerAnimated:YES];
 }
 @end

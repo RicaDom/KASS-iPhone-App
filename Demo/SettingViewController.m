@@ -11,8 +11,9 @@
 
 
 @implementation SettingViewController
+
+@synthesize rightButton;
 @synthesize welcomeMessageLabel;
-@synthesize authButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,15 +39,25 @@
     
     // navigation bar background color
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
+    
+    if ([VariableStore sharedInstance].isLoggedIn) {
+        [ViewHelper buildLogoutButton:self.rightButton];
+        self.rightButton.tag = RIGHT_BAR_BUTTON_LOGOUT;        
+    } else{
+        [ViewHelper buildLoginButton:self.rightButton];
+        self.rightButton.tag = RIGHT_BAR_BUTTON_LOGIN;
+    }
 }
 
 - (void)loadDataSource
 {
     if ([[VariableStore sharedInstance] isLoggedIn] ) {     
-        self.authButton.title = UI_BUTTON_LABEL_SIGOUT;
+        [ViewHelper buildLogoutButton:self.rightButton];
+        self.rightButton.tag = RIGHT_BAR_BUTTON_LOGOUT;   
         self.welcomeMessageLabel.text = [@"你好! " stringByAppendingString:[VariableStore sharedInstance].user.name]; 
     } else {
-        self.authButton.title = UI_BUTTON_LABEL_SIGIN;
+        [ViewHelper buildLoginButton:self.rightButton];
+        self.rightButton.tag = RIGHT_BAR_BUTTON_LOGIN;
         self.welcomeMessageLabel.text = @"欢迎来到全世界最帅的KASS！！"; 
     }
     [self hideIndicator];
@@ -73,7 +84,7 @@
 - (void)viewDidUnload
 {
     [self setWelcomeMessageLabel:nil];
-    [self setAuthButton:nil];
+    [self setRightButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -85,11 +96,13 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (IBAction)authButtonAction:(id)sender {
-  if ([self.authButton.title isEqualToString:UI_BUTTON_LABEL_SIGIN]) {
-    [MTPopupWindow showWindowWithUIView:self.tabBarController.view];
-  } else {
-    [[VariableStore sharedInstance] signOut];
-  }
+- (IBAction)rightButtonAction:(id)sender {
+    if (self.rightButton.tag == RIGHT_BAR_BUTTON_LOGIN) {
+        [MTPopupWindow showWindowWithUIView:self.tabBarController.view];
+    } else {
+        [[VariableStore sharedInstance] signOut];
+    }
+    
 }
+
 @end
