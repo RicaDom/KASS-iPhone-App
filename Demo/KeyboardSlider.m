@@ -15,6 +15,7 @@
 @synthesize mainView        = _mainView;
 @synthesize bottomView      = _bottomView;
 @synthesize delegate        = _delegate;
+@synthesize confirmView     = _confirmView;
 
 static KeyboardSlider *ks = nil;
 
@@ -26,15 +27,20 @@ static KeyboardSlider *ks = nil;
   return ks;
 }
 
-- (BOOL)registerKeyboardSlider:(id<KeyboardSliderDelegate>)delegate:(IBOutlet UIView *)mainView:(IBOutlet UIScrollView *)scrollView:(IBOutlet UIView *)bottomView
+- (BOOL)registerKeyboardSlider:(id<KeyboardSliderDelegate>)delegate:(UIView *)mainView:(UIScrollView *)scrollView:(UIView *)bottomView
 {
   _scrollView   = scrollView;
   _mainView     = mainView;
   _bottomView   = bottomView;
   _delegate     = delegate;
   _state        = KeyboardSliderViewIsDown;
-    
   return TRUE; 
+}
+
+- (BOOL)registerKeyboardSliderWithConfirmView:(id<KeyboardSliderDelegate>)delegate:(UIView *)mainView:(UIScrollView *)scrollView:(UIView *)bottomView:(UIView *)confirmView
+{
+  _confirmView  = confirmView;
+  return [self registerKeyboardSlider:delegate:mainView:scrollView:bottomView];
 }
 
 - (BOOL)registerKeyboardRect:(CGRect)keyboardRect
@@ -61,7 +67,9 @@ static KeyboardSlider *ks = nil;
   
   CGRect rect = _mainView.frame;
   
-  rect.origin.y += _keyboardRect.size.height;
+  int height = _confirmView ? _keyboardRect.size.height - self.confirmView.frame.size.height : _keyboardRect.size.height;
+  
+  rect.origin.y += height;
   rect.size.height -= _keyboardRect.size.height;
   _mainView.frame = rect;
   
@@ -92,14 +100,16 @@ static KeyboardSlider *ks = nil;
   
   // 1. move the view's origin up so that the text field that will be hidden come above the keyboard 
   // 2. increase the size of the view so that the area behind the keyboard is covered up.
-  rect.origin.y -= _keyboardRect.size.height;
+  int height = _confirmView ? _keyboardRect.size.height - self.confirmView.frame.size.height : _keyboardRect.size.height;
+  
+  rect.origin.y -= height;
   rect.size.height += _keyboardRect.size.height;
   
   _mainView.frame = rect;
   
   CGRect scrollViewRect = _scrollView.frame;
   
-  scrollViewRect.origin.y = _keyboardRect.size.height;
+  scrollViewRect.origin.y = height;
   scrollViewRect.size.height = rect.size.height - _keyboardRect.size.height*2 - _bottomView.frame.size.height; 
     
   _scrollView.frame = scrollViewRect;

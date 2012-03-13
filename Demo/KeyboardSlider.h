@@ -21,14 +21,18 @@ typedef enum {
   KeyboardSliderViewState _state;
 }
 
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (strong, nonatomic) IBOutlet UIView *mainView;
-@property (strong, nonatomic) IBOutlet UIView *bottomView;
+@property (strong, nonatomic) UIScrollView *scrollView;
+@property (strong, nonatomic) UIView *mainView;
+@property (strong, nonatomic) UIView *bottomView;
+@property (strong, nonatomic) UIView *confirmView;
+
 @property (nonatomic,assign)  id<KeyboardSliderDelegate> delegate;
 
 + (KeyboardSlider *)currentSlider;
 
-- (BOOL)registerKeyboardSlider:(id<KeyboardSliderDelegate>)delegate:(IBOutlet UIView *)mainView:(IBOutlet UIScrollView *)scrollView:(IBOutlet UIView *)bottomView;
+- (BOOL)registerKeyboardSlider:(id<KeyboardSliderDelegate>)delegate:(UIView *)mainView:(UIScrollView *)scrollView:(UIView *)bottomView;
+
+- (BOOL)registerKeyboardSliderWithConfirmView:(id<KeyboardSliderDelegate>)delegate:(UIView *)mainView:(UIScrollView *)scrollView:(UIView *)bottomView:(UIView *)confirmView;
 
 - (BOOL)registerKeyboardRect:(CGRect)keyboardRect;
 

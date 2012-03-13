@@ -14,6 +14,8 @@
 - (void)showKeyboardAndMoveViewUp;
 - (void)hideKeyboardAndMoveViewDown;
 
+- (BOOL)registerKeyboardSliderWithConfirmView:(IBOutlet UIView *)mainView:(IBOutlet UIScrollView *)scrollView:(IBOutlet UIView *)bottomView:(UIView *)confirmView;
+
 - (BOOL)registerKeyboardSlider:(IBOutlet UIView *)mainView:(IBOutlet UIScrollView *)scrollView
                               :(IBOutlet UIView *)bottomView;
 

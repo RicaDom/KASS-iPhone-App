@@ -84,6 +84,7 @@
 - (BOOL) signInAccount:(NSString *)email:(NSString *)password
 {
   DLog(@"VariableStore::signInAccount:email=%@,password=%@",email,password);
+  if ( [email isBlank] || [password isBlank]) { return NO; }
   if( !self.user ) self.user = [[User alloc] init];
   if( !self.user.delegate ) self.user.delegate = _currentViewControllerDelegate;
   
