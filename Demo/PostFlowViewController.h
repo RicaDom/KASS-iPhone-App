@@ -13,12 +13,13 @@
 #import "PostFlowSetDateViewController.h"
 #import "PostSummaryViewController.h"
 #import "ViewHelper.h"
+@class KTTextView;
 
 @interface PostFlowViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (strong, nonatomic) NSString *postType;
-@property (strong, nonatomic) IBOutlet UITextView *desTextField;
+@property (strong, nonatomic) IBOutlet KTTextView *desTextField;
 @property (strong, nonatomic) IBOutlet UIButton *cancelButton;
 @property (strong, nonatomic) IBOutlet UIButton *rightButton;
 

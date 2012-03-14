@@ -7,6 +7,7 @@
 //
 
 #import "PostFlowViewController.h"
+#import "KTTextView.h"
 
 @implementation PostFlowViewController
 
@@ -86,7 +87,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(UITextFieldTextDidChangeNotification:) name:UITextFieldTextDidChangeNotification object:nil];
     
     [ViewHelper buildCancelButton:self.cancelButton];
-    // [ViewHelper buildNextButtonDis:self.rightButton];
+    [self.desTextField setPlaceholderText:UI_TEXT_VIEW_DESCRIPTION];
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
