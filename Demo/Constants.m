@@ -28,6 +28,8 @@ NSString * const UI_BUTTON_LABEL_SIGNUP = @"注册";
 NSString * const UI_BUTTON_LABEL_SEND = @"发送";
 NSString * const UI_BUTTON_LABEL_SHARE = @"分享";
 
+NSString * const UI_BUTTON_LABEL_SIGNIN_TO_POST = @"请登陆后发布";
+NSString * const UI_BUTTON_LABEL_POST_NOW = @"好了发布吧!";
 NSString * const UI_BUTTON_LABEL_UPDATE = @"更新";
 NSString * const UI_BUTTON_LABEL_DELETE = @"删除";
 NSString * const UI_BUTTON_LABEL_WEIBO_SHARE = @"发布到微博";
@@ -150,5 +152,8 @@ NSString * const UI_IMAGE_SETTING_LOGIN = @"btn_03.png";
 NSString * const UI_IMAGE_SETTING_LOGIN_PRESS = @"btn_09.png";
 NSString * const UI_IMAGE_SETTING_LOGOUT = @"btn_05.png";
 NSString * const UI_IMAGE_SETTING_LOGOUT_PRESS = @"btn_10.png";
+
+NSString * const UI_IMAGE_CHECKBOX_CHECK = @"tongbu_80.png";
+NSString * const UI_IMAGE_CHECKBOX_UNCHECK = @"tongbu_83.png";
 
 @end

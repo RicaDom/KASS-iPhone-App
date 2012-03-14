@@ -23,6 +23,7 @@
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
+@property (strong, nonatomic) IBOutlet UIButton *weiboCheckBox;
 
 - (IBAction)cancelAction:(id)sender;
 - (IBAction)submitAction;
@@ -30,5 +31,6 @@
 - (IBAction)ipayAction:(id)sender;
 - (IBAction)idateAction:(id)sender;
 - (IBAction)leftButtonAction:(id)sender;
+- (IBAction)weiboCheckBoxAction:(id)sender;
 
 @end

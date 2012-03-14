@@ -95,7 +95,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="d2F-4g-DNs" kind="push" id="lP7-TE-bgI"/>
+                                    <segue destination="d2F-4g-DNs" kind="push" identifier="PostFlowTitleToPriceView" id="lP7-TE-bgI"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -202,7 +202,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="rgB-V4-I0c" kind="push" id="GPv-0b-X3q"/>
+                                    <segue destination="rgB-V4-I0c" kind="push" identifier="PostFlowPriceToSetDateView" id="GPv-0b-X3q"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -297,7 +297,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="aAj-Zo-Vy5" kind="push" id="1Gj-HZ-LcC"/>
+                                    <segue destination="aAj-Zo-Vy5" kind="push" identifier="PostFlowSetDateToSumView" id="1Gj-HZ-LcC"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -470,12 +470,12 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6k6-oa-Nvj">
-                                <rect key="frame" x="8" y="328" width="300" height="44"/>
+                            <button opaque="NO" autoresizesSubviews="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6k6-oa-Nvj">
+                                <rect key="frame" x="8" y="297" width="300" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="好了发布吧!">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                <state key="normal" title="                        ">
+                                    <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
@@ -493,32 +493,32 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Price" lineBreakMode="tailTruncation" minimumFontSize="10" id="Spu-g8-8Kw">
-                                <rect key="frame" x="28" y="168" width="64" height="21"/>
+                                <rect key="frame" x="28" y="147" width="64" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" red="0.37647062539999998" green="0.37647062539999998" blue="0.34901961679999999" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Date" lineBreakMode="tailTruncation" minimumFontSize="10" id="Dt7-Kg-0xE">
-                                <rect key="frame" x="187" y="168" width="82" height="21"/>
+                                <rect key="frame" x="187" y="147" width="82" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" red="0.37647062539999998" green="0.37647062539999998" blue="0.34901961679999999" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="FX4-CQ-3KQ">
-                                <rect key="frame" x="7" y="203" width="304" height="114"/>
+                                <rect key="frame" x="6" y="186" width="304" height="103"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </mapView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="我的出价" lineBreakMode="tailTruncation" minimumFontSize="10" id="veN-bS-mLc">
-                                <rect key="frame" x="8" y="140" width="58" height="27"/>
+                                <rect key="frame" x="7" y="117" width="58" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="我的时限" lineBreakMode="tailTruncation" minimumFontSize="10" id="Yx8-Vq-4ha">
-                                <rect key="frame" x="187" y="140" width="58" height="27"/>
+                                <rect key="frame" x="186" y="117" width="58" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -530,12 +530,12 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="veP-Bt-BbZ">
-                                <rect key="frame" x="10" y="193" width="120" height="2"/>
+                                <rect key="frame" x="6" y="176" width="120" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="Ycz-j7-Xli">
-                                <rect key="frame" x="187" y="193" width="120" height="2"/>
+                                <rect key="frame" x="186" y="176" width="120" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
@@ -565,14 +565,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="¥" lineBreakMode="tailTruncation" minimumFontSize="10" id="Xo5-kw-7D8">
-                                <rect key="frame" x="7" y="167" width="13" height="22"/>
+                                <rect key="frame" x="7" y="146" width="13" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="TZg-tZ-rwW">
-                                <rect key="frame" x="4" y="63" width="306" height="75"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="TZg-tZ-rwW">
+                                <rect key="frame" x="4" y="63" width="306" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.98823535442352295" green="0.99215692281723022" blue="0.97254908084869385" alpha="1" colorSpace="deviceRGB"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -631,6 +631,28 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="HMS-4P-VSs">
+                                <rect key="frame" x="187" y="351" width="20" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="tongbu_80.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="weiboCheckBoxAction:" destination="aAj-Zo-Vy5" eventType="touchUpInside" id="Whi-GM-XAL"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="同时发布到微博" lineBreakMode="tailTruncation" minimumFontSize="10" id="g8j-rI-Ytt">
+                                <rect key="frame" x="105" y="351" width="82" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.43921571970000001" green="0.43921571970000001" blue="0.43529415129999999" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.98431378602981567" green="0.98823535442352295" blue="0.96862751245498657" alpha="1" colorSpace="deviceRGB"/>
                     </view>
@@ -679,6 +701,7 @@
                         <outlet property="postDuration" destination="Dt7-Kg-0xE" id="OEm-HM-nOr"/>
                         <outlet property="postTitle" destination="11l-Nd-T0E" id="Ro9-gh-yKE"/>
                         <outlet property="submitButton" destination="6k6-oa-Nvj" id="QdK-hd-Gr5"/>
+                        <outlet property="weiboCheckBox" destination="HMS-4P-VSs" id="bgW-Ya-hES"/>
                     </connections>
                 </viewController>
             </objects>
@@ -2644,6 +2667,7 @@
         <image name="startbg1.png" width="320" height="385"/>
         <image name="tag.png" width="52" height="19"/>
         <image name="taidi.png" width="215" height="50"/>
+        <image name="tongbu_80.png" width="20" height="19"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

@@ -85,12 +85,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(UITextFieldTextDidChangeNotification:) name:UITextFieldTextDidChangeNotification object:nil];
     
-    if (self.titleTextField.text.length > 0) {
-        self.navigationItem.rightBarButtonItem.enabled = YES;
-    }
-    
     [ViewHelper buildCancelButton:self.cancelButton];
-    [ViewHelper buildNextButtonDis:self.rightButton];
+    // [ViewHelper buildNextButtonDis:self.rightButton];
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -98,6 +94,20 @@
         PostFlowPriceViewController *pvc = segue.destinationViewController;
         pvc.postType = self.postType;
     } 
+}
+
+- (void)rightButtonLoad 
+{
+    if (self.titleTextField.text.length > 0) {
+        [ViewHelper buildNextButton:self.rightButton];
+    } else {
+        [ViewHelper buildNextButtonDis:self.rightButton];
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self rightButtonLoad];
 }
 
 - (void)viewDidUnload
@@ -125,15 +135,7 @@
 
 - (void)UITextFieldTextDidChangeNotification:(NSNotification *)notification {
     if ([notification object] == self.titleTextField) {
-        if (self.titleTextField.text.length > 0) {
-            // self.navigationItem.rightBarButtonItem.enabled = YES;
-            
-            [ViewHelper buildNextButton:self.rightButton];
-        } else {
-            [ViewHelper buildNextButtonDis:self.rightButton];
-            
-            // self.navigationItem.rightBarButtonItem.enabled = NO;
-        }
+        [self rightButtonLoad];
     }
 }
 

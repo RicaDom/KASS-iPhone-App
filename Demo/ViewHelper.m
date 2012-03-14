@@ -437,6 +437,22 @@
     button.enabled = YES;
 }
 
++ (void)buildCheckBoxButton:(UIButton *)button
+{
+    UIImage *img = [UIImage imageNamed:UI_IMAGE_CHECKBOX_CHECK];
+    [button setImage:img forState:UIControlStateNormal];
+    button.frame = CGRectMake(button.frame.origin.x, button.frame.origin.y, img.size.width, img.size.height);
+    button.enabled = YES;
+}
+
++ (void)buildCheckBoxButtonUncheck:(UIButton *)button
+{
+    UIImage *img = [UIImage imageNamed:UI_IMAGE_CHECKBOX_UNCHECK];
+    [button setImage:img forState:UIControlStateNormal];
+    button.frame = CGRectMake(button.frame.origin.x, button.frame.origin.y, img.size.width, img.size.height);
+    button.enabled = YES;
+}
+
 + (void)showErrorAlert:(NSString *)message:(id)delegate
 {
   UIAlertView *alert = [[UIAlertView alloc] init];

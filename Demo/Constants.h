@@ -50,6 +50,8 @@ extern NSString * const UI_BUTTON_LABEL_SIGNUP;
 extern NSString * const UI_BUTTON_LABEL_SEND;
 extern NSString * const UI_BUTTON_LABEL_SHARE;
 
+extern NSString * const UI_BUTTON_LABEL_SIGNIN_TO_POST;
+extern NSString * const UI_BUTTON_LABEL_POST_NOW;
 extern NSString * const UI_BUTTON_LABEL_UPDATE;
 extern NSString * const UI_BUTTON_LABEL_DELETE;
 extern NSString * const UI_BUTTON_LABEL_WEIBO_SHARE;
@@ -171,5 +173,8 @@ extern NSString * const UI_IMAGE_SETTING_LOGIN;
 extern NSString * const UI_IMAGE_SETTING_LOGIN_PRESS;
 extern NSString * const UI_IMAGE_SETTING_LOGOUT;
 extern NSString * const UI_IMAGE_SETTING_LOGOUT_PRESS;
+
+extern NSString * const UI_IMAGE_CHECKBOX_CHECK;
+extern NSString * const UI_IMAGE_CHECKBOX_UNCHECK;
 
 @end

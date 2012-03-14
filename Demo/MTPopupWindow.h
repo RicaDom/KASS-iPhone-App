@@ -22,7 +22,7 @@
 @property (nonatomic, strong) UIView* signUpView;
 @property (nonatomic, strong) UIView* signInView;
 @property (nonatomic, strong) MTPopupWindow *mtWindow;
-@property (nonatomic, retain) IBOutlet MainTabBarViewController *viewController;
+@property (nonatomic, strong) MainTabBarViewController *viewController;
 
 +(void)showWindowWithHTMLFile:(NSString*)fileName insideView:(UIView*)view;
 +(void)showWindowWithUIView:(UIView*)view;

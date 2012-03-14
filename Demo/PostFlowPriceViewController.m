@@ -49,7 +49,9 @@
 
 - (void)saveCurrentPostingData
 {
-    [VariableStore sharedInstance].currentPostingItem.askPrice = [NSDecimalNumber decimalNumberWithString:self.priceTextField.text];
+    if ([self.priceTextField.text length] > 0) {
+        [VariableStore sharedInstance].currentPostingItem.askPrice = [NSDecimalNumber decimalNumberWithString:self.priceTextField.text];
+    }
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
