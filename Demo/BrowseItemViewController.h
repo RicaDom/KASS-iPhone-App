@@ -16,6 +16,7 @@
 #import "CommonView.h"
 #import "DataSourceViewController.h"
 #import "Offer+OfferHelper.h"
+#import "UILabel+VerticalAlign.h"
 
 @interface BrowseItemViewController : DataSourceViewController <UIScrollViewDelegate, AccountActivityDelegate>
 
