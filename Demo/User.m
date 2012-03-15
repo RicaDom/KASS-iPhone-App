@@ -350,7 +350,7 @@
   _email  = account.email;
   _phone  = account.phone;
   
-  [self getPrivatePub];
+//  [self getPrivatePub];
   
   if ( account.iphone_token_present == 0) {
     _iphoneToken = [[NSUserDefaults standardUserDefaults] stringForKey:KassAppIphoneTokenKey];
@@ -499,54 +499,54 @@
   DLog(@"User::weiboDidLogout");
 }
 
-- (void)getPrivatePub
-{
-  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getPrivatePubFinished:"];
-  [ka getPrivatePub];
-}
-
-- (void)getPrivatePubFinished:(NSData *)data
-{
-  NSArray *privatePubs = (NSArray *)[KassApi parseData:data];
-  DLog(@"User::getPrivatePubFinished:privatePubs=%@", privatePubs);
-  
-  if (ppClient) { [ppClient clear];  ppClient = nil; }
-  
-  ppClient = [[PrivatePubClient alloc] initWithDelegate:self];
-  
-  for(int i = 0; i < [privatePubs count]; i++){
-    NSDictionary *dict = [privatePubs objectAtIndex:i];
-    [ppClient addClient:dict];
-  }
-  
-  [ppClient connectClients];
-}
-
-
-///FAYE will be removed once APN is set
-- (void) messageReceived:(NSDictionary *)messageDict {
-  DLog(@"message recieved %@", messageDict);  
-  NSDictionary *data = [messageDict valueForKey:@"data"];
-
-  UIAlertView *alert = [[UIAlertView alloc] init];
-	[alert setTitle:  [VariableStore.sharedInstance.settings getTextForMessageType:[data valueForKey:@"event"]]];
-	[alert setMessage:[data valueForKey:@"full_message"]];
-	[alert setDelegate:self];
-	[alert addButtonWithTitle:@"Dismiss"];
-	[alert addButtonWithTitle:@"View"];
-	[alert show];
-  
-}
-
-- (void)connectedToServer {
-  DLog(@"Connected");
-//  self.connected = YES;
-}
-
-- (void)disconnectedFromServer {
-  DLog(@"Disconnected at %@", [NSDate date]);
-//  self.connected = NO;
-}
+//- (void)getPrivatePub
+//{
+//  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getPrivatePubFinished:"];
+//  [ka getPrivatePub];
+//}
+//
+//- (void)getPrivatePubFinished:(NSData *)data
+//{
+//  NSArray *privatePubs = (NSArray *)[KassApi parseData:data];
+//  DLog(@"User::getPrivatePubFinished:privatePubs=%@", privatePubs);
+//  
+//  if (ppClient) { [ppClient clear];  ppClient = nil; }
+//  
+//  ppClient = [[PrivatePubClient alloc] initWithDelegate:self];
+//  
+//  for(int i = 0; i < [privatePubs count]; i++){
+//    NSDictionary *dict = [privatePubs objectAtIndex:i];
+//    [ppClient addClient:dict];
+//  }
+//  
+//  [ppClient connectClients];
+//}
+//
+//
+/////FAYE will be removed once APN is set
+//- (void) messageReceived:(NSDictionary *)messageDict {
+//  DLog(@"message recieved %@", messageDict);  
+//  NSDictionary *data = [messageDict valueForKey:@"data"];
+//
+//  UIAlertView *alert = [[UIAlertView alloc] init];
+//	[alert setTitle:  [VariableStore.sharedInstance.settings getTextForMessageType:[data valueForKey:@"event"]]];
+//	[alert setMessage:[data valueForKey:@"full_message"]];
+//	[alert setDelegate:self];
+//	[alert addButtonWithTitle:@"Dismiss"];
+//	[alert addButtonWithTitle:@"View"];
+//	[alert show];
+//  
+//}
+//
+//- (void)connectedToServer {
+//  DLog(@"Connected");
+////  self.connected = YES;
+//}
+//
+//- (void)disconnectedFromServer {
+//  DLog(@"Disconnected at %@", [NSDate date]);
+////  self.connected = NO;
+//}
 
 
 - (void)clear

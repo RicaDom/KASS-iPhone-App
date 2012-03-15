@@ -74,8 +74,8 @@ typedef enum {
 - (void)acceptOffer:(NSString *)offerId;
 - (void)acceptOfferFinished:(NSData *)data;
 
-- (void)getPrivatePub;
-- (void)getPrivatePubFinished:(NSData *)data;
+//- (void)getPrivatePub;
+//- (void)getPrivatePubFinished:(NSData *)data;
 
 - (void)sendIphoneToken;
 - (void)sendIphoneTokenFinished:(NSData *)data;

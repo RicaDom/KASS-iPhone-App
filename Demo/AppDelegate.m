@@ -34,6 +34,7 @@
   str = [str stringByReplacingOccurrencesOfString:@">" withString:@""]; 
   str = [str stringByReplacingOccurrencesOfString: @" " withString: @""];
   
+  DLog(@"AppDelegate::didRegisterForRemoteNotificationsWithDeviceToken:token=%@", str);
   [[NSUserDefaults standardUserDefaults] setValue:str forKey:KassAppIphoneTokenKey];    
 }
 

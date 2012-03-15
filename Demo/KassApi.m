@@ -291,11 +291,11 @@
   [self getData:_url];
 }
 
-- (void)getPrivatePub
-{
-  _url = [NSString stringWithFormat:@"http://%s/private_pub.json", HOST];
-  [self getData:_url];
-}
+//- (void)getPrivatePub
+//{
+//  _url = [NSString stringWithFormat:@"http://%s/private_pub.json", HOST];
+//  [self getData:_url];
+//}
 
 /////// CLASS METHODS - SYNCHRONOUS CALLS ////////
 
@@ -334,7 +334,8 @@
 //}
 //
 + (NSData *)getData:(NSString *)url
-{
+{ 
+  DLog(@"Request Data Url = %@", url);
   ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
   [request startSynchronous];
   NSError *error = [request error];
