@@ -30,6 +30,7 @@
 @synthesize addPostBackgroundView = _addPostBackgroundView;
 @synthesize addPostButton = _addPostButton;
 @synthesize addPostSloganLabel = _addPostSloganLabel;
+@synthesize currentLocationLabel = _currentLocationLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

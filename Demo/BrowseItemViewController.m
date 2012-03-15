@@ -120,6 +120,14 @@
   [CommonView setMessageWithPriceView:self.scrollView payImage:nil bottomView:self.buttomView priceButton:self.priceButton messageField:self.messageTextField price:self.itemPriceChangedToLabel.text changedPriceMessage:self.changePriceMessage];
 }
 
+- (void)setUILabelTextWithVerticalAlignTop:(NSString *)theText uilabel:(UILabel *)myUILabel{
+    // labelSize is hard-wired but could use constants to populate the size
+    CGSize labelSize = CGSizeMake(250, 50);
+    CGSize theStringSize = [theText sizeWithFont:myUILabel.font constrainedToSize:labelSize lineBreakMode:myUILabel.lineBreakMode];
+    myUILabel.frame = CGRectMake(myUILabel.frame.origin.x, myUILabel.frame.origin.y, theStringSize.width, theStringSize.height);
+    myUILabel.text = theText;
+}
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
@@ -142,7 +150,21 @@
     self.rightButton.tag = RIGHT_BAR_BUTTON_MAP;
     [ViewHelper buildBackButton:self.leftButton];
     self.leftButton.tag = LEFT_BAR_BUTTON_BACK;
-
+    
+#pragma marks TODO
+    //[self.itemTitleLabel sizeToFit];
+    //[self.itemTitleLabel alignTop];
+    //[self setUILabelTextWithVerticalAlignTop:self.itemTitleLabel.text uilabel:self.itemTitleLabel];
+//    CGSize maximumSize = CGSizeMake(300, 9999);
+//    NSString *dateString = self.itemTitleLabel.text;
+//    UIFont *dateFont = [UIFont fontWithName:@"Helvetica" size:14];
+//    CGSize dateStringSize = [dateString sizeWithFont:dateFont 
+//                                   constrainedToSize:maximumSize 
+//                                       lineBreakMode:self.itemTitleLabel.lineBreakMode];
+//    
+//    CGRect dateFrame = CGRectMake(0, 0, self.itemTitleLabel.frame.size.width, dateStringSize.height);
+//    
+//    self.itemTitleLabel.frame = dateFrame;
 }
 
 - (void)viewDidUnload

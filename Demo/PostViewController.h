@@ -30,6 +30,7 @@
 @property (strong, nonatomic) IBOutlet UIView *mainView;
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (strong, nonatomic) IBOutlet UILabel *greetingLabel;
+@property (strong, nonatomic) IBOutlet UILabel *currentLocationLabel;
 
 //@property (strong, nonatomic) NSMutableArray *postTemplates;
 @property (strong, nonatomic) NSMutableArray *popularTemplates;
