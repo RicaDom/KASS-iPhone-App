@@ -34,4 +34,22 @@
   DLog(@"UserTest::testEncryption:encodedData=%@", base64);
 }
 
+- (void)testEncryptionDeviceToken
+{
+  user = [[User alloc] init];
+  
+  NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                 @"abc",@"device_token",nil];
+	
+	NSString* baseString = [user stringFromDictionary:params];
+	NSString* keyString = [NSString stringWithFormat:@"%@",KassSecretToken];
+  
+  NSData              *plain = [baseString dataUsingEncoding: NSUTF8StringEncoding];
+  NSData              *key = [NSData dataWithBytes: [[keyString sha256] bytes] length: kCCKeySizeAES128];
+  NSData              *cipher = [plain aesEncryptedDataWithKey: key];
+  NSString            *base64 = [cipher base64Encoding];
+  
+  DLog(@"UserTest::testEncryption:encodedData=%@", base64);
+}
+
 @end

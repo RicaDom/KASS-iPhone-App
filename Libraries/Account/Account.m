@@ -9,10 +9,11 @@
 #import "Account.h"
 #import "SFHFKeychainUtils.h"
 #import "KassApi.h"
+#import "BaseHelper.h"
 
 @implementation Account
 
-@synthesize delegate = _delegate, userDbId = _userDbId, userName = _userName, iphone_token_present = _iphone_token_present, password = _password, weiboId = _weiboId, email = _email, encode = _encode, phone = _phone;
+@synthesize delegate = _delegate, userDbId = _userDbId, userName = _userName, password = _password, weiboId = _weiboId, email = _email, encode = _encode, phone = _phone, devices = _devices;
 
 - (id)initWithEmailAndPassword:(NSString*)email:(NSString *)password
 {
@@ -58,7 +59,7 @@
   _userName = [dict objectForKey:@"name"];
   _email    = [dict objectForKey:@"email"];
   _phone    = [dict objectForKey:@"phone_number"];
-  _iphone_token_present = [[dict objectForKey:@"iphone_token_present"] intValue];
+  _devices  = [dict objectForKey:@"devices"];
   
   if ( _userDbId ) {
     
@@ -81,6 +82,12 @@
 
 }
 
+- (NSString *)getEncodedDeviceToken
+{
+  NSString *deviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:KassAppIphoneTokenKey];
+  return deviceToken ? [BaseHelper getKassEncrypted:deviceToken] : @"";
+}
+
 - (void)signup
 {
   DLog(@"Account::signup");
@@ -89,6 +96,7 @@
                             _password, @"password",
                             _phone, @"phone_number",
                             _userName, @"name",
+                            [self getEncodedDeviceToken],@"device_token",
                             nil];
   
   KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"signupFinished:"];
@@ -103,41 +111,21 @@
 - (void)login
 {
   DLog(@"Account::login");
-//  NSError *error = nil;
-//  NSString *password = [SFHFKeychainUtils getPasswordForUsername:_userName andServiceName:KassServiceName error:&error];
-//  NSUserDefaults *standardDefaults = [NSUserDefaults standardUserDefaults];
-//  NSString *username = [standardDefaults stringForKey:KassAppUsernameKey];
-//  NSString *password = @"";
-//  
-//  if (username) {
-//    NSError *error = nil;
-//    password = [SFHFKeychainUtils getPasswordForUsername:username andServiceName:KassServiceName error:&error];
-//    
-//    DLog(@"Account::login:user=%@, password=%@", username, password);
-//    
-//  } else {
-//    // No username. Prompt the user to enter username & password and store it
-//    username = @"kass@gmail.com";
-//    password = @"1111111";
-//    
-//    [standardDefaults setValue:username forKey:KassAppUsernameKey];    
-//    
-//    NSError *error = nil;
-//    BOOL storeResult = [SFHFKeychainUtils storeUsername:username andPassword:password forServiceName:KassServiceName updateExisting:YES error:&error];
-//    
-//    DLog(@"Account::login:store=%@",  (storeResult ? @"YES" : @"NO"));
-//  }
-  
-  
+
   NSDictionary * userInfo;
+  NSString *deviceToken = [self getEncodedDeviceToken];
   
   if ( _encode ) {
-    userInfo = [NSDictionary dictionaryWithObjectsAndKeys: _encode, @"encode", nil];
+    userInfo = [NSDictionary dictionaryWithObjectsAndKeys: 
+                _encode, @"encode",
+                deviceToken, @"device_token",
+                nil];
 
   }else{
     userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
                   _email, @"email",
                   _password, @"password",
+                  deviceToken, @"device_token",
                   nil];
   }
   KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"loginFinished:"];
@@ -160,7 +148,7 @@
   
   // also need to logout server
   KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"logoutFinished:"];
-  [ka logout];
+  [ka logout:[self getEncodedDeviceToken]];
 }
 
 - (BOOL)isUserLoggedIn

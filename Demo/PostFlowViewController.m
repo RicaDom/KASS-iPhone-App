@@ -87,7 +87,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(UITextFieldTextDidChangeNotification:) name:UITextFieldTextDidChangeNotification object:nil];
     
     [ViewHelper buildCancelButton:self.cancelButton];
-    [self.desTextField setPlaceholderText:UI_TEXT_VIEW_DESCRIPTION];
+    if( [self.desTextField respondsToSelector:@selector(setPlaceholderText:)] )
+      [self.desTextField setPlaceholderText:UI_TEXT_VIEW_DESCRIPTION];
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

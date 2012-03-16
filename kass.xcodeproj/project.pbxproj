@@ -58,6 +58,8 @@
 		7755633F1512FE9E00074AC0 /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7755633E1512FE9E00074AC0 /* Alert.m */; };
 		775563421512FF1700074AC0 /* choice_144.png in Resources */ = {isa = PBXBuildFile; fileRef = 775563401512FF1700074AC0 /* choice_144.png */; };
 		775563431512FF1700074AC0 /* choice_146.png in Resources */ = {isa = PBXBuildFile; fileRef = 775563411512FF1700074AC0 /* choice_146.png */; };
+		775563461513394100074AC0 /* ProvideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 775563451513394100074AC0 /* ProvideViewController.m */; };
+		7755634815133C0E00074AC0 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7755634715133C0E00074AC0 /* Default@2x.png */; };
 		7760FCC91507473F008D40D6 /* ActiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7760FCC81507473E008D40D6 /* ActiveModel.m */; };
 		7760FCD515074E6B008D40D6 /* UIViewController+SegueActiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7760FCD415074E6B008D40D6 /* UIViewController+SegueActiveModel.m */; };
 		77786AE9150AFB5F007DC016 /* ScrollViewRefreshPuller.m in Sources */ = {isa = PBXBuildFile; fileRef = 77786AE8150AFB5F007DC016 /* ScrollViewRefreshPuller.m */; };
@@ -403,6 +405,9 @@
 		7755633E1512FE9E00074AC0 /* Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alert.m; sourceTree = "<group>"; };
 		775563401512FF1700074AC0 /* choice_144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = choice_144.png; sourceTree = "<group>"; };
 		775563411512FF1700074AC0 /* choice_146.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = choice_146.png; sourceTree = "<group>"; };
+		775563441513394100074AC0 /* ProvideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProvideViewController.h; sourceTree = "<group>"; };
+		775563451513394100074AC0 /* ProvideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProvideViewController.m; sourceTree = "<group>"; };
+		7755634715133C0E00074AC0 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		7760FCC71507473E008D40D6 /* ActiveModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveModel.h; sourceTree = "<group>"; };
 		7760FCC81507473E008D40D6 /* ActiveModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveModel.m; sourceTree = "<group>"; };
 		7760FCD315074E6B008D40D6 /* UIViewController+SegueActiveModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SegueActiveModel.h"; sourceTree = "<group>"; };
@@ -1235,6 +1240,8 @@
 		77E30FB614F13831000E9567 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				775563441513394100074AC0 /* ProvideViewController.h */,
+				775563451513394100074AC0 /* ProvideViewController.m */,
 				7755632D1512FE1000074AC0 /* PostControllers */,
 				7755632B1512FDFE00074AC0 /* SellerAlertControllers */,
 				E5A0744814AAA57100885232 /* ActivityViewController.h */,
@@ -1361,6 +1368,7 @@
 		E5299FB2150CBFF400E73D75 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				7755634715133C0E00074AC0 /* Default@2x.png */,
 				E5299FB3150CC00C00E73D75 /* backarrow_03.png */,
 				E5A9FBF91504B8AC00AC5F0E /* btn_transwhite.png */,
 				E5A9FBEC1504A20500AC5F0E /* nav.png */,
@@ -1906,6 +1914,7 @@
 				E549D80F150DF9D600AAA840 /* postPoppic.png in Resources */,
 				775563421512FF1700074AC0 /* choice_144.png in Resources */,
 				775563431512FF1700074AC0 /* choice_146.png in Resources */,
+				7755634815133C0E00074AC0 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2070,6 +2079,7 @@
 				7755633B1512FE4B00074AC0 /* SellerAlertsAddAlertWhatViewController.m in Sources */,
 				7755633C1512FE4B00074AC0 /* SellerAlertsViewController.m in Sources */,
 				7755633F1512FE9E00074AC0 /* Alert.m in Sources */,
+				775563461513394100074AC0 /* ProvideViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

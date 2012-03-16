@@ -58,12 +58,13 @@
 - (void)getOfferMessages:(NSString *)offerId;
 - (void)createOfferMessage:(NSDictionary *)dict:(NSString *)offerId;
 - (void)loadSettings;
-- (void)getPrivatePub;
-- (void)sendIphoneToken:(NSDictionary *)dict;
+
+//- (void)getPrivatePub;
+//- (void)sendIphoneToken:(NSDictionary *)dict;
 
 - (void)signUp:(NSDictionary *)dict;
 - (void)login:(NSDictionary *)dict;
-- (void)logout;
+- (void)logout:(NSString *)token;
 
 - (void)requestFinished:(ASIHTTPRequest *)request;
 - (void)requestFailed:(ASIHTTPRequest *)request;

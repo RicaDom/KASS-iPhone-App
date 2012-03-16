@@ -113,6 +113,18 @@
   DLog(@"KassApi::deleteData::startAsynchronous=%@", url);
 }
 
+- (void)deleteDataWithToken:(NSString *)url:(NSString*)token
+{
+  id kassSelf = self;
+  __block ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:url]];
+  [request setCompletionBlock:^{ [kassSelf requestFinished:request]; }];
+  [request setFailedBlock:^{[kassSelf requestFailed:request];}];
+  [request setRequestMethod:@"DELETE"];
+  [request setPostValue:token forKey:@"device_token"];
+  [request startAsynchronous];
+  DLog(@"KassApi::deleteDataWithToken::startAsynchronous=%@token=%@", url, token);
+}
+
 - (void)signUp:(NSDictionary *)dict
 {
   DLog(@"KassApi::signUp:dict=%@", dict);
@@ -261,12 +273,12 @@
   [self getData:_url];
 }
 
-- (void)sendIphoneToken:(NSDictionary *)dict
-{
-  DLog(@"KassApi::sendIphoneToken:dict");
-  _url = [NSString stringWithFormat:@"http://%s/v1/account/iphone_token_set", HOST];
-  [self postData:_url:dict];
-}
+//- (void)sendIphoneToken:(NSDictionary *)dict
+//{
+//  DLog(@"KassApi::sendIphoneToken:dict");
+//  _url = [NSString stringWithFormat:@"http://%s/v1/account/iphone_token_set", HOST];
+//  [self postData:_url:dict];
+//}
 
 - (void)login:(NSDictionary *)dict
 {
@@ -279,10 +291,10 @@
   [self postData:_url:dict];
 }
 
-- (void)logout
+- (void)logout:(NSString *)token
 {
   _url = [NSString stringWithFormat:@"http://%s/v1/auth", HOST];
-  [self deleteData:_url];
+  [self deleteData:_url:token];
 }
 
 - (void)getListing:(NSString *)modelId
