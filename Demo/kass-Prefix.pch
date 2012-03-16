@@ -23,8 +23,8 @@
 # define RUBY_DATETIME_FORMAT @"yyyy-MM-dd'T'HH:mm:ssZ"
 
 #ifdef DEBUG 
-#    define HOST "kass.dev"
-#    define PIC_PATH "http://kass.dev/iphone_sample_images/"
+#    define HOST "192.168.1.101:3000"
+#    define PIC_PATH "http://192.168.1.101:3000/iphone_sample_images/"
 #    define SinaWeiBoSDKDemo_APPKey @"4058848639"
 #    define SinaWeiBoSDKDemo_APPSecret @"6f8e39f74b91d64eec43e2b4fd8d4c55"
 #    define KassServiceName @"com.kasslocal.app"
@@ -34,7 +34,7 @@
 #    define PIC_CACHE_PATH @"/Library/Caches/imgcache/jieqooDevelopment/"
 #    define WEIBO_SHARE_IMG @"http://jieqoo.com/images/Default.png"
 #else
-#    define HOST "www.jieqoo.com"
+#    define HOST "www.kass.com"
 #    define PIC_PATH "http://www.heyook.com/download/kass/"
 #    define SinaWeiBoSDKDemo_APPKey @"4058848639"
 #    define SinaWeiBoSDKDemo_APPSecret @"6f8e39f74b91d64eec43e2b4fd8d4c55"

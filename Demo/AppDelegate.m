@@ -78,7 +78,7 @@
 
 - (void)settingsDidLoad:(NSDictionary *)dict
 {
-  DLog(@"AppDelegate::settingsDidLoad:dict");
+  DLog(@"AppDelegate::settingsDidLoad:dict=%@", dict);
   [VariableStore.sharedInstance storeSettings:dict];
 }
 
