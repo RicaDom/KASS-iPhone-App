@@ -37,6 +37,12 @@
 - (void)postData:(NSString *)url:(NSDictionary *)dict;
 - (void)getData:(NSString *)url;
 
+- (void)getAlertListings:(NSDictionary *)modelId;
+- (void)createAlert:(NSDictionary *)dict;
+- (void)modifyAlert:(NSDictionary *)dict:(NSString *)modelId;
+- (void)deleteAlert:(NSString *)modelId;
+- (void)getAccountAlerts;
+
 - (void)deleteListing:(NSString *)modelId;
 - (void)createOffer:(NSDictionary *)dict;
 - (void)createListing:(NSDictionary *)dict;

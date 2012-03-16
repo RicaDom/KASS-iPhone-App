@@ -11,7 +11,7 @@
 #import "WBConnect.h"
 #import "Account.h"
 #import "AccountActivityDelegate.h"
-#import "PrivatePubClient.h"
+//#import "PrivatePubClient.h"
 
 typedef enum {
   wUpdate,
@@ -19,17 +19,17 @@ typedef enum {
   wIdle
 } WeiboAction ;
 
-@interface User : NSObject<WBSessionDelegate,WBSendViewDelegate,WBRequestDelegate, AccountSessionDelegate, FayeClientDelegate>{
+@interface User : NSObject<WBSessionDelegate,WBSendViewDelegate,WBRequestDelegate, AccountSessionDelegate>{
   WeiBo *weibo;
   Account *account;
   WeiboAction wAction;
-  PrivatePubClient *ppClient;
+//  PrivatePubClient *ppClient;
 }
 
 @property (nonatomic,assign) id<AccountActivityDelegate> delegate;
 @property (nonatomic,strong,readonly) WeiBo* weibo;
 @property (nonatomic,strong,readonly) Account* account;
-@property (nonatomic,strong,readonly) PrivatePubClient* ppClient;
+//@property (nonatomic,strong,readonly) PrivatePubClient* ppClient;
 
 @property (nonatomic, strong) NSString *userId;
 @property (nonatomic, strong) NSString *name;
@@ -73,6 +73,17 @@ typedef enum {
 - (void)getOfferMessagesFinished:(NSData *)data;
 - (void)acceptOffer:(NSString *)offerId;
 - (void)acceptOfferFinished:(NSData *)data;
+
+- (void)getAlertListings:(NSDictionary *)alertId;
+- (void)getAlertListingsFinished:(NSData *)data;
+- (void)createAlert:(NSDictionary *)dict;
+- (void)createAlertFinished:(NSData *)data;
+- (void)modifyAlert:(NSDictionary *)dict:(NSString *)modelId;
+- (void)modifyAlertFinished:(NSData *)data;
+- (void)deleteAlert:(NSString *)modelId;
+- (void)deleteAlertFinished;
+- (void)getAlerts;
+- (void)getAlertsFinished:(NSData *)data;
 
 //- (void)getPrivatePub;
 //- (void)getPrivatePubFinished:(NSData *)data;

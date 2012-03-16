@@ -291,6 +291,50 @@
   [self getData:_url];
 }
 
+- (void)getAlertListings:(NSDictionary *)modelId
+{
+  _url = [NSString stringWithFormat:@"http://%s/v1/alerts/%@/listings", HOST, modelId];
+  [self getData:_url];
+}
+
+- (void)createAlert:(NSDictionary *)dict
+{
+  DLog(@"KassApi::createAlert:dict=%@", dict);
+  _url = [NSString stringWithFormat:@"http://%s/v1/alerts", HOST];
+  
+  //validity check
+//  NSString *category_ids    = [dict valueForKey:@"category_ids"];
+//  NSString *radius          = [dict valueForKey:@"radius"];
+  NSString *query           = [dict valueForKey:@"query"];
+  NSString *latlng          = [dict valueForKey:@"latlng"];
+  
+  if ( query && latlng ) {
+    [self postData:_url:dict];
+  }else{
+    DLog(@"KassApi::createAlert: invalid data!");
+  }
+}
+
+- (void)modifyAlert:(NSDictionary *)dict:(NSString *)modelId
+{
+  DLog(@"KassApi::modifyAlert:dict=%@", dict);
+  _url = [NSString stringWithFormat:@"http://%s/v1/alerts/%@", HOST, modelId];
+  [self putData:modelId:dict];
+}
+
+- (void)deleteAlert:(NSString *)modelId
+{
+  DLog(@"KassApi::deleteAlert:id=%@", modelId);
+  _url = [NSString stringWithFormat:@"http://%s/v1/account/alerts/%@", HOST, modelId];
+  [self deleteData:_url:modelId];
+}
+
+- (void)getAccountAlerts
+{
+  _url = [NSString stringWithFormat:@"http://%s/v1/account/alerts", HOST];
+  [self getData:_url];
+}
+
 //- (void)getPrivatePub
 //{
 //  _url = [NSString stringWithFormat:@"http://%s/private_pub.json", HOST];
