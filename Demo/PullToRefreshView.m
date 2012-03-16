@@ -39,7 +39,7 @@
 @end
 
 @implementation PullToRefreshView
-@synthesize delegate, scrollView;
+@synthesize delegate;
 
 - (void)showActivity:(BOOL)shouldShow animated:(BOOL)animated {
     if (shouldShow) [activityView startAnimating];
