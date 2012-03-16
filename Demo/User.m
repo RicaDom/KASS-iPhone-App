@@ -13,11 +13,11 @@
 #import "SFHFKeychainUtils.h"
 #import "ListItem+ListItemHelper.h"
 #import "VariableStore.h"
-#import "FayeClient.h"
+//#import "FayeClient.h"
 
 @implementation User
 
-@synthesize weibo, account, ppClient, delegate = _delegate;
+@synthesize weibo, account, delegate = _delegate;
 @synthesize userId = _userId;
 @synthesize name = _name;
 @synthesize email = _email;
@@ -241,6 +241,84 @@
   [ka createListing:dict];
 }
 
+- (void)getAlertListings:(NSDictionary *)alertId
+{
+  DLog(@"User::getAlertListings");
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getAlertListingsFinished:"];
+  [ka getAlertListings:alertId];
+}
+
+- (void)getAlertListingsFinished:(NSData *)data
+{
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"User::getAlertListingsFinished:dict%@", dict);
+  
+  if( [_delegate respondsToSelector:@selector(accountDidGetAlertListings:)] )
+    [_delegate accountDidGetAlertListings:dict];
+}
+
+- (void)createAlert:(NSDictionary *)dict
+{
+  DLog(@"User::createAlert:dict=%@", dict);
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"createAlertFinished:"];
+  [ka createAlert:dict];
+}
+
+- (void)createAlertFinished:(NSData *)data
+{
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"User::createAlertFinished:dict%@", dict);
+  
+  if( [_delegate respondsToSelector:@selector(accountDidCreateAlert:)] )
+    [_delegate accountDidCreateAlert:dict];
+}
+
+- (void)modifyAlert:(NSDictionary *)dict:(NSString *)modelId
+{
+  DLog(@"User::modifyAlert:modelId=%@,dict=%@", modelId, dict);
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"modifyAlertFinished:"];
+  [ka modifyAlert:dict:modelId];
+}
+
+- (void)modifyAlertFinished:(NSData *)data
+{
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"User::modifyAlertFinished:dict%@", dict);
+  
+  if( [_delegate respondsToSelector:@selector(accountDidModifyAlert:)] )
+    [_delegate accountDidModifyAlert:dict];
+}
+
+- (void)deleteAlert:(NSString *)modelId
+{
+  DLog(@"User::deleteAlert:dbId=%@", modelId);
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"deleteAlertFinished"];
+  [ka deleteAlert:modelId];
+}
+
+- (void)deleteAlertFinished
+{
+  DLog(@"User::deleteListingFinished");
+  if( [_delegate respondsToSelector:@selector(accountDidDeleteAlert)] )
+    [_delegate accountDidDeleteAlert];
+}
+
+- (void)getAlerts
+{
+  DLog(@"User::getAlerts");
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getAlertsFinished:"];
+  [ka getAccountAlerts];
+}
+
+- (void)getAlertsFinished:(NSData *)data
+{
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"User::getAlertsFinished:dict");
+  
+  if( [_delegate respondsToSelector:@selector(accountDidGetAlerts:)] )
+    [_delegate accountDidGetAlerts:dict];
+}
+
 - (void)requestFailed:(NSDictionary *)errors
 {
   DLog(@"User::requestFailed:delegate=%@", _delegate); 
@@ -350,7 +428,7 @@
   _email  = account.email;
   _phone  = account.phone;
   
-  [self getPrivatePub];
+//  [self getPrivatePub];
   
   if ( account.iphone_token_present == 0) {
     _iphoneToken = [[NSUserDefaults standardUserDefaults] stringForKey:KassAppIphoneTokenKey];
@@ -499,54 +577,54 @@
   DLog(@"User::weiboDidLogout");
 }
 
-- (void)getPrivatePub
-{
-  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getPrivatePubFinished:"];
-  [ka getPrivatePub];
-}
-
-- (void)getPrivatePubFinished:(NSData *)data
-{
-  NSArray *privatePubs = (NSArray *)[KassApi parseData:data];
-  DLog(@"User::getPrivatePubFinished:privatePubs=%@", privatePubs);
-  
-  if (ppClient) { [ppClient clear];  ppClient = nil; }
-  
-  ppClient = [[PrivatePubClient alloc] initWithDelegate:self];
-  
-  for(int i = 0; i < [privatePubs count]; i++){
-    NSDictionary *dict = [privatePubs objectAtIndex:i];
-    [ppClient addClient:dict];
-  }
-  
-  [ppClient connectClients];
-}
-
-
-///FAYE will be removed once APN is set
-- (void) messageReceived:(NSDictionary *)messageDict {
-  DLog(@"message recieved %@", messageDict);  
-  NSDictionary *data = [messageDict valueForKey:@"data"];
-
-  UIAlertView *alert = [[UIAlertView alloc] init];
-	[alert setTitle:  [VariableStore.sharedInstance.settings getTextForMessageType:[data valueForKey:@"event"]]];
-	[alert setMessage:[data valueForKey:@"full_message"]];
-	[alert setDelegate:self];
-	[alert addButtonWithTitle:@"Dismiss"];
-	[alert addButtonWithTitle:@"View"];
-	[alert show];
-  
-}
-
-- (void)connectedToServer {
-  DLog(@"Connected");
-//  self.connected = YES;
-}
-
-- (void)disconnectedFromServer {
-  DLog(@"Disconnected at %@", [NSDate date]);
-//  self.connected = NO;
-}
+//- (void)getPrivatePub
+//{
+//  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getPrivatePubFinished:"];
+//  [ka getPrivatePub];
+//}
+//
+//- (void)getPrivatePubFinished:(NSData *)data
+//{
+//  NSArray *privatePubs = (NSArray *)[KassApi parseData:data];
+//  DLog(@"User::getPrivatePubFinished:privatePubs=%@", privatePubs);
+//  
+//  if (ppClient) { [ppClient clear];  ppClient = nil; }
+//  
+//  ppClient = [[PrivatePubClient alloc] initWithDelegate:self];
+//  
+//  for(int i = 0; i < [privatePubs count]; i++){
+//    NSDictionary *dict = [privatePubs objectAtIndex:i];
+//    [ppClient addClient:dict];
+//  }
+//  
+//  [ppClient connectClients];
+//}
+//
+//
+/////FAYE will be removed once APN is set
+//- (void) messageReceived:(NSDictionary *)messageDict {
+//  DLog(@"message recieved %@", messageDict);  
+//  NSDictionary *data = [messageDict valueForKey:@"data"];
+//
+//  UIAlertView *alert = [[UIAlertView alloc] init];
+//	[alert setTitle:  [VariableStore.sharedInstance.settings getTextForMessageType:[data valueForKey:@"event"]]];
+//	[alert setMessage:[data valueForKey:@"full_message"]];
+//	[alert setDelegate:self];
+//	[alert addButtonWithTitle:@"Dismiss"];
+//	[alert addButtonWithTitle:@"View"];
+//	[alert show];
+//  
+//}
+//
+//- (void)connectedToServer {
+//  DLog(@"Connected");
+////  self.connected = YES;
+//}
+//
+//- (void)disconnectedFromServer {
+//  DLog(@"Disconnected at %@", [NSDate date]);
+////  self.connected = NO;
+//}
 
 
 - (void)clear
@@ -567,8 +645,8 @@
   if( [_delegate respondsToSelector:@selector(accountLogoutFinished)] )
     [_delegate accountLogoutFinished];
   
-  [ppClient disconnectClients];
-  ppClient = nil;
+//  [ppClient disconnectClients];
+//  ppClient = nil;
 }
 
 ///////////////////////// model helper methods ///////////////////////////////////////

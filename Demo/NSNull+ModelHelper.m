@@ -20,5 +20,14 @@
   return FALSE;
 }
 
+- (BOOL) isEqualToString:(NSString *)str
+{
+  return FALSE;
+}
+
+- (int) length
+{
+  return 0;
+}
 
 @end

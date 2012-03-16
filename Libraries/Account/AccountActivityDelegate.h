@@ -24,6 +24,13 @@
 - (void)accountDidCreateOfferMessage:(NSDictionary *)dict;
 - (void)accountDidDeleteListing;
 
+- (void)accountDidGetAlertListings:(NSDictionary *)dict;
+- (void)accountDidCreateAlert:(NSDictionary *)dict;
+- (void)accountDidModifyAlert:(NSDictionary *)dict;
+- (void)accountDidDeleteAlert;
+- (void)accountDidGetAlerts:(NSDictionary *)dict;
+- (void)accountDidGetAlertListings:(NSDictionary *)dict;
+
 - (void)accountRequestFailed:(NSDictionary *)errors;
 - (void)accountRequestStarted;
 

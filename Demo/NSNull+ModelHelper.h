@@ -12,5 +12,7 @@
 
 - (BOOL) isBlank;
 - (BOOL) isPresent;
+- (BOOL) isEqualToString:(NSString *)str;
+- (int) length;
 
 @end
