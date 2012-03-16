@@ -14,12 +14,15 @@
 #import "LocateMeManager.h"
 #import "KassApp.h"
 #import "Settings.h"
+#import "Alert.h"
 
 @interface VariableStore : NSObject 
 
 // Global variables
 // Current Posting Process Cache
 @property (strong, nonatomic) ListItem *currentPostingItem;
+// Current Add Alert Process Cache
+@property (strong, nonatomic) Alert *currentAddAlert;
 
 //settings
 @property (strong, nonatomic) Settings *settings;
@@ -49,6 +52,7 @@
 
 + (VariableStore *) sharedInstance;
 - (void) clearCurrentPostingItem;
+- (void) clearCurrentAddAlert;
 - (void)storeSettings:(NSDictionary *)dict;
 - (void)loadAndStoreSettings:(id<KassAppDelegate>)delegate;
 - (void) appendPostingItemToListings:(NSDictionary *)dict;

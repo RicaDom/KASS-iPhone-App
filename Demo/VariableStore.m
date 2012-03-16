@@ -11,6 +11,7 @@
 @implementation VariableStore 
 
 @synthesize currentPostingItem = _currentPostingItem;
+@synthesize currentAddAlert = _currentAddAlert;
 
 @synthesize allListings = _allListings;
 @synthesize myBuyingListings = _myBuyingListings;
@@ -43,6 +44,7 @@
             myInstance  = [[[self class] alloc] init];
             // initialize variables here
             myInstance.currentPostingItem = [[ListItem alloc] init];
+            myInstance.currentAddAlert = [Alert new];
             
             myInstance.allListings = [[NSMutableArray alloc] init];
             myInstance.mySellingListings = [[NSMutableArray alloc] init];
@@ -122,6 +124,10 @@
 
 - (void) clearCurrentPostingItem {
     self.currentPostingItem = [[ListItem alloc] init];
+}
+
+- (void) clearCurrentAddAlert {
+    self.currentAddAlert = [Alert new];
 }
 
 - (void) addToModelDict:(NSString *)controller:(NSDictionary *)model

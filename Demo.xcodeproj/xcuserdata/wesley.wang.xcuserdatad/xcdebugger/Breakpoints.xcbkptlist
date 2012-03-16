@@ -624,8 +624,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "256"
          endingLineNumber = "256"
-         landmarkName = "-textFieldDidEndEditing:"
-         landmarkType = "5">
+         landmarkName = "@implementation BrowseItemNoMsgViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -756,8 +756,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "280"
          endingLineNumber = "280"
-         landmarkName = "@implementation BrowseItemNoMsgViewController"
-         landmarkType = "3">
+         landmarkName = "-textFieldDidBeginEditing:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1499,11 +1499,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/UIViewController+SegueActiveModel.m"
-         timestampString = "353137034.389906"
+         timestampString = "353498075.237346"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "85"
-         endingLineNumber = "85"
+         startingLineNumber = "86"
+         endingLineNumber = "86"
          landmarkName = "-getItemJsonAndSegueIdentifier:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1513,11 +1513,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/UIViewController+SegueActiveModel.m"
-         timestampString = "353137267.543953"
+         timestampString = "353498075.237346"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "59"
-         endingLineNumber = "59"
+         startingLineNumber = "60"
+         endingLineNumber = "60"
          landmarkName = "-getItemJsonAndSegueIdentifier:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1796,7 +1796,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "263"
          endingLineNumber = "263"
-         landmarkName = "-textFieldDidBeginEditing:"
+         landmarkName = "-textFieldDidEndEditing:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1824,8 +1824,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "282"
          endingLineNumber = "282"
-         landmarkName = "-viewWillAppear:"
-         landmarkType = "5">
+         landmarkName = "@implementation BrowseItemNoMsgViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1852,7 +1852,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "223"
          endingLineNumber = "223"
-         landmarkName = "-accountWeiboShareFinished"
+         landmarkName = "-leftButtonAction:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1903,11 +1903,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/UIViewController+SegueActiveModel.m"
-         timestampString = "353320708.006075"
+         timestampString = "353498075.237346"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "82"
-         endingLineNumber = "82"
+         startingLineNumber = "83"
+         endingLineNumber = "83"
          landmarkName = "-getItemJsonAndSegueIdentifier:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1917,25 +1917,25 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/UIViewController+SegueActiveModel.m"
-         timestampString = "353320710.666837"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "57"
-         endingLineNumber = "57"
-         landmarkName = "-getItemJsonAndSegueIdentifier:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Demo/UIViewController+SegueActiveModel.m"
-         timestampString = "353320712.065673"
+         timestampString = "353498075.237346"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "58"
          endingLineNumber = "58"
+         landmarkName = "-getItemJsonAndSegueIdentifier:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/UIViewController+SegueActiveModel.m"
+         timestampString = "353498075.237346"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "59"
+         endingLineNumber = "59"
          landmarkName = "-getItemJsonAndSegueIdentifier:"
          landmarkType = "5">
       </FileBreakpoint>

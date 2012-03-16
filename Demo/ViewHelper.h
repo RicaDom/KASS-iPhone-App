@@ -44,6 +44,7 @@
 + (void)buildLogoutButton:(UIButton *)button;
 + (void)buildCheckBoxButton:(UIButton *)button;
 + (void)buildCheckBoxButtonUncheck:(UIButton *)button;
++ (void)buildProvideButton:(UIButton *)button;
 
 + (void)showErrorAlert:(NSString *)message:(id)delegate;
 + (void)showErrorMessageAlert:(NSDictionary *)errors:(id)delegate;

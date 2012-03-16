@@ -185,7 +185,7 @@
     UIImage* img = [UIImage imageNamed:UI_IMAGE_BROWSE_SEGMENT_DIVIDER];
     UIImage* tempImg = [UIImage imageNamed:UI_IMAGE_BROWSE_DATE];
     [self.browseSegment setDividerImage:img forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];    
-    self.browseSegment.frame = CGRectMake(0, self.browseSegment.frame.origin.y, tempImg.size.width*3+8, tempImg.size.height);
+    self.browseSegment.frame = CGRectMake(0, self.browseSegment.frame.origin.y, tempImg.size.width*3, tempImg.size.height);
   
     [self browseSegmentAction:self];    
     

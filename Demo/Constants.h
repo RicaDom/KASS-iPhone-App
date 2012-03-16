@@ -178,4 +178,7 @@ extern NSString * const UI_IMAGE_SETTING_LOGOUT_PRESS;
 extern NSString * const UI_IMAGE_CHECKBOX_CHECK;
 extern NSString * const UI_IMAGE_CHECKBOX_UNCHECK;
 
+extern NSString * const UI_IMAGE_PROVIDE;
+extern NSString * const UI_IMAGE_PROVIDE_PRESS;
+
 @end

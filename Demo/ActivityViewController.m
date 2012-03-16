@@ -212,7 +212,7 @@ NSMutableArray *currentItems;
     
     // navigation bar background color
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:UI_IMAGE_ACTIVITY_TITLE]];
+    // self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:UI_IMAGE_ACTIVITY_TITLE]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receivedFromOfferViewNotification:) 

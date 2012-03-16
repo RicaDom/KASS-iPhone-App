@@ -325,7 +325,7 @@
 {
   UIImage *mapImg = [UIImage imageNamed:UI_IMAGE_BROWSE_MAP];
   [button setImage:mapImg forState:UIControlStateNormal];
-  button.frame = CGRectMake(200, button.frame.origin.y, mapImg.size.width + 20, mapImg.size.height);
+  button.frame = CGRectMake(200, button.frame.origin.y, mapImg.size.width, mapImg.size.height);
 }
 
 + (void)buildBackButton:(UIButton *)button
@@ -451,6 +451,15 @@
     [button setImage:img forState:UIControlStateNormal];
     button.frame = CGRectMake(button.frame.origin.x, button.frame.origin.y, img.size.width, img.size.height);
     button.enabled = YES;
+}
+
++ (void)buildProvideButton:(UIButton *)button
+{
+    UIImage *img = [UIImage imageNamed:UI_IMAGE_PROVIDE];
+    UIImage *imgPress = [UIImage imageNamed:UI_IMAGE_PROVIDE_PRESS];
+    [button setImage:img forState:UIControlStateNormal];
+    [button setImage:imgPress forState:UIControlStateSelected];
+    button.frame = CGRectMake(button.frame.origin.x, button.frame.origin.y, img.size.width, img.size.height);
 }
 
 + (void)showErrorAlert:(NSString *)message:(id)delegate

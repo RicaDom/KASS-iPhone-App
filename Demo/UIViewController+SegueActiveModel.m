@@ -35,6 +35,7 @@
 
 - (void) kassAddToModelDict:(NSString *)controller:(NSDictionary *)model
 {
+  if (nil == model || nil == controller) {return;}
   DLog(@"UIViewController+SegueActiveModel::kassAddToModelDict:controller=%@", controller);
   [[self kassVS] addToModelDict:controller:model];
 }
