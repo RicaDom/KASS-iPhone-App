@@ -228,7 +228,7 @@
   [ka createListing:dict];
 }
 
-- (void)getAlertListings:(NSDictionary *)alertId
+- (void)getAlertListings:(NSString *)alertId
 {
   DLog(@"User::getAlertListings");
   KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getAlertListingsFinished:"];

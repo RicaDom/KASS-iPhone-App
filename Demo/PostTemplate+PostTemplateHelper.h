@@ -15,6 +15,6 @@
 - (void)initHJManagedImageView:(CGRect)frame;
 
 + (NSMutableArray *)getTemplatesByCategory:(NSArray *)dict:(NSString *)category;
-+ (void)buildTemplatesView:(IBOutlet AppScrollView *)templateView:(NSArray *)templates:(UIPageControl *)pageControl:(BOOL *)controllBeingUsed;
++ (void)buildTemplatesView:(AppScrollView *)templateView:(NSArray *)templates:(UIPageControl *)pageControl:(BOOL *)controllBeingUsed;
 
 @end

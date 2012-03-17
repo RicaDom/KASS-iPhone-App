@@ -122,7 +122,7 @@
     }		
 }
 
-- (void)updateFrameView:(IBOutlet AppScrollView *)scrollView:(UIPageControl *)pageControl:(BOOL *)controlBeingUsed
+- (void)updateFrameView:(AppScrollView *)scrollView:(UIPageControl *)pageControl:(BOOL *)controlBeingUsed
 {
   // Update the scroll view to the appropriate page
 	CGRect frame;

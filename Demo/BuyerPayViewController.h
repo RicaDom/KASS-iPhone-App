@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PullToRefreshView.h"
 #import "Offer.h"
 #import "AccountActivityDelegate.h"
 #import "Constants.h"
@@ -16,10 +15,9 @@
 #import "ViewHelper.h"
 #import "CustomImageViewPopup.h"
 
-@interface BuyerPayViewController : DataSourceViewController <UIScrollViewDelegate, PullToRefreshViewDelegate, AccountActivityDelegate>
+@interface BuyerPayViewController : DataSourceViewController <UIScrollViewDelegate, AccountActivityDelegate>
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (strong, nonatomic) PullToRefreshView *pull;
 @property (strong, nonatomic) Offer *currentOffer;
 @property (strong, nonatomic) IBOutlet UILabel *listingTitle;
 @property (strong, nonatomic) IBOutlet UILabel *offerPrice;

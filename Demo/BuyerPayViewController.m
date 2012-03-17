@@ -10,12 +10,12 @@
 #import "UIViewController+ActivityIndicate.h"
 #import "UIResponder+VariableStore.h"
 #import "UIViewController+SegueActiveModel.h"
+#import "UIViewController+ScrollViewRefreshPuller.h"
 #import "ViewHelper.h"
 
 @implementation BuyerPayViewController
 
 @synthesize scrollView = _scrollView;
-@synthesize pull = _pull;
 @synthesize currentOffer = _currentOffer;
 @synthesize listingTitle = _listingTitle;
 @synthesize offerPrice = _offerPrice;
@@ -50,11 +50,6 @@ NSString *popUpSuccessfulViewFlag;
     // Release any cached data, images, etc that aren't in use.
 }
 
--(void)stopLoading
-{
-	[self.pull finishedLoading];
-}
-
 - (void)populateData:(NSDictionary *)dict
 {
   NSDictionary *offer = [dict objectForKey:@"offer"];
@@ -74,7 +69,7 @@ NSString *popUpSuccessfulViewFlag;
 
 - (void)accountDidGetOffer:(NSDictionary *)dict
 {
-  DLog(@"BuyerPayViewController::accountDidGetOffer");  
+  DLog(@"BuyerPayViewController::accountDidGetOffer:dict=%@", dict);  
   [self populateData:dict];
 }
 
@@ -106,10 +101,6 @@ NSString *popUpSuccessfulViewFlag;
     // navigation bar background color
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
     
-    self.pull = [[PullToRefreshView alloc] initWithScrollView:self.scrollView];
-    [self.pull setDelegate:self];
-    [self.scrollView addSubview:self.pull];
-    
     [ViewHelper buildBackButton:self.leftButton];
     [ViewHelper buildMapButton:self.rightButton];
     [ViewHelper buildUserInfoButton:self.userInfoButton];
@@ -118,6 +109,8 @@ NSString *popUpSuccessfulViewFlag;
 -(void)viewWillAppear:(BOOL)animated
 {
     popUpSuccessfulViewFlag = [[self kassGetModelDict:@"offer"] objectForKey:OFFER_STATE_ACCEPTED];
+  // register for keyboard view slider
+  [self registerScrollViewRefreshPuller:self.scrollView];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -150,17 +143,24 @@ NSString *popUpSuccessfulViewFlag;
     // e.g. self.myOutlet = nil;
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+  [self unregisterScrollViewRefreshPuller];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-// called when the user pulls-to-refresh
-- (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view
-{
-    [self performSelector:@selector(loadDataSource) withObject:nil afterDelay:2.0];	
+/**
+ Scroll View Refresh Puller Delegate
+ */
+- (void)refreshing{
+  [self loadDataSource];
 }
+
 - (IBAction)leftButtonAction:(id)sender {
     [self dismissModalViewControllerAnimated:YES];   
 }

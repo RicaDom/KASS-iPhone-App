@@ -18,7 +18,7 @@
 + (NSString *)getTitleFromOfferMessage:(User *)user:(Offer *)offer:(Message *)message;
 
 // offers
-+ (void) buildOfferScrollView:(IBOutlet UIScrollView *)scrollView:(User *)user:(Offer *)offer;
++ (void) buildOfferScrollView:(UIScrollView *)scrollView:(User *)user:(Offer *)offer;
 + (void) buildOfferAcceptedCell:(Offer *)item:(ListingTableCell *)cell;
 + (void) buildOfferPendingCell:(Offer *)item:(ListingTableCell *)cell;
 + (void) buildOfferExpiredCell:(Offer *)item:(ListingTableCell *)cell;

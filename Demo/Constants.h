@@ -12,6 +12,7 @@
 
 #define _UIKeyboardFrameEndUserInfoKey (&UIKeyboardFrameEndUserInfoKey != NULL ? UIKeyboardFrameEndUserInfoKey : @"UIKeyboardBoundsUserInfoKey")
 
+#define REQUEST_TIMEOUT 10
 #define _ScrollViewContentSizeX 320 
 
 #define MAP_DISTANCE_LAT 3000

@@ -68,9 +68,8 @@
   labelAskPrice.textAlignment = UITextAlignmentCenter;
   [cell.infoView addSubview:labelAskPrice]; 
   
-  //TODO
   UILabel *labelExpiredDate = [[UILabel alloc] init];
-  [labelExpiredDate setText:@"XX 天到期"];
+  [labelExpiredDate setText:item.getTimeLeftTextlong];
   [labelExpiredDate setTextColor:[UIColor brownColor]];
   labelExpiredDate.backgroundColor = [UIColor clearColor];
   labelExpiredDate.font = [UIFont boldSystemFontOfSize:13];
@@ -239,7 +238,7 @@
   [cell.infoView addSubview:labelYouOffered];
 }
 
-+ (UIView *)getOfferRow:(IBOutlet UIScrollView *)scrollView:(User *)user:(Offer *)offer:(CGFloat)yOffset:(Message *)message:(NSDateFormatter *)dateFormatter
++ (UIView *)getOfferRow:(UIScrollView *)scrollView:(User *)user:(Offer *)offer:(CGFloat)yOffset:(Message *)message:(NSDateFormatter *)dateFormatter
 {
   UIImage *userImg = [UIImage imageNamed:UI_IMAGE_MESSAGE_DEFAULT_USER];
   UIImageView *userImgView = [[UIImageView alloc] initWithImage:userImg];
@@ -286,7 +285,7 @@
   return diglogView;
 }
 
-+ (void) buildOfferScrollView:(IBOutlet UIScrollView *)scrollView:(User *)user:(Offer *)offer
++ (void) buildOfferScrollView:(UIScrollView *)scrollView:(User *)user:(Offer *)offer
 {
   CGFloat yOffset = 155;
   
