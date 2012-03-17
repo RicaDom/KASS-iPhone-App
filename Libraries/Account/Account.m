@@ -128,6 +128,7 @@
                   deviceToken, @"device_token",
                   nil];
   }
+  DLog(@"Account::login:userInfo=%@", userInfo);
   KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"loginFinished:"];
   [ka login:userInfo];
 }

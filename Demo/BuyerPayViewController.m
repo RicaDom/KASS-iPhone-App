@@ -12,6 +12,7 @@
 #import "UIViewController+SegueActiveModel.h"
 #import "UIViewController+ScrollViewRefreshPuller.h"
 #import "ViewHelper.h"
+#import "Offer+OfferHelper.h"
 
 @implementation BuyerPayViewController
 
@@ -61,9 +62,10 @@ NSString *popUpSuccessfulViewFlag;
   
   self.listingTitle.text = self.currentOffer.title;
   self.descriptionTextField.text = self.currentOffer.description;
+  self.listingExpiredDate.text = [self.currentOffer getListItemTimeLeftTextlong];
   
   if (self.currentOffer.price) {
-    self.offerPrice.text = [self.currentOffer.price stringValue];
+    self.offerPrice.text = [self.currentOffer getPriceText];
   }
 }
 

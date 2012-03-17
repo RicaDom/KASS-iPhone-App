@@ -25,10 +25,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  DLog(@"AppDelegate::didFinishLaunchingWithOptions:rootViewController=%@", self.window.rootViewController);
+  DLog(@"AppDelegate::didFinishLaunchingWithOptions:rootViewController=%@,options=%@", self.window.rootViewController, launchOptions);
   
   if (launchOptions != nil)
 	{
+    NSURL *url = [launchOptions objectForKey:UIApplicationLaunchOptionsURLKey];
+    if(url) // the app was launched from a URL, so we might as well hand this off
+    {
+      return [self application:application handleOpenURL:url];
+    }
+    
 		NSDictionary* dictionary = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
 		if (dictionary != nil)
 		{
@@ -82,37 +88,37 @@
   [VariableStore.sharedInstance storeSettings:dict];
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-  DLog(@"AppDelegate::applicationWillResignActive");
-  
-}
+//- (void)applicationWillResignActive:(UIApplication *)application
+//{
+//  DLog(@"AppDelegate::applicationWillResignActive");
+//  
+//}
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-  DLog(@"AppDelegate::applicationDidEnterBackground");
-  bgTask = [application beginBackgroundTaskWithExpirationHandler:^{
-    // Clean up any unfinished task business by marking where you.
-    // stopped or ending the task outright.
-    [application endBackgroundTask:bgTask];
-    bgTask = UIBackgroundTaskInvalid;
-  }];
-  
-  // Start the long-running task and return immediately.
-  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-    
-    // Do the work associated with the task, preferably in chunks.
-    
-    [application endBackgroundTask:bgTask];
-    bgTask = UIBackgroundTaskInvalid;
-  });
-}
+//- (void)applicationDidEnterBackground:(UIApplication *)application
+//{
+//  DLog(@"AppDelegate::applicationDidEnterBackground");
+//  bgTask = [application beginBackgroundTaskWithExpirationHandler:^{
+//    // Clean up any unfinished task business by marking where you.
+//    // stopped or ending the task outright.
+//    [application endBackgroundTask:bgTask];
+//    bgTask = UIBackgroundTaskInvalid;
+//  }];
+//  
+//  // Start the long-running task and return immediately.
+//  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//    
+//    // Do the work associated with the task, preferably in chunks.
+//    
+//    [application endBackgroundTask:bgTask];
+//    bgTask = UIBackgroundTaskInvalid;
+//  });
+//}
 
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-  DLog(@"AppDelegate::applicationWillEnterForeground");
-  
-}
+//- (void)applicationWillEnterForeground:(UIApplication *)application
+//{
+//  DLog(@"AppDelegate::applicationWillEnterForeground");
+//  
+//}
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
@@ -123,28 +129,28 @@
 	return TRUE;
 }
 
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-{
-  //MainTabBarViewController *viewController = (MainTabBarViewController *) self.window.rootViewController;
-  DLog(@"AppDelegate::openURL:url=%@", url);
-  DLog(@"AppDelegate::openURL:weibo=%@", [VariableStore sharedInstance].user.weibo);
-  if( [[VariableStore sharedInstance].user.weibo handleOpenURL:url] )
-		return TRUE;
-	return TRUE;
-}
+//- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+//{
+//  //MainTabBarViewController *viewController = (MainTabBarViewController *) self.window.rootViewController;
+//  DLog(@"AppDelegate::openURL:url=%@", url);
+//  DLog(@"AppDelegate::openURL:weibo=%@", [VariableStore sharedInstance].user.weibo);
+//  if( [[VariableStore sharedInstance].user.weibo handleOpenURL:url] )
+//		return TRUE;
+//	return TRUE;
+//}
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
   DLog(@"AppDelegate::applicationDidBecomeActive");
 }
-
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-    /*
-     Called when the application is about to terminate.
-     Save data if appropriate.
-     See also applicationDidEnterBackground:.
-     */
-} 
+//
+//- (void)applicationWillTerminate:(UIApplication *)application
+//{
+//    /*
+//     Called when the application is about to terminate.
+//     Save data if appropriate.
+//     See also applicationDidEnterBackground:.
+//     */
+//} 
 
 @end
