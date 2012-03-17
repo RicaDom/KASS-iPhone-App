@@ -309,7 +309,7 @@
   [self getData:_url];
 }
 
-- (void)getAlertListings:(NSDictionary *)modelId
+- (void)getAlertListings:(NSString *)modelId
 {
   _url = [NSString stringWithFormat:@"http://%s/v1/alerts/%@/listings", HOST, modelId];
   [self getData:_url];

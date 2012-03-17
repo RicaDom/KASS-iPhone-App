@@ -68,9 +68,8 @@
   labelAskPrice.textAlignment = UITextAlignmentCenter;
   [cell.infoView addSubview:labelAskPrice]; 
   
-  //TODO
   UILabel *labelExpiredDate = [[UILabel alloc] init];
-  [labelExpiredDate setText:@"XX 天到期"];
+  [labelExpiredDate setText:item.getTimeLeftTextlong];
   [labelExpiredDate setTextColor:[UIColor brownColor]];
   labelExpiredDate.backgroundColor = [UIColor clearColor];
   labelExpiredDate.font = [UIFont boldSystemFontOfSize:13];

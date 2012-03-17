@@ -37,7 +37,7 @@
 - (void)postData:(NSString *)url:(NSDictionary *)dict;
 - (void)getData:(NSString *)url;
 
-- (void)getAlertListings:(NSDictionary *)modelId;
+- (void)getAlertListings:(NSString *)modelId;
 - (void)createAlert:(NSDictionary *)dict;
 - (void)modifyAlert:(NSDictionary *)dict:(NSString *)modelId;
 - (void)deleteAlert:(NSString *)modelId;
