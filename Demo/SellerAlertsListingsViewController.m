@@ -1,21 +1,17 @@
 //
-//  SellerAlertsViewController.m
-//  Demo
+//  SellerAlertsListingsViewController.m
+//  kass
 //
-//  Created by Wesley Wang on 3/15/12.
+//  Created by Wesley Wang on 3/17/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SellerAlertsViewController.h"
-#import "UIResponder+VariableStore.h"
 #import "SellerAlertsListingsViewController.h"
+#import "UIResponder+VariableStore.h"
 
-@implementation SellerAlertsViewController
-@synthesize rightButton = _rightButton;
-@synthesize leftButton = _leftButton;
-@synthesize alertsTableView = _alertsTableView;
+@implementation SellerAlertsListingsViewController
 
-NSArray *alerts;
+@synthesize alertId = _alertId;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,22 +30,11 @@ NSArray *alerts;
     // Release any cached data, images, etc that aren't in use.
 }
 
-- (void)customViewLoad
+- (void)loadAlertListings
 {
-    // navigation bar background color
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
-    [ViewHelper buildBackButton:self.leftButton];
-    [ViewHelper buildEditButton:self.rightButton];
-}
-
-- (void)accountDidGetAlerts:(NSDictionary *)dict;
-{
-    DLog(@"SellerAlertsViewController::accountDidGetAlerts:dict%@", dict);
-    
-    alerts = [dict objectForKey:@"alerts"];
-    
-    DLog(@"- %@ %d",  alerts, [alerts count]);
-    [self.alertsTableView reloadData];
+    if (self.alertId.length > 0) {
+        // self.currentUser getAlertListings:<#(NSDictionary *)#>
+    }
 }
 
 #pragma mark - View lifecycle
@@ -61,20 +46,15 @@ NSArray *alerts;
 }
 */
 
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self customViewLoad];
-    [self.currentUser getAlerts];
+    [self loadAlertListings];
 }
 
 - (void)viewDidUnload
 {
-    [self setLeftButton:nil];
-    [self setRightButton:nil];
-    [self setAlertsTableView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -101,20 +81,20 @@ NSArray *alerts;
 	 If the requesting table view is the search display controller's table view, return the count of
      the filtered list, otherwise return the count of the main list.
 	 */
-    return alerts.count;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"myAlertTableCell";
+    static NSString *CellIdentifier = @"myAlertListingsTableCell";
     UITableViewCell *cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-
+    
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-
-    cell.textLabel.text = [[alerts objectAtIndex:indexPath.row] objectForKey:@"query"];
+    
+    //cell.textLabel.text = [[alerts objectAtIndex:indexPath.row] objectForKey:@"query"];
     return cell;
 }
 
@@ -125,17 +105,5 @@ NSArray *alerts;
     [self performSegueWithIdentifier:@"SellerAlertsToListingsView" sender:self];
 }
 
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    DLog(@"SellerAlertsViewController::prepareForSegue");
-    SellerAlertsListingsViewController *lc = segue.destinationViewController;    
-    lc.alertId = [[alerts objectAtIndex:self.alertsTableView.indexPathForSelectedRow.row] objectForKey:@"id"];
-    DLog(@"SellerAlertsViewController Segue Data: %@", lc.alertId);
-}
 
-- (IBAction)leftButtonAction:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
-}
-
-- (IBAction)rightButtonAction:(id)sender {
-}
 @end

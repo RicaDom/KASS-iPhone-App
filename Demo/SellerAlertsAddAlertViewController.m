@@ -84,7 +84,7 @@
 - (void)accountDidCreateAlert:(NSDictionary *)dict
 {
     NSLog(@"Account: %@", dict);
-    //TODO
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)AddAlertAction:(id)sender {
@@ -92,11 +92,12 @@
     NSString *latlng = [NSString stringWithFormat:@"%+.6f,%+.6f", 
                         VariableStore.sharedInstance.location.coordinate.latitude, 
                         VariableStore.sharedInstance.location.coordinate.longitude]; 
+
     [[VariableStore sharedInstance] clearCurrentAddAlert];
     
     NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
     
-    [params setObject:@"Default" forKey:@"category_ids"];
+    [params setObject:@"" forKey:@"category_ids"];
     [params setObject:self.radiusLabel.text forKey:@"radius"];
     [params setObject:self.whatLabel.text forKey:@"query"];
     [params setObject:latlng forKey:@"latlng"];
@@ -104,9 +105,6 @@
     DLog(@"params = %@", params);
     
     [self.currentUser createAlert:params];
-    //[self.currentUser createAlert:params];
-        
-    //[self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)leftButtonAction:(id)sender {
     [[VariableStore sharedInstance] clearCurrentAddAlert];

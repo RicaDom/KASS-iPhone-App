@@ -58,7 +58,6 @@
 		7755633F1512FE9E00074AC0 /* Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7755633E1512FE9E00074AC0 /* Alert.m */; };
 		775563421512FF1700074AC0 /* choice_144.png in Resources */ = {isa = PBXBuildFile; fileRef = 775563401512FF1700074AC0 /* choice_144.png */; };
 		775563431512FF1700074AC0 /* choice_146.png in Resources */ = {isa = PBXBuildFile; fileRef = 775563411512FF1700074AC0 /* choice_146.png */; };
-		775563461513394100074AC0 /* ProvideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 775563451513394100074AC0 /* ProvideViewController.m */; };
 		7755634815133C0E00074AC0 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7755634715133C0E00074AC0 /* Default@2x.png */; };
 		7755634E151355D700074AC0 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7755634D151355D600074AC0 /* logo.png */; };
 		77556350151355E000074AC0 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7755634F151355E000074AC0 /* logo@2x.png */; };
@@ -199,6 +198,7 @@
 		E5299FA6150C48C100E73D75 /* buyer-2_03.png in Resources */ = {isa = PBXBuildFile; fileRef = E5299FA5150C48C100E73D75 /* buyer-2_03.png */; };
 		E5299FAB150CACA000E73D75 /* startbg.png in Resources */ = {isa = PBXBuildFile; fileRef = E5299FAA150CACA000E73D75 /* startbg.png */; };
 		E5299FB4150CC00C00E73D75 /* backarrow_03.png in Resources */ = {isa = PBXBuildFile; fileRef = E5299FB3150CC00C00E73D75 /* backarrow_03.png */; };
+		E53741481514DBA1008AB941 /* SellerAlertsListingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E53741471514DBA1008AB941 /* SellerAlertsListingsViewController.m */; };
 		E53C868914E2923300A01D6F /* PullToRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = E53C868814E2923300A01D6F /* PullToRefreshView.m */; };
 		E549D80B150DD13D00AAA840 /* xiugai_15.png in Resources */ = {isa = PBXBuildFile; fileRef = E549D809150DD13D00AAA840 /* xiugai_15.png */; };
 		E549D80C150DD13D00AAA840 /* xiugai_30.png in Resources */ = {isa = PBXBuildFile; fileRef = E549D80A150DD13D00AAA840 /* xiugai_30.png */; };
@@ -668,6 +668,8 @@
 		E5299FA5150C48C100E73D75 /* buyer-2_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buyer-2_03.png"; sourceTree = "<group>"; };
 		E5299FAA150CACA000E73D75 /* startbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = startbg.png; sourceTree = "<group>"; };
 		E5299FB3150CC00C00E73D75 /* backarrow_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backarrow_03.png; sourceTree = "<group>"; };
+		E53741461514DBA0008AB941 /* SellerAlertsListingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellerAlertsListingsViewController.h; sourceTree = "<group>"; };
+		E53741471514DBA1008AB941 /* SellerAlertsListingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellerAlertsListingsViewController.m; sourceTree = "<group>"; };
 		E53C868714E2923300A01D6F /* PullToRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullToRefreshView.h; sourceTree = "<group>"; };
 		E53C868814E2923300A01D6F /* PullToRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullToRefreshView.m; sourceTree = "<group>"; };
 		E549D809150DD13D00AAA840 /* xiugai_15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xiugai_15.png; sourceTree = "<group>"; };
@@ -1054,6 +1056,8 @@
 				775563351512FE4B00074AC0 /* SellerAlertsAddAlertWhatViewController.m */,
 				775563361512FE4B00074AC0 /* SellerAlertsViewController.h */,
 				775563371512FE4B00074AC0 /* SellerAlertsViewController.m */,
+				E53741461514DBA0008AB941 /* SellerAlertsListingsViewController.h */,
+				E53741471514DBA1008AB941 /* SellerAlertsListingsViewController.m */,
 			);
 			name = SellerAlertControllers;
 			sourceTree = "<group>";
@@ -2241,6 +2245,7 @@
 				7755633C1512FE4B00074AC0 /* SellerAlertsViewController.m in Sources */,
 				7755633F1512FE9E00074AC0 /* Alert.m in Sources */,
 				E524E666151428D7008D7194 /* ProvideViewController.m in Sources */,
+				E53741481514DBA1008AB941 /* SellerAlertsListingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "ViewHelper.h"
 
-@interface SellerAlertsViewController : UIViewController
+@interface SellerAlertsViewController : UIViewController <AccountActivityDelegate>
 @property (strong, nonatomic) IBOutlet UIButton *rightButton;
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
+@property (strong, nonatomic) IBOutlet UITableView *alertsTableView;
 - (IBAction)leftButtonAction:(id)sender;
 - (IBAction)rightButtonAction:(id)sender;
 

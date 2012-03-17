@@ -29,7 +29,6 @@
 - (void)accountDidModifyAlert:(NSDictionary *)dict;
 - (void)accountDidDeleteAlert;
 - (void)accountDidGetAlerts:(NSDictionary *)dict;
-- (void)accountDidGetAlertListings:(NSDictionary *)dict;
 
 - (void)accountRequestFailed:(NSDictionary *)errors;
 - (void)accountRequestStarted;
