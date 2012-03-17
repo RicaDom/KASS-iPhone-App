@@ -21,7 +21,7 @@
   return templates;
 }
 
-+ (void)buildTemplatesView:(IBOutlet AppScrollView *)templateView:(NSArray *)templates:(UIPageControl *)pageControl:(BOOL *)controlBeingUsed
++ (void)buildTemplatesView:(AppScrollView *)templateView:(NSArray *)templates:(UIPageControl *)pageControl:(BOOL *)controlBeingUsed
 {
   int counter = 0;
   CGRect frame;

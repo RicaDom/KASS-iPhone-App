@@ -14,10 +14,10 @@
 - (void)showKeyboardAndMoveViewUp;
 - (void)hideKeyboardAndMoveViewDown;
 
-- (BOOL)registerKeyboardSliderWithConfirmView:(IBOutlet UIView *)mainView:(IBOutlet UIScrollView *)scrollView:(IBOutlet UIView *)bottomView:(UIView *)confirmView;
+- (BOOL)registerKeyboardSliderWithConfirmView:(UIView *)mainView:(UIScrollView *)scrollView:(UIView *)bottomView:(UIView *)confirmView;
 
-- (BOOL)registerKeyboardSlider:(IBOutlet UIView *)mainView:(IBOutlet UIScrollView *)scrollView
-                              :(IBOutlet UIView *)bottomView;
+- (BOOL)registerKeyboardSlider:(UIView *)mainView:(UIScrollView *)scrollView
+                              :(UIView *)bottomView;
 
 - (BOOL)registerKeyboardSliderRect:(CGRect)keyboardRect;
 - (BOOL)registerKeyboardSliderTextView:(UITextView *)textView;
