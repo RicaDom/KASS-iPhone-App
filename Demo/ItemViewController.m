@@ -55,11 +55,16 @@
   self.descriptionTextField.text = self.currentItem.description;
   self.itemPrice.text = [self.currentItem getPriceText];
   self.itemExpiredDate.text = [self.currentItem getTimeLeftTextlong];
+
+  if (self.currentItem.acceptedOffer) {
+    NSString *msg = [[NSString alloc] initWithFormat:@"您的此需求已经以￥%@成交了！", self.currentItem.askPrice];
+    [ViewHelper showErrorAlert:msg:self];
+  }else{
+    self.offers = [[Offers alloc] initWithDictionary:listing].offers;
+    self.offersCount.text = [NSString stringWithFormat:@"%d",[self.offers count]] ;
+    [self.offerTableView reloadData];
+  }
   
-  self.offers = [[Offers alloc] initWithDictionary:listing].offers;
-  self.offersCount.text = [NSString stringWithFormat:@"%d",[self.offers count]] ;
-  [self.offerTableView reloadData];
- 
   [self hideIndicator];
   [self doneLoadingTableViewData];
 }

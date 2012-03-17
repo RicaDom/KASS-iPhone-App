@@ -239,7 +239,7 @@
   [cell.infoView addSubview:labelYouOffered];
 }
 
-+ (UIView *)getOfferRow:(IBOutlet UIScrollView *)scrollView:(User *)user:(Offer *)offer:(CGFloat)yOffset:(Message *)message:(NSDateFormatter *)dateFormatter
++ (UIView *)getOfferRow:(UIScrollView *)scrollView:(User *)user:(Offer *)offer:(CGFloat)yOffset:(Message *)message:(NSDateFormatter *)dateFormatter
 {
   UIImage *userImg = [UIImage imageNamed:UI_IMAGE_MESSAGE_DEFAULT_USER];
   UIImageView *userImgView = [[UIImageView alloc] initWithImage:userImg];
@@ -286,7 +286,7 @@
   return diglogView;
 }
 
-+ (void) buildOfferScrollView:(IBOutlet UIScrollView *)scrollView:(User *)user:(Offer *)offer
++ (void) buildOfferScrollView:(UIScrollView *)scrollView:(User *)user:(Offer *)offer
 {
   CGFloat yOffset = 155;
   

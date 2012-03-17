@@ -21,6 +21,7 @@
 #define ALog(...) NSLog(__VA_ARGS__)
 
 # define RUBY_DATETIME_FORMAT @"yyyy-MM-dd'T'HH:mm:ssZ"
+# define STAGING_SERVER @"vm-192-168-14-188.shengyun.grandcloud.cn"
 
 #ifdef DEBUG 
 #    define HOST "192.168.1.134:3000"

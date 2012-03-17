@@ -70,6 +70,7 @@
   [request setCompletionBlock:^{ [kassSelf requestFinished:request]; }];
   [request setFailedBlock:^{[kassSelf requestFailed:request];}];
   [request setRequestMethod:@"PUT"];
+  [request setTimeOutSeconds:REQUEST_TIMEOUT];
   for (id key in dict){
     [request setPostValue:[dict objectForKey:key] forKey:key];
   }
@@ -85,6 +86,7 @@
   [request setFailedBlock:^{[kassSelf requestFailed:request];}];
   [request setRequestMethod:@"POST"];
   [request addRequestHeader:@"Content-Type" value:@"application/json"];
+  [request setTimeOutSeconds:REQUEST_TIMEOUT];
   for (id key in dict){
     [request setPostValue:[dict objectForKey:key] forKey:key];
   }
@@ -98,6 +100,7 @@
   __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
   [request setCompletionBlock:^{ [kassSelf requestFinished:request]; }];
   [request setFailedBlock:^{[kassSelf requestFailed:request];}];  
+  [request setTimeOutSeconds:REQUEST_TIMEOUT];
   [request startAsynchronous];
   DLog(@"KassApi::getData::startAsynchronous=%@", url);
 }
@@ -109,6 +112,7 @@
   [request setCompletionBlock:^{ [kassSelf requestFinished:request]; }];
   [request setFailedBlock:^{[kassSelf requestFailed:request];}]; 
   [request setRequestMethod:@"DELETE"]; 
+  [request setTimeOutSeconds:REQUEST_TIMEOUT];
   [request startAsynchronous];
   DLog(@"KassApi::deleteData::startAsynchronous=%@", url);
 }
@@ -121,6 +125,7 @@
   [request setFailedBlock:^{[kassSelf requestFailed:request];}];
   [request setRequestMethod:@"DELETE"];
   [request setPostValue:token forKey:@"device_token"];
+  [request setTimeOutSeconds:REQUEST_TIMEOUT];
   [request startAsynchronous];
   DLog(@"KassApi::deleteDataWithToken::startAsynchronous=%@token=%@", url, token);
 }
@@ -139,6 +144,7 @@
   [request setCompletionBlock:^{ [kassSelf requestFinished:request]; }];
   [request setFailedBlock:^{[kassSelf requestFailed:request];}];
   [request setRequestMethod:@"DELETE"];
+  [request setTimeOutSeconds:REQUEST_TIMEOUT];
   [request startAsynchronous];
   DLog(@"KassApi::deleteData::startAsynchronous=%@", url);
 }
@@ -393,6 +399,7 @@
 { 
   DLog(@"Request Data Url = %@", url);
   ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+  [request setTimeOutSeconds:20];
   [request startSynchronous];
   NSError *error = [request error];
   if (!error) {
