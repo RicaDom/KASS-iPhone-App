@@ -19,7 +19,7 @@
 @property (nonatomic,retain,readonly) NSString* email;
 @property (nonatomic,retain,readonly) NSString* encode;
 @property (nonatomic,retain,readonly) NSString* phone;
-@property NSInteger iphone_token_present;
+@property (nonatomic,retain,readonly) NSArray* devices;
 
 - (id)initWithDictionary:(NSDictionary *)dict;
 - (id)initWithEmailAndPassword:(NSString*)email:(NSString *)password;

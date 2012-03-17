@@ -25,7 +25,7 @@
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-  
+  if ( ![self kassVS].modelJson ) { return; }
   UINavigationController *uvc = segue.destinationViewController;
   if ( [uvc isKindOfClass:UINavigationController.class]) {
     NSString *controllerName = NSStringFromClass(uvc.topViewController.class);

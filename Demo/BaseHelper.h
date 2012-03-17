@@ -11,5 +11,7 @@
 @interface BaseHelper : NSObject
 
 + (NSString *) getTimeFromNowText:(NSDate *)fromDate:(NSDate *)toDate;
++ (NSString*)stringFromDictionary:(NSDictionary*)info;
++ (NSString *)getKassEncrypted:(NSString *)str;
 
 @end

@@ -22,7 +22,6 @@
 @synthesize name = _name;
 @synthesize email = _email;
 @synthesize phone = _phone;
-@synthesize iphoneToken = _iphoneToken;
 
 - (id) initWithDelegate:(id<AccountActivityDelegate>)delegate
 {
@@ -34,19 +33,7 @@
 
 - (NSString*)stringFromDictionary:(NSDictionary*)info
 {
-	NSMutableArray* pairs = [NSMutableArray array];
-	
-	NSArray* keys = [info allKeys];
-	keys = [keys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
-	for (NSString* key in keys) 
-	{
-		if( ([[info objectForKey:key] isKindOfClass:[NSString class]]) == FALSE)
-			continue;
-		
-		[pairs addObject:[NSString stringWithFormat:@"%@=%@", key, [[info objectForKey:key]URLEncodedString]]];
-	}
-	
-	return [pairs componentsJoinedByString:@"&"];
+	return [BaseHelper stringFromDictionary:info];
 }
 
 // ########################### API ##############################
@@ -394,30 +381,30 @@
   
 }
 
-- (void)sendIphoneToken
-{
-  if (!_iphoneToken || [_iphoneToken isBlank]) { return; }
-  
-  NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                 _iphoneToken,@"apn_iphone_token",
-                                 _userId,@"apn_user_id",
-                                 @"AES",@"apn_signature_method",
-                                 [NSString stringWithFormat:@"%.0f",[[NSDate date]timeIntervalSince1970]],@"apn_timestamp",nil];
-	
-	NSString *keyString     = [NSString stringWithFormat:@"%@",KassSecretToken];
-  NSString *base64        = [self getEncryptedString:params:keyString];
-  NSDictionary *tokenInfo = [NSDictionary dictionaryWithObjectsAndKeys: base64, @"encode", nil];
-
-  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"sendIphoneTokenFinished:"];
-  [ka sendIphoneToken:tokenInfo];
-
-}
-
-- (void)sendIphoneTokenFinished:(NSData *)data
-{
-  NSDictionary *dict = [KassApi parseData:data];
-  DLog(@"User::sendIphoneTokenFinished:dict=%@", dict);
-}
+//- (void)sendIphoneToken
+//{
+//  if (!_iphoneToken || [_iphoneToken isBlank]) { return; }
+//  
+//  NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+//                                 _iphoneToken,@"apn_iphone_token",
+//                                 _userId,@"apn_user_id",
+//                                 @"AES",@"apn_signature_method",
+//                                 [NSString stringWithFormat:@"%.0f",[[NSDate date]timeIntervalSince1970]],@"apn_timestamp",nil];
+//	
+//	NSString *keyString     = [NSString stringWithFormat:@"%@",KassSecretToken];
+//  NSString *base64        = [self getEncryptedString:params:keyString];
+//  NSDictionary *tokenInfo = [NSDictionary dictionaryWithObjectsAndKeys: base64, @"encode", nil];
+//
+//  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"sendIphoneTokenFinished:"];
+//  [ka sendIphoneToken:tokenInfo];
+//
+//}
+//
+//- (void)sendIphoneTokenFinished:(NSData *)data
+//{
+//  NSDictionary *dict = [KassApi parseData:data];
+//  DLog(@"User::sendIphoneTokenFinished:dict=%@", dict);
+//}
 
 - (void) accountDidLogin
 {
@@ -427,13 +414,6 @@
   _name   = account.userName;
   _email  = account.email;
   _phone  = account.phone;
-  
-//  [self getPrivatePub];
-  
-  if ( account.iphone_token_present == 0) {
-    _iphoneToken = [[NSUserDefaults standardUserDefaults] stringForKey:KassAppIphoneTokenKey];
-    [self sendIphoneToken];
-  }
   
   if( [_delegate respondsToSelector:@selector(accountLoginFinished)] )
     [_delegate accountLoginFinished];
@@ -635,7 +615,6 @@
   self.name   = nil;
   self.email  = nil;
   self.phone  = nil;
-  self.iphoneToken = nil;
 }
 
 - (void)accountDidLogout

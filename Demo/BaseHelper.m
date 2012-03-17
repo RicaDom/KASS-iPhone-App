@@ -7,6 +7,11 @@
 //
 
 #import "BaseHelper.h"
+#import "WBConnect.h"
+#import "NSData+Crypto.h"
+#import "NSString+Crypto.h"
+#import "NSString+ModelHelper.h"
+#import "SFHFKeychainUtils.h"
 
 @implementation BaseHelper
 
@@ -25,6 +30,35 @@
   } else {
     return nil;
   }
+}
+
++ (NSString *)stringFromDictionary:(NSDictionary*)info
+{
+  NSMutableArray* pairs = [NSMutableArray array];
+	
+	NSArray* keys = [info allKeys];
+	keys = [keys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+	for (NSString* key in keys) 
+	{
+		if( ([[info objectForKey:key] isKindOfClass:[NSString class]]) == FALSE)
+			continue;
+		
+		[pairs addObject:[NSString stringWithFormat:@"%@=%@", key, [[info objectForKey:key]URLEncodedString]]];
+	}
+	
+	return [pairs componentsJoinedByString:@"&"];
+}
+
++ (NSString *)getKassEncrypted:(NSString *)baseString
+{
+  NSString* keyString = [NSString stringWithFormat:@"%@",KassSecretToken];
+
+  NSData              *plain = [baseString dataUsingEncoding: NSUTF8StringEncoding];
+  NSData              *key = [NSData dataWithBytes: [[keyString sha256] bytes] length: kCCKeySizeAES128];
+  NSData              *cipher = [plain aesEncryptedDataWithKey: key];
+  NSString            *base64 = [cipher base64Encoding];
+  
+  return base64;
 }
 
 @end

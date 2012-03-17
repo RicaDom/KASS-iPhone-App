@@ -13,9 +13,30 @@
 
 @synthesize window    = _window;
 
+- (void)performByNotification:(NSDictionary *)notification
+{
+  // Depending on the notification, go to different controller
+  NSDictionary *params = [notification objectForKey:@"custom"];
+  NSString *type = [params objectForKey:@"e"];
+  NSString *dbId = [params objectForKey:@"i"];
+  
+  DLog(@"Notification type=%@, dbId=%@", type, dbId);
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   DLog(@"AppDelegate::didFinishLaunchingWithOptions:rootViewController=%@", self.window.rootViewController);
+  
+  if (launchOptions != nil)
+	{
+		NSDictionary* dictionary = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+		if (dictionary != nil)
+		{
+			DLog(@"Launched from push notification: %@", dictionary);
+      [self performByNotification:dictionary];
+		}
+	}
+  
   [VariableStore.sharedInstance loadAndStoreSettings:self];
   DLog(@"AppDelegate::doneLoading");
   
@@ -43,9 +64,21 @@
 	[[NSUserDefaults standardUserDefaults] setValue:@"dc348da7e9e52a6c632243f4a26c04e889b5ef59aab5e715e22923f5f9ae9510" forKey:KassAppIphoneTokenKey];    
 }
 
+- (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)notification
+{
+	NSLog(@"AppDelegate::didReceiveRemoteNotification: %@", notification);
+	[self performByNotification:notification];
+}
+
+
+
+
+////////////////////////////////////////////////////////////////
+
+
 - (void)settingsDidLoad:(NSDictionary *)dict
 {
-  DLog(@"AppDelegate::settingsDidLoad:dict");
+  DLog(@"AppDelegate::settingsDidLoad:dict=%@", dict);
   [VariableStore.sharedInstance storeSettings:dict];
 }
 
