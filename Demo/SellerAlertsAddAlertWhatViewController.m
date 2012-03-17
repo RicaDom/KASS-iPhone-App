@@ -16,7 +16,8 @@
 NSArray *alertKeyWords;
 - (void)loadSamepleData
 {
-    alertKeyWords = [NSArray arrayWithObjects:@"Everything", @"Accounting", @"Audio", @"Babysitting", nil];
+    DLog(@"SellerAlertsAddAlertWhatViewController::AlertKeywords: %@", [VariableStore sharedInstance].settings.alertKeywordsArray);
+    alertKeyWords = [VariableStore sharedInstance].settings.alertKeywordsArray;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

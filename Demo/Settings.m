@@ -16,6 +16,7 @@
 @synthesize messageTypesDict = _messageTypesDict;
 @synthesize weiboShareDict = _weiboShareDict;
 @synthesize siteDict = _siteDict;
+@synthesize alertKeywordsArray = _alertKeywordsArray;
 
 - (id) initWithDictionary:(NSDictionary *)dict
 {
@@ -41,6 +42,7 @@
     self.messageTypesDict  = [settings objectForKey:@"message_types"];
     self.weiboShareDict    = [settings objectForKey:@"weibo"];
     self.siteDict          = [settings objectForKey:@"site"];
+    self.alertKeywordsArray = [settings objectForKey:@"alert_keywords"];
   }
   return self;
 }
