@@ -66,8 +66,8 @@
 // we need to locate user position before getting data
 - (void)loadDataSource {
   DLog(@"BrowseTableViewController::loadDataSource");
-  [self showLoadingIndicator];
-  if (!location) {
+  if (!location && !_locating) {
+    [self showLoadingIndicator];
     [self locateMe];
   }else{
     [self populateData];
@@ -143,7 +143,7 @@
 {
   DLog(@"BrowseTableViewController::locateMeFinished ");
   location = VariableStore.sharedInstance.location;
-  
+  _locating = FALSE;
   [self populateData];
 
 }
@@ -310,6 +310,7 @@
 //}
 
 - (void)locateMe {
+  _locating = TRUE;
   VariableStore.sharedInstance.locateMeManager.delegate = self;
   [VariableStore.sharedInstance.locateMeManager locateMe];
 }

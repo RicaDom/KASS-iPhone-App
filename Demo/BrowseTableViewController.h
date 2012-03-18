@@ -22,6 +22,7 @@
 	NSDictionary *transferJson;
   BOOL _searching;
   CLLocation *location;
+  BOOL _locating;
 }
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *browseSegment;
