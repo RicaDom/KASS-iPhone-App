@@ -15,7 +15,7 @@
 
 - (void) showLoadingIndicator
 {
-  [self showIndicator:@"Loading..."];
+  [self showIndicator:@"加载中..."];
 }
 
 - (void) showIndicator:(NSString *)msg
@@ -59,7 +59,7 @@
 - (void)viewDidLoad
 {
 // this was to make sure that the indicator hides when it should
-  DLog(@"UIViewController (ActivityIndicate)::viewDidLoad:delegate=%@", self);
+//  DLog(@"UIViewController (ActivityIndicate)::viewDidLoad:delegate=%@", self.class);
   if( [self kassVS] && [[self kassVS] isLoggedIn ] )
     [self currentUser].delegate = self;
 }
