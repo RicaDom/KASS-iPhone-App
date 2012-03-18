@@ -494,20 +494,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/UserInfoViewController.m"
-         timestampString = "353751478.286525"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "102"
-         endingLineNumber = "102"
-         landmarkName = "-viewDidAppear:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Demo/UserInfoViewController.m"
-         timestampString = "353751478.286525"
+         timestampString = "353753818.366421"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "100"
@@ -520,11 +507,24 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/UserInfoViewController.m"
-         timestampString = "353751478.286525"
+         timestampString = "353753818.366421"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "91"
-         endingLineNumber = "91"
+         startingLineNumber = "98"
+         endingLineNumber = "98"
+         landmarkName = "-viewDidAppear:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Demo/UserInfoViewController.m"
+         timestampString = "353753818.366421"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "89"
+         endingLineNumber = "89"
          landmarkName = "-appDidGetMember:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -533,11 +533,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/UserInfoViewController.m"
-         timestampString = "353751478.286525"
+         timestampString = "353753818.366421"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "90"
-         endingLineNumber = "90"
+         startingLineNumber = "88"
+         endingLineNumber = "88"
          landmarkName = "-appDidGetMember:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -546,11 +546,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/UserInfoViewController.m"
-         timestampString = "353751478.286525"
+         timestampString = "353753818.366421"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "87"
-         endingLineNumber = "87"
+         startingLineNumber = "85"
+         endingLineNumber = "85"
          landmarkName = "-appDidGetMember:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -559,11 +559,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/UserInfoViewController.m"
-         timestampString = "353751478.286525"
+         timestampString = "353753818.366421"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "80"
-         endingLineNumber = "80"
+         startingLineNumber = "79"
+         endingLineNumber = "79"
          landmarkName = "-appDidGetMember:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -572,11 +572,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/UserInfoViewController.m"
-         timestampString = "353751495.217301"
+         timestampString = "353753818.366421"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "78"
-         endingLineNumber = "78"
+         startingLineNumber = "77"
+         endingLineNumber = "77"
          landmarkName = "-appDidGetMember:"
          landmarkType = "5">
       </FileBreakpoint>

@@ -58,7 +58,7 @@
     } else {
         [ViewHelper buildLoginButton:self.rightButton];
         self.rightButton.tag = RIGHT_BAR_BUTTON_LOGIN;
-        self.welcomeMessageLabel.text = @"欢迎来到全世界最帅的KASS！！"; 
+        self.welcomeMessageLabel.text = @"欢迎来到街区！！"; 
     }
     [self hideIndicator];
 }
