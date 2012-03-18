@@ -415,11 +415,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/UIViewController+ActivityIndicate.m"
-         timestampString = "353580721.883969"
+         timestampString = "353785262.85912"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "89"
-         endingLineNumber = "89"
+         startingLineNumber = "55"
+         endingLineNumber = "55"
          landmarkName = "-viewWillAppear:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -429,11 +429,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/UIViewController+ActivityIndicate.m"
-         timestampString = "353580779.039686"
+         timestampString = "353785262.85912"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "90"
-         endingLineNumber = "90"
+         startingLineNumber = "56"
+         endingLineNumber = "56"
          landmarkName = "-viewWillAppear:"
          landmarkType = "5">
       </FileBreakpoint>
