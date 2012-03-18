@@ -13,7 +13,7 @@
 
 @interface LocateMeManager : NSObject
 
-@property (nonatomic,assign) id<LocateMeDelegate> delegate;
+@property (nonatomic,strong) id<LocateMeDelegate> delegate;
 
 - (CLLocation *)location;
 - (void)locateMe;

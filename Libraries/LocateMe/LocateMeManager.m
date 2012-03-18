@@ -53,8 +53,8 @@ static Boolean _locating;
 {
   DLog(@"LocateMeManager::locateFinished");
   _locating = false;
-  if( [_delegate respondsToSelector:@selector(locateMeFinished)] )
-    [_delegate locateMeFinished];
+  if( [self.delegate respondsToSelector:@selector(locateMeFinished)] )
+    [self.delegate locateMeFinished];
 }
 
 @end
