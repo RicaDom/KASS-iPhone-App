@@ -12,13 +12,18 @@
 
 @synthesize delegate = _delegate;
 
+static CLLocationManager *locationManager;
+static Boolean _locating;
+
 - (void)locateMe
 {
   DLog(@"LocateMeManager::locateMe");
   // Create the location manager if this object does not
   // already have one.
-  if (nil == locationManager)
+  if (nil == locationManager){
     locationManager = [[CLLocationManager alloc] init];
+    _locating = false;
+  }
   
   locationManager.delegate = self;
   locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
@@ -26,7 +31,12 @@
   // Set a movement threshold for new events.
   locationManager.distanceFilter = 50;
   
-  [locationManager startUpdatingLocation];
+  if (!_locating) {
+    _locating = true;
+    DLog(@"LocateMeManager::locateMe:locating");
+    [locationManager startUpdatingLocation];
+  }
+  
 }
 
 - (CLLocation *)location
@@ -42,6 +52,7 @@
 - (void)locateFinished
 {
   DLog(@"LocateMeManager::locateFinished");
+  _locating = false;
   if( [_delegate respondsToSelector:@selector(locateMeFinished)] )
     [_delegate locateMeFinished];
 }

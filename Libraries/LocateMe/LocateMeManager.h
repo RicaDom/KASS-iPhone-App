@@ -11,9 +11,7 @@
 #import "NSObject+LocateMe.h"
 #import "LocateMeDelegate.h"
 
-@interface LocateMeManager : NSObject{
-  CLLocationManager *locationManager;
-}
+@interface LocateMeManager : NSObject
 
 @property (nonatomic,assign) id<LocateMeDelegate> delegate;
 

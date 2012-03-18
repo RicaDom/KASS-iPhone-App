@@ -623,19 +623,6 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Libraries/LocateMe/LocateMeManager.m"
-         timestampString = "353759960.621332"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "29"
-         endingLineNumber = "29"
-         landmarkName = "-locateMe"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "Demo/SellerAlertsAddAlertLocationViewController.m"
          timestampString = "353761671.855804"
          startingColumnNumber = "9223372036854775807"
