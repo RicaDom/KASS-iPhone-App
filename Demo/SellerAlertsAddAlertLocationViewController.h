@@ -20,5 +20,6 @@
 - (IBAction)rightButtonAction:(id)sender;
 - (IBAction)leftButtonAction:(id)sender;
 - (IBAction)radiusValueChanged:(id)sender;
+@property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
 @end

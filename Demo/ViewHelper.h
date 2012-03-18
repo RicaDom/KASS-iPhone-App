@@ -49,5 +49,6 @@
 
 + (void)showErrorAlert:(NSString *)message:(id)delegate;
 + (void)showErrorMessageAlert:(NSDictionary *)errors:(id)delegate;
++ (void) buildMap:(MKMapView *)mapView:(CLLocation *)location;
 
 @end

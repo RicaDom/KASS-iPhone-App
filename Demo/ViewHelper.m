@@ -555,4 +555,18 @@
 
 }
 
+
++ (void) buildMap:(MKMapView *)mapView:(CLLocation *)location
+{
+  CLLocationCoordinate2D userCoordinate;
+  userCoordinate.latitude = location.coordinate.latitude;
+  userCoordinate.longitude = location.coordinate.longitude;
+  
+  MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userCoordinate ,MAP_DISTANCE_LAT, MAP_DISTANCE_LNG);
+  [mapView setRegion:region animated:YES];
+  mapView.scrollEnabled = YES;
+  mapView.zoomEnabled = YES;
+  
+}
+
 @end

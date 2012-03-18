@@ -14,6 +14,7 @@
 @synthesize radiusLabel;
 @synthesize leftButton;
 @synthesize rightButton;
+@synthesize mapView = _mapView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,6 +48,14 @@
 {
 }
 */
+
+- (void)viewWillAppear:(BOOL)animated
+{
+  [super viewWillAppear:animated];
+  if (VariableStore.sharedInstance.location) {
+    [ViewHelper buildMap:_mapView:VariableStore.sharedInstance.location];
+  }
+}
 
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.

@@ -8,6 +8,8 @@
 
 #import "SellerAlertsAddAlertViewController.h"
 #import "UIResponder+VariableStore.h"
+#import "ListingMapAnnotaion.h"
+#import "ListingImageAnnotationView.h"
 
 @implementation SellerAlertsAddAlertViewController
 
@@ -48,10 +50,10 @@
     self.radiusLabel.text = [VariableStore sharedInstance].currentAddAlert.radius;
 }
 
-
 - (void)locateMeFinished
 {
-    DLog(@"SellerAlertsAddAlertViewController::locateMeFinished ");
+  DLog(@"SellerAlertsAddAlertViewController::locateMeFinished ");
+  
 }
 
 - (void)locateMe {
