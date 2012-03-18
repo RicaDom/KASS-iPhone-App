@@ -21,6 +21,7 @@
 @interface BrowseTableViewController : UIViewController <UISearchDisplayDelegate, UISearchBarDelegate,LocateMeDelegate> {
 	NSDictionary *transferJson;
   BOOL _searching;
+  CLLocation *location;
 }
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *browseSegment;
@@ -33,8 +34,9 @@
 @property (strong, nonatomic) IBOutlet UIImageView *tableFooter;
 
 - (IBAction)browseSegmentAction:(id)sender;
-- (void)setupArray;
+- (void)loadDataSource;
 - (void)reloadTable;
 - (void)locateMe;
+- (void)populateData;
 
 @end

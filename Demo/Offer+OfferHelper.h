@@ -19,4 +19,6 @@
 + (NSMutableDictionary *) getParamsToModify:(NSInteger)price:(NSString *)message;
 + (NSMutableDictionary *) getParamsToCreate:(NSInteger)price:(NSString *)message:(ListItem *)listItem;
 
+- (HJManagedImageV *)getHJManagedImageView:(Message *)message:(CGRect)frame;
+
 @end

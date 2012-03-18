@@ -64,10 +64,14 @@
 }
 
 // we need to locate user position before getting data
-- (void)setupArray {
-  DLog(@"BrowseTableViewController::setupArray");
+- (void)loadDataSource {
+  DLog(@"BrowseTableViewController::loadDataSource");
   [self showLoadingIndicator];
-  [self locateMe];
+  if (!location) {
+    [self locateMe];
+  }else{
+    [self populateData];
+  }
 }
 
 /**
@@ -75,7 +79,7 @@
  */
 - (void)refreshing
 {
-  [self setupArray];
+  [self loadDataSource];
 }
 
 //- (id)initWithStyle:(UITableViewStyle)style
@@ -116,10 +120,8 @@
   [self reloadTable];
 }
 
-- (void)locateMeFinished
+- (void)populateData
 {
-  DLog(@"BrowseTableViewController::locateMeFinished ");
-  
   NSMutableDictionary * dictionary = [VariableStore.sharedInstance getDefaultCriteria];
   
   if ( self.isNearbyTabSelected ) {
@@ -135,6 +137,14 @@
     [[self kassApp] getListingsMostPrice:dictionary];
     
   }
+}
+
+- (void)locateMeFinished
+{
+  DLog(@"BrowseTableViewController::locateMeFinished ");
+  location = VariableStore.sharedInstance.location;
+  
+  [self populateData];
 
 }
 
@@ -159,7 +169,7 @@
     DLog(@"BrowseTableViewController::viewDidLoad ");
     _searching = FALSE;
     [super viewDidLoad];
-    [self setupArray];
+    [self loadDataSource];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receivedFromNOMessageNotification:) 
@@ -202,6 +212,7 @@
     //[self setTableView:nil];
     [self setTableFooter:nil];
     [super viewDidUnload];
+ 
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -321,7 +332,7 @@
     DLog(@"BrowseTableViewController::(IBAction)browseSegmentAction");
     if ( ![VariableStore sharedInstance].recentBrowseListings || 
        ![VariableStore sharedInstance].priceBrowseListings || ![VariableStore sharedInstance].nearBrowseListings) {
-      [self setupArray];
+      [self loadDataSource];
     }else{
       [self reloadTable]; //reload ui
     }

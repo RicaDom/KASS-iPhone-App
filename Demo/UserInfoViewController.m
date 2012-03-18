@@ -7,8 +7,15 @@
 //
 
 #import "UserInfoViewController.h"
+#import "UIViewController+ActivityIndicate.h"
+#import "VariableStore.h"
 
 @implementation UserInfoViewController
+
+@synthesize imageContainerView;
+@synthesize nameLabel = _nameLabel;
+@synthesize userId = _userId;
+@synthesize regDate = _regDate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,6 +43,63 @@
 }
 */
 
+- (void)loadUserImage:(NSString *)imgUrl
+{
+  CGRect frame = CGRectMake(0, 0, 50, 50);
+  
+  if (imgUrl && imgUrl.isPresent) {
+    if ( hjManagedImageView ) { hjManagedImageView = nil; }
+    hjManagedImageView = [[HJManagedImageV alloc] initWithFrame:frame];
+    hjManagedImageView.url = [NSURL URLWithString:imgUrl];
+    [hjManagedImageView showLoadingWheel];
+    [imageContainerView addSubview:hjManagedImageView];
+  }else {
+    UIImage *userImg = [UIImage imageNamed:UI_IMAGE_MESSAGE_DEFAULT_USER];
+    UIImageView *userImgView = [[UIImageView alloc] initWithImage:userImg];
+    userImgView.frame = frame;
+    [imageContainerView addSubview:userImgView];
+  }
+}
+
+- (void)appDidGetMember:(NSDictionary *)dict
+{
+  DLog(@"UserinfoViewController::appDidGetMember:dict=%@", dict);
+  //{"id":"4f347bf1a912091e87000001","verification":{"sources":[{"type":"email","verified":false},{"type":"tsina","verified":true,"timg_url":"http://tp4.sinaimg.cn/1876646123/50/5615566644/1"}],"member_since":"2012-02-10T10:07:46+08:00"}}
+  
+  NSString *uId = [dict objectForKey:@"id"];
+  
+  self.nameLabel.text = uId;
+  
+  NSDictionary *veri = [dict objectForKey:@"verification"];
+  
+  NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+  [dateFormat setDateFormat:RUBY_DATETIME_FORMAT]; //2012-02-17T07:50:16+0000 
+  NSDate *date = [dateFormat dateFromString:[veri objectForKey:@"member_since"]];
+  
+  NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+  [formatter setAMSymbol:@"AM"];
+  [formatter setPMSymbol:@"PM"];
+  [formatter setDateFormat:@"MM/dd/yy hh:mm a"];
+  self.regDate.text = [NSString stringWithFormat:@"注册时间: %@", [formatter stringFromDate:date]];
+  
+  if ( hjManagedImageView && self.userId && [self.userId isEqualToString:uId]) {
+
+  }else {
+    [self loadUserImage:[dict objectForKey:@"timg_url"]];
+  }
+  
+  self.userId = uId;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+  [super viewDidAppear:animated];
+  
+  if (VariableStore.sharedInstance.userToShowId) {
+    [[VariableStore.sharedInstance kassApp] setDelegate:self];
+    [[VariableStore.sharedInstance kassApp] getMember:VariableStore.sharedInstance.userToShowId];
+  }
+}
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
@@ -43,11 +107,16 @@
     [super viewDidLoad];
     // navigation bar background color
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
+  
 }
 
 - (void)viewDidUnload
 {
+  [self setImageContainerView:nil];
     [super viewDidUnload];
+  self.nameLabel = nil;
+  self.regDate   = nil;
+  self.userId    = nil;
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }

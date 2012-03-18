@@ -146,8 +146,11 @@ NSString * const UI_IMAGE_USER_INFO_BUTTON_GREEN = @"iphone_39.png";
 
 NSString * const UI_IMAGE_POST_SEND_BUTTON = @"btn_big_90.png";
 NSString * const UI_IMAGE_POST_SEND_BUTTON_PRESS = @"btn_big_93.png";
-NSString * const UI_IMAGE_MESSAGE_DEFAULT_USER = @"mapPin.png";
+NSString * const UI_IMAGE_MESSAGE_DEFAULT_USER = @"avatar-blue.png";
 NSString * const UI_IMAGE_MESSAGE_LINE = @"line.png";
+
+NSString * const UI_IMAGE_MESSAGE_DEFAULT_BUYER = @"buyer-blue.png";
+NSString * const UI_IMAGE_MESSAGE_DEFAULT_SELLER = @"seller-yellow.png";
 
 NSString * const UI_IMAGE_SETTING_LOGIN = @"btn_03.png";
 NSString * const UI_IMAGE_SETTING_LOGIN_PRESS = @"btn_09.png";

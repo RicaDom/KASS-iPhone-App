@@ -235,6 +235,12 @@
   
 }
 
+- (void)getMember:(NSString *)memberId
+{
+  _url = [NSString stringWithFormat:@"http://%s/v1/users/%@", HOST, memberId];
+  [self getData:_url];
+}
+
 - (void)getAccountListings
 {
   _url = [NSString stringWithFormat:@"http://%s/v1/account/listings", HOST];

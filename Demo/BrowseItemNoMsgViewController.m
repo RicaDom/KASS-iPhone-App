@@ -71,6 +71,8 @@
   
   [self modifyPriceModifierPrice:self.currentItem.price];
   
+  VariableStore.sharedInstance.userToShowId = _currentItem.userId;
+  
   [self hideIndicator];
   [self stopLoading];
 }

@@ -43,5 +43,18 @@
   return listItem;
 }
 
+- (HJManagedImageV *)getHJManagedImageView:(Message *)message:(CGRect)frame
+{
+  if([self.buyerId isEqualToString:message.userId]){
+    if (!self.buyerImageView) { self.buyerImageView = [[HJManagedImageV alloc] initWithFrame:frame]; }
+    self.buyerImageView.url = [NSURL URLWithString:self.buyerImageUrl];
+    return self.buyerImageView;
+  }else {
+    if (!self.sellerImageView) { self.sellerImageView = [[HJManagedImageV alloc] initWithFrame:frame]; }
+    self.sellerImageView.url = [NSURL URLWithString:self.sellerImageUrl];
+    return self.sellerImageView;
+  }
+}
+
 
 @end

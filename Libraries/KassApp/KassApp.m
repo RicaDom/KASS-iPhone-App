@@ -72,6 +72,22 @@
     [_delegate appDidGetListing:dict];
 }
 
+- (void)getMember:(NSString *)dbId
+{
+  DLog(@"KassApp::getMember:dbId=%@", dbId);
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getMemberFinished:"];
+  [ka getMember:dbId];
+}
+
+- (void)getMemberFinished:(NSData *)data
+{
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"KassApp::getMemberFinished:dict");
+  
+  if( [_delegate respondsToSelector:@selector(appDidGetMember:)] )
+    [_delegate appDidGetMember:dict];
+}
+
 - (void)getListingsNearby:(NSMutableDictionary *)dictionary
 {
   KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getListingsNearbyFinished:"];
