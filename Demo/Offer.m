@@ -27,8 +27,6 @@
 @synthesize message = _message;
 @synthesize buyerImageUrl = _buyerImageUrl;
 @synthesize sellerImageUrl = _sellerImageUrl;
-@synthesize buyerImageView = _buyerImageView;
-@synthesize sellerImageView = _sellerImageView;
 
 - (id) initWithDictionary:(NSDictionary *) theDictionary
 {

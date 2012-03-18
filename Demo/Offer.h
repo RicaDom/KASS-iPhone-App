@@ -14,8 +14,6 @@
 
 @interface Offer : ActiveModel
 
-@property (nonatomic, strong) HJManagedImageV *buyerImageView;
-@property (nonatomic, strong) HJManagedImageV *sellerImageView;
 @property (nonatomic, strong) NSDecimalNumber *price;
 @property (nonatomic, strong) NSMutableArray *messages;
 @property (nonatomic, strong) NSDate *createdAt;

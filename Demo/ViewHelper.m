@@ -42,18 +42,22 @@
 {
   if([offer.buyerId isEqualToString:message.userId]) {
     if (offer.buyerImageUrl && offer.buyerImageUrl.isPresent) {
-      HJManagedImageV *imgV = [offer getHJManagedImageView:message:CGRectMake(5, 5, 60, 60)];
+      HJManagedImageV *imgV = [[HJManagedImageV alloc] initWithFrame:CGRectMake(5, 5, 60, 60)]; 
+      imgV.url = [NSURL URLWithString:offer.buyerImageUrl];
       [imgV showLoadingWheel];
       [diglogView addSubview:imgV];
+      [[self viewKassApp] manageObj:imgV];
       return imgV;
     }else {
       return [self buildDefaultImageView:diglogView:UI_IMAGE_MESSAGE_DEFAULT_BUYER];
     }
   }else if([offer.userId isEqualToString:message.userId]){
     if (offer.sellerImageUrl && offer.sellerImageUrl.isPresent) {
-      HJManagedImageV *imgV = [offer getHJManagedImageView:message:CGRectMake(5, 5, 60, 60)];
+      HJManagedImageV *imgV = [[HJManagedImageV alloc] initWithFrame:CGRectMake(5, 5, 60, 60)]; 
+      imgV.url = [NSURL URLWithString:offer.sellerImageUrl];
       [imgV showLoadingWheel];
       [diglogView addSubview:imgV];
+      [[self viewKassApp] manageObj:imgV];
       return imgV;
     }else {
       return [self buildDefaultImageView:diglogView:UI_IMAGE_MESSAGE_DEFAULT_USER];
@@ -358,9 +362,8 @@
     [scrollView addSubview:diglogView];
     [scrollView setContentSize:CGSizeMake(scrollView.frame.size.width, yOffset + 5)];    
   }
-
-  [[self viewKassApp] manageObj:offer.sellerImageView];
-  [[self viewKassApp] manageObj:offer.buyerImageView];
+  
+  
 }
 
 + (void)buildMapButton:(UIButton *)button
