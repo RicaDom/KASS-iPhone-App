@@ -384,11 +384,17 @@
   
   if (_searching) { DLog(@"BrowseTableViewController::filterContentForSearchText:searching ... "); return; }
   
+  searchText = [searchText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+  
   searchText = [searchText stringByReplacingOccurrencesOfString:@" " withString:@"+"];
   
   if ([searchText length] <= 0) { return; }
   
-  DLog(@"BrowseTableViewController::filterContentForSearchText:q=%@,s=%@", searchText, scope);
+  NSString* encodedSearchText =
+  [searchText stringByAddingPercentEscapesUsingEncoding:
+   NSASCIIStringEncoding];
+  
+  DLog(@"BrowseTableViewController::filterContentForSearchText:q=%@,s=%@", encodedSearchText, scope);
   
 	[self.filteredListContent removeAllObjects]; // First clear the filtered array.
   _searching = TRUE;

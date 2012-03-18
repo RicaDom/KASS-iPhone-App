@@ -67,9 +67,7 @@ static KeyboardSlider *ks = nil;
   
   CGRect rect = _mainView.frame;
   
-  int height = _confirmView ? _keyboardRect.size.height - self.confirmView.frame.size.height : _keyboardRect.size.height;
-  
-  rect.origin.y += height;
+  rect.origin.y = 0;
   rect.size.height -= _keyboardRect.size.height;
   _mainView.frame = rect;
   
@@ -110,7 +108,7 @@ static KeyboardSlider *ks = nil;
   CGRect scrollViewRect = _scrollView.frame;
   
   scrollViewRect.origin.y = height;
-  scrollViewRect.size.height = rect.size.height - _keyboardRect.size.height*2 - _bottomView.frame.size.height; 
+  scrollViewRect.size.height = rect.size.height - height*2 - _bottomView.frame.size.height; 
     
   _scrollView.frame = scrollViewRect;
   

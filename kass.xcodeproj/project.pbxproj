@@ -2528,7 +2528,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries\"",
 				);
-				PRODUCT_NAME = kass;
+				PRODUCT_NAME = com.heyook.jieqoo;
 				PROVISIONING_PROFILE = "EF876BCB-E9CD-429C-80C5-879DAA62E95B";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
