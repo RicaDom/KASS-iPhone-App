@@ -37,12 +37,28 @@
 - (void)customViewLoad
 {
     [ViewHelper buildCancelButton:self.leftButton];
-    self.whatLabel.text = [VariableStore sharedInstance].currentAddAlert.keyword;
-    self.minPriceLabel.text = [VariableStore sharedInstance].currentAddAlert.minPrice;
+    self.whatLabel.text = ([VariableStore sharedInstance].currentAddAlert.keyword.length > 0) ? [VariableStore sharedInstance].currentAddAlert.keyword : @"所有商品";
+    self.minPriceLabel.text = ([VariableStore sharedInstance].currentAddAlert.minPrice.length > 0) ? [VariableStore sharedInstance].currentAddAlert.minPrice : @"没有最低价";
 
     self.locationLabel.text = ([VariableStore sharedInstance].currentAddAlert.userSpecifyLocation.length > 0) ? [VariableStore sharedInstance].currentAddAlert.userSpecifyLocation : @"Current location";
+    
+    if ([VariableStore sharedInstance].currentAddAlert.radius.length <= 0) {
+        [VariableStore sharedInstance].currentAddAlert.radius = @"5";
+    }
     self.radiusLabel.text = [VariableStore sharedInstance].currentAddAlert.radius;
 }
+
+
+- (void)locateMeFinished
+{
+    DLog(@"SellerAlertsAddAlertViewController::locateMeFinished ");
+}
+
+- (void)locateMe {
+    VariableStore.sharedInstance.locateMeManager.delegate = self;
+    [VariableStore.sharedInstance.locateMeManager locateMe];
+}
+
 #pragma mark - View lifecycle
 
 /*
@@ -56,6 +72,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self locateMe];
 }
 
 - (void)viewDidUnload

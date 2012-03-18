@@ -15,6 +15,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
 @property (strong, nonatomic) IBOutlet UIButton *rightButton;
 @property (strong, nonatomic) IBOutlet UITextField *keywordTextField;
+@property (strong, nonatomic) IBOutlet UITableView *goodsTableView;
+@property (strong, nonatomic) IBOutlet UITableView *serviceTableView;
 
 - (IBAction)leftButtonAction:(id)sender;
 - (IBAction)rightButtonAction:(id)sender;

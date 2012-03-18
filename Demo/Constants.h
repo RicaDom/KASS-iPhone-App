@@ -182,4 +182,7 @@ extern NSString * const UI_IMAGE_CHECKBOX_UNCHECK;
 extern NSString * const UI_IMAGE_PROVIDE;
 extern NSString * const UI_IMAGE_PROVIDE_PRESS;
 
+extern NSString * const UI_IMAGE_PROVIDE_BROWSE;
+extern NSString * const UI_IMAGE_PROVIDE_BROWSE_PRESS;
+
 @end

@@ -8,10 +8,16 @@
 
 #import "SellerAlertsListingsViewController.h"
 #import "UIResponder+VariableStore.h"
+#import "UIViewController+SegueActiveModel.h"
+#import "ListingTableCell.h"
 
 @implementation SellerAlertsListingsViewController
 
+@synthesize noListingsMessage = _noListingsMessage;
 @synthesize alertId = _alertId;
+@synthesize query = _query;
+@synthesize alertListings = _alertListings;
+@synthesize alertListingsTableView = _alertListingsTableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,10 +36,34 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)refreshViewAfterLoadData
+{
+    if (self.alertListings.count <= 0) {
+        self.noListingsMessage.hidden = NO;
+        self.alertListingsTableView.hidden = YES;
+    } else {
+        self.noListingsMessage.hidden = YES;
+        self.alertListingsTableView.hidden = NO;
+    }
+    self.navigationItem.title = self.query;
+    [self.alertListingsTableView reloadData];
+}
+
+- (void)accountDidGetAlertListings:(NSDictionary *)dict
+{
+    DLog(@"SellerAlertsListingsViewController::accountDidGetAlertListings");
+    DLog(@"accountDidGetAlertListings dict: %@", dict);
+    Listing *listing = [[Listing alloc] initWithDictionary:dict];
+    self.alertListings = [listing listItems];
+    [self refreshViewAfterLoadData];
+}
+
 - (void)loadAlertListings
 {
     if (self.alertId.length > 0) {
-        // self.currentUser getAlertListings:<#(NSDictionary *)#>
+        [self.currentUser getAlertListings:self.alertId];
+    } else {
+        // ERROR - no alert id
     }
 }
 
@@ -50,14 +80,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self loadAlertListings];
 }
 
 - (void)viewDidUnload
 {
+    [self setAlertListingsTableView:nil];
+    [self setNoListingsMessage:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self loadAlertListings];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -81,28 +117,31 @@
 	 If the requesting table view is the search display controller's table view, return the count of
      the filtered list, otherwise return the count of the main list.
 	 */
-    return 1;
+    return self.alertListings.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+{    
     static NSString *CellIdentifier = @"myAlertListingsTableCell";
-    UITableViewCell *cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    ListingTableCell *cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell = [[ListingTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    //cell.textLabel.text = [[alerts objectAtIndex:indexPath.row] objectForKey:@"query"];
-    return cell;
+    //set cell using data
+    
+    [cell buildCellByListItem:[self.alertListings objectAtIndex:indexPath.row]];
+    return cell;     
 }
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"SellerAlertsToListingsView" sender:self];
+    // check table view  
+    //ListItem *item = [self.alertListings objectAtIndex:[indexPath row]];
+    [self performSegueByModel:[self.alertListings objectAtIndex:indexPath.row]];
 }
 
 

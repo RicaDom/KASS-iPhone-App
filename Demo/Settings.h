@@ -16,7 +16,8 @@
 @property (strong, nonatomic) NSMutableDictionary *messageTypesDict;
 @property (strong, nonatomic) NSMutableDictionary *weiboShareDict;
 @property (strong, nonatomic) NSMutableDictionary *siteDict;
-@property (strong, nonatomic) NSMutableArray *alertKeywordsArray;
+@property (strong, nonatomic) NSMutableArray *alertKeywordsServiceArray;
+@property (strong, nonatomic) NSMutableArray *alertKeywordsGoodsArray;
 
 - (id) initWithDictionary:(NSDictionary *)dict;
 - (NSString *) getTextForMessageType:(NSString *)type;
