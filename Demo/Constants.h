@@ -94,6 +94,8 @@ extern NSString * const ERROR_MSG_CONNECTION_FAILURE;
 extern NSString * const POPUP_IMAGE_NEW_POST_SUCCESS;
 extern NSString * const UI_IMAGE_TABBAR_BACKGROUND;
 extern NSString * const UI_IMAGE_TABBAR_SELECTED_TRANS;
+extern NSString * const UI_IMAGE_MESSAGE_DEFAULT_BUYER;
+extern NSString * const UI_IMAGE_MESSAGE_DEFAULT_SELLER;
 
 extern NSString * const UI_IMAGE_LOGIN_BACKGROUND;
 extern NSString * const UI_IMAGE_WEIBO_BUTTON;

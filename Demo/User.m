@@ -22,6 +22,7 @@
 @synthesize name = _name;
 @synthesize email = _email;
 @synthesize phone = _phone;
+@synthesize avatarUrl = _avatarUrl;
 
 - (id) initWithDelegate:(id<AccountActivityDelegate>)delegate
 {
@@ -358,6 +359,7 @@
 
 - (void) accountWeiboLogin:(NSDictionary*)userInfo
 {
+  _avatarUrl = [userInfo objectForKey:@"profile_image_url"];
   NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  [userInfo objectForKey:@"screen_name"], @"name",
                                  [userInfo objectForKey:@"profile_image_url"], @"image",

@@ -359,11 +359,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/User.m"
-         timestampString = "353572805.660606"
+         timestampString = "353736617.204639"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "326"
-         endingLineNumber = "326"
+         startingLineNumber = "327"
+         endingLineNumber = "327"
          landmarkName = "-accountLogin::"
          landmarkType = "5">
       </FileBreakpoint>
@@ -474,6 +474,19 @@
          startingLineNumber = "144"
          endingLineNumber = "144"
          landmarkName = "-applicationDidBecomeActive:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Demo/ViewHelper.m"
+         timestampString = "353742248.952045"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "34"
+         endingLineNumber = "34"
+         landmarkName = "+buildDefaultImageView::"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

@@ -7,6 +7,10 @@
 //
 
 #import "ViewHelper.h"
+#import "NSString+ModelHelper.h"
+#import "Offer+OfferHelper.h"
+#import "HJManagedImageV.h"
+#import "VariableStore.h"
 
 @implementation ViewHelper
 
@@ -23,6 +27,40 @@
   }
   
   return title;
+}
+
++ (UIView *) buildDefaultImageView:(UIView *)diglogView:(NSString *)url
+{
+  UIImage *userImg = [UIImage imageNamed:url];
+  UIImageView *userImgView = [[UIImageView alloc] initWithImage:userImg];
+  userImgView.frame = CGRectMake(5, 5, 60, 60);
+  [diglogView addSubview:userImgView];
+  return userImgView;
+}
+
++ (UIView *) buildDialogAvatar:(UIView *)diglogView:(User *)user:(Offer *)offer:(Message *)message
+{
+  if([offer.buyerId isEqualToString:message.userId]) {
+    if (offer.buyerImageUrl && offer.buyerImageUrl.isPresent) {
+      HJManagedImageV *imgV = [offer getHJManagedImageView:message:CGRectMake(5, 5, 60, 60)];
+      [imgV showLoadingWheel];
+      [diglogView addSubview:imgV];
+      return imgV;
+    }else {
+      return [self buildDefaultImageView:diglogView:UI_IMAGE_MESSAGE_DEFAULT_BUYER];
+    }
+  }else if([offer.userId isEqualToString:message.userId]){
+    if (offer.sellerImageUrl && offer.sellerImageUrl.isPresent) {
+      HJManagedImageV *imgV = [offer getHJManagedImageView:message:CGRectMake(5, 5, 60, 60)];
+      [imgV showLoadingWheel];
+      [diglogView addSubview:imgV];
+      return imgV;
+    }else {
+      return [self buildDefaultImageView:diglogView:UI_IMAGE_MESSAGE_DEFAULT_USER];
+    }
+  }else {
+    return [self buildDefaultImageView:diglogView:UI_IMAGE_MESSAGE_DEFAULT_USER];
+  }
 }
 
 + (void) buildListItemPayNowCell:(ListItem *)item:(ListingTableCell *)cell
@@ -238,13 +276,16 @@
   [cell.infoView addSubview:labelYouOffered];
 }
 
++ (KassApp *)viewKassApp
+{
+  return [VariableStore.sharedInstance kassApp];
+}
+
 + (UIView *)getOfferRow:(UIScrollView *)scrollView:(User *)user:(Offer *)offer:(CGFloat)yOffset:(Message *)message:(NSDateFormatter *)dateFormatter
 {
-  UIImage *userImg = [UIImage imageNamed:UI_IMAGE_MESSAGE_DEFAULT_USER];
-  UIImageView *userImgView = [[UIImageView alloc] initWithImage:userImg];
-  userImgView.frame = CGRectMake(5, 5, 60, 60);
+  
   UIView *diglogView = [[UIView alloc] initWithFrame:CGRectMake(0, yOffset, scrollView.frame.size.width, 75)];
-  [diglogView addSubview:userImgView];
+  UIView *userImgView = [self buildDialogAvatar:diglogView:user:offer:message];
   
   NSString *title = [ViewHelper getTitleFromOfferMessage:user:offer:message];
   NSString *date=[dateFormatter stringFromDate:message.createdAt];
@@ -318,6 +359,8 @@
     [scrollView setContentSize:CGSizeMake(scrollView.frame.size.width, yOffset + 5)];    
   }
 
+  [[self viewKassApp] manageObj:offer.sellerImageView];
+  [[self viewKassApp] manageObj:offer.buyerImageView];
 }
 
 + (void)buildMapButton:(UIButton *)button

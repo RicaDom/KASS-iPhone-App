@@ -25,6 +25,10 @@
 @synthesize listItemEndedAt = _listItemEndedAt;
 @synthesize listItemLocation = _listItemLocation;
 @synthesize message = _message;
+@synthesize buyerImageUrl = _buyerImageUrl;
+@synthesize sellerImageUrl = _sellerImageUrl;
+@synthesize buyerImageView = _buyerImageView;
+@synthesize sellerImageView = _sellerImageView;
 
 - (id) initWithDictionary:(NSDictionary *) theDictionary
 {
@@ -41,6 +45,11 @@
     _title        = [listing objectForKey:@"title"];
     _description  = [listing objectForKey:@"description"];
     _buyerId      = [listing objectForKey:@"user_id"];
+    NSDictionary *buyer = [listing objectForKey:@"user"];
+    _buyerImageUrl = [buyer objectForKey:@"image"];
+    
+    NSDictionary *seller = [theDictionary objectForKey:@"user"];
+    _sellerImageUrl = [seller objectForKey:@"image"];
     
     NSArray *latlng   = [listing objectForKey:@"latlng"]; 
     _listItemLocation = [[Location alloc] initWithArray:latlng];

@@ -12,7 +12,7 @@
 
 - (BOOL) isBlank
 {
-  return [self isEqualToString:(@"null")];
+  return [self isEqualToString:@"null"] || [self isEqualToString:@""];
 }
 
 - (BOOL) isPresent

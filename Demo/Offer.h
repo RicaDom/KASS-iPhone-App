@@ -10,9 +10,12 @@
 #import "Message.h"
 #import "ActiveModel.h"
 #import "Location.h"
+#import "HJManagedImageV.h"
 
 @interface Offer : ActiveModel
 
+@property (nonatomic, strong) HJManagedImageV *buyerImageView;
+@property (nonatomic, strong) HJManagedImageV *sellerImageView;
 @property (nonatomic, strong) NSDecimalNumber *price;
 @property (nonatomic, strong) NSMutableArray *messages;
 @property (nonatomic, strong) NSDate *createdAt;
@@ -28,6 +31,8 @@
 @property (nonatomic, strong) NSString *buyerId;
 @property (nonatomic, strong) NSDate *listItemEndedAt;
 @property (nonatomic, strong) Location *listItemLocation;
+@property (nonatomic, strong) NSString *buyerImageUrl;
+@property (nonatomic, strong) NSString *sellerImageUrl;
 
 
 //// model helper methods
