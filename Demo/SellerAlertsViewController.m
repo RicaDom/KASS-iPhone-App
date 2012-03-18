@@ -7,10 +7,16 @@
 //
 
 #import "SellerAlertsViewController.h"
+#import "UIResponder+VariableStore.h"
+#import "SellerAlertsListingsViewController.h"
 
 @implementation SellerAlertsViewController
 @synthesize rightButton = _rightButton;
 @synthesize leftButton = _leftButton;
+@synthesize alertsTableView = _alertsTableView;
+@synthesize alerts = _alerts;
+@synthesize addAlertLabel = _addAlertLabel;
+@synthesize alertTableFooter = _alertTableFooter;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,6 +43,31 @@
     [ViewHelper buildEditButton:self.rightButton];
 }
 
+- (void)refreshViewAfterLoadData
+{
+    if (self.alerts.count <= 0) {
+        self.addAlertLabel.hidden = NO;
+        self.alertTableFooter.hidden = YES;
+        self.alertsTableView.tableFooterView = self.alertTableFooter;
+    } else {
+        self.addAlertLabel.hidden = YES;
+        self.alertTableFooter.hidden = NO;
+        self.alertsTableView.tableFooterView = self.alertTableFooter;
+    }
+    [self.alertsTableView reloadData];
+}
+
+- (void)accountDidGetAlerts:(NSDictionary *)dict;
+{
+    DLog(@"SellerAlertsViewController::accountDidGetAlerts:dict%@", dict);
+    self.alerts = [dict objectForKey:@"alerts"];
+
+    if (self.alerts.count <= 0) {
+        [self performSegueWithIdentifier:@"AlertTableToAddAlertView" sender:self];
+    }
+    [self refreshViewAfterLoadData];
+}
+
 #pragma mark - View lifecycle
 
 /*
@@ -58,9 +89,17 @@
 {
     [self setLeftButton:nil];
     [self setRightButton:nil];
+    [self setAlertsTableView:nil];
+    [self setAddAlertLabel:nil];
+    [self setAlertTableFooter:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.currentUser getAlerts];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -84,58 +123,41 @@
 	 If the requesting table view is the search display controller's table view, return the count of
      the filtered list, otherwise return the count of the main list.
 	 */
-//	if ([tableView isEqual:self.searchDisplayController.searchResultsTableView])
-//	{
-//        return [self.filteredListContent count];
-//    }
-//	else
-//	{
-//        return [self.currentListings count];
-//    }    
+    return self.alerts.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if ([aTableView isEqual:self.searchDisplayController.searchResultsTableView]) {
-//        static NSString *CellIdentifier = @"browseListingTableCell";
-//        UITableViewCell *cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//        
-//        if (cell == nil) {
-//            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-//            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//        }
-//        
-//        //set cell using data
-//        cell.textLabel.text = ((ListItem *)[self.filteredListContent objectAtIndex:indexPath.row]).title;
-//        //[cell buildCellByListItem:[self.currentListings objectAtIndex:indexPath.row]];
-//        return cell;
-//    } else {
-//        static NSString *CellIdentifier = @"browseListingTableCell";
-//        ListingTableCell *cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//        
-//        if (cell == nil) {
-//            cell = [[ListingTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-//        }
-//        
-//        //set cell using data
-//        
-//        [cell buildCellByListItem:[self.currentListings objectAtIndex:indexPath.row]];
-//        return cell;        
-//    }
+    static NSString *CellIdentifier = @"myAlertTableCell";
+    UITableViewCell *cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+
+    NSDictionary *alert = [self.alerts objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = [alert objectForKey:@"query"];
+    cell.detailTextLabel.text = [@"方圆" stringByAppendingFormat:@"%@ %@ %@", [[alert objectForKey:@"radius"] stringValue], @"公里 － ", @"浙江 杭州"];
+    return cell;
 }
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    int row = [indexPath row];
-//    
-//    // check table view  
-//    ListItem *item = ([tableView isEqual:self.searchDisplayController.searchResultsTableView])?
-//    [self.filteredListContent objectAtIndex:row]:[self.currentListings objectAtIndex:row];
-//    
-//    [self performSegueByModel:item];
-    
+    [self performSegueWithIdentifier:@"SellerAlertsToListingsView" sender:self];
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"SellerAlertsToListingsView"]) {
+        DLog(@"SellerAlertsViewController::prepareForSegue");
+        SellerAlertsListingsViewController *lc = segue.destinationViewController;    
+        lc.alertId = [[self.alerts objectAtIndex:self.alertsTableView.indexPathForSelectedRow.row] objectForKey:@"id"];
+        lc.query = [[self.alerts objectAtIndex:self.alertsTableView.indexPathForSelectedRow.row] objectForKey:@"query"];
+        DLog(@"SellerAlertsViewController Segue Data: %@", lc.alertId);
+    }
 }
 
 - (IBAction)leftButtonAction:(id)sender {
@@ -143,5 +165,9 @@
 }
 
 - (IBAction)rightButtonAction:(id)sender {
+}
+
+- (IBAction)AddAlertButtonAction:(id)sender {
+    [self performSegueWithIdentifier:@"AlertTableToAddAlertView" sender:self];
 }
 @end

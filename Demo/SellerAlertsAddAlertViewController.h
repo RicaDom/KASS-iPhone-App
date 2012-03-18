@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "ViewHelper.h"
 #import "VariableStore.h"
+#import "LocateMeDelegate.h"
 
-@interface SellerAlertsAddAlertViewController : UIViewController
+@interface SellerAlertsAddAlertViewController : UIViewController <AccountActivityDelegate, LocateMeDelegate>
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
 @property (strong, nonatomic) IBOutlet UILabel *whatLabel;
 @property (strong, nonatomic) IBOutlet UILabel *minPriceLabel;
@@ -19,4 +20,5 @@
 
 - (IBAction)AddAlertAction:(id)sender;
 - (IBAction)leftButtonAction:(id)sender;
+
 @end

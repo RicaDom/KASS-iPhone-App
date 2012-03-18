@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ViewHelper.h"
+#import "VariableStore.h"
 
 @interface SellerAlertsAddAlertLocationViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UITextField *locationTextField;
+@property (strong, nonatomic) IBOutlet UISlider *radiusSlider;
+@property (strong, nonatomic) IBOutlet UILabel *radiusLabel;
+@property (strong, nonatomic) IBOutlet UIButton *leftButton;
+@property (strong, nonatomic) IBOutlet UIButton *rightButton;
+
+- (IBAction)rightButtonAction:(id)sender;
+- (IBAction)leftButtonAction:(id)sender;
+- (IBAction)radiusValueChanged:(id)sender;
 
 @end

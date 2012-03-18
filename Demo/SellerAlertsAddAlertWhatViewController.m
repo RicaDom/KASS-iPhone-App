@@ -12,11 +12,18 @@
 @synthesize leftButton;
 @synthesize rightButton;
 @synthesize keywordTextField;
+@synthesize goodsTableView;
+@synthesize serviceTableView;
 
-NSArray *alertKeyWords;
+NSArray *alertKeyWordsService;
+NSArray *alertKeyWordsGoods;
+
 - (void)loadSamepleData
 {
-    alertKeyWords = [NSArray arrayWithObjects:@"Everything", @"Accounting", @"Audio", @"Babysitting", nil];
+    DLog(@"SellerAlertsAddAlertWhatViewController::AlertKeywordsService: %@", [VariableStore sharedInstance].settings.alertKeywordsServiceArray);
+    DLog(@"SellerAlertsAddAlertWhatViewController::AlertKeywordsService: %@", [VariableStore sharedInstance].settings.alertKeywordsGoodsArray);
+    alertKeyWordsService = [VariableStore sharedInstance].settings.alertKeywordsServiceArray;
+    alertKeyWordsGoods = [VariableStore sharedInstance].settings.alertKeywordsGoodsArray;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -63,6 +70,8 @@ NSArray *alertKeyWords;
     [self setLeftButton:nil];
     [self setRightButton:nil];
     [self setKeywordTextField:nil];
+    [self setGoodsTableView:nil];
+    [self setServiceTableView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -94,53 +103,36 @@ NSArray *alertKeyWords;
 	 If the requesting table view is the search display controller's table view, return the count of
      the filtered list, otherwise return the count of the main list.
 	 */
-    //	if ([tableView isEqual:self.searchDisplayController.searchResultsTableView])
-    //	{
-    //        return [self.filteredListContent count];
-    //    }
-    //	else
-    //	{
-    //        return [self.currentListings count];
-    //    }    
-    return [alertKeyWords count];
+    return (tableView == self.serviceTableView)? alertKeyWordsService.count : alertKeyWordsGoods.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //    if ([aTableView isEqual:self.searchDisplayController.searchResultsTableView]) {
-            static NSString *CellIdentifier = @"AddAlertWhatTableCell";
-            UITableViewCell *cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            
-            if (cell == nil) {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            }
-            
-    //        //set cell using data
-    //        cell.textLabel.text = ((ListItem *)[self.filteredListContent objectAtIndex:indexPath.row]).title;
-    //        //[cell buildCellByListItem:[self.currentListings objectAtIndex:indexPath.row]];
-            cell.textLabel.text = [alertKeyWords objectAtIndex:indexPath.row];
-            return cell;
-    //    } else {
-    //        static NSString *CellIdentifier = @"browseListingTableCell";
-    //        ListingTableCell *cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    //        
-    //        if (cell == nil) {
-    //            cell = [[ListingTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    //        }
-    //        
-    //        //set cell using data
-    //        
-    //        [cell buildCellByListItem:[self.currentListings objectAtIndex:indexPath.row]];
-    //        return cell;        
-    //    }
+    UITableViewCell *cell;
+    if (aTableView == self.serviceTableView) {
+        static NSString *CellIdentifier = @"AddAlertServiceTableCell";
+        cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+        cell.textLabel.text = [alertKeyWordsService objectAtIndex:indexPath.row];
+    } else {
+        static NSString *CellIdentifier = @"AddAlertGoodsTableCell";
+        cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];    
+        }
+        cell.textLabel.text = [alertKeyWordsGoods objectAtIndex:indexPath.row];
+    }
+
+    return cell;
 }
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *keyword = [alertKeyWords objectAtIndex:indexPath.row]; 
+    NSString *keyword = (tableView == self.serviceTableView) ? [alertKeyWordsService objectAtIndex:indexPath.row] : [alertKeyWordsGoods objectAtIndex:indexPath.row]; 
     if (keyword.length > 0) {
         [VariableStore sharedInstance].currentAddAlert.keyword = keyword;
         [self.navigationController popViewControllerAnimated:YES];

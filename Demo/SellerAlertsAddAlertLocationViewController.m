@@ -9,6 +9,11 @@
 #import "SellerAlertsAddAlertLocationViewController.h"
 
 @implementation SellerAlertsAddAlertLocationViewController
+@synthesize locationTextField;
+@synthesize radiusSlider;
+@synthesize radiusLabel;
+@synthesize leftButton;
+@synthesize rightButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +32,13 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)customViewLoad
+{
+    [ViewHelper buildCancelButton:self.leftButton];
+    [ViewHelper buildConfirmButton:self.rightButton];
+    self.radiusLabel.text = [NSString stringWithFormat:@"%.0f", self.radiusSlider.value]; 
+}
+
 #pragma mark - View lifecycle
 
 /*
@@ -36,16 +48,21 @@
 }
 */
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self customViewLoad];
 }
-*/
 
 - (void)viewDidUnload
 {
+    [self setLocationTextField:nil];
+    [self setRadiusSlider:nil];
+    [self setRadiusLabel:nil];
+    [self setLeftButton:nil];
+    [self setRightButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -57,4 +74,21 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (IBAction)rightButtonAction:(id)sender {
+    if (self.locationTextField.text.length > 0) {
+        [VariableStore sharedInstance].currentAddAlert.userSpecifyLocation = self.locationTextField.text;
+    }
+    
+    [VariableStore sharedInstance].currentAddAlert.radius = self.radiusLabel.text;
+    DLog(@"This is the radius: %@", [VariableStore sharedInstance].currentAddAlert.radius);
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)leftButtonAction:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)radiusValueChanged:(id)sender {
+    self.radiusLabel.text = [NSString stringWithFormat:@"%.0f", self.radiusSlider.value]; 
+}
 @end

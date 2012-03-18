@@ -16,6 +16,8 @@
 @synthesize messageTypesDict = _messageTypesDict;
 @synthesize weiboShareDict = _weiboShareDict;
 @synthesize siteDict = _siteDict;
+@synthesize alertKeywordsServiceArray = _alertKeywordsServiceArray;
+@synthesize alertKeywordsGoodsArray = _alertKeywordsGoodsArray;
 
 - (id) initWithDictionary:(NSDictionary *)dict
 {
@@ -25,6 +27,7 @@
     NSDictionary *duration = [settings objectForKey:@"duration"];
     NSDictionary *secToString = [duration objectForKey:@"sec_string"];
     NSDictionary *secToText   = [duration objectForKey:@"sec_text"];
+    NSDictionary *alertKeywords = [settings objectForKey:@"alert_keywords"];
     
     self.durationToServerDic = [[NSMutableDictionary alloc] init];
     self.expiredTimeDict     = [[NSMutableDictionary alloc] init];
@@ -41,6 +44,11 @@
     self.messageTypesDict  = [settings objectForKey:@"message_types"];
     self.weiboShareDict    = [settings objectForKey:@"weibo"];
     self.siteDict          = [settings objectForKey:@"site"];
+      
+    if (alertKeywords.count > 0) {
+      self.alertKeywordsServiceArray = [alertKeywords objectForKey:@"service"];
+      self.alertKeywordsGoodsArray = [alertKeywords objectForKey:@"goods"];
+    }
   }
   return self;
 }

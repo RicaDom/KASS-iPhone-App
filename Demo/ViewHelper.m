@@ -495,10 +495,19 @@
     button.enabled = YES;
 }
 
-+ (void)buildProvideButton:(UIButton *)button
++ (void)buildProvideAlertButton:(UIButton *)button
 {
     UIImage *img = [UIImage imageNamed:UI_IMAGE_PROVIDE];
     UIImage *imgPress = [UIImage imageNamed:UI_IMAGE_PROVIDE_PRESS];
+    [button setImage:img forState:UIControlStateNormal];
+    [button setImage:imgPress forState:UIControlStateSelected];
+    button.frame = CGRectMake(button.frame.origin.x, button.frame.origin.y, img.size.width, img.size.height);
+}
+
++ (void)buildProvideBrowseButton:(UIButton *)button
+{
+    UIImage *img = [UIImage imageNamed:UI_IMAGE_PROVIDE_BROWSE];
+    UIImage *imgPress = [UIImage imageNamed:UI_IMAGE_PROVIDE_BROWSE_PRESS];
     [button setImage:img forState:UIControlStateNormal];
     [button setImage:imgPress forState:UIControlStateSelected];
     button.frame = CGRectMake(button.frame.origin.x, button.frame.origin.y, img.size.width, img.size.height);
