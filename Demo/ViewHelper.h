@@ -12,6 +12,7 @@
 #import "User.h"
 #import "ListingTableCell.h"
 #import "Constants.h"
+#import "KassApp.h"
 
 @interface ViewHelper : NSObject
 
@@ -50,5 +51,6 @@
 + (void)showErrorAlert:(NSString *)message:(id)delegate;
 + (void)showErrorMessageAlert:(NSDictionary *)errors:(id)delegate;
 + (void) buildMap:(MKMapView *)mapView:(CLLocation *)location;
++ (KassApp *)viewKassApp;
 
 @end
