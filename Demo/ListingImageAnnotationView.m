@@ -7,6 +7,7 @@
 //
 
 #import "ListingImageAnnotationView.h"
+#import "Constants.h"
 
 #define kBorder 2
 
@@ -17,7 +18,7 @@
 {
 	self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier];
     
-	UIImage* image = [UIImage imageNamed:@"pin.png"];
+	UIImage* image = [UIImage imageNamed:UI_IMAGE_MAP_PIN];
 	self.frame = CGRectMake(0, 0, image.size.width, image.size.height);
 	//self.backgroundColor = [UIColor whiteColor];
 

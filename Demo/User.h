@@ -46,6 +46,7 @@ typedef enum {
 
 - (void)weiboShare:(ListItem *)listItem;
 - (void)weiboDidShare;
+- (BOOL)isWeiboLogin;
 
 - (void)createListing:(NSDictionary *)dict;
 - (void)createListingFinished:(NSData *)data;

@@ -450,6 +450,11 @@
   [weibo startAuthorize];
 }
 
+- (BOOL)isWeiboLogin
+{
+  return weibo && weibo.userID;
+}
+
 - (void)weiboDidLogin
 {
   DLog(@"User::weiboDidLogin:userID=%@", [weibo userID]);
