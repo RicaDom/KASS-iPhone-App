@@ -1735,6 +1735,7 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="sellerInfoAction:" destination="rrf-71-T0f" eventType="touchUpInside" id="wWD-dg-Cmy"/>
+                                                    <segue destination="qSl-ws-Clg" kind="push" id="tJz-zA-22g"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Price" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="VtK-1X-CDe">
@@ -2346,31 +2347,38 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="姓名" lineBreakMode="tailTruncation" minimumFontSize="10" id="FOj-25-3s8">
-                                <rect key="frame" x="139" y="68" width="42" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="..." lineBreakMode="tailTruncation" minimumFontSize="10" id="FOj-25-3s8">
+                                <rect key="frame" x="98" y="60" width="168" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.37647062539999998" green="0.37647062539999998" blue="0.34901961679999999" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="验证情况" lineBreakMode="tailTruncation" minimumFontSize="10" id="LNK-Lu-3bd">
-                                <rect key="frame" x="126" y="114" width="68" height="21"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="bg_bottom.png" id="kOt-L2-48T">
+                                <rect key="frame" x="0.0" y="264" width="320" height="161"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="mce-Dq-YF5">
+                                <rect key="frame" x="98" y="87" width="168" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.37647062539999998" green="0.37647062539999998" blue="0.34901961679999999" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="联系方式" lineBreakMode="tailTruncation" minimumFontSize="10" id="96w-b0-Ovw">
-                                <rect key="frame" x="126" y="161" width="68" height="21"/>
+                            <view contentMode="scaleToFill" id="X9Q-fg-5oI">
+                                <rect key="frame" x="30" y="60" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.37647062539999998" green="0.37647062539999998" blue="0.34901961679999999" alpha="1" colorSpace="deviceRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.95686280729999995" green="0.94117653369999998" blue="0.90588241820000004" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="用户资料" id="Iie-RG-h4O"/>
+                    <connections>
+                        <outlet property="imageContainerView" destination="X9Q-fg-5oI" id="v2X-yH-3uS"/>
+                        <outlet property="nameLabel" destination="FOj-25-3s8" id="dPf-BI-hNn"/>
+                        <outlet property="regDate" destination="mce-Dq-YF5" id="fVC-NN-p5f"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="3960" y="-49"/>
@@ -3594,6 +3602,11 @@
         </class>
         <class className="UserInfoViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UserInfoViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="regDate" candidateClass="UILabel"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -3603,11 +3616,11 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="kjd-qS-0pq"/>
-        <segue reference="UPg-Yr-5B0"/>
+        <segue reference="0kh-0v-gnk"/>
+        <segue reference="8Mx-QQ-zuz"/>
         <segue reference="BhZ-ht-CXE"/>
+        <segue reference="UPg-Yr-5B0"/>
         <segue reference="AMc-4a-ghd"/>
-        <segue reference="FyY-9X-ohZ"/>
-        <segue reference="cVP-Bc-SG3"/>
         <segue reference="p1j-ow-HAz"/>
         <segue reference="34A-gF-H3c"/>
         <segue reference="SDw-zv-tcg"/>

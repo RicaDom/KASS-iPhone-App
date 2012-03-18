@@ -67,6 +67,8 @@ NSString *popUpSuccessfulViewFlag;
   if (self.currentOffer.price) {
     self.offerPrice.text = [self.currentOffer getPriceText];
   }
+  
+  VariableStore.sharedInstance.userToShowId = _currentOffer.userId;
 }
 
 - (void)accountDidGetOffer:(NSDictionary *)dict
@@ -129,7 +131,6 @@ NSString *popUpSuccessfulViewFlag;
 
 - (void)viewDidUnload
 {
-    [self setUserInfoButton:nil];
     [self setUserInfoButton:nil];
     [self setPriceButton:nil];
     [self setBottomView:nil];

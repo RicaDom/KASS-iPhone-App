@@ -65,6 +65,7 @@
   self.offerPrice.text            = [self.currentOffer getPriceText]; 
   
   [self modifyPriceModifierPrice:self.currentOffer.price];
+  VariableStore.sharedInstance.userToShowId = _currentOffer.userId;
   [self loadMessageView];
   [self hideIndicator];
   [self stopLoading];

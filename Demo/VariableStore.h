@@ -48,6 +48,8 @@
 @property (nonatomic,assign) id<AccountActivityDelegate> currentViewControllerDelegate;
 
 @property (strong, nonatomic) ListItem *itemToShowOnMap;
+@property (strong, nonatomic) NSString *userToShowId;
+
 @property NSInteger priceToModify;
 
 + (VariableStore *) sharedInstance;

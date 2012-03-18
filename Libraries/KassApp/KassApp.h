@@ -20,6 +20,9 @@
 - (void)loadSettingsFinished:(NSData *)data;
 - (void)loadAndStoreSettings;
 
+- (void)getMember:(NSString *)dbId;
+- (void)getMemberFinished:(NSData *)data;
+
 - (void)getListing:(NSString *)dbId;
 - (void)getListingFinished:(NSData *)data;
 

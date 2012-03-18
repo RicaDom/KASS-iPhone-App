@@ -31,6 +31,7 @@
 
 @synthesize priceToModify = _priceToModify;
 @synthesize itemToShowOnMap = _itemToShowOnMap;
+@synthesize userToShowId = _userToShowId;
 
 @synthesize currentViewControllerDelegate = _currentViewControllerDelegate;
 

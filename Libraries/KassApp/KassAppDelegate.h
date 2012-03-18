@@ -18,5 +18,6 @@
 - (void)appDidGetListingsMostPrice:(NSDictionary *)dict;
 - (void)appRequestFailed:(NSDictionary *)errors;
 - (void)appDidGetListingsBySearch:(NSDictionary *)dict;
+- (void)appDidGetMember:(NSDictionary *)dict;
 
 @end

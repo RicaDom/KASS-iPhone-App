@@ -48,6 +48,7 @@
 - (void)createListing:(NSDictionary *)dict;
 - (void)getListings:(NSDictionary *)dict;
 - (void)getListing:(NSString *)modelId;
+- (void)getMember:(NSString *)memberId;
 - (void)getAccountListings;
 - (void)getAccountListing:(NSString *)modelId;
 - (void)getAccountOffers;

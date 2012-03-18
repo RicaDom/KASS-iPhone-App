@@ -83,6 +83,8 @@
   [formatter setDateFormat:@"MM/dd/yy hh:mm a"];
   self.itemExpiredDate.text = [NSString stringWithFormat:@"%@", [formatter stringFromDate:self.currentOffer.listItemEndedAt]];
   
+  VariableStore.sharedInstance.userToShowId = _currentOffer.userId;
+  
 }
 
 - (void)accountDidGetOffer:(NSDictionary *)dict
