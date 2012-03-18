@@ -8,6 +8,7 @@
 
 #import "PostSummaryViewController.h"
 #import "UIResponder+VariableStore.h"
+#import "UIViewController+ActivityIndicate.h"
 
 #import "ListingMapAnnotaion.h"
 #import "ListingImageAnnotationView.h"
@@ -176,7 +177,8 @@
 {
   DLog(@"PostSummaryViewController::accountDidCreateListing:dict=%@", dict);
   [[self kassVS] appendPostingItemToListings:dict];
-
+  
+  [self hideIndicator];
   [self.presentingViewController dismissModalViewControllerAnimated:YES];
   [[NSNotificationCenter defaultCenter] postNotificationName: NEW_POST_NOTIFICATION 
 														object: nil];
@@ -186,7 +188,7 @@
 {
   DLog(@"PostSummaryViewController::accountDidModifyListing:dict=%@", dict);
 //  [[self kassVS] appendPostingItemToListings:dict];
-  
+  [self hideIndicator];
   [self.presentingViewController dismissModalViewControllerAnimated:YES];
   [[NSNotificationCenter defaultCenter] postNotificationName: NEW_POST_NOTIFICATION 
                                                       object: nil];
@@ -212,7 +214,7 @@
         [params setObject:durationStr forKey:@"time"];
         [params setObject:latlng forKey:@"latlng"];
                                   
-        if (self.weiboCheckBox.tag = 1) { [params setObject:@"true" forKey:@"publish"]; }
+        if (self.weiboCheckBox.tag == 1) { [params setObject:@"true" forKey:@"publish"]; }
      
         DLog(@"PostSummaryViewController::submitAction:params = %@", params);
         if ([self.postType isEqualToString:POST_TYPE_EDITING] && self.postingItem.isPersisted) {
