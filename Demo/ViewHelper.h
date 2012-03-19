@@ -50,6 +50,7 @@
 + (void)buildProvideAlertButton:(UIButton *)button;
 + (void)buildProvideBrowseButton:(UIButton *)button;
 
++ (void)showAlert:(NSString *)title:(NSString *)message:(id)delegate;
 + (void)showErrorAlert:(NSString *)message:(id)delegate;
 + (void)showErrorMessageAlert:(NSDictionary *)errors:(id)delegate;
 + (void) buildMap:(MKMapView *)mapView:(CLLocation *)location;

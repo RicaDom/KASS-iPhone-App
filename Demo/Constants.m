@@ -49,6 +49,7 @@ NSString * const UI_LABEL_OFFER_PENDING = @"等待确认";
 NSString * const UI_LABEL_YOU_PAID = @"已付";
 NSString * const UI_LABEL_PAID = @"已付";
 
+NSString * const UI_LABEL_ALERT   = @"提醒";
 NSString * const UI_LABEL_ERROR   = @"错误";
 NSString * const UI_LABEL_DISMISS = @"取消";
 NSString * const UI_LABEL_CONFIRM = @"确定";

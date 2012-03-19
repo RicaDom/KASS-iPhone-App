@@ -566,6 +566,16 @@
     button.frame = CGRectMake(button.frame.origin.x, button.frame.origin.y, img.size.width, img.size.height);
 }
 
++ (void)showAlert:(NSString *)title:(NSString *)message:(id)delegate
+{
+    UIAlertView *alert = [[UIAlertView alloc] init];
+	[alert setTitle:title];
+	[alert setMessage:message];
+    [alert setDelegate:delegate];
+    [alert addButtonWithTitle:UI_LABEL_CONFIRM];
+    [alert show];
+}
+
 + (void)showErrorAlert:(NSString *)message:(id)delegate
 {
   UIAlertView *alert = [[UIAlertView alloc] init];

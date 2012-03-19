@@ -193,5 +193,6 @@ extern NSString * const UI_IMAGE_PROVIDE_BROWSE;
 extern NSString * const UI_IMAGE_PROVIDE_BROWSE_PRESS;
 
 extern NSString * const UI_IMAGE_MAP_PIN;
+extern NSString * const UI_LABEL_ALERT;
 
 @end
