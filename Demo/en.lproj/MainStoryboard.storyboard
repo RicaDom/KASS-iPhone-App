@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="tSz-RA-HQY">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1179"/>
     </dependencies>
@@ -468,7 +467,7 @@
             </objects>
             <point key="canvasLocation" x="-107" y="597"/>
         </scene>
-        <!--Seller Alerts Add Alert What View Controller - 添加提醒-->
+        <!--Seller Alerts Add Alert What View Controller-->
         <scene sceneID="cM7-pz-52Y">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fDI-kE-sHa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -539,7 +538,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.95294123888015747" green="0.94117653369903564" blue="0.90588241815567017" alpha="1" colorSpace="deviceRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="添加提醒" id="II4-3n-w9T">
+                    <navigationItem key="navigationItem" id="II4-3n-w9T">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="NHW-ZQ-KPn">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8fq-gx-LJk">
                                 <rect key="frame" x="5" y="4" width="74" height="35"/>
@@ -3950,14 +3949,14 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="fme-ki-SfP"/>
-        <segue reference="wco-H4-LqS"/>
-        <segue reference="nfc-4j-8XO"/>
-        <segue reference="kjd-qS-0pq"/>
-        <segue reference="Feq-4l-Zfq"/>
+        <segue reference="Di7-Wf-utY"/>
+        <segue reference="L5V-k5-yCo"/>
+        <segue reference="skE-QR-q5J"/>
+        <segue reference="kL1-9Z-L7R"/>
+        <segue reference="p1j-ow-HAz"/>
         <segue reference="f4A-Lq-rQs"/>
         <segue reference="tJz-zA-22g"/>
         <segue reference="cVP-Bc-SG3"/>
-        <segue reference="p1j-ow-HAz"/>
+        <segue reference="nfc-4j-8XO"/>
     </inferredMetricsTieBreakers>
 </document>
