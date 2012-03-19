@@ -23,12 +23,14 @@
 + (void) buildOfferAcceptedCell:(Offer *)item:(ListingTableCell *)cell;
 + (void) buildOfferPendingCell:(Offer *)item:(ListingTableCell *)cell;
 + (void) buildOfferExpiredCell:(Offer *)item:(ListingTableCell *)cell;
++ (void) buildOfferPaidCell:(Offer *)item:(ListingTableCell *)cell;
 
 // listItems
 + (void) buildListItemPayNowCell:(ListItem *)item:(ListingTableCell *)cell;
 + (void) buildListItemHasOffersCell:(ListItem *)item:(ListingTableCell *)cell;
 + (void) buildListItemNoOffersCell:(ListItem *)item:(ListingTableCell *)cell;
 + (void) buildListItemExpiredCell:(ListItem *)item:(ListingTableCell *)cell;
++ (void) buildListItemPaidCell:(ListItem *)item:(ListingTableCell *)cell;
 
 + (void) buildMapButton:(UIButton *)button;
 + (void) buildBackButton:(UIButton *)button;

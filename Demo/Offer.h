@@ -35,5 +35,7 @@
 
 //// model helper methods
 - (BOOL) isExpired;
+- (BOOL) isAccepted;
+- (BOOL) isPaid;
 
 @end

@@ -27,6 +27,7 @@
 @synthesize offererIds = _offererIds;
 @synthesize acceptedPrice = _acceptedPrice;
 @synthesize acceptedOffer = _acceptedOffer;
+@synthesize acceptedOfferId = _acceptedOfferId;
 
 - (void) buildData:(NSDictionary *) theDictionary
 {
@@ -45,7 +46,7 @@
   NSArray *latlng = [theDictionary objectForKey:@"latlng"]; 
   _location       = [[Location alloc] initWithArray:latlng];
   
-  NSString *acceptedOfferId = [theDictionary objectForKey:@"accepted_offer_id"];
+  _acceptedOfferId = [theDictionary objectForKey:@"accepted_offer_id"];
   NSArray *offers = [theDictionary objectForKey:@"offers"];
   _offers     = [[NSMutableArray alloc] init];
   _offererIds = [[NSMutableArray alloc] init];
@@ -56,7 +57,7 @@
     if (offer && offer.userId) {
       [_offers addObject:offer];
       [_offererIds addObject:offer.userId];
-      if ( [acceptedOfferId isPresent] && offer.dbId && [acceptedOfferId isEqualToString:offer.dbId] ) { 
+      if ( [_acceptedOfferId isPresent] && offer.dbId && [_acceptedOfferId isEqualToString:offer.dbId] ) { 
         self.acceptedOffer = offer; 
         self.acceptedPrice = offer.price;
       }
@@ -103,12 +104,22 @@
 
 - (BOOL) isAccepted
 {
-  return self.acceptedPrice != nil && self.acceptedPrice > 0;
+  return [self.state isEqualToString:@"accepted"]; //self.acceptedPrice != nil && self.acceptedPrice > 0;
 }
 
 - (BOOL) isPersisted
 {
   return [self.dbId length] > 0;
+}
+
+- (BOOL) isPaid
+{
+  return [self.state isEqualToString:@"paid"];
+}
+
+- (BOOL) isIdle
+{
+  return [self.state isEqualToString:@"idle"];
 }
 
 - (BOOL) isExpired

@@ -84,5 +84,15 @@
   return [_listItemEndedAt timeIntervalSinceNow] < 0;
 }
 
+- (BOOL) isAccepted
+{
+  return [self.state isEqualToString:@"accepted"];
+}
+
+- (BOOL) isPaid
+{
+  return [self.state isEqualToString:@"paid"];
+}
+
 
 @end

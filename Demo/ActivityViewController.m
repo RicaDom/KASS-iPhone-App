@@ -330,20 +330,20 @@ NSMutableArray *currentItems;
         cell.title.text = item.title;
         cell.subTitle.text = item.description;
         
-        if (item.isExpired) {
-            [ViewHelper buildListItemExpiredCell:item:cell];
-        } else {
-            // if user already accepted any offer, show pay now icon
-            if (item.acceptedPrice != nil && item.acceptedPrice > 0) {
-                [ViewHelper buildListItemPayNowCell:item:cell];            
-            } else {
-                int offersCount = [item.offers count];
-                // if the listing has offers
-                if (offersCount > 0) {
-                    [ViewHelper buildListItemHasOffersCell:item:cell];                
-                } else { // otherwise show pending states                               
-                    [ViewHelper buildListItemNoOffersCell:item:cell];
-                }
+        if( [item isAccepted]) {
+          [ViewHelper buildListItemPayNowCell:item:cell];   
+        } else if ( item.isPaid) {
+          [ViewHelper buildListItemPaidCell:item:cell];
+        } else if (item.isIdle && item.isExpired) {
+          [ViewHelper buildListItemExpiredCell:item:cell];
+        }
+        else {
+            int offersCount = [item.offers count];
+            // if the listing has offers
+            if (offersCount > 0) {
+                [ViewHelper buildListItemHasOffersCell:item:cell];                
+            } else { // otherwise show pending states                               
+                [ViewHelper buildListItemNoOffersCell:item:cell];
             }
         }
     } 
@@ -357,7 +357,9 @@ NSMutableArray *currentItems;
         // if my offer has been accepted by buyer
         if ([item.state isEqualToString: OFFER_STATE_ACCEPTED] ) {
             [ViewHelper buildOfferAcceptedCell:item:cell];
-        } else {
+        }else if ( item.isPaid){
+          [ViewHelper buildOfferPaidCell:item :cell];
+        }else {
             // if the listing is expired
             if ([item isExpired]) {
                 [ViewHelper buildOfferExpiredCell:item:cell];
@@ -379,8 +381,19 @@ NSMutableArray *currentItems;
         ListItem *item = [currentItems objectAtIndex:[indexPath row]];
         
         // if listing already has accepted offer, got to pay page
-        if (item.isAccepted) {
-          [self performSegueWithModelJson:item.acceptedOffer.toJson:@"ActBuyingListToPayView":self];
+        if (item.isAccepted || item.isPaid) {
+          
+          NSDictionary *offerJson;
+          if (!item.acceptedOffer ) {
+            NSDictionary *offer = [[NSDictionary alloc] initWithObjectsAndKeys:item.acceptedOfferId, @"id", nil];
+            offerJson = [[NSDictionary alloc] initWithObjectsAndKeys:offer, @"offer", nil];
+          }else {
+            offerJson = item.acceptedOffer.toJson;
+          }
+          
+          DLog(@"........... offerJson = %@", offerJson);
+          
+          [self performSegueWithModelJson:offerJson:@"ActBuyingListToPayView":self];
         } else {
           [self performSegueWithModelJson:item.toJson:@"ActBuyingListToOffers":self];
         }

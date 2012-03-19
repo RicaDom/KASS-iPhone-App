@@ -69,10 +69,14 @@ extern NSString * const UI_LABEL_ACCEPTED;
 extern NSString * const UI_LABEL_WAITING_FOR_OFFER;
 extern NSString * const UI_LABEL_OFFER_PENDING;
 extern NSString * const UI_LABEL_BUYER_OFFERED;
+extern NSString * const UI_LABEL_PAID;
+extern NSString * const UI_LABEL_YOU_PAID;
 
 extern NSString * const OFFER_STATE_ACCEPTED;
 extern NSString * const OFFER_STATE_REJECTED;
 extern NSString * const OFFER_STATE_IDLE;
+extern NSString * const OFFER_STATE_PAID;
+
 // NSNotification Center
 extern NSString * const CHANGED_PRICE_NOTIFICATION;
 extern NSString * const OFFER_TO_PAY_VIEW_NOTIFICATION;
@@ -91,6 +95,7 @@ extern NSInteger const VALIDE_USER_PHONE_LENGTH;
 extern NSString * const ERROR_MSG_CONNECTION_FAILURE;
 
 // UI image
+extern NSString * const POPUP_IMAGE_ACCEPTED_SUCCESS;
 extern NSString * const POPUP_IMAGE_NEW_POST_SUCCESS;
 extern NSString * const UI_IMAGE_TABBAR_BACKGROUND;
 extern NSString * const UI_IMAGE_TABBAR_SELECTED_TRANS;

@@ -31,6 +31,8 @@
 @synthesize backButton = _backButton;
 @synthesize leftButton = _leftButton;
 @synthesize rightButton = _rightButton;
+@synthesize payButton = _payButton;
+@synthesize payStatusLabel = _payStatusLabel;
 
 NSString *popUpSuccessfulViewFlag;
 
@@ -53,8 +55,7 @@ NSString *popUpSuccessfulViewFlag;
 
 - (void)populateData:(NSDictionary *)dict
 {
-  NSDictionary *offer = [dict objectForKey:@"offer"];
-  self.currentOffer = [[Offer alloc]initWithDictionary:offer];
+  self.currentOffer = [[Offer alloc]initWithDictionary:dict];
   
   [ViewHelper buildOfferScrollView:self.scrollView:[self currentUser]:_currentOffer];
   [self hideIndicator];
@@ -69,18 +70,31 @@ NSString *popUpSuccessfulViewFlag;
   }
   
   VariableStore.sharedInstance.userToShowId = _currentOffer.userId;
+  
+  if ( [self.currentOffer isPaid]) {
+    self.payButton.hidden = TRUE;
+    self.payStatusLabel.text = @"交易已支付";
+    self.payStatusLabel.textColor = [UIColor grayColor];
+  }else {
+    self.payButton.hidden = FALSE;
+    self.payStatusLabel.text = @"支付";
+  }
+  
 }
 
 - (void)accountDidGetOffer:(NSDictionary *)dict
 {
   DLog(@"BuyerPayViewController::accountDidGetOffer:dict=%@", dict);  
-  [self populateData:dict];
+  NSDictionary *offer = [dict objectForKey:@"offer"];
+  [self populateData:offer];
 }
 
 - (void)accountDidPayOffer:(NSDictionary *)dict
 {
-  DLog(@"BuyerPayViewController::accountDidPayOffer:dict=%@", dict);  
-  [self populateData:dict];
+  DLog(@"BuyerPayViewController::accountDidPayOffer:dict=%@", dict);
+  NSDictionary *listing = [dict objectForKey:@"listing"];
+  NSDictionary *acceptedOffer = [listing objectForKey:@"accepted_offer"];
+  [self populateData:acceptedOffer];
 }
 
 - (void)accountRequestFailed:(NSDictionary *)errors
@@ -126,7 +140,7 @@ NSString *popUpSuccessfulViewFlag;
 {
     if ([popUpSuccessfulViewFlag isEqualToString:OFFER_STATE_ACCEPTED]) {
         popUpSuccessfulViewFlag = nil;
-        CustomImageViewPopup *pop = [[CustomImageViewPopup alloc] initWithType:POPUP_IMAGE_NEW_POST_SUCCESS];
+        CustomImageViewPopup *pop = [[CustomImageViewPopup alloc] initWithType:POPUP_IMAGE_ACCEPTED_SUCCESS];
         [self.view addSubview: pop];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
             [pop removeFromSuperview];
@@ -146,6 +160,8 @@ NSString *popUpSuccessfulViewFlag;
     [self setBackButton:nil];
     [self setLeftButton:nil];
     [self setRightButton:nil];
+  [self setPayButton:nil];
+  [self setPayStatusLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -174,6 +190,8 @@ NSString *popUpSuccessfulViewFlag;
 }
 
 - (IBAction)payButtonAction:(id)sender {
+  self.payButton.hidden = TRUE;
+  [[self currentUser] payOffer:_currentOffer.dbId];
 }
 
 @end

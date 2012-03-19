@@ -31,6 +31,7 @@
 @property (nonatomic, strong) NSMutableArray *offererIds;
 @property (nonatomic, strong) NSDecimalNumber *acceptedPrice;
 @property (nonatomic, strong) Offer *acceptedOffer;
+@property (nonatomic, strong) NSString *acceptedOfferId;
 
 @property (nonatomic, strong) NSData   *data;
 
@@ -40,6 +41,8 @@
 - (BOOL) isExpired;
 - (BOOL) isAccepted;
 - (BOOL) isPersisted;
+- (BOOL) isPaid;
+- (BOOL) isIdle;
 - (BOOL) hasOfferer:(User *)user;
 - (Offer *) getOfferFromOfferer:(User *)user;
 

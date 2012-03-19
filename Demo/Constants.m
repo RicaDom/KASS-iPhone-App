@@ -46,6 +46,8 @@ NSString * const UI_LABEL_BUYER_OFFERED = @"买家出价";
 NSString * const UI_LABEL_ACCEPTED = @"交易成功";
 NSString * const UI_LABEL_WAITING_FOR_OFFER = @"等待出价";
 NSString * const UI_LABEL_OFFER_PENDING = @"等待确认";
+NSString * const UI_LABEL_YOU_PAID = @"已付";
+NSString * const UI_LABEL_PAID = @"已付";
 
 NSString * const UI_LABEL_ERROR   = @"错误";
 NSString * const UI_LABEL_DISMISS = @"取消";
@@ -60,6 +62,7 @@ NSString * const ERROR_MSG_CONNECTION_FAILURE = @"网络连接失败";
 
 NSString * const OFFER_STATE_ACCEPTED = @"accepted";
 NSString * const OFFER_STATE_REJECTED = @"rejected";
+NSString * const OFFER_STATE_PAID = @"paid";
 NSString * const OFFER_STATE_IDLE = @"idle";
 
 NSString * const CHANGED_PRICE_NOTIFICATION = @"CHANGED_PRICE_NOTIFICATION";
@@ -69,6 +72,8 @@ NSString * const NO_MESSAGE_TO_MESSAGE_VIEW_NOTIFICATION = @"NO_MESSAGE_TO_MESSA
 
 // UI image
 NSString * const POPUP_IMAGE_NEW_POST_SUCCESS = @"POPUP_IMAGE_NEW_POST_SUCCESS";
+NSString * const POPUP_IMAGE_ACCEPTED_SUCCESS = @"POPUP_IMAGE_ACCEPTED_SUCCESS";
+
 NSString * const UI_IMAGE_TABBAR_BACKGROUND = @"nav.png";
 NSString * const UI_IMAGE_TABBAR_SELECTED_TRANS = @"btn_transwhite.png";
 NSString * const UI_IMAGE_LOGIN_BACKGROUND = @"login_bg.png";

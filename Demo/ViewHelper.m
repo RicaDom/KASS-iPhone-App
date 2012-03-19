@@ -67,6 +67,30 @@
   }
 }
 
+
++ (void) buildListItemPaidCell:(ListItem *)item:(ListingTableCell *)cell;
+{
+  UILabel *labelPaid = [[UILabel alloc] init];
+  [labelPaid setText:UI_LABEL_PAID];
+  [labelPaid setTextColor:[UIColor brownColor]];
+  [labelPaid setBackgroundColor:[UIColor clearColor]];
+  labelPaid.font = [UIFont boldSystemFontOfSize:13];
+  labelPaid.frame = CGRectMake(0, 0, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 8);
+  labelPaid.textAlignment = UITextAlignmentCenter;
+  
+  [cell.infoView addSubview:labelPaid]; 
+  UILabel *labelFinalPrice = [[UILabel alloc] init];
+  if (item.acceptedPrice != nil && item.acceptedPrice > 0) {
+    [labelFinalPrice setText:[@"¥ " stringByAppendingFormat: [item.acceptedPrice stringValue]]];
+  }
+  [labelFinalPrice setTextColor:[UIColor greenColor]];
+  labelFinalPrice.font = [UIFont boldSystemFontOfSize:16];
+  labelFinalPrice.backgroundColor = [UIColor clearColor];
+  labelFinalPrice.frame = CGRectMake(0, cell.infoView.frame.size.height/2 - 12, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 5);
+  labelFinalPrice.textAlignment = UITextAlignmentCenter;
+  [cell.infoView addSubview:labelFinalPrice]; 
+}
+
 + (void) buildListItemPayNowCell:(ListItem *)item:(ListingTableCell *)cell
 {
   UIButton *buttonPayNow = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -173,6 +197,32 @@
     labelExpiredDate.frame = CGRectMake(0, cell.infoView.frame.size.height/2 - 12, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 5);
     labelExpiredDate.textAlignment = UITextAlignmentCenter;
     [cell.infoView addSubview:labelExpiredDate]; 
+}
+
++ (void) buildOfferPaidCell:(Offer *)item:(ListingTableCell *)cell
+{
+  [cell.infoView setBackgroundColor:[[UIColor alloc] initWithPatternImage:[UIImage imageNamed:UI_IMAGE_ACTIVITY_PRICE_BG]]];   
+  UILabel *labelPaid = [[UILabel alloc] init];
+  [labelPaid setText:UI_LABEL_PAID];
+  [labelPaid setTextColor:[UIColor brownColor]];
+  labelPaid.frame = CGRectMake(0, 0, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 8);
+  labelPaid.textAlignment = UITextAlignmentCenter;
+  labelPaid.backgroundColor = [UIColor clearColor];
+  labelPaid.font = [UIFont boldSystemFontOfSize:13];
+  [cell.infoView addSubview:labelPaid]; 
+  
+  UILabel *labelFinalPrice = [[UILabel alloc] init];
+  if (item.price != nil && item.price > 0) {
+    [labelFinalPrice setText:[@"¥ " stringByAppendingFormat:[item.price stringValue]]];
+  }
+  
+  [labelFinalPrice setTextColor:[UIColor blackColor]];
+  labelFinalPrice.backgroundColor = [UIColor clearColor];
+  labelFinalPrice.frame = CGRectMake(0, cell.infoView.frame.size.height/2 - 12, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 5);
+  labelFinalPrice.textAlignment = UITextAlignmentCenter;
+  labelFinalPrice.font = [UIFont boldSystemFontOfSize:16];
+  [cell.infoView addSubview:labelFinalPrice]; 
+
 }
 
 + (void) buildOfferPendingCell:(Offer *)item:(ListingTableCell *)cell
