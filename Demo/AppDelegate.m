@@ -19,7 +19,9 @@
   NSDictionary *params = [notification objectForKey:@"custom"];
   NSString *type = [params objectForKey:@"e"];
   NSString *dbId = [params objectForKey:@"i"];
-  
+    NSDictionary *aps = [notification objectForKey:@"aps"];
+    NSString *alert = [aps objectForKey:@"alert"];
+    [ViewHelper showErrorAlert:alert:self];
   DLog(@"Notification type=%@, dbId=%@", type, dbId);
 }
 
