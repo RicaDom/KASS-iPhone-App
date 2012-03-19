@@ -70,6 +70,22 @@
     [_delegate accountDidAcceptOffer:dict];
 }
 
+- (void)payOffer:(NSString *)offerId
+{
+  DLog(@"User::payOffer:id=%@", offerId);
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"payOfferFinished:"];
+  [ka payOffer:nil:offerId];
+}
+
+- (void)payOfferFinished:(NSData *)data
+{
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"User::payOfferFinished:dict");
+  
+  if( [_delegate respondsToSelector:@selector(accountDidPayOffer:)] )
+    [_delegate accountDidPayOffer:dict];
+}
+
 - (void)createOfferMessage:(NSDictionary *)dict:(NSString *)offerId
 {
   DLog(@"User::createOfferMessage:dict=%@", dict);

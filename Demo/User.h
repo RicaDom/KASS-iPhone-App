@@ -74,6 +74,8 @@ typedef enum {
 - (void)getOfferMessagesFinished:(NSData *)data;
 - (void)acceptOffer:(NSString *)offerId;
 - (void)acceptOfferFinished:(NSData *)data;
+- (void)payOffer:(NSString *)offerId;
+- (void)payOfferFinished:(NSData *)data;
 
 - (void)getAlertListings:(NSString *)alertId;
 - (void)getAlertListingsFinished:(NSData *)data;

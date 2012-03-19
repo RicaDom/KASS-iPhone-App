@@ -77,6 +77,11 @@ NSString *popUpSuccessfulViewFlag;
   [self populateData:dict];
 }
 
+- (void)accountDidPayOffer:(NSDictionary *)dict
+{
+  DLog(@"BuyerPayViewController::accountDidPayOffer:dict=%@", dict);  
+  [self populateData:dict];
+}
 
 - (void)accountRequestFailed:(NSDictionary *)errors
 {
