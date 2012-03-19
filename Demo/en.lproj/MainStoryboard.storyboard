@@ -3293,7 +3293,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.95686280727386475" green="0.94117653369903564" blue="0.90588241815567017" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" red="0.25737404336734693" green="0.04146028140054496" blue="0.13081024188429421" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="浏览市场" id="EGC-E8-lEi">
                         <barButtonItem key="backBarButtonItem" title="返回" id="Bpx-dd-kvS"/>
