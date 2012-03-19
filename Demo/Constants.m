@@ -157,13 +157,14 @@ NSString * const UI_IMAGE_SETTING_LOGIN_PRESS = @"btn_09.png";
 NSString * const UI_IMAGE_SETTING_LOGOUT = @"btn_05.png";
 NSString * const UI_IMAGE_SETTING_LOGOUT_PRESS = @"btn_10.png";
 
-NSString * const UI_IMAGE_CHECKBOX_CHECK = @"tongbu_80.png";
-NSString * const UI_IMAGE_CHECKBOX_UNCHECK = @"tongbu_83.png";
+NSString * const UI_IMAGE_CHECKBOX_CHECK = @"tongbu_check.png";
+NSString * const UI_IMAGE_CHECKBOX_UNCHECK = @"tongbu_uncheck.png";
 
 NSString * const UI_IMAGE_PROVIDE = @"pbtn_s.png";
 NSString * const UI_IMAGE_PROVIDE_PRESS = @"pbtn_s_down.png";
 
 NSString * const UI_IMAGE_PROVIDE_BROWSE = @"pbtn_s2.png";
 NSString * const UI_IMAGE_PROVIDE_BROWSE_PRESS = @"pbtn_s2_down.png";
+NSString * const UI_IMAGE_MAP_PIN = @"pin.png";
 
 @end

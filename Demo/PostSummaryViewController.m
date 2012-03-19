@@ -8,6 +8,7 @@
 
 #import "PostSummaryViewController.h"
 #import "UIResponder+VariableStore.h"
+#import "UIViewController+ActivityIndicate.h"
 
 #import "ListingMapAnnotaion.h"
 #import "ListingImageAnnotationView.h"
@@ -60,7 +61,7 @@
     [self.submitButton.titleLabel setTextAlignment:UITextAlignmentCenter];
     
     
-    if ([[VariableStore sharedInstance].user.account.weiboId length] > 0) {
+    if ([[VariableStore sharedInstance].user isWeiboLogin] > 0) {
         [ViewHelper buildCheckBoxButton:self.weiboCheckBox];
         self.weiboCheckBox.tag = 1; //ON
         self.weiboCheckBox.enabled = YES;
@@ -176,7 +177,8 @@
 {
   DLog(@"PostSummaryViewController::accountDidCreateListing:dict=%@", dict);
   [[self kassVS] appendPostingItemToListings:dict];
-
+  
+  [self hideIndicator];
   [self.presentingViewController dismissModalViewControllerAnimated:YES];
   [[NSNotificationCenter defaultCenter] postNotificationName: NEW_POST_NOTIFICATION 
 														object: nil];
@@ -186,7 +188,7 @@
 {
   DLog(@"PostSummaryViewController::accountDidModifyListing:dict=%@", dict);
 //  [[self kassVS] appendPostingItemToListings:dict];
-  
+  [self hideIndicator];
   [self.presentingViewController dismissModalViewControllerAnimated:YES];
   [[NSNotificationCenter defaultCenter] postNotificationName: NEW_POST_NOTIFICATION 
                                                       object: nil];
@@ -212,10 +214,9 @@
         [params setObject:durationStr forKey:@"time"];
         [params setObject:latlng forKey:@"latlng"];
                                   
-        DLog(@"params = %@", params);
-
-        // TODO - Add WeiBox share
-        // if (self.weiboCheckBox.tag == 1)  // share to weibo is on
+        if (self.weiboCheckBox.tag == 1) { [params setObject:@"true" forKey:@"publish"]; }
+     
+        DLog(@"PostSummaryViewController::submitAction:params = %@", params);
         if ([self.postType isEqualToString:POST_TYPE_EDITING] && self.postingItem.isPersisted) {
             [self.currentUser modifyListing:params:self.postingItem.dbId];
         }else{

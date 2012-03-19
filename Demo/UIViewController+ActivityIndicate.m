@@ -15,7 +15,7 @@
 
 - (void) showLoadingIndicator
 {
-  [self showIndicator:@"Loading..."];
+  [self showIndicator:@"加载中..."];
 }
 
 - (void) showIndicator:(NSString *)msg
@@ -27,40 +27,6 @@
 {
   [DejalBezelActivityView removeViewAnimated:YES];
 }
-
-//- (void)showErrorAlert:(NSString *)message
-//{
-//  UIAlertView *alert = [[UIAlertView alloc] init];
-//	[alert setTitle:UI_LABEL_ERROR];
-//	[alert setMessage:message];
-//  [alert setDelegate:self];
-//  [alert addButtonWithTitle:UI_LABEL_CONFIRM];
-//  [alert show];
-//}
-//
-//- (void)showErrorMessageAlert:(NSDictionary *)errors
-//{
-//  NSString *errorMsgs = nil;
-//  NSString *errorKey  = nil;
-//  for (NSString *k in errors) {
-//    errorKey  = k;
-//    errorMsgs = [errors valueForKey:errorKey];
-//    break;
-//  }
-//  
-//  if ( !errorMsgs || !errorKey ) { return; }
-//  
-//  if ( [errorMsgs isKindOfClass:NSArray.class]) {
-//    NSArray *errorArray = (NSArray *)errorMsgs;
-//    if ([errorArray count] > 0) {
-//      NSString *err = [[NSString alloc] initWithFormat:@"%@ %@", errorKey, [errorArray objectAtIndex:0]];
-//      [self showErrorAlert:err]; 
-//    }
-//  }else if ( [errorMsgs isKindOfClass:NSString.class] ){ 
-//    NSString *err = [[NSString alloc] initWithFormat:@"%@ %@", errorKey, errorMsgs];
-//    [self showErrorAlert:err ]; 
-//  }
-//}
 
 - (void)accountRequestFailed:(NSDictionary *)errors
 {
@@ -93,9 +59,9 @@
 - (void)viewDidLoad
 {
 // this was to make sure that the indicator hides when it should
-//  DLog(@"UIViewController (ActivityIndicate)::viewDidLoad:delegate=%@", self);
-//  if( [self kassVS] && [[self kassVS] isLoggedIn ] )
-//    [self currentUser].delegate = self;
+//  DLog(@"UIViewController (ActivityIndicate)::viewDidLoad:delegate=%@", self.class);
+  if( [self kassVS] && [[self kassVS] isLoggedIn ] )
+    [self currentUser].delegate = self;
 }
 
 @end

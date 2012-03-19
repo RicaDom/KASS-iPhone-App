@@ -479,7 +479,7 @@ static DejalActivityView *dejalActivityView = nil;
 {
     [super setupBackground];
     
-	self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.35];
+	self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.85];
 }
 
 /*
