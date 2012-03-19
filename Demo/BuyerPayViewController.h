@@ -34,5 +34,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *rightButton;
 
 - (IBAction)leftButtonAction:(id)sender;
+- (IBAction)payButtonAction:(id)sender;
 
 @end

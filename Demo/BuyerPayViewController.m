@@ -173,4 +173,7 @@ NSString *popUpSuccessfulViewFlag;
     [self dismissModalViewControllerAnimated:YES];   
 }
 
+- (IBAction)payButtonAction:(id)sender {
+}
+
 @end

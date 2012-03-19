@@ -40,9 +40,9 @@
 {
     [ViewHelper buildCancelButton:self.leftButton];
     self.whatLabel.text = ([VariableStore sharedInstance].currentAddAlert.keyword.length > 0) ? [VariableStore sharedInstance].currentAddAlert.keyword : @"所有商品";
-    self.minPriceLabel.text = ([VariableStore sharedInstance].currentAddAlert.minPrice.length > 0) ? [VariableStore sharedInstance].currentAddAlert.minPrice : @"没有最低价";
+    self.minPriceLabel.text = ([VariableStore sharedInstance].currentAddAlert.minPrice.length > 0) ? [VariableStore sharedInstance].currentAddAlert.minPrice : @"价格无限";
 
-    self.locationLabel.text = ([VariableStore sharedInstance].currentAddAlert.userSpecifyLocation.length > 0) ? [VariableStore sharedInstance].currentAddAlert.userSpecifyLocation : @"Current location";
+    self.locationLabel.text = ([VariableStore sharedInstance].currentAddAlert.userSpecifyLocation.length > 0) ? [VariableStore sharedInstance].currentAddAlert.userSpecifyLocation : @"您现在的位置";
     
     if ([VariableStore sharedInstance].currentAddAlert.radius.length <= 0) {
         [VariableStore sharedInstance].currentAddAlert.radius = @"5";
