@@ -32,7 +32,17 @@
 {
   DLog(@"UIViewController (ActivityIndicate)::accountRequestFailed");
   [self hideIndicator];
-  [ViewHelper showErrorMessageAlert:errors:self];
+  NSString *errorCode = [errors objectForKey:@"code"];
+  NSString *method    = [errors objectForKey:@"method"];
+  if ([errorCode isEqualToString:@"3"]) {
+    if ( [method isEqualToString:@"loginFinished:"] ) {
+      [ViewHelper showErrorAlert:@"登陆错误！":self];
+    }else {
+      [ViewHelper showErrorAlert:@"需要登陆！":self];
+    }
+  }else {
+    [ViewHelper showErrorMessageAlert:errors:self];
+  }
 }
 
 - (void)appRequestFailed:(NSDictionary *)errors

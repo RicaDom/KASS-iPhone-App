@@ -170,6 +170,6 @@ NSString * const UI_IMAGE_PROVIDE_PRESS = @"pbtn_s_down.png";
 
 NSString * const UI_IMAGE_PROVIDE_BROWSE = @"pbtn_s2.png";
 NSString * const UI_IMAGE_PROVIDE_BROWSE_PRESS = @"pbtn_s2_down.png";
-NSString * const UI_IMAGE_MAP_PIN = @"pin.png";
+NSString * const UI_IMAGE_MAP_PIN = @"rmb-pin";
 
 @end
