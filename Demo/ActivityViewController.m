@@ -388,8 +388,6 @@ NSMutableArray *currentItems;
             offerJson = item.acceptedOffer.toJson;
           }
           
-          DLog(@"........... offerJson = %@", offerJson);
-          
           [self performSegueWithModelJson:offerJson:@"ActBuyingListToPayView":self];
         } else {
           [self performSegueWithModelJson:item.toJson:@"ActBuyingListToOffers":self];
