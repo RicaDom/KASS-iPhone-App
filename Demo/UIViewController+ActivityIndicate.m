@@ -20,7 +20,8 @@
 
 - (void) showIndicator:(NSString *)msg
 {
-  [DejalBezelActivityView activityViewForView:self.navigationController.navigationBar.superview withLabel:msg width:100];
+//navigationController.navigationBar.superview
+  [DejalBezelActivityView activityViewForView:self.view withLabel:msg width:100];
 }
 
 - (void) hideIndicator

@@ -415,11 +415,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/UIViewController+ActivityIndicate.m"
-         timestampString = "353838394.91033"
+         timestampString = "354125106.315253"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "65"
-         endingLineNumber = "65"
+         startingLineNumber = "66"
+         endingLineNumber = "66"
          landmarkName = "-viewWillAppear:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -429,11 +429,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/UIViewController+ActivityIndicate.m"
-         timestampString = "353838394.91033"
+         timestampString = "354125106.315253"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "66"
-         endingLineNumber = "66"
+         startingLineNumber = "67"
+         endingLineNumber = "67"
          landmarkName = "-viewWillAppear:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -806,11 +806,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/UIViewController+ActivityIndicate.m"
-         timestampString = "353817797.221305"
+         timestampString = "354125106.315253"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "28"
-         endingLineNumber = "28"
+         startingLineNumber = "29"
+         endingLineNumber = "29"
          landmarkName = "-hideIndicator"
          landmarkType = "5">
       </FileBreakpoint>
@@ -819,11 +819,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/DejalActivityView.m"
-         timestampString = "353820588.417474"
+         timestampString = "354126505.889306"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "498"
-         endingLineNumber = "498"
+         startingLineNumber = "500"
+         endingLineNumber = "500"
          landmarkName = "-makeBorderView"
          landmarkType = "5">
       </FileBreakpoint>
@@ -832,11 +832,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/UIViewController+ActivityIndicate.m"
-         timestampString = "353818974.41713"
+         timestampString = "354125106.315253"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "29"
-         endingLineNumber = "29"
+         startingLineNumber = "30"
+         endingLineNumber = "30"
          landmarkName = "-hideIndicator"
          landmarkType = "5">
       </FileBreakpoint>
@@ -871,11 +871,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/DejalActivityView.m"
-         timestampString = "353820588.417474"
+         timestampString = "354126505.889306"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "803"
-         endingLineNumber = "803"
+         startingLineNumber = "805"
+         endingLineNumber = "805"
          landmarkName = "-makeBorderView"
          landmarkType = "5">
       </FileBreakpoint>
@@ -884,11 +884,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/UIViewController+ActivityIndicate.m"
-         timestampString = "353838394.91033"
+         timestampString = "354125106.315253"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "49"
-         endingLineNumber = "49"
+         startingLineNumber = "50"
+         endingLineNumber = "50"
          landmarkName = "-appRequestFailed:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -994,6 +994,19 @@
          startingLineNumber = "181"
          endingLineNumber = "181"
          landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Demo/ItemViewController.m"
+         timestampString = "354125155.887846"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "277"
+         endingLineNumber = "277"
+         landmarkName = "-viewWillAppear:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

@@ -3266,7 +3266,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <color key="backgroundColor" red="0.95294123890000004" green="0.94117653369999998" blue="0.91372555489999996" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="浏览市场" id="EGC-E8-lEi">
                         <barButtonItem key="backBarButtonItem" title="返回" id="Bpx-dd-kvS"/>

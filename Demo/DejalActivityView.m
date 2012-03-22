@@ -479,7 +479,9 @@ static DejalActivityView *dejalActivityView = nil;
 {
     [super setupBackground];
   
-  UIColor *color = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:0.9];
+//  UIColor *color = [UIColor colorWithRed:0.98 green:0.98 blue:1.0 alpha:1.0];
+  UIImage *image = [UIImage imageNamed:@"bg_loading.png"];
+  UIColor *color = [UIColor colorWithPatternImage:image];
     
 	self.backgroundColor = color;
 }
