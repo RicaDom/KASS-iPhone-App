@@ -37,5 +37,6 @@
 - (BOOL) isExpired;
 - (BOOL) isAccepted;
 - (BOOL) isPaid;
+- (BOOL) isRejected;
 
 @end

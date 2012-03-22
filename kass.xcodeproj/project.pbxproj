@@ -59,6 +59,7 @@
 		775563421512FF1700074AC0 /* choice_144.png in Resources */ = {isa = PBXBuildFile; fileRef = 775563401512FF1700074AC0 /* choice_144.png */; };
 		775563431512FF1700074AC0 /* choice_146.png in Resources */ = {isa = PBXBuildFile; fileRef = 775563411512FF1700074AC0 /* choice_146.png */; };
 		7755634815133C0E00074AC0 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7755634715133C0E00074AC0 /* Default@2x.png */; };
+		775F7859151AF4C10055EF4B /* UIView+Subviews.m in Sources */ = {isa = PBXBuildFile; fileRef = 775F7858151AF4C10055EF4B /* UIView+Subviews.m */; };
 		7760FCC91507473F008D40D6 /* ActiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7760FCC81507473E008D40D6 /* ActiveModel.m */; };
 		7760FCD515074E6B008D40D6 /* UIViewController+SegueActiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7760FCD415074E6B008D40D6 /* UIViewController+SegueActiveModel.m */; };
 		776F9546151838CD00F464DF /* rmb-pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 776F9545151838CD00F464DF /* rmb-pin@2x.png */; };
@@ -494,6 +495,8 @@
 		775563441513394100074AC0 /* ProvideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProvideViewController.h; sourceTree = "<group>"; };
 		775563451513394100074AC0 /* ProvideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProvideViewController.m; sourceTree = "<group>"; };
 		7755634715133C0E00074AC0 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		775F7857151AF4C10055EF4B /* UIView+Subviews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Subviews.h"; sourceTree = "<group>"; };
+		775F7858151AF4C10055EF4B /* UIView+Subviews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Subviews.m"; sourceTree = "<group>"; };
 		7760FCC71507473E008D40D6 /* ActiveModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveModel.h; sourceTree = "<group>"; };
 		7760FCC81507473E008D40D6 /* ActiveModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveModel.m; sourceTree = "<group>"; };
 		7760FCD315074E6B008D40D6 /* UIViewController+SegueActiveModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SegueActiveModel.h"; sourceTree = "<group>"; };
@@ -1410,6 +1413,8 @@
 				77C15297150B6B0A00B3B106 /* UIViewController+TableViewRefreshPuller.m */,
 				771AE318150DF1AB009F546B /* UIViewController+PriceModifier.h */,
 				771AE319150DF1AB009F546B /* UIViewController+PriceModifier.m */,
+				775F7857151AF4C10055EF4B /* UIView+Subviews.h */,
+				775F7858151AF4C10055EF4B /* UIView+Subviews.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -2438,6 +2443,7 @@
 				7755633F1512FE9E00074AC0 /* Alert.m in Sources */,
 				E524E666151428D7008D7194 /* ProvideViewController.m in Sources */,
 				E53741481514DBA1008AB941 /* SellerAlertsListingsViewController.m in Sources */,
+				775F7859151AF4C10055EF4B /* UIView+Subviews.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

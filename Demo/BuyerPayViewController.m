@@ -73,11 +73,11 @@ NSString *popUpSuccessfulViewFlag;
   
   if ( [self.currentOffer isPaid]) {
     self.payButton.hidden = TRUE;
-    self.payStatusLabel.text = @"交易已支付";
+    self.payStatusLabel.text = UI_LABEL_OFFER_PAID;
     self.payStatusLabel.textColor = [UIColor grayColor];
   }else {
     self.payButton.hidden = FALSE;
-    self.payStatusLabel.text = @"支付";
+    self.payStatusLabel.text = UI_BUTTON_LABEL_PAY_NOW;
   }
   
 }

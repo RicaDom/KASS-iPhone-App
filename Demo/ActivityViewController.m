@@ -355,19 +355,16 @@ NSMutableArray *currentItems;
         cell.subTitle.text = item.description;
         
         // if my offer has been accepted by buyer
-        if ([item.state isEqualToString: OFFER_STATE_ACCEPTED] ) {
+        if ( item.isAccepted ) {
             [ViewHelper buildOfferAcceptedCell:item:cell];
         }else if ( item.isPaid){
           [ViewHelper buildOfferPaidCell:item :cell];
+        }else if (item.isRejected){
+          [ViewHelper buildOfferRejectedCell:item :cell];
+        }else if ( item.isExpired ){
+          [ViewHelper buildOfferExpiredCell:item:cell];
         }else {
-            // if the listing is expired
-            if ([item isExpired]) {
-                [ViewHelper buildOfferExpiredCell:item:cell];
-            } 
-            // if the offer is pending
-            else {
-                [ViewHelper buildOfferPendingCell:item:cell];
-            }            
+          [ViewHelper buildOfferPendingCell:item:cell];         
         }
     }
     return cell;

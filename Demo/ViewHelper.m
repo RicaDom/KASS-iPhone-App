@@ -222,6 +222,32 @@
   labelFinalPrice.textAlignment = UITextAlignmentCenter;
   labelFinalPrice.font = [UIFont boldSystemFontOfSize:16];
   [cell.infoView addSubview:labelFinalPrice]; 
+  
+}
+
++ (void) buildOfferRejectedCell:(Offer *)item:(ListingTableCell *)cell
+{
+  [cell.infoView setBackgroundColor:[[UIColor alloc] initWithPatternImage:[UIImage imageNamed:UI_IMAGE_ACTIVITY_PRICE_BG]]];   
+  UILabel *label = [[UILabel alloc] init];
+  [label setText:UI_LABEL_PAID];
+  [label setTextColor:[UIColor brownColor]];
+  label.frame = CGRectMake(0, 0, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 8);
+  label.textAlignment = UITextAlignmentCenter;
+  label.backgroundColor = [UIColor clearColor];
+  label.font = [UIFont boldSystemFontOfSize:13];
+  [cell.infoView addSubview:label]; 
+  
+  UILabel *labelFinalPrice = [[UILabel alloc] init];
+  if (item.price != nil && item.price > 0) {
+    [labelFinalPrice setText:[@"¥ " stringByAppendingFormat:[item.price stringValue]]];
+  }
+  
+  [labelFinalPrice setTextColor:[UIColor blackColor]];
+  labelFinalPrice.backgroundColor = [UIColor clearColor];
+  labelFinalPrice.frame = CGRectMake(0, cell.infoView.frame.size.height/2 - 12, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 5);
+  labelFinalPrice.textAlignment = UITextAlignmentCenter;
+  labelFinalPrice.font = [UIFont boldSystemFontOfSize:16];
+  [cell.infoView addSubview:labelFinalPrice]; 
 
 }
 

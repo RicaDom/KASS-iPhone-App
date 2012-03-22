@@ -9,6 +9,7 @@
 #import "BrowseItemViewController.h"
 #import "VariableStore.h"
 #import "ViewHelper.h"
+#import "UIView+Subviews.h"
 #import "UIViewController+ActivityIndicate.h"
 #import "UIViewController+KeyboardSlider.h"
 #import "UIViewController+SegueActiveModel.h"
@@ -62,6 +63,20 @@
   [self loadDataSource];
 }
 
+- (void)hideInputMessageShowStatus:(NSString *)status
+{
+  [self.buttomView removeAllSubviews];
+  
+  UILabel *label = [[UILabel alloc] init];
+  [label setText:status];
+  [label setTextColor:[UIColor brownColor]];
+  label.frame = CGRectMake(0, 0, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
+  label.textAlignment = UITextAlignmentCenter;
+  label.backgroundColor = [UIColor clearColor];
+  label.font = [UIFont boldSystemFontOfSize:24];
+  [self.buttomView addSubview:label]; 
+}
+
 - (void)populateData:(NSDictionary *)dict
 {
   NSDictionary *offer = [dict objectForKey:@"offer"];
@@ -84,6 +99,14 @@
   self.itemExpiredDate.text = [NSString stringWithFormat:@"%@", [formatter stringFromDate:self.currentOffer.listItemEndedAt]];
   
   VariableStore.sharedInstance.userToShowId = _currentOffer.userId;
+  
+  if ( self.currentOffer.isPaid ) {
+    [self hideInputMessageShowStatus:UI_LABEL_OFFER_PAID];
+  } else if ( self.currentOffer.isRejected ) {
+    [self hideInputMessageShowStatus:UI_LABEL_REJECTED];
+  } else if ( self.currentOffer.isExpired ) {
+    [self hideInputMessageShowStatus:UI_LABEL_EXPIRED];
+  }
   
 }
 

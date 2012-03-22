@@ -24,6 +24,7 @@
 + (void) buildOfferPendingCell:(Offer *)item:(ListingTableCell *)cell;
 + (void) buildOfferExpiredCell:(Offer *)item:(ListingTableCell *)cell;
 + (void) buildOfferPaidCell:(Offer *)item:(ListingTableCell *)cell;
++ (void) buildOfferRejectedCell:(Offer *)item:(ListingTableCell *)cell;
 
 // listItems
 + (void) buildListItemPayNowCell:(ListItem *)item:(ListingTableCell *)cell;

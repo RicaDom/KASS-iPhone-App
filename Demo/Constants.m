@@ -48,6 +48,8 @@ NSString * const UI_LABEL_WAITING_FOR_OFFER = @"等待出价";
 NSString * const UI_LABEL_OFFER_PENDING = @"等待确认";
 NSString * const UI_LABEL_YOU_PAID = @"已付";
 NSString * const UI_LABEL_PAID = @"已付";
+NSString * const UI_LABEL_REJECTED = @"出价拒绝";
+NSString * const UI_LABEL_OFFER_PAID = @"交易已支付";
 
 NSString * const UI_LABEL_ALERT   = @"提醒";
 NSString * const UI_LABEL_ERROR   = @"错误";

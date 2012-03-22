@@ -71,6 +71,8 @@ extern NSString * const UI_LABEL_OFFER_PENDING;
 extern NSString * const UI_LABEL_BUYER_OFFERED;
 extern NSString * const UI_LABEL_PAID;
 extern NSString * const UI_LABEL_YOU_PAID;
+extern NSString * const UI_LABEL_REJECTED;
+extern NSString * const UI_LABEL_OFFER_PAID;
 
 extern NSString * const OFFER_STATE_ACCEPTED;
 extern NSString * const OFFER_STATE_REJECTED;
