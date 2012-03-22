@@ -11,6 +11,7 @@
 #import "UIViewController+KeyboardSlider.h"
 #import "UIViewController+ScrollViewRefreshPuller.h"
 #import "UIViewController+PriceModifier.h"
+#import "UIView+Subviews.h"
 #import "ViewHelper.h"
 
 @implementation ActivityOfferMessageViewController
@@ -55,6 +56,20 @@
   [ViewHelper buildOfferScrollView:self.scrollView:[self kassVS].user:_currentOffer];
 }
 
+- (void)hideInputMessageShowStatus:(NSString *)status
+{
+  [self.buttomView hideAllSubviews];
+  
+  UILabel *label = [[UILabel alloc] init];
+  [label setText:status];
+  [label setTextColor:[UIColor brownColor]];
+  label.frame = CGRectMake(0, 0, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
+  label.textAlignment = UITextAlignmentCenter;
+  label.backgroundColor = [UIColor clearColor];
+  label.font = [UIFont boldSystemFontOfSize:24];
+  [self.buttomView addSubview:label]; 
+}
+
 - (void) populateData:(NSDictionary *)dict{
   NSDictionary *offer = [dict objectForKey:@"offer"];
   _currentOffer = [[Offer alloc]initWithDictionary:offer];
@@ -69,6 +84,14 @@
   [self loadMessageView];
   [self hideIndicator];
   [self stopLoading];
+  
+  if ( self.currentOffer.isPaid ) {
+    [self hideInputMessageShowStatus:UI_LABEL_OFFER_PAID];
+  } else if ( self.currentOffer.isRejected ) {
+    [self hideInputMessageShowStatus:UI_LABEL_REJECTED];
+  } else if ( self.currentOffer.isExpired ) {
+    [self hideInputMessageShowStatus:UI_LABEL_EXPIRED];
+  }
 }
 
 - (void) accountDidGetOffer:(NSDictionary *)dict{
@@ -80,7 +103,12 @@
 {
   DLog(@"ActivityOfferMessageViewController::loadDataSource");
   [self showLoadingIndicator];
-  [self.currentUser getOffer:self.currentOffer.dbId];
+  
+  if ( self.currentOffer && self.currentOffer.dbId) {
+    [self.currentUser getOffer:self.currentOffer.dbId];
+  }else{
+    [self hideInputMessageShowStatus:ERROR_MSG_CONNECTION_FAILURE];
+  }
 }
 
 -(void) customViewLoad
