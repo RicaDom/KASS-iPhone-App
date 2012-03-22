@@ -70,6 +70,8 @@
 {
 // this was to make sure that the indicator hides when it should
 //  DLog(@"UIViewController (ActivityIndicate)::viewDidLoad:delegate=%@", self.class);
+  [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed: UI_IMAGE_NAVIGATION_BACKGROUND]forBarMetrics:UIBarMetricsDefault];
+  
   if( [self kassVS] && [[self kassVS] isLoggedIn ] )
     [self currentUser].delegate = self;
 }

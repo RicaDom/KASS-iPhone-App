@@ -97,22 +97,6 @@
     DLog(@"ItemViewController::viewDidLoad");
     [super viewDidLoad];
     
-    // navigation bar background color
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
-    
-    // set buttons background
-    UIImage *editButtonImg = [UIImage imageNamed:UI_IMAGE_ACTIVITY_EDIT_BUTTON];
-    UIImage *editButtonImgPress = [UIImage imageNamed:UI_IMAGE_ACTIVITY_EDIT_BUTTON_PRESS];
-    [self.modifyButton setImage:editButtonImg forState:UIControlStateNormal];
-    [self.modifyButton setImage:editButtonImgPress forState:UIControlStateSelected];
-    self.modifyButton.frame = CGRectMake((self.view.frame.size.width/2 - self.modifyButton.frame.size.width)/2, self.modifyButton.frame.origin.y, editButtonImg.size.width, editButtonImg.size.height);
-
-    UIImage *shareButtonImg = [UIImage imageNamed:UI_IMAGE_ACTIVITY_SHARE_BUTTON];
-    UIImage *shareButtonImgPress = [UIImage imageNamed:UI_IMAGE_ACTIVITY_SHARE_BUTTON_PRESS];
-    [self.shareButton setImage:shareButtonImg forState:UIControlStateNormal];
-    [self.shareButton setImage:shareButtonImgPress forState:UIControlStateSelected];
-    self.shareButton.frame = CGRectMake(self.view.frame.size.width/2 + self.modifyButton.frame.origin.x, self.shareButton.frame.origin.y, editButtonImg.size.width, editButtonImg.size.height);
-    
     [ViewHelper buildMapButton:self.mapButton];  
     [ViewHelper buildBackButton:self.backButton];
 }

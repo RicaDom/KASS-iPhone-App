@@ -2164,11 +2164,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PEB-0q-sY1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="EOY-f8-N3n" customClass="MapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YOW-Jh-Jjz">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="6rN-NP-hpl">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="EOY-f8-N3n" id="a2l-zt-2YB"/>
@@ -3158,7 +3158,7 @@
                     <navigationItem key="navigationItem" id="S1W-5U-ckP">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="ax3-TH-hCe">
-                            <rect key="frame" x="96" y="7" width="128" height="30"/>
+                            <rect key="frame" x="90" y="7" width="140" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="距离"/>
@@ -3586,374 +3586,20 @@
         <image name="taidi.png" width="215" height="50"/>
         <image name="tongbu_check.png" width="20" height="19"/>
     </resources>
-    <classes>
-        <class className="ActivityOfferMessageViewController" superclassName="DataSourceViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ActivityOfferMessageViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="buttonDraggingAction:" candidateClass="UIPanGestureRecognizer"/>
-                <relationship kind="action" name="leftButtonAction:"/>
-                <relationship kind="action" name="rightButtonAction:"/>
-                <relationship kind="action" name="sellerInfoAction:"/>
-                <relationship kind="outlet" name="buttomView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="changedPriceMessage" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="changingPrice" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="confirmDealButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="confirmImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="leftButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="listingExpiredDate" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="listingTitle" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="mainView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="offerPrice" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="priceButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="rightButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="sendMessageTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="userInfoButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="ActivityViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ActivityViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="activityChanged:"/>
-                <relationship kind="action" name="pressBuyingListButton:"/>
-                <relationship kind="action" name="pressSellingListButton:"/>
-                <relationship kind="outlet" name="activitySegment" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="emptyImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="emptyRecordsImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="indicatorImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="listingsTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="tabImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="AppScrollView" superclassName="UIScrollView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AppScrollView.h"/>
-        </class>
-        <class className="BrowseItemNoMsgViewController" superclassName="DataSourceViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BrowseItemNoMsgViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="leftButtonAction:"/>
-                <relationship kind="action" name="navigationButtonAction:"/>
-                <relationship kind="outlet" name="buttomView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="changedPriceMessage" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="descriptionTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="leftButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="listingDate" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="listingPrice" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="listingTitle" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="mainView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="messageTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="navigationButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="offerPrice" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="priceButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="rightButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="userInfoButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="BrowseItemViewController" superclassName="DataSourceViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BrowseItemViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="leftButtonAction:"/>
-                <relationship kind="action" name="rightButtonAction:"/>
-                <relationship kind="outlet" name="buttomView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="changePriceMessage" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="descriptionTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="itemExpiredDate" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="itemPriceChangedToLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="itemPriceLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="itemTitleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="leftButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="mainView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="mapButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="messageTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="navigationButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="priceButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="rightButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="userInfoButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="BrowseTableViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BrowseTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="browseSegmentAction:"/>
-                <relationship kind="outlet" name="browseSegment" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="leftButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="listingTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="mapButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="tableFooter" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="BuyerPayViewController" superclassName="DataSourceViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BuyerPayViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="leftButtonAction:"/>
-                <relationship kind="action" name="payButtonAction:"/>
-                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="bottomView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="changedPriceLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="changedPriceMessage" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="leftButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="listingExpiredDate" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="listingTitle" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="messageTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="offerPrice" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="payButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="payStatusLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="priceButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="rightButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="userInfoButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="DataSourceViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DataSourceViewController.h"/>
-        </class>
-        <class className="ItemViewController" superclassName="DataSourceViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ItemViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="backButtonAction:"/>
-                <relationship kind="action" name="editAction:"/>
-                <relationship kind="action" name="mapButtonAction:"/>
-                <relationship kind="action" name="shareAction:"/>
-                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="descriptionTextField" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="infoScrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="itemExpiredDate" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="itemPrice" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="itemTitle" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="mapButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="modifyButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="offerTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="offersCount" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="shareButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="ListingTableCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ListingTableCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="distance" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="duration" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="infoView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="price" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="subTitle" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="title" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MainTabBarViewController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainTabBarViewController.h"/>
-        </class>
-        <class className="MapViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="backButtonAction:"/>
-                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="currentMap" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-        <class className="OfferChangingPriceViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OfferChangingPriceViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="confirmButtonAction:"/>
-                <relationship kind="action" name="leftButtonAction:"/>
-                <relationship kind="outlet" name="confirmButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="leftButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="offerPriceTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="OfferTableCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OfferTableCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="distance" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="price" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="title" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="PostFlowPriceViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PostFlowPriceViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="backButtonAction:"/>
-                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="priceTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="rightButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="PostFlowSetDateViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PostFlowSetDateViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="backButtonAction:"/>
-                <relationship kind="outlet" name="PostDurationLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="PostDurationPicker" candidateClass="UIPickerView"/>
-                <relationship kind="outlet" name="PostFlowSegment" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="backButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="rightButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="PostFlowViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PostFlowViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="CancelAction:"/>
-                <relationship kind="outlet" name="cancelButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="desTextField" candidateClass="KTTextView"/>
-                <relationship kind="outlet" name="rightButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="titleTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="PostSummaryViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PostSummaryViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancelAction:"/>
-                <relationship kind="action" name="idateAction:"/>
-                <relationship kind="action" name="ipayAction:"/>
-                <relationship kind="action" name="iwantAction:"/>
-                <relationship kind="action" name="leftButtonAction:"/>
-                <relationship kind="action" name="submitAction"/>
-                <relationship kind="action" name="weiboCheckBoxAction:"/>
-                <relationship kind="outlet" name="cancelButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="leftButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="postAskPrice" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="postDesciptionTextField" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="postDuration" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="postTitle" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="submitButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="weiboCheckBox" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="weiboHintLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="PostViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PostViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="changeCreativePostPage"/>
-                <relationship kind="action" name="changeEditorPostPage"/>
-                <relationship kind="action" name="changeHotPostPage"/>
-                <relationship kind="outlet" name="addPostBackgroundView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="addPostButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="addPostSloganLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="contentView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="creativePostPageControl" candidateClass="UIPageControl"/>
-                <relationship kind="outlet" name="creativePostScrollView" candidateClass="AppScrollView"/>
-                <relationship kind="outlet" name="currentLocationLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="editorPostPageControl" candidateClass="UIPageControl"/>
-                <relationship kind="outlet" name="editorPostScrollView" candidateClass="AppScrollView"/>
-                <relationship kind="outlet" name="greetingLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="hotPostPageControl" candidateClass="UIPageControl"/>
-                <relationship kind="outlet" name="hotPostScrollView" candidateClass="AppScrollView"/>
-                <relationship kind="outlet" name="mainScrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="mainView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="ProvideViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProvideViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="browseButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="sellerAlertButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="SellerAlertsAddAlertLocationViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SellerAlertsAddAlertLocationViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="leftButtonAction:"/>
-                <relationship kind="action" name="radiusValueChanged:"/>
-                <relationship kind="action" name="rightButtonAction:"/>
-                <relationship kind="outlet" name="leftButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="locationTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="radiusLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="radiusSlider" candidateClass="UISlider"/>
-                <relationship kind="outlet" name="rightButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="SellerAlertsAddAlertPriceViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SellerAlertsAddAlertPriceViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="leftButtonAction:"/>
-                <relationship kind="action" name="rightButtonAction:"/>
-                <relationship kind="outlet" name="leftButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="minPriceTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="rightButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="SellerAlertsAddAlertViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SellerAlertsAddAlertViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="AddAlertAction:"/>
-                <relationship kind="action" name="leftButtonAction:"/>
-                <relationship kind="outlet" name="leftButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="locationLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="minPriceLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="radiusLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="whatLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SellerAlertsAddAlertWhatViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SellerAlertsAddAlertWhatViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="leftButtonAction:"/>
-                <relationship kind="action" name="rightButtonAction:"/>
-                <relationship kind="outlet" name="goodsTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="keywordTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="leftButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="rightButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="serviceTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="SellerAlertsListingsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SellerAlertsListingsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="alertListingsTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="noListingsMessage" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SellerAlertsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SellerAlertsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="AddAlertButtonAction:"/>
-                <relationship kind="action" name="leftButtonAction:"/>
-                <relationship kind="action" name="rightButtonAction:"/>
-                <relationship kind="outlet" name="addAlertLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="alertTableFooter" candidateClass="UIView"/>
-                <relationship kind="outlet" name="alertsTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="leftButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="rightButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="SettingViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="rightButtonAction:"/>
-                <relationship kind="outlet" name="rightButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="welcomeMessageLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="UserInfoViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UserInfoViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="imageContainerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="regDate" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Di7-Wf-utY"/>
-        <segue reference="kL1-9Z-L7R"/>
-        <segue reference="skE-QR-q5J"/>
-        <segue reference="L5V-k5-yCo"/>
-        <segue reference="p1j-ow-HAz"/>
-        <segue reference="34A-gF-H3c"/>
-        <segue reference="dM3-h5-4IE"/>
+        <segue reference="fme-ki-SfP"/>
+        <segue reference="wco-H4-LqS"/>
+        <segue reference="Feq-4l-Zfq"/>
+        <segue reference="kjd-qS-0pq"/>
+        <segue reference="nfc-4j-8XO"/>
         <segue reference="tJz-zA-22g"/>
         <segue reference="f4A-Lq-rQs"/>
+        <segue reference="p1j-ow-HAz"/>
+        <segue reference="dM3-h5-4IE"/>
     </inferredMetricsTieBreakers>
 </document>

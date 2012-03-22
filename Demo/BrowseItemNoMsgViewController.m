@@ -7,11 +7,11 @@
 //
 
 #import "BrowseItemNoMsgViewController.h"
-#import "UIViewController+ActivityIndicate.h"
 #import "UIViewController+KeyboardSlider.h"
 #import "UIViewController+SegueActiveModel.h"
 #import "UIViewController+ScrollViewRefreshPuller.h"
 #import "UIViewController+PriceModifier.h"
+#import "UIViewController+ActivityIndicate.h"
 #import "UIView+Subviews.h"
 
 #import "ListingMapAnnotaion.h"
@@ -117,13 +117,10 @@
     [self.scrollView setContentSize:CGSizeMake(_ScrollViewContentSizeX, self.scrollView.frame.size.height)];
     
     [self registerPriceModifier];
-  
-    // navigation bar background color
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
     
     // Bottom view load
     [CommonView setMessageWithPriceView:self.scrollView payImage:nil bottomView:self.buttomView priceButton:self.priceButton messageField:self.messageTextField price:self.offerPrice.text changedPriceMessage:self.changedPriceMessage];
-    
+  
     [ViewHelper buildUserInfoButton:self.userInfoButton];
     [ViewHelper buildShareButton:self.rightButton];
     self.rightButton.tag = RIGHT_BAR_BUTTON_SHARE;

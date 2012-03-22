@@ -51,15 +51,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationController.navigationBar.tintColor = [UIColor brownColor];
   
     self.currentPrice = [NSString stringWithFormat:@"%d", VariableStore.sharedInstance.priceToModify];
   
     self.offerPriceTextField.placeholder = self.currentPrice;
     [self.offerPriceTextField becomeFirstResponder];
-    
-    // navigation bar background color
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
+
     [ViewHelper buildCancelButton:self.leftButton];
     [ViewHelper buildConfirmButton:self.confirmButton];
 }
