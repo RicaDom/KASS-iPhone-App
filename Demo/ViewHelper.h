@@ -33,6 +33,7 @@
 + (void) buildListItemExpiredCell:(ListItem *)item:(ListingTableCell *)cell;
 + (void) buildListItemPaidCell:(ListItem *)item:(ListingTableCell *)cell;
 
++ (void) buildSmallBackButton:(UIButton *)button;
 + (void) buildMapButton:(UIButton *)button;
 + (void) buildBackButton:(UIButton *)button;
 + (void) buildUserInfoButton:(UIButton *)button;

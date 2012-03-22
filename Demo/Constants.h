@@ -144,6 +144,7 @@ extern NSString * const UI_IMAGE_MAP_BUTTON;
 extern NSString * const UI_IMAGE_MAP_BUTTON_PRESS;
 extern NSString * const UI_IMAGE_TABLE_CELL_BG;
 extern NSString * const UI_IMAGE_TABLE_CELL_BG_PRESS;
+extern NSString * const UI_IMAGE_SMALL_BACK_BUTTON;
 
 extern NSString * const UI_IMAGE_ACTIVITY_BACKGROUND;
 extern NSString * const UI_IMAGE_ACTIVITY_EDIT_BUTTON;

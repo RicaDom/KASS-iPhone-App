@@ -33,6 +33,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
 //@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIImageView *tableFooter;
+- (IBAction)leftButtonAction:(id)sender;
 
 - (IBAction)browseSegmentAction:(id)sender;
 - (void)loadDataSource;

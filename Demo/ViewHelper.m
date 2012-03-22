@@ -456,6 +456,13 @@
   button.frame = CGRectMake(5, button.frame.origin.y, backImg.size.width, backImg.size.height);
 }
 
++ (void) buildSmallBackButton:(UIButton *)button;
+{
+  UIImage *backImg = [UIImage imageNamed:UI_IMAGE_SMALL_BACK_BUTTON];
+  [button setImage:backImg forState:UIControlStateNormal];
+  button.frame = CGRectMake(5, button.frame.origin.y, backImg.size.width, backImg.size.height);
+}
+
 + (void)buildCancelButton:(UIButton *)button
 {
     UIImage *img = [UIImage imageNamed:UI_IMAGE_CANCEL_BUTTON];

@@ -176,7 +176,7 @@
                                                  name:NO_MESSAGE_TO_MESSAGE_VIEW_NOTIFICATION
                                                object:nil];
 
-  self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
+
   self.listingTableView.tableFooterView = self.tableFooter;
   self.filteredListContent = [[NSMutableArray alloc] init];
 	[self.listingTableView reloadData];
@@ -189,6 +189,7 @@
   
   [self browseSegmentAction:self];    
   
+  [ViewHelper buildSmallBackButton:self.leftButton];
   [ViewHelper buildMapButton:self.mapButton];
 }
 
@@ -317,6 +318,10 @@
     
   [self performSegueByModel:item];
     
+}
+
+- (IBAction)leftButtonAction:(id)sender {
+  [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)browseSegmentAction:(id)sender {

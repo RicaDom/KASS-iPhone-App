@@ -128,6 +128,8 @@
 		77813370151B269A008E87F2 /* iphone_11@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7781336A151B269A008E87F2 /* iphone_11@2x.png */; };
 		77813373151B2FA7008E87F2 /* btn_03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77813371151B2FA7008E87F2 /* btn_03@2x.png */; };
 		77813374151B2FA7008E87F2 /* btn_05@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77813372151B2FA7008E87F2 /* btn_05@2x.png */; };
+		77813377151B3E85008E87F2 /* backarrow_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 77813375151B3E85008E87F2 /* backarrow_01.png */; };
+		77813378151B3E85008E87F2 /* backarrow_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77813376151B3E85008E87F2 /* backarrow_01@2x.png */; };
 		77899C4514C67EAE00C6484B /* listings.json in Resources */ = {isa = PBXBuildFile; fileRef = 77899C4414C67EAE00C6484B /* listings.json */; };
 		77899CA214C68E5100C6484B /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77899CA114C68E5100C6484B /* libOCMock.a */; };
 		77899CA614C6AF4D00C6484B /* listings.json in Resources */ = {isa = PBXBuildFile; fileRef = 77899C4414C67EAE00C6484B /* listings.json */; };
@@ -602,6 +604,8 @@
 		7781336A151B269A008E87F2 /* iphone_11@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone_11@2x.png"; sourceTree = "<group>"; };
 		77813371151B2FA7008E87F2 /* btn_03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_03@2x.png"; sourceTree = "<group>"; };
 		77813372151B2FA7008E87F2 /* btn_05@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_05@2x.png"; sourceTree = "<group>"; };
+		77813375151B3E85008E87F2 /* backarrow_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backarrow_01.png; sourceTree = "<group>"; };
+		77813376151B3E85008E87F2 /* backarrow_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backarrow_01@2x.png"; sourceTree = "<group>"; };
 		77899C4414C67EAE00C6484B /* listings.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = listings.json; path = Resources/listings.json; sourceTree = "<group>"; };
 		77899C9B14C68E5100C6484B /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
 		77899C9C14C68E5100C6484B /* OCMArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMArg.h; sourceTree = "<group>"; };
@@ -1828,6 +1832,8 @@
 		E5A9FC4A1505BC9E00AC5F0E /* browse */ = {
 			isa = PBXGroup;
 			children = (
+				77813375151B3E85008E87F2 /* backarrow_01.png */,
+				77813376151B3E85008E87F2 /* backarrow_01@2x.png */,
 				7781335E151B12F4008E87F2 /* btn_money_down@2x.png */,
 				E524E66B15142A24008D7194 /* positionbar_102.png */,
 				77C1354A1516ED050013E17F /* btn_map_down@2x.png */,
@@ -2321,6 +2327,8 @@
 				77813370151B269A008E87F2 /* iphone_11@2x.png in Resources */,
 				77813373151B2FA7008E87F2 /* btn_03@2x.png in Resources */,
 				77813374151B2FA7008E87F2 /* btn_05@2x.png in Resources */,
+				77813377151B3E85008E87F2 /* backarrow_01.png in Resources */,
+				77813378151B3E85008E87F2 /* backarrow_01@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
