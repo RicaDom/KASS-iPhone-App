@@ -11,5 +11,7 @@
 @interface UIView (Subviews)
 
 - (void)removeAllSubviews;
+- (void)hideAllSubviews;
+- (void)showAllSubviews;
 
 @end

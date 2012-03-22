@@ -45,6 +45,12 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)hideViews
+{
+  self.modifyButton.hidden = TRUE;
+  self.shareButton.hidden = TRUE;
+}
+
 - (void) accountDidGetListing:(NSDictionary *)dict
 {
   DLog(@"ItemViewController::accountDidGetListing:dict=%@", dict);
@@ -57,8 +63,9 @@
   self.itemExpiredDate.text = [self.currentItem getTimeLeftTextlong];
 
   if (self.currentItem.acceptedOffer) {
+    [self hideViews];
     NSString *msg = [[NSString alloc] initWithFormat:@"您的此需求已经以￥%@成交了！", self.currentItem.askPrice];
-    [ViewHelper showErrorAlert:msg:self];
+    [ViewHelper showAlert:self.currentItem.title:msg:self];
   }else{
     self.offers = [[Offers alloc] initWithDictionary:listing].offers;
     self.offersCount.text = [NSString stringWithFormat:@"%d",[self.offers count]] ;
@@ -77,6 +84,9 @@
   NSString *listItemId = [[self kassGetModelDict:@"listItem"] objectForKey:@"id"];
   if ( listItemId && ![listItemId isBlank] ) {
     [self.currentUser getListing:listItemId];
+  } else {
+    [ViewHelper showErrorAlert:ERROR_MSG_CONNECTION_FAILURE:self];
+    [self hideViews];
   }
   
 }

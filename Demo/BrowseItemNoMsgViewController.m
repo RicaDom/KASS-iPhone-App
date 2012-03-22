@@ -12,6 +12,7 @@
 #import "UIViewController+SegueActiveModel.h"
 #import "UIViewController+ScrollViewRefreshPuller.h"
 #import "UIViewController+PriceModifier.h"
+#import "UIView+Subviews.h"
 
 #import "ListingMapAnnotaion.h"
 #import "ListingImageAnnotationView.h"
@@ -54,6 +55,20 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)hideInputMessageShowStatus:(NSString *)status
+{
+  [self.buttomView hideAllSubviews];
+  
+  UILabel *label = [[UILabel alloc] init];
+  [label setText:status];
+  [label setTextColor:[UIColor brownColor]];
+  label.frame = CGRectMake(0, 0, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
+  label.textAlignment = UITextAlignmentCenter;
+  label.backgroundColor = [UIColor clearColor];
+  label.font = [UIFont boldSystemFontOfSize:24];
+  [self.buttomView addSubview:label]; 
+}
+
 /////////////////////////////////////////////////////////////////////////////////////////
 
 - (void) appDidGetListing:(NSDictionary *)dict
@@ -86,6 +101,9 @@
   
   if ( listItemId && ![listItemId isBlank] ) {
     [self.kassApp getListing:listItemId];
+  }else {
+    [ViewHelper showErrorAlert:ERROR_MSG_CONNECTION_FAILURE:self];
+    [self hideInputMessageShowStatus:ERROR_MSG_CONNECTION_FAILURE];
   }
   
 }

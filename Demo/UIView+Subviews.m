@@ -17,4 +17,18 @@
   }
 }
 
+- (void)hideAllSubviews
+{
+  for(UIView *subview in [self subviews]) {
+    subview.hidden = TRUE;
+  }
+}
+
+- (void)showAllSubviews
+{
+  for(UIView *subview in [self subviews]) {
+    subview.hidden = FALSE;
+  }
+}
+
 @end

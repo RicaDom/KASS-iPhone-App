@@ -112,6 +112,10 @@ NSString *popUpSuccessfulViewFlag;
   NSString *offerId = [[self kassGetModelDict:@"offer"] objectForKey:@"id"];
   if ( offerId && ![offerId isBlank]) {
     [[self currentUser] getOffer:offerId];
+  } else {
+    [ViewHelper showErrorAlert:ERROR_MSG_CONNECTION_FAILURE:self];
+    self.payStatusLabel.text = ERROR_MSG_CONNECTION_FAILURE;
+    self.payButton.hidden = TRUE;
   }
 }
 

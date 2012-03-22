@@ -65,7 +65,7 @@
 
 - (void)hideInputMessageShowStatus:(NSString *)status
 {
-  [self.buttomView removeAllSubviews];
+  [self.buttomView hideAllSubviews];
   
   UILabel *label = [[UILabel alloc] init];
   [label setText:status];
@@ -134,6 +134,9 @@
   
   if ( offerId && ![offerId isBlank] ) {
     [self.currentUser getOffer:offerId];
+  }else {
+    [ViewHelper showErrorAlert:ERROR_MSG_CONNECTION_FAILURE:self];
+    [self hideInputMessageShowStatus:ERROR_MSG_CONNECTION_FAILURE];
   }
 }
 

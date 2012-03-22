@@ -24,8 +24,6 @@
 @synthesize activitySegment = _activitySegment;
 @synthesize userId = _userId;
 
-NSMutableArray *currentItems;
-
 /**
  EGORefreshTableHeaderDelegate
  */
@@ -71,28 +69,11 @@ NSMutableArray *currentItems;
     //return 1 == self.activitySegment.selectedSegmentIndex;
 }
 
-//- (void)showBackground
-//{
-//    if (self.emptyRecordsImageView == nil || self.emptyRecordsImageView.image == nil) {
-//        self.emptyRecordsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:UI_IMAGE_ACTIVITY_BACKGROUND]];
-//        [self.view addSubview:self.emptyRecordsImageView];
-//    }
-//    [self hideIndicator];
-//}
-
 - (void)reset
 {
     [VariableStore sharedInstance].myBuyingListings = nil;
     [VariableStore sharedInstance].mySellingListings = nil;
 }
-
-//- (void)hideBackground
-//{
-//    if( self.emptyRecordsImageView && [currentItems count] > 0){
-//        [self.emptyRecordsImageView removeFromSuperview];
-//        self.emptyRecordsImageView = nil;
-//    }
-//}
 
 - (void)updateTableView
 {
@@ -138,11 +119,6 @@ NSMutableArray *currentItems;
 - (void)reloadTable
 {
     DLog(@"ActivityViewController::reloadTable");
-    if ( [self isBuyingTabSelected]) {
-        currentItems = [VariableStore sharedInstance].myBuyingListings;
-    } else {
-        currentItems = [VariableStore sharedInstance].mySellingListings;
-    }
     
     //[self hideBackground];
     [self.tableView reloadData];
@@ -295,7 +271,12 @@ NSMutableArray *currentItems;
     // #warning Incomplete method implementation.
     // Return the number of rows in the section.
     
-    return [currentItems count];
+  if ( [self isBuyingTabSelected]) {
+    return [[VariableStore sharedInstance].myBuyingListings count];
+  } else {
+    return [[VariableStore sharedInstance].mySellingListings count];
+  }
+  
 }
 
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -326,7 +307,7 @@ NSMutableArray *currentItems;
     
     // my buying list
     if ( [self isBuyingTabSelected] ) {
-        ListItem *item = [currentItems objectAtIndex:row];
+        ListItem *item = [[VariableStore sharedInstance].myBuyingListings objectAtIndex:row];
         cell.title.text = item.title;
         cell.subTitle.text = item.description;
         
@@ -350,7 +331,7 @@ NSMutableArray *currentItems;
     
     // my selling list
     else {
-        Offer *item = [currentItems objectAtIndex:row];
+        Offer *item = [[VariableStore sharedInstance].mySellingListings objectAtIndex:row];
         cell.title.text = item.title;
         cell.subTitle.text = item.description;
         
@@ -375,7 +356,7 @@ NSMutableArray *currentItems;
     // Buying list segue
     if ( [self isBuyingTabSelected] ) {
         
-        ListItem *item = [currentItems objectAtIndex:[indexPath row]];
+        ListItem *item = [[VariableStore sharedInstance].myBuyingListings objectAtIndex:[indexPath row]];
         
         // if listing already has accepted offer, got to pay page
         if (item.isAccepted || item.isPaid) {
@@ -395,7 +376,7 @@ NSMutableArray *currentItems;
     } 
     // Selling list segue
     else { 
-      Offer *offer = [currentItems objectAtIndex:[indexPath row]];
+      Offer *offer = [[VariableStore sharedInstance].mySellingListings objectAtIndex:[indexPath row]];
       [self performSegueWithModelJson:offer.toJson:@"ActSellingListToMessageBuyer":self];
     }
     
