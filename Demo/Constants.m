@@ -55,7 +55,7 @@ NSString * const UI_LABEL_DISMISS = @"取消";
 NSString * const UI_LABEL_CONFIRM = @"确定";
 NSString * const UI_TEXT_VIEW_DESCRIPTION = @"描述一下你想要的服务或东西吧";
 
-NSInteger const VALIDE_USER_NAME_LENGTH_MIN = 6;
+NSInteger const VALIDE_USER_NAME_LENGTH_MIN = 3;
 NSInteger const VALIDE_USER_NAME_LENGTH_MAX = 118;
 NSInteger const VALIDE_USER_PHONE_LENGTH    = 11;
 

@@ -111,6 +111,8 @@
     self.rightButton.tag = RIGHT_BAR_BUTTON_SHARE;
     [ViewHelper buildBackButton:self.leftButton];
     self.leftButton.tag = LEFT_BAR_BUTTON_BACK;
+  
+    self.messageTextField.delegate = self;
 }
 
 /**
@@ -258,28 +260,18 @@
  */
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    if (textField == self.messageTextField) {
-        self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_BACK;
-        self.navigationButton.title = UI_BUTTON_LABEL_SHARE;
-    }
+//    if (textField == self.messageTextField) {
+//        self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_BACK;
+//        self.navigationButton.title = UI_BUTTON_LABEL_SHARE;
+//    }
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)sender
 {
-  if (sender == self.messageTextField) {
-    
-    self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_CANCEL;
-    self.navigationButton.title = UI_BUTTON_LABEL_SEND;
-  }
-  
-  if ([sender isEqual:self.messageTextField])
-  {
-    //move the main view, so that the keyboard does not hide it.
-    if  (self.mainView.frame.origin.y >= 0)
-    {
-      [self showKeyboardAndMoveViewUp];
-    }
-  }
+//  if (sender == self.messageTextField) {
+//    self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_CANCEL;
+//    self.navigationButton.title = UI_BUTTON_LABEL_SEND;
+//  }
 }
 
 - (void)viewWillAppear:(BOOL)animated

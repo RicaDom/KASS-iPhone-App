@@ -27,6 +27,7 @@
 @synthesize mapView = _mapView;
 @synthesize leftButton = _leftButton;
 @synthesize weiboCheckBox = _weiboCheckBox;
+@synthesize weiboHintLabel = _weiboHintLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -65,10 +66,14 @@
         [ViewHelper buildCheckBoxButton:self.weiboCheckBox];
         self.weiboCheckBox.tag = 1; //ON
         self.weiboCheckBox.enabled = YES;
+      self.weiboHintLabel.hidden = NO;
+      self.weiboCheckBox.hidden = NO;
     } else {
         [ViewHelper buildCheckBoxButtonUncheck:self.weiboCheckBox];
         self.weiboCheckBox.tag = 0; //OFF
-        self.weiboCheckBox.enabled = NO;
+      self.weiboCheckBox.enabled = NO;
+      self.weiboHintLabel.hidden = YES;
+      self.weiboCheckBox.hidden = YES;
     }
 }
 
@@ -150,6 +155,7 @@
     [self setLeftButton:nil];
     [self setLeftButton:nil];
     [self setWeiboCheckBox:nil];
+  [self setWeiboHintLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
