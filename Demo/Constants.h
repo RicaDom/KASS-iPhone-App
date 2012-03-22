@@ -38,6 +38,12 @@ extern NSString * const POST_TEMPLATE_CATEGORY_POPULAR;
 extern NSString * const POST_TEMPLATE_CATEGORY_EDITOR;
 extern NSString * const POST_TEMPLATE_CATEGORY_CREATIVE;
 
+// Remote notification
+extern NSString * const REMOTE_NOTIFICATION_NEW_MESSAGE;
+extern NSString * const REMOTE_NOTIFICATION_NEW_LISTING;
+extern NSString * const REMOTE_NOTIFICATION_NEW_ACCEPTED;
+extern NSString * const REMOTE_NOTIFICATION_NEW_OFFER;
+
 // UI BUTTON LABEL
 extern NSString * const UI_BUTTON_LABEL_BACK;
 extern NSString * const UI_BUTTON_LABEL_NEXT;

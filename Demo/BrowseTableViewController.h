@@ -31,7 +31,7 @@
 @property (strong, nonatomic) NSMutableArray *filteredListContent;
 @property (strong, nonatomic) IBOutlet UIButton *mapButton;
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
-//@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSString *remoteNotificationListingId;
 @property (strong, nonatomic) IBOutlet UIImageView *tableFooter;
 
 - (IBAction)browseSegmentAction:(id)sender;

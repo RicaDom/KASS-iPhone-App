@@ -7,10 +7,12 @@
 //
 
 #import "ProvideViewController.h"
+#import "BrowseTableViewController.h"
 
 @implementation ProvideViewController
-@synthesize sellerAlertButton;
-@synthesize browseButton;
+@synthesize sellerAlertButton = _sellerAlertButton;
+@synthesize browseButton = _browseButton;
+@synthesize remoteNotificationListingId = _remoteNotificationListingId;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -69,4 +71,13 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+// REMOTE_NOTIFICATION_NEW_LISTING
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ProvideViewToBrowseTable"]) {
+        DLog(@"ProvideViewController::prepareForSegue:offerMessageSegue");
+        BrowseTableViewController *bvc = [segue destinationViewController];
+        bvc.remoteNotificationListingId = self.remoteNotificationListingId;
+    } 
+}
 @end

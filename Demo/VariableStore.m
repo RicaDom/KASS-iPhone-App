@@ -34,6 +34,7 @@
 @synthesize userToShowId = _userToShowId;
 
 @synthesize currentViewControllerDelegate = _currentViewControllerDelegate;
+@synthesize remoteNotification = _remoteNotification;
 
 + (VariableStore *) sharedInstance {
     // the instance of this class is stored here

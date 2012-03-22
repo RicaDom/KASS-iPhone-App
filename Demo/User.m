@@ -435,7 +435,6 @@
   
   if( [_delegate respondsToSelector:@selector(accountLoginFinished)] )
     [_delegate accountLoginFinished];
-  
 }
 
 - (void)accountLoginFailed:(NSDictionary *)error

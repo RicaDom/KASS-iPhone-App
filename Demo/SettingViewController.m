@@ -8,7 +8,7 @@
 
 #import "SettingViewController.h"
 #import "UIViewController+ActivityIndicate.h"
-
+#import "NotificationRenderHelper.h"
 
 @implementation SettingViewController
 
