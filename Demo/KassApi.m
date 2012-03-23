@@ -312,8 +312,8 @@
 
 - (void)logout:(NSString *)token
 {
-  _url = [NSString stringWithFormat:@"http://%s/v1/auth", HOST];
-  [self deleteData:_url:token];
+  _url = [NSString stringWithFormat:@"http://%s/v1/auth?device_token=%@", HOST, token];
+  [self deleteData:_url:nil];
 }
 
 - (void)getListing:(NSString *)modelId

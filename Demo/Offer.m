@@ -94,5 +94,10 @@
   return [self.state isEqualToString:@"paid"];
 }
 
+- (BOOL) isRejected
+{
+  return [self.state isEqualToString:@"rejected"];
+}
+
 
 @end

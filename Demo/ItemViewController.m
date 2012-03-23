@@ -47,6 +47,12 @@ NSString *remoteNotificationOfferId = nil;
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)hideViews
+{
+  self.modifyButton.hidden = TRUE;
+  self.shareButton.hidden = TRUE;
+}
+
 - (void) accountDidGetListing:(NSDictionary *)dict
 {
   DLog(@"ItemViewController::accountDidGetListing:dict=%@", dict);
@@ -59,8 +65,9 @@ NSString *remoteNotificationOfferId = nil;
   self.itemExpiredDate.text = [self.currentItem getTimeLeftTextlong];
 
   if (self.currentItem.acceptedOffer) {
+    [self hideViews];
     NSString *msg = [[NSString alloc] initWithFormat:@"您的此需求已经以￥%@成交了！", self.currentItem.askPrice];
-    [ViewHelper showErrorAlert:msg:self];
+    [ViewHelper showAlert:self.currentItem.title:msg:self];
   }else{
     self.offers = [[Offers alloc] initWithDictionary:listing].offers;
     self.offersCount.text = [NSString stringWithFormat:@"%d",[self.offers count]] ;
@@ -79,6 +86,9 @@ NSString *remoteNotificationOfferId = nil;
   NSString *listItemId = [[self kassGetModelDict:@"listItem"] objectForKey:@"id"];
   if ( listItemId && ![listItemId isBlank] ) {
     [self.currentUser getListing:listItemId];
+  } else {
+    [ViewHelper showErrorAlert:ERROR_MSG_CONNECTION_FAILURE:self];
+    [self hideViews];
   }
   
 }
@@ -88,22 +98,6 @@ NSString *remoteNotificationOfferId = nil;
 {
     DLog(@"ItemViewController::viewDidLoad");
     [super viewDidLoad];
-    
-    // navigation bar background color
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
-    
-    // set buttons background
-    UIImage *editButtonImg = [UIImage imageNamed:UI_IMAGE_ACTIVITY_EDIT_BUTTON];
-    UIImage *editButtonImgPress = [UIImage imageNamed:UI_IMAGE_ACTIVITY_EDIT_BUTTON_PRESS];
-    [self.modifyButton setImage:editButtonImg forState:UIControlStateNormal];
-    [self.modifyButton setImage:editButtonImgPress forState:UIControlStateSelected];
-    self.modifyButton.frame = CGRectMake((self.view.frame.size.width/2 - self.modifyButton.frame.size.width)/2, self.modifyButton.frame.origin.y, editButtonImg.size.width, editButtonImg.size.height);
-
-    UIImage *shareButtonImg = [UIImage imageNamed:UI_IMAGE_ACTIVITY_SHARE_BUTTON];
-    UIImage *shareButtonImgPress = [UIImage imageNamed:UI_IMAGE_ACTIVITY_SHARE_BUTTON_PRESS];
-    [self.shareButton setImage:shareButtonImg forState:UIControlStateNormal];
-    [self.shareButton setImage:shareButtonImgPress forState:UIControlStateSelected];
-    self.shareButton.frame = CGRectMake(self.view.frame.size.width/2 + self.modifyButton.frame.origin.x, self.shareButton.frame.origin.y, editButtonImg.size.width, editButtonImg.size.height);
     
     [ViewHelper buildMapButton:self.mapButton];  
     [ViewHelper buildBackButton:self.backButton];

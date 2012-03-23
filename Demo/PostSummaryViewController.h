@@ -24,6 +24,7 @@
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
 @property (strong, nonatomic) IBOutlet UIButton *weiboCheckBox;
+@property (weak, nonatomic) IBOutlet UILabel *weiboHintLabel;
 
 - (IBAction)cancelAction:(id)sender;
 - (IBAction)submitAction;

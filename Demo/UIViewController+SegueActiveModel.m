@@ -65,7 +65,7 @@
   }else if ( [[self kassVS ].user hasListItem:item] ){
     
     //if you are the buyer and you already accepted it
-    if (item.isAccepted) {
+    if (item.isAccepted || item.isPaid ) { //
       
       DLog(@"BrowseTableViewController::didSelectRowAtIndexPath:you already accepted! ");
       [pair setObject:item.acceptedOffer.toJson forKey:@"json"];

@@ -188,23 +188,21 @@
                                                  name:NO_MESSAGE_TO_MESSAGE_VIEW_NOTIFICATION
                                                object:nil];
 
-    // navigation bar background color
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
 
-    self.listingTableView.tableFooterView = self.tableFooter;
-
-    self.filteredListContent = [[NSMutableArray alloc] init];
+  self.listingTableView.tableFooterView = self.tableFooter;
+  self.filteredListContent = [[NSMutableArray alloc] init];
 	[self.listingTableView reloadData];
-    
-    // init segment control view
-    UIImage* img = [UIImage imageNamed:UI_IMAGE_BROWSE_SEGMENT_DIVIDER];
-    UIImage* tempImg = [UIImage imageNamed:UI_IMAGE_BROWSE_DATE];
-    [self.browseSegment setDividerImage:img forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];    
-    self.browseSegment.frame = CGRectMake(0, self.browseSegment.frame.origin.y, tempImg.size.width*3, tempImg.size.height);
   
-    [self browseSegmentAction:self];    
-    
-    [ViewHelper buildMapButton:self.mapButton];
+  // init segment control view
+  UIImage* img = [UIImage imageNamed:UI_IMAGE_BROWSE_SEGMENT_DIVIDER];
+  UIImage* tempImg = [UIImage imageNamed:UI_IMAGE_BROWSE_DATE];
+  [self.browseSegment setDividerImage:img forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];    
+  self.browseSegment.frame = CGRectMake(0, self.browseSegment.frame.origin.y, tempImg.size.width*3, tempImg.size.height);
+  
+  [self browseSegmentAction:self];    
+  
+  [ViewHelper buildSmallBackButton:self.leftButton];
+  [ViewHelper buildMapButton:self.mapButton];
 }
 
 - (void)viewDidUnload
@@ -332,6 +330,10 @@
     
   [self performSegueByModel:item];
     
+}
+
+- (IBAction)leftButtonAction:(id)sender {
+  [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)browseSegmentAction:(id)sender {

@@ -72,7 +72,7 @@
 {
   UILabel *labelPaid = [[UILabel alloc] init];
   [labelPaid setText:UI_LABEL_PAID];
-  [labelPaid setTextColor:[UIColor brownColor]];
+  [labelPaid setTextColor:[UIColor grayColor]];
   [labelPaid setBackgroundColor:[UIColor clearColor]];
   labelPaid.font = [UIFont boldSystemFontOfSize:13];
   labelPaid.frame = CGRectMake(0, 0, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 8);
@@ -83,7 +83,7 @@
   if (item.acceptedPrice != nil && item.acceptedPrice > 0) {
     [labelFinalPrice setText:[@"¥ " stringByAppendingFormat: [item.acceptedPrice stringValue]]];
   }
-  [labelFinalPrice setTextColor:[UIColor greenColor]];
+  [labelFinalPrice setTextColor:[UIColor darkGrayColor]];
   labelFinalPrice.font = [UIFont boldSystemFontOfSize:16];
   labelFinalPrice.backgroundColor = [UIColor clearColor];
   labelFinalPrice.frame = CGRectMake(0, cell.infoView.frame.size.height/2 - 12, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 5);
@@ -104,7 +104,7 @@
     [labelAskPrice setText:[@"¥ " stringByAppendingFormat: [item.askPrice stringValue]]];
   }
   
-  [labelAskPrice setTextColor:[UIColor blackColor]];
+  [labelAskPrice setTextColor:[UIColor darkGrayColor]];
   labelAskPrice.frame = CGRectMake(0, cell.infoView.frame.size.height/2 - 6, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 5);
   labelAskPrice.textAlignment = UITextAlignmentCenter;
   labelAskPrice.font = [UIFont boldSystemFontOfSize:16];
@@ -116,7 +116,7 @@
 {
   UILabel *labelWaiting = [[UILabel alloc] init];
   [labelWaiting setText:UI_LABEL_WAITING_FOR_OFFER];
-  [labelWaiting setTextColor:[UIColor brownColor]];
+  [labelWaiting setTextColor:[UIColor grayColor]];
   [labelWaiting setBackgroundColor:[UIColor clearColor]];
   labelWaiting.font = [UIFont boldSystemFontOfSize:13];
   labelWaiting.frame = CGRectMake(0, 0, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 8);
@@ -127,7 +127,7 @@
   if (item.askPrice != nil && item.askPrice > 0) {
       [labelAskPrice setText:[@"¥ " stringByAppendingFormat: [item.askPrice stringValue]]];
   }
-  [labelAskPrice setTextColor:[UIColor blackColor]];
+  [labelAskPrice setTextColor:[UIColor darkGrayColor]];
   labelAskPrice.font = [UIFont boldSystemFontOfSize:16];
   labelAskPrice.backgroundColor = [UIColor clearColor];
   labelAskPrice.frame = CGRectMake(0, cell.infoView.frame.size.height/2 - 12, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 5);
@@ -136,7 +136,7 @@
   
   UILabel *labelExpiredDate = [[UILabel alloc] init];
   [labelExpiredDate setText:item.getTimeLeftTextlong];
-  [labelExpiredDate setTextColor:[UIColor brownColor]];
+  [labelExpiredDate setTextColor:[UIColor grayColor]];
   labelExpiredDate.backgroundColor = [UIColor clearColor];
   labelExpiredDate.font = [UIFont boldSystemFontOfSize:13];
   labelExpiredDate.frame = CGRectMake(0, cell.infoView.frame.size.height/2 + 10, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 8);
@@ -148,7 +148,7 @@
 { 
   UILabel *labelNeedsReview = [[UILabel alloc] init];
   [labelNeedsReview setText:UI_LABEL_NEEDS_REVIEW];
-  [labelNeedsReview setTextColor:[UIColor brownColor]];
+  [labelNeedsReview setTextColor:[UIColor grayColor]];
   [labelNeedsReview setBackgroundColor:[UIColor clearColor]];
   labelNeedsReview.font = [UIFont boldSystemFontOfSize:13];
   labelNeedsReview.frame = CGRectMake(0, 3, cell.infoView.frame.size.width, cell.infoView.frame.size.height/2);
@@ -158,7 +158,7 @@
   
   UILabel *labelOffersCount = [[UILabel alloc] init];
   [labelOffersCount setText:[[NSString alloc] initWithFormat:@"%d %@", [item.offers count], UI_LABEL_OFFER]];
-  [labelOffersCount setTextColor:[UIColor blackColor]];
+  [labelOffersCount setTextColor:[UIColor darkGrayColor]];
   [labelOffersCount setBackgroundColor:[UIColor clearColor]];
   labelOffersCount.font = [UIFont boldSystemFontOfSize:16];
   labelOffersCount.frame = CGRectMake(0, 25, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 5);
@@ -171,7 +171,7 @@
 {    
     UILabel *labelOffersCount = [[UILabel alloc] init];
     [labelOffersCount setText:[[NSString alloc] initWithFormat:@"%d %@", [item.offers count], UI_LABEL_OFFER]];
-    [labelOffersCount setTextColor:[UIColor blackColor]];
+    [labelOffersCount setTextColor:[UIColor darkGrayColor]];
     [labelOffersCount setBackgroundColor:[UIColor clearColor]];
     labelOffersCount.font = [UIFont boldSystemFontOfSize:13];
     labelOffersCount.frame = CGRectMake(0, 0, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 8);
@@ -182,7 +182,7 @@
     if (item.askPrice != nil && item.askPrice > 0) {
         [labelAskPrice setText:[@"¥ " stringByAppendingFormat: [item.askPrice stringValue]]];
     }
-    [labelAskPrice setTextColor:[UIColor blackColor]];
+    [labelAskPrice setTextColor:[UIColor darkGrayColor]];
     labelAskPrice.font = [UIFont boldSystemFontOfSize:13];
     labelAskPrice.backgroundColor = [UIColor clearColor];
     labelAskPrice.frame = CGRectMake(0, cell.infoView.frame.size.height/2 + 10, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 8);
@@ -191,7 +191,7 @@
     
     UILabel *labelExpiredDate = [[UILabel alloc] init];
     [labelExpiredDate setText:@"已经过期"];
-    [labelExpiredDate setTextColor:[UIColor brownColor]];
+    [labelExpiredDate setTextColor:[UIColor grayColor]];
     labelExpiredDate.backgroundColor = [UIColor clearColor];
     labelExpiredDate.font = [UIFont boldSystemFontOfSize:16];
     labelExpiredDate.frame = CGRectMake(0, cell.infoView.frame.size.height/2 - 12, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 5);
@@ -204,7 +204,7 @@
   [cell.infoView setBackgroundColor:[[UIColor alloc] initWithPatternImage:[UIImage imageNamed:UI_IMAGE_ACTIVITY_PRICE_BG]]];   
   UILabel *labelPaid = [[UILabel alloc] init];
   [labelPaid setText:UI_LABEL_PAID];
-  [labelPaid setTextColor:[UIColor brownColor]];
+  [labelPaid setTextColor:[UIColor grayColor]];
   labelPaid.frame = CGRectMake(0, 0, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 8);
   labelPaid.textAlignment = UITextAlignmentCenter;
   labelPaid.backgroundColor = [UIColor clearColor];
@@ -216,7 +216,33 @@
     [labelFinalPrice setText:[@"¥ " stringByAppendingFormat:[item.price stringValue]]];
   }
   
-  [labelFinalPrice setTextColor:[UIColor blackColor]];
+  [labelFinalPrice setTextColor:[UIColor darkGrayColor]];
+  labelFinalPrice.backgroundColor = [UIColor clearColor];
+  labelFinalPrice.frame = CGRectMake(0, cell.infoView.frame.size.height/2 - 12, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 5);
+  labelFinalPrice.textAlignment = UITextAlignmentCenter;
+  labelFinalPrice.font = [UIFont boldSystemFontOfSize:16];
+  [cell.infoView addSubview:labelFinalPrice]; 
+  
+}
+
++ (void) buildOfferRejectedCell:(Offer *)item:(ListingTableCell *)cell
+{
+  [cell.infoView setBackgroundColor:[[UIColor alloc] initWithPatternImage:[UIImage imageNamed:UI_IMAGE_ACTIVITY_PRICE_BG]]];   
+  UILabel *label = [[UILabel alloc] init];
+  [label setText:UI_LABEL_PAID];
+  [label setTextColor:[UIColor grayColor]];
+  label.frame = CGRectMake(0, 0, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 8);
+  label.textAlignment = UITextAlignmentCenter;
+  label.backgroundColor = [UIColor clearColor];
+  label.font = [UIFont boldSystemFontOfSize:13];
+  [cell.infoView addSubview:label]; 
+  
+  UILabel *labelFinalPrice = [[UILabel alloc] init];
+  if (item.price != nil && item.price > 0) {
+    [labelFinalPrice setText:[@"¥ " stringByAppendingFormat:[item.price stringValue]]];
+  }
+  
+  [labelFinalPrice setTextColor:[UIColor darkGrayColor]];
   labelFinalPrice.backgroundColor = [UIColor clearColor];
   labelFinalPrice.frame = CGRectMake(0, cell.infoView.frame.size.height/2 - 12, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 5);
   labelFinalPrice.textAlignment = UITextAlignmentCenter;
@@ -230,7 +256,7 @@
   [cell.infoView setBackgroundColor:[[UIColor alloc] initWithPatternImage:[UIImage imageNamed:UI_IMAGE_ACTIVITY_PRICE_BG]]];   
   UILabel *labelPending = [[UILabel alloc] init];
   [labelPending setText:UI_LABEL_OFFER_PENDING];
-  [labelPending setTextColor:[UIColor brownColor]];
+  [labelPending setTextColor:[UIColor grayColor]];
   labelPending.frame = CGRectMake(0, 0, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 8);
   labelPending.textAlignment = UITextAlignmentCenter;
   labelPending.backgroundColor = [UIColor clearColor];
@@ -243,7 +269,7 @@
     [labelAskPrice setText:[@"¥ " stringByAppendingFormat: [item.price stringValue]]];
   }
   
-  [labelAskPrice setTextColor:[UIColor blackColor]];
+  [labelAskPrice setTextColor:[UIColor darkGrayColor]];
   labelAskPrice.frame = CGRectMake(0, cell.infoView.frame.size.height/2 - 12, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 5);
   labelAskPrice.textAlignment = UITextAlignmentCenter;
   labelAskPrice.backgroundColor = [UIColor clearColor];
@@ -253,7 +279,7 @@
   UILabel *labelOfferer = [[UILabel alloc] init];
   [labelOfferer setText:([item.state isEqualToString: OFFER_STATE_REJECTED] ? UI_LABEL_BUYER_OFFERED : UI_LABEL_YOU_OFFERED)];
   
-  [labelOfferer setTextColor:[UIColor brownColor]];
+  [labelOfferer setTextColor:[UIColor grayColor]];
   labelOfferer.frame = CGRectMake(0, cell.infoView.frame.size.height/2 + 10, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 8);
   labelOfferer.textAlignment = UITextAlignmentCenter;
   labelOfferer.backgroundColor = [UIColor clearColor];
@@ -266,7 +292,7 @@
   [cell.infoView setBackgroundColor:[[UIColor alloc] initWithPatternImage:[UIImage imageNamed:UI_IMAGE_ACTIVITY_PRICE_BG]]];   
   UILabel *labelExpired = [[UILabel alloc] init];
   [labelExpired setText:UI_LABEL_EXPIRED];
-  [labelExpired setTextColor:[UIColor brownColor]];
+  [labelExpired setTextColor:[UIColor grayColor]];
   labelExpired.frame = CGRectMake(0, 0, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 8);
   labelExpired.textAlignment = UITextAlignmentCenter;
   labelExpired.backgroundColor = [UIColor clearColor];
@@ -278,7 +304,7 @@
     [labelAskPrice setText:[@"¥ " stringByAppendingFormat:[item.price stringValue]]];
   }
   
-  [labelAskPrice setTextColor:[UIColor blackColor]];
+  [labelAskPrice setTextColor:[UIColor darkGrayColor]];
   labelAskPrice.frame = CGRectMake(0, cell.infoView.frame.size.height/2 - 12, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 5);
   labelAskPrice.textAlignment = UITextAlignmentCenter;
   labelAskPrice.backgroundColor = [UIColor clearColor];
@@ -287,7 +313,7 @@
   
   UILabel *labelYouOffered = [[UILabel alloc] init];
   [labelYouOffered setText:UI_LABEL_YOU_OFFERED];
-  [labelYouOffered setTextColor:[UIColor brownColor]];
+  [labelYouOffered setTextColor:[UIColor grayColor]];
   labelYouOffered.frame = CGRectMake(2, cell.infoView.frame.size.height/2 + 10, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 8);
   labelYouOffered.textAlignment = UITextAlignmentCenter;
   labelYouOffered.backgroundColor = [UIColor clearColor];
@@ -300,7 +326,7 @@
   [cell.infoView setBackgroundColor:[[UIColor alloc] initWithPatternImage:[UIImage imageNamed:UI_IMAGE_ACTIVITY_PRICE_BG]]];   
   UILabel *labelAccepted = [[UILabel alloc] init];
   [labelAccepted setText:UI_LABEL_ACCEPTED];
-  [labelAccepted setTextColor:[UIColor brownColor]];
+  [labelAccepted setTextColor:[UIColor grayColor]];
   labelAccepted.frame = CGRectMake(0, 0, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 8);
   labelAccepted.textAlignment = UITextAlignmentCenter;
   labelAccepted.backgroundColor = [UIColor clearColor];
@@ -312,7 +338,7 @@
     [labelAskPrice setText:[@"¥ " stringByAppendingFormat:[item.price stringValue]]];
   }
   
-  [labelAskPrice setTextColor:[UIColor blackColor]];
+  [labelAskPrice setTextColor:[UIColor darkGrayColor]];
   labelAskPrice.backgroundColor = [UIColor clearColor];
   labelAskPrice.frame = CGRectMake(0, cell.infoView.frame.size.height/2 - 12, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 5);
   labelAskPrice.textAlignment = UITextAlignmentCenter;
@@ -322,7 +348,7 @@
   UILabel *labelYouOffered = [[UILabel alloc] init];
   [labelYouOffered setText:([item.state isEqualToString: OFFER_STATE_REJECTED] ? UI_LABEL_BUYER_OFFERED : UI_LABEL_YOU_OFFERED)];
   //[labelYouOffered setText:UI_LABEL_YOU_OFFERED];
-  [labelYouOffered setTextColor:[UIColor brownColor]];
+  [labelYouOffered setTextColor:[UIColor grayColor]];
   labelYouOffered.frame = CGRectMake(0, cell.infoView.frame.size.height/2 + 10, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 8);
   labelYouOffered.textAlignment = UITextAlignmentCenter;
   labelYouOffered.font = [UIFont boldSystemFontOfSize:13];
@@ -347,7 +373,7 @@
   // Header title
   UILabel* lblHeaderTitle = [[UILabel alloc] initWithFrame:CGRectMake(userImgView.frame.size.width+15, 5, 50, 20)];
   [lblHeaderTitle setText:title];      
-  [lblHeaderTitle setTextColor:[UIColor brownColor]];
+  [lblHeaderTitle setTextColor:[UIColor grayColor]];
   lblHeaderTitle.backgroundColor = [UIColor clearColor];
   [lblHeaderTitle setTextAlignment:UITextAlignmentLeft];
   lblHeaderTitle.font = [UIFont boldSystemFontOfSize:13];
@@ -356,7 +382,7 @@
   // Time title
   UILabel* messageTime = [[UILabel alloc] initWithFrame:CGRectMake(userImgView.frame.size.width+15 + lblHeaderTitle.frame.size.width + 5, 5, 50, 20)];
   [messageTime setText:date];      
-  [messageTime setTextColor:[UIColor blackColor]];
+  [messageTime setTextColor:[UIColor darkGrayColor]];
   messageTime.backgroundColor = [UIColor clearColor];
   [messageTime setTextAlignment:UITextAlignmentLeft];
   messageTime.font = [UIFont systemFontOfSize:13];
@@ -426,6 +452,13 @@
 + (void)buildBackButton:(UIButton *)button
 {
   UIImage *backImg = [UIImage imageNamed:UI_IMAGE_BACK_BUTTON];
+  [button setImage:backImg forState:UIControlStateNormal];
+  button.frame = CGRectMake(5, button.frame.origin.y, backImg.size.width, backImg.size.height);
+}
+
++ (void) buildSmallBackButton:(UIButton *)button;
+{
+  UIImage *backImg = [UIImage imageNamed:UI_IMAGE_SMALL_BACK_BUTTON];
   [button setImage:backImg forState:UIControlStateNormal];
   button.frame = CGRectMake(5, button.frame.origin.y, backImg.size.width, backImg.size.height);
 }

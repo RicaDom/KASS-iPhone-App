@@ -7,11 +7,12 @@
 //
 
 #import "BrowseItemNoMsgViewController.h"
-#import "UIViewController+ActivityIndicate.h"
 #import "UIViewController+KeyboardSlider.h"
 #import "UIViewController+SegueActiveModel.h"
 #import "UIViewController+ScrollViewRefreshPuller.h"
 #import "UIViewController+PriceModifier.h"
+#import "UIViewController+ActivityIndicate.h"
+#import "UIView+Subviews.h"
 
 #import "ListingMapAnnotaion.h"
 #import "ListingImageAnnotationView.h"
@@ -54,6 +55,20 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)hideInputMessageShowStatus:(NSString *)status
+{
+  [self.buttomView hideAllSubviews];
+  
+  UILabel *label = [[UILabel alloc] init];
+  [label setText:status];
+  [label setTextColor:[UIColor brownColor]];
+  label.frame = CGRectMake(0, 0, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
+  label.textAlignment = UITextAlignmentCenter;
+  label.backgroundColor = [UIColor clearColor];
+  label.font = [UIFont boldSystemFontOfSize:24];
+  [self.buttomView addSubview:label]; 
+}
+
 /////////////////////////////////////////////////////////////////////////////////////////
 
 - (void) appDidGetListing:(NSDictionary *)dict
@@ -86,6 +101,9 @@
   
   if ( listItemId && ![listItemId isBlank] ) {
     [self.kassApp getListing:listItemId];
+  }else {
+    [ViewHelper showErrorAlert:ERROR_MSG_CONNECTION_FAILURE:self];
+    [self hideInputMessageShowStatus:ERROR_MSG_CONNECTION_FAILURE];
   }
   
 }
@@ -99,18 +117,17 @@
     [self.scrollView setContentSize:CGSizeMake(_ScrollViewContentSizeX, self.scrollView.frame.size.height)];
     
     [self registerPriceModifier];
-  
-    // navigation bar background color
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
     
     // Bottom view load
     [CommonView setMessageWithPriceView:self.scrollView payImage:nil bottomView:self.buttomView priceButton:self.priceButton messageField:self.messageTextField price:self.offerPrice.text changedPriceMessage:self.changedPriceMessage];
-    
+  
     [ViewHelper buildUserInfoButton:self.userInfoButton];
     [ViewHelper buildShareButton:self.rightButton];
     self.rightButton.tag = RIGHT_BAR_BUTTON_SHARE;
     [ViewHelper buildBackButton:self.leftButton];
     self.leftButton.tag = LEFT_BAR_BUTTON_BACK;
+  
+    self.messageTextField.delegate = self;
 }
 
 /**
@@ -258,28 +275,18 @@
  */
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    if (textField == self.messageTextField) {
-        self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_BACK;
-        self.navigationButton.title = UI_BUTTON_LABEL_SHARE;
-    }
+//    if (textField == self.messageTextField) {
+//        self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_BACK;
+//        self.navigationButton.title = UI_BUTTON_LABEL_SHARE;
+//    }
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)sender
 {
-  if (sender == self.messageTextField) {
-    
-    self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_CANCEL;
-    self.navigationButton.title = UI_BUTTON_LABEL_SEND;
-  }
-  
-  if ([sender isEqual:self.messageTextField])
-  {
-    //move the main view, so that the keyboard does not hide it.
-    if  (self.mainView.frame.origin.y >= 0)
-    {
-      [self showKeyboardAndMoveViewUp];
-    }
-  }
+//  if (sender == self.messageTextField) {
+//    self.navigationItem.leftBarButtonItem.title = UI_BUTTON_LABEL_CANCEL;
+//    self.navigationButton.title = UI_BUTTON_LABEL_SEND;
+//  }
 }
 
 - (void)viewWillAppear:(BOOL)animated

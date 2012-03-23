@@ -77,6 +77,8 @@ extern NSString * const UI_LABEL_OFFER_PENDING;
 extern NSString * const UI_LABEL_BUYER_OFFERED;
 extern NSString * const UI_LABEL_PAID;
 extern NSString * const UI_LABEL_YOU_PAID;
+extern NSString * const UI_LABEL_REJECTED;
+extern NSString * const UI_LABEL_OFFER_PAID;
 
 extern NSString * const OFFER_STATE_ACCEPTED;
 extern NSString * const OFFER_STATE_REJECTED;
@@ -107,6 +109,7 @@ extern NSString * const UI_IMAGE_TABBAR_BACKGROUND;
 extern NSString * const UI_IMAGE_TABBAR_SELECTED_TRANS;
 extern NSString * const UI_IMAGE_MESSAGE_DEFAULT_BUYER;
 extern NSString * const UI_IMAGE_MESSAGE_DEFAULT_SELLER;
+extern NSString * const UI_IMAGE_NAVIGATION_BACKGROUND;
 
 extern NSString * const UI_IMAGE_LOGIN_BACKGROUND;
 extern NSString * const UI_IMAGE_WEIBO_BUTTON;
@@ -147,6 +150,7 @@ extern NSString * const UI_IMAGE_MAP_BUTTON;
 extern NSString * const UI_IMAGE_MAP_BUTTON_PRESS;
 extern NSString * const UI_IMAGE_TABLE_CELL_BG;
 extern NSString * const UI_IMAGE_TABLE_CELL_BG_PRESS;
+extern NSString * const UI_IMAGE_SMALL_BACK_BUTTON;
 
 extern NSString * const UI_IMAGE_ACTIVITY_BACKGROUND;
 extern NSString * const UI_IMAGE_ACTIVITY_EDIT_BUTTON;

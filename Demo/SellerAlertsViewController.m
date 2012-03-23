@@ -37,8 +37,6 @@
 
 - (void)customViewLoad
 {
-    // navigation bar background color
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
     [ViewHelper buildBackButton:self.leftButton];
     [ViewHelper buildEditButton:self.rightButton];
 }
@@ -61,10 +59,6 @@
 {
     DLog(@"SellerAlertsViewController::accountDidGetAlerts:dict%@", dict);
     self.alerts = [dict objectForKey:@"alerts"];
-
-    if (self.alerts.count <= 0) {
-        [self performSegueWithIdentifier:@"AlertTableToAddAlertView" sender:self];
-    }
     [self refreshViewAfterLoadData];
 }
 
@@ -158,6 +152,37 @@
         lc.query = [[self.alerts objectAtIndex:self.alertsTableView.indexPathForSelectedRow.row] objectForKey:@"query"];
         DLog(@"SellerAlertsViewController Segue Data: %@", lc.alertId);
     }
+}
+
+// Override to support conditional editing of the table view.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+  // Return YES if you want the specified item to be editable.
+  return YES;
+}
+
+- (void)accountDidDeleteAlert
+{
+  // delete your data item here
+  // Animate the deletion from the table.
+  if (indexPathToDelete) {
+    [self.alerts removeObjectAtIndex:indexPathToDelete.row];
+    [self refreshViewAfterLoadData];
+  }
+}
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+  if (editingStyle == UITableViewCellEditingStyleDelete) {
+    
+    NSDictionary *alert = [self.alerts objectAtIndex:indexPath.row];
+    NSString *alertId = [alert objectForKey:@"id"];
+    
+    indexPathToDelete = indexPath;
+    [self.currentUser deleteAlert:alertId];
+    
+//    [self.alertsTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
+  }    
 }
 
 - (IBAction)leftButtonAction:(id)sender {

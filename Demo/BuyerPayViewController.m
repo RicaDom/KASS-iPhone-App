@@ -73,11 +73,11 @@ NSString *popUpSuccessfulViewFlag;
   
   if ( [self.currentOffer isPaid]) {
     self.payButton.hidden = TRUE;
-    self.payStatusLabel.text = @"交易已支付";
+    self.payStatusLabel.text = UI_LABEL_OFFER_PAID;
     self.payStatusLabel.textColor = [UIColor grayColor];
   }else {
     self.payButton.hidden = FALSE;
-    self.payStatusLabel.text = @"支付";
+    self.payStatusLabel.text = UI_BUTTON_LABEL_PAY_NOW;
   }
   
 }
@@ -112,6 +112,10 @@ NSString *popUpSuccessfulViewFlag;
   NSString *offerId = [[self kassGetModelDict:@"offer"] objectForKey:@"id"];
   if ( offerId && ![offerId isBlank]) {
     [[self currentUser] getOffer:offerId];
+  } else {
+    [ViewHelper showErrorAlert:ERROR_MSG_CONNECTION_FAILURE:self];
+    self.payStatusLabel.text = ERROR_MSG_CONNECTION_FAILURE;
+    self.payButton.hidden = TRUE;
   }
 }
 
@@ -120,9 +124,6 @@ NSString *popUpSuccessfulViewFlag;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // navigation bar background color
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
     
     [ViewHelper buildBackButton:self.leftButton];
     [ViewHelper buildMapButton:self.rightButton];

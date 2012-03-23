@@ -37,9 +37,6 @@
 {
     [super viewDidLoad];
     
-    // navigation bar background color
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:NAVIGATION_BAR_BACKGROUND_COLOR_RED green:NAVIGATION_BAR_BACKGROUND_COLOR_GREEN blue:NAVIGATION_BAR_BACKGROUND_COLOR_BLUE alpha:NAVIGATION_BAR_BACKGROUND_COLOR_ALPHA];
-    
     if ([VariableStore sharedInstance].isLoggedIn) {
         [ViewHelper buildLogoutButton:self.rightButton];
         self.rightButton.tag = RIGHT_BAR_BUTTON_LOGOUT;        

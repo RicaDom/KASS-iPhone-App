@@ -54,6 +54,8 @@ NSString * const UI_LABEL_WAITING_FOR_OFFER = @"等待出价";
 NSString * const UI_LABEL_OFFER_PENDING = @"等待确认";
 NSString * const UI_LABEL_YOU_PAID = @"已付";
 NSString * const UI_LABEL_PAID = @"已付";
+NSString * const UI_LABEL_REJECTED = @"出价拒绝";
+NSString * const UI_LABEL_OFFER_PAID = @"交易已支付";
 
 NSString * const UI_LABEL_ALERT   = @"提醒";
 NSString * const UI_LABEL_ERROR   = @"错误";
@@ -61,7 +63,7 @@ NSString * const UI_LABEL_DISMISS = @"取消";
 NSString * const UI_LABEL_CONFIRM = @"确定";
 NSString * const UI_TEXT_VIEW_DESCRIPTION = @"描述一下你想要的服务或东西吧";
 
-NSInteger const VALIDE_USER_NAME_LENGTH_MIN = 6;
+NSInteger const VALIDE_USER_NAME_LENGTH_MIN = 3;
 NSInteger const VALIDE_USER_NAME_LENGTH_MAX = 118;
 NSInteger const VALIDE_USER_PHONE_LENGTH    = 11;
 
@@ -81,6 +83,7 @@ NSString * const NO_MESSAGE_TO_MESSAGE_VIEW_NOTIFICATION = @"NO_MESSAGE_TO_MESSA
 NSString * const POPUP_IMAGE_NEW_POST_SUCCESS = @"POPUP_IMAGE_NEW_POST_SUCCESS";
 NSString * const POPUP_IMAGE_ACCEPTED_SUCCESS = @"POPUP_IMAGE_ACCEPTED_SUCCESS";
 
+NSString * const UI_IMAGE_NAVIGATION_BACKGROUND = @"panelbg.png";
 NSString * const UI_IMAGE_TABBAR_BACKGROUND = @"nav.png";
 NSString * const UI_IMAGE_TABBAR_SELECTED_TRANS = @"btn_transwhite.png";
 NSString * const UI_IMAGE_LOGIN_BACKGROUND = @"login_bg.png";
@@ -121,6 +124,7 @@ NSString * const UI_IMAGE_MAP_BUTTON = @"iphone_13.png";
 NSString * const UI_IMAGE_MAP_BUTTON_PRESS = @"iphone_26.png";
 NSString * const UI_IMAGE_TABLE_CELL_BG = @"listbg.png";
 NSString * const UI_IMAGE_TABLE_CELL_BG_PRESS = @"listbg2.png";
+NSString * const UI_IMAGE_SMALL_BACK_BUTTON = @"backarrow_01.png";
 
 NSString * const UI_IMAGE_ACTIVITY_BACKGROUND = @"bg_sky.png";
 NSString * const UI_IMAGE_ACTIVITY_EDIT_BUTTON = @"iphone_49.png";
