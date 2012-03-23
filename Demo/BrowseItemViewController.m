@@ -15,6 +15,7 @@
 #import "UIViewController+SegueActiveModel.h"
 #import "UIViewController+ScrollViewRefreshPuller.h"
 #import "UIViewController+PriceModifier.h"
+#import "Offer+OfferHelper.h"
 
 @implementation BrowseItemViewController
 
@@ -96,8 +97,8 @@
   [formatter setAMSymbol:@"AM"];
   [formatter setPMSymbol:@"PM"];
   [formatter setDateFormat:@"MM/dd/yy hh:mm a"];
-  self.itemExpiredDate.text = [NSString stringWithFormat:@"%@", [formatter stringFromDate:self.currentOffer.listItemEndedAt]];
-  
+  // self.itemExpiredDate.text = [NSString stringWithFormat:@"%@", [formatter stringFromDate:self.currentOffer.listItemEndedAt]];
+  self.itemExpiredDate.text = [self.currentOffer getListItemTimeLeftTextlong];
   VariableStore.sharedInstance.userToShowId = _currentOffer.userId;
   
   if ( self.currentOffer.isPaid ) {

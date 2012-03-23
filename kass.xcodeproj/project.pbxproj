@@ -279,6 +279,7 @@
 		E58BC983151C68FB006C97EF /* ConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E58BC982151C68FB006C97EF /* ConfigViewController.m */; };
 		E58BC985151C7417006C97EF /* SettingOnOffBg.png in Resources */ = {isa = PBXBuildFile; fileRef = E58BC984151C7416006C97EF /* SettingOnOffBg.png */; };
 		E58BC98B151C7E03006C97EF /* AboutDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E58BC98A151C7DF9006C97EF /* AboutDetailsViewController.m */; };
+		E58BC996151CA854006C97EF /* KTTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E58BC995151CA854006C97EF /* KTTextView.m */; };
 		E5947DCB14A3A12B0066723A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5947DCA14A3A12B0066723A /* UIKit.framework */; };
 		E5947DCD14A3A12B0066723A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5947DCC14A3A12B0066723A /* Foundation.framework */; };
 		E5947DCF14A3A12B0066723A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5947DCE14A3A12B0066723A /* CoreGraphics.framework */; };
@@ -826,6 +827,8 @@
 		E58BC984151C7416006C97EF /* SettingOnOffBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SettingOnOffBg.png; sourceTree = "<group>"; };
 		E58BC989151C7DF6006C97EF /* AboutDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutDetailsViewController.h; sourceTree = "<group>"; };
 		E58BC98A151C7DF9006C97EF /* AboutDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutDetailsViewController.m; sourceTree = "<group>"; };
+		E58BC994151CA854006C97EF /* KTTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTTextView.h; sourceTree = "<group>"; };
+		E58BC995151CA854006C97EF /* KTTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTTextView.m; sourceTree = "<group>"; };
 		E5947DC614A3A12B0066723A /* kass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5947DCA14A3A12B0066723A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E5947DCC14A3A12B0066723A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -2016,6 +2019,8 @@
 				E5B3AC6A14EB95D600CD4C67 /* OfferTableCell.m */,
 				E5D84A3915073CFC00EF17E4 /* CommonView.h */,
 				E5D84A3A15073CFC00EF17E4 /* CommonView.m */,
+				E58BC994151CA854006C97EF /* KTTextView.h */,
+				E58BC995151CA854006C97EF /* KTTextView.m */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -2558,6 +2563,7 @@
 				E58BC980151C68E3006C97EF /* AboutViewController.m in Sources */,
 				E58BC983151C68FB006C97EF /* ConfigViewController.m in Sources */,
 				E58BC98B151C7E03006C97EF /* AboutDetailsViewController.m in Sources */,
+				E58BC996151CA854006C97EF /* KTTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
