@@ -13,6 +13,7 @@
 - (BOOL) isBlank;
 - (BOOL) isPresent;
 - (BOOL) isEqualToString:(NSString *)str;
+- (NSString *)stringByStandardizingWhitespace;
 - (int) length;
 
 @end

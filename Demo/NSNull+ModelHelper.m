@@ -25,6 +25,11 @@
   return FALSE;
 }
 
+- (NSString *)stringByStandardizingWhitespace
+{
+  return nil;
+}
+
 - (int) length
 {
   return 0;
