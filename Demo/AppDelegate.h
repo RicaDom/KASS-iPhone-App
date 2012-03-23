@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "KassAppDelegate.h"
+#import "AccountActivityDelegate.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, KassAppDelegate>{
+@interface AppDelegate : UIResponder <UIApplicationDelegate, KassAppDelegate, AccountActivityDelegate>{
   UIBackgroundTaskIdentifier bgTask;
 }
 

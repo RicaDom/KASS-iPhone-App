@@ -28,6 +28,8 @@
 @synthesize backButton = _backButton;
 @synthesize mapButton = _mapButton;
 
+NSString *remoteNotificationOfferId = nil;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -218,12 +220,33 @@
         NSIndexPath *path = [self.offerTableView indexPathForSelectedRow];
         int row = [path row];
         avc.currentOffer = [self.offers objectAtIndex:row];
+        
+        if (remoteNotificationOfferId != nil) {
+            Offer *segueOffer = [Offer new];
+            segueOffer.dbId = remoteNotificationOfferId;
+            avc.currentOffer = segueOffer;
+            remoteNotificationOfferId = nil;
+        }
     } else if ([segue.identifier isEqualToString:@"ActEditingToPostFlow"]) {
         UINavigationController *nc = [segue destinationViewController];
         PostFlowViewController *pvc = (PostFlowViewController *) nc.topViewController;
         pvc.postType = POST_TYPE_EDITING;
         [VariableStore sharedInstance].currentPostingItem = self.currentItem; 
-    }
+    } 
+}
+
+- (void)remoteNotificationSegue
+{
+    NSString *flag = [[self kassGetModelDict:@"listItem"] objectForKey:@"flag"];
+    remoteNotificationOfferId = nil;
+    if ([flag isEqualToString:REMOTE_NOTIFICATION_NEW_MESSAGE]) {
+        remoteNotificationOfferId = [[self kassGetModelDict:@"listItem"] objectForKey:@"offerId"];
+        NSDictionary *offer = [[NSDictionary alloc] initWithObjectsAndKeys:remoteNotificationOfferId, @"id", nil];
+        NSDictionary *offerJson = [[NSDictionary alloc] initWithObjectsAndKeys:offer, @"offer", nil];
+        [[[[VariableStore sharedInstance].modelDict objectForKey:@"ItemViewController"] objectForKey:@"listItem"] removeObjectForKey:@"flag"];
+        [[[[VariableStore sharedInstance].modelDict objectForKey:@"ItemViewController"] objectForKey:@"listItem"] removeObjectForKey:@"offerId"];
+        [self performSegueWithModelJson:offerJson:@"offerMessageSegue":self];     
+    } 
 }
 
 #pragma mark - Table view data source
@@ -274,6 +297,13 @@
 {
   [super viewWillAppear:animated];
   [self registerTableViewRefreshPuller:self.offerTableView:self.view];
+    
+
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+  [self remoteNotificationSegue];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

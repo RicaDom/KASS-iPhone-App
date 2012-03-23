@@ -271,6 +271,7 @@
 		E56D2B74150A191000A3293E /* accept_2.png in Resources */ = {isa = PBXBuildFile; fileRef = E56D2B73150A191000A3293E /* accept_2.png */; };
 		E56D2B7A150AF7E500A3293E /* postsuccess.png in Resources */ = {isa = PBXBuildFile; fileRef = E56D2B79150AF7E500A3293E /* postsuccess.png */; };
 		E57EDB1F14D7EA0F0026D186 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = E57EDB1E14D7EA0F0026D186 /* User.m */; };
+		E58BC96B151B1DD0006C97EF /* NotificationRenderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E58BC96A151B1DD0006C97EF /* NotificationRenderHelper.m */; };
 		E5947DCB14A3A12B0066723A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5947DCA14A3A12B0066723A /* UIKit.framework */; };
 		E5947DCD14A3A12B0066723A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5947DCC14A3A12B0066723A /* Foundation.framework */; };
 		E5947DCF14A3A12B0066723A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5947DCE14A3A12B0066723A /* CoreGraphics.framework */; };
@@ -807,6 +808,8 @@
 		E56D2B79150AF7E500A3293E /* postsuccess.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = postsuccess.png; sourceTree = "<group>"; };
 		E57EDB1D14D7EA0F0026D186 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		E57EDB1E14D7EA0F0026D186 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		E58BC969151B1DD0006C97EF /* NotificationRenderHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationRenderHelper.h; sourceTree = "<group>"; };
+		E58BC96A151B1DD0006C97EF /* NotificationRenderHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationRenderHelper.m; sourceTree = "<group>"; };
 		E5947DC614A3A12B0066723A /* kass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5947DCA14A3A12B0066723A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E5947DCC14A3A12B0066723A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1373,6 +1376,8 @@
 				77A195C814FF80E40058C34F /* BaseHelper.m */,
 				77D566E61504A080003BA8DB /* PostTemplate+PostTemplateHelper.h */,
 				77D566E71504A080003BA8DB /* PostTemplate+PostTemplateHelper.m */,
+				E58BC969151B1DD0006C97EF /* NotificationRenderHelper.h */,
+				E58BC96A151B1DD0006C97EF /* NotificationRenderHelper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -2504,6 +2509,7 @@
 				E524E666151428D7008D7194 /* ProvideViewController.m in Sources */,
 				E53741481514DBA1008AB941 /* SellerAlertsListingsViewController.m in Sources */,
 				775F7859151AF4C10055EF4B /* UIView+Subviews.m in Sources */,
+				E58BC96B151B1DD0006C97EF /* NotificationRenderHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2596,7 +2602,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lin He (FNSM8C45WW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lin He (FNSM8C45WW)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2611,6 +2618,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PROVISIONING_PROFILE = "03AA16CF-E428-4517-9F6B-91F2A97F26F8";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "03AA16CF-E428-4517-9F6B-91F2A97F26F8";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2621,7 +2630,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lin He (FNSM8C45WW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lin He (FNSM8C45WW)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -2630,6 +2640,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "03AA16CF-E428-4517-9F6B-91F2A97F26F8";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "03AA16CF-E428-4517-9F6B-91F2A97F26F8";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2652,8 +2664,8 @@
 					"\"$(SRCROOT)/Libraries\"",
 				);
 				PRODUCT_NAME = kass;
-				PROVISIONING_PROFILE = "EF876BCB-E9CD-429C-80C5-879DAA62E95B";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EF876BCB-E9CD-429C-80C5-879DAA62E95B";
+				PROVISIONING_PROFILE = "C59D9135-ADF9-48CE-81C6-4B0BBDEB5AEA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "03AA16CF-E428-4517-9F6B-91F2A97F26F8";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2663,6 +2675,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Lin He (FNSM8C45WW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lin He (FNSM8C45WW)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/GHUnit\"",
@@ -2675,7 +2688,8 @@
 					"\"$(SRCROOT)/Libraries\"",
 				);
 				PRODUCT_NAME = com.heyook.jieqoo;
-				PROVISIONING_PROFILE = "EF876BCB-E9CD-429C-80C5-879DAA62E95B";
+				PROVISIONING_PROFILE = "C59D9135-ADF9-48CE-81C6-4B0BBDEB5AEA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C59D9135-ADF9-48CE-81C6-4B0BBDEB5AEA";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

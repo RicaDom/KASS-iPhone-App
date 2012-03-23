@@ -20,7 +20,7 @@
 @synthesize filteredListContent = _filteredListContent;
 @synthesize mapButton = _mapButton;
 @synthesize leftButton = _leftButton;
-//@synthesize tableView = _tableView;
+@synthesize remoteNotificationListingId = _remoteNotificationListingId;
 @synthesize tableFooter = _tableFooter;
 
 #pragma mark -
@@ -82,21 +82,28 @@
   [self loadDataSource];
 }
 
-//- (id)initWithStyle:(UITableViewStyle)style
-//{
-//    self = [super initWithStyle:style];
-//    if (self) {
-//        // Custom initialization
-//    }
-//    return self;
-//}
-
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
+}
+
+
+- (void) appDidGetListing:(NSDictionary *)dict
+{
+    DLog(@"BrowseTableViewController::appDidGetListing:listing=%@", dict);
+//    self.currentItem = [[ListItem alloc] initWithDictionary:dict];
+    [self performSegueByModel:[[ListItem alloc] initWithDictionary:dict]];
+}
+
+- (void)remoteNotificationGetListing:(NSString *)listItemId
+{
+    DLog(@"BrowseTableViewController::remoteNotificationGetListing");
+    if ( listItemId && ![listItemId isBlank] ) {
+        [self.kassApp getListing:listItemId];
+    }
 }
 
 - (void)appDidGetListingsNearby:(NSDictionary *)dict
@@ -170,6 +177,11 @@
     _searching = FALSE;
     [super viewDidLoad];
     [self loadDataSource];
+
+    if ([self.remoteNotificationListingId length] > 0) {
+        [self remoteNotificationGetListing:self.remoteNotificationListingId];
+        self.remoteNotificationListingId = nil;
+    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receivedFromNOMessageNotification:) 

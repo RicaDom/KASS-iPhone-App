@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "MainTabBarViewController.h"
+#import "NotificationRenderHelper.h"
+#import "MTPopupWindow.h"
 
 @implementation AppDelegate
 
@@ -15,14 +17,7 @@
 
 - (void)performByNotification:(NSDictionary *)notification
 {
-  // Depending on the notification, go to different controller
-  NSDictionary *params = [notification objectForKey:@"custom"];
-  NSString *type = [params objectForKey:@"e"];
-  NSString *dbId = [params objectForKey:@"i"];
-    NSDictionary *aps = [notification objectForKey:@"aps"];
-    NSString *alert = [aps objectForKey:@"alert"];
-    [ViewHelper showAlert:UI_LABEL_ALERT:alert:self];
-  DLog(@"Notification type=%@, dbId=%@", type, dbId);
+    [NotificationRenderHelper NotificationRender:notification mainTabBarVC:(UITabBarController *)self.window.rootViewController];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -41,7 +36,7 @@
 		if (dictionary != nil)
 		{
 			DLog(@"Launched from push notification: %@", dictionary);
-      [self performByNotification:dictionary];
+            [self performByNotification:dictionary];
 		}
 	}
   
@@ -72,14 +67,32 @@
 	[[NSUserDefaults standardUserDefaults] setValue:@"dc348da7e9e52a6c632243f4a26c04e889b5ef59aab5e715e22923f5f9ae9510" forKey:KassAppIphoneTokenKey];    
 }
 
+- (void)loadDataSource
+{
+    // WARNING - TODO
+    if ([[VariableStore sharedInstance].remoteNotification count] > 0) {
+        NSDictionary *copyDict = [NSDictionary dictionaryWithDictionary:[VariableStore sharedInstance].remoteNotification];
+        [VariableStore sharedInstance].remoteNotification = nil;
+        [self performByNotification:copyDict];
+    }
+}
+
+- (void) accountLoginFinished
+{
+    DLog(@"AppDelegate::accountLoginFinished");
+    [self loadDataSource];
+}
+
 - (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)notification
 {
 	NSLog(@"AppDelegate::didReceiveRemoteNotification: %@", notification);
-	[self performByNotification:notification];
+    if ([VariableStore sharedInstance].isLoggedIn) {
+        [self performByNotification:notification];
+    } else {
+        [VariableStore sharedInstance].remoteNotification = notification;
+        [MTPopupWindow showWindowWithUIView:self.window.rootViewController.view];
+    }
 }
-
-
-
 
 ////////////////////////////////////////////////////////////////
 
@@ -116,11 +129,11 @@
 //  });
 //}
 
-//- (void)applicationWillEnterForeground:(UIApplication *)application
-//{
-//  DLog(@"AppDelegate::applicationWillEnterForeground");
-//  
-//}
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
+  DLog(@"AppDelegate::applicationWillEnterForeground");
+  
+}
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
@@ -141,10 +154,10 @@
 //	return TRUE;
 //}
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-  DLog(@"AppDelegate::applicationDidBecomeActive");
-}
+//- (void)applicationDidBecomeActive:(UIApplication *)application
+//{
+//  DLog(@"AppDelegate::applicationDidBecomeActive");
+//}
 //
 //- (void)applicationWillTerminate:(UIApplication *)application
 //{
