@@ -9,6 +9,7 @@
 #import "UserInfoViewController.h"
 #import "UIViewController+ActivityIndicate.h"
 #import "VariableStore.h"
+#import "ViewHelper.h"
 
 @implementation UserInfoViewController
 
@@ -16,6 +17,7 @@
 @synthesize nameLabel = _nameLabel;
 @synthesize userId = _userId;
 @synthesize regDate = _regDate;
+@synthesize leftButton = _leftButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -105,12 +107,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-  
+    [ViewHelper buildBackButton:self.leftButton];
 }
 
 - (void)viewDidUnload
 {
   [self setImageContainerView:nil];
+    [self setLeftButton:nil];
     [super viewDidUnload];
   self.nameLabel = nil;
   self.regDate   = nil;
@@ -125,4 +128,7 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (IBAction)leftButtonAction:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

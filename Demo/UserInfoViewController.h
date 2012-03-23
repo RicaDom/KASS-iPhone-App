@@ -20,5 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIView *imageContainerView;
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *regDate;
+@property (strong, nonatomic) IBOutlet UIButton *leftButton;
+- (IBAction)leftButtonAction:(id)sender;
 
 @end

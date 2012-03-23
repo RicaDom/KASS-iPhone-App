@@ -9,11 +9,16 @@
 #import "SettingViewController.h"
 #import "UIViewController+ActivityIndicate.h"
 #import "NotificationRenderHelper.h"
+#import "SettingTable.h"
 
 @implementation SettingViewController
 
 @synthesize rightButton;
 @synthesize welcomeMessageLabel;
+@synthesize mainScrollView;
+@synthesize mainTableView;
+
+NSArray *settingArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,11 +37,15 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad
+- (void)loadSettingTableData
 {
-    [super viewDidLoad];
-    
+    settingArray = ([VariableStore sharedInstance].isLoggedIn) ? [SettingTable userDidLoginArray] : [SettingTable guessArray];
+    DLog(@"Setting Table: %@", settingArray);
+    [self.mainTableView reloadData];
+}
+
+- (void)customViewLoad
+{
     if ([VariableStore sharedInstance].isLoggedIn) {
         [ViewHelper buildLogoutButton:self.rightButton];
         self.rightButton.tag = RIGHT_BAR_BUTTON_LOGOUT;        
@@ -44,6 +53,16 @@
         [ViewHelper buildLoginButton:self.rightButton];
         self.rightButton.tag = RIGHT_BAR_BUTTON_LOGIN;
     }
+    
+    // init scroll view content size
+    self.mainScrollView.contentSize = CGSizeMake(_ScrollViewContentSizeX, _ScrollViewContentSettingSizeY);   
+}
+
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self customViewLoad];
 }
 
 - (void)loadDataSource
@@ -57,6 +76,7 @@
         self.rightButton.tag = RIGHT_BAR_BUTTON_LOGIN;
         self.welcomeMessageLabel.text = @"欢迎来到街区！！"; 
     }
+    [self loadSettingTableData];
     [self hideIndicator];
 }
 
@@ -82,6 +102,8 @@
 {
     [self setWelcomeMessageLabel:nil];
     [self setRightButton:nil];
+    [self setMainScrollView:nil];
+    [self setMainTableView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -99,7 +121,62 @@
     } else {
         [[VariableStore sharedInstance] signOut];
     }
-    
 }
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // #warning Potentially incomplete method implementation.
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+	/*
+	 If the requesting table view is the search display controller's table view, return the count of
+     the filtered list, otherwise return the count of the main list.
+	 */
+    return settingArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{    
+    static NSString *CellIdentifier = @"SettingTableCell";
+    UITableViewCell *cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    //set cell using data
+    cell.textLabel.text = ((SettingTable *)[settingArray objectAtIndex:indexPath.row]).displayName;
+    return cell;     
+}
+
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *displayName = ((SettingTable *)[settingArray objectAtIndex:indexPath.row]).displayName;
+    if (![VariableStore sharedInstance].isLoggedIn && ([displayName isEqualToString:@"注册或登陆"] || [displayName isEqualToString:@"设置"])) {
+        [MTPopupWindow showWindowWithUIView:self.tabBarController.view];
+        return;
+    }
+    [self performSegueWithIdentifier:((SettingTable *)[settingArray objectAtIndex:indexPath.row]).segueName sender:self];
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    if ([segue.identifier isEqualToString:@"SellerAlertsToListingsView"]) {
+//        DLog(@"SellerAlertsViewController::prepareForSegue");
+//        SellerAlertsListingsViewController *lc = segue.destinationViewController;    
+//        lc.alertId = [[self.alerts objectAtIndex:self.alertsTableView.indexPathForSelectedRow.row] objectForKey:@"id"];
+//        lc.query = [[self.alerts objectAtIndex:self.alertsTableView.indexPathForSelectedRow.row] objectForKey:@"query"];
+//        DLog(@"SellerAlertsViewController Segue Data: %@", lc.alertId);
+//    }
+}
+
 
 @end

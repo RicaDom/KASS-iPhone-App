@@ -14,6 +14,7 @@
 
 #define REQUEST_TIMEOUT 10
 #define _ScrollViewContentSizeX 320 
+#define _ScrollViewContentSettingSizeY 500
 
 #define MAP_DISTANCE_LAT 3000
 #define MAP_DISTANCE_LNG 3000
