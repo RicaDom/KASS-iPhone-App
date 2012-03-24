@@ -23,7 +23,10 @@
 {
   if (self = [super init]) {
     // save to variable store
+    self.weiboShareDict    = [dict objectForKey:@"weibo"];
+    self.siteDict          = [dict objectForKey:@"site"];
     NSDictionary *settings = [dict objectForKey:@"settings"];
+    
     NSDictionary *duration = [settings objectForKey:@"duration"];
     NSDictionary *secToString = [duration objectForKey:@"sec_string"];
     NSDictionary *secToText   = [duration objectForKey:@"sec_text"];
@@ -42,8 +45,6 @@
     
     self.postTemplatesDict = [settings objectForKey:@"post_templates"];
     self.messageTypesDict  = [settings objectForKey:@"message_types"];
-    self.weiboShareDict    = [settings objectForKey:@"weibo"];
-    self.siteDict          = [settings objectForKey:@"site"];
       
     if (alertKeywords.count > 0) {
       self.alertKeywordsServiceArray = [alertKeywords objectForKey:@"service"];
