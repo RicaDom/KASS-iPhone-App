@@ -1971,7 +1971,7 @@
                         <outlet property="scrollView" destination="Yuc-uj-Vkd" id="cqk-Rx-OfH"/>
                         <outlet property="sendMessageTextField" destination="OZE-wz-4Td" id="7ta-7i-dDg"/>
                         <outlet property="userInfoButton" destination="eC4-OL-ndA" id="UpA-rz-oPc"/>
-                        <segue destination="XUy-mg-tBg" kind="push" identifier="ActOfferToMapView" id="SDw-zv-tcg"/>
+                        <segue destination="EOY-f8-N3n" kind="push" identifier="ActOfferToMapView" id="XbQ-ch-RpX"/>
                     </connections>
                 </viewController>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="tTM-jo-QdE">
@@ -1981,7 +1981,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1942" y="-1179"/>
+            <point key="canvasLocation" x="1974" y="-1187"/>
         </scene>
         <scene sceneID="8UW-Sx-uG9">
             <objects>
@@ -2164,7 +2164,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="XUy-mg-tBg" kind="push" id="f4A-Lq-rQs"/>
+                                    <action selector="rightButtonAction:" destination="b2J-eF-Ocx" eventType="touchUpInside" id="o0n-Ga-28z"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -2185,6 +2185,7 @@
                         <outlet property="rightButton" destination="IIZ-jK-MYT" id="F8r-2A-yR8"/>
                         <outlet property="scrollView" destination="0FM-w4-91s" id="RDr-rs-wOD"/>
                         <outlet property="userInfoButton" destination="nDY-iL-dwD" id="Azz-1G-oGF"/>
+                        <segue destination="EOY-f8-N3n" kind="push" identifier="BuyerPayViewToMap" id="QWu-cC-yAN"/>
                     </connections>
                 </viewController>
             </objects>
@@ -2701,26 +2702,6 @@
             </objects>
             <point key="canvasLocation" x="3960" y="-49"/>
         </scene>
-        <scene sceneID="Ak1-hY-aU3">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HNW-mR-W7c" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="XUy-mg-tBg" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="kO2-0q-wEb">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="AN7-bk-86O">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </mapView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="ahI-rt-6Nc"/>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="3910" y="-793"/>
-        </scene>
         <scene sceneID="1BH-DW-PPI">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xbk-Yt-aUk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3072,14 +3053,32 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="SsV-Z2-bEG">
-                                <rect key="frame" x="0.0" y="44" width="320" height="324"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="bg_bottom.png" id="oyh-ZQ-8iZ">
                                 <rect key="frame" x="0.0" y="230" width="320" height="161"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <view hidden="YES" contentMode="scaleToFill" id="mHu-mv-8Qr">
+                                <rect key="frame" x="0.0" y="309" width="320" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ssh-IK-yv8">
+                                        <rect key="frame" x="10" y="5" width="300" height="43"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <state key="normal" title="查看更多..." backgroundImage="btn_big_93@2x.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="loadMoreButtonAction:" destination="oGv-sA-cVO" eventType="touchUpInside" id="wlT-rG-xli"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.95686280729999995" green="0.94117653369999998" blue="0.90588241820000004" alpha="1" colorSpace="deviceRGB"/>
+                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="note1.png" id="gcy-f4-q7k">
                                 <rect key="frame" x="66" y="274" width="189" height="86"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -3229,7 +3228,7 @@
                         <outlet property="listingTableView" destination="mBw-Qp-FVP" id="WDb-RT-TTi"/>
                         <outlet property="mapButton" destination="2Tp-eM-EHg" id="Udv-7f-pYn"/>
                         <outlet property="searchDisplayController" destination="Mw5-xp-cvq" id="eXG-85-J4b"/>
-                        <outlet property="tableFooter" destination="SsV-Z2-bEG" id="3g1-KH-umT"/>
+                        <outlet property="tableFooter" destination="mHu-mv-8Qr" id="MWj-OH-nin"/>
                         <segue destination="w5z-HA-Kra" kind="modal" identifier="showBrowseItem" id="wco-H4-LqS"/>
                         <segue destination="IkM-il-qrU" kind="modal" identifier="showBrowseItemNoMessage" id="kjd-qS-0pq"/>
                         <segue destination="IkM-il-qrU" kind="modal" identifier="showBrowseItemUnlogin" id="Klg-4R-DXF"/>
@@ -3610,6 +3609,7 @@
         <image name="bg_bottom.png" width="320" height="161"/>
         <image name="btn_add_alert@2x.png" width="603" height="110"/>
         <image name="btn_big_90@2x.png" width="600" height="86"/>
+        <image name="btn_big_93@2x.png" width="600" height="86"/>
         <image name="buying.png" width="320" height="45"/>
         <image name="everyone.png" width="320" height="240"/>
         <image name="input_150.png" width="300" height="35"/>
@@ -3641,15 +3641,14 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="bw5-Hf-Ght"/>
         <segue reference="kjd-qS-0pq"/>
-        <segue reference="wco-H4-LqS"/>
         <segue reference="fme-ki-SfP"/>
         <segue reference="Feq-4l-Zfq"/>
-        <segue reference="cVP-Bc-SG3"/>
-        <segue reference="W5w-q8-67l"/>
-        <segue reference="FyY-9X-ohZ"/>
-        <segue reference="f4A-Lq-rQs"/>
+        <segue reference="wco-H4-LqS"/>
+        <segue reference="QWu-cC-yAN"/>
+        <segue reference="tJz-zA-22g"/>
         <segue reference="p1j-ow-HAz"/>
+        <segue reference="dM3-h5-4IE"/>
+        <segue reference="bw5-Hf-Ght"/>
     </inferredMetricsTieBreakers>
 </document>

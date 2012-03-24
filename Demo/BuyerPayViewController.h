@@ -37,5 +37,6 @@
 
 - (IBAction)leftButtonAction:(id)sender;
 - (IBAction)payButtonAction:(id)sender;
+- (IBAction)rightButtonAction:(id)sender;
 
 @end

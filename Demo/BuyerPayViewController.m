@@ -195,4 +195,9 @@ NSString *popUpSuccessfulViewFlag;
   [[self currentUser] payOffer:_currentOffer.dbId];
 }
 
+- (IBAction)rightButtonAction:(id)sender {
+    VariableStore.sharedInstance.itemToShowOnMap = [_currentOffer getListItemToMap];
+    [self performSegueWithIdentifier:@"BuyerPayViewToMap" sender:self];
+}
+
 @end

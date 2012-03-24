@@ -25,13 +25,6 @@
 
 #pragma mark -
 #pragma mark Data Source Loading / Reloading Methods
-
-
-#pragma mark -
-
-#pragma mark -
-
-
 - (BOOL) isNearbyTabSelected
 {
   return 0 == self.browseSegment.selectedSegmentIndex;
@@ -59,8 +52,9 @@
   }
   [self.listingTableView reloadData];
   [self doneLoadingTableViewData];
-//  [self stopLoading];
   [self hideIndicator];
+
+   self.tableFooter.hidden =(self.currentListings.count > 6)? NO : YES;
 }
 
 // we need to locate user position before getting data
@@ -187,9 +181,8 @@
                                              selector:@selector(receivedFromNOMessageNotification:) 
                                                  name:NO_MESSAGE_TO_MESSAGE_VIEW_NOTIFICATION
                                                object:nil];
-
-
-  self.listingTableView.tableFooterView = self.tableFooter;
+  
+  self.listingTableView.tableFooterView = self.tableFooter;  
   self.filteredListContent = [[NSMutableArray alloc] init];
 	[self.listingTableView reloadData];
   
@@ -212,7 +205,6 @@
     [self setMapButton:nil];
     [self setLeftButton:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NO_MESSAGE_TO_MESSAGE_VIEW_NOTIFICATION object:nil];
-    //[self setTableView:nil];
     [self setTableFooter:nil];
     [super viewDidUnload];
  
@@ -334,6 +326,10 @@
 
 - (IBAction)leftButtonAction:(id)sender {
   [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)loadMoreButtonAction:(id)sender {
+    [self refreshing];
 }
 
 - (IBAction)browseSegmentAction:(id)sender {
