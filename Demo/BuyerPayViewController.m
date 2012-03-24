@@ -53,6 +53,14 @@ NSString *popUpSuccessfulViewFlag;
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)hideButtonAndShowStatus:(NSString *)status
+{
+  self.payButton.hidden = TRUE;
+  self.payStatusLabel.text = status;
+  self.payStatusLabel.font = [UIFont boldSystemFontOfSize:24];
+  self.payStatusLabel.textColor = [UIColor lightGrayColor];
+}
+
 - (void)populateData:(NSDictionary *)dict
 {
   self.currentOffer = [[Offer alloc]initWithDictionary:dict];
@@ -72,9 +80,9 @@ NSString *popUpSuccessfulViewFlag;
   VariableStore.sharedInstance.userToShowId = _currentOffer.userId;
   
   if ( [self.currentOffer isPaid]) {
-    self.payButton.hidden = TRUE;
-    self.payStatusLabel.text = UI_LABEL_OFFER_PAID;
-    self.payStatusLabel.textColor = [UIColor grayColor];
+    [self hideButtonAndShowStatus:UI_LABEL_OFFER_PAID];
+  }else if( self.currentOffer.isPaymentConfirmed ){
+    [self hideButtonAndShowStatus:UI_LABEL_OFFER_PAYMENT_CONFIRMED];
   }else {
     self.payButton.hidden = FALSE;
     self.payStatusLabel.text = UI_BUTTON_LABEL_PAY_NOW;
@@ -192,7 +200,10 @@ NSString *popUpSuccessfulViewFlag;
 
 - (IBAction)payButtonAction:(id)sender {
   self.payButton.hidden = TRUE;
-  [[self currentUser] payOffer:_currentOffer.dbId];
+  [self.currentUser payOffer:_currentOffer.dbId];
+  [self hideButtonAndShowStatus:TEXT_IN_PROCESS];
+  
+//  [[self currentUser] alipayOffer:_currentOffer];
 }
 
 @end

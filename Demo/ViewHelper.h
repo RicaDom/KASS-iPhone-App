@@ -51,6 +51,7 @@
 + (void)buildCheckBoxButtonUncheck:(UIButton *)button;
 + (void)buildProvideAlertButton:(UIButton *)button;
 + (void)buildProvideBrowseButton:(UIButton *)button;
++ (void)buildConfirmPaymentButton:(UIView *)view:(id)delegate;
 
 + (void)showAlert:(NSString *)title:(NSString *)message:(id)delegate;
 + (void)showErrorAlert:(NSString *)message:(id)delegate;

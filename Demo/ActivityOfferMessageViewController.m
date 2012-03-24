@@ -87,7 +87,9 @@
   
   if ( self.currentOffer.isPaid ) {
     [self hideInputMessageShowStatus:UI_LABEL_OFFER_PAID];
-  } else if ( self.currentOffer.isRejected ) {
+  } else if(self.currentOffer.isPaymentConfirmed){
+    [self hideInputMessageShowStatus:UI_LABEL_OFFER_PAYMENT_CONFIRMED];
+  }else if ( self.currentOffer.isRejected ) {
     [self hideInputMessageShowStatus:UI_LABEL_REJECTED];
   } else if ( self.currentOffer.isExpired ) {
     [self hideInputMessageShowStatus:UI_LABEL_EXPIRED];

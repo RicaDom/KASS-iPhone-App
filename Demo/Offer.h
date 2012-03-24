@@ -23,6 +23,7 @@
 @property (nonatomic, strong) NSString *userId;
 @property (nonatomic, strong) NSNumber *distance;
 @property (nonatomic, strong) NSString *message;
+@property (nonatomic, strong) NSString *alipayTradeNo;
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *description;
@@ -37,6 +38,7 @@
 - (BOOL) isExpired;
 - (BOOL) isAccepted;
 - (BOOL) isPaid;
+- (BOOL) isPaymentConfirmed;
 - (BOOL) isRejected;
 
 @end

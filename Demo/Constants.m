@@ -43,6 +43,7 @@ NSString * const UI_BUTTON_LABEL_SEND_MESSAGE = @"发讯息";
 NSString * const UI_BUTTON_LABEL_SEND_EMAIL = @"发邮件";
 NSString * const UI_BUTTON_LABEL_SHARE_WITH_FRIEND = @"与好友分享";
 NSString * const UI_BUTTON_LABEL_PAY_NOW = @"支付";
+NSString * const UI_BUTTON_LABEL_CONFIRM_PAYMENT = @"确认支付";
 
 NSString * const UI_LABEL_NEEDS_REVIEW = @"请查阅";
 NSString * const UI_LABEL_OFFER = @"出价";
@@ -56,12 +57,14 @@ NSString * const UI_LABEL_YOU_PAID = @"已付";
 NSString * const UI_LABEL_PAID = @"已付";
 NSString * const UI_LABEL_REJECTED = @"出价拒绝";
 NSString * const UI_LABEL_OFFER_PAID = @"交易已支付";
+NSString * const UI_LABEL_OFFER_PAYMENT_CONFIRMED = @"付款已确认";
 
 NSString * const UI_LABEL_ALERT   = @"提醒";
 NSString * const UI_LABEL_ERROR   = @"错误";
 NSString * const UI_LABEL_DISMISS = @"取消";
 NSString * const UI_LABEL_CONFIRM = @"确定";
 NSString * const UI_TEXT_VIEW_DESCRIPTION = @"描述一下你想要的服务或东西吧";
+NSString * const TEXT_IN_PROCESS  = @"处理中...";
 
 NSInteger const VALIDE_USER_NAME_LENGTH_MIN = 3;
 NSInteger const VALIDE_USER_NAME_LENGTH_MAX = 118;

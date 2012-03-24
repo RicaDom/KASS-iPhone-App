@@ -10,10 +10,11 @@
 #import "KassAppDelegate.h"
 #import "AccountActivityDelegate.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, KassAppDelegate, AccountActivityDelegate>{
-  UIBackgroundTaskIdentifier bgTask;
-}
-
+@interface AppDelegate : UIResponder <UIApplicationDelegate, KassAppDelegate, AccountActivityDelegate>
 @property (strong, nonatomic) UIWindow *window;
+
+- (BOOL)isSingleTask;
+- (void)parseURL:(NSURL *)url application:(UIApplication *)application;
+
 
 @end

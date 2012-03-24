@@ -10,19 +10,103 @@
 #import "MainTabBarViewController.h"
 #import "NotificationRenderHelper.h"
 #import "MTPopupWindow.h"
+#import "AlixPay.h"
+#import "AlixPayResult.h"
+#import "DataVerifier.h"
+#import <sys/utsname.h>
 
 @implementation AppDelegate
 
 @synthesize window    = _window;
+
+- (BOOL)isSingleTask{
+	struct utsname name;
+	uname(&name);
+	float version = [[UIDevice currentDevice].systemVersion floatValue];//判定系统版本。
+	if (version < 4.0 || strstr(name.machine, "iPod1,1") != 0 || strstr(name.machine, "iPod2,1") != 0) {
+		return YES;
+	}
+	else {
+		return NO;
+	}
+}
+
+- (void)parseURL:(NSURL *)url application:(UIApplication *)application {
+	AlixPay *alixpay = [AlixPay shared];
+	AlixPayResult *result = [alixpay handleOpenURL:url];
+	if (result) {
+		//是否支付成功
+		if (9000 == result.statusCode) {
+			/*
+			 *用公钥验证签名
+			 */
+			id<DataVerifier> verifier = CreateRSADataVerifier([[NSBundle mainBundle] objectForInfoDictionaryKey:@"RSA public key"]);
+			if ([verifier verifyString:result.resultString withSign:result.signString]) {
+				UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"提示" 
+                                                             message:result.statusMessage 
+                                                            delegate:nil 
+                                                   cancelButtonTitle:@"确定" 
+                                                   otherButtonTitles:nil];
+				[alertView show];
+			}//验签错误
+			else {
+				UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"提示" 
+                                                             message:@"签名错误" 
+                                                            delegate:nil 
+                                                   cancelButtonTitle:@"确定" 
+                                                   otherButtonTitles:nil];
+				[alertView show];
+			}
+		}
+		//如果支付失败,可以通过result.statusCode查询错误码
+		else {
+			UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"提示" 
+                                                           message:result.statusMessage 
+                                                          delegate:nil 
+                                                 cancelButtonTitle:@"确定" 
+                                                 otherButtonTitles:nil];
+			[alertView show];
+		}
+		
+	}	
+}
+
+////////////////////////////////////// Helper Methods ///////////////////////////////////////////////
 
 - (void)performByNotification:(NSDictionary *)notification
 {
     [NotificationRenderHelper NotificationRender:notification mainTabBarVC:(UITabBarController *)self.window.rootViewController];
 }
 
+- (void)loadDataSource
+{
+  // WARNING - TODO
+  if ([[VariableStore sharedInstance].remoteNotification count] > 0) {
+    NSDictionary *copyDict = [NSDictionary dictionaryWithDictionary:[VariableStore sharedInstance].remoteNotification];
+    [VariableStore sharedInstance].remoteNotification = nil;
+    [self performByNotification:copyDict];
+  }
+}
+
+- (void)settingsDidLoad:(NSDictionary *)dict
+{
+  DLog(@"AppDelegate::settingsDidLoad:dict=%@", dict);
+  [VariableStore.sharedInstance storeSettings:dict];
+}
+
+- (void) accountLoginFinished
+{
+  DLog(@"AppDelegate::accountLoginFinished");
+  [self loadDataSource];
+}
+
+
+//////////////////////////////////// Application Life Cycle ///////////////////////////////////////////
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   DLog(@"AppDelegate::didFinishLaunchingWithOptions:rootViewController=%@,options=%@", self.window.rootViewController, launchOptions);
+  VariableStore.sharedInstance.appDelegate = self;
   
   if (launchOptions != nil)
 	{
@@ -46,6 +130,7 @@
 	// Let the device know we want to receive push notifications
 	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:
    (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+
   
   return YES;
 }
@@ -67,22 +152,6 @@
 	[[NSUserDefaults standardUserDefaults] setValue:@"dc348da7e9e52a6c632243f4a26c04e889b5ef59aab5e715e22923f5f9ae9510" forKey:KassAppIphoneTokenKey];    
 }
 
-- (void)loadDataSource
-{
-    // WARNING - TODO
-    if ([[VariableStore sharedInstance].remoteNotification count] > 0) {
-        NSDictionary *copyDict = [NSDictionary dictionaryWithDictionary:[VariableStore sharedInstance].remoteNotification];
-        [VariableStore sharedInstance].remoteNotification = nil;
-        [self performByNotification:copyDict];
-    }
-}
-
-- (void) accountLoginFinished
-{
-    DLog(@"AppDelegate::accountLoginFinished");
-    [self loadDataSource];
-}
-
 - (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)notification
 {
 	NSLog(@"AppDelegate::didReceiveRemoteNotification: %@", notification);
@@ -94,41 +163,6 @@
     }
 }
 
-////////////////////////////////////////////////////////////////
-
-
-- (void)settingsDidLoad:(NSDictionary *)dict
-{
-  DLog(@"AppDelegate::settingsDidLoad:dict=%@", dict);
-  [VariableStore.sharedInstance storeSettings:dict];
-}
-
-//- (void)applicationWillResignActive:(UIApplication *)application
-//{
-//  DLog(@"AppDelegate::applicationWillResignActive");
-//  
-//}
-
-//- (void)applicationDidEnterBackground:(UIApplication *)application
-//{
-//  DLog(@"AppDelegate::applicationDidEnterBackground");
-//  bgTask = [application beginBackgroundTaskWithExpirationHandler:^{
-//    // Clean up any unfinished task business by marking where you.
-//    // stopped or ending the task outright.
-//    [application endBackgroundTask:bgTask];
-//    bgTask = UIBackgroundTaskInvalid;
-//  }];
-//  
-//  // Start the long-running task and return immediately.
-//  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//    
-//    // Do the work associated with the task, preferably in chunks.
-//    
-//    [application endBackgroundTask:bgTask];
-//    bgTask = UIBackgroundTaskInvalid;
-//  });
-//}
-
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
   DLog(@"AppDelegate::applicationWillEnterForeground");
@@ -137,10 +171,15 @@
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
-  DLog(@"AppDelegate::handleOpenURL:url=%@", url);
-  DLog(@"AppDelegate::openURL:weibo=%@", [VariableStore sharedInstance].user.weibo);
-  if( [[VariableStore sharedInstance].user.weibo handleOpenURL:url] )
-		return TRUE;
+  DLog(@"AppDelegate::handleOpenURL:url=%@,absoluteString=%@", url, url.absoluteString);
+  
+  if ( [url.absoluteString rangeOfString:@"://safepay/"].location != NSNotFound){
+    [self parseURL:url application:application];
+  }else {//callback?oauth_token=
+    DLog(@"AppDelegate::openURL:weibo=%@", [VariableStore sharedInstance].user.weibo);
+    return ( [[VariableStore sharedInstance].user.weibo handleOpenURL:url] );
+  }
+  
 	return TRUE;
 }
 
@@ -154,10 +193,13 @@
 //	return TRUE;
 //}
 
-//- (void)applicationDidBecomeActive:(UIApplication *)application
-//{
-//  DLog(@"AppDelegate::applicationDidBecomeActive");
-//}
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+  DLog(@"AppDelegate::applicationDidBecomeActive");
+  if ( !VariableStore.sharedInstance.settings && !VariableStore.sharedInstance.settings.siteDict) {
+    [VariableStore.sharedInstance loadSettings:self];
+  }
+}
 //
 //- (void)applicationWillTerminate:(UIApplication *)application
 //{

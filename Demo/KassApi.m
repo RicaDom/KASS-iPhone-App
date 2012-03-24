@@ -210,6 +210,13 @@
   [self postData:_url:dict];  
 }
 
+- (void)confirmPaymentOffer:(NSDictionary *)dict:(NSString *)modelId
+{
+  DLog(@"KassApi::confirmPaymentOffer:id=%@,dict=%@", modelId, dict);
+  _url = [NSString stringWithFormat:@"http://%s/v1/offers/%@/confirm_payment", HOST, modelId];
+  [self postData:_url:dict]; 
+}
+
 - (void)createOfferMessage:(NSDictionary *)dict:(NSString *)offerId
 {
   DLog(@"KassApi::createOfferMessage:id=%@,dict=%@", offerId, dict);

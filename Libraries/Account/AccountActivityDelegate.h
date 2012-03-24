@@ -21,6 +21,7 @@
 - (void)accountDidModifyOffer:(NSDictionary *)dict;
 - (void)accountDidAcceptOffer:(NSDictionary *)dict;
 - (void)accountDidPayOffer:(NSDictionary *)dict;
+- (void)accountDidConfirmPaymentOffer:(NSDictionary *)dict;
 - (void)accountDidGetOfferMessages:(NSDictionary *)dict;
 - (void)accountDidCreateOfferMessage:(NSDictionary *)dict;
 - (void)accountDidDeleteListing;

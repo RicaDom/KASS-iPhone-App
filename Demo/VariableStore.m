@@ -35,6 +35,7 @@
 
 @synthesize currentViewControllerDelegate = _currentViewControllerDelegate;
 @synthesize remoteNotification = _remoteNotification;
+@synthesize appDelegate = _appDelegate;
 
 + (VariableStore *) sharedInstance {
     // the instance of this class is stored here
@@ -57,7 +58,7 @@
           
             myInstance.modelDict = [[NSMutableDictionary alloc] init];
           
-            myInstance.settings = [[Settings alloc] init];
+//            myInstance.settings = [[Settings alloc] init];
           
             myInstance.kassApp = [[KassApp alloc] init];
             
@@ -166,6 +167,12 @@
 {
   self.kassApp.delegate = delegate;
   [self.kassApp loadAndStoreSettings];
+}
+
+- (void)loadSettling:(id<KassAppDelegate>)delegate
+{
+  self.kassApp.delegate = delegate;
+  [self.kassApp loadSettings];
 }
 
 - (void)storeSettings:(NSDictionary *)dict

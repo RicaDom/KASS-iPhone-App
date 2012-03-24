@@ -334,7 +334,7 @@
         // if my offer has been accepted by buyer
         if ( item.isAccepted ) {
             [ViewHelper buildOfferAcceptedCell:item:cell];
-        }else if ( item.isPaid){
+        }else if ( item.isPaid || item.isPaymentConfirmed){
           [ViewHelper buildOfferPaidCell:item :cell];
         }else if (item.isRejected){
           [ViewHelper buildOfferRejectedCell:item :cell];

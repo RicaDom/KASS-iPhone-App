@@ -50,12 +50,14 @@
 @property (strong, nonatomic) ListItem *itemToShowOnMap;
 @property (strong, nonatomic) NSString *userToShowId;
 @property (strong, nonatomic) NSDictionary *remoteNotification;
+@property (strong, nonatomic) UIResponder *appDelegate;
 
 @property NSInteger priceToModify;
 
 + (VariableStore *) sharedInstance;
 - (void) clearCurrentPostingItem;
 - (void) clearCurrentAddAlert;
+- (void)loadSettings:(id<KassAppDelegate>)delegate;
 - (void)storeSettings:(NSDictionary *)dict;
 - (void)loadAndStoreSettings:(id<KassAppDelegate>)delegate;
 - (void) appendPostingItemToListings:(NSDictionary *)dict;

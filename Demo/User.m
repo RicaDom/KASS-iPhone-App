@@ -13,6 +13,8 @@
 #import "SFHFKeychainUtils.h"
 #import "ListItem+ListItemHelper.h"
 #import "VariableStore.h"
+#import "Alipay.h"
+
 //#import "FayeClient.h"
 
 @implementation User
@@ -68,6 +70,22 @@
   
   if( [_delegate respondsToSelector:@selector(accountDidAcceptOffer:)] )
     [_delegate accountDidAcceptOffer:dict];
+}
+
+- (void)confirmPaymentOffer:(NSString *)offerId
+{
+  DLog(@"User::confirmPaymentOffer:id=%@", offerId);
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"confirmPaymentOfferFinished:"];
+  [ka confirmPaymentOffer:nil:offerId];
+}
+
+- (void)confirmPaymentOfferFinished:(NSData *)data;
+{
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"User::confirmPaymentOfferFinished:dict");
+  
+  if( [_delegate respondsToSelector:@selector(accountDidConfirmPaymentOffer:)] )
+    [_delegate accountDidConfirmPaymentOffer:dict];
 }
 
 - (void)payOffer:(NSString *)offerId
@@ -578,6 +596,12 @@
 {
   DLog(@"User::weiboDidLogout");
 }
+
+- (void)alipayOffer:(Offer *)offer
+{
+  [Alipay payOffer:offer]; 
+}
+
 
 //- (void)getPrivatePub
 //{

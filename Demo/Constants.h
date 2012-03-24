@@ -66,6 +66,7 @@ extern NSString * const UI_BUTTON_LABEL_SEND_MESSAGE;
 extern NSString * const UI_BUTTON_LABEL_SEND_EMAIL;
 extern NSString * const UI_BUTTON_LABEL_SHARE_WITH_FRIEND;
 extern NSString * const UI_BUTTON_LABEL_PAY_NOW;
+extern NSString * const UI_BUTTON_LABEL_CONFIRM_PAYMENT;
 
 extern NSString * const UI_LABEL_NEEDS_REVIEW;
 extern NSString * const UI_LABEL_OFFER;
@@ -79,6 +80,7 @@ extern NSString * const UI_LABEL_PAID;
 extern NSString * const UI_LABEL_YOU_PAID;
 extern NSString * const UI_LABEL_REJECTED;
 extern NSString * const UI_LABEL_OFFER_PAID;
+extern NSString * const UI_LABEL_OFFER_PAYMENT_CONFIRMED;
 
 extern NSString * const OFFER_STATE_ACCEPTED;
 extern NSString * const OFFER_STATE_REJECTED;
@@ -90,6 +92,7 @@ extern NSString * const CHANGED_PRICE_NOTIFICATION;
 extern NSString * const OFFER_TO_PAY_VIEW_NOTIFICATION;
 extern NSString * const NEW_POST_NOTIFICATION;
 extern NSString * const NO_MESSAGE_TO_MESSAGE_VIEW_NOTIFICATION;
+extern NSString * const TEXT_IN_PROCESS;
 
 extern NSString * const UI_LABEL_ERROR;
 extern NSString * const UI_LABEL_DISMISS;

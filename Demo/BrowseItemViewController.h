@@ -42,5 +42,6 @@
 
 - (IBAction)leftButtonAction:(id)sender;
 - (IBAction)rightButtonAction:(id)sender;
+- (void)confirmPayment;
 
 @end

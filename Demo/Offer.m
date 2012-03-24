@@ -27,6 +27,7 @@
 @synthesize message = _message;
 @synthesize buyerImageUrl = _buyerImageUrl;
 @synthesize sellerImageUrl = _sellerImageUrl;
+@synthesize alipayTradeNo = _alipayTradeNo;
 
 - (id) initWithDictionary:(NSDictionary *) theDictionary
 {
@@ -36,6 +37,7 @@
     _dbId         = [theDictionary objectForKey:@"id"];
     _userId       = [theDictionary objectForKey:@"user_id"];
     _message      = [theDictionary objectForKey:@"message"];
+    _alipayTradeNo= [theDictionary objectForKey:@"alipay_trade_no"];
     _price        = [NSDecimalNumber decimalNumberWithDecimal:[[theDictionary objectForKey:@"price"] decimalValue]];
     _lastMessage     = [[Message alloc] init];
     _lastMessage.body = [theDictionary objectForKey:@"message"];
@@ -99,5 +101,9 @@
   return [self.state isEqualToString:@"rejected"];
 }
 
+- (BOOL) isPaymentConfirmed
+{
+  return [self.state isEqualToString:@"payment_confirmed"];
+}
 
 @end
