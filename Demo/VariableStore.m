@@ -169,7 +169,7 @@
   [self.kassApp loadAndStoreSettings];
 }
 
-- (void)loadSettling:(id<KassAppDelegate>)delegate
+- (void)loadSettings:(id<KassAppDelegate>)delegate
 {
   self.kassApp.delegate = delegate;
   [self.kassApp loadSettings];

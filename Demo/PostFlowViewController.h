@@ -13,7 +13,7 @@
 #import "PostFlowSetDateViewController.h"
 #import "PostSummaryViewController.h"
 #import "ViewHelper.h"
-@class KTTextView;
+#import "KTTextView.h"
 
 @interface PostFlowViewController : UIViewController
 

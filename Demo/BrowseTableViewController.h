@@ -19,7 +19,7 @@
 #import "UIResponder+VariableStore.h"
 
 @interface BrowseTableViewController : UIViewController <UISearchDisplayDelegate, UISearchBarDelegate,LocateMeDelegate> {
-	NSDictionary *transferJson;
+  NSDictionary *transferJson;
   BOOL _searching;
   CLLocation *location;
   BOOL _locating;
@@ -32,10 +32,12 @@
 @property (strong, nonatomic) IBOutlet UIButton *mapButton;
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
 @property (strong, nonatomic) NSString *remoteNotificationListingId;
-@property (strong, nonatomic) IBOutlet UIImageView *tableFooter;
-- (IBAction)leftButtonAction:(id)sender;
+@property (strong, nonatomic) IBOutlet UIView *tableFooter;
 
+- (IBAction)leftButtonAction:(id)sender;
+- (IBAction)loadMoreButtonAction:(id)sender;
 - (IBAction)browseSegmentAction:(id)sender;
+
 - (void)loadDataSource;
 - (void)reloadTable;
 - (void)locateMe;

@@ -206,4 +206,9 @@ NSString *popUpSuccessfulViewFlag;
 //  [[self currentUser] alipayOffer:_currentOffer];
 }
 
+- (IBAction)rightButtonAction:(id)sender {
+    VariableStore.sharedInstance.itemToShowOnMap = [_currentOffer getListItemToMap];
+    [self performSegueWithIdentifier:@"BuyerPayViewToMap" sender:self];
+}
+
 @end

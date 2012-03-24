@@ -7,7 +7,6 @@
 //
 
 #import "PostFlowViewController.h"
-#import "KTTextView.h"
 
 @implementation PostFlowViewController
 
