@@ -57,6 +57,7 @@
 - (void)modifyOffer:(NSDictionary *)dict:(NSString *)modelId;
 - (void)acceptOffer:(NSDictionary *)dict:(NSString *)modelId;
 - (void)payOffer:(NSDictionary *)dict:(NSString *)modelId;
+- (void)confirmPaymentOffer:(NSDictionary *)dict:(NSString *)modelId;
 - (void)getOfferMessages:(NSString *)offerId;
 - (void)createOfferMessage:(NSDictionary *)dict:(NSString *)offerId;
 - (void)loadSettings;

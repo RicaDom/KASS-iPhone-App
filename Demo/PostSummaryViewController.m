@@ -48,6 +48,7 @@
 
 - (void)updateCurrentView
 {
+  DLog(@"PostSummaryViewController::updateCurrentView ");
     // check states to display different button title
     if ([VariableStore sharedInstance].isLoggedIn) {
         // Update submit button label if it's an update
@@ -103,6 +104,8 @@
             }
         }
     }
+  
+  [self updateCurrentView];
 }
 
 #pragma mark - View lifecycle
@@ -122,14 +125,15 @@
   VariableStore.sharedInstance.currentPostingItem.location = [[Location alloc] initWithCLLocation:VariableStore.sharedInstance.location];
   
   [VariableStore.sharedInstance.currentPostingItem buildMap:self.mapView];
+  [self hideIndicator];
 }
 
 - (void)customViewLoad
 {
-    UIImage* signUpButtonImg = [UIImage imageNamed:UI_IMAGE_POST_SEND_BUTTON];
-    UIImage* signUpButtonPressImg = [UIImage imageNamed:UI_IMAGE_POST_SEND_BUTTON_PRESS];
-    [self.submitButton setBackgroundImage:signUpButtonImg forState:UIControlStateNormal];
-    [self.submitButton setBackgroundImage:signUpButtonPressImg forState:UIControlStateSelected];
+    UIImage* buttonImg = [UIImage imageNamed:UI_IMAGE_POST_SEND_BUTTON];
+    UIImage* buttonPressImg = [UIImage imageNamed:UI_IMAGE_POST_SEND_BUTTON_PRESS];
+    [self.submitButton setBackgroundImage:buttonImg forState:UIControlStateNormal];
+    [self.submitButton setBackgroundImage:buttonPressImg forState:UIControlStateSelected];
     [ViewHelper buildCancelButton:self.cancelButton];
     [ViewHelper buildEditButton:self.leftButton];
 }
@@ -163,9 +167,16 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+  [super viewWillAppear:animated];
+  
+  if ([self kassVS].currentPostingItem && [self kassVS].currentPostingItem.location) {
     [self loadCurrentPostingData];
-    [self updateCurrentView];
+  }else {
+    [self showIndicator:@"正在寻找您的位置..."];
+    VariableStore.sharedInstance.locateMeManager.delegate = self;
+    [VariableStore.sharedInstance.locateMeManager locateMe];
+  }
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -223,6 +234,7 @@
         if (self.weiboCheckBox.tag == 1) { [params setObject:@"true" forKey:@"publish"]; }
      
         DLog(@"PostSummaryViewController::submitAction:params = %@", params);
+        [self.submitButton.titleLabel setText:TEXT_IN_PROCESS];
         if ([self.postType isEqualToString:POST_TYPE_EDITING] && self.postingItem.isPersisted) {
             [self.currentUser modifyListing:params:self.postingItem.dbId];
         }else{

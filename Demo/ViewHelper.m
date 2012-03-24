@@ -91,9 +91,31 @@
   [cell.infoView addSubview:labelFinalPrice]; 
 }
 
++ (void) buildConfirmPaymentButton:(UIView *)view:(id)delegate
+{
+  UIImage *btnImage = [UIImage imageNamed:@"btn_big_90.png"];
+  
+  UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+  button.frame = CGRectMake(10, 2.5, 300, 44);
+  [button setImage:btnImage forState:UIControlStateNormal];
+  [button setTitleColor: [UIColor orangeColor] forState: UIControlStateNormal];
+  [view addSubview:button]; 
+  
+  UILabel *confirmPayment = [[UILabel alloc] init];  
+  [confirmPayment setTextColor:[UIColor whiteColor]];
+  confirmPayment.frame = CGRectMake(10, 2.5, 300, 44);
+  confirmPayment.textAlignment = UITextAlignmentCenter;
+  confirmPayment.font = [UIFont boldSystemFontOfSize:20];
+  confirmPayment.backgroundColor = [UIColor clearColor];
+  [confirmPayment setText:UI_BUTTON_LABEL_CONFIRM_PAYMENT];
+  [view addSubview:confirmPayment]; 
+  
+  [button addTarget:delegate action:@selector(confirmPayment) forControlEvents:UIControlEventTouchUpInside];
+}
+
 + (void) buildListItemPayNowCell:(ListItem *)item:(ListingTableCell *)cell
 {
-  UIButton *buttonPayNow = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+  UIButton *buttonPayNow = [UIButton buttonWithType:UIButtonTypeCustom];
   buttonPayNow.frame = CGRectMake(5, 5, 60, 20.0);
   [buttonPayNow setTitle:UI_BUTTON_LABEL_PAY_NOW forState:UIControlStateNormal];
   [buttonPayNow setTitleColor: [UIColor orangeColor] forState: UIControlStateNormal];

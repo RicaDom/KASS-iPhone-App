@@ -70,11 +70,11 @@
   
   UILabel *label = [[UILabel alloc] init];
   [label setText:status];
-  [label setTextColor:[UIColor brownColor]];
+  [label setTextColor:[UIColor lightGrayColor]];
   label.frame = CGRectMake(0, 0, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
   label.textAlignment = UITextAlignmentCenter;
   label.backgroundColor = [UIColor clearColor];
-  label.font = [UIFont boldSystemFontOfSize:24];
+  label.font = [UIFont boldSystemFontOfSize:20];
   [self.buttomView addSubview:label]; 
 }
 
@@ -102,7 +102,10 @@
   VariableStore.sharedInstance.userToShowId = _currentOffer.userId;
   
   if ( self.currentOffer.isPaid ) {
-    [self hideInputMessageShowStatus:UI_LABEL_OFFER_PAID];
+    [self.buttomView hideAllSubviews];
+    [ViewHelper buildConfirmPaymentButton:self.buttomView:self];
+  } else if ( self.currentOffer.isPaymentConfirmed ) {
+    [self hideInputMessageShowStatus:UI_LABEL_OFFER_PAYMENT_CONFIRMED];
   } else if ( self.currentOffer.isRejected ) {
     [self hideInputMessageShowStatus:UI_LABEL_REJECTED];
   } else if ( self.currentOffer.isExpired ) {
@@ -111,18 +114,11 @@
   
 }
 
-- (void)accountDidGetOffer:(NSDictionary *)dict
+- (void)confirmPayment
 {
-  DLog(@"BrowseItemViewController::accountDidGetOffer");  
-  [self populateData:dict];
-}
-
-
-- (void)accountRequestFailed:(NSDictionary *)errors
-{
-  DLog(@"BrowseItemViewController::requestFailed");
-  [self hideIndicator];
-  [self stopLoading];
+  DLog(@"BrowseItemViewController::confirmPayment");
+  [self.currentUser confirmPaymentOffer:_currentOffer.dbId];
+  [self hideInputMessageShowStatus:TEXT_IN_PROCESS];
 }
 
 - (void)loadDataSource
@@ -227,9 +223,29 @@
     return NO;
 }
 
+/////////////////////////////// Account Activity Delegate ///////////////////////////////
+- (void)accountDidGetOffer:(NSDictionary *)dict
+{
+  DLog(@"BrowseItemViewController::accountDidGetOffer");  
+  [self populateData:dict];
+}
+
+- (void)accountRequestFailed:(NSDictionary *)errors
+{
+  DLog(@"BrowseItemViewController::requestFailed");
+  [self hideIndicator];
+  [self stopLoading];
+}
+
 - (void)accountDidModifyOffer:(NSDictionary *)dict
 {
   DLog(@"BrowseItemViewController::accountDidModifyOffer");  
+  [self populateData:dict];
+}
+
+- (void)accountDidConfirmPaymentOffer:(NSDictionary *)dict
+{
+  DLog(@"BrowseItemViewController::accountDidModifyOffer:dict=%@", dict); 
   [self populateData:dict];
 }
 
