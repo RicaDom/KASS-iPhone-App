@@ -345,8 +345,9 @@
 //  NSString *radius          = [dict valueForKey:@"radius"];
   NSString *query           = [dict valueForKey:@"query"];
   NSString *latlng          = [dict valueForKey:@"latlng"];
+  NSString *address         = [dict valueForKey:@"address"];
   
-  if ( query && latlng ) {
+  if ( query && (latlng || address) ) {
     [self postData:_url:dict];
   }else{
     DLog(@"KassApi::createAlert: invalid data!");

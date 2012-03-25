@@ -1161,11 +1161,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="everyone.png" id="AJf-NI-8b2">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="245"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="205"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="setting_line.png" id="qZj-NX-Bu9">
-                                        <rect key="frame" x="0.0" y="197" width="320" height="20"/>
+                                        <rect key="frame" x="0.0" y="199" width="320" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" id="bng-O8-YHi">
@@ -2652,7 +2652,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hWg-Ie-RHa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="qSl-ws-Clg" customClass="UserInfoViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Br1-bB-Ybw">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="..." lineBreakMode="tailTruncation" minimumFontSize="10" id="FOj-25-3s8">
@@ -3459,7 +3459,7 @@
                                 <rect key="frame" x="0.0" y="47" width="320" height="137"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </mapView>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="50" id="ZGG-AP-OCP">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="20" minValue="0.0" maxValue="50" id="ZGG-AP-OCP">
                                 <rect key="frame" x="46" y="192" width="210" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
@@ -3636,7 +3636,7 @@
         <image name="btn_big_90@2x.png" width="600" height="86"/>
         <image name="btn_big_93@2x.png" width="600" height="86"/>
         <image name="buying.png" width="320" height="44"/>
-        <image name="everyone.png" width="320" height="240"/>
+        <image name="everyone.png" width="320" height="205"/>
         <image name="input_150.png" width="300" height="35"/>
         <image name="input_152.png" width="300" height="83"/>
         <image name="iphone_59.png" width="320" height="32"/>
@@ -4053,14 +4053,14 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="bw5-Hf-Ght"/>
-        <segue reference="Feq-4l-Zfq"/>
-        <segue reference="wco-H4-LqS"/>
-        <segue reference="fme-ki-SfP"/>
-        <segue reference="kjd-qS-0pq"/>
+        <segue reference="AMc-4a-ghd"/>
+        <segue reference="UPg-Yr-5B0"/>
+        <segue reference="BhZ-ht-CXE"/>
         <segue reference="p1j-ow-HAz"/>
         <segue reference="dM3-h5-4IE"/>
-        <segue reference="rFr-R7-ktR"/>
         <segue reference="XbQ-ch-RpX"/>
+        <segue reference="kjd-qS-0pq"/>
+        <segue reference="R9B-U7-jDV"/>
+        <segue reference="bw5-Hf-Ght"/>
     </inferredMetricsTieBreakers>
 </document>

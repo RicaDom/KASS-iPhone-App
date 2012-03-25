@@ -39,13 +39,17 @@
 - (void)customViewLoad
 {
     [ViewHelper buildCancelButton:self.leftButton];
-    self.whatLabel.text = ([VariableStore sharedInstance].currentAddAlert.keyword.length > 0) ? [VariableStore sharedInstance].currentAddAlert.keyword : @"所有商品";
-    self.minPriceLabel.text = ([VariableStore sharedInstance].currentAddAlert.minPrice.length > 0) ? [VariableStore sharedInstance].currentAddAlert.minPrice : @"价格无限";
+  
+    self.whatLabel.text = [VariableStore sharedInstance].currentAddAlert.isAll ? 
+      TEXT_ALL_GOODS : [VariableStore sharedInstance].currentAddAlert.keyword;
+    
+    self.minPriceLabel.text = ([VariableStore sharedInstance].currentAddAlert.minPrice.length > 0) ? [VariableStore sharedInstance].currentAddAlert.minPrice : TEXT_ALL_PRICE;
 
-    self.locationLabel.text = ([VariableStore sharedInstance].currentAddAlert.userSpecifyLocation.length > 0) ? [VariableStore sharedInstance].currentAddAlert.userSpecifyLocation : @"您现在的位置";
+    self.locationLabel.text = ([VariableStore sharedInstance].currentAddAlert.userSpecifyLocation.length > 0) ? [VariableStore sharedInstance].currentAddAlert.userSpecifyLocation : TEXT_YOUR_LOCATION;
     
     if ([VariableStore sharedInstance].currentAddAlert.radius.length <= 0) {
-        [VariableStore sharedInstance].currentAddAlert.radius = @"5";
+      [VariableStore sharedInstance].currentAddAlert.radius 
+        = [[NSString alloc] initWithFormat:@"%d", DEFAULT_RADIUS];
     }
     self.radiusLabel.text = [VariableStore sharedInstance].currentAddAlert.radius;
 }
@@ -102,7 +106,7 @@
 
 - (void)accountDidCreateAlert:(NSDictionary *)dict
 {
-    NSLog(@"Account: %@", dict);
+   DLog(@"SellerAlertsAddAlertViewController::accountDidCreateAlert: %@", dict);
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -111,20 +115,28 @@
     NSString *latlng = [NSString stringWithFormat:@"%+.6f,%+.6f", 
                         VariableStore.sharedInstance.location.coordinate.latitude, 
                         VariableStore.sharedInstance.location.coordinate.longitude]; 
-
-    [[VariableStore sharedInstance] clearCurrentAddAlert];
     
     NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
+  
+    NSString *query = [self.whatLabel.text isEqualToString:TEXT_ALL_GOODS] ? @"ALL" : self.whatLabel.text;
     
     [params setObject:@"" forKey:@"category_ids"];
     [params setObject:self.radiusLabel.text forKey:@"radius"];
-    [params setObject:self.whatLabel.text forKey:@"query"];
-    [params setObject:latlng forKey:@"latlng"];
-
-    DLog(@"params = %@", params);
+    [params setObject:query forKey:@"query"];
+    [params setObject:self.minPriceLabel.text forKey:@"min_price"];
+  
+    if([VariableStore sharedInstance].currentAddAlert.userSpecifyLocation.length > 0){
+      [params setObject:self.locationLabel.text forKey:@"address"];
+    }else{
+      [params setObject:latlng forKey:@"latlng"];
+    }
+  
+    [[VariableStore sharedInstance] clearCurrentAddAlert];
+    DLog(@"SellerAlertsAddAlertViewController::addAlert:params = %@", params);
     
     [self.currentUser createAlert:params];
 }
+
 - (IBAction)leftButtonAction:(id)sender {
     [[VariableStore sharedInstance] clearCurrentAddAlert];
     [self.navigationController popViewControllerAnimated:YES];

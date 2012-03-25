@@ -8,13 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "Location.h"
+#import "ActiveModel.h"
 
-@interface Alert : NSObject
+@interface Alert : ActiveModel
 
 @property(nonatomic, strong) NSString *keyword;
 @property(nonatomic, strong) NSString *minPrice;
 @property(nonatomic, strong) NSString *radius;
 @property(nonatomic, strong) Location *userCurrentLocation;
 @property(nonatomic, strong) NSString *userSpecifyLocation;
+
+- (BOOL) isAll;
 
 @end

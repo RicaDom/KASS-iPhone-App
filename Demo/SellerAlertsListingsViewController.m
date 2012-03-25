@@ -9,7 +9,9 @@
 #import "SellerAlertsListingsViewController.h"
 #import "UIResponder+VariableStore.h"
 #import "UIViewController+SegueActiveModel.h"
+#import "UIViewController+ActivityIndicate.h"
 #import "ListingTableCell.h"
+#import "ViewHelper.h"
 
 @implementation SellerAlertsListingsViewController
 
@@ -45,8 +47,11 @@
         self.noListingsMessage.hidden = YES;
         self.alertListingsTableView.hidden = NO;
     }
-    self.navigationItem.title = self.query;
+  
+    self.navigationItem.title = (self.query.isBlank || [self.query isEqualToString:@"ALL"]) ? TEXT_ALL_GOODS : self.query;
+  
     [self.alertListingsTableView reloadData];
+  [self hideIndicator];
 }
 
 - (void)accountDidGetAlertListings:(NSDictionary *)dict
@@ -61,9 +66,10 @@
 - (void)loadAlertListings
 {
     if (self.alertId.length > 0) {
+      [self showLoadingIndicator];
         [self.currentUser getAlertListings:self.alertId];
     } else {
-        // ERROR - no alert id
+        [ViewHelper showErrorAlert:ERROR_MSG_CONNECTION_FAILURE:self];
     }
 }
 
@@ -94,6 +100,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+  [super viewWillAppear:animated];
     [self loadAlertListings];
 }
 

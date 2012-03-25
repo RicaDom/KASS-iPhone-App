@@ -33,6 +33,8 @@
 #define RIGHT_BAR_BUTTON_LOGIN  3
 #define RIGHT_BAR_BUTTON_LOGOUT 4
 
+#define DEFAULT_RADIUS 20
+
 extern NSString * const POST_TYPE_TEMPLATE;
 extern NSString * const POST_TYPE_EDITING;
 extern NSString * const POST_TEMPLATE_CATEGORY_POPULAR;
@@ -93,7 +95,12 @@ extern NSString * const CHANGED_PRICE_NOTIFICATION;
 extern NSString * const OFFER_TO_PAY_VIEW_NOTIFICATION;
 extern NSString * const NEW_POST_NOTIFICATION;
 extern NSString * const NO_MESSAGE_TO_MESSAGE_VIEW_NOTIFICATION;
+
+extern NSString * const TEXT_ALL_PRICE;
+extern NSString * const TEXT_ALL_GOODS;
 extern NSString * const TEXT_IN_PROCESS;
+extern NSString * const TEXT_YOUR_LOCATION;
+extern NSString * const TEXT_CUSTOM_LOCATION;
 
 extern NSString * const UI_LABEL_ERROR;
 extern NSString * const UI_LABEL_DISMISS;

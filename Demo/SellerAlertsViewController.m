@@ -8,6 +8,7 @@
 
 #import "SellerAlertsViewController.h"
 #import "UIResponder+VariableStore.h"
+#import "UIViewController+ActivityIndicate.h"
 #import "SellerAlertsListingsViewController.h"
 
 @implementation SellerAlertsViewController
@@ -53,6 +54,7 @@
         self.alertsTableView.tableFooterView = self.alertTableFooter;
     }
     [self.alertsTableView reloadData];
+    [self hideIndicator];
 }
 
 - (void)accountDidGetAlerts:(NSDictionary *)dict;
@@ -93,7 +95,9 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self.currentUser getAlerts];
+  [super viewWillAppear:animated];
+  [self showLoadingIndicator];
+  [self.currentUser getAlerts];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -131,9 +135,15 @@
     }
 
     NSDictionary *alert = [self.alerts objectAtIndex:indexPath.row];
-    
-    cell.textLabel.text = [alert objectForKey:@"query"];
-    cell.detailTextLabel.text = [@"方圆" stringByAppendingFormat:@"%@ %@ %@", [[alert objectForKey:@"radius"] stringValue], @"公里 － ", @"浙江 杭州"];
+    NSString *address   = [alert objectForKey:@"address"];
+    NSString *query     = [alert objectForKey:@"query"];
+  
+    address = address.isBlank ? TEXT_CUSTOM_LOCATION : address; 
+    query   = ( query.isBlank || [query isEqualToString:@"ALL"] ) ? TEXT_ALL_GOODS : query;
+  
+    cell.textLabel.text = query;
+    cell.detailTextLabel.text = [@"方圆" stringByAppendingFormat:@"%@ %@ %@", [[alert objectForKey:@"radius"] stringValue], @"公里 － ", address];
+  
     return cell;
 }
 

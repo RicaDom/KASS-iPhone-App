@@ -35,9 +35,14 @@
 
 - (void)customViewLoad
 {
-    [ViewHelper buildCancelButton:self.leftButton];
-    [ViewHelper buildConfirmButton:self.rightButton];
-    self.radiusLabel.text = [NSString stringWithFormat:@"%.0f", self.radiusSlider.value]; 
+  [ViewHelper buildCancelButton:self.leftButton];
+  [ViewHelper buildConfirmButton:self.rightButton];
+  
+  self.radiusLabel.text = VariableStore.sharedInstance.currentAddAlert.radius ? 
+      VariableStore.sharedInstance.currentAddAlert.radius : 
+      [NSString stringWithFormat:@"%.0f", self.radiusSlider.value]; 
+  
+  self.locationTextField.text = VariableStore.sharedInstance.currentAddAlert.userSpecifyLocation;
 }
 
 #pragma mark - View lifecycle

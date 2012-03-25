@@ -35,6 +35,10 @@
     [ViewHelper buildCancelButton:self.leftButton];
     [ViewHelper buildConfirmButton:self.rightButton];
     [self.minPriceTextField becomeFirstResponder];
+  
+    self.minPriceTextField.text = 
+      [VariableStore sharedInstance].currentAddAlert ? 
+      [VariableStore sharedInstance].currentAddAlert.minPrice : @"0";
 }
 
 #pragma mark - View lifecycle

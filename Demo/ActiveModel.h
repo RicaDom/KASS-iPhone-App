@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSString+ModelHelper.h"
+#import "NSNull+ModelHelper.h"
 
 @interface ActiveModel : NSObject
 

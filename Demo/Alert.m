@@ -7,6 +7,7 @@
 //
 
 #import "Alert.h"
+#import "Constants.h"
 
 @implementation Alert
 
@@ -15,5 +16,10 @@
 @synthesize radius = _radius;
 @synthesize userCurrentLocation = _userCurrentLocation;
 @synthesize userSpecifyLocation = _userSpecifyLocation;
+
+- (BOOL) isAll
+{
+  return _keyword.isBlank || [_keyword isEqualToString:TEXT_ALL_GOODS];
+}
 
 @end

@@ -47,6 +47,9 @@ NSArray *alertKeyWordsGoods;
 {
     [ViewHelper buildCancelButton:self.leftButton];
     [ViewHelper buildConfirmButton:self.rightButton];
+  
+    self.keywordTextField.text = !VariableStore.sharedInstance.currentAddAlert.isAll ?VariableStore.sharedInstance.currentAddAlert.keyword : TEXT_ALL_GOODS;
+  
 }
 
 #pragma mark - View lifecycle

@@ -64,7 +64,12 @@ NSString * const UI_LABEL_ERROR   = @"错误";
 NSString * const UI_LABEL_DISMISS = @"取消";
 NSString * const UI_LABEL_CONFIRM = @"确定";
 NSString * const UI_TEXT_VIEW_DESCRIPTION = @"描述一下你想要的服务或东西吧";
+
+NSString * const TEXT_ALL_PRICE   = @"价格无限";
+NSString * const TEXT_ALL_GOODS   = @"所有商品";
 NSString * const TEXT_IN_PROCESS  = @"处理中...";
+NSString * const TEXT_YOUR_LOCATION = @"您现在的位置";
+NSString * const TEXT_CUSTOM_LOCATION = @"坐标位置";
 
 NSInteger const VALIDE_USER_NAME_LENGTH_MIN = 3;
 NSInteger const VALIDE_USER_NAME_LENGTH_MAX = 118;
