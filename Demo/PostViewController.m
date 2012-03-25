@@ -8,6 +8,7 @@
 
 #import "PostViewController.h"
 #import "UIResponder+VariableStore.h"
+#import "UIViewController+ScrollViewRefreshPuller.h"
 
 @implementation PostViewController
 
@@ -245,6 +246,22 @@
   [self showManagedImageView:_creativeTemplates:_creativePostPageControl];
 }
 
+/**
+ Scroll View Refresh Puller Delegate
+ */
+- (void)refreshing{
+  //load settings
+  [[self kassApp] loadSettings];
+}
+
+- (void)settingsDidLoad:(NSDictionary *)dict
+{
+  DLog(@"PostViewController:::settings did load)");
+  [VariableStore.sharedInstance storeSettings:dict];
+  [self stopLoading];
+  [self loadPostTemplates:[self settings].postTemplatesDict];
+}
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
@@ -266,6 +283,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+  [self registerScrollViewRefreshPuller:self.mainScrollView];
     if ([[VariableStore sharedInstance] isLoggedIn]) {
         self.greetingLabel.text = [@"您好! " stringByAppendingFormat:[VariableStore sharedInstance].user.name];
     } else {
@@ -273,6 +291,10 @@
     }
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+  [self unregisterScrollViewRefreshPuller];
+}
 
 - (void)viewDidUnload
 {

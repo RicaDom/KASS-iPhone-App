@@ -43,7 +43,7 @@
 
 - (void) resetCurrentPage
 {
-  _currentPage = 0;
+  _currentPage = 1;
 }
 
 - (void)reloadTable
