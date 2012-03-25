@@ -13,7 +13,7 @@
 @synthesize delegate = _delegate;
 
 static CLLocationManager *locationManager;
-static Boolean _locating;
+static Boolean _locating = false;
 
 - (void)locateMe
 {
@@ -22,7 +22,6 @@ static Boolean _locating;
   // already have one.
   if (nil == locationManager){
     locationManager = [[CLLocationManager alloc] init];
-    _locating = false;
   }
   
   locationManager.delegate = self;

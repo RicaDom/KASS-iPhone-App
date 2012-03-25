@@ -44,6 +44,8 @@
 - (BOOL) isPaid;
 - (BOOL) isIdle;
 - (BOOL) hasOfferer:(User *)user;
+- (BOOL) compare:(id)object;
+
 - (Offer *) getOfferFromOfferer:(User *)user;
 
 @end

@@ -127,6 +127,11 @@
   return [_endedAt timeIntervalSinceNow] < 0;
 }
 
+- (BOOL) compare:(id)object
+{
+  return TRUE;
+}
+
 - (Offer *) getOfferFromOfferer:(User *)user
 {
   return [self.offers objectAtIndex:[self.offererIds indexOfObject:user.userId]];

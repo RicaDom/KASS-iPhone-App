@@ -195,6 +195,7 @@
   
   return [NSMutableDictionary dictionaryWithObjectsAndKeys:latlng, @"center",
                                       @"10", @"radius",
+                                      @"1", @"page",
                                       nil];
 }
 

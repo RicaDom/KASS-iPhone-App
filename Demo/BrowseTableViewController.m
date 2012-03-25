@@ -22,6 +22,7 @@
 @synthesize leftButton = _leftButton;
 @synthesize remoteNotificationListingId = _remoteNotificationListingId;
 @synthesize tableFooter = _tableFooter;
+@synthesize lastUpdatedDate = _lastUpdatedDate;
 
 #pragma mark -
 #pragma mark Data Source Loading / Reloading Methods
@@ -40,6 +41,11 @@
   return 2 == self.browseSegment.selectedSegmentIndex;
 }
 
+- (void) resetCurrentPage
+{
+  _currentPage = 0;
+}
+
 - (void)reloadTable
 {
   DLog(@"BrowseTableViewController::reloadTable");
@@ -53,6 +59,8 @@
   [self.listingTableView reloadData];
   [self doneLoadingTableViewData];
   [self hideIndicator];
+  [self resetCurrentPage];
+  _noMoreListings = FALSE;
 
    self.tableFooter.hidden =(self.currentListings.count > 6)? NO : YES;
 }
@@ -64,7 +72,7 @@
     [self showLoadingIndicator];
     [self locateMe];
   }else{
-    [self populateData];
+    [self getListings];
   }
 }
 
@@ -100,31 +108,74 @@
     }
 }
 
-- (void)appDidGetListingsNearby:(NSDictionary *)dict
+- (void)removeSpinner:(UIView *)view
+{
+  NSArray *subviews = view.subviews;
+  for (UIView *subview in subviews) {
+    if ([subview isKindOfClass:UIActivityIndicatorView.class]) {
+      [subview removeFromSuperview];
+    }
+  }
+}
+
+- (void)loadMoreListings:(Listing *)listing
+{
+  [self removeSpinner:self.listingTableView];
+  
+  if (listing.listItems.count > 0) {
+    
+    NSMutableArray *tempArray = [[NSMutableArray alloc] init];
+    [self.currentListings addObjectsFromArray:listing.listItems];
+    
+    int i = 0;
+    for (NSArray *count in listing.listItems) {
+      [tempArray addObject:[NSIndexPath indexPathForRow:i++ inSection:0]];
+    }
+    
+    [self.listingTableView beginUpdates];
+    [self.listingTableView insertRowsAtIndexPaths:tempArray withRowAnimation:UITableViewRowAnimationBottom];
+    [self.listingTableView endUpdates];
+    
+  }
+  else{  _noMoreListings = TRUE; }
+  
+  _loadingMore = FALSE;
+}
+
+- (void)appDidGetListingAndSetListing:(ListingType)lt:(NSDictionary *)dict
 {
   Listing *listing = [[Listing alloc] initWithDictionary:dict];
-  [VariableStore sharedInstance].nearBrowseListings = [listing listItems];
-  [self reloadTable];
+  if (_loadingMore) {
+    [self loadMoreListings:listing];
+  }else {
+    if (lt == listingTypeNearby) {
+      [VariableStore sharedInstance].nearBrowseListings   = [listing listItems];
+    }else if(lt == listingTypeRecent){
+      [VariableStore sharedInstance].recentBrowseListings = [listing listItems];
+    }else{
+      [VariableStore sharedInstance].priceBrowseListings  = [listing listItems];
+    }
+    [self reloadTable];
+  }
+}
+
+- (void)appDidGetListingsNearby:(NSDictionary *)dict
+{
+  [self appDidGetListingAndSetListing:listingTypeNearby:dict];
 }
 
 - (void)appDidGetListingsRecent:(NSDictionary *)dict
 {
-  Listing *listing = [[Listing alloc] initWithDictionary:dict];
-  [VariableStore sharedInstance].recentBrowseListings = [listing listItems];
-  [self reloadTable];
+  [self appDidGetListingAndSetListing:listingTypeRecent:dict];
 }
 
 - (void)appDidGetListingsMostPrice:(NSDictionary *)dict
 {
-  Listing *listing = [[Listing alloc] initWithDictionary:dict];
-  [VariableStore sharedInstance].priceBrowseListings = [listing listItems];
-  [self reloadTable];
+  [self appDidGetListingAndSetListing:listingTypePrice:dict];
 }
 
-- (void)populateData
+- (void)getListingsByDictionary:(NSMutableDictionary *)dictionary
 {
-  NSMutableDictionary * dictionary = [VariableStore.sharedInstance getDefaultCriteria];
-  
   if ( self.isNearbyTabSelected ) {
     
     [[self kassApp] getListingsNearby:dictionary];
@@ -140,12 +191,35 @@
   }
 }
 
+- (void)getListingsWithLastUpdatedDate:(NSString *)page
+{
+  NSMutableDictionary * dictionary = [VariableStore.sharedInstance getDefaultCriteria];
+  if (_lastUpdatedDate) {
+    NSNumber *lastUpdatedTimeNumber = [NSNumber numberWithInt:[_lastUpdatedDate timeIntervalSince1970]];
+    [dictionary setObject:lastUpdatedTimeNumber forKey:@"last_updated_at"];
+    [dictionary setObject:page forKey:@"page"];
+  }
+  
+  _loadingMore = TRUE;
+  [self getListingsByDictionary:dictionary];
+}
+
+- (void)getListings
+{
+  NSMutableDictionary * dictionary = [VariableStore.sharedInstance getDefaultCriteria];
+  
+  [self getListingsByDictionary:dictionary];
+    
+  if (!_lastUpdatedDate) { _lastUpdatedDate = [[NSDate alloc] init]; }
+  _lastUpdatedDate = [NSDate date];
+}
+
 - (void)locateMeFinished
 {
   DLog(@"BrowseTableViewController::locateMeFinished ");
   location = VariableStore.sharedInstance.location;
   _locating = FALSE;
-  [self populateData];
+  [self getListings];
 
 }
 
@@ -168,8 +242,12 @@
 - (void)viewDidLoad
 {
     DLog(@"BrowseTableViewController::viewDidLoad ");
-    _searching = FALSE;
     [super viewDidLoad];
+    
+    _searching = FALSE;
+    _loadingMore = FALSE;
+    _noMoreListings = FALSE;
+    [self resetCurrentPage];
     [self loadDataSource];
 
     if ([self.remoteNotificationListingId length] > 0) {
@@ -206,6 +284,7 @@
     [self setLeftButton:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NO_MESSAGE_TO_MESSAGE_VIEW_NOTIFICATION object:nil];
     [self setTableFooter:nil];
+    [self setLastUpdatedDate:nil];
     [super viewDidUnload];
  
     // Release any retained subviews of the main view.
@@ -263,10 +342,10 @@
 	{
         return [self.filteredListContent count];
     }
-	else
+	else 
 	{
         return [self.currentListings count];
-    }    
+    } 
 }
 
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -426,6 +505,27 @@
     
     // Return YES to cause the search result table view to be reloaded.
     return YES;
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView 
+{
+  if ([scrollView isEqual:self.searchDisplayController.searchResultsTableView]) { return; }
+  
+  CGFloat diff = scrollView.contentSize.height - scrollView.frame.size.height; 
+  
+  if( diff -  scrollView.contentOffset.y < 20) {
+    if (_loadingMore) { return; }
+    if (_noMoreListings) { return; }
+    
+    _currentPage = _currentPage + 1;
+    
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(5, self.listingTableView.frame.size.height+20, 24, 24)];
+    [spinner setColor: [UIColor darkGrayColor]];
+    [spinner startAnimating];
+    [self.listingTableView addSubview:spinner];
+    
+    [self getListingsWithLastUpdatedDate:[[NSString alloc]initWithFormat:@"%d",_currentPage]];
+  }
 }
 
 @end
