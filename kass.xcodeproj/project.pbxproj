@@ -14,6 +14,7 @@
 		774320D3151EBFDC00032117 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 774320D2151EBFDC00032117 /* libcrypto.a */; };
 		774320D6151ED97B00032117 /* everyone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 774320D4151ED97B00032117 /* everyone@2x.png */; };
 		774320D7151ED97B00032117 /* setting_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 774320D5151ED97B00032117 /* setting_line@2x.png */; };
+		774320E415200F2B00032117 /* EndlessScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 774320E315200F2B00032117 /* EndlessScroller.m */; };
 		77458EDE14EBB24C00B19F50 /* UIViewController+ActivityIndicate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77458EDD14EBB24C00B19F50 /* UIViewController+ActivityIndicate.m */; };
 		77458EE214EBC2E100B19F50 /* Offers.m in Sources */ = {isa = PBXBuildFile; fileRef = 77458EE114EBC2E100B19F50 /* Offers.m */; };
 		774F965414D8D8EE00E2588A /* KassApiTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 774F965214D8D8EE00E2588A /* KassApiTest.m */; };
@@ -447,6 +448,8 @@
 		774320D2151EBFDC00032117 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
 		774320D4151ED97B00032117 /* everyone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "everyone@2x.png"; sourceTree = "<group>"; };
 		774320D5151ED97B00032117 /* setting_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_line@2x.png"; sourceTree = "<group>"; };
+		774320E215200F2B00032117 /* EndlessScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; path = EndlessScroller.h; sourceTree = "<group>"; };
+		774320E315200F2B00032117 /* EndlessScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndlessScroller.m; sourceTree = "<group>"; };
 		77458EDC14EBB24B00B19F50 /* UIViewController+ActivityIndicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ActivityIndicate.h"; sourceTree = "<group>"; };
 		77458EDD14EBB24C00B19F50 /* UIViewController+ActivityIndicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ActivityIndicate.m"; sourceTree = "<group>"; };
 		77458EE014EBC2E100B19F50 /* Offers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Offers.h; sourceTree = "<group>"; };
@@ -2251,6 +2254,8 @@
 				77786AEB150AFFA7007DC016 /* KeyboardSliderDelegate.h */,
 				77C15292150B63C700B3B106 /* TableViewRefreshPuller.h */,
 				77C15293150B63C700B3B106 /* TableViewRefreshPuller.m */,
+				774320E215200F2B00032117 /* EndlessScroller.h */,
+				774320E315200F2B00032117 /* EndlessScroller.m */,
 			);
 			name = ActionLibs;
 			sourceTree = "<group>";
@@ -2827,6 +2832,7 @@
 				E58BC983151C68FB006C97EF /* ConfigViewController.m in Sources */,
 				E58BC98B151C7E03006C97EF /* AboutDetailsViewController.m in Sources */,
 				E58BC996151CA854006C97EF /* KTTextView.m in Sources */,
+				774320E415200F2B00032117 /* EndlessScroller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

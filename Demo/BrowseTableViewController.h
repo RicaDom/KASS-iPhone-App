@@ -18,6 +18,8 @@
 #import "BuyerPayViewController.h"
 #import "UIResponder+VariableStore.h"
 
+#import "EndlessScroller.h"
+
 typedef enum {
   listingTypeRecent,
   listingTypeNearby,
@@ -25,14 +27,12 @@ typedef enum {
 } ListingType ;
 
 
-@interface BrowseTableViewController : UIViewController <UISearchDisplayDelegate, UISearchBarDelegate,LocateMeDelegate> {
+@interface BrowseTableViewController : UIViewController <UISearchDisplayDelegate, UISearchBarDelegate,LocateMeDelegate, EndlessScrollerDelegate> {
   NSDictionary *transferJson;
   CLLocation *location;
+  EndlessScroller *endlessScroller;
   BOOL _searching;
   BOOL _locating;
-  BOOL _loadingMore;
-  BOOL _noMoreListings;
-  int _currentPage;
 }
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *browseSegment;

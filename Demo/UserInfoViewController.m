@@ -97,10 +97,9 @@
 {
   [super viewDidAppear:animated];
   
-  if (VariableStore.sharedInstance.userToShowId) {
-    [[VariableStore.sharedInstance kassApp] setDelegate:self];
-    [[VariableStore.sharedInstance kassApp] getMember:VariableStore.sharedInstance.userToShowId];
-  }
+  NSString *uId = VariableStore.sharedInstance.userToShowId ? VariableStore.sharedInstance.userToShowId : VariableStore.sharedInstance.user.userId;
+  
+  if (uId) { [[VariableStore.sharedInstance kassApp] getMember:uId]; }
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.

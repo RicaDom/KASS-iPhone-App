@@ -41,11 +41,6 @@
   return 2 == self.browseSegment.selectedSegmentIndex;
 }
 
-- (void) resetCurrentPage
-{
-  _currentPage = 1;
-}
-
 - (void)reloadTable
 {
   DLog(@"BrowseTableViewController::reloadTable");
@@ -59,8 +54,8 @@
   [self.listingTableView reloadData];
   [self doneLoadingTableViewData];
   [self hideIndicator];
-  [self resetCurrentPage];
-  _noMoreListings = FALSE;
+  
+  [endlessScroller reset];
 
    self.tableFooter.hidden =(self.currentListings.count > 6)? NO : YES;
 }
@@ -118,35 +113,16 @@
   }
 }
 
-- (void)loadMoreListings:(Listing *)listing
+- (void)populateMoreListings:(Listing *)listing
 {
-  [self removeSpinner:self.listingTableView];
-  
-  if (listing.listItems.count > 0) {
-    
-    NSMutableArray *tempArray = [[NSMutableArray alloc] init];
-    [self.currentListings addObjectsFromArray:listing.listItems];
-    
-    int i = 0;
-    for (NSArray *count in listing.listItems) {
-      [tempArray addObject:[NSIndexPath indexPathForRow:i++ inSection:0]];
-    }
-    
-    [self.listingTableView beginUpdates];
-    [self.listingTableView insertRowsAtIndexPaths:tempArray withRowAnimation:UITableViewRowAnimationBottom];
-    [self.listingTableView endUpdates];
-    
-  }
-  else{  _noMoreListings = TRUE; }
-  
-  _loadingMore = FALSE;
+  [endlessScroller doneLoadingData:listing.listItems];
 }
 
 - (void)appDidGetListingAndSetListing:(ListingType)lt:(NSDictionary *)dict
 {
   Listing *listing = [[Listing alloc] initWithDictionary:dict];
-  if (_loadingMore) {
-    [self loadMoreListings:listing];
+  if ([endlessScroller isLoadingMore]) {
+    [self populateMoreListings:listing];
   }else {
     if (lt == listingTypeNearby) {
       [VariableStore sharedInstance].nearBrowseListings   = [listing listItems];
@@ -200,7 +176,6 @@
     [dictionary setObject:page forKey:@"page"];
   }
   
-  _loadingMore = TRUE;
   [self getListingsByDictionary:dictionary];
 }
 
@@ -245,9 +220,9 @@
     [super viewDidLoad];
     
     _searching = FALSE;
-    _loadingMore = FALSE;
-    _noMoreListings = FALSE;
-    [self resetCurrentPage];
+    
+    endlessScroller = [[EndlessScroller alloc] initWithScrollViewAndDelegate:self.listingTableView :self];
+  
     [self loadDataSource];
 
     if ([self.remoteNotificationListingId length] > 0) {
@@ -285,6 +260,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NO_MESSAGE_TO_MESSAGE_VIEW_NOTIFICATION object:nil];
     [self setTableFooter:nil];
     [self setLastUpdatedDate:nil];
+    endlessScroller = nil;
     [super viewDidUnload];
  
     // Release any retained subviews of the main view.
@@ -511,21 +487,20 @@
 {
   if ([scrollView isEqual:self.searchDisplayController.searchResultsTableView]) { return; }
   
-  CGFloat diff = scrollView.contentSize.height - scrollView.frame.size.height; 
-  
-  if( diff -  scrollView.contentOffset.y < 20) {
-    if (_loadingMore) { return; }
-    if (_noMoreListings) { return; }
-    
-    _currentPage = _currentPage + 1;
-    
-    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(5, self.listingTableView.frame.size.height+20, 24, 24)];
-    [spinner setColor: [UIColor darkGrayColor]];
-    [spinner startAnimating];
-    [self.listingTableView addSubview:spinner];
-    
-    [self getListingsWithLastUpdatedDate:[[NSString alloc]initWithFormat:@"%d",_currentPage]];
-  }
+  [endlessScroller loadMore];
+}
+
+/**
+ Endless Controller Delegate
+ */
+- (void)appendData:(NSMutableArray *)data
+{
+  [self.currentListings addObjectsFromArray:data];
+}
+
+- (void)loadData:(int)page
+{
+  [self getListingsWithLastUpdatedDate:[[NSString alloc]initWithFormat:@"%d",page]];
 }
 
 @end
