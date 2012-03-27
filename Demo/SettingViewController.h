@@ -15,9 +15,9 @@
 @interface SettingViewController : UIViewController <AccountActivityDelegate>
 
 @property (strong, nonatomic) IBOutlet UIButton *rightButton;
-@property (weak, nonatomic) IBOutlet UILabel *welcomeMessageLabel;
 @property (strong, nonatomic) IBOutlet UIScrollView *mainScrollView;
 @property (strong, nonatomic) IBOutlet UITableView *mainTableView;
+@property (strong, nonatomic) IBOutlet UIView *topInfoView;
 
 - (IBAction)rightButtonAction:(id)sender;
 

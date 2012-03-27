@@ -19,6 +19,7 @@
 
 @property (nonatomic, unsafe_unretained) id<EndlessScrollerDelegate> delegate;
 
+- (void)removeSpinner;
 - (void)loadMore;
 - (void)reset;
 - (void)resetCurrentPage;

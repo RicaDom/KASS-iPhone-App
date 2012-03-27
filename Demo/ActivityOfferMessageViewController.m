@@ -53,7 +53,7 @@
 
 -(void)loadMessageView
 {
-  [ViewHelper buildOfferScrollView:self.scrollView:[self kassVS].user:_currentOffer];
+  [_currentOffer buildMessagesScrollView:self.scrollView:[self kassVS].user];
 }
 
 - (void)hideInputMessageShowStatus:(NSString *)status

@@ -8,6 +8,7 @@
 
 #import "UserInfoViewController.h"
 #import "UIViewController+ActivityIndicate.h"
+#import "UIResponder+VariableStore.h"
 #import "VariableStore.h"
 #import "ViewHelper.h"
 
@@ -16,6 +17,7 @@
 @synthesize imageContainerView;
 @synthesize nameLabel = _nameLabel;
 @synthesize userId = _userId;
+@synthesize contentView = _contentView;
 @synthesize regDate = _regDate;
 @synthesize leftButton = _leftButton;
 
@@ -45,22 +47,46 @@
 }
 */
 
+- (NSString *)getHDWeiboImage:(NSString *)url
+{
+  //tp4.sinaimg.cn/1876646123/50/5615566644/1
+  
+  NSRange range = [url rangeOfString:@"/50/"];
+  
+  if (range.location != NSNotFound) {
+    url = [url stringByReplacingCharactersInRange:range withString:@"/180/"];
+  }
+  
+  return url;
+}
+
 - (void)loadUserImage:(NSString *)imgUrl
 {
-  CGRect frame = CGRectMake(0, 0, 50, 50);
-  
   if (imgUrl && imgUrl.isPresent) {
     if ( hjManagedImageView ) { hjManagedImageView = nil; }
-    hjManagedImageView = [[HJManagedImageV alloc] initWithFrame:frame];
-    hjManagedImageView.url = [NSURL URLWithString:imgUrl];
+    hjManagedImageView = [[HJManagedImageV alloc] initWithFrame:CGRectMake(70, 0, 180, 180)];
+    hjManagedImageView.url = [NSURL URLWithString:[self getHDWeiboImage:imgUrl]];
     [hjManagedImageView showLoadingWheel];
+    hjManagedImageView.layer.cornerRadius = 5;
+    hjManagedImageView.layer.masksToBounds = YES;
+    hjManagedImageView.tag = USER_AVATAR_VIEW_TAG;
     [imageContainerView addSubview:hjManagedImageView];
+    [VariableStore.sharedInstance.kassApp manageObj:hjManagedImageView];
   }else {
-    UIImage *userImg = [UIImage imageNamed:UI_IMAGE_MESSAGE_DEFAULT_USER];
+    UIImage *userImg = [UIImage imageNamed:UI_IMAGE_DEFAULT_USER];
     UIImageView *userImgView = [[UIImageView alloc] initWithImage:userImg];
-    userImgView.frame = frame;
+    userImgView.frame = CGRectMake(0, 0, 320, 205);
+    userImgView.tag = USER_AVATAR_VIEW_TAG;
     [imageContainerView addSubview:userImgView];
   }
+}
+
+- (void)buildIconView:(NSString *)iconUrl:(int)offset
+{
+  UIImage *img = [UIImage imageNamed:iconUrl];
+  UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
+  imgView.frame = CGRectMake(50 + offset, 10, 25, 25);
+  [_contentView addSubview:imgView];
 }
 
 - (void)appDidGetMember:(NSDictionary *)dict
@@ -68,9 +94,10 @@
   DLog(@"UserinfoViewController::appDidGetMember:dict=%@", dict);
   //{"id":"4f347bf1a912091e87000001","verification":{"sources":[{"type":"email","verified":false},{"type":"tsina","verified":true,"timg_url":"http://tp4.sinaimg.cn/1876646123/50/5615566644/1"}],"member_since":"2012-02-10T10:07:46+08:00"}}
   
-  NSString *uId = [dict objectForKey:@"id"];
-  
-  self.nameLabel.text = uId;
+  NSString *name = [dict objectForKey:@"name"];
+  NSString *uId  = [dict objectForKey:@"id"];
+   
+  self.nameLabel.text = name.isBlank ? uId : name;
   
   NSDictionary *veri = [dict objectForKey:@"verification"];
   
@@ -84,28 +111,69 @@
   [formatter setDateFormat:@"MM/dd/yy hh:mm a"];
   self.regDate.text = [NSString stringWithFormat:@"注册时间: %@", [formatter stringFromDate:date]];
   
+  NSArray *sources = [veri objectForKey:@"sources"];
+  
+  for (NSDictionary *source in sources) {
+    NSString *type = [source objectForKey:@"type"];
+    if ([type isEqualToString:@"email"]) {
+      
+      NSString *emailV = [NSString stringWithFormat:@"%@",[source objectForKey:@"verified"]];
+      _emailVerified = [emailV isEqualToString:@"1"];
+      
+    }else if ([type isEqualToString:@"tsina"]) {
+      
+      NSString *weiboV = [NSString stringWithFormat:@"%@",[source objectForKey:@"verified"]];
+      _weiboVerified = [weiboV isEqualToString:@"1"];
+    } else if ([type isEqualToString:@"phone"]) {
+      
+      NSString *weiboV = [NSString stringWithFormat:@"%@",[source objectForKey:@"verified"]];
+      _phoneVerified = [weiboV isEqualToString:@"1"];
+    }
+  }
+  
   if ( hjManagedImageView && self.userId && [self.userId isEqualToString:uId]) {
 
   }else {
     [self loadUserImage:[dict objectForKey:@"timg_url"]];
   }
   
+  if (_emailVerified) {
+    [self buildIconView:@"veri-email-on.png":0];
+  }else{
+    [self buildIconView:@"veri-email-off.png":0];
+  }
+  
+  if (_weiboVerified) {
+    [self buildIconView:@"veri-weibo-on.png":30];
+  }else{
+    [self buildIconView:@"veri-weibo-off.png":30];
+  }
+  
+  if (_phoneVerified) {
+    [self buildIconView:@"veri-phone-on.png":60];
+  }else{
+    [self buildIconView:@"veri-phone-off.png":60];
+  }
+  
   self.userId = uId;
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
-  [super viewDidAppear:animated];
+  [super viewWillAppear:animated];
   
   NSString *uId = VariableStore.sharedInstance.userToShowId ? VariableStore.sharedInstance.userToShowId : VariableStore.sharedInstance.user.userId;
   
-  if (uId) { [[VariableStore.sharedInstance kassApp] getMember:uId]; }
+  if (uId) { [[self kassApp] getMember:uId]; }
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _weiboVerified = FALSE;
+    _emailVerified = FALSE;
+    _phoneVerified = FALSE;
     [ViewHelper buildBackButton:self.leftButton];
 }
 
@@ -113,6 +181,7 @@
 {
   [self setImageContainerView:nil];
     [self setLeftButton:nil];
+  [self setContentView:nil];
     [super viewDidUnload];
   self.nameLabel = nil;
   self.regDate   = nil;
@@ -130,4 +199,10 @@
 - (IBAction)leftButtonAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+  imageContainerView.frame = CGRectMake(0, -scrollView.contentOffset.y/10, 320, 205);
+}
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <QuartzCore/QuartzCore.h>
 #import "Offer.h"
 #import "Message.h"
 #import "User.h"
@@ -19,7 +20,6 @@
 + (NSString *)getTitleFromOfferMessage:(User *)user:(Offer *)offer:(Message *)message;
 
 // offers
-+ (void) buildOfferScrollView:(UIScrollView *)scrollView:(User *)user:(Offer *)offer;
 + (void) buildOfferAcceptedCell:(Offer *)item:(ListingTableCell *)cell;
 + (void) buildOfferPendingCell:(Offer *)item:(ListingTableCell *)cell;
 + (void) buildOfferExpiredCell:(Offer *)item:(ListingTableCell *)cell;
@@ -57,6 +57,14 @@
 + (void)showErrorAlert:(NSString *)message:(id)delegate;
 + (void)showErrorMessageAlert:(NSDictionary *)errors:(id)delegate;
 + (void) buildMap:(MKMapView *)mapView:(CLLocation *)location;
+
 + (KassApp *)viewKassApp;
+
++ (UIView *) buildDefaultImageView:(UIView *)diglogView:(NSString *)url;
++ (UIView *) buildDefaultImageViewWithFrame:(UIView *)diglogView:(NSString *)url:(CGRect)frame;
+
++ (HJManagedImageV *) buildCustomImageView:(UIView *)diglogView:(NSString *)url;
++ (HJManagedImageV *) buildCustomImageViewWithFrame:(UIView *)diglogView:(NSString *)url:(CGRect)frame;
++ (HJManagedImageV *) buildRoundCustomImageViewWithFrame:(UIView *)diglogView:(NSString *)url:(CGRect)frame;
 
 @end

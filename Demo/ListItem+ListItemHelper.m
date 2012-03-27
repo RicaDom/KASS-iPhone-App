@@ -7,6 +7,8 @@
 //
 
 #import "ListItem+ListItemHelper.h"
+#import "ViewHelper.h"
+#import "ListingTableCell.h"
 #import "ListingMapAnnotaion.h"
 #import "ListingImageAnnotationView.h"
 
@@ -46,6 +48,78 @@
   }
 }
 
+- (void) buildUserImageView:(UIView *)view
+{
+  CGRect frame = CGRectMake(10,10,50,50);
+  
+  if (self.userImageUrl.isPresent) {
+    [ViewHelper buildCustomImageViewWithFrame:view:self.userImageUrl:frame];
+  }else{
+//    [ViewHelper buildDefaultImageViewWithFrame:view:UI_IMAGE_MESSAGE_DEFAULT_USER:frame];
+  }
+}
+
+- (int) getStateWidthOffset
+{
+  if (self.isAccepted) {
+    return 10;
+  }else if (self.isPaid){
+    return 5;
+  }else{
+    // if the listing has offers
+    if (self.offers.count > 0) {
+      return 15;                
+    } else { // otherwise show pending states  
+      return 0;
+    }
+  }
+}
+
+- (UIColor *) getStateColor
+{
+  if (self.isAccepted) {
+    return [UIColor greenColor];
+  }else if (self.isPaid){
+    return [UIColor orangeColor];
+  }else{
+    // if the listing has offers
+    if (self.offers.count > 0) {
+      return [UIColor blueColor];                
+    } else { // otherwise show pending states  
+      return [UIColor lightGrayColor];
+    }
+
+  }
+}
+
+- (void) buildListingTableCell:(ListingTableCell *)cell
+{
+  if( [self isAccepted]) {
+    [ViewHelper buildListItemPayNowCell:self:cell];   
+  } else if ( self.isPaid) {
+    [ViewHelper buildListItemPaidCell:self:cell];
+  } else if (self.isIdle && self.isExpired) {
+    [ViewHelper buildListItemExpiredCell:self:cell];
+  }
+  else {
+    // if the listing has offers
+    if ([self.offers count] > 0) {
+      [ViewHelper buildListItemHasOffersCell:self:cell];                
+    } else { // otherwise show pending states                               
+      [ViewHelper buildListItemNoOffersCell:self:cell];
+    }
+  }
+}
+
+- (void) buildStatusIndicationView:(UIView *)sview
+{
+  [BaseHelper removeTaggedSubviews:CELL_INDICATION_VIEW_TAG:sview];
+  UIView *indView = [[UIView alloc] initWithFrame:CGRectMake(1, 1, 20 + [self getStateWidthOffset], sview.frame.size.height-2)];
+  indView.backgroundColor = [[self getStateColor] colorWithAlphaComponent:0.90];
+  indView.tag = CELL_INDICATION_VIEW_TAG;
+  [sview addSubview:indView]; 
+}
+
 - (NSString *) toLabelStyle
 {
   return [[NSString alloc] initWithFormat:@"%@,1,24,0xffff00,0x6699cc,1", self.title];
@@ -68,6 +142,8 @@
   [mapView setRegion:region animated:YES];
   mapView.scrollEnabled = YES;
   mapView.zoomEnabled = YES;
+  mapView.layer.cornerRadius = 5;
+  mapView.layer.masksToBounds = YES;
   
   ListingMapAnnotaion *listingA = [[ListingMapAnnotaion alloc] initWithCoordinate:userCoordinate title:self.title subTitle:self.description listingItemData:self];
   [mapView addAnnotation:listingA];

@@ -28,6 +28,7 @@
 @synthesize acceptedPrice = _acceptedPrice;
 @synthesize acceptedOffer = _acceptedOffer;
 @synthesize acceptedOfferId = _acceptedOfferId;
+@synthesize userImageUrl = _userImageUrl;
 
 - (void) buildData:(NSDictionary *) theDictionary
 {
@@ -36,6 +37,9 @@
   _state        = [theDictionary objectForKey:@"state"];
   _dbId         = [theDictionary objectForKey:@"id"];
   _userId       = [theDictionary objectForKey:@"user_id"];
+  
+  NSDictionary *user = [theDictionary objectForKey:@"user"];
+  _userImageUrl = [user objectForKey:@"image"];
   
   _askPrice     = [NSDecimalNumber decimalNumberWithDecimal:[[theDictionary objectForKey:@"price"] decimalValue]];
   

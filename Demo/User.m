@@ -25,6 +25,7 @@
 @synthesize email = _email;
 @synthesize phone = _phone;
 @synthesize avatarUrl = _avatarUrl;
+@synthesize city = _city;
 
 - (id) initWithDelegate:(id<AccountActivityDelegate>)delegate
 {
@@ -450,6 +451,8 @@
   _name   = account.userName;
   _email  = account.email;
   _phone  = account.phone;
+  _city   = account.city;
+  _avatarUrl = account.avatarUrl;
   
   if( [_delegate respondsToSelector:@selector(accountLoginFinished)] )
     [_delegate accountLoginFinished];
@@ -661,6 +664,7 @@
   self.name   = nil;
   self.email  = nil;
   self.phone  = nil;
+  self.city   = nil;
 }
 
 - (void)accountDidLogout

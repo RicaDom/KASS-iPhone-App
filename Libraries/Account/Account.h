@@ -19,6 +19,8 @@
 @property (nonatomic,retain,readonly) NSString* email;
 @property (nonatomic,retain,readonly) NSString* encode;
 @property (nonatomic,retain,readonly) NSString* phone;
+@property (nonatomic,retain,readonly) NSString* city;
+@property (nonatomic,retain,readonly) NSString* avatarUrl;
 @property (nonatomic,retain,readonly) NSArray* devices;
 
 - (id)initWithDictionary:(NSDictionary *)dict;

@@ -55,7 +55,10 @@
             UINavigationController *provideNC = (UINavigationController *)mainTabBarVC.selectedViewController;
             ProvideViewController *provideVC = (ProvideViewController *)provideNC.topViewController; 
             provideVC.remoteNotificationListingId = offerDbId;
+          
+          if ([provideNC isKindOfClass:ProvideViewController.class]) {
             [provideVC performSegueWithIdentifier:@"ProvideViewToBrowseTable" sender:provideVC];
+          }   
         
         } else if ([type isEqualToString:REMOTE_NOTIFICATION_NEW_ACCEPTED]) {
             mainTabBarVC.selectedIndex = 0;

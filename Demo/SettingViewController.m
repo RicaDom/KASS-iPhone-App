@@ -8,15 +8,16 @@
 
 #import "SettingViewController.h"
 #import "UIViewController+ActivityIndicate.h"
+#import "UIResponder+VariableStore.h"
 #import "NotificationRenderHelper.h"
 #import "SettingTable.h"
 
 @implementation SettingViewController
 
 @synthesize rightButton;
-@synthesize welcomeMessageLabel;
 @synthesize mainScrollView;
 @synthesize mainTableView;
+@synthesize topInfoView = _topInfoView;
 
 NSArray *settingArray;
 
@@ -37,6 +38,17 @@ NSArray *settingArray;
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)updateButtons
+{
+  if ([VariableStore sharedInstance].isLoggedIn) {
+    [ViewHelper buildLogoutButton:self.rightButton];
+    self.rightButton.tag = RIGHT_BAR_BUTTON_LOGOUT;        
+  } else{
+    [ViewHelper buildLoginButton:self.rightButton];
+    self.rightButton.tag = RIGHT_BAR_BUTTON_LOGIN;
+  }
+}
+
 - (void)loadSettingTableData
 {
     settingArray = ([VariableStore sharedInstance].isLoggedIn) ? [SettingTable userDidLoginArray] : [SettingTable guessArray];
@@ -46,13 +58,7 @@ NSArray *settingArray;
 
 - (void)customViewLoad
 {
-    if ([VariableStore sharedInstance].isLoggedIn) {
-        [ViewHelper buildLogoutButton:self.rightButton];
-        self.rightButton.tag = RIGHT_BAR_BUTTON_LOGOUT;        
-    } else{
-        [ViewHelper buildLoginButton:self.rightButton];
-        self.rightButton.tag = RIGHT_BAR_BUTTON_LOGIN;
-    }
+  [self updateButtons];
     
     // init scroll view content size
     self.mainScrollView.contentSize = CGSizeMake(_ScrollViewContentSizeX, _ScrollViewContentSettingSizeY);   
@@ -67,15 +73,30 @@ NSArray *settingArray;
 
 - (void)loadDataSource
 {
-    if ([[VariableStore sharedInstance] isLoggedIn] ) {     
-        [ViewHelper buildLogoutButton:self.rightButton];
-        self.rightButton.tag = RIGHT_BAR_BUTTON_LOGOUT;   
-        self.welcomeMessageLabel.text = [@"你好! " stringByAppendingString:[VariableStore sharedInstance].user.name]; 
-    } else {
-        [ViewHelper buildLoginButton:self.rightButton];
-        self.rightButton.tag = RIGHT_BAR_BUTTON_LOGIN;
-        self.welcomeMessageLabel.text = @"欢迎来到街区！！"; 
-    }
+  [self updateButtons];
+  
+  if( [self currentUser].avatarUrl.isPresent ){
+    [ViewHelper buildCustomImageViewWithFrame:_topInfoView:VariableStore.sharedInstance.user.avatarUrl:CGRectMake(20,20,60,60)];
+  } else {
+    [ViewHelper buildDefaultImageViewWithFrame:_topInfoView:UI_IMAGE_MESSAGE_DEFAULT_USER:CGRectMake(20,20,60,60)];
+  }
+  
+   
+  if( VariableStore.sharedInstance.isLoggedIn ){
+    
+    NSString *name = [self currentUser].name ? [self currentUser].name : [self currentUser].userId;
+    
+    UILabel *nameLabel = [[UILabel alloc] init];
+    [nameLabel setText:name];
+    [nameLabel setTextColor:[UIColor grayColor]];
+    [nameLabel setBackgroundColor:[UIColor clearColor]];
+    nameLabel.font = [UIFont fontWithName:DEFAULT_FONT size:13];
+    nameLabel.frame = CGRectMake(90, 30, 100, 30);
+    nameLabel.textAlignment = UITextAlignmentLeft;
+    [_topInfoView addSubview:nameLabel];
+    
+  }
+  
     [self loadSettingTableData];
     [self hideIndicator];
 }
@@ -100,7 +121,6 @@ NSArray *settingArray;
 
 - (void)viewDidUnload
 {
-    [self setWelcomeMessageLabel:nil];
     [self setRightButton:nil];
     [self setMainScrollView:nil];
     [self setMainTableView:nil];
@@ -176,6 +196,11 @@ NSArray *settingArray;
 //        lc.query = [[self.alerts objectAtIndex:self.alertsTableView.indexPathForSelectedRow.row] objectForKey:@"query"];
 //        DLog(@"SellerAlertsViewController Segue Data: %@", lc.alertId);
 //    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+  _topInfoView.frame = CGRectMake(-scrollView.contentOffset.y/10, 0, 320, 80);
 }
 
 

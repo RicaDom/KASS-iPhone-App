@@ -21,6 +21,7 @@
 @implementation BrowseItemNoMsgViewController
 
 @synthesize messageTextField = _messageTextField;
+@synthesize avatarContainerView = _avatarContainerView;
 @synthesize descriptionTextView = _descriptionTextView;
 @synthesize currentItem = _currentItem;
 @synthesize navigationButton = _navigationButton;
@@ -87,6 +88,10 @@
   [self modifyPriceModifierPrice:self.currentItem.price];
   
   VariableStore.sharedInstance.userToShowId = _currentItem.userId;
+  
+  if (_currentItem.userImageUrl.isPresent) {
+    [ViewHelper buildRoundCustomImageViewWithFrame:_avatarContainerView:_currentItem.userImageUrl:CGRectMake(5,5,50,50)];
+  }
   
   [self hideIndicator];
   [self stopLoading];
@@ -176,6 +181,7 @@
     [self setDescriptionTextView:nil];
     [self setLeftButton:nil];
     [self setRightButton:nil];
+    [self setAvatarContainerView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

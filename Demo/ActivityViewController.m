@@ -181,7 +181,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self reset];
+  [self reset];
+  self.tableView.pagingEnabled = NO;
     
     // table footer should be clear in order to see the arrow 
     self.tableView.tableFooterView = self.emptyImageView;
@@ -295,8 +296,6 @@
     for (UIView *view in cell.infoView.subviews) {
         [view removeFromSuperview];
     }
-
-    // customize table cell listing view
     
     // set cell background for all
     [cell.infoView setBackgroundColor:[[UIColor alloc] initWithPatternImage:[UIImage imageNamed:UI_IMAGE_ACTIVITY_PRICE_BG]]];
@@ -305,44 +304,19 @@
     if ( [self isBuyingTabSelected] ) {
         ListItem *item = [[VariableStore sharedInstance].myBuyingListings objectAtIndex:row];
         cell.title.text = item.title;
-        cell.subTitle.text = item.description;
-        
-        if( [item isAccepted]) {
-          [ViewHelper buildListItemPayNowCell:item:cell];   
-        } else if ( item.isPaid) {
-          [ViewHelper buildListItemPaidCell:item:cell];
-        } else if (item.isIdle && item.isExpired) {
-          [ViewHelper buildListItemExpiredCell:item:cell];
-        }
-        else {
-            int offersCount = [item.offers count];
-            // if the listing has offers
-            if (offersCount > 0) {
-                [ViewHelper buildListItemHasOffersCell:item:cell];                
-            } else { // otherwise show pending states                               
-                [ViewHelper buildListItemNoOffersCell:item:cell];
-            }
-        }
+      
+      [item buildStatusIndicationView:cell.infoView.superview];
+      [item buildListingTableCell:cell];
+
     } 
     
     // my selling list
     else {
         Offer *item = [[VariableStore sharedInstance].mySellingListings objectAtIndex:row];
         cell.title.text = item.title;
-        cell.subTitle.text = item.description;
-        
-        // if my offer has been accepted by buyer
-        if ( item.isAccepted ) {
-            [ViewHelper buildOfferAcceptedCell:item:cell];
-        }else if ( item.isPaid || item.isPaymentConfirmed){
-          [ViewHelper buildOfferPaidCell:item :cell];
-        }else if (item.isRejected){
-          [ViewHelper buildOfferRejectedCell:item :cell];
-        }else if ( item.isExpired ){
-          [ViewHelper buildOfferExpiredCell:item:cell];
-        }else {
-          [ViewHelper buildOfferPendingCell:item:cell];         
-        }
+
+      [item buildStatusIndicationView:cell.infoView.superview];
+      [item buildListingTableCell:cell];
     }
     return cell;
 }
@@ -377,6 +351,5 @@
     }
     
 }
-
 
 @end

@@ -40,6 +40,8 @@
 @property (strong, nonatomic) IBOutlet UIView *addPostBackgroundView;
 @property (strong, nonatomic) IBOutlet UIButton *addPostButton;
 @property (strong, nonatomic) IBOutlet UILabel *addPostSloganLabel;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navItemTitle;
+@property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
 
 - (IBAction)changeCreativePostPage;
 - (IBAction)changeEditorPostPage;

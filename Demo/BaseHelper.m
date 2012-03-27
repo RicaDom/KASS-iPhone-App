@@ -61,4 +61,13 @@
   return base64;
 }
 
++ (void)removeTaggedSubviews:(int)tag:(UIView *)sview
+{
+  for (UIView *subview in sview.subviews) {
+    if (subview.tag == tag) {
+      [subview removeFromSuperview];
+    }
+  }
+}
+
 @end

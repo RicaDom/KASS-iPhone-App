@@ -39,10 +39,11 @@ static int OFFSET_THRESHOLD = 20;
   
   _currentPage = _currentPage + 1;
   
-  UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(5, _scrollView.frame.size.height+20, 24, 24)];
+  UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(_scrollView.tableFooterView.frame.size.width/2-12, _scrollView.tableFooterView.frame.size.height/2-12, 24, 24)];
   [spinner setColor: [UIColor darkGrayColor]];
   [spinner startAnimating];
-  [_scrollView addSubview:spinner];
+  [_scrollView.tableFooterView addSubview:spinner];
+  _scrollView.tableFooterView.hidden = FALSE;
   
   _loadingMore = TRUE;
   
@@ -54,6 +55,12 @@ static int OFFSET_THRESHOLD = 20;
 - (void)reachDataEnd
 {
   _noMoreData = TRUE;
+}
+
+- (void)removeSpinner
+{
+  [self removeSpinner:_scrollView.tableFooterView];
+  _scrollView.tableFooterView.hidden = TRUE;
 }
 
 - (void)removeSpinner:(UIView *)view
@@ -103,7 +110,7 @@ static int OFFSET_THRESHOLD = 20;
   else{  [self reachDataEnd]; }
   
   _loadingMore = FALSE;
-  [self removeSpinner:_scrollView];
+  [self removeSpinner];
 }
 
 

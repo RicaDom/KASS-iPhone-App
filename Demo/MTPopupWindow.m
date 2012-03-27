@@ -243,13 +243,6 @@
     background.center = CGPointMake(self.signUpView.frame.size.width/2, self.signUpView.frame.size.height/2 - 30);
     [self.signUpView addSubview: background];    
     
-    UIImage* loginLabelButtonImg = [UIImage imageNamed:UI_IMAGE_SIGUP_LABEL];
-    UIButton* loginLabelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [loginLabelButton setImage:loginLabelButtonImg forState:UIControlStateNormal];
-    loginLabelButton.frame = CGRectMake((self.signUpView.frame.size.width - loginLabelButtonImg.size.width)/2, 50, loginLabelButtonImg.size.width, loginLabelButtonImg.size.height);
-    loginLabelButton.enabled = NO;
-    [self.signUpView addSubview:loginLabelButton];
-    
     UIImage* signUpButtonImg = [UIImage imageNamed:UI_IMAGE_SIGNUP_BUTTON2];
     UIImage* signUpButtonPressImg = [UIImage imageNamed:UI_IMAGE_SIGNUP_BUTTON_PRESS2];
     UIButton* signUpButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -435,13 +428,6 @@
     UIImageView* background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:UI_IMAGE_LOGIN_FORM_BACKGROUND]];
     background.center = CGPointMake(self.signInView.frame.size.width/2, self.signInView.frame.size.height/2);
     [self.signInView addSubview: background];    
-
-    UIImage* loginLabelButtonImg = [UIImage imageNamed:UI_IMAGE_LOGIN_LABEL];
-    UIButton* loginLabelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [loginLabelButton setImage:loginLabelButtonImg forState:UIControlStateNormal];
-    loginLabelButton.frame = CGRectMake((self.signInView.frame.size.width - loginLabelButtonImg.size.width)/2, 75, loginLabelButtonImg.size.width, loginLabelButtonImg.size.height);
-    loginLabelButton.enabled = NO;
-    [self.signInView addSubview:loginLabelButton];
     
     UIImage* forgotPasswordImg = [UIImage imageNamed:UI_IMAGE_LOGIN_FORGOT_PASS];
     UIButton* forgotPasswordButton = [UIButton buttonWithType:UIButtonTypeCustom];

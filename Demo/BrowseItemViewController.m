@@ -83,7 +83,7 @@
   NSDictionary *offer = [dict objectForKey:@"offer"];
   self.currentOffer = [[Offer alloc]initWithDictionary:offer];
   
-  [ViewHelper buildOfferScrollView:self.scrollView:[self currentUser]:_currentOffer];
+  [_currentOffer buildMessagesScrollView:self.scrollView:[self currentUser]];
   [self hideIndicator];
   [self stopLoading];
   

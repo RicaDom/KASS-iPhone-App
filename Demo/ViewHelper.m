@@ -29,44 +29,54 @@
   return title;
 }
 
-+ (UIView *) buildDefaultImageView:(UIView *)diglogView:(NSString *)url
++ (UIView *) buildDefaultImageViewWithFrame:(UIView *)diglogView:(NSString *)url:(CGRect)frame
 {
   UIImage *userImg = [UIImage imageNamed:url];
   UIImageView *userImgView = [[UIImageView alloc] initWithImage:userImg];
-  userImgView.frame = CGRectMake(5, 5, 60, 60);
+  userImgView.frame = frame;
+  userImgView.layer.cornerRadius = frame.size.width/2;
+  userImgView.layer.masksToBounds = YES;
+  userImgView.layer.borderColor=[UIColor grayColor].CGColor;
+  userImgView.layer.borderWidth=1.0f;
   [diglogView addSubview:userImgView];
   return userImgView;
 }
 
-+ (UIView *) buildDialogAvatar:(UIView *)diglogView:(User *)user:(Offer *)offer:(Message *)message
++ (UIView *) buildDefaultImageView:(UIView *)diglogView:(NSString *)url
 {
-  if([offer.buyerId isEqualToString:message.userId]) {
-    if (offer.buyerImageUrl && offer.buyerImageUrl.isPresent) {
-      HJManagedImageV *imgV = [[HJManagedImageV alloc] initWithFrame:CGRectMake(5, 5, 60, 60)]; 
-      imgV.url = [NSURL URLWithString:offer.buyerImageUrl];
-      [imgV showLoadingWheel];
-      [diglogView addSubview:imgV];
-      [[self viewKassApp] manageObj:imgV];
-      return imgV;
-    }else {
-      return [self buildDefaultImageView:diglogView:UI_IMAGE_MESSAGE_DEFAULT_BUYER];
-    }
-  }else if([offer.userId isEqualToString:message.userId]){
-    if (offer.sellerImageUrl && offer.sellerImageUrl.isPresent) {
-      HJManagedImageV *imgV = [[HJManagedImageV alloc] initWithFrame:CGRectMake(5, 5, 60, 60)]; 
-      imgV.url = [NSURL URLWithString:offer.sellerImageUrl];
-      [imgV showLoadingWheel];
-      [diglogView addSubview:imgV];
-      [[self viewKassApp] manageObj:imgV];
-      return imgV;
-    }else {
-      return [self buildDefaultImageView:diglogView:UI_IMAGE_MESSAGE_DEFAULT_USER];
-    }
-  }else {
-    return [self buildDefaultImageView:diglogView:UI_IMAGE_MESSAGE_DEFAULT_USER];
-  }
+  return [self buildDefaultImageViewWithFrame:diglogView :url :CGRectMake(5, 5, 60, 60)];
 }
 
++ (HJManagedImageV *) buildCustomImageViewWithFrame:(UIView *)diglogView:(NSString *)url:(CGRect)frame
+{
+  HJManagedImageV *imgV = [[HJManagedImageV alloc] initWithFrame:frame]; 
+  imgV.url = [NSURL URLWithString:url];
+  imgV.layer.cornerRadius = 5;
+  imgV.layer.masksToBounds = YES;
+  [imgV showLoadingWheel];
+  [diglogView addSubview:imgV];
+  [[self viewKassApp] manageObj:imgV];
+  return imgV;
+}
+
++ (HJManagedImageV *) buildRoundCustomImageViewWithFrame:(UIView *)diglogView:(NSString *)url:(CGRect)frame
+{
+  HJManagedImageV *imgV = [[HJManagedImageV alloc] initWithFrame:frame]; 
+  imgV.url = [NSURL URLWithString:url];
+  imgV.layer.cornerRadius = frame.size.width/2;
+  imgV.layer.masksToBounds = YES;
+  imgV.layer.borderColor=[UIColor grayColor].CGColor;
+  imgV.layer.borderWidth=1.0f;
+  [imgV showLoadingWheel];
+  [diglogView addSubview:imgV];
+  [[self viewKassApp] manageObj:imgV];
+  return imgV;
+}
+
++ (HJManagedImageV *) buildCustomImageView:(UIView *)diglogView:(NSString *)url
+{
+  return [self buildCustomImageViewWithFrame:diglogView:url:CGRectMake(5, 5, 60, 60)];
+}
 
 + (void) buildListItemPaidCell:(ListItem *)item:(ListingTableCell *)cell;
 {
@@ -150,7 +160,7 @@
       [labelAskPrice setText:[@"¥ " stringByAppendingFormat: [item.askPrice stringValue]]];
   }
   [labelAskPrice setTextColor:[UIColor darkGrayColor]];
-  labelAskPrice.font = [UIFont boldSystemFontOfSize:16];
+  labelAskPrice.font = [UIFont boldSystemFontOfSize:14];
   labelAskPrice.backgroundColor = [UIColor clearColor];
   labelAskPrice.frame = CGRectMake(0, cell.infoView.frame.size.height/2 - 12, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 5);
   labelAskPrice.textAlignment = UITextAlignmentCenter;
@@ -383,87 +393,6 @@
   return [VariableStore.sharedInstance kassApp];
 }
 
-+ (UIView *)getOfferRow:(UIScrollView *)scrollView:(User *)user:(Offer *)offer:(CGFloat)yOffset:(Message *)message:(NSDateFormatter *)dateFormatter
-{
-  
-  UIView *diglogView = [[UIView alloc] initWithFrame:CGRectMake(0, yOffset, scrollView.frame.size.width, 75)];
-  UIView *userImgView = [self buildDialogAvatar:diglogView:user:offer:message];
-  
-  NSString *title = [ViewHelper getTitleFromOfferMessage:user:offer:message];
-  NSString *date=[dateFormatter stringFromDate:message.createdAt];
-  
-  // Header title
-  UILabel* lblHeaderTitle = [[UILabel alloc] initWithFrame:CGRectMake(userImgView.frame.size.width+15, 5, 50, 20)];
-  [lblHeaderTitle setText:title];      
-  [lblHeaderTitle setTextColor:[UIColor grayColor]];
-  lblHeaderTitle.backgroundColor = [UIColor clearColor];
-  [lblHeaderTitle setTextAlignment:UITextAlignmentLeft];
-  lblHeaderTitle.font = [UIFont boldSystemFontOfSize:13];
-  [diglogView addSubview:lblHeaderTitle];
-  
-  // Time title
-  UILabel* messageTime = [[UILabel alloc] initWithFrame:CGRectMake(userImgView.frame.size.width+15 + lblHeaderTitle.frame.size.width + 5, 5, 50, 20)];
-  [messageTime setText:date];      
-  [messageTime setTextColor:[UIColor darkGrayColor]];
-  messageTime.backgroundColor = [UIColor clearColor];
-  [messageTime setTextAlignment:UITextAlignmentLeft];
-  messageTime.font = [UIFont systemFontOfSize:13];
-  [diglogView addSubview:messageTime];
-  
-  // Message  
-  UITextView *messageTextView = [[UITextView alloc] initWithFrame:CGRectMake(userImgView.frame.size.width+8, 25, 230, 50)];  
-  messageTextView.text = message.body;
-  messageTextView.font = [UIFont boldSystemFontOfSize:15];
-  messageTextView.textColor = [UIColor darkGrayColor];
-  messageTextView.editable = NO;
-  messageTextView.backgroundColor = [UIColor clearColor];
-  [diglogView addSubview:messageTextView];     
-  
-  // line
-  UIImage *line = [UIImage imageNamed:UI_IMAGE_MESSAGE_LINE];
-  UIImageView *imageView = [[UIImageView alloc] initWithImage:line];
-  imageView.frame = CGRectMake(0, diglogView.frame.size.height, scrollView.frame.size.width, imageView.frame.size.height);
-  [diglogView addSubview:imageView]; 
-  
-  return diglogView;
-}
-
-+ (void) buildOfferScrollView:(UIScrollView *)scrollView:(User *)user:(Offer *)offer
-{
-  CGFloat yOffset = 155;
-  
-  UIImage *line = [UIImage imageNamed:UI_IMAGE_MESSAGE_LINE];
-  UIImageView *imageView = [[UIImageView alloc] initWithImage:line];
-  imageView.frame = CGRectMake(0, yOffset + 10, scrollView.frame.size.width, imageView.frame.size.height);
-  [scrollView addSubview:imageView];
-  yOffset += 15;
-  
-  NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-  [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
-  [dateFormatter setDateStyle:NSDateFormatterLongStyle];
-  
-  Message *firstMessage = [[Message alloc] initWithOffer:offer];
-  UIView *diglogView = [self getOfferRow:scrollView:user:offer:yOffset:firstMessage:dateFormatter];
-  yOffset += diglogView.frame.size.height;
-  [scrollView addSubview:diglogView];
-  [scrollView setContentSize:CGSizeMake(scrollView.frame.size.width, yOffset + 5)];  
-  
-  for (int i=0; i< [offer.messages count]; i++) {
-    
-    Message *message = [offer.messages objectAtIndex:i];
-    
-    UIView *diglogView = [self getOfferRow:scrollView:user:offer:yOffset:message:dateFormatter];
-    
-    //INCREMNET in yOffset 
-    yOffset += diglogView.frame.size.height;
-      
-    [scrollView addSubview:diglogView];
-    [scrollView setContentSize:CGSizeMake(scrollView.frame.size.width, yOffset + 5)];    
-  }
-  
-  
-}
-
 + (void)buildMapButton:(UIButton *)button
 {
   UIImage *mapImg = [UIImage imageNamed:UI_IMAGE_BROWSE_MAP];
@@ -482,7 +411,7 @@
 {
   UIImage *backImg = [UIImage imageNamed:UI_IMAGE_SMALL_BACK_BUTTON];
   [button setImage:backImg forState:UIControlStateNormal];
-  button.frame = CGRectMake(5, button.frame.origin.y, backImg.size.width, backImg.size.height);
+  button.frame = CGRectMake(5, button.frame.origin.y+3, backImg.size.width, backImg.size.height);
 }
 
 + (void)buildCancelButton:(UIButton *)button

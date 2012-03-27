@@ -9,6 +9,7 @@
 #import "PostViewController.h"
 #import "UIResponder+VariableStore.h"
 #import "UIViewController+ScrollViewRefreshPuller.h"
+#import "UIViewController+ActivityIndicate.h"
 
 @implementation PostViewController
 
@@ -31,6 +32,8 @@
 @synthesize addPostBackgroundView = _addPostBackgroundView;
 @synthesize addPostButton = _addPostButton;
 @synthesize addPostSloganLabel = _addPostSloganLabel;
+@synthesize navItemTitle = _navItemTitle;
+@synthesize navBar = _navBar;
 @synthesize currentLocationLabel = _currentLocationLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -277,13 +280,15 @@
     self.addPostBackgroundView.frame = CGRectMake(self.addPostButton.frame.origin.x - 5, self.addPostButton.frame.origin.y - 7, slogan.size.width, slogan.size.height);
     self.addPostBackgroundView.backgroundColor = [[UIColor alloc] initWithPatternImage:slogan];
     self.addPostSloganLabel.hidden = YES;
-    
-   // ViewHelper buildCancelButton:self.
+   
+    [_navBar setBackgroundImage:[UIImage imageNamed: UI_IMAGE_NAVIGATION_BACKGROUND]forBarMetrics:UIBarMetricsDefault];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
+  [super viewWillAppear:animated];
   [self registerScrollViewRefreshPuller:self.mainScrollView];
+  _navItemTitle.title = [self currentUser].city ? [self currentUser].city : @"";
     if ([[VariableStore sharedInstance] isLoggedIn]) {
         self.greetingLabel.text = [@"您好! " stringByAppendingFormat:[VariableStore sharedInstance].user.name];
     } else {
@@ -312,6 +317,8 @@
     [self setAddPostBackgroundView:nil];
     [self setAddPostButton:nil];
     [self setAddPostSloganLabel:nil];
+  [self setNavItemTitle:nil];
+  [self setNavBar:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

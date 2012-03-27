@@ -24,6 +24,7 @@
 @property (nonatomic, strong) NSNumber *postDuration; 
 @property (nonatomic, strong) Location *location;
 @property (nonatomic, strong) NSString *userId;
+@property (nonatomic, strong) NSString *userImageUrl;
 @property (nonatomic, strong) NSString *state;
 @property (nonatomic, strong) NSDate *endedAt;
 

@@ -110,8 +110,6 @@ NSString * const UI_IMAGE_LOGIN_BUTTON = @"btn_log1.png";
 NSString * const UI_IMAGE_LOGIN_BUTTON_PRESS = @"btn_log2.png";
 NSString * const UI_IMAGE_LOGIN_FORGOT_PASS = @"forgetpw.gif";
 NSString * const UI_IMAGE_LOGIN_FORM_BACKGROUND = @"log_bgwithline1.png";
-NSString * const UI_IMAGE_LOGIN_LABEL = @"button_login_label.png";
-NSString * const UI_IMAGE_SIGUP_LABEL = @"button_signup_label.png";
 
 NSString * const UI_IMAGE_SEND_BUTTON = @"iphone_11.png";
 NSString * const UI_IMAGE_SEND_BUTTON_PRESS = @"iphone_25.png";
@@ -190,5 +188,6 @@ NSString * const UI_IMAGE_PROVIDE_PRESS = @"pbtn_s_down.png";
 NSString * const UI_IMAGE_PROVIDE_BROWSE = @"pbtn_s2.png";
 NSString * const UI_IMAGE_PROVIDE_BROWSE_PRESS = @"pbtn_s2_down.png";
 NSString * const UI_IMAGE_MAP_PIN = @"rmb-pin";
+NSString * const UI_IMAGE_DEFAULT_USER = @"everyone";
 
 @end

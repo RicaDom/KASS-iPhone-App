@@ -54,10 +54,6 @@
   [self.listingTableView reloadData];
   [self doneLoadingTableViewData];
   [self hideIndicator];
-  
-  [endlessScroller reset];
-
-   self.tableFooter.hidden =(self.currentListings.count > 6)? NO : YES;
 }
 
 // we need to locate user position before getting data
@@ -103,16 +99,6 @@
     }
 }
 
-- (void)removeSpinner:(UIView *)view
-{
-  NSArray *subviews = view.subviews;
-  for (UIView *subview in subviews) {
-    if ([subview isKindOfClass:UIActivityIndicatorView.class]) {
-      [subview removeFromSuperview];
-    }
-  }
-}
-
 - (void)populateMoreListings:(Listing *)listing
 {
   [endlessScroller doneLoadingData:listing.listItems];
@@ -132,6 +118,7 @@
       [VariableStore sharedInstance].priceBrowseListings  = [listing listItems];
     }
     [self reloadTable];
+    [endlessScroller reset];
   }
 }
 
@@ -283,8 +270,9 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [super viewWillDisappear:animated];
+  [super viewWillDisappear:animated];
   [self unregisterTableViewRefreshPuller];
+  [endlessScroller removeSpinner];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -486,7 +474,6 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView 
 {
   if ([scrollView isEqual:self.searchDisplayController.searchResultsTableView]) { return; }
-  
   [endlessScroller loadMore];
 }
 

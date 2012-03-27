@@ -8,11 +8,12 @@
 
 #import "ListingTableCell.h"
 #import "VariableStore.h"
+#import "ViewHelper.h"
 
 @implementation ListingTableCell
 
 @synthesize title = _title;
-@synthesize subTitle = _subTitle;
+//@synthesize subTitle = _subTitle;
 @synthesize distance = _distance;
 @synthesize duration = _duration;
 @synthesize price = _price;
@@ -29,28 +30,28 @@
 
 - (void)buildCellByListItem:(ListItem *)item
 {
-    UIImage *rowBackground = [UIImage imageNamed:UI_IMAGE_TABLE_CELL_BG];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:rowBackground];
-    self.backgroundView = imageView;
-      
-    UIImage *selectedBackground = [UIImage imageNamed:UI_IMAGE_TABLE_CELL_BG_PRESS];
-    UIImageView *selectedImageView = [[UIImageView alloc] initWithImage:selectedBackground];
-    self.selectedBackgroundView = selectedImageView;
+  if (item.userImageUrl.isPresent) {
+    [ViewHelper buildRoundCustomImageViewWithFrame:self.backgroundView.superview:item.userImageUrl:CGRectMake(10,10,50,50)];
+  }
   
-    if (item.askPrice != nil) {
-    NSString *price = [[item askPrice] stringValue];
+  UIImage *rowBackground = [UIImage imageNamed:UI_IMAGE_TABLE_CELL_BG];
+  UIImageView *imageView = [[UIImageView alloc] initWithImage:rowBackground];
+  self.backgroundView = imageView;
+    
+  UIImage *selectedBackground = [UIImage imageNamed:UI_IMAGE_TABLE_CELL_BG_PRESS];
+  UIImageView *selectedImageView = [[UIImageView alloc] initWithImage:selectedBackground];
+  self.selectedBackgroundView = selectedImageView;
 
-    self.title.text = [item title];
-    self.subTitle.text = [item description];
-    [self.price setTitle:price forState:UIControlStateNormal];
-    }
-    self.price.enabled = NO;
+  self.title.text = [item title];
 
-    [self.distance setTitle:[item getDistanceFromLocationText:VariableStore.sharedInstance.location] forState:UIControlStateNormal];
-    self.distance.enabled = NO;
+  [self.price setTitle:[item getPriceText] forState:UIControlStateNormal];
+  self.price.enabled = NO;
 
-    [self.duration setTitle:[item getTimeLeftText]forState:UIControlStateNormal];
-    self.duration.enabled = NO;
+  [self.distance setTitle:[item getDistanceFromLocationText:VariableStore.sharedInstance.location] forState:UIControlStateNormal];
+  self.distance.enabled = NO;
+
+  [self.duration setTitle:[item getTimeLeftText]forState:UIControlStateNormal];
+  self.duration.enabled = NO;
 }
 
 @end

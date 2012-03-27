@@ -65,7 +65,7 @@ NSString *popUpSuccessfulViewFlag;
 {
   self.currentOffer = [[Offer alloc]initWithDictionary:dict];
   
-  [ViewHelper buildOfferScrollView:self.scrollView:[self currentUser]:_currentOffer];
+  [_currentOffer buildMessagesScrollView:self.scrollView:[self currentUser]];
   [self hideIndicator];
   [self stopLoading];
   

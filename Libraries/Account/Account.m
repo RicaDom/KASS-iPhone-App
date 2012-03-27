@@ -13,7 +13,7 @@
 
 @implementation Account
 
-@synthesize delegate = _delegate, userDbId = _userDbId, userName = _userName, password = _password, weiboId = _weiboId, email = _email, encode = _encode, phone = _phone, devices = _devices;
+@synthesize delegate = _delegate, userDbId = _userDbId, userName = _userName, password = _password, weiboId = _weiboId, email = _email, encode = _encode, phone = _phone, devices = _devices, city = _city, avatarUrl = _avatarUrl;
 
 - (id)initWithEmailAndPassword:(NSString*)email:(NSString *)password
 {
@@ -60,6 +60,8 @@
   _email    = [dict objectForKey:@"email"];
   _phone    = [dict objectForKey:@"phone_number"];
   _devices  = [dict objectForKey:@"devices"];
+  _city     = [dict objectForKey:@"city"];
+  _avatarUrl= [dict objectForKey:@"timg_url"];
   
   if ( _userDbId ) {
     

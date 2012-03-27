@@ -12,6 +12,9 @@
 
 #define _UIKeyboardFrameEndUserInfoKey (&UIKeyboardFrameEndUserInfoKey != NULL ? UIKeyboardFrameEndUserInfoKey : @"UIKeyboardBoundsUserInfoKey")
 
+# define CELL_INDICATION_VIEW_TAG 1216
+# define USER_AVATAR_VIEW_TAG 1217
+
 #define REQUEST_TIMEOUT 10
 #define _ScrollViewContentSizeX 320 
 #define _ScrollViewContentSettingSizeY 500
@@ -34,6 +37,7 @@
 #define RIGHT_BAR_BUTTON_LOGOUT 4
 
 #define DEFAULT_RADIUS 20
+#define DEFAULT_FONT @"Heiti SC"
 
 extern NSString * const POST_TYPE_TEMPLATE;
 extern NSString * const POST_TYPE_EDITING;
@@ -138,10 +142,10 @@ extern NSString * const UI_IMAGE_LOGIN_BUTTON;
 extern NSString * const UI_IMAGE_LOGIN_BUTTON_PRESS;
 extern NSString * const UI_IMAGE_LOGIN_FORGOT_PASS;
 extern NSString * const UI_IMAGE_LOGIN_FORM_BACKGROUND;
-extern NSString * const UI_IMAGE_LOGIN_LABEL;
-extern NSString * const UI_IMAGE_SIGUP_LABEL;
 extern NSString * const UI_IMAGE_MESSAGE_DEFAULT_USER;
 extern NSString * const UI_IMAGE_MESSAGE_LINE;
+extern NSString * const UI_IMAGE_DEFAULT_USER;
+
 
 extern NSString * const UI_IMAGE_SEND_BUTTON;
 extern NSString * const UI_IMAGE_SEND_BUTTON_PRESS;

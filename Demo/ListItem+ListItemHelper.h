@@ -10,8 +10,9 @@
 #import "BaseHelper.h"
 #import <MapKit/MapKit.h>
 
-@interface ListItem (ListItemHelper)
+@class ListingTableCell;
 
+@interface ListItem (ListItemHelper)
 
 - (NSString *) getTimeLeftText;
 - (NSString *) getTimeLeftTextlong;
@@ -19,7 +20,12 @@
 - (NSString *) getPriceText;
 - (NSString *) getUrl;
 - (NSString *) getBaiduMapUrl;
+- (UIColor *) getStateColor;
+- (int) getStateWidthOffset;
 
+- (void) buildUserImageView:(UIView *)view;
+- (void) buildStatusIndicationView:(UIView *)view;
+- (void) buildListingTableCell:(ListingTableCell *)cell;
 - (void) buildMap:(MKMapView *)mapView;
 
 

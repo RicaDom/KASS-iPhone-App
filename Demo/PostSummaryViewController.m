@@ -134,6 +134,7 @@
     UIImage* buttonPressImg = [UIImage imageNamed:UI_IMAGE_POST_SEND_BUTTON_PRESS];
     [self.submitButton setBackgroundImage:buttonImg forState:UIControlStateNormal];
     [self.submitButton setBackgroundImage:buttonPressImg forState:UIControlStateSelected];
+    self.submitButton.hidden = FALSE;
     [ViewHelper buildCancelButton:self.cancelButton];
     [ViewHelper buildEditButton:self.leftButton];
 }
@@ -172,7 +173,7 @@
   if ([self kassVS].currentPostingItem && [self kassVS].currentPostingItem.location) {
     [self loadCurrentPostingData];
   }else {
-    [self showIndicator:@"正在寻找您的位置..."];
+    [self showIndicator:@"寻找您的位置..."];
     VariableStore.sharedInstance.locateMeManager.delegate = self;
     [VariableStore.sharedInstance.locateMeManager locateMe];
   }
@@ -235,6 +236,7 @@
      
         DLog(@"PostSummaryViewController::submitAction:params = %@", params);
         [self.submitButton.titleLabel setText:TEXT_IN_PROCESS];
+        self.submitButton.hidden = TRUE;
         if ([self.postType isEqualToString:POST_TYPE_EDITING] && self.postingItem.isPersisted) {
             [self.currentUser modifyListing:params:self.postingItem.dbId];
         }else{

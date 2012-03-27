@@ -19,6 +19,7 @@
 #import "Offer+OfferHelper.h"
 
 @interface BrowseItemNoMsgViewController : DataSourceViewController <UIActionSheetDelegate, UITextFieldDelegate,  AccountActivityDelegate, UIScrollViewDelegate, KassAppDelegate, MKMapViewDelegate>
+@property (weak, nonatomic) IBOutlet UIView *avatarContainerView;
 
 @property (strong, nonatomic) IBOutlet UITextView *descriptionTextView;
 @property (strong, nonatomic) ListItem *currentItem;

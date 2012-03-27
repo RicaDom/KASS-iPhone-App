@@ -7,11 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface BaseHelper : NSObject
 
 + (NSString *) getTimeFromNowText:(NSDate *)fromDate:(NSDate *)toDate;
 + (NSString*)stringFromDictionary:(NSDictionary*)info;
 + (NSString *)getKassEncrypted:(NSString *)str;
++ (void)removeTaggedSubviews:(int)tag:(UIView *)sview;
 
 @end
