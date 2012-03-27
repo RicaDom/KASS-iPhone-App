@@ -49,6 +49,9 @@
 + (void)buildLogoutButton:(UIButton *)button;
 + (void)buildCheckBoxButton:(UIButton *)button;
 + (void)buildCheckBoxButtonUncheck:(UIButton *)button;
++ (void)buildActivityModifyButton:(UIButton *)button;
++ (void)buildActivityShareButton:(UIButton *)button;
+
 + (void)buildProvideAlertButton:(UIButton *)button;
 + (void)buildProvideBrowseButton:(UIButton *)button;
 + (void)buildConfirmPaymentButton:(UIView *)view:(id)delegate;

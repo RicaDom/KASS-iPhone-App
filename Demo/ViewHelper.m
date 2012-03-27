@@ -400,6 +400,20 @@
   button.frame = CGRectMake(200, button.frame.origin.y, mapImg.size.width, mapImg.size.height);
 }
 
++ (void)buildActivityModifyButton:(UIButton *)button
+{
+  UIImage *img = [UIImage imageNamed:UI_IMAGE_ACTIVITY_EDIT_BUTTON];
+  [button setImage:img forState:UIControlStateNormal];
+  button.frame = CGRectMake(button.frame.origin.x, button.frame.origin.y, img.size.width, img.size.height);
+}
+
++ (void)buildActivityShareButton:(UIButton *)button
+{
+  UIImage *img = [UIImage imageNamed:UI_IMAGE_ACTIVITY_SHARE_BUTTON];
+  [button setImage:img forState:UIControlStateNormal];
+  button.frame = CGRectMake(button.frame.origin.x, button.frame.origin.y, img.size.width, img.size.height);
+}
+
 + (void)buildBackButton:(UIButton *)button
 {
   UIImage *backImg = [UIImage imageNamed:UI_IMAGE_BACK_BUTTON];

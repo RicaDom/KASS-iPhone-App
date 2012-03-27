@@ -7,6 +7,8 @@
 //
 
 #import "OfferTableCell.h"
+#import "Offer+OfferHelper.h"
+#import "ViewHelper.h"
 
 @implementation OfferTableCell
 
@@ -33,11 +35,14 @@
   UIImageView *selectedImageView = [[UIImageView alloc] initWithImage:selectedBackground];
   self.selectedBackgroundView = selectedImageView;
 
-  NSString *priceText =  [NSString stringWithFormat:@"¥ %@", [offer.price stringValue]];
+  NSString *priceText =  [offer getPriceText];
   self.price.text = priceText;
-  
-  self.distance.text = [offer.distance stringValue];
   self.title.text = offer.lastMessage.body;
+  
+  if (offer.sellerImageUrl.isPresent) {
+    [ViewHelper buildRoundCustomImageViewWithFrame:imageView:offer.sellerImageUrl:CGRectMake(10,5,50,50)];
+  }
+  
 }
 
 @end

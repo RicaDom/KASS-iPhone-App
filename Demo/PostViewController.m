@@ -288,12 +288,7 @@
 {
   [super viewWillAppear:animated];
   [self registerScrollViewRefreshPuller:self.mainScrollView];
-  _navItemTitle.title = [self currentUser].city ? [self currentUser].city : @"";
-    if ([[VariableStore sharedInstance] isLoggedIn]) {
-        self.greetingLabel.text = [@"您好! " stringByAppendingFormat:[VariableStore sharedInstance].user.name];
-    } else {
-        self.greetingLabel.text = @"您好!";
-    }
+  _navItemTitle.title = [self currentUser].city ? [self currentUser].city : @"欢迎";
 }
 
 - (void)viewWillDisappear:(BOOL)animated

@@ -37,6 +37,7 @@
 @synthesize changePriceMessage = _changePriceMessage;
 @synthesize leftButton = _leftButton;
 @synthesize rightButton = _rightButton;
+@synthesize topInfoView = _topInfoView;
 @synthesize priceButton = _priceButton;
 @synthesize currentOffer = _currentOffer;
 
@@ -99,7 +100,11 @@
   [formatter setDateFormat:@"MM/dd/yy hh:mm a"];
   // self.itemExpiredDate.text = [NSString stringWithFormat:@"%@", [formatter stringFromDate:self.currentOffer.listItemEndedAt]];
   self.itemExpiredDate.text = [self.currentOffer getListItemTimeLeftTextlong];
-  VariableStore.sharedInstance.userToShowId = _currentOffer.userId;
+  VariableStore.sharedInstance.userToShowId = _currentOffer.buyerId;
+  
+  if (_currentOffer.buyerImageUrl.isPresent) {
+    [ViewHelper buildRoundCustomImageViewWithFrame:_topInfoView:_currentOffer.buyerImageUrl:CGRectMake(10,5,50,50)];
+  }
   
   if ( self.currentOffer.isPaid ) {
     [self.buttomView hideAllSubviews];
@@ -206,6 +211,7 @@
     [self setChangePriceMessage:nil];
     [self setLeftButton:nil];
     [self setRightButton:nil];
+  [self setTopInfoView:nil];
     [super viewDidUnload];
     [self setMapButton:nil];
     // Release any retained subviews of the main view.

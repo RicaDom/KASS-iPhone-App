@@ -11,6 +11,7 @@
 #import "UIResponder+VariableStore.h"
 #import "NotificationRenderHelper.h"
 #import "SettingTable.h"
+#import "UIView+Subviews.h"
 
 @implementation SettingViewController
 
@@ -74,6 +75,8 @@ NSArray *settingArray;
 - (void)loadDataSource
 {
   [self updateButtons];
+  
+  [_topInfoView removeAllSubviews];
   
   if( [self currentUser].avatarUrl.isPresent ){
     [ViewHelper buildCustomImageViewWithFrame:_topInfoView:VariableStore.sharedInstance.user.avatarUrl:CGRectMake(20,20,60,60)];

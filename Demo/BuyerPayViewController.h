@@ -34,6 +34,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *rightButton;
 @property (strong, nonatomic) IBOutlet UIButton *payButton;
 @property (weak, nonatomic) IBOutlet UILabel *payStatusLabel;
+@property (weak, nonatomic) IBOutlet UIView *topInfoView;
 
 - (IBAction)leftButtonAction:(id)sender;
 - (IBAction)payButtonAction:(id)sender;

@@ -48,10 +48,21 @@
 - (void) buildStatusIndicationView:(UIView *)sview
 {
   [BaseHelper removeTaggedSubviews:CELL_INDICATION_VIEW_TAG:sview];
-  UIView *indView = [[UIView alloc] initWithFrame:CGRectMake(1, 1, 20 + [self getStateWidthOffset], sview.frame.size.height-2)];
-  indView.backgroundColor = [[self getStateColor] colorWithAlphaComponent:0.90];
+  UIView *indView = [[UIView alloc] initWithFrame:CGRectMake(1, 1, 30 + [self getStateWidthOffset], sview.frame.size.height-2)];
+  indView.backgroundColor = [[self getStateColor] colorWithAlphaComponent:0.50];
   indView.tag = CELL_INDICATION_VIEW_TAG;
   [sview addSubview:indView]; 
+  
+  if ( self.isActive ) {
+    UILabel *price = [[UILabel alloc] init];
+    [price setTextColor:[UIColor whiteColor]];
+    price.backgroundColor = [UIColor clearColor];
+    price.frame = CGRectMake(1, 1, indView.frame.size.width-1, indView.frame.size.height-1);
+    price.textAlignment = UITextAlignmentCenter;
+    price.font = [UIFont fontWithName:DEFAULT_FONT size:16];
+    price.text = [[NSString alloc] initWithFormat:@"%d", [self.price intValue]];
+    [indView addSubview:price];   
+  }
 }
 
 - (void) buildListingTableCell:(ListingTableCell *)cell
@@ -68,6 +79,20 @@
   }else {
     [ViewHelper buildOfferPendingCell:self:cell];         
   }
+}
+
+- (NSString *)getDialogUserTitle:(User *)user:(Message *)message
+{
+  NSString *title = [ViewHelper getTitleFromOfferMessage:user:self:message];
+  
+  if (![user.userId isEqualToString:message.userId]) {
+    if ([self.buyerId isEqualToString:message.userId] && self.buyerName.isPresent) {
+      title = self.buyerName;
+    }else if ([self.userId isEqualToString:message.userId] && self.sellerName.isPresent){
+      title = self.sellerName;
+    }
+  }
+  return title;
 }
 
 - (UIView *) buildDialogAvatar:(UIView *)diglogView:(User *)user:(Offer *)offer:(Message *)message
@@ -93,8 +118,7 @@
   UIView *diglogView = [[UIView alloc] initWithFrame:CGRectMake(0, yOffset, scrollView.frame.size.width, 70)];
   UIView *userImgView = [self buildDialogAvatar:diglogView:user:self:message];
   
-  NSString *title = user.name.isPresent ? user.name : 
-    [ViewHelper getTitleFromOfferMessage:user:self:message];
+  NSString *title = [self getDialogUserTitle:user:message];
   NSString *date=[dateFormatter stringFromDate:message.createdAt];
   
   // Header title
@@ -136,7 +160,7 @@
 
 - (void) buildMessagesScrollView:(UIScrollView *)scrollView:(User *)user
 {
-  CGFloat yOffset = 155;
+  CGFloat yOffset = 170;
   
   UIImage *line = [UIImage imageNamed:UI_IMAGE_MESSAGE_LINE];
   UIImageView *imageView = [[UIImageView alloc] initWithImage:line];
@@ -170,8 +194,10 @@
 
 - (int) getStateWidthOffset
 {
-  if ( self.isAccepted ) {
-    return 10;
+  if (!self.isActive) {
+    return 0;
+  }else if ( self.isAccepted ) {
+    return 8;
   }else if ( self.isPaid || self.isPaymentConfirmed){
     return 5;
   }else if (self.isRejected){
@@ -185,7 +211,9 @@
 
 - (UIColor *) getStateColor
 {
-  if ( self.isAccepted ) {
+  if (!self.isActive) {
+    return [UIColor lightGrayColor];
+  }else if ( self.isAccepted ) {
     return [UIColor greenColor];
   }else if ( self.isPaid || self.isPaymentConfirmed){
     return [UIColor orangeColor];

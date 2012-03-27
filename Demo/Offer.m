@@ -28,6 +28,8 @@
 @synthesize buyerImageUrl = _buyerImageUrl;
 @synthesize sellerImageUrl = _sellerImageUrl;
 @synthesize alipayTradeNo = _alipayTradeNo;
+@synthesize buyerName = _buyerName;
+@synthesize sellerName = _sellerName;
 
 - (id) initWithDictionary:(NSDictionary *) theDictionary
 {
@@ -47,9 +49,12 @@
     _buyerId      = [listing objectForKey:@"user_id"];
     NSDictionary *buyer = [listing objectForKey:@"user"];
     _buyerImageUrl = [buyer objectForKey:@"image"];
+    _buyerId = _buyerId.isPresent ? _buyerId : [buyer objectForKey:@"id"];
+    _buyerName    = [buyer objectForKey:@"name"];
     
     NSDictionary *seller = [theDictionary objectForKey:@"user"];
     _sellerImageUrl = [seller objectForKey:@"image"];
+    _sellerName     = [seller objectForKey:@"name"];
     
     NSArray *latlng   = [listing objectForKey:@"latlng"]; 
     _listItemLocation = [[Location alloc] initWithArray:latlng];
@@ -81,9 +86,19 @@
 }
 
 ///////////////////////// model helper methods ///////////////////////////////////////
+- (BOOL) isIdle
+{
+  return !self.isPaid && !self.isAccepted;
+}
+
 - (BOOL) isExpired
 {
   return [_listItemEndedAt timeIntervalSinceNow] < 0;
+}
+
+- (BOOL) isActive
+{
+  return !self.isExpired && (self.isAccepted || self.isPaid || self.isPaymentConfirmed);
 }
 
 - (BOOL) isAccepted

@@ -33,6 +33,7 @@
 @synthesize rightButton = _rightButton;
 @synthesize payButton = _payButton;
 @synthesize payStatusLabel = _payStatusLabel;
+@synthesize topInfoView = _topInfoView;
 
 NSString *popUpSuccessfulViewFlag;
 
@@ -78,6 +79,9 @@ NSString *popUpSuccessfulViewFlag;
   }
   
   VariableStore.sharedInstance.userToShowId = _currentOffer.userId;
+  if (_currentOffer.sellerImageUrl.isPresent) {
+    [ViewHelper buildRoundCustomImageViewWithFrame:_topInfoView:_currentOffer.sellerImageUrl:CGRectMake(10,5,50,50)];
+  }
   
   if ( [self.currentOffer isPaid]) {
     [self hideButtonAndShowStatus:UI_LABEL_OFFER_PAID];
@@ -171,6 +175,7 @@ NSString *popUpSuccessfulViewFlag;
     [self setRightButton:nil];
   [self setPayButton:nil];
   [self setPayStatusLabel:nil];
+  [self setTopInfoView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

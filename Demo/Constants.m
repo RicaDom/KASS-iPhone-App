@@ -133,10 +133,8 @@ NSString * const UI_IMAGE_TABLE_CELL_BG_PRESS = @"listbg2.png";
 NSString * const UI_IMAGE_SMALL_BACK_BUTTON = @"backarrow_01.png";
 
 NSString * const UI_IMAGE_ACTIVITY_BACKGROUND = @"bg_sky.png";
-NSString * const UI_IMAGE_ACTIVITY_EDIT_BUTTON = @"iphone_49.png";
-NSString * const UI_IMAGE_ACTIVITY_EDIT_BUTTON_PRESS = @"iphone_51.png";
-NSString * const UI_IMAGE_ACTIVITY_SHARE_BUTTON = @"iphone_55.png";
-NSString * const UI_IMAGE_ACTIVITY_SHARE_BUTTON_PRESS = @"iphone_56.png";
+NSString * const UI_IMAGE_ACTIVITY_EDIT_BUTTON = @"btn-modify.png";
+NSString * const UI_IMAGE_ACTIVITY_SHARE_BUTTON = @"btn-share.png";
 NSString * const UI_IMAGE_ACTIVITY_PRICE_BG = @"offer_pricebg.png";
 NSString * const UI_IMAGE_ACTIVITY_TITLE = @"wodehuodong_shadow.png";
 NSString * const UI_IMAGE_ACTIVITY_NOTE_POST = @"note1.png";

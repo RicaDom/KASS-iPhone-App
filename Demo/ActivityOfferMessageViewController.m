@@ -17,6 +17,7 @@
 @implementation ActivityOfferMessageViewController
 
 @synthesize scrollView    = _scrollView;
+@synthesize topInfoView = _topInfoView;
 @synthesize currentOffer  = _currentOffer;
 @synthesize listingTitle  = _listingTitle;
 @synthesize offerPrice    = _offerPrice;
@@ -80,7 +81,12 @@
   self.offerPrice.text            = [self.currentOffer getPriceText]; 
   
   [self modifyPriceModifierPrice:self.currentOffer.price];
+  
   VariableStore.sharedInstance.userToShowId = _currentOffer.userId;
+  if (_currentOffer.sellerImageUrl.isPresent) {
+    [ViewHelper buildRoundCustomImageViewWithFrame:_topInfoView:_currentOffer.sellerImageUrl:CGRectMake(10,5,50,50)];
+  }
+  
   [self loadMessageView];
   [self hideIndicator];
   [self stopLoading];
@@ -192,6 +198,7 @@
     [self setChangedPriceMessage:nil];
     [self setLeftButton:nil];
     [self setScrollView:nil];
+  [self setTopInfoView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

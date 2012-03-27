@@ -32,11 +32,14 @@
 @property (nonatomic, strong) Location *listItemLocation;
 @property (nonatomic, strong) NSString *buyerImageUrl;
 @property (nonatomic, strong) NSString *sellerImageUrl;
+@property (nonatomic, strong) NSString *buyerName;
+@property (nonatomic, strong) NSString *sellerName;
 
 
 //// model helper methods
 - (BOOL) isExpired;
 - (BOOL) isAccepted;
+- (BOOL) isActive;
 - (BOOL) isPaid;
 - (BOOL) isPaymentConfirmed;
 - (BOOL) isRejected;

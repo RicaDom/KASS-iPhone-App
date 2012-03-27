@@ -101,6 +101,8 @@ NSString *remoteNotificationOfferId = nil;
     
     [ViewHelper buildMapButton:self.mapButton];  
     [ViewHelper buildBackButton:self.backButton];
+    [ViewHelper buildActivityModifyButton:self.modifyButton];
+    [ViewHelper buildActivityShareButton:self.shareButton];
 }
 
 - (void)viewDidUnload

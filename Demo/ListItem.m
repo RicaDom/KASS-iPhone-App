@@ -29,6 +29,7 @@
 @synthesize acceptedOffer = _acceptedOffer;
 @synthesize acceptedOfferId = _acceptedOfferId;
 @synthesize userImageUrl = _userImageUrl;
+@synthesize userName = _userName;
 
 - (void) buildData:(NSDictionary *) theDictionary
 {
@@ -40,6 +41,7 @@
   
   NSDictionary *user = [theDictionary objectForKey:@"user"];
   _userImageUrl = [user objectForKey:@"image"];
+  _userName     = [user objectForKey:@"name"];
   
   _askPrice     = [NSDecimalNumber decimalNumberWithDecimal:[[theDictionary objectForKey:@"price"] decimalValue]];
   
@@ -124,6 +126,11 @@
 - (BOOL) isIdle
 {
   return [self.state isEqualToString:@"idle"];
+}
+
+- (BOOL) isActive
+{
+  return !self.isExpired && (self.isAccepted || self.isPaid || self.offers.count > 0);
 }
 
 - (BOOL) isExpired

@@ -61,14 +61,14 @@
 
 - (int) getStateWidthOffset
 {
-  if (self.isAccepted) {
-    return 10;
+  if (!self.isActive) {
+    return 0;
   }else if (self.isPaid){
     return 5;
   }else{
     // if the listing has offers
     if (self.offers.count > 0) {
-      return 15;                
+      return 10;                
     } else { // otherwise show pending states  
       return 0;
     }
@@ -77,7 +77,9 @@
 
 - (UIColor *) getStateColor
 {
-  if (self.isAccepted) {
+  if (!self.isActive) {
+    return [UIColor lightGrayColor];
+  }else if (self.isAccepted) {
     return [UIColor greenColor];
   }else if (self.isPaid){
     return [UIColor orangeColor];
@@ -115,9 +117,21 @@
 {
   [BaseHelper removeTaggedSubviews:CELL_INDICATION_VIEW_TAG:sview];
   UIView *indView = [[UIView alloc] initWithFrame:CGRectMake(1, 1, 20 + [self getStateWidthOffset], sview.frame.size.height-2)];
-  indView.backgroundColor = [[self getStateColor] colorWithAlphaComponent:0.90];
+  indView.backgroundColor = [[self getStateColor] colorWithAlphaComponent:0.50];
   indView.tag = CELL_INDICATION_VIEW_TAG;
   [sview addSubview:indView]; 
+  
+  if ( self.isActive ) {
+    UILabel *offerCount = [[UILabel alloc] init];
+    [offerCount setTextColor:[UIColor whiteColor]];
+    offerCount.backgroundColor = [UIColor clearColor];
+    offerCount.frame = CGRectMake(1, 1, indView.frame.size.width-1, indView.frame.size.height-1);
+    offerCount.textAlignment = UITextAlignmentCenter;
+    offerCount.font = [UIFont fontWithName:DEFAULT_FONT size:20];
+    offerCount.text = [[NSString alloc] initWithFormat:@"%d", self.offers.count];
+    [indView addSubview:offerCount]; 
+  }
+  
 }
 
 - (NSString *) toLabelStyle
