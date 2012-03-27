@@ -116,6 +116,11 @@
   return [self.state isEqualToString:@"rejected"];
 }
 
+- (BOOL) isUseful
+{
+  return self.isAccepted || self.isPaid || self.isPaymentConfirmed || !self.isExpired;
+}
+
 - (BOOL) isPaymentConfirmed
 {
   return [self.state isEqualToString:@"payment_confirmed"];

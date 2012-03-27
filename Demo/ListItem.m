@@ -143,6 +143,11 @@
   return TRUE;
 }
 
+- (BOOL) isUseful
+{
+  return self.isAccepted || self.isPaid || (self.offers.count > 0 && !self.isExpired);
+}
+
 - (Offer *) getOfferFromOfferer:(User *)user
 {
   return [self.offers objectAtIndex:[self.offererIds indexOfObject:user.userId]];

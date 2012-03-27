@@ -40,7 +40,10 @@
   self.title.text = offer.lastMessage.body;
   
   if (offer.sellerImageUrl.isPresent) {
-    [ViewHelper buildRoundCustomImageViewWithFrame:imageView:offer.sellerImageUrl:CGRectMake(10,5,50,50)];
+    
+    UIView *lastView = [self.subviews objectAtIndex:self.subviews.count-1 ];
+    
+    [ViewHelper buildRoundCustomImageViewWithFrame:lastView:offer.sellerImageUrl:CGRectMake(12,12,45,45)];
   }
   
 }

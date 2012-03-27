@@ -13,5 +13,6 @@
 - (void)removeAllSubviews;
 - (void)hideAllSubviews;
 - (void)showAllSubviews;
+- (void)setAllLabelsFonts;
 
 @end

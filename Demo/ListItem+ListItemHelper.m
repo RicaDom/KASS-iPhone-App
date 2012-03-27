@@ -22,14 +22,26 @@
 
 - (NSString *) getTimeLeftText
 {
-  NSString *timeLeftText = [BaseHelper getTimeFromNowText:[NSDate date]:[self endedAt]];
-  return timeLeftText ? timeLeftText : @"已经过期";
+  if ( self.isAccepted ) {
+    return UI_LABEL_ACCEPTED;
+  }else if ( self.isPaid) {
+    return UI_LABEL_PAID;
+  }else{
+    NSString *timeLeftText = [BaseHelper getTimeFromNowText:[NSDate date]:[self endedAt]];
+    return timeLeftText ? timeLeftText : @"已经过期";
+  }
 }
 
 - (NSString *) getTimeLeftTextlong
 {
-  NSString *timeLeftText = [BaseHelper getTimeFromNowText:[NSDate date]:[self endedAt]];
-  return timeLeftText ? [[NSString alloc] initWithFormat:@"还有 %@", timeLeftText] : @"已经过期";
+  if ( self.isAccepted ) {
+    return UI_LABEL_ACCEPTED;
+  }else if ( self.isPaid) {
+    return UI_LABEL_PAID;
+  }else{
+    NSString *timeLeftText = [BaseHelper getTimeFromNowText:[NSDate date]:[self endedAt]];
+    return timeLeftText ? [[NSString alloc] initWithFormat:@"还有 %@", timeLeftText] : @"已经过期";
+  }
 }
 
 - (NSString *) getUrl
@@ -61,14 +73,14 @@
 
 - (int) getStateWidthOffset
 {
-  if (!self.isActive) {
-    return 0;
+  if (self.isAccepted) {
+    return 7;
   }else if (self.isPaid){
     return 5;
   }else{
     // if the listing has offers
     if (self.offers.count > 0) {
-      return 10;                
+      return 9;                
     } else { // otherwise show pending states  
       return 0;
     }
@@ -77,9 +89,7 @@
 
 - (UIColor *) getStateColor
 {
-  if (!self.isActive) {
-    return [UIColor lightGrayColor];
-  }else if (self.isAccepted) {
+  if (self.isAccepted) {
     return [UIColor greenColor];
   }else if (self.isPaid){
     return [UIColor orangeColor];
@@ -121,7 +131,7 @@
   indView.tag = CELL_INDICATION_VIEW_TAG;
   [sview addSubview:indView]; 
   
-  if ( self.isActive ) {
+  if ( self.isUseful ) {
     UILabel *offerCount = [[UILabel alloc] init];
     [offerCount setTextColor:[UIColor whiteColor]];
     offerCount.backgroundColor = [UIColor clearColor];

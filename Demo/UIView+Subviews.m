@@ -7,6 +7,7 @@
 //
 
 #import "UIView+Subviews.h"
+#import "Constants.h"
 
 @implementation UIView (Subviews)
 
@@ -28,6 +29,16 @@
 {
   for(UIView *subview in [self subviews]) {
     subview.hidden = FALSE;
+  }
+}
+
+- (void)setAllLabelsFonts
+{
+  for(UIView *subview in [self subviews]){
+    if ([subview isKindOfClass:UILabel.class]) {
+      UILabel *label = (UILabel *)subview;
+      label.font = [UIFont fontWithName:DEFAULT_FONT size:20];
+    }
   }
 }
 

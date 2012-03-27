@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSString *postType;
 @property (strong, nonatomic) IBOutlet UIButton *cancelButton;
 @property (strong, nonatomic) IBOutlet UITextView *postDesciptionTextField;
+@property (weak, nonatomic) IBOutlet UIView *topInfoView;
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;

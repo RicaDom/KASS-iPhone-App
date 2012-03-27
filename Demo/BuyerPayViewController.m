@@ -58,7 +58,7 @@ NSString *popUpSuccessfulViewFlag;
 {
   self.payButton.hidden = TRUE;
   self.payStatusLabel.text = status;
-  self.payStatusLabel.font = [UIFont boldSystemFontOfSize:24];
+  self.payStatusLabel.font = [UIFont fontWithName:DEFAULT_FONT size:24];
   self.payStatusLabel.textColor = [UIColor lightGrayColor];
 }
 

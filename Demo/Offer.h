@@ -43,5 +43,6 @@
 - (BOOL) isPaid;
 - (BOOL) isPaymentConfirmed;
 - (BOOL) isRejected;
+- (BOOL) isUseful;
 
 @end

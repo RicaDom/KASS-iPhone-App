@@ -20,11 +20,11 @@
 		77034C961521D54900E9E670 /* btn-modify@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77034C921521D54900E9E670 /* btn-modify@2x.png */; };
 		77034C971521D54900E9E670 /* btn-share.png in Resources */ = {isa = PBXBuildFile; fileRef = 77034C931521D54900E9E670 /* btn-share.png */; };
 		77034C981521D54900E9E670 /* btn-share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77034C941521D54900E9E670 /* btn-share@2x.png */; };
+		77034C9A152228B300E9E670 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77034C99152228B300E9E670 /* libcrypto.a */; };
 		7704903B151D63890043AB91 /* Alipay.m in Sources */ = {isa = PBXBuildFile; fileRef = 7704903A151D63890043AB91 /* Alipay.m */; };
 		77122C2D150BB187006FE1B0 /* china-chengdu.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 77122C2B150BB187006FE1B0 /* china-chengdu.gpx */; };
 		77122C2E150BB187006FE1B0 /* china-hangzhou.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 77122C2C150BB187006FE1B0 /* china-hangzhou.gpx */; };
 		771AE31A150DF1AB009F546B /* UIViewController+PriceModifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 771AE319150DF1AB009F546B /* UIViewController+PriceModifier.m */; };
-		774320D3151EBFDC00032117 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 774320D2151EBFDC00032117 /* libcrypto.a */; };
 		774320D6151ED97B00032117 /* everyone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 774320D4151ED97B00032117 /* everyone@2x.png */; };
 		774320D7151ED97B00032117 /* setting_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 774320D5151ED97B00032117 /* setting_line@2x.png */; };
 		774320E415200F2B00032117 /* EndlessScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 774320E315200F2B00032117 /* EndlessScroller.m */; };
@@ -466,13 +466,13 @@
 		77034C921521D54900E9E670 /* btn-modify@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-modify@2x.png"; sourceTree = "<group>"; };
 		77034C931521D54900E9E670 /* btn-share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-share.png"; sourceTree = "<group>"; };
 		77034C941521D54900E9E670 /* btn-share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-share@2x.png"; sourceTree = "<group>"; };
+		77034C99152228B300E9E670 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
 		77049039151D63890043AB91 /* Alipay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Alipay.h; path = Libraries/Alipay/Alipay.h; sourceTree = "<group>"; };
 		7704903A151D63890043AB91 /* Alipay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Alipay.m; path = Libraries/Alipay/Alipay.m; sourceTree = "<group>"; };
 		77122C2B150BB187006FE1B0 /* china-chengdu.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "china-chengdu.gpx"; path = "Resources/china-chengdu.gpx"; sourceTree = "<group>"; };
 		77122C2C150BB187006FE1B0 /* china-hangzhou.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "china-hangzhou.gpx"; path = "Resources/china-hangzhou.gpx"; sourceTree = "<group>"; };
 		771AE318150DF1AB009F546B /* UIViewController+PriceModifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PriceModifier.h"; sourceTree = "<group>"; };
 		771AE319150DF1AB009F546B /* UIViewController+PriceModifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PriceModifier.m"; sourceTree = "<group>"; };
-		774320D2151EBFDC00032117 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
 		774320D4151ED97B00032117 /* everyone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "everyone@2x.png"; sourceTree = "<group>"; };
 		774320D5151ED97B00032117 /* setting_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_line@2x.png"; sourceTree = "<group>"; };
 		774320E215200F2B00032117 /* EndlessScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndlessScroller.h; sourceTree = "<group>"; };
@@ -1157,7 +1157,7 @@
 				77506A0114C9131A000494E5 /* GHUnitIOS.framework in Frameworks */,
 				775EBE13151C4B01009DA9E4 /* libalixpay.a in Frameworks */,
 				775EBF47151C568E009DA9E4 /* libssl.a in Frameworks */,
-				774320D3151EBFDC00032117 /* libcrypto.a in Frameworks */,
+				77034C9A152228B300E9E670 /* libcrypto.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1391,7 +1391,7 @@
 		775EBEE6151C568E009DA9E4 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				774320D2151EBFDC00032117 /* libcrypto.a */,
+				77034C99152228B300E9E670 /* libcrypto.a */,
 				775EBEE7151C568E009DA9E4 /* DataSigner.h */,
 				775EBEE8151C568E009DA9E4 /* DataSigner.m */,
 				775EBEE9151C568E009DA9E4 /* DataVerifier.h */,

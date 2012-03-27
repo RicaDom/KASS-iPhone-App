@@ -19,8 +19,18 @@
 
 - (NSString *) getListItemTimeLeftTextlong
 {
-  NSString *timeLeftText = [BaseHelper getTimeFromNowText:[NSDate date]:[self listItemEndedAt]];
-  return timeLeftText ? [[NSString alloc] initWithFormat:@"还有 %@", timeLeftText] : @"已经过期";
+  if ( self.isAccepted ) {
+    return UI_LABEL_ACCEPTED;
+  }else if ( self.isPaid) {
+    return UI_LABEL_PAID;
+  }else if (self.isPaymentConfirmed){
+    return UI_LABEL_OFFER_PAYMENT_CONFIRMED;
+  }else if (self.isRejected){
+    return UI_LABEL_REJECTED;
+  }else{
+    NSString *timeLeftText = [BaseHelper getTimeFromNowText:[NSDate date]:[self listItemEndedAt]];
+    return timeLeftText ? [[NSString alloc] initWithFormat:@"还有 %@", timeLeftText] : @"已经过期";
+  }
 }
 
 + (NSMutableDictionary *) getParamsToModify:(NSInteger)price :(NSString *)message
@@ -53,7 +63,7 @@
   indView.tag = CELL_INDICATION_VIEW_TAG;
   [sview addSubview:indView]; 
   
-  if ( self.isActive ) {
+  if ( self.isUseful ) {
     UILabel *price = [[UILabel alloc] init];
     [price setTextColor:[UIColor whiteColor]];
     price.backgroundColor = [UIColor clearColor];
@@ -194,9 +204,7 @@
 
 - (int) getStateWidthOffset
 {
-  if (!self.isActive) {
-    return 0;
-  }else if ( self.isAccepted ) {
+  if ( self.isAccepted ) {
     return 8;
   }else if ( self.isPaid || self.isPaymentConfirmed){
     return 5;
@@ -211,9 +219,8 @@
 
 - (UIColor *) getStateColor
 {
-  if (!self.isActive) {
-    return [UIColor lightGrayColor];
-  }else if ( self.isAccepted ) {
+  // if my offer has been accepted by buyer
+  if ( self.isAccepted ) {
     return [UIColor greenColor];
   }else if ( self.isPaid || self.isPaymentConfirmed){
     return [UIColor orangeColor];
@@ -222,7 +229,7 @@
   }else if ( self.isExpired ){
     return [UIColor lightGrayColor];
   }else {
-    return [UIColor lightGrayColor]; 
+    return [UIColor lightGrayColor];        
   }
 }
 

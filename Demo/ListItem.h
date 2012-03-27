@@ -46,6 +46,7 @@
 - (BOOL) isPaid;
 - (BOOL) isIdle;
 - (BOOL) isActive;
+- (BOOL) isUseful;
 - (BOOL) hasOfferer:(User *)user;
 - (BOOL) compare:(id)object;
 

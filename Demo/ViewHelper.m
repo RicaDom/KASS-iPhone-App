@@ -84,7 +84,7 @@
   [labelPaid setText:UI_LABEL_PAID];
   [labelPaid setTextColor:[UIColor grayColor]];
   [labelPaid setBackgroundColor:[UIColor clearColor]];
-  labelPaid.font = [UIFont boldSystemFontOfSize:13];
+  labelPaid.font = [UIFont fontWithName:DEFAULT_FONT size:13];
   labelPaid.frame = CGRectMake(0, 0, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 8);
   labelPaid.textAlignment = UITextAlignmentCenter;
   
@@ -94,7 +94,7 @@
     [labelFinalPrice setText:[@"¥ " stringByAppendingFormat: [item.acceptedPrice stringValue]]];
   }
   [labelFinalPrice setTextColor:[UIColor darkGrayColor]];
-  labelFinalPrice.font = [UIFont boldSystemFontOfSize:16];
+  labelFinalPrice.font = [UIFont fontWithName:DEFAULT_FONT size:16];
   labelFinalPrice.backgroundColor = [UIColor clearColor];
   labelFinalPrice.frame = CGRectMake(0, cell.infoView.frame.size.height/2 - 12, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 5);
   labelFinalPrice.textAlignment = UITextAlignmentCenter;
@@ -115,7 +115,7 @@
   [confirmPayment setTextColor:[UIColor whiteColor]];
   confirmPayment.frame = CGRectMake(10, 2.5, 300, 44);
   confirmPayment.textAlignment = UITextAlignmentCenter;
-  confirmPayment.font = [UIFont boldSystemFontOfSize:20];
+  confirmPayment.font = [UIFont fontWithName:DEFAULT_FONT size:20];
   confirmPayment.backgroundColor = [UIColor clearColor];
   [confirmPayment setText:UI_BUTTON_LABEL_CONFIRM_PAYMENT];
   [view addSubview:confirmPayment]; 
@@ -139,7 +139,7 @@
   [labelAskPrice setTextColor:[UIColor darkGrayColor]];
   labelAskPrice.frame = CGRectMake(0, cell.infoView.frame.size.height/2 - 6, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 5);
   labelAskPrice.textAlignment = UITextAlignmentCenter;
-  labelAskPrice.font = [UIFont boldSystemFontOfSize:16];
+  labelAskPrice.font = [UIFont fontWithName:DEFAULT_FONT size:16];
   labelAskPrice.backgroundColor = [UIColor clearColor];
   [cell.infoView addSubview:labelAskPrice];            
 }
@@ -150,7 +150,7 @@
   [labelWaiting setText:UI_LABEL_WAITING_FOR_OFFER];
   [labelWaiting setTextColor:[UIColor grayColor]];
   [labelWaiting setBackgroundColor:[UIColor clearColor]];
-  labelWaiting.font = [UIFont boldSystemFontOfSize:13];
+  labelWaiting.font = [UIFont fontWithName:DEFAULT_FONT size:13];;
   labelWaiting.frame = CGRectMake(0, 0, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 8);
   labelWaiting.textAlignment = UITextAlignmentCenter;
 
@@ -160,7 +160,7 @@
       [labelAskPrice setText:[@"¥ " stringByAppendingFormat: [item.askPrice stringValue]]];
   }
   [labelAskPrice setTextColor:[UIColor darkGrayColor]];
-  labelAskPrice.font = [UIFont boldSystemFontOfSize:14];
+  labelAskPrice.font = [UIFont fontWithName:DEFAULT_FONT size:14];
   labelAskPrice.backgroundColor = [UIColor clearColor];
   labelAskPrice.frame = CGRectMake(0, cell.infoView.frame.size.height/2 - 12, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 5);
   labelAskPrice.textAlignment = UITextAlignmentCenter;
@@ -170,7 +170,7 @@
   [labelExpiredDate setText:item.getTimeLeftTextlong];
   [labelExpiredDate setTextColor:[UIColor grayColor]];
   labelExpiredDate.backgroundColor = [UIColor clearColor];
-  labelExpiredDate.font = [UIFont boldSystemFontOfSize:13];
+  labelExpiredDate.font = [UIFont fontWithName:DEFAULT_FONT size:13];;
   labelExpiredDate.frame = CGRectMake(0, cell.infoView.frame.size.height/2 + 10, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 8);
   labelExpiredDate.textAlignment = UITextAlignmentCenter;
   [cell.infoView addSubview:labelExpiredDate]; 
@@ -182,7 +182,7 @@
   [labelNeedsReview setText:UI_LABEL_NEEDS_REVIEW];
   [labelNeedsReview setTextColor:[UIColor grayColor]];
   [labelNeedsReview setBackgroundColor:[UIColor clearColor]];
-  labelNeedsReview.font = [UIFont boldSystemFontOfSize:13];
+  labelNeedsReview.font = [UIFont fontWithName:DEFAULT_FONT size:13];
   labelNeedsReview.frame = CGRectMake(0, 3, cell.infoView.frame.size.width, cell.infoView.frame.size.height/2);
   labelNeedsReview.textAlignment = UITextAlignmentCenter;
   //[labelNeedsReview sizeToFit];
@@ -192,7 +192,7 @@
   [labelOffersCount setText:[[NSString alloc] initWithFormat:@"%d %@", [item.offers count], UI_LABEL_OFFER]];
   [labelOffersCount setTextColor:[UIColor darkGrayColor]];
   [labelOffersCount setBackgroundColor:[UIColor clearColor]];
-  labelOffersCount.font = [UIFont boldSystemFontOfSize:16];
+  labelOffersCount.font = [UIFont fontWithName:DEFAULT_FONT size:16];
   labelOffersCount.frame = CGRectMake(0, 25, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 5);
   labelOffersCount.textAlignment = UITextAlignmentCenter;
   //[labelOffersCount sizeToFit];
@@ -205,7 +205,7 @@
     [labelOffersCount setText:[[NSString alloc] initWithFormat:@"%d %@", [item.offers count], UI_LABEL_OFFER]];
     [labelOffersCount setTextColor:[UIColor darkGrayColor]];
     [labelOffersCount setBackgroundColor:[UIColor clearColor]];
-    labelOffersCount.font = [UIFont boldSystemFontOfSize:13];
+    labelOffersCount.font = [UIFont fontWithName:DEFAULT_FONT size:13];;
     labelOffersCount.frame = CGRectMake(0, 0, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 8);
     labelOffersCount.textAlignment = UITextAlignmentCenter;
     [cell.infoView addSubview:labelOffersCount];  
@@ -215,7 +215,7 @@
         [labelAskPrice setText:[@"¥ " stringByAppendingFormat: [item.askPrice stringValue]]];
     }
     [labelAskPrice setTextColor:[UIColor darkGrayColor]];
-    labelAskPrice.font = [UIFont boldSystemFontOfSize:13];
+    labelAskPrice.font = [UIFont fontWithName:DEFAULT_FONT size:13];
     labelAskPrice.backgroundColor = [UIColor clearColor];
     labelAskPrice.frame = CGRectMake(0, cell.infoView.frame.size.height/2 + 10, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 8);
     labelAskPrice.textAlignment = UITextAlignmentCenter;
@@ -225,7 +225,7 @@
     [labelExpiredDate setText:@"已经过期"];
     [labelExpiredDate setTextColor:[UIColor grayColor]];
     labelExpiredDate.backgroundColor = [UIColor clearColor];
-    labelExpiredDate.font = [UIFont boldSystemFontOfSize:16];
+    labelExpiredDate.font = [UIFont fontWithName:DEFAULT_FONT size:13];
     labelExpiredDate.frame = CGRectMake(0, cell.infoView.frame.size.height/2 - 12, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 5);
     labelExpiredDate.textAlignment = UITextAlignmentCenter;
     [cell.infoView addSubview:labelExpiredDate]; 
@@ -235,12 +235,12 @@
 {
   [cell.infoView setBackgroundColor:[[UIColor alloc] initWithPatternImage:[UIImage imageNamed:UI_IMAGE_ACTIVITY_PRICE_BG]]];   
   UILabel *labelPaid = [[UILabel alloc] init];
-  [labelPaid setText:UI_LABEL_PAID];
+  [labelPaid setText: item.isPaid ? UI_LABEL_PAID : UI_LABEL_OFFER_PAYMENT_CONFIRMED];
   [labelPaid setTextColor:[UIColor grayColor]];
   labelPaid.frame = CGRectMake(0, 0, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 8);
   labelPaid.textAlignment = UITextAlignmentCenter;
   labelPaid.backgroundColor = [UIColor clearColor];
-  labelPaid.font = [UIFont boldSystemFontOfSize:13];
+  labelPaid.font = [UIFont fontWithName:DEFAULT_FONT size:13];
   [cell.infoView addSubview:labelPaid]; 
   
   UILabel *labelFinalPrice = [[UILabel alloc] init];
@@ -252,7 +252,7 @@
   labelFinalPrice.backgroundColor = [UIColor clearColor];
   labelFinalPrice.frame = CGRectMake(0, cell.infoView.frame.size.height/2 - 12, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 5);
   labelFinalPrice.textAlignment = UITextAlignmentCenter;
-  labelFinalPrice.font = [UIFont boldSystemFontOfSize:16];
+  labelFinalPrice.font = [UIFont fontWithName:DEFAULT_FONT size:15];
   [cell.infoView addSubview:labelFinalPrice]; 
   
 }
@@ -266,7 +266,7 @@
   label.frame = CGRectMake(0, 0, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 8);
   label.textAlignment = UITextAlignmentCenter;
   label.backgroundColor = [UIColor clearColor];
-  label.font = [UIFont boldSystemFontOfSize:13];
+  label.font = [UIFont fontWithName:DEFAULT_FONT size:13];
   [cell.infoView addSubview:label]; 
   
   UILabel *labelFinalPrice = [[UILabel alloc] init];
@@ -278,7 +278,7 @@
   labelFinalPrice.backgroundColor = [UIColor clearColor];
   labelFinalPrice.frame = CGRectMake(0, cell.infoView.frame.size.height/2 - 12, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 5);
   labelFinalPrice.textAlignment = UITextAlignmentCenter;
-  labelFinalPrice.font = [UIFont boldSystemFontOfSize:16];
+  labelFinalPrice.font = [UIFont fontWithName:DEFAULT_FONT size:16];
   [cell.infoView addSubview:labelFinalPrice]; 
 
 }
@@ -292,7 +292,7 @@
   labelPending.frame = CGRectMake(0, 0, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 8);
   labelPending.textAlignment = UITextAlignmentCenter;
   labelPending.backgroundColor = [UIColor clearColor];
-  labelPending.font = [UIFont boldSystemFontOfSize:13];
+  labelPending.font = [UIFont fontWithName:DEFAULT_FONT size:13];
   [cell.infoView addSubview:labelPending]; 
   
   UILabel *labelAskPrice = [[UILabel alloc] init];
@@ -305,7 +305,7 @@
   labelAskPrice.frame = CGRectMake(0, cell.infoView.frame.size.height/2 - 12, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 5);
   labelAskPrice.textAlignment = UITextAlignmentCenter;
   labelAskPrice.backgroundColor = [UIColor clearColor];
-  labelAskPrice.font = [UIFont boldSystemFontOfSize:16];
+  labelAskPrice.font = [UIFont fontWithName:DEFAULT_FONT size:16];
   [cell.infoView addSubview:labelAskPrice]; 
   
   UILabel *labelOfferer = [[UILabel alloc] init];
@@ -315,7 +315,7 @@
   labelOfferer.frame = CGRectMake(0, cell.infoView.frame.size.height/2 + 10, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 8);
   labelOfferer.textAlignment = UITextAlignmentCenter;
   labelOfferer.backgroundColor = [UIColor clearColor];
-  labelOfferer.font = [UIFont boldSystemFontOfSize:13];
+  labelOfferer.font = [UIFont fontWithName:DEFAULT_FONT size:13];
   [cell.infoView addSubview:labelOfferer]; 
 }
 
@@ -328,7 +328,7 @@
   labelExpired.frame = CGRectMake(0, 0, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 8);
   labelExpired.textAlignment = UITextAlignmentCenter;
   labelExpired.backgroundColor = [UIColor clearColor];
-  labelExpired.font = [UIFont boldSystemFontOfSize:13];
+  labelExpired.font = [UIFont fontWithName:DEFAULT_FONT size:13];
   [cell.infoView addSubview:labelExpired]; 
   
   UILabel *labelAskPrice = [[UILabel alloc] init];
@@ -340,7 +340,7 @@
   labelAskPrice.frame = CGRectMake(0, cell.infoView.frame.size.height/2 - 12, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 5);
   labelAskPrice.textAlignment = UITextAlignmentCenter;
   labelAskPrice.backgroundColor = [UIColor clearColor];
-  labelAskPrice.font = [UIFont boldSystemFontOfSize:16];
+  labelAskPrice.font = [UIFont fontWithName:DEFAULT_FONT size:16];
   [cell.infoView addSubview:labelAskPrice]; 
   
   UILabel *labelYouOffered = [[UILabel alloc] init];
@@ -349,7 +349,7 @@
   labelYouOffered.frame = CGRectMake(2, cell.infoView.frame.size.height/2 + 10, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 8);
   labelYouOffered.textAlignment = UITextAlignmentCenter;
   labelYouOffered.backgroundColor = [UIColor clearColor];
-  labelYouOffered.font = [UIFont boldSystemFontOfSize:13];
+  labelYouOffered.font = [UIFont fontWithName:DEFAULT_FONT size:13];
   [cell.infoView addSubview:labelYouOffered]; 
 }
 
@@ -362,7 +362,7 @@
   labelAccepted.frame = CGRectMake(0, 0, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 8);
   labelAccepted.textAlignment = UITextAlignmentCenter;
   labelAccepted.backgroundColor = [UIColor clearColor];
-  labelAccepted.font = [UIFont boldSystemFontOfSize:13];
+  labelAccepted.font = [UIFont fontWithName:DEFAULT_FONT size:13];
   [cell.infoView addSubview:labelAccepted]; 
   
   UILabel *labelAskPrice = [[UILabel alloc] init];
@@ -374,7 +374,7 @@
   labelAskPrice.backgroundColor = [UIColor clearColor];
   labelAskPrice.frame = CGRectMake(0, cell.infoView.frame.size.height/2 - 12, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 5);
   labelAskPrice.textAlignment = UITextAlignmentCenter;
-  labelAskPrice.font = [UIFont boldSystemFontOfSize:16];
+  labelAskPrice.font = [UIFont fontWithName:DEFAULT_FONT size:16];
   [cell.infoView addSubview:labelAskPrice]; 
   
   UILabel *labelYouOffered = [[UILabel alloc] init];
@@ -383,7 +383,7 @@
   [labelYouOffered setTextColor:[UIColor grayColor]];
   labelYouOffered.frame = CGRectMake(0, cell.infoView.frame.size.height/2 + 10, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 8);
   labelYouOffered.textAlignment = UITextAlignmentCenter;
-  labelYouOffered.font = [UIFont boldSystemFontOfSize:13];
+  labelYouOffered.font = [UIFont fontWithName:DEFAULT_FONT size:13];
   labelYouOffered.backgroundColor = [UIColor clearColor];
   [cell.infoView addSubview:labelYouOffered];
 }

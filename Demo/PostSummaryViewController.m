@@ -19,6 +19,7 @@
 
 @synthesize postTitle = _postTitle;
 @synthesize postDesciptionTextField = _postDesciptionTextField;
+@synthesize topInfoView = _topInfoView;
 @synthesize postAskPrice = _postAskPrice;
 @synthesize postDuration = _postDuration;
 @synthesize submitButton = _submitButton;
@@ -61,6 +62,8 @@
         self.submitButton.titleLabel.text = UI_BUTTON_LABEL_SIGNIN_TO_POST;
     }
     [self.submitButton.titleLabel setTextAlignment:UITextAlignmentCenter];
+    self.submitButton.titleLabel.font = [UIFont fontWithName:DEFAULT_FONT size:20];
+    self.submitButton.hidden = FALSE;
     
     
     if ([[VariableStore sharedInstance].user isWeiboLogin] > 0) {
@@ -75,6 +78,10 @@
       self.weiboCheckBox.enabled = NO;
       self.weiboHintLabel.hidden = YES;
       self.weiboCheckBox.hidden = YES;
+    }
+  
+    if ([self currentUser].avatarUrl.isPresent) {
+      [ViewHelper buildRoundCustomImageViewWithFrame:_topInfoView:[self currentUser].avatarUrl:CGRectMake(10,5,50,50)];
     }
 }
 
@@ -161,6 +168,7 @@
     [self setLeftButton:nil];
     [self setWeiboCheckBox:nil];
   [self setWeiboHintLabel:nil];
+  [self setTopInfoView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
