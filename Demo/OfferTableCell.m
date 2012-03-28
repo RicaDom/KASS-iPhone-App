@@ -43,7 +43,7 @@
     
     UIView *lastView = [self.subviews objectAtIndex:self.subviews.count-1 ];
     
-    [ViewHelper buildRoundCustomImageViewWithFrame:lastView:offer.sellerImageUrl:CGRectMake(12,12,45,45)];
+    [ViewHelper buildRoundCustomImageViewWithFrame:lastView:offer.sellerImageUrl:CGRectMake(12.5,12.5,45,45)];
   }
   
 }

@@ -78,6 +78,9 @@ NSArray *settingArray;
   
   [_topInfoView removeAllSubviews];
   
+  if ([self currentUser]) {
+    VariableStore.sharedInstance.userToShowId = [self currentUser].userId;
+  }
   if( [self currentUser].avatarUrl.isPresent ){
     [ViewHelper buildCustomImageViewWithFrame:_topInfoView:VariableStore.sharedInstance.user.avatarUrl:CGRectMake(20,20,60,60)];
   } else {

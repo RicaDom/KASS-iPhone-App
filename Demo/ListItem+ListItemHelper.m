@@ -126,7 +126,7 @@
 - (void) buildStatusIndicationView:(UIView *)sview
 {
   [BaseHelper removeTaggedSubviews:CELL_INDICATION_VIEW_TAG:sview];
-  UIView *indView = [[UIView alloc] initWithFrame:CGRectMake(1, 1, 20 + [self getStateWidthOffset], sview.frame.size.height-2)];
+  UIView *indView = [[UIView alloc] initWithFrame:CGRectMake(1, 1, 20, sview.frame.size.height-2)];
   indView.backgroundColor = [[self getStateColor] colorWithAlphaComponent:0.50];
   indView.tag = CELL_INDICATION_VIEW_TAG;
   [sview addSubview:indView]; 
