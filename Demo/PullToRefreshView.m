@@ -27,6 +27,7 @@
 //
 
 #import "PullToRefreshView.h"
+#import "Constants.h"
 
 #define TEXT_COLOR	 [UIColor colorWithRed:(87.0/255.0) green:(108.0/255.0) blue:(137.0/255.0) alpha:1.0]
 #define FLIP_ANIMATION_DURATION 0.18f
@@ -47,7 +48,7 @@
 
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:(animated ? 0.1f : 0.0)];
-    arrowImage.opacity = (shouldShow ? 0.0 : 1.0);
+    arrowImage.opacity = 1.0f; //(shouldShow ? 0.0 : 0.8f);
     [UIView commitAnimations];
 }
 
@@ -89,9 +90,9 @@
 		[self addSubview:statusLabel];
 
 		arrowImage = [[CALayer alloc] init];
-		arrowImage.frame = CGRectMake(25.0f, frame.size.height - 60.0f, 24.0f, 52.0f);
+		arrowImage.frame = CGRectMake(7.0f, frame.size.height - 55.0, 55.0f, 55.0f);
 		arrowImage.contentsGravity = kCAGravityResizeAspect;
-		arrowImage.contents = (id) [UIImage imageNamed:@"blueArrow.png"].CGImage;
+		arrowImage.contents = (id) [UIImage imageNamed:UI_IMAGE_PULLER_LOADING].CGImage;
 
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 40000
 		if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) {
@@ -102,7 +103,7 @@
 		[self.layer addSublayer:arrowImage];
 
         activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-		activityView.frame = CGRectMake(30.0f, frame.size.height - 38.0f, 20.0f, 20.0f);
+		activityView.frame = CGRectMake(25.0f, frame.size.height - 38.0f, 20.0f, 20.0f);
 		[self addSubview:activityView];
 
 		[self setState:PullToRefreshViewStateNormal];
@@ -140,6 +141,7 @@
 
 		case PullToRefreshViewStateNormal:
 			statusLabel.text = @"下拉可以刷新...";
+      arrowImage.contents = (id)[UIImage imageNamed:UI_IMAGE_PULLER_LOADING].CGImage;
 			[self showActivity:NO animated:NO];
             [self setImageFlipped:NO];
 			[self refreshLastUpdatedDate];
@@ -148,7 +150,8 @@
 
 		case PullToRefreshViewStateLoading:
 			statusLabel.text = @"加载中...";
-			[self showActivity:YES animated:YES];
+      arrowImage.contents = (id)[UIImage imageNamed:UI_IMAGE_PULLER_LOADING_ALPHA].CGImage;
+			[self showActivity:YES animated:NO];
             [self setImageFlipped:NO];
             scrollView.contentInset = UIEdgeInsetsMake(60.0f, 0.0f, 0.0f, 0.0f);
 			break;

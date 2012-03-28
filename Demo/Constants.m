@@ -115,8 +115,8 @@ NSString * const UI_IMAGE_SEND_BUTTON = @"iphone_11.png";
 //NSString * const UI_IMAGE_SEND_BUTTON_PRESS = @"iphone_25.png";
 NSString * const UI_IMAGE_CONFIRM_BUTTON = @"iphone_09.png";
 //NSString * const UI_IMAGE_CONFIRM_BUTTON_PRESS = @"iphone_24.png";
-NSString * const UI_IMAGE_EDIT_BUTTON = @"xiugai.png";
-NSString * const UI_IMAGE_EDIT_BUTTON_PRESS = @"xiugai.png";
+NSString * const UI_IMAGE_EDIT_BUTTON = @"btn-edit.png";
+NSString * const UI_IMAGE_EDIT_BUTTON_PRESS = @"btn-edit.png";
 NSString * const UI_IMAGE_NEXT_BUTTON_DISABLE = @"next.png";
 NSString * const UI_IMAGE_NEXT_BUTTON_ENABLE = @"next.png";
 NSString * const UI_IMAGE_NEXT_BUTTON_ENABLE_PRESS = @"next.png";
@@ -185,5 +185,7 @@ NSString * const UI_IMAGE_PROVIDE_BROWSE = @"pbtn_s2.png";
 NSString * const UI_IMAGE_PROVIDE_BROWSE_PRESS = @"pbtn_s2_down.png";
 NSString * const UI_IMAGE_MAP_PIN = @"rmb-pin";
 NSString * const UI_IMAGE_DEFAULT_USER = @"everyone";
+NSString * const UI_IMAGE_PULLER_LOADING = @"blueArrow.png";
+NSString * const UI_IMAGE_PULLER_LOADING_ALPHA = @"blueArrow-alpha.png";
 
 @end

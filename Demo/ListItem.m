@@ -153,4 +153,9 @@
   return [self.offers objectAtIndex:[self.offererIds indexOfObject:user.userId]];
 }
 
+- (NSString *)dbClass
+{
+  return @"listings";
+}
+
 @end

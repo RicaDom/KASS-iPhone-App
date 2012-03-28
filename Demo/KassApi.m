@@ -374,6 +374,22 @@
   [self getData:_url];
 }
 
+- (void)createStatusCall:(NSDictionary *)dict
+{
+  NSString *modelName        = [dict valueForKey:@"class"];
+  NSString *modelId          = [dict valueForKey:@"dbId"];
+  NSString *callerId         = [dict valueForKey:@"callerId"];
+  NSString *calleeId         = [dict valueForKey:@"calleeId"];
+  
+  _url = [NSString stringWithFormat:@"http://%s/v1/status/%@/%@", 
+            HOST, modelName, modelId];
+  
+  if ( callerId && calleeId ) {
+    [self postData:_url:dict];
+  }
+  
+}
+
 //- (void)getPrivatePub
 //{
 //  _url = [NSString stringWithFormat:@"http://%s/private_pub.json", HOST];

@@ -168,8 +168,10 @@
   }
   
   if (_phoneVerified) {
-    UIView *view = [self getIconView:@"veri-phone-on.png":60];
-    [_contentView addGestureRecognizer:singleFingerTap];
+    [self buildIconView:@"veri-phone-on.png":60];
+    if ( ![[self currentUser] isSameUser:_userId] ) {
+      [_contentView addGestureRecognizer:singleFingerTap];
+    }
   }else{
     [self buildIconView:@"veri-phone-off.png":60];
   }
@@ -205,6 +207,15 @@
   
   if (location.x > 125.5 && location.x < 146.0 && location.y > 13.0 && location.y < 30.0) {
     if (_phoneVerified && _phone_number) {
+      
+      NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                            VariableStore.sharedInstance.itemToShow.dbClass, @"class",
+                            VariableStore.sharedInstance.itemToShow.dbId, @"dbId", 
+                            self.currentUser.userId, @"callerId",
+                            _userId, @"calleeId", nil];
+      
+      [self.currentUser createStatusCall:dict];
+      
       NSString *call_phone_number = [[NSString alloc] initWithFormat:@"tel:%@",_phone_number];
       [[UIApplication sharedApplication] openURL:[NSURL URLWithString:call_phone_number]];
     }

@@ -373,6 +373,18 @@
   [account signup];
 }
 
+- (void)createStatusCall:(NSDictionary *)dict
+{
+  DLog(@"User::createStatusCall:dict=%@", dict);
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"createStatusCallFinished:"];
+  [ka createStatusCall:dict];
+}
+
+- (void)createStatusCallFinished:(NSData *)data
+{
+  //don't care
+}
+
 - (void) accountWeiboLoginRequest:(NSString *)encode
 {
   if (account) {account = nil; }

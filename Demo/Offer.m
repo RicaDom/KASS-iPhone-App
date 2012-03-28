@@ -126,4 +126,9 @@
   return [self.state isEqualToString:@"payment_confirmed"];
 }
 
+- (NSString *)dbClass
+{
+  return @"listings";
+}
+
 @end

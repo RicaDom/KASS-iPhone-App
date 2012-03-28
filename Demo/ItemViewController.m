@@ -74,6 +74,9 @@ NSString *remoteNotificationOfferId = nil;
     [self.offerTableView reloadData];
   }
   
+  VariableStore.sharedInstance.itemToShow = _currentItem;
+  VariableStore.sharedInstance.userToShowId = _currentItem.userId;
+  
   [self hideIndicator];
   [self doneLoadingTableViewData];
 }

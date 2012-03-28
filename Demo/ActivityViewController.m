@@ -148,6 +148,7 @@
     if (![[self kassVS] isLoggedIn]) { 
         [self reset];
         [self hideIndicator];
+        [self doneLoadingTableViewData];
         return; 
     }
     

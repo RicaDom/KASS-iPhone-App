@@ -92,6 +92,9 @@ typedef enum {
 - (void)getAlerts;
 - (void)getAlertsFinished:(NSData *)data;
 
+- (void)createStatusCall:(NSDictionary *)dict;
+- (void)createStatusCallFinished:(NSData *)data;
+
 //- (void)getPrivatePub;
 //- (void)getPrivatePubFinished:(NSData *)data;
 

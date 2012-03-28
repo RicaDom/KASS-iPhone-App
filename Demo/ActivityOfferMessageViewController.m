@@ -85,8 +85,9 @@
   self.offerPrice.text            = [self.currentOffer getPriceText]; 
   
   [self modifyPriceModifierPrice:self.currentOffer.price];
-  
+  VariableStore.sharedInstance.itemToShow = _currentOffer;
   VariableStore.sharedInstance.userToShowId = _currentOffer.userId;
+  
   if (_currentOffer.sellerImageUrl.isPresent) {
     [ViewHelper buildRoundCustomImageViewWithFrame:_topInfoView:_currentOffer.sellerImageUrl:CGRectMake(10,5,50,50)];
   }

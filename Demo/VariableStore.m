@@ -32,6 +32,7 @@
 @synthesize priceToModify = _priceToModify;
 @synthesize itemToShowOnMap = _itemToShowOnMap;
 @synthesize userToShowId = _userToShowId;
+@synthesize itemToShow = _itemToShow;
 
 @synthesize currentViewControllerDelegate = _currentViewControllerDelegate;
 @synthesize remoteNotification = _remoteNotification;

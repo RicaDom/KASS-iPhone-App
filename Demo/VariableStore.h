@@ -49,6 +49,7 @@
 
 @property (strong, nonatomic) ListItem *itemToShowOnMap;
 @property (strong, nonatomic) NSString *userToShowId;
+@property (strong, nonatomic) ActiveModel *itemToShow;
 @property (strong, nonatomic) NSDictionary *remoteNotification;
 @property (strong, nonatomic) UIResponder *appDelegate;
 

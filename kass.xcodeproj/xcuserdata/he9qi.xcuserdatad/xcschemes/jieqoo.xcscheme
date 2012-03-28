@@ -14,7 +14,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E5947DC514A3A12B0066723A"
-               BuildableName = "com.heyook.jieqoo.app"
+               BuildableName = "kass.app"
                BlueprintName = "kass"
                ReferencedContainer = "container:kass.xcodeproj">
             </BuildableReference>
@@ -32,7 +32,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E5947DC514A3A12B0066723A"
-            BuildableName = "com.heyook.jieqoo.app"
+            BuildableName = "kass.app"
             BlueprintName = "kass"
             ReferencedContainer = "container:kass.xcodeproj">
          </BuildableReference>
@@ -51,7 +51,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E5947DC514A3A12B0066723A"
-            BuildableName = "com.heyook.jieqoo.app"
+            BuildableName = "kass.app"
             BlueprintName = "kass"
             ReferencedContainer = "container:kass.xcodeproj">
          </BuildableReference>
@@ -69,7 +69,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E5947DC514A3A12B0066723A"
-            BuildableName = "com.heyook.jieqoo.app"
+            BuildableName = "kass.app"
             BlueprintName = "kass"
             ReferencedContainer = "container:kass.xcodeproj">
          </BuildableReference>

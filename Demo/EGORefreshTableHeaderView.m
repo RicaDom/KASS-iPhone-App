@@ -25,6 +25,7 @@
 //
 
 #import "EGORefreshTableHeaderView.h"
+#import "Constants.h"
 
 
 #define TEXT_COLOR	 [UIColor colorWithRed:87.0/255.0 green:108.0/255.0 blue:137.0/255.0 alpha:1.0]
@@ -73,7 +74,7 @@
 		CALayer *layer = [CALayer layer];
 		layer.frame = CGRectMake(7.0f, frame.size.height - 55.5f, 55.0f, 55.0f);
 		layer.contentsGravity = kCAGravityResizeAspect;
-		layer.contents = (id)[UIImage imageNamed:@"blueArrow.png"].CGImage;
+		layer.contents = (id)[UIImage imageNamed:UI_IMAGE_PULLER_LOADING].CGImage;
 		
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 40000
 		if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) {
@@ -152,7 +153,7 @@
 			[CATransaction begin];
 			[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions]; 
       
-      _arrowImage.contents = (id)[UIImage imageNamed:@"blueArrow.png"].CGImage;
+      _arrowImage.contents = (id)[UIImage imageNamed:UI_IMAGE_PULLER_LOADING].CGImage;
 			_arrowImage.hidden = NO;
 			
       _arrowImage.transform = CATransform3DIdentity;
@@ -168,7 +169,7 @@
 			[CATransaction begin];
 			[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
       
-			_arrowImage.contents = (id)[UIImage imageNamed:@"blueArrow-alpha.png"].CGImage;
+			_arrowImage.contents = (id)[UIImage imageNamed:UI_IMAGE_PULLER_LOADING_ALPHA].CGImage;
       _arrowImage.hidden = NO; //jieqoo purpose
       
 			[CATransaction commit];

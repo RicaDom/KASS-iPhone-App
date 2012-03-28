@@ -149,6 +149,8 @@ extern NSString * const UI_IMAGE_LOGIN_FORM_BACKGROUND;
 extern NSString * const UI_IMAGE_MESSAGE_DEFAULT_USER;
 extern NSString * const UI_IMAGE_MESSAGE_LINE;
 extern NSString * const UI_IMAGE_DEFAULT_USER;
+extern NSString * const UI_IMAGE_PULLER_LOADING;
+extern NSString * const UI_IMAGE_PULLER_LOADING_ALPHA;
 
 
 extern NSString * const UI_IMAGE_SEND_BUTTON;

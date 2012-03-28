@@ -19,5 +19,6 @@
 - (id) initWithData:(NSData *) theData;
 
 - (NSDictionary *) toJson;
+- (NSString *)dbClass;
 
 @end

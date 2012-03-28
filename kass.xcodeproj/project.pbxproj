@@ -89,6 +89,8 @@
 		77506A8314C91631000494E5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77506A8214C91631000494E5 /* SystemConfiguration.framework */; };
 		77506A8514C9163D000494E5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77506A8414C9163D000494E5 /* MobileCoreServices.framework */; };
 		77506A8714C9164F000494E5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 77506A8614C9164F000494E5 /* libz.dylib */; };
+		77512E7C15235BE3002A512E /* btn-edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 77512E7A15235BE3002A512E /* btn-edit.png */; };
+		77512E7D15235BE3002A512E /* btn-edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77512E7B15235BE3002A512E /* btn-edit@2x.png */; };
 		775563381512FE4B00074AC0 /* SellerAlertsAddAlertLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7755632F1512FE4B00074AC0 /* SellerAlertsAddAlertLocationViewController.m */; };
 		775563391512FE4B00074AC0 /* SellerAlertsAddAlertPriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 775563311512FE4B00074AC0 /* SellerAlertsAddAlertPriceViewController.m */; };
 		7755633A1512FE4B00074AC0 /* SellerAlertsAddAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 775563331512FE4B00074AC0 /* SellerAlertsAddAlertViewController.m */; };
@@ -551,6 +553,8 @@
 		77506A8214C91631000494E5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		77506A8414C9163D000494E5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		77506A8614C9164F000494E5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		77512E7A15235BE3002A512E /* btn-edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-edit.png"; sourceTree = "<group>"; };
+		77512E7B15235BE3002A512E /* btn-edit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-edit@2x.png"; sourceTree = "<group>"; };
 		7755632E1512FE4B00074AC0 /* SellerAlertsAddAlertLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellerAlertsAddAlertLocationViewController.h; sourceTree = "<group>"; };
 		7755632F1512FE4B00074AC0 /* SellerAlertsAddAlertLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellerAlertsAddAlertLocationViewController.m; sourceTree = "<group>"; };
 		775563301512FE4B00074AC0 /* SellerAlertsAddAlertPriceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellerAlertsAddAlertPriceViewController.h; sourceTree = "<group>"; };
@@ -2060,6 +2064,8 @@
 		E5D84A801508D74600EF17E4 /* post */ = {
 			isa = PBXGroup;
 			children = (
+				77512E7A15235BE3002A512E /* btn-edit.png */,
+				77512E7B15235BE3002A512E /* btn-edit@2x.png */,
 				776F95481518397000F464DF /* input_150@2x.png */,
 				773533411523074100CD8815 /* next.png */,
 				773533421523074100CD8815 /* next@2x.png */,
@@ -2428,6 +2434,8 @@
 				773533561523272700CD8815 /* pbtn_s@2x.png in Resources */,
 				773533571523272700CD8815 /* pbtn_s2_down@2x.png in Resources */,
 				773533581523272700CD8815 /* pbtn_s2@2x.png in Resources */,
+				77512E7C15235BE3002A512E /* btn-edit.png in Resources */,
+				77512E7D15235BE3002A512E /* btn-edit@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
