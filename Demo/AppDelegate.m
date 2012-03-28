@@ -10,9 +10,9 @@
 #import "MainTabBarViewController.h"
 #import "NotificationRenderHelper.h"
 #import "MTPopupWindow.h"
-#import "AlixPay.h"
-#import "AlixPayResult.h"
-#import "DataVerifier.h"
+//#import "AlixPay.h"
+//#import "AlixPayResult.h"
+//#import "DataVerifier.h"
 #import <sys/utsname.h>
 
 @implementation AppDelegate
@@ -32,43 +32,44 @@
 }
 
 - (void)parseURL:(NSURL *)url application:(UIApplication *)application {
-	AlixPay *alixpay = [AlixPay shared];
-	AlixPayResult *result = [alixpay handleOpenURL:url];
-	if (result) {
-		//是否支付成功
-		if (9000 == result.statusCode) {
-			/*
-			 *用公钥验证签名
-			 */
-			id<DataVerifier> verifier = CreateRSADataVerifier([[NSBundle mainBundle] objectForInfoDictionaryKey:@"RSA public key"]);
-			if ([verifier verifyString:result.resultString withSign:result.signString]) {
-				UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"提示" 
-                                                             message:result.statusMessage 
-                                                            delegate:nil 
-                                                   cancelButtonTitle:@"确定" 
-                                                   otherButtonTitles:nil];
-				[alertView show];
-			}//验签错误
-			else {
-				UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"提示" 
-                                                             message:@"签名错误" 
-                                                            delegate:nil 
-                                                   cancelButtonTitle:@"确定" 
-                                                   otherButtonTitles:nil];
-				[alertView show];
-			}
-		}
-		//如果支付失败,可以通过result.statusCode查询错误码
-		else {
-			UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"提示" 
-                                                           message:result.statusMessage 
-                                                          delegate:nil 
-                                                 cancelButtonTitle:@"确定" 
-                                                 otherButtonTitles:nil];
-			[alertView show];
-		}
-		
-	}	
+  DLog(@"alipay will be added");
+//	AlixPay *alixpay = [AlixPay shared];
+//	AlixPayResult *result = [alixpay handleOpenURL:url];
+//	if (result) {
+//		//是否支付成功
+//		if (9000 == result.statusCode) {
+//			/*
+//			 *用公钥验证签名
+//			 */
+//			id<DataVerifier> verifier = CreateRSADataVerifier([[NSBundle mainBundle] objectForInfoDictionaryKey:@"RSA public key"]);
+//			if ([verifier verifyString:result.resultString withSign:result.signString]) {
+//				UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"提示" 
+//                                                             message:result.statusMessage 
+//                                                            delegate:nil 
+//                                                   cancelButtonTitle:@"确定" 
+//                                                   otherButtonTitles:nil];
+//				[alertView show];
+//			}//验签错误
+//			else {
+//				UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"提示" 
+//                                                             message:@"签名错误" 
+//                                                            delegate:nil 
+//                                                   cancelButtonTitle:@"确定" 
+//                                                   otherButtonTitles:nil];
+//				[alertView show];
+//			}
+//		}
+//		//如果支付失败,可以通过result.statusCode查询错误码
+//		else {
+//			UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"提示" 
+//                                                           message:result.statusMessage 
+//                                                          delegate:nil 
+//                                                 cancelButtonTitle:@"确定" 
+//                                                 otherButtonTitles:nil];
+//			[alertView show];
+//		}
+//		
+//	}	
 }
 
 ////////////////////////////////////// Helper Methods ///////////////////////////////////////////////

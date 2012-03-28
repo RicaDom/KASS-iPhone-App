@@ -14,7 +14,7 @@
 
 @synthesize title = _title;
 @synthesize price = _price;
-@synthesize distance = _distance;
+@synthesize cellView = _cellView;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -40,10 +40,7 @@
   self.title.text = offer.lastMessage.body;
   
   if (offer.sellerImageUrl.isPresent) {
-    
-    UIView *lastView = [self.subviews objectAtIndex:self.subviews.count-1 ];
-    
-    [ViewHelper buildRoundCustomImageViewWithFrame:lastView:offer.sellerImageUrl:CGRectMake(12.5,12.5,45,45)];
+    [ViewHelper buildRoundCustomImageViewWithFrame:_cellView:offer.sellerImageUrl:CGRectMake(7.5,7.5,45,45)];
   }
   
 }

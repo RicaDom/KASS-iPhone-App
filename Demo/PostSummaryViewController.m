@@ -124,14 +124,18 @@
 }
 */
 
+- (void)setupCurrentPostingLocation
+{
+  VariableStore.sharedInstance.currentPostingItem.location = [[Location alloc] initWithCLLocation:VariableStore.sharedInstance.location];
+  [VariableStore.sharedInstance.currentPostingItem buildMap:self.mapView];
+}
+
 - (void)locateMeFinished
 {
   DLog(@"PostSummaryViewController::locateMeFinished ");
   [self loadCurrentPostingData];
   
-  VariableStore.sharedInstance.currentPostingItem.location = [[Location alloc] initWithCLLocation:VariableStore.sharedInstance.location];
-  
-  [VariableStore.sharedInstance.currentPostingItem buildMap:self.mapView];
+  [self setupCurrentPostingLocation];
   [self hideIndicator];
 }
 
@@ -151,8 +155,6 @@
 {
     DLog(@"PostSummaryViewController::viewDidLoad ");
     [super viewDidLoad];
-    VariableStore.sharedInstance.locateMeManager.delegate = self;
-    [VariableStore.sharedInstance.locateMeManager locateMe];
     [self customViewLoad];
 }
 
@@ -180,7 +182,10 @@
   
   if ([self kassVS].currentPostingItem && [self kassVS].currentPostingItem.location) {
     [self loadCurrentPostingData];
-  }else {
+  }if (VariableStore.sharedInstance.location) {
+    [self setupCurrentPostingLocation];
+  }
+  else{
     [self showIndicator:@"寻找您的位置..."];
     VariableStore.sharedInstance.locateMeManager.delegate = self;
     [VariableStore.sharedInstance.locateMeManager locateMe];

@@ -67,8 +67,12 @@
   label.frame = CGRectMake(0, 0, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
   label.textAlignment = UITextAlignmentCenter;
   label.backgroundColor = [UIColor clearColor];
+  label.tag = BUTTON_STATUS_TAG;
   label.font = [UIFont fontWithName:DEFAULT_FONT size:24];
   [self.buttomView addSubview:label]; 
+  
+  self.confirmDealButton.hidden = TRUE;
+  self.confirmImageView.hidden  = TRUE;
 }
 
 - (void) populateData:(NSDictionary *)dict{

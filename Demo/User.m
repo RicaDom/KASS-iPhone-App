@@ -13,7 +13,7 @@
 #import "SFHFKeychainUtils.h"
 #import "ListItem+ListItemHelper.h"
 #import "VariableStore.h"
-#import "Alipay.h"
+//#import "Alipay.h"
 
 //#import "FayeClient.h"
 
@@ -602,7 +602,8 @@
 
 - (void)alipayOffer:(Offer *)offer
 {
-  [Alipay payOffer:offer]; 
+  DLog(@"Alipay Offer will be added!");
+//  [Alipay payOffer:offer]; 
 }
 
 

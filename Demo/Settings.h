@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSMutableDictionary *siteDict;
 @property (strong, nonatomic) NSMutableArray *alertKeywordsServiceArray;
 @property (strong, nonatomic) NSMutableArray *alertKeywordsGoodsArray;
+@property int default_per_page;
 
 - (id) initWithDictionary:(NSDictionary *)dict;
 - (NSString *) getTextForMessageType:(NSString *)type;

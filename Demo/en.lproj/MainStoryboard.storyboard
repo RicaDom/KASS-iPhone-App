@@ -971,7 +971,7 @@
                                 <rect key="frame" x="10" y="289" width="300" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
-                                <state key="normal" title="好了发布吧">
+                                <state key="normal" title="发布吧">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1635,6 +1635,7 @@
                                         </view>
                                         <color key="backgroundColor" red="0.95686280729999995" green="0.94117653369999998" blue="0.90588241820000004" alpha="1" colorSpace="deviceRGB"/>
                                         <connections>
+                                            <outlet property="cellView" destination="9bg-dW-85K" id="7zv-36-JNi"/>
                                             <outlet property="price" destination="9cM-U4-6rH" id="WLU-5c-hPL"/>
                                             <outlet property="title" destination="yU6-3K-8wJ" id="hBz-LB-Ul2"/>
                                             <segue destination="rrf-71-T0f" kind="push" identifier="offerMessageSegue" id="oKw-pA-ROa"/>
@@ -3920,7 +3921,7 @@
         <class className="OfferTableCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OfferTableCell.h"/>
             <relationships>
-                <relationship kind="outlet" name="distance" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cellView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="price" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="title" candidateClass="UILabel"/>
             </relationships>

@@ -18,10 +18,22 @@
   }
 }
 
+- (void)removeAvatarViews
+{
+  for(UIView *subview in [self subviews]) {
+    if (subview.tag == USER_AVATAR_VIEW_TAG) {
+      [subview removeFromSuperview];
+    }
+  }
+}
+
 - (void)hideAllSubviews
 {
   for(UIView *subview in [self subviews]) {
     subview.hidden = TRUE;
+    if (subview.tag == BUTTON_STATUS_TAG) {
+      [subview removeFromSuperview];
+    }
   }
 }
 

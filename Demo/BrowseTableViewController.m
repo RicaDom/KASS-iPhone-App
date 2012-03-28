@@ -56,6 +56,48 @@
   [self hideIndicator];
 }
 
+- (void)getListingsByDictionary:(NSMutableDictionary *)dictionary
+{
+  if ( self.isNearbyTabSelected ) {
+    
+    [[self kassApp] getListingsNearby:dictionary];
+    
+  } else if ( self.isRecentTabSelected ) {
+    
+    [[self kassApp] getListingsRecent:dictionary];
+    
+  } else {
+    
+    [[self kassApp] getListingsMostPrice:dictionary];
+    
+  }
+}
+
+- (void)getListingsWithLastUpdatedDate:(NSString *)page
+{
+  NSMutableDictionary * dictionary = [VariableStore.sharedInstance getDefaultCriteria];
+  if (_lastUpdatedDate) {
+    NSNumber *lastUpdatedTimeNumber = [NSNumber numberWithInt:[_lastUpdatedDate timeIntervalSince1970]];
+    [dictionary setObject:lastUpdatedTimeNumber forKey:@"last_updated_at"];
+    [dictionary setObject:page forKey:@"page"];
+  }
+  
+  [self getListingsByDictionary:dictionary];
+}
+
+- (void)getListings
+{
+  NSMutableDictionary * dictionary = [VariableStore.sharedInstance getDefaultCriteria];
+  
+  NSDate *newDate = [NSDate date];
+//  NSNumber *lastUpdatedTimeNumber = [NSNumber numberWithInt:[newDate timeIntervalSince1970]];
+//  [dictionary setObject:lastUpdatedTimeNumber forKey:@"last_updated_at"];
+  [self getListingsByDictionary:dictionary];
+  
+  if (!_lastUpdatedDate) { _lastUpdatedDate = [[NSDate alloc] init]; }
+  _lastUpdatedDate = newDate;
+}
+
 // we need to locate user position before getting data
 - (void)loadDataSource {
   DLog(@"BrowseTableViewController::loadDataSource");
@@ -119,6 +161,11 @@
     }
     [self reloadTable];
     [endlessScroller reset];
+    
+    if ( listing.listItems.count < VariableStore.sharedInstance.settings.default_per_page) {
+      [endlessScroller reachDataEnd];
+    }
+    
   }
 }
 
@@ -135,45 +182,6 @@
 - (void)appDidGetListingsMostPrice:(NSDictionary *)dict
 {
   [self appDidGetListingAndSetListing:listingTypePrice:dict];
-}
-
-- (void)getListingsByDictionary:(NSMutableDictionary *)dictionary
-{
-  if ( self.isNearbyTabSelected ) {
-    
-    [[self kassApp] getListingsNearby:dictionary];
-    
-  } else if ( self.isRecentTabSelected ) {
-    
-    [[self kassApp] getListingsRecent:dictionary];
-    
-  } else {
-    
-    [[self kassApp] getListingsMostPrice:dictionary];
-    
-  }
-}
-
-- (void)getListingsWithLastUpdatedDate:(NSString *)page
-{
-  NSMutableDictionary * dictionary = [VariableStore.sharedInstance getDefaultCriteria];
-  if (_lastUpdatedDate) {
-    NSNumber *lastUpdatedTimeNumber = [NSNumber numberWithInt:[_lastUpdatedDate timeIntervalSince1970]];
-    [dictionary setObject:lastUpdatedTimeNumber forKey:@"last_updated_at"];
-    [dictionary setObject:page forKey:@"page"];
-  }
-  
-  [self getListingsByDictionary:dictionary];
-}
-
-- (void)getListings
-{
-  NSMutableDictionary * dictionary = [VariableStore.sharedInstance getDefaultCriteria];
-  
-  [self getListingsByDictionary:dictionary];
-    
-  if (!_lastUpdatedDate) { _lastUpdatedDate = [[NSDate alloc] init]; }
-  _lastUpdatedDate = [NSDate date];
 }
 
 - (void)locateMeFinished

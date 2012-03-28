@@ -11,6 +11,7 @@
 #import "Offer+OfferHelper.h"
 #import "HJManagedImageV.h"
 #import "VariableStore.h"
+#import "UIView+Subviews.h"
 
 @implementation ViewHelper
 
@@ -34,10 +35,12 @@
   UIImage *userImg = [UIImage imageNamed:url];
   UIImageView *userImgView = [[UIImageView alloc] initWithImage:userImg];
   userImgView.frame = frame;
+  userImgView.tag = USER_AVATAR_VIEW_TAG;
   userImgView.layer.cornerRadius = frame.size.width/2;
   userImgView.layer.masksToBounds = YES;
   userImgView.layer.borderColor=[UIColor grayColor].CGColor;
   userImgView.layer.borderWidth=1.0f;
+  [diglogView removeAvatarViews];
   [diglogView addSubview:userImgView];
   return userImgView;
 }
@@ -51,9 +54,11 @@
 {
   HJManagedImageV *imgV = [[HJManagedImageV alloc] initWithFrame:frame]; 
   imgV.url = [NSURL URLWithString:url];
+  imgV.tag = USER_AVATAR_VIEW_TAG;
   imgV.layer.cornerRadius = 5;
   imgV.layer.masksToBounds = YES;
   [imgV showLoadingWheel];
+  [diglogView removeAvatarViews];
   [diglogView addSubview:imgV];
   [[self viewKassApp] manageObj:imgV];
   return imgV;
@@ -63,11 +68,13 @@
 {
   HJManagedImageV *imgV = [[HJManagedImageV alloc] initWithFrame:frame]; 
   imgV.url = [NSURL URLWithString:url];
+  imgV.tag = USER_AVATAR_VIEW_TAG;
   imgV.layer.cornerRadius = frame.size.width/2;
   imgV.layer.masksToBounds = YES;
   imgV.layer.borderColor=[UIColor grayColor].CGColor;
   imgV.layer.borderWidth=1.0f;
   [imgV showLoadingWheel];
+  [diglogView removeAvatarViews];
   [diglogView addSubview:imgV];
   [[self viewKassApp] manageObj:imgV];
   return imgV;

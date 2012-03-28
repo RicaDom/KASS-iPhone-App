@@ -7,6 +7,7 @@
 //
 
 #import "Settings.h"
+#import "Constants.h"
 
 @implementation Settings
 
@@ -18,6 +19,7 @@
 @synthesize siteDict = _siteDict;
 @synthesize alertKeywordsServiceArray = _alertKeywordsServiceArray;
 @synthesize alertKeywordsGoodsArray = _alertKeywordsGoodsArray;
+@synthesize default_per_page = _default_per_page;
 
 - (id) initWithDictionary:(NSDictionary *)dict
 {
@@ -50,6 +52,11 @@
       self.alertKeywordsServiceArray = [alertKeywords objectForKey:@"service"];
       self.alertKeywordsGoodsArray = [alertKeywords objectForKey:@"goods"];
     }
+    
+    //pagination
+    NSDictionary *pagination = [dict objectForKey:@"pagination"];
+    _default_per_page  = (int)[[pagination objectForKey:@"default_per_page"] intValue];
+    if ( !_default_per_page ) { _default_per_page = DEFAULT_PER_PAGE; }
   }
   return self;
 }

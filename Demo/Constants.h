@@ -14,6 +14,8 @@
 
 # define CELL_INDICATION_VIEW_TAG 1216
 # define USER_AVATAR_VIEW_TAG 1217
+# define LOADING_LABEL_VIEW_TAG 1218
+# define BUTTON_STATUS_TAG 1219
 
 #define REQUEST_TIMEOUT 10
 #define _ScrollViewContentSizeX 320 
@@ -38,6 +40,7 @@
 
 #define DEFAULT_RADIUS 20
 #define DEFAULT_FONT @"Heiti SC"
+#define DEFAULT_PER_PAGE 30
 
 extern NSString * const POST_TYPE_TEMPLATE;
 extern NSString * const POST_TYPE_EDITING;

@@ -76,6 +76,7 @@
   label.textAlignment = UITextAlignmentCenter;
   label.backgroundColor = [UIColor clearColor];
   label.font = [UIFont fontWithName:DEFAULT_FONT size:24];
+  label.tag  = BUTTON_STATUS_TAG;
   
   [self.buttomView addSubview:label]; 
 }

@@ -66,6 +66,7 @@
   label.frame = CGRectMake(0, 0, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
   label.textAlignment = UITextAlignmentCenter;
   label.backgroundColor = [UIColor clearColor];
+  label.tag = BUTTON_STATUS_TAG;
   label.font = [UIFont boldSystemFontOfSize:24];
   [self.buttomView addSubview:label]; 
 }
