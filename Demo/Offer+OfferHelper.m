@@ -58,7 +58,7 @@
 - (void) buildStatusIndicationView:(UIView *)sview
 {
   [BaseHelper removeTaggedSubviews:CELL_INDICATION_VIEW_TAG:sview];
-  UIView *indView = [[UIView alloc] initWithFrame:CGRectMake(1, 1, 30, sview.frame.size.height-2)];
+  UIView *indView = [[UIView alloc] initWithFrame:CGRectMake(1, 1, 35, sview.frame.size.height-2)];
   indView.backgroundColor = [[self getStateColor] colorWithAlphaComponent:0.50];
   indView.tag = CELL_INDICATION_VIEW_TAG;
   [sview addSubview:indView]; 
@@ -69,7 +69,7 @@
     price.backgroundColor = [UIColor clearColor];
     price.frame = CGRectMake(1, 1, indView.frame.size.width-1, indView.frame.size.height-1);
     price.textAlignment = UITextAlignmentCenter;
-    price.font = [UIFont fontWithName:DEFAULT_FONT size:16];
+    price.font = [UIFont fontWithName:DEFAULT_FONT size:14];
     price.text = [[NSString alloc] initWithFormat:@"%d", [self.price intValue]];
     [indView addSubview:price];   
   }
