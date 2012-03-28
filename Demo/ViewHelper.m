@@ -455,9 +455,7 @@
 + (void)buildConfirmButton:(UIButton *)button
 {
     UIImage *img = [UIImage imageNamed:UI_IMAGE_CONFIRM_BUTTON];
-    UIImage *imgPress = [UIImage imageNamed:UI_IMAGE_CONFIRM_BUTTON_PRESS];
     [button setImage:img forState:UIControlStateNormal];
-    [button setImage:imgPress forState:UIControlStateSelected];
     button.frame = CGRectMake(button.frame.origin.x, button.frame.origin.y, img.size.width, img.size.height);
     button.enabled = YES;
 }
@@ -530,9 +528,7 @@
 + (void)buildSendButton:(UIButton *)button
 {
     UIImage *img = [UIImage imageNamed:UI_IMAGE_SEND_BUTTON];
-    UIImage *imgPress = [UIImage imageNamed:UI_IMAGE_SEND_BUTTON_PRESS];
     [button setImage:img forState:UIControlStateNormal];
-    [button setImage:imgPress forState:UIControlStateSelected];
     button.frame = CGRectMake(button.frame.origin.x, button.frame.origin.y, img.size.width, img.size.height);
     button.enabled = YES;
 }

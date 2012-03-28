@@ -11,6 +11,7 @@
 #import "UIResponder+VariableStore.h"
 #import "VariableStore.h"
 #import "ViewHelper.h"
+#import "UIView+Subviews.h"
 
 @implementation UserInfoViewController
 
@@ -81,11 +82,22 @@
   }
 }
 
+- (UIView *)getIconView:(NSString *)iconUrl:(int)offset
+{
+  UIImage *img = [UIImage imageNamed:iconUrl];
+  UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
+  imgView.frame = CGRectMake(50 + offset, 10, 25, 25);
+  imgView.tag   = USER_INFO_ICON_TAG;
+  [_contentView addSubview:imgView];
+  return imgView;
+}
+
 - (void)buildIconView:(NSString *)iconUrl:(int)offset
 {
   UIImage *img = [UIImage imageNamed:iconUrl];
   UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
   imgView.frame = CGRectMake(50 + offset, 10, 25, 25);
+  imgView.tag   = USER_INFO_ICON_TAG;
   [_contentView addSubview:imgView];
 }
 
@@ -114,6 +126,8 @@
   NSArray *sources = [veri objectForKey:@"sources"];
   
   for (NSDictionary *source in sources) {
+    if (!source || ![source isKindOfClass:NSDictionary.class]) { continue; }
+    
     NSString *type = [source objectForKey:@"type"];
     if ([type isEqualToString:@"email"]) {
       
@@ -126,8 +140,10 @@
       _weiboVerified = [weiboV isEqualToString:@"1"];
     } else if ([type isEqualToString:@"phone"]) {
       
-      NSString *weiboV = [NSString stringWithFormat:@"%@",[source objectForKey:@"verified"]];
-      _phoneVerified = [weiboV isEqualToString:@"1"];
+      NSString *phoneV = [NSString stringWithFormat:@"%@",[source objectForKey:@"verified"]];
+      _phoneVerified = [phoneV isEqualToString:@"1"];
+      _phone_number  = [source objectForKey:@"phone"];
+      
     }
   }
   
@@ -136,6 +152,8 @@
   }else {
     [self loadUserImage:[dict objectForKey:@"timg_url"]];
   }
+  
+  [_contentView removeViewsWithTag:USER_INFO_ICON_TAG];
   
   if (_emailVerified) {
     [self buildIconView:@"veri-email-on.png":0];
@@ -150,7 +168,8 @@
   }
   
   if (_phoneVerified) {
-    [self buildIconView:@"veri-phone-on.png":60];
+    UIView *view = [self getIconView:@"veri-phone-on.png":60];
+    [_contentView addGestureRecognizer:singleFingerTap];
   }else{
     [self buildIconView:@"veri-phone-off.png":60];
   }
@@ -175,6 +194,22 @@
     _emailVerified = FALSE;
     _phoneVerified = FALSE;
     [ViewHelper buildBackButton:self.leftButton];
+  
+  singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+  
+}
+
+//The event handling method
+- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
+  CGPoint location = [recognizer locationInView:recognizer.view];
+  
+  if (location.x > 125.5 && location.x < 146.0 && location.y > 13.0 && location.y < 30.0) {
+    if (_phoneVerified && _phone_number) {
+      NSString *call_phone_number = [[NSString alloc] initWithFormat:@"tel:%@",_phone_number];
+      [[UIApplication sharedApplication] openURL:[NSURL URLWithString:call_phone_number]];
+    }
+  }
+
 }
 
 - (void)viewDidUnload

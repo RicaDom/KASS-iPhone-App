@@ -128,13 +128,12 @@
 {
   VariableStore.sharedInstance.currentPostingItem.location = [[Location alloc] initWithCLLocation:VariableStore.sharedInstance.location];
   [VariableStore.sharedInstance.currentPostingItem buildMap:self.mapView];
+  [self loadCurrentPostingData];
 }
 
 - (void)locateMeFinished
 {
   DLog(@"PostSummaryViewController::locateMeFinished ");
-  [self loadCurrentPostingData];
-  
   [self setupCurrentPostingLocation];
   [self hideIndicator];
 }

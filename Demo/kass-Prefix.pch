@@ -26,7 +26,7 @@
 # define APP_VERSION @"1.0"
 
 #ifdef DEBUG 
-#    define HOST "192.168.1.135:3000"
+#    define HOST "vm-192-168-14-188.shengyun.grandcloud.cn"
 #    define PIC_PATH "http://heyook.com/download/kass/iphone-slice/"
 #    define SinaWeiBoSDKDemo_APPKey @"4058848639"
 #    define SinaWeiBoSDKDemo_APPSecret @"6f8e39f74b91d64eec43e2b4fd8d4c55"

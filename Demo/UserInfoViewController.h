@@ -13,9 +13,11 @@
 
 @interface UserInfoViewController : UIViewController <KassAppDelegate>{
   HJManagedImageV *hjManagedImageView;
+  UITapGestureRecognizer *singleFingerTap;
   BOOL _emailVerified;
   BOOL _weiboVerified;
   BOOL _phoneVerified;
+  NSString *_phone_number;
 }
 
 @property (strong, nonatomic) NSString *userId;

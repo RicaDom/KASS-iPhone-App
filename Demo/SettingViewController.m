@@ -97,7 +97,7 @@ NSArray *settingArray;
     [nameLabel setTextColor:[UIColor grayColor]];
     [nameLabel setBackgroundColor:[UIColor clearColor]];
     nameLabel.font = [UIFont fontWithName:DEFAULT_FONT size:13];
-    nameLabel.frame = CGRectMake(90, 30, 100, 30);
+    nameLabel.frame = CGRectMake(90, 30, 200, 30);
     nameLabel.textAlignment = UITextAlignmentLeft;
     [_topInfoView addSubview:nameLabel];
     
@@ -178,6 +178,7 @@ NSArray *settingArray;
     
     //set cell using data
     cell.textLabel.text = ((SettingTable *)[settingArray objectAtIndex:indexPath.row]).displayName;
+    cell.textLabel.font = [UIFont fontWithName:DEFAULT_FONT size:20];
     return cell;     
 }
 

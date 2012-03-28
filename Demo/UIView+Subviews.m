@@ -18,6 +18,15 @@
   }
 }
 
+- (void)removeViewsWithTag:(int)tag
+{
+  for(UIView *subview in [self subviews]) {
+    if (subview.tag == tag) {
+      [subview removeFromSuperview];
+    }
+  }
+}
+
 - (void)removeAvatarViews
 {
   for(UIView *subview in [self subviews]) {

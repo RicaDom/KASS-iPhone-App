@@ -38,6 +38,8 @@
             UINavigationController *actNC = (UINavigationController *)mainTabBarVC.selectedViewController;
             ActivityViewController *activityVC = (ActivityViewController *)actNC.topViewController;            
             
+          if ([activityVC isKindOfClass:ActivityViewController.class]) {
+            
             // Activity view controller to browse item view
             if ([sellerOrBuyer isEqualToString:@"seller"]) {
                 NSMutableDictionary* offerIdDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:offerDbId, @"id", nil];
@@ -49,6 +51,7 @@
                 NSMutableDictionary* listItemDict = [NSMutableDictionary dictionaryWithObjectsAndKeys: dbIdDict, @"listItem", nil];            
                 [activityVC performSegueWithModelJson:listItemDict:@"ActBuyingListToOffers":activityVC];        
             }
+          }
             
         } else if ([type isEqualToString:REMOTE_NOTIFICATION_NEW_LISTING]) {
             mainTabBarVC.selectedIndex = 2;
@@ -67,8 +70,10 @@
             
             NSMutableDictionary* offerIdDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:offerDbId, @"id", nil];
             NSMutableDictionary* offerDict = [NSMutableDictionary dictionaryWithObjectsAndKeys: offerIdDict, @"offer", nil];
+          
+          if ([activityVC isKindOfClass:ActivityViewController.class]) {
             [activityVC performSegueWithModelJson:offerDict:@"ActSellingListToMessageBuyer":activityVC]; 
-            
+          }
         }
         NSString *alert = [aps objectForKey:@"alert"];
         [ViewHelper showAlert:UI_LABEL_ALERT:alert:self];     

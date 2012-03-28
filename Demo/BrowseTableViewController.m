@@ -235,10 +235,10 @@
 	[self.listingTableView reloadData];
   
   // init segment control view
-  UIImage* img = [UIImage imageNamed:UI_IMAGE_BROWSE_SEGMENT_DIVIDER];
+//  UIImage* img = [UIImage imageNamed:UI_IMAGE_BROWSE_SEGMENT_DIVIDER];
   UIImage* tempImg = [UIImage imageNamed:UI_IMAGE_BROWSE_DATE];
-  [self.browseSegment setDividerImage:img forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];    
-  self.browseSegment.frame = CGRectMake(0, self.browseSegment.frame.origin.y, tempImg.size.width*3, tempImg.size.height);
+//  [self.browseSegment setDividerImage:img forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];    
+  self.browseSegment.frame = CGRectMake(10, self.browseSegment.frame.origin.y, tempImg.size.width*3, tempImg.size.height);
   
   [self browseSegmentAction:self];    
   

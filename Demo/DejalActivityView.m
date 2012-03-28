@@ -39,6 +39,7 @@
 
 @property (nonatomic, strong) UIView *originalView;
 @property (nonatomic, strong) UIView *borderView;
+@property (nonatomic, strong) UIImageView *borderImageView;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, strong) UILabel *activityLabel;
 
@@ -52,7 +53,7 @@
 
 @implementation DejalActivityView
 
-@synthesize originalView, borderView, activityIndicator, activityLabel, labelWidth, showNetworkActivityIndicator;
+@synthesize originalView, borderImageView, borderView, activityIndicator, activityLabel, labelWidth, showNetworkActivityIndicator;
 
 static DejalActivityView *dejalActivityView = nil;
 
@@ -146,12 +147,17 @@ static DejalActivityView *dejalActivityView = nil;
     self.activityIndicator = [self makeActivityIndicator];
     self.activityLabel = [self makeActivityLabelWithText:labelText];
     
+  UIImage *image = [UIImage imageNamed:@"loading-sign.png"];
+  self.borderImageView = [[UIImageView alloc] initWithImage:image];
+  self.borderImageView.frame = 
+    CGRectMake(self.borderView.frame.size.width/2+30, self.borderView.frame.size.height/2+3, 71, 71);
+  
     // Assemble the subviews:
 	[addToView addSubview:self];
-    [self addSubview:self.borderView];
+  [self addSubview:self.borderView];
+  [self.borderView addSubview:self.borderImageView];
     [self.borderView addSubview:self.activityIndicator];
-    [self.borderView addSubview:self.activityLabel];
-    
+//    [self.borderView addSubview:self.activityLabel];
 	// Animate the view in, if appropriate:
 	[self animateShow];
     
@@ -181,6 +187,7 @@ static DejalActivityView *dejalActivityView = nil;
     if (dejalActivityView.showNetworkActivityIndicator)
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     
+    dejalActivityView.borderImageView.image = nil;
     [dejalActivityView removeFromSuperview];
     
     // Remove the global reference:
@@ -499,8 +506,13 @@ static DejalActivityView *dejalActivityView = nil;
 {
     UIView *view = [super makeBorderView];
     
-    view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
-    view.layer.cornerRadius = 10.0;
+  
+    
+//  
+//    view.backgroundColor = [UIColor colorWithPatternImage: [UIImage imageNamed: @"loading-sign.png"]];
+//    view.backgroundColor = [view.backgroundColor colorWithAlphaComponent:0.5];
+//    view.frame = CGRectMake(0, 0, 71, 71);
+////    view.layer.cornerRadius = view.layer.frame.size.width / 2;
     
     return view;
 }

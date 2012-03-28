@@ -71,7 +71,7 @@
 		//[label release];
 		
 		CALayer *layer = [CALayer layer];
-		layer.frame = CGRectMake(25.0f, frame.size.height - 65.0f, 30.0f, 55.0f);
+		layer.frame = CGRectMake(7.0f, frame.size.height - 55.5f, 55.0f, 55.0f);
 		layer.contentsGravity = kCAGravityResizeAspect;
 		layer.contents = (id)[UIImage imageNamed:@"blueArrow.png"].CGImage;
 		
@@ -151,8 +151,11 @@
 			[_activityView stopAnimating];
 			[CATransaction begin];
 			[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions]; 
+      
+      _arrowImage.contents = (id)[UIImage imageNamed:@"blueArrow.png"].CGImage;
 			_arrowImage.hidden = NO;
-			_arrowImage.transform = CATransform3DIdentity;
+			
+      _arrowImage.transform = CATransform3DIdentity;
 			[CATransaction commit];
 			
 			[self refreshLastUpdatedDate];
@@ -163,8 +166,11 @@
 			_statusLabel.text = NSLocalizedString(@"加载中...", @"Loading Status");
 			[_activityView startAnimating];
 			[CATransaction begin];
-			[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions]; 
-			_arrowImage.hidden = YES;
+			[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
+      
+			_arrowImage.contents = (id)[UIImage imageNamed:@"blueArrow-alpha.png"].CGImage;
+      _arrowImage.hidden = NO; //jieqoo purpose
+      
 			[CATransaction commit];
 			
 			break;
