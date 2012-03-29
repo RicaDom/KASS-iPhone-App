@@ -205,12 +205,12 @@
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
   CGPoint location = [recognizer locationInView:recognizer.view];
   
-  if (location.x > 125.5 && location.x < 146.0 && location.y > 13.0 && location.y < 30.0) {
+  if (location.x > 125.5 && location.x < 150.0 && location.y > 13.0 && location.y < 50.0) {
     if (_phoneVerified && _phone_number) {
       
       NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                            VariableStore.sharedInstance.itemToShow.dbClass, @"class",
-                            VariableStore.sharedInstance.itemToShow.dbId, @"dbId", 
+                            [VariableStore.sharedInstance.itemClassAndIdToShow objectAtIndex:0], @"class",
+                            [VariableStore.sharedInstance.itemClassAndIdToShow objectAtIndex:1], @"dbId", 
                             self.currentUser.userId, @"callerId",
                             _userId, @"calleeId", nil];
       

@@ -32,7 +32,7 @@
 @synthesize priceToModify = _priceToModify;
 @synthesize itemToShowOnMap = _itemToShowOnMap;
 @synthesize userToShowId = _userToShowId;
-@synthesize itemToShow = _itemToShow;
+@synthesize itemClassAndIdToShow = _itemClassAndIdToShow;
 
 @synthesize currentViewControllerDelegate = _currentViewControllerDelegate;
 @synthesize remoteNotification = _remoteNotification;
@@ -59,7 +59,7 @@
           
             myInstance.modelDict = [[NSMutableDictionary alloc] init];
           
-//            myInstance.settings = [[Settings alloc] init];
+            myInstance.itemClassAndIdToShow = [[NSMutableArray alloc] init];
           
             myInstance.kassApp = [[KassApp alloc] init];
             
@@ -70,6 +70,11 @@
         // return the instance of this class
         return myInstance;    
     }
+}
+
+- (void)assignItemToShow:(ActiveModel *)am
+{
+  _itemClassAndIdToShow = [NSArray arrayWithObjects:am.dbClass,am.dbId,nil];
 }
 
 - (CLLocation *)location
@@ -178,8 +183,10 @@
 
 - (void)storeSettings:(NSDictionary *)dict
 {
-  DLog(@"VariableStore::storeSettings:dict");
-  self.settings = [[Settings alloc] initWithDictionary:dict];
+  if (dict) {
+    DLog(@"VariableStore::storeSettings:dict");
+    self.settings = [[Settings alloc] initWithDictionary:dict];
+  }
 }
 
 - (void)resetActivityListings

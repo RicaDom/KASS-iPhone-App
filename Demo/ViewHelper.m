@@ -135,7 +135,7 @@
   UIButton *buttonPayNow = [UIButton buttonWithType:UIButtonTypeCustom];
   buttonPayNow.frame = CGRectMake(5, 5, 60, 20.0);
   [buttonPayNow setTitle:UI_BUTTON_LABEL_PAY_NOW forState:UIControlStateNormal];
-  [buttonPayNow setTitleColor: [UIColor orangeColor] forState: UIControlStateNormal];
+  [buttonPayNow setTitleColor: [UIColor greenColor] forState: UIControlStateNormal];
   [cell.infoView addSubview:buttonPayNow];     
   
   UILabel *labelAskPrice = [[UILabel alloc] init];  
@@ -432,7 +432,7 @@
 {
   UIImage *backImg = [UIImage imageNamed:UI_IMAGE_SMALL_BACK_BUTTON];
   [button setImage:backImg forState:UIControlStateNormal];
-  button.frame = CGRectMake(5, button.frame.origin.y+3, backImg.size.width, backImg.size.height);
+  button.frame = CGRectMake(5, button.frame.origin.y, backImg.size.width, backImg.size.height);
 }
 
 + (void)buildCancelButton:(UIButton *)button
@@ -445,11 +445,17 @@
 + (void)buildShareButton:(UIButton *)button
 {
     UIImage *img = [UIImage imageNamed:UI_IMAGE_SHARE_BUTTON];
-    UIImage *imgPress = [UIImage imageNamed:UI_IMAGE_SHARE_BUTTON_PRESS];
     [button setImage:img forState:UIControlStateNormal];
-    [button setImage:imgPress forState:UIControlStateSelected];
     button.frame = CGRectMake(button.frame.origin.x, button.frame.origin.y, img.size.width, img.size.height);
     button.enabled = YES;
+}
+
++ (void)buildSmallMapButton:(UIButton *)button
+{
+  UIImage *img = [UIImage imageNamed:UI_IMAGE_SMALL_MAP_BUTTON];
+  [button setImage:img forState:UIControlStateNormal];
+  button.frame = CGRectMake(button.frame.origin.x, button.frame.origin.y, img.size.width, img.size.height);
+  button.enabled = YES;
 }
 
 + (void)buildConfirmButton:(UIButton *)button

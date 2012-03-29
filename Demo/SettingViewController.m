@@ -178,7 +178,7 @@ NSArray *settingArray;
     
     //set cell using data
     cell.textLabel.text = ((SettingTable *)[settingArray objectAtIndex:indexPath.row]).displayName;
-    cell.textLabel.font = [UIFont fontWithName:DEFAULT_FONT size:20];
+    cell.textLabel.font = [UIFont fontWithName:DEFAULT_FONT size:16];
     return cell;     
 }
 

@@ -26,6 +26,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
 @property (strong, nonatomic) IBOutlet UIButton *weiboCheckBox;
 @property (weak, nonatomic) IBOutlet UILabel *weiboHintLabel;
+@property (weak, nonatomic) IBOutlet UILabel *submitLabel;
 
 - (IBAction)cancelAction:(id)sender;
 - (IBAction)submitAction;

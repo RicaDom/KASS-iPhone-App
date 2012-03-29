@@ -51,6 +51,7 @@
 + (void)buildCheckBoxButtonUncheck:(UIButton *)button;
 + (void)buildActivityModifyButton:(UIButton *)button;
 + (void)buildActivityShareButton:(UIButton *)button;
++ (void)buildSmallMapButton:(UIButton *)button;
 
 + (void)buildProvideAlertButton:(UIButton *)button;
 + (void)buildProvideBrowseButton:(UIButton *)button;

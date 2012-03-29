@@ -49,7 +49,7 @@
 
 @property (strong, nonatomic) ListItem *itemToShowOnMap;
 @property (strong, nonatomic) NSString *userToShowId;
-@property (strong, nonatomic) ActiveModel *itemToShow;
+@property (strong, nonatomic) NSMutableArray *itemClassAndIdToShow;
 @property (strong, nonatomic) NSDictionary *remoteNotification;
 @property (strong, nonatomic) UIResponder *appDelegate;
 
@@ -64,6 +64,7 @@
 - (void) appendPostingItemToListings:(NSDictionary *)dict;
 - (void)resetActivityListings;
 - (NSMutableDictionary *) getDefaultCriteria;
+- (void)assignItemToShow:(ActiveModel *)am;
 
 - (BOOL) isCurrentUser:(NSString *)userId;
 - (BOOL) isLoggedIn;

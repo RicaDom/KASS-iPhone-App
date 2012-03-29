@@ -8,8 +8,13 @@
 
 #import "AboutDetailsViewController.h"
 #import "ViewHelper.h"
+#import "HJManagedImageV.h"
+#import "UIResponder+VariableStore.h"
+#import "UIView+Subviews.h"
 
 @implementation AboutDetailsViewController
+@synthesize contentView;
+@synthesize mainView;
 @synthesize leftButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -43,11 +48,37 @@
 {
     [super viewDidLoad];
     [ViewHelper buildBackButton:self.leftButton];
+  
+  //load settings
+  if ( [self kassVS].settings.siteDict ) {
+    NSDictionary *aboutDict = [[self kassVS].settings.siteDict objectForKey:@"about"];
+    NSDictionary *introDict = [aboutDict objectForKey:@"intro"];
+    
+    NSString *imgUrl   = [introDict objectForKey:@"image"];
+    NSInteger height   = [[introDict objectForKey:@"height"] intValue];
+   
+    if (imgUrl.isPresent) {
+      CGRect frame = CGRectMake(0, 0, 320, height);
+      HJManagedImageV *imgV = [[HJManagedImageV alloc] initWithFrame:frame]; 
+      imgV.url = [NSURL URLWithString: imgUrl];
+      imgV.tag = INTRO_IMAGE_TAG;
+      [imgV showLoadingWheel];
+      [self.mainView removeViewsWithTag:INTRO_IMAGE_TAG];
+      
+      self.contentView.contentSize = CGSizeMake(320, height);
+      
+      self.mainView.frame = frame;
+      [self.mainView addSubview:imgV];
+      [[self kassApp] manageObj:imgV];
+    }
+  }
 }
 
 - (void)viewDidUnload
 {
     [self setLeftButton:nil];
+    [self setContentView:nil];
+  [self setMainView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

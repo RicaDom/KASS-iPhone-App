@@ -29,6 +29,7 @@
 @synthesize leftButton = _leftButton;
 @synthesize weiboCheckBox = _weiboCheckBox;
 @synthesize weiboHintLabel = _weiboHintLabel;
+@synthesize submitLabel = _submitLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -54,17 +55,14 @@
     if ([VariableStore sharedInstance].isLoggedIn) {
         // Update submit button label if it's an update
         if ([self.postType isEqualToString:POST_TYPE_EDITING]) {
-            self.submitButton.titleLabel.text = UI_BUTTON_LABEL_UPDATE;
+            self.submitLabel.text = UI_BUTTON_LABEL_UPDATE;
         } else {
-            self.submitButton.titleLabel.text = UI_BUTTON_LABEL_POST_NOW;
+            self.submitLabel.text = UI_BUTTON_LABEL_POST_NOW;
         }
     } else {
-        self.submitButton.titleLabel.text = UI_BUTTON_LABEL_SIGNIN_TO_POST;
+        self.submitLabel.text = UI_BUTTON_LABEL_SIGNIN_TO_POST;
     }
-    [self.submitButton.titleLabel setTextAlignment:UITextAlignmentCenter];
-    self.submitButton.titleLabel.font = [UIFont fontWithName:DEFAULT_FONT size:20];
     self.submitButton.hidden = FALSE;
-    
     
     if ([[VariableStore sharedInstance].user isWeiboLogin] > 0) {
         [ViewHelper buildCheckBoxButton:self.weiboCheckBox];
@@ -140,10 +138,6 @@
 
 - (void)customViewLoad
 {
-    UIImage* buttonImg = [UIImage imageNamed:UI_IMAGE_POST_SEND_BUTTON];
-    UIImage* buttonPressImg = [UIImage imageNamed:UI_IMAGE_POST_SEND_BUTTON_PRESS];
-    [self.submitButton setBackgroundImage:buttonImg forState:UIControlStateNormal];
-    [self.submitButton setBackgroundImage:buttonPressImg forState:UIControlStateSelected];
     self.submitButton.hidden = FALSE;
     [ViewHelper buildCancelButton:self.cancelButton];
     [ViewHelper buildEditButton:self.leftButton];
@@ -170,6 +164,7 @@
     [self setWeiboCheckBox:nil];
   [self setWeiboHintLabel:nil];
   [self setTopInfoView:nil];
+  [self setSubmitLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -247,7 +242,7 @@
         if (self.weiboCheckBox.tag == 1) { [params setObject:@"true" forKey:@"publish"]; }
      
         DLog(@"PostSummaryViewController::submitAction:params = %@", params);
-        [self.submitButton.titleLabel setText:TEXT_IN_PROCESS];
+        [self.submitLabel setText:TEXT_IN_PROCESS];
         self.submitButton.hidden = TRUE;
         if ([self.postType isEqualToString:POST_TYPE_EDITING] && self.postingItem.isPersisted) {
             [self.currentUser modifyListing:params:self.postingItem.dbId];

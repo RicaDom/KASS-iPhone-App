@@ -303,11 +303,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/PostSummaryViewController.m"
-         timestampString = "354624904.834869"
+         timestampString = "354691419.189233"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "216"
-         endingLineNumber = "216"
+         startingLineNumber = "211"
+         endingLineNumber = "211"
          landmarkName = "@implementation PostSummaryViewController"
          landmarkType = "3">
       </FileBreakpoint>
@@ -317,11 +317,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/PostSummaryViewController.m"
-         timestampString = "354624904.834869"
+         timestampString = "354691419.189233"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "219"
-         endingLineNumber = "219"
+         startingLineNumber = "214"
+         endingLineNumber = "214"
          landmarkName = "-accountDidModifyListing:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -609,11 +609,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/PostSummaryViewController.m"
-         timestampString = "354624904.834869"
+         timestampString = "354691419.189233"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "279"
-         endingLineNumber = "279"
+         startingLineNumber = "274"
+         endingLineNumber = "274"
          landmarkName = "-weiboCheckBoxAction:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -622,11 +622,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/PostSummaryViewController.m"
-         timestampString = "354558436.38633"
+         timestampString = "354691419.189233"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "97"
-         endingLineNumber = "97"
+         startingLineNumber = "95"
+         endingLineNumber = "95"
          landmarkName = "-loadCurrentPostingData"
          landmarkType = "5">
       </FileBreakpoint>
@@ -635,11 +635,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/PostSummaryViewController.m"
-         timestampString = "354558436.38633"
+         timestampString = "354691419.189233"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "102"
-         endingLineNumber = "102"
+         startingLineNumber = "100"
+         endingLineNumber = "100"
          landmarkName = "-loadCurrentPostingData"
          landmarkType = "5">
       </FileBreakpoint>
@@ -648,7 +648,20 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/PostSummaryViewController.m"
-         timestampString = "354558436.38633"
+         timestampString = "354691419.189233"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "103"
+         endingLineNumber = "103"
+         landmarkName = "-loadCurrentPostingData"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Demo/PostSummaryViewController.m"
+         timestampString = "354691419.189233"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "105"
@@ -661,24 +674,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/PostSummaryViewController.m"
-         timestampString = "354558436.38633"
+         timestampString = "354691419.189233"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "107"
-         endingLineNumber = "107"
-         landmarkName = "-loadCurrentPostingData"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Demo/PostSummaryViewController.m"
-         timestampString = "354554712.782169"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "54"
-         endingLineNumber = "54"
+         startingLineNumber = "55"
+         endingLineNumber = "55"
          landmarkName = "-updateCurrentView"
          landmarkType = "5">
       </FileBreakpoint>
@@ -687,7 +687,20 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/PostSummaryViewController.m"
-         timestampString = "354558436.38633"
+         timestampString = "354691419.189233"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "67"
+         endingLineNumber = "67"
+         landmarkName = "-updateCurrentView"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Demo/PostSummaryViewController.m"
+         timestampString = "354691419.189233"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "69"
@@ -700,11 +713,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/PostSummaryViewController.m"
-         timestampString = "354558436.38633"
+         timestampString = "354691419.189233"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "71"
-         endingLineNumber = "71"
+         startingLineNumber = "75"
+         endingLineNumber = "75"
          landmarkName = "-updateCurrentView"
          landmarkType = "5">
       </FileBreakpoint>
@@ -713,24 +726,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/PostSummaryViewController.m"
-         timestampString = "354558436.38633"
+         timestampString = "354691419.189233"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "77"
-         endingLineNumber = "77"
-         landmarkName = "-updateCurrentView"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Demo/PostSummaryViewController.m"
-         timestampString = "354624904.834869"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "284"
-         endingLineNumber = "284"
+         startingLineNumber = "279"
+         endingLineNumber = "279"
          landmarkName = "-weiboCheckBoxAction:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -739,11 +739,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/PostSummaryViewController.m"
-         timestampString = "354624904.834869"
+         timestampString = "354691419.189233"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "252"
-         endingLineNumber = "252"
+         startingLineNumber = "247"
+         endingLineNumber = "247"
          landmarkName = "-submitAction"
          landmarkType = "5">
       </FileBreakpoint>
@@ -830,11 +830,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/BrowseItemNoMsgViewController.m"
-         timestampString = "354601501.24371"
+         timestampString = "354698343.480066"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "292"
-         endingLineNumber = "292"
+         startingLineNumber = "311"
+         endingLineNumber = "311"
          landmarkName = "-textFieldDidBeginEditing:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -869,11 +869,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/SellerAlertsViewController.m"
-         timestampString = "354358565.994529"
+         timestampString = "354690724.521603"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "170"
-         endingLineNumber = "170"
+         startingLineNumber = "176"
+         endingLineNumber = "176"
          landmarkName = "-tableView:canEditRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -882,46 +882,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/SellerAlertsViewController.m"
-         timestampString = "354358565.994529"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "185"
-         endingLineNumber = "185"
-         landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Demo/SellerAlertsViewController.m"
-         timestampString = "354358565.994529"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "187"
-         endingLineNumber = "187"
-         landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Demo/SellerAlertsViewController.m"
-         timestampString = "354358565.994529"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "195"
-         endingLineNumber = "195"
-         landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Demo/SellerAlertsViewController.m"
-         timestampString = "354358565.994529"
+         timestampString = "354690724.521603"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "191"
@@ -933,12 +894,51 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Demo/ItemViewController.m"
-         timestampString = "354644222.153888"
+         filePath = "Demo/SellerAlertsViewController.m"
+         timestampString = "354690724.521603"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "282"
-         endingLineNumber = "282"
+         startingLineNumber = "193"
+         endingLineNumber = "193"
+         landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Demo/SellerAlertsViewController.m"
+         timestampString = "354690724.521603"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "201"
+         endingLineNumber = "201"
+         landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Demo/SellerAlertsViewController.m"
+         timestampString = "354690724.521603"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "197"
+         endingLineNumber = "197"
+         landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Demo/ItemViewController.m"
+         timestampString = "354688267.944065"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "288"
+         endingLineNumber = "288"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1220,11 +1220,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/PostSummaryViewController.m"
-         timestampString = "354558694.420643"
+         timestampString = "354691419.189233"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "59"
-         endingLineNumber = "59"
+         startingLineNumber = "60"
+         endingLineNumber = "60"
          landmarkName = "-updateCurrentView"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1317,6 +1317,123 @@
          startingLineNumber = "387"
          endingLineNumber = "387"
          landmarkName = "-createStatusCall:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Demo/User.m"
+         timestampString = "354696817.933221"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "380"
+         endingLineNumber = "380"
+         landmarkName = "-createStatusCall:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Demo/KassApi.m"
+         timestampString = "354696878.616628"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "384"
+         endingLineNumber = "384"
+         landmarkName = "-createStatusCall:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Demo/BrowseItemNoMsgViewController.m"
+         timestampString = "354698343.480066"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "274"
+         endingLineNumber = "274"
+         landmarkName = "-actionSheet:clickedButtonAtIndex:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Demo/BrowseItemNoMsgViewController.m"
+         timestampString = "354698343.480066"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "282"
+         endingLineNumber = "282"
+         landmarkName = "-actionSheet:clickedButtonAtIndex:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Demo/BrowseItemNoMsgViewController.m"
+         timestampString = "354698343.480066"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "277"
+         endingLineNumber = "277"
+         landmarkName = "-actionSheet:clickedButtonAtIndex:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Demo/BrowseItemNoMsgViewController.m"
+         timestampString = "354698343.480066"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "285"
+         endingLineNumber = "285"
+         landmarkName = "-actionSheet:clickedButtonAtIndex:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Demo/UserInfoViewController.m"
+         timestampString = "354698396.397811"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "211"
+         endingLineNumber = "211"
+         landmarkName = "-handleSingleTap:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Demo/AppDelegate.m"
+         timestampString = "354701377.210544"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "201"
+         endingLineNumber = "201"
+         landmarkName = "-applicationDidBecomeActive:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Demo/AppDelegate.m"
+         timestampString = "354701385.549925"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "200"
+         endingLineNumber = "200"
+         landmarkName = "-applicationDidBecomeActive:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

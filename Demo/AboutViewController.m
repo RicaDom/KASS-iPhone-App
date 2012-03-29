@@ -97,6 +97,7 @@
     
     //set cell using data
     cell.textLabel.text = [self.aboutArray objectAtIndex:indexPath.row];
+    cell.textLabel.font = [UIFont fontWithName:DEFAULT_FONT size:14];
     return cell;     
 }
 

@@ -88,10 +88,19 @@
   
   [self modifyPriceModifierPrice:self.currentItem.price];
   
+  [VariableStore.sharedInstance assignItemToShow:_currentItem];
   VariableStore.sharedInstance.userToShowId = _currentItem.userId;
   
   if (_currentItem.userImageUrl.isPresent) {
     [ViewHelper buildRoundCustomImageViewWithFrame:_avatarContainerView:_currentItem.userImageUrl:CGRectMake(5,5,50,50)];
+  }
+  
+  if ( self.currentItem.isPaid ) {
+    [self hideInputMessageShowStatus:UI_LABEL_OFFER_PAID];
+  } else if ( self.currentItem.isAccepted ) {
+    [self hideInputMessageShowStatus:UI_LABEL_ACCEPTED];
+  } else if ( self.currentItem.isExpired ) {
+    [self hideInputMessageShowStatus:UI_LABEL_EXPIRED];
   }
   
   [self hideIndicator];
@@ -152,7 +161,7 @@
 - (void) keyboardMainViewMovedDown{
   [ViewHelper buildBackButton:self.leftButton];
   self.leftButton.tag = LEFT_BAR_BUTTON_BACK;
-  [ViewHelper buildMapButton:self.rightButton];
+  [ViewHelper buildShareButton:self.rightButton];
   self.rightButton.tag = RIGHT_BAR_BUTTON_MAP;
 }
 
@@ -261,9 +270,19 @@
       [[self currentUser] weiboShare:_currentItem];
       
     } else if (buttonIndex == 1) {
-        //self.label.text = @"Other Button 1 Clicked";
+      
+      NSString *smsString = [NSString stringWithFormat:@"sms:+1?to=&subject=%@&body=%@",
+                             _currentItem.title,
+                             _currentItem.description];
+      [[UIApplication sharedApplication] openURL:[NSURL URLWithString:smsString]];
+      
     } else if (buttonIndex == 2) {
-        //self.label.text = @"Other Button 2 Clicked";
+        
+      NSString *mailString = [NSString stringWithFormat:@"mailto:j@g.com?to=&subject=%@&body=%@",
+                              _currentItem.title,
+                              _currentItem.description];
+      [[UIApplication sharedApplication] openURL:[NSURL URLWithString:mailString]];
+      
     } else if (buttonIndex == 3) {
         //self.label.text = @"Cancel Button Clicked";
     }

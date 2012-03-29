@@ -197,7 +197,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
   DLog(@"AppDelegate::applicationDidBecomeActive");
-  if ( !VariableStore.sharedInstance.settings && !VariableStore.sharedInstance.settings.siteDict) {
+  if ( !VariableStore.sharedInstance.settings || !VariableStore.sharedInstance.settings.siteDict) {
     [VariableStore.sharedInstance loadSettings:self];
   }
 }

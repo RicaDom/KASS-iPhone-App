@@ -42,6 +42,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *changedPriceMessage;
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
 @property (strong, nonatomic) IBOutlet UIButton *rightButton;
+@property (weak, nonatomic) IBOutlet UILabel *confirmLabel;
 
 - (IBAction)sellerInfoAction:(id)sender;
 - (IBAction)buttonDraggingAction:(UIPanGestureRecognizer*)recognizer;

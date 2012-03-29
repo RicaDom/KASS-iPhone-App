@@ -17,6 +17,7 @@
 # define LOADING_LABEL_VIEW_TAG 1218
 # define BUTTON_STATUS_TAG 1219
 # define USER_INFO_ICON_TAG 1220
+# define INTRO_IMAGE_TAG 1221
 
 #define REQUEST_TIMEOUT 10
 #define _ScrollViewContentSizeX 320 
@@ -167,8 +168,7 @@ extern NSString * const UI_IMAGE_BACK_BUTTON;
 extern NSString * const UI_IMAGE_BACK_BUTTON_PRESS;
 extern NSString * const UI_IMAGE_SHARE_BUTTON;
 extern NSString * const UI_IMAGE_SHARE_BUTTON_PRESS;
-extern NSString * const UI_IMAGE_MAP_BUTTON;
-extern NSString * const UI_IMAGE_MAP_BUTTON_PRESS;
+extern NSString * const UI_IMAGE_SMALL_MAP_BUTTON;
 extern NSString * const UI_IMAGE_TABLE_CELL_BG;
 extern NSString * const UI_IMAGE_TABLE_CELL_BG_PRESS;
 extern NSString * const UI_IMAGE_SMALL_BACK_BUTTON;

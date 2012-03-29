@@ -74,7 +74,7 @@ NSString *remoteNotificationOfferId = nil;
     [self.offerTableView reloadData];
   }
   
-  VariableStore.sharedInstance.itemToShow = _currentItem;
+  [VariableStore.sharedInstance assignItemToShow:_currentItem];
   VariableStore.sharedInstance.userToShowId = _currentItem.userId;
   
   [self hideIndicator];
@@ -205,11 +205,17 @@ NSString *remoteNotificationOfferId = nil;
           
             //self.label.text = @"Destructive Button Clicked";
         } else if (buttonIndex == 1) {
-            
-            //self.label.text = @"Other Button 1 Clicked";
+          NSString *smsString = [NSString stringWithFormat:@"sms:?to=&subject=%@&body=%@",
+                                               _currentItem.title,
+                                               _currentItem.description];
+          [[UIApplication sharedApplication] openURL:[NSURL URLWithString:smsString]];
         } else if (buttonIndex == 2) {
             
-            //self.label.text = @"Other Button 2 Clicked";
+          NSString *mailString = [NSString stringWithFormat:@"mailto:?to=&subject=%@&body=%@",
+                                    _currentItem.title,
+                                    _currentItem.description];
+          [[UIApplication sharedApplication] openURL:[NSURL URLWithString:mailString]];
+          
         } else if (buttonIndex == 3) {
             
             //self.label.text = @"Cancel Button Clicked";

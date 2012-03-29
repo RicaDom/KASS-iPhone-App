@@ -123,11 +123,10 @@ NSString * const UI_IMAGE_NEXT_BUTTON_ENABLE_PRESS = @"next.png";
 NSString * const UI_IMAGE_CANCEL_BUTTON = @"iphone_07.png";
 NSString * const UI_IMAGE_SHARE_BUTTON = @"btn-rect-share.png";
 NSString * const UI_IMAGE_SHARE_BUTTON_PRESS = @"btn-rect-share.png";
-//NSString * const UI_IMAGE_MAP_BUTTON = @"iphone_13.png";
-//NSString * const UI_IMAGE_MAP_BUTTON_PRESS = @"iphone_26.png";
+NSString * const UI_IMAGE_SMALL_MAP_BUTTON = @"btn_map_small.png";
 NSString * const UI_IMAGE_TABLE_CELL_BG = @"listbg.png";
 NSString * const UI_IMAGE_TABLE_CELL_BG_PRESS = @"listbg2.png";
-NSString * const UI_IMAGE_SMALL_BACK_BUTTON = @"backarrow_01.png";
+NSString * const UI_IMAGE_SMALL_BACK_BUTTON = @"btn-left-arrow-small.png";
 NSString * const UI_IMAGE_BACK_BUTTON = @"backarrow_01.png";
 
 NSString * const UI_IMAGE_ACTIVITY_BACKGROUND = @"bg_sky.png";

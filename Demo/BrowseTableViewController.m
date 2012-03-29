@@ -243,7 +243,7 @@
   [self browseSegmentAction:self];    
   
   [ViewHelper buildSmallBackButton:self.leftButton];
-  [ViewHelper buildMapButton:self.mapButton];
+  [ViewHelper buildSmallMapButton:self.mapButton];
 }
 
 - (void)viewDidUnload

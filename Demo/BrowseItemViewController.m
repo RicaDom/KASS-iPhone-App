@@ -103,7 +103,7 @@
   // self.itemExpiredDate.text = [NSString stringWithFormat:@"%@", [formatter stringFromDate:self.currentOffer.listItemEndedAt]];
   self.itemExpiredDate.text = [self.currentOffer getListItemTimeLeftTextlong];
   
-  VariableStore.sharedInstance.itemToShow = _currentOffer;
+  [VariableStore.sharedInstance assignItemToShow:_currentOffer];
   VariableStore.sharedInstance.userToShowId = _currentOffer.buyerId;
   
   if (_currentOffer.buyerImageUrl.isPresent) {

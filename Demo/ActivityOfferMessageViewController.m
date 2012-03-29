@@ -34,6 +34,7 @@
 @synthesize changedPriceMessage = _changedPriceMessage;
 @synthesize leftButton = _leftButton;
 @synthesize rightButton = _rightButton;
+@synthesize confirmLabel = _confirmLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -73,6 +74,7 @@
   
   self.confirmDealButton.hidden = TRUE;
   self.confirmImageView.hidden  = TRUE;
+  self.confirmLabel.hidden      = TRUE;
 }
 
 - (void) populateData:(NSDictionary *)dict{
@@ -83,9 +85,10 @@
   self.descriptionTextField.text  = self.currentOffer.description;
   self.listingExpiredDate.text    = [self.currentOffer getListItemTimeLeftTextlong];
   self.offerPrice.text            = [self.currentOffer getPriceText]; 
+  self.confirmLabel.hidden        = FALSE;
   
   [self modifyPriceModifierPrice:self.currentOffer.price];
-  VariableStore.sharedInstance.itemToShow = _currentOffer;
+  [VariableStore.sharedInstance assignItemToShow:_currentOffer];
   VariableStore.sharedInstance.userToShowId = _currentOffer.userId;
   
   if (_currentOffer.sellerImageUrl.isPresent) {
@@ -204,6 +207,7 @@
     [self setLeftButton:nil];
     [self setScrollView:nil];
   [self setTopInfoView:nil];
+  [self setConfirmLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

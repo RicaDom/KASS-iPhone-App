@@ -11,5 +11,7 @@
 @interface AboutDetailsViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
 - (IBAction)leftButtonAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UIScrollView *contentView;
+@property (weak, nonatomic) IBOutlet UIView *mainView;
 
 @end
