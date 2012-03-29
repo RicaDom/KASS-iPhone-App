@@ -247,11 +247,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/PostViewController.m"
-         timestampString = "354442036.346386"
+         timestampString = "354714180.979978"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "173"
-         endingLineNumber = "173"
+         startingLineNumber = "175"
+         endingLineNumber = "175"
          landmarkName = "-singleTapGestureCaptured:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -261,11 +261,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/PostViewController.m"
-         timestampString = "354442036.346386"
+         timestampString = "354714180.979978"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "238"
-         endingLineNumber = "238"
+         startingLineNumber = "240"
+         endingLineNumber = "240"
          landmarkName = "-loadPostTemplates:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -289,11 +289,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/PostViewController.m"
-         timestampString = "354442036.346386"
+         timestampString = "354714180.979978"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "219"
-         endingLineNumber = "219"
+         startingLineNumber = "221"
+         endingLineNumber = "221"
          landmarkName = "-prepareForSegue:sender:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1064,13 +1064,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/PostViewController.m"
-         timestampString = "354442036.346386"
+         timestampString = "354714180.979978"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "257"
-         endingLineNumber = "257"
-         landmarkName = "-refreshing"
-         landmarkType = "5">
+         startingLineNumber = "259"
+         endingLineNumber = "259"
+         landmarkName = "@implementation PostViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"

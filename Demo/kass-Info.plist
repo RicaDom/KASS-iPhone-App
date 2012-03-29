@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>zh_CN</string>
 	<key>CFBundleDisplayName</key>
-	<string>${PRODUCT_NAME}</string>
+	<string>街区</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFiles</key>
@@ -31,11 +31,11 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>${PRODUCT_NAME}</string>
+	<string>街区</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.02</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -48,12 +48,10 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>1.01</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>Partner</key>
-	<string>2088502820935770</string>
-	<key>Seller</key>
 	<string>2088502820935770</string>
 	<key>RSA private key</key>
 	<string>MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAK2vnLOXv9AahNWKSEMjlzl+pQ7K+ExpM6jf4yqjcnCXHkfgWSBNNfqXgHdExS/yYmb5aglrqwke38OWjqTOETgI9Xt5PsNwIcIQYq37l/ruygknfyJdI7EDN5QHKZQbq32Cg3jQrXy05Sg8tMMyJMw7rz6+N1YX9NGWWZwH3w5/AgMBAAECgYB4wD3GkjrVuIofV9szajwJyeWBKlWD8iPrRXROwYGfi0CPIgd0sJlVlhzHTrV0xyPoiYBR+lvXpHJXLYYQR/+pen84Gbooz+x288w42MvmjPGdd1VzBO7uhdm9w4soW2bHF5hALfWM5LiVdBaWKs5Pd7ZYazGGTVzG+HFOjlNuyQJBAOLEK9L/s0E74f1TTuLJfaDMC81suA/w63909TYtpGIqNyPHOVQBt1ce7vZpAM7WbWRgzqw/ptxPaP0wGZoZyOsCQQDEE6oAl4TyxwY3tYsbdFIAxl5vkbPXV80W+5bnXQmbOcI2iEnblPAVPE8JiUaf+/jlqyezHV8KGGWYwvyssuu9AkAqNOULQrh0fdbUNbtLDsGpOhFATOn9XZQXhwdU7C3ab40Pxbbv4dnkB0fm6ShTVynJMxOEj9xYyRb7eQZq3j29AkEAvBOcmuq79OAhP6ic4V3HFsUwalZZKjMnH2d+jTi58TIK76H1LnIDhGsP6TbLDsR0L2DoOK/wrM9QDKLkGYeaBQJAW9ah7aikSPIeFDJYToITfK0IFy7LaH8th88h1KUTLvX3fHsP6l2oN1/aw1zmR5ywCPt/Z6vOd70L2W0Oo84IqA==</string>
@@ -62,6 +60,8 @@
 yvhMaTOo3+Mqo3Jwlx5H4FkgTTX6l4B3RMUv8mJm+WoJa6sJHt/Dlo6kzhE4CPV7
 eT7DcCHCEGKt+5f67soJJ38iXSOxAzeUBymUG6t9goN40K18tOUoPLTDMiTMO68+
 vjdWF/TRllmcB98OfwIDAQAB</string>
+	<key>Seller</key>
+	<string>2088502820935770</string>
 	<key>UIMainStoryboardFile</key>
 	<string>MainStoryboard</string>
 	<key>UIRequiredDeviceCapabilities</key>
