@@ -30,7 +30,8 @@
     // add text field if user changed price
     if ([price length] > 0) {
         changedPriceMessage.frame = CGRectMake(0,  2, bottomView.frame.size.width, 20);
-        [changedPriceMessage setText:[@"您已经把价格调整为 ¥ " stringByAppendingFormat:price ]];      
+        [changedPriceMessage setText
+          :[[NSString alloc] initWithFormat:@"您已经把价格调整为 ¥ %@，发消息告诉TA吧", price]];      
         [changedPriceMessage setTextColor:[UIColor lightGrayColor]];
         changedPriceMessage.backgroundColor = [UIColor clearColor];
         [changedPriceMessage setTextAlignment:UITextAlignmentCenter];
