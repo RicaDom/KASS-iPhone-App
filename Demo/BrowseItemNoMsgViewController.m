@@ -270,17 +270,12 @@
       [[self currentUser] weiboShare:_currentItem];
       
     } else if (buttonIndex == 1) {
-      
-      NSString *smsString = [NSString stringWithFormat:@"sms:+1?to=&subject=%@&body=%@",
-                             _currentItem.title,
-                             _currentItem.description];
-      [[UIApplication sharedApplication] openURL:[NSURL URLWithString:smsString]];
+      [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"sms:"]];
       
     } else if (buttonIndex == 2) {
-        
-      NSString *mailString = [NSString stringWithFormat:@"mailto:j@g.com?to=&subject=%@&body=%@",
-                              _currentItem.title,
-                              _currentItem.description];
+      NSString *mailString = [NSString stringWithFormat:@"mailto:?subject=%@&body=%@",
+                              [_currentItem.title URLEncodedString] ,
+                              [_currentItem.description URLEncodedString] ];
       [[UIApplication sharedApplication] openURL:[NSURL URLWithString:mailString]];
       
     } else if (buttonIndex == 3) {

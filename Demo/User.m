@@ -529,9 +529,10 @@
   DLog(@"User::weiboShare:listItem=%@", [listItem title]);
   
   NSString *who = [self hasListItem:listItem] ? @"我" : @"有人";
-  NSString *statusSample = [VariableStore.sharedInstance.settings valueForKey:@"share_status"];
-  NSString *siteName = [VariableStore.sharedInstance.settings valueForKey:@"name"];
-  NSString *shareImg = [VariableStore.sharedInstance.settings valueForKey:@"share_img"];
+  
+  NSString *siteName = [VariableStore.sharedInstance.settings.siteDict valueForKey:@"name"];
+  NSString *statusSample = [VariableStore.sharedInstance.settings.weiboShareDict valueForKey:@"share_status"];
+  NSString *shareImg = [VariableStore.sharedInstance.settings.weiboShareDict valueForKey:@"share_img"];
   
   NSString *status = [statusSample stringByReplacingOccurrencesOfString:@"[[site]]" withString: siteName];
   status = [status stringByReplacingOccurrencesOfString:@"[[user]]" withString: who];
