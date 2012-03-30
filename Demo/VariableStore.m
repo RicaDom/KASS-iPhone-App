@@ -103,6 +103,14 @@
   return YES;
 }
 
+- (void) getAuth
+{
+  if( !self.user ) self.user = [[User alloc] init];
+  if( !self.user.delegate ) self.user.delegate = _currentViewControllerDelegate;
+  
+  [self.user.account getAuth];
+}
+
 
 - (BOOL) signUpAccount:(NSDictionary *)userInfo
 {

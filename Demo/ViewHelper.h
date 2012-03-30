@@ -53,6 +53,7 @@
 + (void)buildActivityShareButton:(UIButton *)button;
 + (void)buildSmallMapButton:(UIButton *)button;
 
++ (void)buildPostButton:(UIButton *)button;
 + (void)buildProvideAlertButton:(UIButton *)button;
 + (void)buildProvideBrowseButton:(UIButton *)button;
 + (void)buildConfirmPaymentButton:(UIView *)view:(id)delegate;

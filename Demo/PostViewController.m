@@ -12,6 +12,7 @@
 #import "UIViewController+ActivityIndicate.h"
 
 @implementation PostViewController
+@synthesize postButton = _postButton;
 
 @synthesize hotPostScrollView = _hotPostScrollView;
 @synthesize hotPostPageControl = _hotPostPageControl;
@@ -249,6 +250,11 @@
   [self showManagedImageView:_creativeTemplates:_creativePostPageControl];
 }
 
+- (IBAction)rightButtonAction:(id)sender
+{
+  
+}
+
 /**
  Scroll View Refresh Puller Delegate
  */
@@ -274,7 +280,7 @@
   
     // init scroll view content size
     self.mainScrollView.contentSize = CGSizeMake(_ScrollViewContentSizeX, self.contentView.frame.size.height - self.addPostSloganLabel.frame.size.height/2);   
-    self.mainView.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"startbg.png"]];
+//    self.mainView.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"startbg.png"]];
     
     UIImage *slogan = [UIImage imageNamed:UI_IMAGE_BROWSE_POST_SLOGAN];
     self.addPostBackgroundView.frame = CGRectMake(self.addPostButton.frame.origin.x - 5, self.addPostButton.frame.origin.y - 7, slogan.size.width, slogan.size.height);
@@ -282,6 +288,8 @@
     self.addPostSloganLabel.hidden = YES;
    
     [_navBar setBackgroundImage:[UIImage imageNamed: UI_IMAGE_NAVIGATION_BACKGROUND]forBarMetrics:UIBarMetricsDefault];
+  
+    [ViewHelper buildPostButton:_postButton];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -314,6 +322,7 @@
     [self setAddPostSloganLabel:nil];
   [self setNavItemTitle:nil];
   [self setNavBar:nil];
+  [self setPostButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

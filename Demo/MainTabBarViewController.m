@@ -11,6 +11,8 @@
 
 @implementation MainTabBarViewController
 
+static BOOL alreadyShowedIntro = false;
+
 - (void)tabBarController:(UITabBarController *)tbc didSelectViewController:(UIViewController *)vc {
     // Middle tab bar item in question.
     if (vc == [tbc.viewControllers objectAtIndex:4]) {
@@ -88,17 +90,13 @@
     closeFingerTap  = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleCloseTap:)];
 
   
-    alreadyShowedIntro = false;
-
     if ( ![[VariableStore sharedInstance] isLoggedIn]) {
       [MTPopupWindow showWindowWithUIView:self.view];
+      if (!alreadyShowedIntro) {
+        [ViewHelper showIntroView:self.view:singleFingerTap:closeFingerTap];
+        alreadyShowedIntro = true;
+      }
     }
-    
-    if (!alreadyShowedIntro) {
-      [ViewHelper showIntroView:self.view:singleFingerTap:closeFingerTap];
-      alreadyShowedIntro = true;
-    }
-  
 }
 
 //The event handling method

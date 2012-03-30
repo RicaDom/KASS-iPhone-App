@@ -108,5 +108,6 @@ typedef enum {
 + (BOOL)isNameValid:(NSString *)name;
 + (BOOL)isPhoneValid:(NSString *)phone;
 
+- (void)getAuth;
 
 @end

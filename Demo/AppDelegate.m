@@ -132,6 +132,7 @@
 	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:
    (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
 
+  [application setStatusBarStyle:UIStatusBarStyleBlackOpaque];
   
   return !!VariableStore.sharedInstance.settings;
 }
@@ -200,6 +201,11 @@
   if ( !VariableStore.sharedInstance.settings || !VariableStore.sharedInstance.settings.siteDict) {
     [VariableStore.sharedInstance loadSettings:self];
   }
+  
+  if (!VariableStore.sharedInstance.isLoggedIn ) {
+    [VariableStore.sharedInstance getAuth];
+  }
+  
 }
 //
 //- (void)applicationWillTerminate:(UIApplication *)application

@@ -47,4 +47,7 @@
 - (IBAction)changeEditorPostPage;
 - (IBAction)changeHotPostPage;
 
+
+@property (weak, nonatomic) IBOutlet UIButton *postButton;
+- (IBAction)rightButtonAction:(id)sender;
 @end

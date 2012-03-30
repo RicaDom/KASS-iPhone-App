@@ -133,6 +133,8 @@
 		777D4C091525A5280048B34B /* intro@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 777D4C081525A5280048B34B /* intro@2x.png */; };
 		777D4C101525BFC20048B34B /* close-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 777D4C0E1525BFC20048B34B /* close-black.png */; };
 		777D4C111525BFC20048B34B /* close-black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 777D4C0F1525BFC20048B34B /* close-black@2x.png */; };
+		777D4C141525CFCB0048B34B /* btn-post.png in Resources */ = {isa = PBXBuildFile; fileRef = 777D4C121525CFCB0048B34B /* btn-post.png */; };
+		777D4C151525CFCB0048B34B /* btn-post@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 777D4C131525CFCB0048B34B /* btn-post@2x.png */; };
 		777E4D1914DB92D7002B40C3 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 777E4D1714DB8D97002B40C3 /* SFHFKeychainUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		777E4D2014DBB7ED002B40C3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777E4D1F14DBB7ED002B40C3 /* Security.framework */; };
 		777E4EB814DD8303002B40C3 /* SendViewLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 777E4E9414DD8303002B40C3 /* SendViewLocalizable.strings */; };
@@ -618,6 +620,8 @@
 		777D4C081525A5280048B34B /* intro@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "intro@2x.png"; sourceTree = "<group>"; };
 		777D4C0E1525BFC20048B34B /* close-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-black.png"; sourceTree = "<group>"; };
 		777D4C0F1525BFC20048B34B /* close-black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-black@2x.png"; sourceTree = "<group>"; };
+		777D4C121525CFCB0048B34B /* btn-post.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-post.png"; sourceTree = "<group>"; };
+		777D4C131525CFCB0048B34B /* btn-post@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-post@2x.png"; sourceTree = "<group>"; };
 		777E4D1614DB8D97002B40C3 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
 		777E4D1714DB8D97002B40C3 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
 		777E4D1F14DBB7ED002B40C3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -2099,6 +2103,8 @@
 			isa = PBXGroup;
 			children = (
 				77512E7A15235BE3002A512E /* btn-edit.png */,
+				777D4C121525CFCB0048B34B /* btn-post.png */,
+				777D4C131525CFCB0048B34B /* btn-post@2x.png */,
 				77512E7B15235BE3002A512E /* btn-edit@2x.png */,
 				776F95481518397000F464DF /* input_150@2x.png */,
 				773533411523074100CD8815 /* next.png */,
@@ -2480,6 +2486,8 @@
 				777D4C091525A5280048B34B /* intro@2x.png in Resources */,
 				777D4C101525BFC20048B34B /* close-black.png in Resources */,
 				777D4C111525BFC20048B34B /* close-black@2x.png in Resources */,
+				777D4C141525CFCB0048B34B /* btn-post.png in Resources */,
+				777D4C151525CFCB0048B34B /* btn-post@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

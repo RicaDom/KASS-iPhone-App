@@ -128,6 +128,7 @@ NSString * const UI_IMAGE_TABLE_CELL_BG = @"listbg.png";
 NSString * const UI_IMAGE_TABLE_CELL_BG_PRESS = @"listbg2.png";
 NSString * const UI_IMAGE_SMALL_BACK_BUTTON = @"btn-left-arrow-small.png";
 NSString * const UI_IMAGE_BACK_BUTTON = @"backarrow_01.png";
+NSString * const UI_IMAGE_POST_BUTTON = @"btn-post.png";
 
 NSString * const UI_IMAGE_ACTIVITY_BACKGROUND = @"bg_sky.png";
 NSString * const UI_IMAGE_ACTIVITY_EDIT_BUTTON = @"btn-modify.png";

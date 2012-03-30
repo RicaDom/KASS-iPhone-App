@@ -27,6 +27,9 @@
 - (id)initWithEmailAndPassword:(NSString*)email:(NSString *)password;
 - (id)initWithWeiboEncodedData:(NSString*)encode;
 
+- (void)getAuth;
+- (void)getAuthFinished:(NSData *)data;
+
 - (void)loginFinished:(NSData *)data;
 - (void)logoutFinished:(NSData *)data;
 - (void)signupFinished:(NSData *)data;

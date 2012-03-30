@@ -142,6 +142,17 @@
   	[_delegate accountDidLogout];
 }
 
+- (void)getAuth
+{
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"getAuthFinished:"];
+  [ka getAuth];
+}
+
+- (void)getAuthFinished:(NSData *)data
+{
+  [self loginFinished:data];
+}
+
 - (void)logout
 {
   DLog(@"Account::logout");

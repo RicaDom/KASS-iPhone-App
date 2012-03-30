@@ -470,6 +470,15 @@
     [_delegate accountLoginFinished];
 }
 
+- (void)getAuth
+{
+  if (!account) {
+    account = [[Account alloc]init];
+    account.delegate = self;
+  }
+  [account getAuth];
+}
+
 - (void)accountLoginFailed:(NSDictionary *)error
 {
   DLog(@"User::accountLoginFailed:error=%@", error);

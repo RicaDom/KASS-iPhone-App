@@ -15,7 +15,6 @@
 @interface MainTabBarViewController : UITabBarController <UIAlertViewDelegate, UITabBarControllerDelegate>{
   UITapGestureRecognizer *singleFingerTap;
   UITapGestureRecognizer *closeFingerTap;
-  BOOL alreadyShowedIntro;
 }
 
 @end

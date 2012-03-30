@@ -329,6 +329,12 @@
   [self getData:_url];
 }
 
+- (void)getAuth
+{
+  _url = [NSString stringWithFormat:@"http://%s/v1/auth", HOST];
+  [self getData:_url];
+}
+
 - (void)getAlertListings:(NSString *)modelId
 {
   _url = [NSString stringWithFormat:@"http://%s/v1/alerts/%@/listings", HOST, modelId];

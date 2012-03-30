@@ -70,6 +70,7 @@
 - (void)signUp:(NSDictionary *)dict;
 - (void)login:(NSDictionary *)dict;
 - (void)logout:(NSString *)token;
+- (void)getAuth;
 
 - (void)requestFinished:(ASIHTTPRequest *)request;
 - (void)requestFailed:(ASIHTTPRequest *)request;

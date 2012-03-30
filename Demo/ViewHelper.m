@@ -458,9 +458,9 @@
   
   UIImageView *cView = (UIImageView *)[view getViewWithTag:CLOSE_VIEW_TAG];
   if (!cView) {
-    UIImage *closeImg = [UIImage imageNamed:@"close-black.png"];
+    UIImage *closeImg = [UIImage imageNamed:@"popupCloseBtn.png"];
     UIImageView *cView = [[UIImageView alloc] initWithImage:closeImg];
-    cView.frame = CGRectMake(290, 25, 24, 24);
+    cView.frame = CGRectMake(290, 28, 24, 24);
     cView.userInteractionEnabled=YES;
     cView.tag = CLOSE_VIEW_TAG;
     [aView addGestureRecognizer:closeFingerTap];
@@ -484,6 +484,13 @@
   if (cView) {
     cView.hidden = TRUE;
   }
+}
+
++ (void)buildPostButton:(UIButton *)button
+{
+  UIImage *img = [UIImage imageNamed:UI_IMAGE_POST_BUTTON];
+  [button setImage:img forState:UIControlStateNormal];
+  button.frame = CGRectMake(5, button.frame.origin.y, img.size.width, img.size.height);
 }
 
 + (void)buildMapButton:(UIButton *)button
