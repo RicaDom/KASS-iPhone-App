@@ -458,7 +458,7 @@
   
   UIImageView *cView = (UIImageView *)[view getViewWithTag:CLOSE_VIEW_TAG];
   if (!cView) {
-    UIImage *closeImg = [UIImage imageNamed:@"close.png"];
+    UIImage *closeImg = [UIImage imageNamed:@"close-black.png"];
     UIImageView *cView = [[UIImageView alloc] initWithImage:closeImg];
     cView.frame = CGRectMake(290, 25, 24, 24);
     cView.userInteractionEnabled=YES;
