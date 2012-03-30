@@ -400,6 +400,76 @@
   return [VariableStore.sharedInstance kassApp];
 }
 
++ (void)showConnectionErrorAlert:(UIView *)view
+{
+  [view removeAlertViews];
+  
+  UIView *aView = [[UIView alloc] initWithFrame:CGRectMake(0, -40, 320, 40)];
+  UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+  label.text = ERROR_MSG_CONNECTION_FAILURE;
+  label.font = [UIFont fontWithName:DEFAULT_FONT size:12];
+  [label setTextColor:[UIColor redColor]];
+  label.backgroundColor = [UIColor colorWithRed:0.95 green:0.98 blue:0.98 alpha:1.0];
+  label.textAlignment = UITextAlignmentCenter;
+  
+  UIImage *img = [UIImage imageNamed:@"alert"];
+  UIImageView *iView = [[UIImageView alloc] initWithImage:img];
+  iView.frame = CGRectMake(100, 10, 16, 16);
+  
+  aView.tag = ALERT_VIEW_TAG;
+  aView.backgroundColor = [UIColor lightGrayColor];
+  [aView addSubview:label];
+  [aView addSubview:iView];
+  [view addSubview:aView];
+  
+  [UIView animateWithDuration:0.45 animations:^{
+    aView.frame = CGRectMake(0, 0, 320, 40);
+  }];
+}
+
++ (UIScrollView *)getIntroScrollView:(UIView *)view
+{
+  for(UIView *subview in view.subviews) {
+    if (subview.tag == INTRO_VIEW_TAG) {
+      return (UIScrollView*)subview;
+    }
+  }
+  return NULL;
+}
+
++ (void)showIntroView:(UIView *)view:(UITapGestureRecognizer *)singleFingerTap
+{
+  UIScrollView *aView = [self getIntroScrollView:view];
+  if (!aView) {
+    aView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, -480, 320, 480)];
+    
+    UIImage *img = [UIImage imageNamed:@"intro.png"];
+    UIImageView *iView = [[UIImageView alloc] initWithImage:img];
+    iView.frame = CGRectMake(0, 0, 320, 733);
+    
+    aView.contentSize = CGSizeMake(320, 733);
+    aView.tag = INTRO_VIEW_TAG;
+    aView.backgroundColor = [UIColor lightGrayColor];
+    [aView addSubview:iView];
+    
+    [aView addGestureRecognizer:singleFingerTap];
+    [view addSubview:aView];
+  }
+  
+  [UIView animateWithDuration:0.45 animations:^{
+      aView.frame = CGRectMake(0, 15, 320, 480);
+  }];
+}
+
++ (void)hideIntroView:(UIView *)view{
+  UIScrollView *aView = [self getIntroScrollView:view];
+  if (aView) {
+    [UIView animateWithDuration:0.45 animations:^{
+      aView.frame = CGRectMake(0, -480, 320, 480);
+    }];
+  }
+}
+
 + (void)buildMapButton:(UIButton *)button
 {
   UIImage *mapImg = [UIImage imageNamed:UI_IMAGE_BROWSE_MAP];

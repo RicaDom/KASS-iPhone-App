@@ -18,8 +18,10 @@
 # define BUTTON_STATUS_TAG 1219
 # define USER_INFO_ICON_TAG 1220
 # define INTRO_IMAGE_TAG 1221
+# define ALERT_VIEW_TAG 1222
+# define INTRO_VIEW_TAG 1223
 
-#define REQUEST_TIMEOUT 10
+#define REQUEST_TIMEOUT 20
 #define _ScrollViewContentSizeX 320 
 #define _ScrollViewContentSettingSizeY 500
 

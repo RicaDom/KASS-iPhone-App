@@ -15,6 +15,7 @@
 - (void)showAllSubviews;
 - (void)setAllLabelsFonts;
 - (void)removeAvatarViews;
+- (void)removeAlertViews;
 - (void)removeViewsWithTag:(int)tag;
 
 @end

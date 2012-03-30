@@ -127,6 +127,10 @@
 		77786AE9150AFB5F007DC016 /* ScrollViewRefreshPuller.m in Sources */ = {isa = PBXBuildFile; fileRef = 77786AE8150AFB5F007DC016 /* ScrollViewRefreshPuller.m */; };
 		77786AEE150B1B5E007DC016 /* UIViewController+ScrollViewRefreshPuller.m in Sources */ = {isa = PBXBuildFile; fileRef = 77786AED150B1B5E007DC016 /* UIViewController+ScrollViewRefreshPuller.m */; };
 		777C903714E4AA0A002A80B0 /* userInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 777C903614E4AA0A002A80B0 /* userInfo.json */; };
+		777D4C0415256EE40048B34B /* alert.png in Resources */ = {isa = PBXBuildFile; fileRef = 777D4C0215256EE40048B34B /* alert.png */; };
+		777D4C0515256EE40048B34B /* alert@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 777D4C0315256EE40048B34B /* alert@2x.png */; };
+		777D4C071525A50A0048B34B /* intro.png in Resources */ = {isa = PBXBuildFile; fileRef = 777D4C061525A50A0048B34B /* intro.png */; };
+		777D4C091525A5280048B34B /* intro@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 777D4C081525A5280048B34B /* intro@2x.png */; };
 		777E4D1914DB92D7002B40C3 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 777E4D1714DB8D97002B40C3 /* SFHFKeychainUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		777E4D2014DBB7ED002B40C3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777E4D1F14DBB7ED002B40C3 /* Security.framework */; };
 		777E4EB814DD8303002B40C3 /* SendViewLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 777E4E9414DD8303002B40C3 /* SendViewLocalizable.strings */; };
@@ -606,6 +610,10 @@
 		77786AEC150B1B5E007DC016 /* UIViewController+ScrollViewRefreshPuller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ScrollViewRefreshPuller.h"; sourceTree = "<group>"; };
 		77786AED150B1B5E007DC016 /* UIViewController+ScrollViewRefreshPuller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ScrollViewRefreshPuller.m"; sourceTree = "<group>"; };
 		777C903614E4AA0A002A80B0 /* userInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = userInfo.json; path = Resources/userInfo.json; sourceTree = "<group>"; };
+		777D4C0215256EE40048B34B /* alert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alert.png; sourceTree = "<group>"; };
+		777D4C0315256EE40048B34B /* alert@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alert@2x.png"; sourceTree = "<group>"; };
+		777D4C061525A50A0048B34B /* intro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = intro.png; sourceTree = "<group>"; };
+		777D4C081525A5280048B34B /* intro@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "intro@2x.png"; sourceTree = "<group>"; };
 		777E4D1614DB8D97002B40C3 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
 		777E4D1714DB8D97002B40C3 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
 		777E4D1F14DBB7ED002B40C3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -1636,6 +1644,8 @@
 		E5299FB2150CBFF400E73D75 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				777D4C0215256EE40048B34B /* alert.png */,
+				777D4C0315256EE40048B34B /* alert@2x.png */,
 				77447BAD152415C800D1A288 /* btn-rect-share.png */,
 				77447BAE152415C800D1A288 /* btn-rect-share@2x.png */,
 				773533371522E15300CD8815 /* bg-black.png */,
@@ -1706,6 +1716,8 @@
 		E58BC974151C3F25006C97EF /* setting */ = {
 			isa = PBXGroup;
 			children = (
+				777D4C061525A50A0048B34B /* intro.png */,
+				777D4C081525A5280048B34B /* intro@2x.png */,
 				774320E51520710300032117 /* veri-weibo-on.png */,
 				774320E61520710300032117 /* veri-weibo-on@2x.png */,
 				774320E71520710300032117 /* veri-weibo-off@2x.png */,
@@ -2456,6 +2468,10 @@
 				77447BB515241F6D00D1A288 /* btn-left-arrow-small@2x.png in Resources */,
 				77447BB81524216200D1A288 /* btn_map_small.png in Resources */,
 				77447BB91524216200D1A288 /* btn_map_small@2x.png in Resources */,
+				777D4C0415256EE40048B34B /* alert.png in Resources */,
+				777D4C0515256EE40048B34B /* alert@2x.png in Resources */,
+				777D4C071525A50A0048B34B /* intro.png in Resources */,
+				777D4C091525A5280048B34B /* intro@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

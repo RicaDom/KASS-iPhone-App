@@ -11,6 +11,16 @@
 
 @implementation UIView (Subviews)
 
+- (void)removeAlertViews
+{
+  for(UIView *subview in [self subviews]) {
+    if (subview.tag == ALERT_VIEW_TAG) {
+      [subview removeAllSubviews];
+      [subview removeFromSuperview];
+    }
+  }
+}
+
 - (void)removeAllSubviews
 {
   for(UIView *subview in [self subviews]) {

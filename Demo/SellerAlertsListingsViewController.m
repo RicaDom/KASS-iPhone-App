@@ -69,7 +69,7 @@
       [self showLoadingIndicator];
         [self.currentUser getAlertListings:self.alertId];
     } else {
-        [ViewHelper showErrorAlert:ERROR_MSG_CONNECTION_FAILURE:self];
+      [ViewHelper showConnectionErrorAlert:self.view];
     }
 }
 

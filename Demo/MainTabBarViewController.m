@@ -79,16 +79,36 @@
 
     [VariableStore sharedInstance].mainTabBar = self;
 
-    if ( ![[VariableStore sharedInstance] isLoggedIn]) {
-        [MTPopupWindow showWindowWithUIView:self.view];
-    }
-
     [[NSNotificationCenter defaultCenter] addObserver:self
                                            selector:@selector(receiveNewPostNotification:) 
                                                name:NEW_POST_NOTIFICATION
                                              object:nil];
+  
+    singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     
+    alreadyShowedIntro = false;
+
+    if ( ![[VariableStore sharedInstance] isLoggedIn]) {
+      [MTPopupWindow showWindowWithUIView:self.view];
+    }
+    
+    if (!alreadyShowedIntro) {
+      [ViewHelper showIntroView:self.view:singleFingerTap];
+      alreadyShowedIntro = true;
+    }
+  
 }
+
+//The event handling method
+- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
+  CGPoint location = [recognizer locationInView:recognizer.view];
+  
+  if (location.x > 19.0 && location.x < 156.0 && location.y > 625.0 && location.y < 675.0) {
+    [ViewHelper hideIntroView:self.view];
+  }
+  
+}
+
 
 - (void) receiveNewPostNotification:(NSNotification *) notification
 {

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="tSz-RA-HQY">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1179"/>
     </dependencies>
@@ -2971,42 +2970,42 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" id="81e-Tr-J3D" customClass="AppScrollView">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="aJS-HG-URU" id="MA2-kM-j08"/>
                                                 </connections>
                                             </scrollView>
                                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="Uc1-BJ-aQq">
-                                                <rect key="frame" x="140" y="168" width="38" height="36"/>
+                                                <rect key="frame" x="140" y="188" width="38" height="36"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <connections>
                                                     <action selector="changeHotPostPage" destination="aJS-HG-URU" eventType="valueChanged" id="eD6-Hp-HfL"/>
                                                 </connections>
                                             </pageControl>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" id="7Ra-0D-kvs">
-                                                <rect key="frame" x="-1" y="193" width="320" height="180"/>
+                                                <rect key="frame" x="-1" y="213" width="320" height="200"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="aJS-HG-URU" id="K4E-yb-sZl"/>
                                                 </connections>
                                             </scrollView>
                                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="aL4-SA-ZkI">
-                                                <rect key="frame" x="140" y="361" width="38" height="36"/>
+                                                <rect key="frame" x="140" y="401" width="38" height="36"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <connections>
                                                     <action selector="changeEditorPostPage" destination="aJS-HG-URU" eventType="valueChanged" id="bBR-KM-rk2"/>
                                                 </connections>
                                             </pageControl>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" id="DcG-Zi-bnT">
-                                                <rect key="frame" x="0.0" y="387" width="320" height="180"/>
+                                                <rect key="frame" x="0.0" y="427" width="320" height="200"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="aJS-HG-URU" id="8od-Rh-E9d"/>
                                                 </connections>
                                             </scrollView>
                                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="gw0-pP-mEg">
-                                                <rect key="frame" x="140" y="555" width="38" height="36"/>
+                                                <rect key="frame" x="140" y="615" width="38" height="36"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <connections>
                                                     <action selector="changeCreativePostPage" destination="aJS-HG-URU" eventType="valueChanged" id="00d-Qk-oS5"/>

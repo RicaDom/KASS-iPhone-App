@@ -126,7 +126,7 @@ NSString *popUpSuccessfulViewFlag;
   if ( offerId && ![offerId isBlank]) {
     [[self currentUser] getOffer:offerId];
   } else {
-    [ViewHelper showErrorAlert:ERROR_MSG_CONNECTION_FAILURE:self];
+    [ViewHelper showConnectionErrorAlert:self.view];
     self.payStatusLabel.text = ERROR_MSG_CONNECTION_FAILURE;
     self.payButton.hidden = TRUE;
   }

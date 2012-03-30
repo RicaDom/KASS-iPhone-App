@@ -12,6 +12,9 @@
 #import "ActivityViewController.h"
 #import "CustomImageViewPopup.h"
 
-@interface MainTabBarViewController : UITabBarController <UIAlertViewDelegate, UITabBarControllerDelegate>
+@interface MainTabBarViewController : UITabBarController <UIAlertViewDelegate, UITabBarControllerDelegate>{
+  UITapGestureRecognizer *singleFingerTap;
+  BOOL alreadyShowedIntro;
+}
 
 @end

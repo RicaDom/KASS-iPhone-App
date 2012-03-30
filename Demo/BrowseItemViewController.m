@@ -141,7 +141,7 @@
   if ( offerId && ![offerId isBlank] ) {
     [self.currentUser getOffer:offerId];
   }else {
-    [ViewHelper showErrorAlert:ERROR_MSG_CONNECTION_FAILURE:self];
+    [ViewHelper showConnectionErrorAlert:self.view];
     [self hideInputMessageShowStatus:ERROR_MSG_CONNECTION_FAILURE];
   }
 }

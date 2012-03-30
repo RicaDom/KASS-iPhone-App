@@ -123,6 +123,7 @@
   if ( self.currentOffer && self.currentOffer.dbId) {
     [self.currentUser getOffer:self.currentOffer.dbId];
   }else{
+    [ViewHelper showConnectionErrorAlert:self.view];
     [self hideInputMessageShowStatus:ERROR_MSG_CONNECTION_FAILURE];
   }
 }
