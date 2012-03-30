@@ -28,6 +28,16 @@
   }
 }
 
+- (UIView *)getViewWithTag:(int)tag
+{
+  for(UIView *subview in [self subviews]) {
+    if (subview.tag == tag) {
+      return subview;
+    }
+  }
+  return NULL;
+}
+
 - (void)removeViewsWithTag:(int)tag
 {
   for(UIView *subview in [self subviews]) {

@@ -62,7 +62,7 @@
 + (void)showErrorMessageAlert:(NSDictionary *)errors:(id)delegate;
 + (void) buildMap:(MKMapView *)mapView:(CLLocation *)location;
 + (void)showConnectionErrorAlert:(UIView *)view;
-+ (void)showIntroView:(UIView *)view:(UITapGestureRecognizer *)singleFingerTap;
++ (void)showIntroView:(UIView *)view:(UITapGestureRecognizer *)sft:(UITapGestureRecognizer *)cft;
 + (void)hideIntroView:(UIView *)view;
 
 + (KassApp *)viewKassApp;

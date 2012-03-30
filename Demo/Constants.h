@@ -20,6 +20,7 @@
 # define INTRO_IMAGE_TAG 1221
 # define ALERT_VIEW_TAG 1222
 # define INTRO_VIEW_TAG 1223
+# define CLOSE_VIEW_TAG 1224
 
 #define REQUEST_TIMEOUT 20
 #define _ScrollViewContentSizeX 320 

@@ -437,7 +437,7 @@
   return NULL;
 }
 
-+ (void)showIntroView:(UIView *)view:(UITapGestureRecognizer *)singleFingerTap
++ (void)showIntroView:(UIView *)view:(UITapGestureRecognizer *)singleFingerTap:(UITapGestureRecognizer *)closeFingerTap
 {
   UIScrollView *aView = [self getIntroScrollView:view];
   if (!aView) {
@@ -445,9 +445,9 @@
     
     UIImage *img = [UIImage imageNamed:@"intro.png"];
     UIImageView *iView = [[UIImageView alloc] initWithImage:img];
-    iView.frame = CGRectMake(0, 0, 320, 733);
+    iView.frame = CGRectMake(0, 0, 320, img.size.height);
     
-    aView.contentSize = CGSizeMake(320, 733);
+    aView.contentSize = CGSizeMake(320, img.size.height);
     aView.tag = INTRO_VIEW_TAG;
     aView.backgroundColor = [UIColor lightGrayColor];
     [aView addSubview:iView];
@@ -456,9 +456,21 @@
     [view addSubview:aView];
   }
   
+  UIImageView *cView = (UIImageView *)[view getViewWithTag:CLOSE_VIEW_TAG];
+  if (!cView) {
+    UIImage *closeImg = [UIImage imageNamed:@"close.png"];
+    UIImageView *cView = [[UIImageView alloc] initWithImage:closeImg];
+    cView.frame = CGRectMake(290, 25, 24, 24);
+    cView.userInteractionEnabled=YES;
+    cView.tag = CLOSE_VIEW_TAG;
+    [aView addGestureRecognizer:closeFingerTap];
+    [view addSubview:cView];
+  }
+  
   [UIView animateWithDuration:0.45 animations:^{
-      aView.frame = CGRectMake(0, 15, 320, 480);
+    aView.frame = CGRectMake(0, 15, 320, 480);
   }];
+  cView.hidden = FALSE;
 }
 
 + (void)hideIntroView:(UIView *)view{
@@ -467,6 +479,10 @@
     [UIView animateWithDuration:0.45 animations:^{
       aView.frame = CGRectMake(0, -480, 320, 480);
     }];
+  }
+  UIImageView *cView = (UIImageView *)[view getViewWithTag:CLOSE_VIEW_TAG];
+  if (cView) {
+    cView.hidden = TRUE;
   }
 }
 

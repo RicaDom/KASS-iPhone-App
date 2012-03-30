@@ -17,5 +17,6 @@
 - (void)removeAvatarViews;
 - (void)removeAlertViews;
 - (void)removeViewsWithTag:(int)tag;
+- (UIView *)getViewWithTag:(int)tag;
 
 @end

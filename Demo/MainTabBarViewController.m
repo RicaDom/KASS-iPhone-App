@@ -85,7 +85,9 @@
                                              object:nil];
   
     singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
-    
+    closeFingerTap  = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleCloseTap:)];
+
+  
     alreadyShowedIntro = false;
 
     if ( ![[VariableStore sharedInstance] isLoggedIn]) {
@@ -93,7 +95,7 @@
     }
     
     if (!alreadyShowedIntro) {
-      [ViewHelper showIntroView:self.view:singleFingerTap];
+      [ViewHelper showIntroView:self.view:singleFingerTap:closeFingerTap];
       alreadyShowedIntro = true;
     }
   
@@ -107,6 +109,10 @@
     [ViewHelper hideIntroView:self.view];
   }
   
+}
+
+- (void)handleCloseTap:(UITapGestureRecognizer *)recognizer {
+  [ViewHelper hideIntroView:self.view];
 }
 
 
