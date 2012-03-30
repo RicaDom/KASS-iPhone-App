@@ -137,9 +137,6 @@
     // init scroll view content size
     [self.scrollView setContentSize:CGSizeMake(_ScrollViewContentSizeX, self.scrollView.frame.size.height)];
     
-    // Bottom view load
-    [CommonView setMessageWithPriceView:self.scrollView payImage:self.confirmImageView bottomView:self.buttomView priceButton:self.priceButton messageField:self.sendMessageTextField price:self.changingPrice.text changedPriceMessage:self.changedPriceMessage];
-    
     // User info button
     [ViewHelper buildUserInfoButton:self.userInfoButton];
     [ViewHelper buildAcceptButton:self.confirmDealButton];
@@ -244,7 +241,10 @@
   // register for keyboard view slider
   [self registerScrollViewRefreshPuller:self.scrollView];
   [self registerKeyboardSliderWithConfirmView:_mainView :_scrollView :_buttomView:_confirmImageView];
-  [self registerKeyboardSliderTextView:_descriptionTextField];
+  [self registerKeyboardSliderTextView:_descriptionTextField];    
+  
+  // Bottom view load
+  [CommonView setMessageWithPriceView:self.scrollView payImage:self.confirmImageView bottomView:self.buttomView priceButton:self.priceButton messageField:self.sendMessageTextField price:self.changingPrice.text changedPriceMessage:self.changedPriceMessage];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
