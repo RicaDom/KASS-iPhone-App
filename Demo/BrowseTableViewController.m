@@ -96,6 +96,7 @@
   
   if (!_lastUpdatedDate) { _lastUpdatedDate = [[NSDate alloc] init]; }
   _lastUpdatedDate = newDate;
+  _loading = true;
 }
 
 // we need to locate user position before getting data
@@ -105,7 +106,10 @@
     [self showLoadingIndicator];
     [self locateMe];
   }else{
-    [self getListings];
+    if( !_loading){
+      DLog(@"Loading listings ... ");
+      [self getListings];
+    }
   }
 }
 
@@ -149,6 +153,7 @@
 - (void)appDidGetListingAndSetListing:(ListingType)lt:(NSDictionary *)dict
 {
   Listing *listing = [[Listing alloc] initWithDictionary:dict];
+  _loading = FALSE;
   if ([endlessScroller isLoadingMore]) {
     [self populateMoreListings:listing];
   }else {
@@ -189,7 +194,11 @@
   DLog(@"BrowseTableViewController::locateMeFinished ");
   location = VariableStore.sharedInstance.location;
   _locating = FALSE;
-  [self getListings];
+  
+  if( VariableStore.sharedInstance.currentViewControllerDelegate == self ){
+    DLog(@"loading data ... ");
+    [self getListings];
+  }
 
 }
 
@@ -215,6 +224,7 @@
     [super viewDidLoad];
     
     _searching = FALSE;
+    _loading = FALSE;
     
     endlessScroller = [[EndlessScroller alloc] initWithScrollViewAndDelegate:self.listingTableView :self];
   

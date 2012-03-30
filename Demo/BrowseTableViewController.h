@@ -33,6 +33,7 @@ typedef enum {
   EndlessScroller *endlessScroller;
   BOOL _searching;
   BOOL _locating;
+  BOOL _loading;
 }
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *browseSegment;

@@ -158,7 +158,13 @@
 {
   DLog(@"User::createOffer:dict=%@", dict);
   KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"createOfferFinished:"];
-  [ka createOffer:dict];
+  if (![ka createOffer:dict]) {
+    
+    NSDictionary *errorDict = [[NSDictionary alloc]initWithObjectsAndKeys:
+                               @"Invalid data", @"description", nil];
+    
+    [_delegate accountRequestFailed:errorDict];
+  }
 }
 
 - (void)createOfferFinished:(NSData *)data
@@ -261,7 +267,13 @@
 {
   DLog(@"User::createListing:dict=%@", dict);
   KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"createListingFinished:"];
-  [ka createListing:dict];
+  if (![ka createListing:dict]) {
+    
+    NSDictionary *errorDict = [[NSDictionary alloc]initWithObjectsAndKeys:
+                               @"Invalid data", @"description", nil];
+    
+    [_delegate accountRequestFailed:errorDict];
+  }
 }
 
 - (void)getAlertListings:(NSString *)alertId
@@ -284,7 +296,13 @@
 {
   DLog(@"User::createAlert:dict=%@", dict);
   KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"createAlertFinished:"];
-  [ka createAlert:dict];
+  if (![ka createAlert:dict]) {
+    
+    NSDictionary *errorDict = [[NSDictionary alloc]initWithObjectsAndKeys:
+                               @"Invalid data", @"description", nil];
+    
+    [_delegate accountRequestFailed:errorDict];
+  }
 }
 
 - (void)createAlertFinished:(NSData *)data

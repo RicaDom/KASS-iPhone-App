@@ -93,13 +93,13 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/BrowseTableViewController.m"
-         timestampString = "354604661.393931"
+         timestampString = "354803873.732274"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "208"
-         endingLineNumber = "208"
-         landmarkName = "-prepareForSegue:sender:"
-         landmarkType = "5">
+         startingLineNumber = "215"
+         endingLineNumber = "215"
+         landmarkName = "@implementation BrowseTableViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -121,13 +121,13 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/BrowseTableViewController.m"
-         timestampString = "354604661.393931"
+         timestampString = "354803873.732274"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "207"
-         endingLineNumber = "207"
-         landmarkName = "-prepareForSegue:sender:"
-         landmarkType = "5">
+         startingLineNumber = "214"
+         endingLineNumber = "214"
+         landmarkName = "@implementation BrowseTableViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -135,11 +135,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/BrowseTableViewController.m"
-         timestampString = "354604661.393931"
+         timestampString = "354803873.732274"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "200"
-         endingLineNumber = "200"
+         startingLineNumber = "207"
+         endingLineNumber = "207"
          landmarkName = "-receivedFromNOMessageNotification:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -149,11 +149,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/BrowseTableViewController.m"
-         timestampString = "354604661.393931"
+         timestampString = "354803873.732274"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "263"
-         endingLineNumber = "263"
+         startingLineNumber = "270"
+         endingLineNumber = "270"
          landmarkName = "-viewDidUnload"
          landmarkType = "5">
       </FileBreakpoint>
@@ -163,12 +163,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/BrowseTableViewController.m"
-         timestampString = "354604661.393931"
+         timestampString = "354803873.732274"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "271"
-         endingLineNumber = "271"
-         landmarkName = "-viewDidAppear:"
+         startingLineNumber = "278"
+         endingLineNumber = "278"
+         landmarkName = "-viewWillAppear:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -233,7 +233,7 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/KassApi.m"
-         timestampString = "353673929.662378"
+         timestampString = "354803051.073159"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "172"
@@ -331,11 +331,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/User.m"
-         timestampString = "354438114.415781"
+         timestampString = "354803051.073159"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "362"
-         endingLineNumber = "362"
+         startingLineNumber = "380"
+         endingLineNumber = "380"
          landmarkName = "-accountLogin::"
          landmarkType = "5">
       </FileBreakpoint>
@@ -373,11 +373,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/BrowseTableViewController.m"
-         timestampString = "354604661.393931"
+         timestampString = "354803873.732274"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "269"
-         endingLineNumber = "269"
+         startingLineNumber = "276"
+         endingLineNumber = "276"
          landmarkName = "-viewWillAppear:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -531,11 +531,24 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/BrowseTableViewController.m"
-         timestampString = "354604661.393931"
+         timestampString = "354803650.158151"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "111"
-         endingLineNumber = "111"
+         startingLineNumber = "114"
+         endingLineNumber = "114"
+         landmarkName = "-loadDataSource"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Demo/BrowseTableViewController.m"
+         timestampString = "354803650.158151"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "115"
+         endingLineNumber = "115"
          landmarkName = "@implementation BrowseTableViewController"
          landmarkType = "3">
       </FileBreakpoint>
@@ -544,24 +557,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/BrowseTableViewController.m"
-         timestampString = "354604661.393931"
+         timestampString = "354803873.732274"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "112"
-         endingLineNumber = "112"
-         landmarkName = "@implementation BrowseTableViewController"
-         landmarkType = "3">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Demo/BrowseTableViewController.m"
-         timestampString = "354604661.393931"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "357"
-         endingLineNumber = "357"
+         startingLineNumber = "364"
+         endingLineNumber = "364"
          landmarkName = "@implementation BrowseTableViewController"
          landmarkType = "3">
       </FileBreakpoint>
@@ -596,11 +596,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/BrowseTableViewController.m"
-         timestampString = "354617671.643525"
+         timestampString = "354803873.732274"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "437"
-         endingLineNumber = "437"
+         startingLineNumber = "444"
+         endingLineNumber = "444"
          landmarkName = "-filterContentForSearchText:scope:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1311,11 +1311,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/KassApi.m"
-         timestampString = "354800568.02065"
+         timestampString = "354803051.073159"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "393"
-         endingLineNumber = "393"
+         startingLineNumber = "399"
+         endingLineNumber = "399"
          landmarkName = "-createStatusCall:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1324,11 +1324,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/User.m"
-         timestampString = "354696817.933221"
+         timestampString = "354803051.073159"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "380"
-         endingLineNumber = "380"
+         startingLineNumber = "398"
+         endingLineNumber = "398"
          landmarkName = "-createStatusCall:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1337,11 +1337,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/KassApi.m"
-         timestampString = "354800568.02065"
+         timestampString = "354803051.073159"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "390"
-         endingLineNumber = "390"
+         startingLineNumber = "396"
+         endingLineNumber = "396"
          landmarkName = "-createStatusCall:"
          landmarkType = "5">
       </FileBreakpoint>

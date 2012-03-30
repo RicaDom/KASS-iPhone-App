@@ -156,7 +156,7 @@
   [self deleteData:_url:modelId];
 }
 
-- (void)createListing:(NSDictionary *)dict
+- (BOOL)createListing:(NSDictionary *)dict
 {
   DLog(@"KassApi::createListing:dict=%@", dict);
   _url = [NSString stringWithFormat:@"http://%s/v1/listings", HOST];
@@ -170,8 +170,10 @@
   
   if ( title && price && latlng && duration) {
     [self postData:_url:dict];
+    return TRUE;
   }else{
     DLog(@"KassApi::createListing: invalid data!");
+    return FALSE;
   }
 }
 
@@ -231,7 +233,7 @@
   [self getData:_url];  
 }
 
-- (void)createOffer:(NSDictionary *)dict
+- (BOOL)createOffer:(NSDictionary *)dict
 {
   DLog(@"KassApi::createOffer:dict=%@", dict);
   _url = [NSString stringWithFormat:@"http://%s/v1/offers", HOST];
@@ -243,8 +245,10 @@
   
   if ( message && listingId && price ) {
     [self postData:_url:dict];
+    return TRUE;
   }else{
     DLog(@"KassApi::createOffer: invalid data!");
+    return FALSE;
   }
   
 }
@@ -341,7 +345,7 @@
   [self getData:_url];
 }
 
-- (void)createAlert:(NSDictionary *)dict
+- (BOOL)createAlert:(NSDictionary *)dict
 {
   DLog(@"KassApi::createAlert:dict=%@", dict);
   _url = [NSString stringWithFormat:@"http://%s/v1/alerts", HOST];
@@ -355,8 +359,10 @@
   
   if ( query && (latlng || address) ) {
     [self postData:_url:dict];
+    return TRUE;
   }else{
     DLog(@"KassApi::createAlert: invalid data!");
+    return FALSE;
   }
 }
 

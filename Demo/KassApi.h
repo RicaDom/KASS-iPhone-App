@@ -38,14 +38,14 @@
 - (void)getData:(NSString *)url;
 
 - (void)getAlertListings:(NSString *)modelId;
-- (void)createAlert:(NSDictionary *)dict;
+- (BOOL)createAlert:(NSDictionary *)dict;
 - (void)modifyAlert:(NSDictionary *)dict:(NSString *)modelId;
 - (void)deleteAlert:(NSString *)modelId;
 - (void)getAccountAlerts;
 
 - (void)deleteListing:(NSString *)modelId;
-- (void)createOffer:(NSDictionary *)dict;
-- (void)createListing:(NSDictionary *)dict;
+- (BOOL)createOffer:(NSDictionary *)dict;
+- (BOOL)createListing:(NSDictionary *)dict;
 - (void)getListings:(NSDictionary *)dict;
 - (void)getListing:(NSString *)modelId;
 - (void)getMember:(NSString *)memberId;
