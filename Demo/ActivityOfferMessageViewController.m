@@ -62,6 +62,10 @@
 {
   [self.buttomView hideAllSubviews];
   
+  [UIView animateWithDuration:0.25 animations:^{
+    self.buttomView.frame = CGRectMake(self.buttomView.frame.origin.x, 370, self.buttomView.frame.size.width, self.buttomView.frame.size.height);
+  }];
+  
   UILabel *label = [[UILabel alloc] init];
   [label setText:status];
   [label setTextColor:[UIColor brownColor]];
