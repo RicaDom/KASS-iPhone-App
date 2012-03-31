@@ -2830,8 +2830,8 @@
 		E5947DFB14A3A12B0066723A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Lin He (FNSM8C45WW)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lin He (FNSM8C45WW)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Heyook";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Heyook";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/GHUnit\"",
@@ -2848,8 +2848,8 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = kass;
-				PROVISIONING_PROFILE = "03AA16CF-E428-4517-9F6B-91F2A97F26F8";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "03AA16CF-E428-4517-9F6B-91F2A97F26F8";
+				PROVISIONING_PROFILE = "86C7BD8E-8DB9-4E2D-B922-1325EABBC2CA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "86C7BD8E-8DB9-4E2D-B922-1325EABBC2CA";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
