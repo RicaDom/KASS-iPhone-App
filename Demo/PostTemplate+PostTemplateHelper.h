@@ -7,7 +7,6 @@
 //
 
 #import "PostTemplate.h"
-#import "AppScrollView.h"
 
 @interface PostTemplate (PostTemplateHelper)
 
@@ -15,6 +14,6 @@
 - (void)initHJManagedImageView:(CGRect)frame;
 
 + (NSMutableArray *)getTemplatesByCategory:(NSArray *)dict:(NSString *)category;
-+ (void)buildTemplatesView:(AppScrollView *)templateView:(NSArray *)templates:(UIPageControl *)pageControl:(BOOL *)controllBeingUsed;
++ (void)buildTemplatesView:(UIScrollView *)templateView:(NSArray *)templates:(UIPageControl *)pageControl:(BOOL *)controllBeingUsed;
 
 @end
