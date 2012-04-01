@@ -13,7 +13,7 @@
 #import "PostFlowViewController.h"
 #import "PostTemplate+PostTemplateHelper.h"
 
-@interface PostViewController : UIViewController <UIScrollViewDelegate, KassAppDelegate> {
+@interface PostViewController : UIViewController <UIScrollViewDelegate, KassAppDelegate, AccountActivityDelegate> {
     @private
     BOOL hotPostPageControlBeingUsed;
     BOOL editorPostPageControlBeingUsed;

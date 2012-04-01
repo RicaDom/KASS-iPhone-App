@@ -159,6 +159,8 @@ extern NSString * const UI_IMAGE_PULLER_LOADING;
 extern NSString * const UI_IMAGE_PULLER_LOADING_ALPHA;
 
 
+extern NSString * const UI_IMAGE_TABBAR_IMAGE;
+extern NSString * const UI_IMAGE_EMPTY;
 extern NSString * const UI_IMAGE_SEND_BUTTON;
 extern NSString * const UI_IMAGE_SEND_BUTTON_PRESS;
 extern NSString * const UI_IMAGE_CONFIRM_BUTTON;

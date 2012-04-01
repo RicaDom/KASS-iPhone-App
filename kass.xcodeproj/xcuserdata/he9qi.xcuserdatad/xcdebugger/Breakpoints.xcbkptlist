@@ -1064,11 +1064,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/PostViewController.m"
-         timestampString = "354800568.02065"
+         timestampString = "354957498.295385"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "265"
-         endingLineNumber = "265"
+         startingLineNumber = "272"
+         endingLineNumber = "272"
          landmarkName = "@implementation PostViewController"
          landmarkType = "3">
       </FileBreakpoint>
@@ -1402,11 +1402,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/MainTabBarViewController.m"
-         timestampString = "354801629.188547"
+         timestampString = "354956394.811592"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "104"
-         endingLineNumber = "104"
+         startingLineNumber = "105"
+         endingLineNumber = "105"
          landmarkName = "-handleSingleTap:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1486,6 +1486,19 @@
          startingLineNumber = "106"
          endingLineNumber = "106"
          landmarkName = "-alertView:clickedButtonAtIndex:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Demo/MainTabBarViewController.m"
+         timestampString = "354956394.811592"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "25"
+         endingLineNumber = "25"
+         landmarkName = "-tabBarController:didSelectViewController:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

@@ -12,9 +12,11 @@
 #import "ActivityViewController.h"
 #import "CustomImageViewPopup.h"
 
-@interface MainTabBarViewController : UITabBarController <UIAlertViewDelegate, UITabBarControllerDelegate>{
+@interface MainTabBarViewController : UITabBarController <UIAlertViewDelegate, UITabBarControllerDelegate, UITabBarDelegate>{
   UITapGestureRecognizer *singleFingerTap;
   UITapGestureRecognizer *closeFingerTap;
+  UIImage *selectedImage;
+  UIImage *selectedLowImage;
 }
 
 @end

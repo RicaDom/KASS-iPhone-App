@@ -91,6 +91,8 @@ NSString * const NO_MESSAGE_TO_MESSAGE_VIEW_NOTIFICATION = @"NO_MESSAGE_TO_MESSA
 NSString * const POPUP_IMAGE_NEW_POST_SUCCESS = @"POPUP_IMAGE_NEW_POST_SUCCESS";
 NSString * const POPUP_IMAGE_ACCEPTED_SUCCESS = @"POPUP_IMAGE_ACCEPTED_SUCCESS";
 
+NSString * const UI_IMAGE_TABBAR_IMAGE = @"btn-white-low.png";
+NSString * const UI_IMAGE_EMPTY = @"btn-empty.png";
 NSString * const UI_IMAGE_NAVIGATION_BACKGROUND = @"panelbg.png";
 NSString * const UI_IMAGE_TABBAR_BACKGROUND = @"nav.png";
 NSString * const UI_IMAGE_TABBAR_SELECTED_TRANS = @"btn_transwhite.png";
