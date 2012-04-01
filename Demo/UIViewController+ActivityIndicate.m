@@ -41,6 +41,8 @@
     }else {
       [ViewHelper showErrorAlert:@"需要登陆！":self];
     }
+  }if ([errorCode isEqualToString:@"1"]) {
+    [ViewHelper showConnectionErrorAlert:self.view];
   }else {
     [ViewHelper showErrorMessageAlert:errors:self];
   }
@@ -48,9 +50,14 @@
 
 - (void)appRequestFailed:(NSDictionary *)errors
 {
-  DLog(@"UIViewController (ActivityIndicate)::appRequestFailed");
+  DLog(@"UIViewController (ActivityIndicate)::appRequestFailed:errors=%@", errors);
   [self hideIndicator];
-  [ViewHelper showErrorMessageAlert:errors:self];
+  NSString *errorCode = [errors objectForKey:@"code"];
+  if ([errorCode isEqualToString:@"1"]) {
+    [ViewHelper showConnectionErrorAlert:self.view];
+  }else {
+    [ViewHelper showErrorMessageAlert:errors:self];
+  }
 }
 
 - (void)accountRequestStarted
