@@ -13,6 +13,7 @@
 #import "SFHFKeychainUtils.h"
 #import "ListItem+ListItemHelper.h"
 #import "VariableStore.h"
+#import "NotificationRenderHelper.h"
 //#import "Alipay.h"
 
 //#import "FayeClient.h"
@@ -473,6 +474,19 @@
 //  DLog(@"User::sendIphoneTokenFinished:dict=%@", dict);
 //}
 
+- (void)performRemoteNotification
+{
+    // WARNING - TODO
+    if ([[VariableStore sharedInstance].remoteNotification count] > 0) {
+        NSDictionary *copyDict = [NSDictionary dictionaryWithDictionary:[VariableStore sharedInstance].remoteNotification];
+        [VariableStore sharedInstance].remoteNotification = nil;
+        
+        if (VariableStore.sharedInstance.currentViewControllerDelegate != nil) {
+            [NotificationRenderHelper NotificationRender:copyDict mainTabBarVC:(UITabBarController *)((UIViewController *)VariableStore.sharedInstance.currentViewControllerDelegate).tabBarController];
+        }
+    }
+}
+
 - (void) accountDidLogin
 {
   DLog(@"User::accountDidLogin:username=%@,delegate=%@", account.userName, _delegate);
@@ -486,6 +500,8 @@
   
   if( [_delegate respondsToSelector:@selector(accountLoginFinished)] )
     [_delegate accountLoginFinished];
+    
+  [self performRemoteNotification];
 }
 
 - (void)getAuth

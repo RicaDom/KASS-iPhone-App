@@ -19,7 +19,7 @@
 
 - (BOOL) isAll
 {
-  return _keyword.isBlank || [_keyword isEqualToString:TEXT_ALL_GOODS];
+  return _keyword.length <= 0 || [_keyword isEqualToString:TEXT_ALL_GOODS];
 }
 
 @end

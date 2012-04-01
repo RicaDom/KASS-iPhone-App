@@ -10,6 +10,7 @@
 #import "UIResponder+VariableStore.h"
 #import "UIViewController+ActivityIndicate.h"
 #import "SellerAlertsListingsViewController.h"
+#import "MTPopupWindow.h"
 
 @implementation SellerAlertsViewController
 @synthesize rightButton = _rightButton;
@@ -64,6 +65,19 @@
     [self refreshViewAfterLoadData];
 }
 
+- (void) loadAlerts
+{
+    [self showLoadingIndicator];
+    [self.currentUser getAlerts];
+}
+
+- (void) accountLoginFinished
+{
+    DLog(@"SellerAlertsViewController::accountLoginFinished");
+    [self hideIndicator];
+    [self loadAlerts];
+}
+
 #pragma mark - View lifecycle
 
 /*
@@ -96,13 +110,19 @@
 - (void)viewWillAppear:(BOOL)animated
 {
   [super viewWillAppear:animated];
-  [self showLoadingIndicator];
-  [self.currentUser getAlerts];
-  
-  UIRemoteNotificationType status = [[UIApplication sharedApplication] enabledRemoteNotificationTypes];
-  if (status == UIRemoteNotificationTypeNone)
-  {
-    [ViewHelper showAlert:@"温馨提示":@"您需要在设置里开启接收街区应用信息才能试用此功能":self];
+
+  if (![VariableStore sharedInstance].isLoggedIn) {
+     [MTPopupWindow showWindowWithUIView:self.navigationController.view];
+  }
+
+  if ([VariableStore sharedInstance].isLoggedIn) {
+      [self loadAlerts];
+      
+      UIRemoteNotificationType status = [[UIApplication sharedApplication] enabledRemoteNotificationTypes];
+      if (status == UIRemoteNotificationTypeNone)
+      {
+        [ViewHelper showAlert:@"温馨提示":@"您需要在设置里开启接收街区应用信息才能试用此功能":self];
+      }
   }
 }
 

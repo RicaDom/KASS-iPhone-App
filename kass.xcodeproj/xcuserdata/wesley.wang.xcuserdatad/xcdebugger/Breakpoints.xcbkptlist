@@ -196,8 +196,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "181"
          endingLineNumber = "181"
-         landmarkName = "@implementation SettingViewController"
-         landmarkType = "3">
+         landmarkName = "-tableView:cellForRowAtIndexPath:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -886,7 +886,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "94"
          endingLineNumber = "94"
-         landmarkName = "-receiveNewPostNotification:"
+         landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -900,7 +900,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "112"
          endingLineNumber = "112"
-         landmarkName = "-viewDidUnload"
+         landmarkName = "-handleCloseTap:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1676,7 +1676,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "260"
          endingLineNumber = "260"
-         landmarkName = "+buildOfferPendingCell::"
+         landmarkName = "+buildOfferPaidCell::"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2040,7 +2040,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "92"
          endingLineNumber = "92"
-         landmarkName = "-viewWillAppear:"
+         landmarkName = "-viewDidUnload"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2096,7 +2096,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "60"
          endingLineNumber = "60"
-         landmarkName = "-locateMe"
+         landmarkName = "-locateMeFinished"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2110,8 +2110,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "56"
          endingLineNumber = "56"
-         landmarkName = "-locateMeFinished"
-         landmarkType = "5">
+         landmarkName = "@implementation SellerAlertsAddAlertViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -2124,7 +2124,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "55"
          endingLineNumber = "55"
-         landmarkName = "-locateMeFinished"
+         landmarkName = "-customViewLoad"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2208,7 +2208,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "25"
          endingLineNumber = "25"
-         landmarkName = "-application:didFinishLaunchingWithOptions:"
+         landmarkName = "-isSingleTask"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2222,7 +2222,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "135"
          endingLineNumber = "135"
-         landmarkName = "-applicationWillEnterForeground:"
+         landmarkName = "-application:didFinishLaunchingWithOptions:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2236,7 +2236,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "134"
          endingLineNumber = "134"
-         landmarkName = "-applicationWillEnterForeground:"
+         landmarkName = "-application:didFinishLaunchingWithOptions:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2432,7 +2432,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "83"
          endingLineNumber = "83"
-         landmarkName = "-accountLoginFinished"
+         landmarkName = "-loadDataSource"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2517,6 +2517,188 @@
          startingLineNumber = "58"
          endingLineNumber = "58"
          landmarkName = "-scrollViewDidScroll:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/ActivityViewController.m"
+         timestampString = "354949151.838675"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "43"
+         endingLineNumber = "43"
+         landmarkName = "-accountLoginFinished"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/AppDelegate.m"
+         timestampString = "354950007.38229"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "100"
+         endingLineNumber = "100"
+         landmarkName = "-accountLoginFinished"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/AppDelegate.m"
+         timestampString = "354950009.606006"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "101"
+         endingLineNumber = "101"
+         landmarkName = "-accountLoginFinished"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/User.m"
+         timestampString = "354950846.520408"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "481"
+         endingLineNumber = "481"
+         landmarkName = "-performRemoteNotification"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/AppDelegate.m"
+         timestampString = "354952401.062397"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "176"
+         endingLineNumber = "176"
+         landmarkName = "-application:didReceiveRemoteNotification:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/AppDelegate.m"
+         timestampString = "354952423.381944"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "178"
+         endingLineNumber = "178"
+         landmarkName = "-application:didReceiveRemoteNotification:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/AppDelegate.m"
+         timestampString = "354952424.804899"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "180"
+         endingLineNumber = "180"
+         landmarkName = "-application:didReceiveRemoteNotification:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/AppDelegate.m"
+         timestampString = "354952433.798019"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "181"
+         endingLineNumber = "181"
+         landmarkName = "-application:didReceiveRemoteNotification:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/User.m"
+         timestampString = "354956754.349139"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "485"
+         endingLineNumber = "485"
+         landmarkName = "-performRemoteNotification"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/SellerAlertsListingsViewController.m"
+         timestampString = "354958622.546044"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "68"
+         endingLineNumber = "68"
+         landmarkName = "-loadAlertListings"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/SellerAlertsViewController.m"
+         timestampString = "354959697.755"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "118"
+         endingLineNumber = "118"
+         landmarkName = "-viewWillAppear:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/SellerAlertsViewController.m"
+         timestampString = "354959654.105804"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "115"
+         endingLineNumber = "115"
+         landmarkName = "-viewWillAppear:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/SellerAlertsViewController.m"
+         timestampString = "354959654.105804"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "76"
+         endingLineNumber = "76"
+         landmarkName = "-accountLoginFinished"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

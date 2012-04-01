@@ -119,11 +119,12 @@
     NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
   
     NSString *query = [self.whatLabel.text isEqualToString:TEXT_ALL_GOODS] ? @"ALL" : self.whatLabel.text;
+    NSString *minPrice = [self.minPriceLabel.text isEqualToString:TEXT_ALL_PRICE]? @"0" :self.minPriceLabel.text;
     
     [params setObject:@"" forKey:@"category_ids"];
     [params setObject:self.radiusLabel.text forKey:@"radius"];
     [params setObject:query forKey:@"query"];
-    [params setObject:self.minPriceLabel.text forKey:@"min_price"];
+    [params setObject:minPrice forKey:@"min_price"];
   
     if([VariableStore sharedInstance].currentAddAlert.userSpecifyLocation.length > 0){
       [params setObject:self.locationLabel.text forKey:@"address"];
