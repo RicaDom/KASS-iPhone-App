@@ -10,7 +10,7 @@
 #import "KassAppDelegate.h"
 #import "AccountActivityDelegate.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, KassAppDelegate, AccountActivityDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, KassAppDelegate, AccountActivityDelegate, UIAlertViewDelegate>
 @property (strong, nonatomic) UIWindow *window;
 
 - (BOOL)isSingleTask;

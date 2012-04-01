@@ -414,11 +414,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/AppDelegate.m"
-         timestampString = "354801629.188547"
+         timestampString = "354937252.062513"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "185"
-         endingLineNumber = "185"
+         startingLineNumber = "202"
+         endingLineNumber = "202"
          landmarkName = "-application:handleOpenURL:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1376,11 +1376,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/AppDelegate.m"
-         timestampString = "354801629.188547"
+         timestampString = "354937252.062513"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "202"
-         endingLineNumber = "202"
+         startingLineNumber = "219"
+         endingLineNumber = "219"
          landmarkName = "-applicationDidBecomeActive:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1389,11 +1389,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/AppDelegate.m"
-         timestampString = "354801629.188547"
+         timestampString = "354937252.062513"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "201"
-         endingLineNumber = "201"
+         startingLineNumber = "218"
+         endingLineNumber = "218"
          landmarkName = "-applicationDidBecomeActive:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1428,13 +1428,65 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/AppDelegate.m"
-         timestampString = "354802256.482485"
+         timestampString = "354937252.062513"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "206"
-         endingLineNumber = "206"
-         landmarkName = "@implementation AppDelegate"
-         landmarkType = "3">
+         startingLineNumber = "223"
+         endingLineNumber = "223"
+         landmarkName = "-applicationDidBecomeActive:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Demo/AppDelegate.m"
+         timestampString = "354937252.062513"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "144"
+         endingLineNumber = "144"
+         landmarkName = "-application:didFinishLaunchingWithOptions:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Demo/AppDelegate.m"
+         timestampString = "354937252.062513"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "149"
+         endingLineNumber = "149"
+         landmarkName = "-application:didFinishLaunchingWithOptions:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Demo/AppDelegate.m"
+         timestampString = "354937252.062513"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "150"
+         endingLineNumber = "150"
+         landmarkName = "-application:didFinishLaunchingWithOptions:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Demo/AppDelegate.m"
+         timestampString = "354937252.062513"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "106"
+         endingLineNumber = "106"
+         landmarkName = "-alertView:clickedButtonAtIndex:"
+         landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

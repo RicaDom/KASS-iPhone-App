@@ -458,12 +458,12 @@
   
   UIImageView *cView = (UIImageView *)[view getViewWithTag:CLOSE_VIEW_TAG];
   if (!cView) {
-    UIImage *closeImg = [UIImage imageNamed:@"popupCloseBtn.png"];
+    UIImage *closeImg = [UIImage imageNamed:@"close-black.png"];
     UIImageView *cView = [[UIImageView alloc] initWithImage:closeImg];
     cView.frame = CGRectMake(290, 28, 24, 24);
     cView.userInteractionEnabled=YES;
     cView.tag = CLOSE_VIEW_TAG;
-    [aView addGestureRecognizer:closeFingerTap];
+    [cView addGestureRecognizer:closeFingerTap];
     [view addSubview:cView];
   }
   
@@ -680,6 +680,17 @@
 {
   UIAlertView *alert = [[UIAlertView alloc] init];
 	[alert setTitle:UI_LABEL_ERROR];
+	[alert setMessage:message];
+  [alert setDelegate:delegate];
+  [alert addButtonWithTitle:UI_LABEL_CONFIRM];
+  [alert show];
+}
+
++ (void)showAlertWithTag:(NSString *)title:(NSString *)message:(int)tag:(id)delegate
+{
+  UIAlertView *alert = [[UIAlertView alloc] init];
+	[alert setTitle:title];
+  [alert setTag:tag];
 	[alert setMessage:message];
   [alert setDelegate:delegate];
   [alert addButtonWithTitle:UI_LABEL_CONFIRM];

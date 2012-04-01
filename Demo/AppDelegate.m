@@ -101,6 +101,12 @@
   [self loadDataSource];
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+  if (alertView.tag == UPGRADE_ALERT_VIEW_TAG){
+    [[UIApplication sharedApplication] 
+     openURL:[NSURL URLWithString:@"http://www.jieqoo.com"]];
+  }
+}
 
 //////////////////////////////////// Application Life Cycle ///////////////////////////////////////////
 
@@ -133,6 +139,17 @@
    (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
 
   [application setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+  
+  if (VariableStore.sharedInstance.settings) {
+    NSString* apv = [VariableStore.sharedInstance.settings.siteDict objectForKey:@"app_version"];
+    float vs      = [apv floatValue];
+    NSString*	version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+    float vp      = [version floatValue];
+    
+    if (vp < vs) {
+      [ViewHelper showAlertWithTag:@"版本过低" :@"您的应用软件需要升级":UPGRADE_ALERT_VIEW_TAG:self];
+    }
+  }
   
   return !!VariableStore.sharedInstance.settings;
 }

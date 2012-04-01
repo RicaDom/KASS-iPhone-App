@@ -58,6 +58,7 @@
 + (void)buildProvideBrowseButton:(UIButton *)button;
 + (void)buildConfirmPaymentButton:(UIView *)view:(id)delegate;
 
++ (void)showAlertWithTag:(NSString *)title:(NSString *)message:(int)tag:(id)delegate;
 + (void)showAlert:(NSString *)title:(NSString *)message:(id)delegate;
 + (void)showErrorAlert:(NSString *)message:(id)delegate;
 + (void)showErrorMessageAlert:(NSDictionary *)errors:(id)delegate;
