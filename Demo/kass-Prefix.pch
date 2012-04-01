@@ -27,7 +27,7 @@
 // 58.215.189.143
 #ifdef DEBUG 
 #    define HOST "192.168.1.100:3000"
-#    define PIC_PATH "http://heyook.com/download/kass/iphone-slice/"
+#    define PIC_PATH "http://"
 #    define SinaWeiBoSDKDemo_APPKey @"4058848639"
 #    define SinaWeiBoSDKDemo_APPSecret @"6f8e39f74b91d64eec43e2b4fd8d4c55"
 #    define KassServiceName @"com.kasslocal.app"
