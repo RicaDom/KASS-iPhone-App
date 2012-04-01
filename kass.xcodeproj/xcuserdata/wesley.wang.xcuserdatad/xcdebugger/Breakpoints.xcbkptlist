@@ -900,8 +900,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "112"
          endingLineNumber = "112"
-         landmarkName = "-handleCloseTap:"
-         landmarkType = "5">
+         landmarkName = "@implementation MainTabBarViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"

@@ -255,11 +255,18 @@
   
 }
 
+- (void)setTabBarImage:(int)index:(UIImage *)image {
+    UITabBarItem *barItem = [[self.tabBarController.tabBar items] objectAtIndex:index];
+    [barItem setFinishedSelectedImage:image withFinishedUnselectedImage:image];   
+}
+
 - (void) accountLoginFinished
 {
   DLog(@"ActivityViewController::accountLoginFinished");
   [self hideIndicator];
   [[self tabBarController] setSelectedIndex:0]; //go to activity view if login
+  [self setTabBarImage:0 :[UIImage imageNamed:UI_IMAGE_TABBAR_IMAGE]];
+  [self setTabBarImage:1 :nil];
 }
 
 /**
