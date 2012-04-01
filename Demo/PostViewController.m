@@ -255,6 +255,13 @@
   
 }
 
+- (void) accountLoginFinished
+{
+  DLog(@"ActivityViewController::accountLoginFinished");
+  [self hideIndicator];
+  [[self tabBarController] setSelectedIndex:0]; //go to activity view if login
+}
+
 /**
  Scroll View Refresh Puller Delegate
  */

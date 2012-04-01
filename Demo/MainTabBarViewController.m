@@ -13,6 +13,13 @@
 
 static BOOL alreadyShowedIntro = false;
 
+#define DEFAULT_SELECTED_TAB_INDEX 1
+
+- (void)setTabBarImage:(int)index:(UIImage *)image {
+  UITabBarItem *barItem = [[[self tabBar] items] objectAtIndex:index];
+  [barItem setFinishedSelectedImage:image withFinishedUnselectedImage:image];   
+}
+
 - (void)tabBarController:(UITabBarController *)tbc didSelectViewController:(UIViewController *)vc {
     // Middle tab bar item in question.
     if (vc == [tbc.viewControllers objectAtIndex:4]) {
@@ -47,29 +54,23 @@ static BOOL alreadyShowedIntro = false;
 }
 */
 
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
+{
+  int i=0;
+  for (UITabBarItem *tItem in [tabBar items]) {
+    [self setTabBarImage:i:( item == tItem ?  ((i == 0 || i == 3) ? selectedLowImage : selectedImage) : nil)];
+    i++;
+  }
+}
+
 - (void)viewSetup
 {
-    if ([[self tabBar] respondsToSelector:@selector(setBackgroundImage:)])
-    {
-        // set it just for this instance
-        [[self tabBar] setBackgroundImage:[UIImage imageNamed:UI_IMAGE_TABBAR_BACKGROUND]];
-        [self tabBar].selectionIndicatorImage = [UIImage imageNamed:UI_IMAGE_TABBAR_SELECTED_TRANS];
-        
-//        UIImageView *highView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:UI_IMAGE_TABBAR_SELECTED_TRANS]];        
-//        UITabBarItem *barItem = [[[self tabBar] items] objectAtIndex:1];
-//        [barItem setFinishedSelectedImage:[UIImage imageNamed:UI_IMAGE_TABBAR_SELECTED_TRANS] withFinishedUnselectedImage:[UIImage imageNamed:UI_IMAGE_TABBAR_SELECTED_TRANS]];        
-        
-        //[[[[self tabBar] items] objectAtIndex:1] setBadgeValue:@"77"];
-        //[self tabBar].selectedItem.image = [UIImage imageNamed:UI_IMAGE_TABBAR_SELECTED_TRANS];
-        //[[[[self tabBar] items] objectAtIndex:0] setBadgeValue:@"77"];
-        //[[self tabBar] setBackgroundColor:[UIColor redColor]];
-        // set for all
-        // [[UITabBar appearance] setBackgroundImage: ...
-    }
-    else
-    {
-        // ios 4 code here
-    }    
+  [self tabBar].selectionIndicatorImage = [UIImage imageNamed:UI_IMAGE_EMPTY];
+  [[self tabBar] setBackgroundImage:[UIImage imageNamed:UI_IMAGE_TABBAR_BACKGROUND]];
+  selectedImage = [UIImage imageNamed:UI_IMAGE_TABBAR_SELECTED_TRANS];
+  selectedLowImage = [UIImage imageNamed:UI_IMAGE_TABBAR_IMAGE];
+  [self setTabBarImage:DEFAULT_SELECTED_TAB_INDEX:selectedImage];
+  [self setSelectedIndex:DEFAULT_SELECTED_TAB_INDEX];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.

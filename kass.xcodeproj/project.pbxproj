@@ -188,6 +188,10 @@
 		77899CB214C70CD900C6484B /* myListings.json in Resources */ = {isa = PBXBuildFile; fileRef = 77899CB014C70CD900C6484B /* myListings.json */; };
 		7789C24F14FFC45800388247 /* UIViewController+KeyboardSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 7789C24E14FFC45800388247 /* UIViewController+KeyboardSlider.m */; };
 		7789C25615005A2F00388247 /* KeyboardSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 7789C25515005A2F00388247 /* KeyboardSlider.m */; };
+		7789D13A1528257000E5D25F /* btn-empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 7789D1381528257000E5D25F /* btn-empty.png */; };
+		7789D13B1528257000E5D25F /* btn-empty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7789D1391528257000E5D25F /* btn-empty@2x.png */; };
+		7789D13F1528332900E5D25F /* btn-white-low.png in Resources */ = {isa = PBXBuildFile; fileRef = 7789D13D1528332900E5D25F /* btn-white-low.png */; };
+		7789D1401528332900E5D25F /* btn-white-low@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7789D13E1528332900E5D25F /* btn-white-low@2x.png */; };
 		778F4613150BB139008913FC /* ListingTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 778F4612150BB139008913FC /* ListingTableCell.m */; };
 		779530B0151469C10002CBA2 /* nav@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 779530AF151469C10002CBA2 /* nav@2x.png */; };
 		779530B3151469CD0002CBA2 /* btn_transwhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 779530B2151469CD0002CBA2 /* btn_transwhite@2x.png */; };
@@ -704,6 +708,10 @@
 		7789C24E14FFC45800388247 /* UIViewController+KeyboardSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+KeyboardSlider.m"; sourceTree = "<group>"; };
 		7789C25415005A2F00388247 /* KeyboardSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardSlider.h; sourceTree = "<group>"; };
 		7789C25515005A2F00388247 /* KeyboardSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardSlider.m; sourceTree = "<group>"; };
+		7789D1381528257000E5D25F /* btn-empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-empty.png"; sourceTree = "<group>"; };
+		7789D1391528257000E5D25F /* btn-empty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-empty@2x.png"; sourceTree = "<group>"; };
+		7789D13D1528332900E5D25F /* btn-white-low.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-white-low.png"; sourceTree = "<group>"; };
+		7789D13E1528332900E5D25F /* btn-white-low@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-white-low@2x.png"; sourceTree = "<group>"; };
 		778F4610150BB0F7008913FC /* AccountActivityDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountActivityDelegate.h; path = Libraries/Account/AccountActivityDelegate.h; sourceTree = "<group>"; };
 		778F4611150BB139008913FC /* ListingTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListingTableCell.h; sourceTree = "<group>"; };
 		778F4612150BB139008913FC /* ListingTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListingTableCell.m; sourceTree = "<group>"; };
@@ -1652,6 +1660,10 @@
 		E5299FB2150CBFF400E73D75 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				7789D1381528257000E5D25F /* btn-empty.png */,
+				7789D13D1528332900E5D25F /* btn-white-low.png */,
+				7789D13E1528332900E5D25F /* btn-white-low@2x.png */,
+				7789D1391528257000E5D25F /* btn-empty@2x.png */,
 				777D4C0215256EE40048B34B /* alert.png */,
 				777D4C0315256EE40048B34B /* alert@2x.png */,
 				77447BAD152415C800D1A288 /* btn-rect-share.png */,
@@ -2488,6 +2500,10 @@
 				777D4C111525BFC20048B34B /* close-black@2x.png in Resources */,
 				777D4C141525CFCB0048B34B /* btn-post.png in Resources */,
 				777D4C151525CFCB0048B34B /* btn-post@2x.png in Resources */,
+				7789D13A1528257000E5D25F /* btn-empty.png in Resources */,
+				7789D13B1528257000E5D25F /* btn-empty@2x.png in Resources */,
+				7789D13F1528332900E5D25F /* btn-white-low.png in Resources */,
+				7789D1401528332900E5D25F /* btn-white-low@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

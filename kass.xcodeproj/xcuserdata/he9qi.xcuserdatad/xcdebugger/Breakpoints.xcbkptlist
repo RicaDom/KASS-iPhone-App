@@ -387,11 +387,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/UIViewController+ActivityIndicate.m"
-         timestampString = "354450536.294423"
+         timestampString = "354958015.914"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "66"
-         endingLineNumber = "66"
+         startingLineNumber = "73"
+         endingLineNumber = "73"
          landmarkName = "-viewWillAppear:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -401,11 +401,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/UIViewController+ActivityIndicate.m"
-         timestampString = "354450536.294423"
+         timestampString = "354958015.914"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "67"
-         endingLineNumber = "67"
+         startingLineNumber = "74"
+         endingLineNumber = "74"
          landmarkName = "-viewWillAppear:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -419,7 +419,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "202"
          endingLineNumber = "202"
-         landmarkName = "-application:handleOpenURL:"
+         landmarkName = "-settingsDidLoad:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -817,11 +817,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/UIViewController+ActivityIndicate.m"
-         timestampString = "354450536.294423"
+         timestampString = "354958015.914"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "50"
-         endingLineNumber = "50"
+         startingLineNumber = "52"
+         endingLineNumber = "52"
          landmarkName = "-appRequestFailed:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1064,11 +1064,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/PostViewController.m"
-         timestampString = "354800568.02065"
+         timestampString = "354957498.295385"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "265"
-         endingLineNumber = "265"
+         startingLineNumber = "272"
+         endingLineNumber = "272"
          landmarkName = "@implementation PostViewController"
          landmarkType = "3">
       </FileBreakpoint>
@@ -1103,11 +1103,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/UIViewController+ActivityIndicate.m"
-         timestampString = "354450536.294423"
+         timestampString = "354958015.914"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "59"
-         endingLineNumber = "59"
+         startingLineNumber = "66"
+         endingLineNumber = "66"
          landmarkName = "-accountRequestStarted"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1381,7 +1381,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "219"
          endingLineNumber = "219"
-         landmarkName = "-applicationDidBecomeActive:"
+         landmarkName = "-settingsDidLoad:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1394,7 +1394,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "218"
          endingLineNumber = "218"
-         landmarkName = "-applicationDidBecomeActive:"
+         landmarkName = "-settingsDidLoad:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1402,11 +1402,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/MainTabBarViewController.m"
-         timestampString = "354801629.188547"
+         timestampString = "354956394.811592"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "104"
-         endingLineNumber = "104"
+         startingLineNumber = "105"
+         endingLineNumber = "105"
          landmarkName = "-handleSingleTap:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1433,7 +1433,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "223"
          endingLineNumber = "223"
-         landmarkName = "-applicationDidBecomeActive:"
+         landmarkName = "-settingsDidLoad:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1446,7 +1446,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "144"
          endingLineNumber = "144"
-         landmarkName = "-application:didFinishLaunchingWithOptions:"
+         landmarkName = "-settingsDidLoad:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1459,7 +1459,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "149"
          endingLineNumber = "149"
-         landmarkName = "-application:didFinishLaunchingWithOptions:"
+         landmarkName = "-settingsDidLoad:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1472,7 +1472,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "150"
          endingLineNumber = "150"
-         landmarkName = "-application:didFinishLaunchingWithOptions:"
+         landmarkName = "-settingsDidLoad:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1485,7 +1485,33 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "106"
          endingLineNumber = "106"
-         landmarkName = "-alertView:clickedButtonAtIndex:"
+         landmarkName = "-settingsDidLoad:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Demo/MainTabBarViewController.m"
+         timestampString = "354956394.811592"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "25"
+         endingLineNumber = "25"
+         landmarkName = "-tabBarController:didSelectViewController:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Demo/UIViewController+ActivityIndicate.m"
+         timestampString = "354957834.418259"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "38"
+         endingLineNumber = "38"
+         landmarkName = "-accountRequestFailed:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
