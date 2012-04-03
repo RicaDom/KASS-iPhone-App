@@ -268,8 +268,8 @@
 {
   [cell.infoView setBackgroundColor:[[UIColor alloc] initWithPatternImage:[UIImage imageNamed:UI_IMAGE_ACTIVITY_PRICE_BG]]];   
   UILabel *label = [[UILabel alloc] init];
-  [label setText:UI_LABEL_PAID];
-  [label setTextColor:[UIColor grayColor]];
+  [label setText:UI_LABEL_REJECTED];
+  [label setTextColor:[UIColor redColor]];
   label.frame = CGRectMake(0, 0, cell.infoView.frame.size.width, cell.infoView.frame.size.height / 2 - 8);
   label.textAlignment = UITextAlignmentCenter;
   label.backgroundColor = [UIColor clearColor];
