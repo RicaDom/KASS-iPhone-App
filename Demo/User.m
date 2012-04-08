@@ -662,6 +662,36 @@
 //  [Alipay payOffer:offer]; 
 }
 
+- (void)phoneNotify
+{
+  DLog(@"User::phoneNotify!");
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"phoneNotifyFinished:"];
+  [ka phoneNotify];
+}
+
+- (void)phoneNotifyFinished:(NSData *)data
+{
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"User::phoneNotifyFinished:dict%@", dict);
+  
+  if( [_delegate respondsToSelector:@selector(accountPhoneNotifyFinished:)] )
+    [_delegate accountPhoneNotifyFinished:dict];
+}
+
+- (void)phoneVerify:(NSString *)token
+{
+  KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"phoneVerifyFinished:"];
+  [ka phoneVerify:token];
+}
+
+- (void)phoneVerifyFinished:(NSData *)data
+{
+  NSDictionary *dict = [KassApi parseData:data];
+  DLog(@"User::phoneVerifyFinished:dict%@", dict);
+  
+  if( [_delegate respondsToSelector:@selector(accountPhoneVerifyFinished:)] )
+    [_delegate accountPhoneVerifyFinished:dict];
+}
 
 //- (void)getPrivatePub
 //{

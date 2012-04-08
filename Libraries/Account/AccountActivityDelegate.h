@@ -35,6 +35,9 @@
 - (void)accountRequestFailed:(NSDictionary *)errors;
 - (void)accountRequestStarted;
 
+- (void)accountPhoneVerifyFinished:(NSDictionary *)dict;
+- (void)accountPhoneNotifyFinished:(NSDictionary *)dict;
+
 - (void)accountLoginFinished;
 - (void)accountLogoutFinished;
 - (void)accountWeiboShareFinished;

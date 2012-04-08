@@ -47,7 +47,9 @@
   
   NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
   [dateFormat setDateFormat:RUBY_DATETIME_FORMAT]; //2012-02-17T07:50:16+0000 
-  _endedAt = [dateFormat dateFromString:[theDictionary objectForKey:@"time"]];
+
+  NSInteger expires_in_int = [[theDictionary objectForKey:@"expires_in"] intValue];
+  _endedAt = [[NSDate date] dateByAddingTimeInterval:expires_in_int];
   
   NSArray *latlng = [theDictionary objectForKey:@"latlng"]; 
   _location       = [[Location alloc] initWithArray:latlng];

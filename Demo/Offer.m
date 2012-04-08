@@ -59,9 +59,12 @@
     NSArray *latlng   = [listing objectForKey:@"latlng"]; 
     _listItemLocation = [[Location alloc] initWithArray:latlng];
     
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:RUBY_DATETIME_FORMAT]; //2012-02-17T07:50:16+0000 
-    _listItemEndedAt = [dateFormat dateFromString:[listing objectForKey:@"time"]];
+//    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+//    [dateFormat setDateFormat:RUBY_DATETIME_FORMAT]; //2012-02-17T07:50:16+0000 
+//    _listItemEndedAt = [dateFormat dateFromString:[listing objectForKey:@"time"]];
+    
+    NSInteger expires_in_int = [[listing objectForKey:@"expires_in"] intValue];
+    _listItemEndedAt = [[NSDate date] dateByAddingTimeInterval:expires_in_int];
     
     if ( !_listingId ) {
       _listingId = [listing objectForKey:@"id"];

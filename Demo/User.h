@@ -95,6 +95,12 @@ typedef enum {
 - (void)createStatusCall:(NSDictionary *)dict;
 - (void)createStatusCallFinished:(NSData *)data;
 
+- (void)phoneNotify;
+- (void)phoneNotifyFinished:(NSData *)data;
+
+- (void)phoneVerify:(NSString *)token;
+- (void)phoneVerifyFinished:(NSData *)data;
+
 //- (void)getPrivatePub;
 //- (void)getPrivatePubFinished:(NSData *)data;
 

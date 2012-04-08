@@ -386,6 +386,19 @@
   [self getData:_url];
 }
 
+- (void)phoneNotify
+{
+  _url = [NSString stringWithFormat:@"http://%s/v1/account/notify/phone", HOST];
+  [self postData:_url:nil];
+}
+
+- (void)phoneVerify:(NSString *)token
+{
+  _url = [NSString stringWithFormat:@"http://%s/v1/account/verify/phone", HOST];
+  NSDictionary *tokenDict = [[NSDictionary alloc] initWithObjectsAndKeys:token, @"token", nil];
+  [self postData:_url:tokenDict];
+}
+
 - (void)createStatusCall:(NSDictionary *)dict
 {
   NSString *modelName        = [dict valueForKey:@"class"];

@@ -64,6 +64,9 @@
 
 - (void)createStatusCall:(NSDictionary *)dict;
 
+- (void)phoneNotify;
+- (void)phoneVerify:(NSString *)token;
+
 //- (void)getPrivatePub;
 //- (void)sendIphoneToken:(NSDictionary *)dict;
 
