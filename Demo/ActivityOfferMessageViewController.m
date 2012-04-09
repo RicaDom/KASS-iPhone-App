@@ -81,6 +81,22 @@
   self.confirmLabel.hidden      = TRUE;
 }
 
+- (void)setShowStatusByCurrentOffer
+{
+  if(!self.currentOffer) return;
+  
+  if ( self.currentOffer.isPaid ) {
+    [self hideInputMessageShowStatus:UI_LABEL_OFFER_PAID];
+  } else if(self.currentOffer.isPaymentConfirmed){
+    [self hideInputMessageShowStatus:UI_LABEL_OFFER_PAYMENT_CONFIRMED];
+  }else if ( self.currentOffer.isRejected ) {
+    [self hideInputMessageShowStatus:UI_LABEL_REJECTED];
+  } 
+//  else if ( self.currentOffer.isExpired ) {
+//    [self hideInputMessageShowStatus:UI_LABEL_EXPIRED];
+//  }
+}
+
 - (void) populateData:(NSDictionary *)dict{
   NSDictionary *offer = [dict objectForKey:@"offer"];
   _currentOffer = [[Offer alloc]initWithDictionary:offer];
@@ -103,15 +119,7 @@
   [self hideIndicator];
   [self stopLoading];
   
-  if ( self.currentOffer.isPaid ) {
-    [self hideInputMessageShowStatus:UI_LABEL_OFFER_PAID];
-  } else if(self.currentOffer.isPaymentConfirmed){
-    [self hideInputMessageShowStatus:UI_LABEL_OFFER_PAYMENT_CONFIRMED];
-  }else if ( self.currentOffer.isRejected ) {
-    [self hideInputMessageShowStatus:UI_LABEL_REJECTED];
-  } else if ( self.currentOffer.isExpired ) {
-    [self hideInputMessageShowStatus:UI_LABEL_EXPIRED];
-  }
+  [self setShowStatusByCurrentOffer];
 }
 
 - (void) accountDidGetOffer:(NSDictionary *)dict{
@@ -250,6 +258,8 @@
   
   // Bottom view load
   [CommonView setMessageWithPriceView:self.scrollView payImage:self.confirmImageView bottomView:self.buttomView priceButton:self.priceButton messageField:self.sendMessageTextField price:self.changingPrice.text changedPriceMessage:self.changedPriceMessage];
+  
+  [self setShowStatusByCurrentOffer];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
