@@ -576,13 +576,14 @@
   NSString *siteName = [VariableStore.sharedInstance.settings.siteDict valueForKey:@"name"];
   NSString *statusSample = [VariableStore.sharedInstance.settings.weiboShareDict valueForKey:@"share_status"];
   NSString *shareImg = [VariableStore.sharedInstance.settings.weiboShareDict valueForKey:@"share_img"];
+  NSString *description = !listItem.description.isBlank ? listItem.description : listItem.title;
   
   NSString *status = [statusSample stringByReplacingOccurrencesOfString:@"[[site]]" withString: siteName];
   status = [status stringByReplacingOccurrencesOfString:@"[[user]]" withString: who];
   status = [status stringByReplacingOccurrencesOfString:@"[[title]]" withString: listItem.title];
   status = [status stringByReplacingOccurrencesOfString:@"[[price]]" withString: listItem.getPriceText];
   status = [status stringByReplacingOccurrencesOfString:@"[[time]]" withString: listItem.getTimeLeftText];
-  status = [status stringByReplacingOccurrencesOfString:@"[[description]]" withString: listItem.description];
+  status = [status stringByReplacingOccurrencesOfString:@"[[description]]" withString: description];
   status = [status stringByReplacingOccurrencesOfString:@"[[url]]" withString: listItem.getUrl];
   
   // statuses/update.json?source=#{@api_key}
