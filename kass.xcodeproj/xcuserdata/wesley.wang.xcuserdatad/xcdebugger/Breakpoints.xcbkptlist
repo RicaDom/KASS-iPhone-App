@@ -378,8 +378,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "395"
          endingLineNumber = "395"
-         landmarkName = "-filterContentForSearchText:scope:"
-         landmarkType = "5">
+         landmarkName = "@implementation BrowseTableViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -392,7 +392,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "403"
          endingLineNumber = "403"
-         landmarkName = "-filterContentForSearchText:scope:"
+         landmarkName = "-browseSegmentAction:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -406,7 +406,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "427"
          endingLineNumber = "427"
-         landmarkName = "-searchDisplayController:shouldReloadTableForSearchScope:"
+         landmarkName = "-appDidGetListingsBySearch:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -420,7 +420,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "352"
          endingLineNumber = "352"
-         landmarkName = "-browseSegmentAction:"
+         landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -434,8 +434,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "131"
          endingLineNumber = "131"
-         landmarkName = "-populateData"
-         landmarkType = "5">
+         landmarkName = "@implementation BrowseTableViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -448,7 +448,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "138"
          endingLineNumber = "138"
-         landmarkName = "-populateData"
+         landmarkName = "-appDidGetListing:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -462,7 +462,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "135"
          endingLineNumber = "135"
-         landmarkName = "-populateData"
+         landmarkName = "-appDidGetListing:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -774,7 +774,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "240"
          endingLineNumber = "240"
-         landmarkName = "-remoteNotificationSegue"
+         landmarkName = "-prepareForSegue:sender:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -788,7 +788,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "257"
          endingLineNumber = "257"
-         landmarkName = "-numberOfSectionsInTableView:"
+         landmarkName = "-remoteNotificationSegue"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -830,7 +830,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "288"
          endingLineNumber = "288"
-         landmarkName = "-tableView:didSelectRowAtIndexPath:"
+         landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1053,7 +1053,9 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "480"
-         endingLineNumber = "480">
+         endingLineNumber = "480"
+         landmarkName = "-searchDisplayController:shouldReloadTableForSearchString:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1066,8 +1068,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "303"
          endingLineNumber = "303"
-         landmarkName = "@implementation BrowseTableViewController"
-         landmarkType = "3">
+         landmarkName = "-shouldAutorotateToInterfaceOrientation:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1080,8 +1082,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "307"
          endingLineNumber = "307"
-         landmarkName = "-locateMe"
-         landmarkType = "5">
+         landmarkName = "@implementation BrowseTableViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1094,8 +1096,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "366"
          endingLineNumber = "366"
-         landmarkName = "-appDidGetListingsBySearch:"
-         landmarkType = "5">
+         landmarkName = "@implementation BrowseTableViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1122,7 +1124,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "412"
          endingLineNumber = "412"
-         landmarkName = "-searchDisplayController:shouldReloadTableForSearchString:"
+         landmarkName = "-browseSegmentAction:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1172,7 +1174,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "114"
          endingLineNumber = "114"
-         landmarkName = "-appDidGetListingsRecent:"
+         landmarkName = "-loadDataSource"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1186,7 +1188,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "113"
          endingLineNumber = "113"
-         landmarkName = "-appDidGetListingsRecent:"
+         landmarkName = "-loadDataSource"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1242,8 +1244,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "391"
          endingLineNumber = "391"
-         landmarkName = "-filterContentForSearchText:scope:"
-         landmarkType = "5">
+         landmarkName = "@implementation BrowseTableViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1270,8 +1272,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "362"
          endingLineNumber = "362"
-         landmarkName = "-appRequestFailed:"
-         landmarkType = "5">
+         landmarkName = "@implementation BrowseTableViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1704,8 +1706,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "152"
          endingLineNumber = "152"
-         landmarkName = "-receivedFromNOMessageNotification:"
-         landmarkType = "5">
+         landmarkName = "@implementation BrowseTableViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -2329,11 +2331,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/NotificationRenderHelper.m"
-         timestampString = "354123328.024003"
+         timestampString = "355750455.008464"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "55"
-         endingLineNumber = "55"
+         startingLineNumber = "56"
+         endingLineNumber = "56"
          landmarkName = "+NotificationRender:mainTabBarVC:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2348,7 +2350,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "100"
          endingLineNumber = "100"
-         landmarkName = "-remoteNotificationGetListing:"
+         landmarkName = "-getListings"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2362,7 +2364,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "99"
          endingLineNumber = "99"
-         landmarkName = "-remoteNotificationGetListing:"
+         landmarkName = "-getListings"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2376,7 +2378,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "92"
          endingLineNumber = "92"
-         landmarkName = "-appDidGetListing:"
+         landmarkName = "-getListings"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -2390,8 +2392,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "176"
          endingLineNumber = "176"
-         landmarkName = "-viewDidLoad"
-         landmarkType = "5">
+         landmarkName = "@implementation BrowseTableViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -2399,11 +2401,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/NotificationRenderHelper.m"
-         timestampString = "354126421.330788"
+         timestampString = "355750455.008464"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "62"
-         endingLineNumber = "62"
+         startingLineNumber = "65"
+         endingLineNumber = "65"
          landmarkName = "+NotificationRender:mainTabBarVC:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2413,11 +2415,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/NotificationRenderHelper.m"
-         timestampString = "354126466.845215"
+         timestampString = "355750455.008464"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "60"
-         endingLineNumber = "60"
+         startingLineNumber = "63"
+         endingLineNumber = "63"
          landmarkName = "+NotificationRender:mainTabBarVC:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2699,6 +2701,174 @@
          startingLineNumber = "76"
          endingLineNumber = "76"
          landmarkName = "-accountLoginFinished"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/AppDelegate.m"
+         timestampString = "355745677.929324"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "79"
+         endingLineNumber = "79"
+         landmarkName = "-performByNotification:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/NotificationRenderHelper.m"
+         timestampString = "355750455.008464"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "38"
+         endingLineNumber = "38"
+         landmarkName = "+NotificationRender:mainTabBarVC:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/NotificationRenderHelper.m"
+         timestampString = "355750455.008464"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "36"
+         endingLineNumber = "36"
+         landmarkName = "+NotificationRender:mainTabBarVC:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/BrowseTableViewController.m"
+         timestampString = "355747931.127272"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "234"
+         endingLineNumber = "234"
+         landmarkName = "-viewDidLoad"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/BrowseTableViewController.m"
+         timestampString = "355747938.347212"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "233"
+         endingLineNumber = "233"
+         landmarkName = "-viewDidLoad"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/BrowseTableViewController.m"
+         timestampString = "355747972.188554"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "235"
+         endingLineNumber = "235"
+         landmarkName = "-viewDidLoad"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/AppDelegate.m"
+         timestampString = "355749280.103212"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "85"
+         endingLineNumber = "85"
+         landmarkName = "-loadDataSource"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/NotificationRenderHelper.m"
+         timestampString = "355750920.547832"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "70"
+         endingLineNumber = "70"
+         landmarkName = "+NotificationRender:mainTabBarVC:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/NotificationRenderHelper.m"
+         timestampString = "355750998.793212"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "31"
+         endingLineNumber = "31"
+         landmarkName = "+NotificationRender:mainTabBarVC:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/NotificationRenderHelper.m"
+         timestampString = "355751526.977548"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "59"
+         endingLineNumber = "59"
+         landmarkName = "+NotificationRender:mainTabBarVC:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/NotificationRenderHelper.m"
+         timestampString = "355751567.955708"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "57"
+         endingLineNumber = "57"
+         landmarkName = "+NotificationRender:mainTabBarVC:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Demo/NotificationRenderHelper.m"
+         timestampString = "355751586.63221"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "25"
+         endingLineNumber = "25"
+         landmarkName = "+NotificationRender:mainTabBarVC:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

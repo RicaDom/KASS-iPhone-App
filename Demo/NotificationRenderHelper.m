@@ -34,7 +34,8 @@
         
         // buyer/seller new message, new offer
         if ([type isEqualToString:REMOTE_NOTIFICATION_NEW_MESSAGE] || [type isEqualToString:REMOTE_NOTIFICATION_NEW_OFFER]) {
-            mainTabBarVC.selectedIndex = 0;
+            [ViewHelper setMainTabBarSelected:mainTabBarVC selectedIndex:0 lastSelectedIndex:mainTabBarVC.selectedIndex isHightImage:NO];
+            //mainTabBarVC.selectedIndex = 0;
             UINavigationController *actNC = (UINavigationController *)mainTabBarVC.selectedViewController;
             ActivityViewController *activityVC = (ActivityViewController *)actNC.topViewController;            
             
@@ -54,17 +55,20 @@
           }
             
         } else if ([type isEqualToString:REMOTE_NOTIFICATION_NEW_LISTING]) {
-            mainTabBarVC.selectedIndex = 2;
+            [ViewHelper setMainTabBarSelected:mainTabBarVC selectedIndex:2 lastSelectedIndex:mainTabBarVC.selectedIndex isHightImage:YES];
+            // mainTabBarVC.selectedIndex = 2;
+            
             UINavigationController *provideNC = (UINavigationController *)mainTabBarVC.selectedViewController;
             ProvideViewController *provideVC = (ProvideViewController *)provideNC.topViewController; 
             provideVC.remoteNotificationListingId = offerDbId;
           
-          if ([provideNC isKindOfClass:ProvideViewController.class]) {
-            [provideVC performSegueWithIdentifier:@"ProvideViewToBrowseTable" sender:provideVC];
-          }   
+            if ([provideVC isKindOfClass:ProvideViewController.class]) {
+                [provideVC performSegueWithIdentifier:@"ProvideViewToBrowseTable" sender:provideVC];
+            }   
         
         } else if ([type isEqualToString:REMOTE_NOTIFICATION_NEW_ACCEPTED]) {
-            mainTabBarVC.selectedIndex = 0;
+            [ViewHelper setMainTabBarSelected:mainTabBarVC selectedIndex:0 lastSelectedIndex:mainTabBarVC.selectedIndex isHightImage:NO];
+            // mainTabBarVC.selectedIndex = 0;
             UINavigationController *actNC = (UINavigationController *)mainTabBarVC.selectedViewController;
             ActivityViewController *activityVC = (ActivityViewController *)actNC.topViewController;   
             

@@ -75,7 +75,11 @@
     if ([segue.identifier isEqualToString:@"ProvideViewToBrowseTable"]) {
         DLog(@"ProvideViewController::prepareForSegue:offerMessageSegue");
         BrowseTableViewController *bvc = [segue destinationViewController];
-        bvc.remoteNotificationListingId = self.remoteNotificationListingId;
+        
+        if (self.remoteNotificationListingId != nil) {
+            bvc.remoteNotificationListingId = [[NSString alloc] initWithString:self.remoteNotificationListingId];
+            self.remoteNotificationListingId = nil;
+        }
     } 
 }
 @end
