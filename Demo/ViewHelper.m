@@ -135,7 +135,7 @@
   UIButton *buttonPayNow = [UIButton buttonWithType:UIButtonTypeCustom];
   buttonPayNow.frame = CGRectMake(5, 5, 60, 20.0);
   [buttonPayNow setTitle:UI_BUTTON_LABEL_PAY_NOW forState:UIControlStateNormal];
-  [buttonPayNow setTitleColor: [UIColor greenColor] forState: UIControlStateNormal];
+  [buttonPayNow setTitleColor: [UIColor purpleColor] forState: UIControlStateNormal];
   [cell.infoView addSubview:buttonPayNow];     
   
   UILabel *labelAskPrice = [[UILabel alloc] init];  

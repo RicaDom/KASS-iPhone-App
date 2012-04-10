@@ -221,7 +221,7 @@
 {
   // if my offer has been accepted by buyer
   if ( self.isAccepted ) {
-    return [UIColor greenColor];
+    return [UIColor purpleColor];
   }else if ( self.isPaid || self.isPaymentConfirmed){
     return [UIColor orangeColor];
   }else if (self.isRejected){

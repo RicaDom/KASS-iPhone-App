@@ -90,7 +90,7 @@
 - (UIColor *) getStateColor
 {
   if (self.isAccepted) {
-    return [UIColor greenColor];
+    return [UIColor purpleColor];
   }else if (self.isPaid){
     return [UIColor orangeColor];
   }else{
