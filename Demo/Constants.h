@@ -22,6 +22,7 @@
 # define INTRO_VIEW_TAG 1223
 # define CLOSE_VIEW_TAG 1224
 # define UPGRADE_ALERT_VIEW_TAG 1225
+# define REMOTE_NOTIFICATION_ALERT_VIEW_TAG 9999
 
 #define REQUEST_TIMEOUT 20
 #define _ScrollViewContentSizeX 320 
@@ -115,6 +116,7 @@ extern NSString * const TEXT_IN_PROCESS;
 extern NSString * const TEXT_YOUR_LOCATION;
 extern NSString * const TEXT_CUSTOM_LOCATION;
 
+extern NSString * const UI_LABEL_VIEW;
 extern NSString * const UI_LABEL_ERROR;
 extern NSString * const UI_LABEL_DISMISS;
 extern NSString * const UI_LABEL_CONFIRM;
