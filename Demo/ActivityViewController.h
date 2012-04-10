@@ -19,6 +19,8 @@
 #import "BuyerPayViewController.h"
 
 @interface ActivityViewController : UIViewController <AccountActivityDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *iSell;
+@property (weak, nonatomic) IBOutlet UILabel *iWant;
 
 @property (strong, nonatomic) NSString *userId;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *activitySegment;

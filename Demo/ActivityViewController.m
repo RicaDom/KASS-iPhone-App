@@ -22,6 +22,8 @@
 @synthesize listingsTableView = _listingsTableView;
 @synthesize tableView = _tableView;
 @synthesize activitySegment = _activitySegment;
+@synthesize iSell = _iSell;
+@synthesize iWant = _iWant;
 @synthesize userId = _userId;
 
 /**
@@ -116,11 +118,24 @@
     [self updateTableView];
 }
 
+- (void)setTabTitle{
+  if ( [self isBuyingTabSelected] ){
+    [_iWant setFont:[UIFont boldSystemFontOfSize:20]];
+    [_iWant setTextColor:[UIColor whiteColor]];
+    [_iSell setFont:[UIFont fontWithName:DEFAULT_FONT size:18]];
+    [_iSell setTextColor:[UIColor lightGrayColor]];
+  } else {
+    [_iSell setFont:[UIFont boldSystemFontOfSize:20]];
+    [_iSell setTextColor:[UIColor whiteColor]];
+    [_iWant setFont:[UIFont fontWithName:DEFAULT_FONT size:18]];
+    [_iWant setTextColor:[UIColor lightGrayColor]];
+  }
+}
+
 - (void)reloadTable
 {
     DLog(@"ActivityViewController::reloadTable");
-    
-    //[self hideBackground];
+    [self setTabTitle];
     [self.tableView reloadData];
     //[self stopLoading];
     [self doneLoadingTableViewData];
@@ -221,6 +236,8 @@
     [self setTabImageView:nil];
     [self setEmptyImageView:nil];
     [self setIndicatorImageView:nil];
+  [self setISell:nil];
+  [self setIWant:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
