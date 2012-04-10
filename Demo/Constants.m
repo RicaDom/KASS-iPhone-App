@@ -63,6 +63,7 @@ NSString * const UI_LABEL_ALERT   = @"提醒";
 NSString * const UI_LABEL_ERROR   = @"错误";
 NSString * const UI_LABEL_DISMISS = @"取消";
 NSString * const UI_LABEL_CONFIRM = @"确定";
+NSString * const UI_LABEL_VIEW = @"查看";
 NSString * const UI_TEXT_VIEW_DESCRIPTION = @"描述一下你想要的服务或东西吧";
 
 NSString * const TEXT_ALL_PRICE   = @"价格无限";

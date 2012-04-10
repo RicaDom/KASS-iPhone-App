@@ -105,6 +105,21 @@
   if (alertView.tag == UPGRADE_ALERT_VIEW_TAG){
     [[UIApplication sharedApplication] 
      openURL:[NSURL URLWithString:@"http://www.jieqoo.com"]];
+  } else if(alertView.tag == REMOTE_NOTIFICATION_ALERT_VIEW_TAG){
+      if (buttonIndex == 1)
+      {
+          if ([VariableStore sharedInstance].isLoggedIn) {
+              NSDictionary *copyDict = [NSDictionary dictionaryWithDictionary:[VariableStore sharedInstance].remoteNotification];
+              [VariableStore sharedInstance].remoteNotification = nil;
+              [self performByNotification:copyDict];
+          } else {
+              [MTPopupWindow showWindowWithUIView:self.window.rootViewController.view];
+          }
+      }
+      else
+      {
+          [VariableStore sharedInstance].remoteNotification = nil;
+      }
   }
 }
 
@@ -174,11 +189,24 @@
 - (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)notification
 {
 	NSLog(@"AppDelegate::didReceiveRemoteNotification: %@", notification);
-    if ([VariableStore sharedInstance].isLoggedIn) {
-        [self performByNotification:notification];
-    } else {
+    if ( application.applicationState == UIApplicationStateActive ) {
+        NSDictionary *aps = [notification objectForKey:@"aps"];
+        NSString *alert = [aps objectForKey:@"alert"];
+        // [ViewHelper showAlert:UI_LABEL_ALERT:alert:self]; 
+        
+        // open a alert with an OK and cancel button
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:UI_LABEL_ALERT message:alert delegate:self cancelButtonTitle:UI_LABEL_DISMISS otherButtonTitles:UI_LABEL_VIEW, nil];
+        alertView.tag = REMOTE_NOTIFICATION_ALERT_VIEW_TAG;
         [VariableStore sharedInstance].remoteNotification = notification;
-        [MTPopupWindow showWindowWithUIView:self.window.rootViewController.view];
+        [alertView show];
+        
+    } else {
+        if ([VariableStore sharedInstance].isLoggedIn) {
+            [self performByNotification:notification];
+        } else {
+            [VariableStore sharedInstance].remoteNotification = notification;
+            [MTPopupWindow showWindowWithUIView:self.window.rootViewController.view];
+        }
     }
 }
 

@@ -26,7 +26,7 @@
         NSString *offerDbId = [params objectForKey:@"i"];
         NSString *listItemDbId = [params objectForKey:@"l"];
         NSString *sellerOrBuyer = [params objectForKey:@"x"]; // seller - buyer
-        NSDictionary *aps = [notification objectForKey:@"aps"];
+        // NSDictionary *aps = [notification objectForKey:@"aps"];
         
         DLog(@"Notification type=%@, offerDbId=%@, listItemDbId=%@, sellerOrBuyer=%@", type, offerDbId, listItemDbId, sellerOrBuyer);        
         DLog(@"Root controller type %@", [mainTabBarVC class]);
@@ -78,9 +78,7 @@
           if ([activityVC isKindOfClass:ActivityViewController.class]) {
             [activityVC performSegueWithModelJson:offerDict:@"ActSellingListToMessageBuyer":activityVC]; 
           }
-        }
-        NSString *alert = [aps objectForKey:@"alert"];
-        [ViewHelper showAlert:UI_LABEL_ALERT:alert:self];     
+        }    
     }
 }
 
