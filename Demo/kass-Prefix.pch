@@ -26,7 +26,7 @@
 
 // 58.215.189.143
 #ifdef DEBUG 
-#    define HOST "192.168.1.106:3000"
+#    define HOST "192.168.1.102:3000"
 #    define PIC_PATH "http://"
 #    define SinaWeiBoSDKDemo_APPKey @"4058848639"
 #    define SinaWeiBoSDKDemo_APPSecret @"6f8e39f74b91d64eec43e2b4fd8d4c55"

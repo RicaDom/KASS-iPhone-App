@@ -104,11 +104,15 @@
   DLog(@"BrowseTableViewController::loadDataSource");
   if (!location && !_locating) {
     [self showLoadingIndicator];
+    DLog(@"locate me...");
     [self locateMe];
   }else{
-    if( !_loading){
+    if( !_loading || !self.currentListings){
       DLog(@"Loading listings ... ");
       [self getListings];
+    }
+    else {
+      [self hideIndicator];
     }
   }
 }
@@ -492,6 +496,7 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView 
 {
   if ([scrollView isEqual:self.searchDisplayController.searchResultsTableView]) { return; }
+  if ( !self.currentListings ) return;
   [endlessScroller loadMore];
 }
 

@@ -32,6 +32,8 @@
 {
   if (item.userImageUrl.isPresent) {
     [ViewHelper buildRoundCustomImageViewWithFrame:self.backgroundView.superview:item.userImageUrl:CGRectMake(10,10,50,50)];
+  }else{
+    [ViewHelper buildDefaultImageViewWithFrame:self.backgroundView.superview:UI_IMAGE_MESSAGE_DEFAULT_SELLER:CGRectMake(10,10,50,50)];
   }
   
   UIImage *rowBackground = [UIImage imageNamed:UI_IMAGE_TABLE_CELL_BG];
