@@ -743,4 +743,23 @@
   
 }
 
++ (void)setMainTabBarSelected:(UITabBarController *)mainTabBarController selectedIndex:(int)index lastSelectedIndex:(int)lastIndex isHightImage:(BOOL)isHightImage
+{
+    if (mainTabBarController == nil) {
+        DLog(@"WARNING: setMainTabBarSelected: nil main tab bar controller");
+        return;
+    }
+    
+    UIImage *selectedImage = isHightImage ? [UIImage imageNamed:UI_IMAGE_TABBAR_SELECTED_TRANS] :[UIImage imageNamed:UI_IMAGE_TABBAR_IMAGE];
+
+    UITabBarItem *barItem = [[mainTabBarController.tabBar items] objectAtIndex:index];
+    [barItem setFinishedSelectedImage:selectedImage withFinishedUnselectedImage:selectedImage];   
+    [mainTabBarController setSelectedIndex:index];
+
+    if (index != lastIndex) {
+        barItem = [[mainTabBarController.tabBar items] objectAtIndex:lastIndex];
+        [barItem setFinishedSelectedImage:nil withFinishedUnselectedImage:nil]; 
+    }
+}
+
 @end

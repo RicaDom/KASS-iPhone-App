@@ -76,4 +76,5 @@
 + (HJManagedImageV *) buildCustomImageViewWithFrame:(UIView *)diglogView:(NSString *)url:(CGRect)frame;
 + (HJManagedImageV *) buildRoundCustomImageViewWithFrame:(UIView *)diglogView:(NSString *)url:(CGRect)frame;
 
++ (void)setMainTabBarSelected:(UITabBarController *)mainTabBarController selectedIndex:(int)index lastSelectedIndex:(int)lastIndex isHightImage:(BOOL)isHightImage;
 @end
