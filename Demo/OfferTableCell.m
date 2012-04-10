@@ -41,6 +41,8 @@
   
   if (offer.sellerImageUrl.isPresent) {
     [ViewHelper buildRoundCustomImageViewWithFrame:_cellView:offer.sellerImageUrl:CGRectMake(7.5,7.5,45,45)];
+  }else{
+    [ViewHelper buildDefaultImageViewWithFrame:_cellView:UI_IMAGE_MESSAGE_DEFAULT_SELLER:CGRectMake(7.5,7.5,45,45)];
   }
   
 }

@@ -67,7 +67,7 @@
   if (self.userImageUrl.isPresent) {
     [ViewHelper buildCustomImageViewWithFrame:view:self.userImageUrl:frame];
   }else{
-//    [ViewHelper buildDefaultImageViewWithFrame:view:UI_IMAGE_MESSAGE_DEFAULT_USER:frame];
+    [ViewHelper buildDefaultImageViewWithFrame:view:UI_IMAGE_MESSAGE_DEFAULT_USER:frame];
   }
 }
 
