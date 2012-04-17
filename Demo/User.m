@@ -14,13 +14,16 @@
 #import "ListItem+ListItemHelper.h"
 #import "VariableStore.h"
 #import "NotificationRenderHelper.h"
+#import "ROError.h"
+#import "ViewHelper.h"
+#import "ROUserResponseItem.h"
 //#import "Alipay.h"
 
 //#import "FayeClient.h"
 
 @implementation User
 
-@synthesize weibo, account, delegate = _delegate;
+@synthesize weibo, renren, account, delegate = _delegate;
 @synthesize userId = _userId;
 @synthesize name = _name;
 @synthesize email = _email;
@@ -32,6 +35,7 @@
 {
   if (self = [super init]) {
     self.delegate = delegate;
+    self.renren = [Renren sharedRenren];
   }
   return self;
 }
@@ -693,6 +697,132 @@
   if( [_delegate respondsToSelector:@selector(accountPhoneVerifyFinished:)] )
     [_delegate accountPhoneVerifyFinished:dict];
 }
+
+- (void)renrenLogin
+{
+  self.renren = [Renren sharedRenren];
+  
+  NSHTTPCookieStorage* cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+	NSArray* graphCookies = [cookies cookiesForURL:
+                           [NSURL URLWithString:@"http://graph.renren.com"]];
+	
+	for (NSHTTPCookie* cookie in graphCookies) {
+		[cookies deleteCookie:cookie];
+	}
+	NSArray* widgetCookies = [cookies cookiesForURL:[NSURL URLWithString:@"http://widget.renren.com"]];
+	
+	for (NSHTTPCookie* cookie in widgetCookies) {
+		[cookies deleteCookie:cookie];
+	}
+  if (![self.renren isSessionValid]){ 
+    DLog(@"session invalid, regetting renren = %@", self.renren);
+    [self.renren authorizationInNavigationWithPermisson:nil andDelegate:self];
+  } else {
+    DLog(@"session is valid, login using renren");
+    [self renrenDidLogin:self.renren];
+  }
+}
+
+- (BOOL)isRenrenLogin
+{
+  return renren && renren.getUserId;
+}
+
+- (void) accountRenrenLoginRequest:(NSString *)encode
+{
+  if (account) {account = nil; }
+  account = [[Account alloc]initWithRenrenEncodedData:encode];
+  account.delegate = self;
+  DLog(@"User::accountRenrenLoginRequest:encode=%@", encode);
+  
+  [account login];
+}
+
+- (void) accountRenrenLogin:(ROUserResponseItem *)userInfo
+{
+  _avatarUrl = userInfo.headUrl;
+  NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                 userInfo.name, @"name",
+                                 userInfo.headUrl, @"image",
+                                 userInfo.userId, @"uid",
+                                 renren.accessToken,@"oauth_access_token",
+                                 renren.getUserId,@"oauth_customer_id",
+                                 @"AES",@"oauth_signature_method",
+                                 [NSString stringWithFormat:@"%.0f",[[NSDate date]timeIntervalSince1970]],@"oauth_timestamp",nil];
+	
+  DLog(@"User::accountRenrenLogin:params = %@", params);
+  
+  //Renren here uses sinaweiboappkey and id to encode
+	NSString* keyString = [NSString stringWithFormat:@"%@&%@",[SinaWeiBoSDKDemo_APPKey URLEncodedString],[SinaWeiBoSDKDemo_APPSecret URLEncodedString]];
+  
+  NSString *base64 = [self getEncryptedString:params:keyString];
+  
+  [self accountRenrenLoginRequest:base64];
+  
+}
+
+#pragma mark - RenrenDelegate methods
+
+/**
+ * 接口请求成功，第三方开发者实现这个方法
+ */
+- (void)renren:(Renren *)renren requestDidReturnResponse:(ROResponse*)response
+{
+  WeiboAction mAction = wAction;
+  wAction = wIdle; 
+  
+  if( mAction == wLogin) {
+    NSArray *usersInfo = (NSArray *)(response.rootObject);
+    
+    ROUserResponseItem *item = [usersInfo objectAtIndex:0];
+    [self accountRenrenLogin:item];
+  }
+}
+
+#pragma mark - RenrenDelegate methods
+
+-(void)renrenDidLogin:(Renren *)newRenren{
+  DLog(@"User::renrenDidLogin:userID=%@", [newRenren getUserId]);
+  
+  
+  ROUserInfoRequestParam *requestParam = [[ROUserInfoRequestParam alloc] init] ;
+	requestParam.fields = [NSString stringWithFormat:@"uid,name,sex,birthday,headurl"];
+	
+  wAction = wLogin;
+	[self.renren getUsersInfo:requestParam andDelegate:self];
+  
+}
+
+- (void)renren:(Renren *)renren loginFailWithError:(ROError*)error{
+	NSString *title = [NSString stringWithFormat:@"Error code:%d", [error code]];
+	NSString *description = [NSString stringWithFormat:@"%@", [error localizedDescription]];
+	UIAlertView *alertView =[[UIAlertView alloc] initWithTitle:title message:description delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+	[alertView show];
+}
+
+//- (void)renren:(Renren *)renren requestDidReturnResponse:(ROResponse*)response{
+//	NSDictionary* params = (NSDictionary *)response.rootObject;
+//  if (params!=nil) {
+//    NSString *msg=nil;
+//    NSMutableString *result = [[NSMutableString alloc] initWithString:@""];
+//    for (id key in params)
+//		{
+//			msg = [NSString stringWithFormat:@"key: %@ value: %@    ",key,[params objectForKey:key]];
+//      [result appendString:msg];
+//		}
+//		[ViewHelper showAlert:@"renren":result:self];
+//	}
+//}
+
+- (void)renren:(Renren *)renren requestFailWithError:(ROError*)error{
+	//Demo Test
+  NSString* errorCode = [NSString stringWithFormat:@"Error:%d",error.code];
+  NSString* errorMsg = [error localizedDescription];
+  
+  UIAlertView * alert = [[UIAlertView alloc] initWithTitle:errorCode message:errorMsg delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+  [alert show];
+}
+
 
 //- (void)getPrivatePub
 //{

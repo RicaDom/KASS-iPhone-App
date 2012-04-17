@@ -10,6 +10,7 @@
 #import "KassApi.h"
 #import "WBConnect.h"
 #import "Account.h"
+#import "Renren.h"
 #import "AccountActivityDelegate.h"
 //#import "PrivatePubClient.h"
 
@@ -19,14 +20,16 @@ typedef enum {
   wIdle
 } WeiboAction ;
 
-@interface User : NSObject<WBSessionDelegate,WBSendViewDelegate,WBRequestDelegate, AccountSessionDelegate>{
+@interface User : NSObject<WBSessionDelegate,WBSendViewDelegate,WBRequestDelegate, AccountSessionDelegate, RenrenDelegate>{
   WeiBo *weibo;
+  Renren *renren;
   Account *account;
   WeiboAction wAction;
 //  PrivatePubClient *ppClient;
 }
 
-@property (nonatomic,assign) id<AccountActivityDelegate> delegate;
+@property (nonatomic,strong) id<AccountActivityDelegate> delegate;
+@property (nonatomic,strong) Renren* renren;
 @property (nonatomic,strong,readonly) WeiBo* weibo;
 @property (nonatomic,strong,readonly) Account* account;
 //@property (nonatomic,strong,readonly) PrivatePubClient* ppClient;
@@ -40,6 +43,7 @@ typedef enum {
 
 - (id) initWithDelegate:(id<AccountActivityDelegate>)delegate;
 - (void) weiboLogin;
+- (void) renrenLogin;
 - (void) accountLogin:(NSString *)email:(NSString *)password;
 - (void) logout;
 - (BOOL) isSameUser:(NSString *)userId;

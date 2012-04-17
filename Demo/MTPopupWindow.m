@@ -26,6 +26,7 @@
 @synthesize signInView = _signInView;
 @synthesize mtWindow = _mtWindow;
 @synthesize viewController = _viewController;
+//@synthesize renren = _renren;
 
 /**
  * This is a public class method, it opens a popup window and loads the given content
@@ -104,14 +105,27 @@
     [closeBtn addTarget:self action:@selector(closePopupWindow) forControlEvents:UIControlEventTouchUpInside];
     [self.bigPanelView addSubview: closeBtn];
     
-    UIImage* twitterButtonImg = [UIImage imageNamed:UI_IMAGE_WEIBO_BUTTON];
-    UIImage* twitterButtonPressImg = [UIImage imageNamed:UI_IMAGE_WEIBO_BUTTON_PRESS];
+  
+  UIImage* renrenButtonImg = [UIImage imageNamed:UI_IMAGE_RENREN_BUTTON];
+  UIImage* renrenButtonPressImg = [UIImage imageNamed:UI_IMAGE_RENREN_BUTTON_PRESS];
+  UIButton* renrenButton = [UIButton buttonWithType:UIButtonTypeCustom];
+  [renrenButton setImage:renrenButtonImg forState:UIControlStateNormal];
+  [renrenButton setImage:renrenButtonPressImg forState:UIControlStateHighlighted];
+  renrenButton.frame = CGRectMake((self.bigPanelView.frame.size.width - renrenButtonImg.size.width*2) / 2 + 136, 130.0, renrenButtonImg.size.width, renrenButtonImg.size.height);
+  [renrenButton addTarget:self action:@selector(loginWithRenren) forControlEvents:UIControlEventTouchUpInside];
+  [self.bigPanelView addSubview:renrenButton];
+  
+  
+  UIImage* twitterButtonImg = [UIImage imageNamed:UI_IMAGE_WEIBO_BUTTON];
+  UIImage* twitterButtonPressImg = [UIImage imageNamed:UI_IMAGE_WEIBO_BUTTON_PRESS];
     UIButton* twitterButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [twitterButton setImage:twitterButtonImg forState:UIControlStateNormal];
-    [twitterButton setImage:twitterButtonPressImg forState:UIControlStateHighlighted];
-    twitterButton.frame = CGRectMake((self.bigPanelView.frame.size.width - twitterButtonImg.size.width) / 2, 130.0, twitterButtonImg.size.width, twitterButtonImg.size.height);
+  [twitterButton setImage:twitterButtonImg forState:UIControlStateNormal];
+  [twitterButton setImage:twitterButtonPressImg forState:UIControlStateHighlighted];
+    twitterButton.frame = CGRectMake((self.bigPanelView.frame.size.width - twitterButtonImg.size.width*2) / 2 - 4, 130.0, twitterButtonImg.size.width, twitterButtonImg.size.height);
     [twitterButton addTarget:self action:@selector(loginWithWeibo) forControlEvents:UIControlEventTouchUpInside];
     [self.bigPanelView addSubview:twitterButton];
+  
+
   
     UIImage* signUpButtonImg = [UIImage imageNamed:UI_IMAGE_SIGNUP_BUTTON];
     UIImage* signUpButtonPressImg = [UIImage imageNamed:UI_IMAGE_SIGNUP_BUTTON_PRESS];
@@ -223,6 +237,14 @@
 {
   NSLog(@"MTPopupWindow::loginWithWeibo");
   [[VariableStore sharedInstance] signInWeibo];
+  [[self.bigPanelView viewWithTag: kShadeViewTag] removeFromSuperview];    
+  [self performSelector:@selector(closePopupWindowAnimate) withObject:nil afterDelay:0.1];
+}
+
+-(void)loginWithRenren
+{
+  NSLog(@"MTPopupWindow::loginWithRenren");
+  [[VariableStore sharedInstance] signInRenren];
   [[self.bigPanelView viewWithTag: kShadeViewTag] removeFromSuperview];    
   [self performSelector:@selector(closePopupWindowAnimate) withObject:nil afterDelay:0.1];
 }

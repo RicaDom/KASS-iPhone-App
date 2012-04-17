@@ -22,10 +22,12 @@
 @property (nonatomic,retain,readonly) NSString* city;
 @property (nonatomic,retain,readonly) NSString* avatarUrl;
 @property (nonatomic,retain,readonly) NSArray* devices;
+@property (nonatomic,retain,readonly) NSString* encodeRenren;
 
 - (id)initWithDictionary:(NSDictionary *)dict;
 - (id)initWithEmailAndPassword:(NSString*)email:(NSString *)password;
 - (id)initWithWeiboEncodedData:(NSString*)encode;
+- (id)initWithRenrenEncodedData:(NSString*)encode;
 
 - (void)getAuth;
 - (void)getAuthFinished:(NSData *)data;

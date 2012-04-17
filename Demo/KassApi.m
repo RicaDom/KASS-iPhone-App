@@ -310,11 +310,14 @@
 //  [self postData:_url:dict];
 //}
 
-- (void)login:(NSDictionary *)dict
+- (void)login:(NSMutableDictionary *)dict
 {
-  NSString *encodedData = [dict objectForKey:@"encode"];
-  if (encodedData) {
+  if ([dict objectForKey:@"encode"]) {
     _url = [NSString stringWithFormat:@"http://%s/v1/weibo/auth", HOST];
+  }else if ([dict objectForKey:@"encode_renren"]){
+    [dict setObject:[dict objectForKey:@"encode_renren"] forKey:@"encode"];
+    [dict removeObjectForKey:@"encode_renren"];
+    _url = [NSString stringWithFormat:@"http://%s/v1/renren/auth", HOST];
   }else{
     _url = [NSString stringWithFormat:@"http://%s/v1/auth", HOST];
   }

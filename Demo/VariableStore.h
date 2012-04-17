@@ -74,6 +74,8 @@
 - (BOOL) signUpAccount:(NSDictionary *)userInfo;
 - (CLLocation *)location;
 
+- (BOOL) signInRenren;
+
 - (void) getAuth;
 - (void) addToModelDict:(NSString *)controller:(NSDictionary *)model;
 - (NSDictionary *) getModelDict:(NSString *)controller:(NSString *)modelName;

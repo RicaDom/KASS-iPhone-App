@@ -125,9 +125,17 @@
 
 - (BOOL) signInWeibo
 {
-  DLog(@"VariableStore::signInWeibo");
+  DLog(@"VariableStore::signInWeibo,cv=%@", _currentViewControllerDelegate);
   if(!self.user) self.user = [[User alloc] init];
   [self.user weiboLogin];
+  return YES;
+}
+
+- (BOOL) signInRenren
+{
+  DLog(@"VariableStore::signInRenren,cv=%@", _currentViewControllerDelegate);
+  if(!self.user) self.user = [[User alloc] initWithDelegate:_currentViewControllerDelegate];
+  [self.user renrenLogin];
   return YES;
 }
 
