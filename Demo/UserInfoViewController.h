@@ -16,6 +16,7 @@
   UITapGestureRecognizer *singleFingerTap;
   BOOL _emailVerified;
   BOOL _weiboVerified;
+  BOOL _renrenVerified;
   BOOL _phoneVerified;
   NSString *_phone_number;
 }

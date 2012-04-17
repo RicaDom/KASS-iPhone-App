@@ -13,7 +13,7 @@
 
 @implementation Account
 
-@synthesize delegate = _delegate, userDbId = _userDbId, userName = _userName, password = _password, weiboId = _weiboId, email = _email, encode = _encode, phone = _phone, devices = _devices, city = _city, avatarUrl = _avatarUrl;
+@synthesize delegate = _delegate, userDbId = _userDbId, userName = _userName, password = _password, weiboId = _weiboId, email = _email, encode = _encode, phone = _phone, devices = _devices, city = _city, avatarUrl = _avatarUrl, encodeRenren = _encodeRenren;
 
 - (id)initWithEmailAndPassword:(NSString*)email:(NSString *)password
 {
@@ -30,6 +30,14 @@
 		_encode	= [[NSString alloc]initWithString:encode];
 	}
 	return self;
+}
+
+- (id)initWithRenrenEncodedData:(NSString*)encode
+{
+if (self = [super init]) {
+  _encodeRenren	= [[NSString alloc]initWithString:encode];
+}
+return self;
 }
 
 - (id)initWithDictionary:(NSDictionary *)dict
@@ -114,17 +122,22 @@
 {
   DLog(@"Account::login");
 
-  NSDictionary * userInfo;
+  NSMutableDictionary * userInfo;
   NSString *deviceToken = [self getEncodedDeviceToken];
   
   if ( _encode ) {
-    userInfo = [NSDictionary dictionaryWithObjectsAndKeys: 
+    userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys: 
                 _encode, @"encode",
                 deviceToken, @"device_token",
                 nil];
 
+  }else if( _encodeRenren ){
+    userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys: 
+                _encodeRenren, @"encode_renren",
+                deviceToken, @"device_token",
+                nil];
   }else{
-    userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+    userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                   _email, @"email",
                   _password, @"password",
                   deviceToken, @"device_token",

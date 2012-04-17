@@ -138,6 +138,10 @@
       
       NSString *weiboV = [NSString stringWithFormat:@"%@",[source objectForKey:@"verified"]];
       _weiboVerified = [weiboV isEqualToString:@"1"];
+    }else if ([type isEqualToString:@"renren"]) {
+      
+      NSString *renrenV = [NSString stringWithFormat:@"%@",[source objectForKey:@"verified"]];
+      _renrenVerified = [renrenV isEqualToString:@"1"];
     } else if ([type isEqualToString:@"phone"]) {
       
       NSString *phoneV = [NSString stringWithFormat:@"%@",[source objectForKey:@"verified"]];
@@ -167,13 +171,19 @@
     [self buildIconView:@"veri-weibo-off.png":30];
   }
   
+  if (_renrenVerified) {
+    [self buildIconView:@"veri-renren-on.png":60];
+  }else{
+    [self buildIconView:@"veri-renren-off.png":60];
+  }
+  
   if (_phoneVerified) {
-    [self buildIconView:@"veri-phone-on.png":60];
+    [self buildIconView:@"veri-phone-on.png":90];
     if ( ![[self currentUser] isSameUser:_userId] ) {
       [_contentView addGestureRecognizer:singleFingerTap];
     }
   }else{
-    [self buildIconView:@"veri-phone-off.png":60];
+    [self buildIconView:@"veri-phone-off.png":90];
   }
   
   self.userId = uId;
@@ -205,7 +215,7 @@
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
   CGPoint location = [recognizer locationInView:recognizer.view];
   
-  if (location.x > 125.5 && location.x < 150.0 && location.y > 13.0 && location.y < 50.0) {
+  if (location.x > 155.5 && location.x < 180.0 && location.y > 13.0 && location.y < 50.0) {
     if (_phoneVerified && _phone_number) {
       
       NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:
