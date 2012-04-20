@@ -22,12 +22,14 @@
 @synthesize topInfoView = _topInfoView;
 @synthesize postAskPrice = _postAskPrice;
 @synthesize postDuration = _postDuration;
+@synthesize renrenHintLabel = _renrenHintLabel;
 @synthesize submitButton = _submitButton;
 @synthesize postType = _postType;
 @synthesize cancelButton = _cancelButton;
 @synthesize mapView = _mapView;
 @synthesize leftButton = _leftButton;
 @synthesize weiboCheckBox = _weiboCheckBox;
+@synthesize renrenCheckBox = _renrenCheckBox;
 @synthesize weiboHintLabel = _weiboHintLabel;
 @synthesize submitLabel = _submitLabel;
 
@@ -48,6 +50,37 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)updateShareView
+{
+  if ([[VariableStore sharedInstance].user isWeiboLogin] > 0) {
+    [ViewHelper buildCheckBoxButton:self.weiboCheckBox];
+    self.weiboCheckBox.tag = 1; //ON
+    self.weiboCheckBox.enabled = YES;
+    self.weiboHintLabel.hidden = NO;
+    self.weiboCheckBox.hidden = NO;
+  } else {
+    [ViewHelper buildCheckBoxButtonUncheck:self.weiboCheckBox];
+    self.weiboCheckBox.tag = 0; //OFF
+    self.weiboCheckBox.enabled = NO;
+    self.weiboHintLabel.hidden = YES;
+    self.weiboCheckBox.hidden = YES;
+  }
+  
+  if ([[VariableStore sharedInstance].user isRenrenLogin ] > 0) {
+    [ViewHelper buildCheckBoxButton:self.renrenCheckBox];
+    self.renrenCheckBox.tag = 1; //ON
+    self.renrenCheckBox.enabled = YES;
+    self.renrenHintLabel.hidden = NO;
+    self.renrenCheckBox.hidden = NO;
+  } else {
+    [ViewHelper buildCheckBoxButtonUncheck:self.renrenCheckBox];
+    self.renrenCheckBox.tag = 0; //OFF
+    self.renrenCheckBox.enabled = NO;
+    self.renrenHintLabel.hidden = YES;
+    self.renrenCheckBox.hidden = YES;
+  }
+}
+
 - (void)updateCurrentView
 {
   DLog(@"PostSummaryViewController::updateCurrentView ");
@@ -64,19 +97,7 @@
     }
     self.submitButton.hidden = FALSE;
     
-    if ([[VariableStore sharedInstance].user isWeiboLogin] > 0) {
-        [ViewHelper buildCheckBoxButton:self.weiboCheckBox];
-        self.weiboCheckBox.tag = 1; //ON
-        self.weiboCheckBox.enabled = YES;
-      self.weiboHintLabel.hidden = NO;
-      self.weiboCheckBox.hidden = NO;
-    } else {
-        [ViewHelper buildCheckBoxButtonUncheck:self.weiboCheckBox];
-        self.weiboCheckBox.tag = 0; //OFF
-      self.weiboCheckBox.enabled = NO;
-      self.weiboHintLabel.hidden = YES;
-      self.weiboCheckBox.hidden = YES;
-    }
+  [self updateShareView];
   
     if ([self currentUser].avatarUrl.isPresent) {
       [ViewHelper buildRoundCustomImageViewWithFrame:_topInfoView:[self currentUser].avatarUrl:CGRectMake(10,5,50,50)];
@@ -165,6 +186,8 @@
   [self setWeiboHintLabel:nil];
   [self setTopInfoView:nil];
   [self setSubmitLabel:nil];
+  [self setRenrenHintLabel:nil];
+  [self setRenrenCheckBox:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -198,10 +221,24 @@
     [self.presentingViewController dismissModalViewControllerAnimated:YES];
 }
 
+- (void)shareListing:(NSDictionary *)dict
+{
+  ListItem *listItem = [[ListItem alloc] initWithDictionary:dict];
+  if (self.weiboCheckBox.tag == 1) { 
+    [VariableStore.sharedInstance.user weiboShare:listItem];
+  }
+  
+  if (self.renrenCheckBox.tag == 1) {
+    [VariableStore.sharedInstance.user renrenShare:listItem];
+  }
+}
+
 - (void)accountDidCreateListing:(NSDictionary *)dict
 {
   DLog(@"PostSummaryViewController::accountDidCreateListing:dict=%@", dict);
   [[self kassVS] appendPostingItemToListings:dict];
+  
+  [self shareListing:dict];
   
   [self hideIndicator];
   [self.presentingViewController dismissModalViewControllerAnimated:YES];
@@ -213,6 +250,8 @@
 {
   DLog(@"PostSummaryViewController::accountDidModifyListing:dict=%@", dict);
 //  [[self kassVS] appendPostingItemToListings:dict];
+  [self shareListing:dict];
+  
   [self hideIndicator];
   [self.presentingViewController dismissModalViewControllerAnimated:YES];
   [[NSNotificationCenter defaultCenter] postNotificationName: NEW_POST_NOTIFICATION 
@@ -238,8 +277,6 @@
         [params setObject:postItem.askPrice forKey:@"price"];
         [params setObject:durationStr forKey:@"time"];
         [params setObject:latlng forKey:@"latlng"];
-                                  
-        if (self.weiboCheckBox.tag == 1) { [params setObject:@"true" forKey:@"publish"]; }
      
         DLog(@"PostSummaryViewController::submitAction:params = %@", params);
         [self.submitLabel setText:TEXT_IN_PROCESS];
@@ -278,6 +315,16 @@
         [ViewHelper buildCheckBoxButtonUncheck:self.weiboCheckBox];
         self.weiboCheckBox.tag = 0;        
     }
+}
+
+- (IBAction)renrenCheckBoxAction:(id)sender {
+  if (self.renrenCheckBox.tag == 0) {
+    [ViewHelper buildCheckBoxButton:self.renrenCheckBox];
+    self.renrenCheckBox.tag = 1;
+  } else {
+    [ViewHelper buildCheckBoxButtonUncheck:self.renrenCheckBox];
+    self.renrenCheckBox.tag = 0;        
+  }
 }
 
 @end

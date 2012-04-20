@@ -146,7 +146,7 @@ NSString *remoteNotificationOfferId = nil;
 }
 
 - (IBAction)shareAction:(id)sender {
-    UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:UI_BUTTON_LABEL_SHARE_WITH_FRIEND delegate:self cancelButtonTitle:UI_BUTTON_LABEL_CANCEL destructiveButtonTitle:nil otherButtonTitles:UI_BUTTON_LABEL_WEIBO_SHARE, UI_BUTTON_LABEL_SEND_MESSAGE, UI_BUTTON_LABEL_SEND_EMAIL, nil];
+    UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:UI_BUTTON_LABEL_SHARE_WITH_FRIEND delegate:self cancelButtonTitle:UI_BUTTON_LABEL_CANCEL destructiveButtonTitle:nil otherButtonTitles: UI_BUTTON_LABEL_RENREN_SHARE, UI_BUTTON_LABEL_WEIBO_SHARE, UI_BUTTON_LABEL_SEND_MESSAGE, UI_BUTTON_LABEL_SEND_EMAIL, nil];
     popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
     popupQuery.tag = 2;
     [popupQuery showInView:self.view];
@@ -198,22 +198,27 @@ NSString *remoteNotificationOfferId = nil;
     } else if (actionSheet.tag == 2){
         DLog(@"Action sheet tag 2");
         DLog(@"Action sheet tag 2 index %d", buttonIndex);
-        if (buttonIndex == 0) {
+      
+      if(buttonIndex == 0){
+        //share renren
+        [[self currentUser] renrenShare:_currentItem];
+      }
+      else if (buttonIndex == 1) {
             
           //share weibo
           [[self currentUser] weiboShare:_currentItem];
           
             //self.label.text = @"Destructive Button Clicked";
-        } else if (buttonIndex == 1) {
-          [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"sms:"]];
         } else if (buttonIndex == 2) {
+          [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"sms:"]];
+        } else if (buttonIndex == 3) {
             
           NSString *mailString = [NSString stringWithFormat:@"mailto:?subject=%@&body=%@",
                                     [_currentItem.title URLEncodedString] ,
                                     [_currentItem.description URLEncodedString] ];
           [[UIApplication sharedApplication] openURL:[NSURL URLWithString:mailString]];
           
-        } else if (buttonIndex == 3) {
+        } else if (buttonIndex == 4) {
             
             //self.label.text = @"Cancel Button Clicked";
         }

@@ -161,7 +161,7 @@ extern NSString * const UI_IMAGE_MESSAGE_LINE;
 extern NSString * const UI_IMAGE_DEFAULT_USER;
 extern NSString * const UI_IMAGE_PULLER_LOADING;
 extern NSString * const UI_IMAGE_PULLER_LOADING_ALPHA;
-
+extern NSString * const UI_BUTTON_LABEL_RENREN_SHARE;
 
 extern NSString * const UI_IMAGE_TABBAR_IMAGE;
 extern NSString * const UI_IMAGE_EMPTY;

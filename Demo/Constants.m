@@ -38,6 +38,7 @@ NSString * const UI_BUTTON_LABEL_SIGNIN_TO_POST = @"请登陆后发布";
 NSString * const UI_BUTTON_LABEL_POST_NOW = @"发布吧!";
 NSString * const UI_BUTTON_LABEL_UPDATE = @"更新";
 NSString * const UI_BUTTON_LABEL_DELETE = @"删除";
+NSString * const UI_BUTTON_LABEL_RENREN_SHARE = @"发布到人人网";
 NSString * const UI_BUTTON_LABEL_WEIBO_SHARE = @"发布到微博";
 NSString * const UI_BUTTON_LABEL_SEND_MESSAGE = @"发讯息";
 NSString * const UI_BUTTON_LABEL_SEND_EMAIL = @"发邮件";

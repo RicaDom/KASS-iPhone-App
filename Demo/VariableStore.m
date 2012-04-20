@@ -134,7 +134,8 @@
 - (BOOL) signInRenren
 {
   DLog(@"VariableStore::signInRenren,cv=%@", _currentViewControllerDelegate);
-  if(!self.user) self.user = [[User alloc] initWithDelegate:_currentViewControllerDelegate];
+  if(!self.user) self.user = [[User alloc] init];
+//  if(!self.user) self.user = [[User alloc] initWithDelegate:_currentViewControllerDelegate];
   [self.user renrenLogin];
   return YES;
 }

@@ -527,6 +527,7 @@
 {
   DLog(@"User::logout:weibo=%@,account=%@,delegate=%@", self.weibo, self.account, _delegate);
   if (self.weibo)    { [self.weibo LogOut]; }
+  if (self.renren)   { [self.renren logout:self]; }
   if (self.account)  { [self.account logout]; }
 }
 
@@ -571,15 +572,12 @@
   DLog(@"User::weiboDidLogin:wbRequestUserInfo:%@", wbRequest);
 }
 
-- (void)weiboShare:(ListItem *)listItem
+- (NSString *)getSharedStatus:(ListItem *)listItem
 {
-  DLog(@"User::weiboShare:listItem=%@", [listItem title]);
-  
   NSString *who = [self hasListItem:listItem] ? @"我" : @"有人";
   
   NSString *siteName = [VariableStore.sharedInstance.settings.siteDict valueForKey:@"name"];
   NSString *statusSample = [VariableStore.sharedInstance.settings.weiboShareDict valueForKey:@"share_status"];
-  NSString *shareImg = [VariableStore.sharedInstance.settings.weiboShareDict valueForKey:@"share_img"];
   NSString *description = !listItem.description.isBlank ? listItem.description : listItem.title;
   
   NSString *status = [statusSample stringByReplacingOccurrencesOfString:@"[[site]]" withString: siteName];
@@ -590,13 +588,44 @@
   status = [status stringByReplacingOccurrencesOfString:@"[[description]]" withString: description];
   status = [status stringByReplacingOccurrencesOfString:@"[[url]]" withString: listItem.getUrl];
   
+  return status;
+}
+
+- (NSMutableDictionary *)getSharedString:(ListItem *)listItem
+{
+  NSString *shareImg = [VariableStore.sharedInstance.settings.weiboShareDict valueForKey:@"share_img"];
+  NSMutableDictionary* updateStatusParams = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                             [self getSharedStatus:listItem], @"status",
+                                             shareImg, @"url",
+                                             [SinaWeiBoSDKDemo_APPKey URLEncodedString],@"source",nil];
+  
+  return updateStatusParams;
+}
+
+- (void)renrenShare:(ListItem *)listItem
+{
+  if ( !self.isRenrenLogin  ) { return; }
+  DLog(@"User::renrenShare:listItem=%@", [listItem title]);
+  NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:10];
+  [params setObject:@"status.set" forKey:@"method"];
+  [params setObject:[self getSharedStatus:listItem] forKey:@"status"];
+  [self.renren requestWithParams:params andDelegate:self];
+}
+   
+- (void)renrenDidShare
+{
+}
+
+- (void)weiboShare:(ListItem *)listItem
+{
+  if ( !self.isWeiboLogin  ) { return; }
+  DLog(@"User::weiboShare:listItem=%@", [listItem title]);
+  
   // statuses/update.json?source=#{@api_key}
   NSString* updateStatusString = [NSString stringWithFormat:@"statuses/upload_url_text.json"];
   
-  NSMutableDictionary* updateStatusParams = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                         status, @"status",
-                                         shareImg, @"url",
-                                         [SinaWeiBoSDKDemo_APPKey URLEncodedString],@"source",nil];
+  NSMutableDictionary* updateStatusParams = [self getSharedString:listItem];
+  
   wAction = wUpdate;
   WBRequest* wbRequest = [weibo requestWithMethodName:updateStatusString 
                                             andParams:updateStatusParams 
@@ -716,7 +745,9 @@
 	}
   if (![self.renren isSessionValid]){ 
     DLog(@"session invalid, regetting renren = %@", self.renren);
-    [self.renren authorizationInNavigationWithPermisson:nil andDelegate:self];
+    
+    NSArray *permissions = [[NSArray alloc] initWithObjects:@"publish_feed", @"status_update", @"email", @"read_user_status", nil];    
+    [self.renren authorizationInNavigationWithPermisson:permissions andDelegate:self];
   } else {
     DLog(@"session is valid, login using renren");
     [self renrenDidLogin:self.renren];

@@ -303,11 +303,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/PostSummaryViewController.m"
-         timestampString = "354691419.189233"
+         timestampString = "356625909.589107"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "211"
-         endingLineNumber = "211"
+         startingLineNumber = "248"
+         endingLineNumber = "248"
          landmarkName = "@implementation PostSummaryViewController"
          landmarkType = "3">
       </FileBreakpoint>
@@ -317,11 +317,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/PostSummaryViewController.m"
-         timestampString = "354691419.189233"
+         timestampString = "356625909.589107"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "214"
-         endingLineNumber = "214"
+         startingLineNumber = "251"
+         endingLineNumber = "251"
          landmarkName = "-accountDidModifyListing:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -609,11 +609,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/PostSummaryViewController.m"
-         timestampString = "354691419.189233"
+         timestampString = "356626275.815566"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "274"
-         endingLineNumber = "274"
+         startingLineNumber = "311"
+         endingLineNumber = "311"
          landmarkName = "-weiboCheckBoxAction:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -622,11 +622,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/PostSummaryViewController.m"
-         timestampString = "354691419.189233"
+         timestampString = "356625909.589107"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "95"
-         endingLineNumber = "95"
+         startingLineNumber = "116"
+         endingLineNumber = "116"
          landmarkName = "-loadCurrentPostingData"
          landmarkType = "5">
       </FileBreakpoint>
@@ -635,11 +635,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/PostSummaryViewController.m"
-         timestampString = "354691419.189233"
+         timestampString = "356625909.589107"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "100"
-         endingLineNumber = "100"
+         startingLineNumber = "121"
+         endingLineNumber = "121"
          landmarkName = "-loadCurrentPostingData"
          landmarkType = "5">
       </FileBreakpoint>
@@ -648,11 +648,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/PostSummaryViewController.m"
-         timestampString = "354691419.189233"
+         timestampString = "356625909.589107"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "103"
-         endingLineNumber = "103"
+         startingLineNumber = "124"
+         endingLineNumber = "124"
          landmarkName = "-loadCurrentPostingData"
          landmarkType = "5">
       </FileBreakpoint>
@@ -661,11 +661,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/PostSummaryViewController.m"
-         timestampString = "354691419.189233"
+         timestampString = "356625909.589107"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "105"
-         endingLineNumber = "105"
+         startingLineNumber = "126"
+         endingLineNumber = "126"
          landmarkName = "-loadCurrentPostingData"
          landmarkType = "5">
       </FileBreakpoint>
@@ -674,11 +674,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/PostSummaryViewController.m"
-         timestampString = "354691419.189233"
+         timestampString = "356625909.589107"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "55"
-         endingLineNumber = "55"
+         startingLineNumber = "88"
+         endingLineNumber = "88"
          landmarkName = "-updateCurrentView"
          landmarkType = "5">
       </FileBreakpoint>
@@ -687,50 +687,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/PostSummaryViewController.m"
-         timestampString = "354691419.189233"
+         timestampString = "356626275.815566"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "67"
-         endingLineNumber = "67"
-         landmarkName = "-updateCurrentView"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Demo/PostSummaryViewController.m"
-         timestampString = "354691419.189233"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "69"
-         endingLineNumber = "69"
-         landmarkName = "-updateCurrentView"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Demo/PostSummaryViewController.m"
-         timestampString = "354691419.189233"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "75"
-         endingLineNumber = "75"
-         landmarkName = "-updateCurrentView"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Demo/PostSummaryViewController.m"
-         timestampString = "354691419.189233"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "279"
-         endingLineNumber = "279"
+         startingLineNumber = "316"
+         endingLineNumber = "316"
          landmarkName = "-weiboCheckBoxAction:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -739,11 +700,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/PostSummaryViewController.m"
-         timestampString = "354691419.189233"
+         timestampString = "356626275.815566"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "247"
-         endingLineNumber = "247"
+         startingLineNumber = "284"
+         endingLineNumber = "284"
          landmarkName = "-submitAction"
          landmarkType = "5">
       </FileBreakpoint>
@@ -830,11 +791,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/BrowseItemNoMsgViewController.m"
-         timestampString = "354776808.661601"
+         timestampString = "356627032.51761"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "308"
-         endingLineNumber = "308"
+         startingLineNumber = "311"
+         endingLineNumber = "311"
          landmarkName = "-textFieldDidBeginEditing:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -934,11 +895,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/ItemViewController.m"
-         timestampString = "354774094.144122"
+         timestampString = "356626275.815566"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "285"
-         endingLineNumber = "285"
+         startingLineNumber = "290"
+         endingLineNumber = "290"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1220,11 +1181,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/PostSummaryViewController.m"
-         timestampString = "354691419.189233"
+         timestampString = "356625909.589107"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "60"
-         endingLineNumber = "60"
+         startingLineNumber = "93"
+         endingLineNumber = "93"
          landmarkName = "-updateCurrentView"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1350,11 +1311,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/BrowseItemNoMsgViewController.m"
-         timestampString = "354776808.661601"
+         timestampString = "356627032.51761"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "282"
-         endingLineNumber = "282"
+         startingLineNumber = "285"
+         endingLineNumber = "285"
          landmarkName = "-actionSheet:clickedButtonAtIndex:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1532,11 +1493,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/User.m"
-         timestampString = "356199505.607502"
+         timestampString = "356629071.444536"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "596"
-         endingLineNumber = "596"
+         startingLineNumber = "627"
+         endingLineNumber = "627"
          landmarkName = "-weiboShare:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1545,63 +1506,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/User.m"
-         timestampString = "356199505.607502"
+         timestampString = "356629071.444536"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "578"
-         endingLineNumber = "578"
-         landmarkName = "-weiboShare:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Demo/User.m"
-         timestampString = "356199505.607502"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "585"
-         endingLineNumber = "585"
-         landmarkName = "-weiboShare:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Demo/User.m"
-         timestampString = "356199505.607502"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "594"
-         endingLineNumber = "594"
-         landmarkName = "-weiboShare:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Demo/User.m"
-         timestampString = "356199505.607502"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "588"
-         endingLineNumber = "588"
-         landmarkName = "-weiboShare:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Demo/User.m"
-         timestampString = "356199505.607502"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "590"
-         endingLineNumber = "590"
+         startingLineNumber = "625"
+         endingLineNumber = "625"
          landmarkName = "-weiboShare:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1622,19 +1531,6 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Demo/User.m"
-         timestampString = "356199505.607502"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "591"
-         endingLineNumber = "591"
-         landmarkName = "-weiboShare:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "Demo/ListItem+ListItemHelper.m"
          timestampString = "355724090.870901"
          startingColumnNumber = "9223372036854775807"
@@ -1642,19 +1538,6 @@
          startingLineNumber = "50"
          endingLineNumber = "50"
          landmarkName = "-getUrl"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Demo/User.m"
-         timestampString = "356199505.607502"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "597"
-         endingLineNumber = "597"
-         landmarkName = "-weiboShare:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1850,6 +1733,32 @@
          startingLineNumber = "135"
          endingLineNumber = "135"
          landmarkName = "-login"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Demo/PostSummaryViewController.m"
+         timestampString = "356627413.782426"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "228"
+         endingLineNumber = "228"
+         landmarkName = "-shareListing:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Demo/PostSummaryViewController.m"
+         timestampString = "356627414.77915"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "232"
+         endingLineNumber = "232"
+         landmarkName = "-shareListing:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

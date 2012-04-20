@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *postTitle;
 @property (weak, nonatomic) IBOutlet UILabel *postAskPrice;
 @property (weak, nonatomic) IBOutlet UILabel *postDuration;
+@property (weak, nonatomic) IBOutlet UILabel *renrenHintLabel;
 @property (strong, nonatomic) IBOutlet UIButton *submitButton;
 @property (strong, nonatomic) NSString *postType;
 @property (strong, nonatomic) IBOutlet UIButton *cancelButton;
@@ -25,6 +26,7 @@
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
 @property (strong, nonatomic) IBOutlet UIButton *weiboCheckBox;
+@property (weak, nonatomic) IBOutlet UIButton *renrenCheckBox;
 @property (weak, nonatomic) IBOutlet UILabel *weiboHintLabel;
 @property (weak, nonatomic) IBOutlet UILabel *submitLabel;
 
@@ -35,5 +37,6 @@
 - (IBAction)idateAction:(id)sender;
 - (IBAction)leftButtonAction:(id)sender;
 - (IBAction)weiboCheckBoxAction:(id)sender;
+- (IBAction)renrenCheckBoxAction:(id)sender;
 
 @end
