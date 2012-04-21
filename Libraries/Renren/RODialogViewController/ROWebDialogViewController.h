@@ -7,6 +7,7 @@
 //
 
 #import "ROBaseDialogViewController.h"
+#import "ROResponse.h"
 
 enum {
     RODialogOperateSuccess,

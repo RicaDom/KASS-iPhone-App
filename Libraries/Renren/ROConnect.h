@@ -42,9 +42,6 @@
 
 #pragma mark -- Pay
 
-#import "ROPayError.h"
-#import "ROPayOrderInfo.h"
-
 
 #pragma mark -- Base
 
@@ -54,6 +51,5 @@
 #import "ROError.h"
 #import "ROResponse.h"
 #import "Renren.h"
-#import "RenrenPay.h"
 
 

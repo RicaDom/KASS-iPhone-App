@@ -99,13 +99,13 @@ static Renren *sharedRenren = nil;
     return (self.accessToken != nil && self.expirationDate != nil && self.sessionKey != nil && NSOrderedDescending == [self.expirationDate compare:[NSDate date]]);	
 }
 
--(RenrenPay *)getRenrenPayWithSecret:(NSString *)secret andLocalMem:(BOOL)isUsed
-{
-    RenrenPay *rrPay  = [[[RenrenPay alloc] init] autorelease];
-    [rrPay initPayWithRenren:self andSecretKey:secret andLocalMem:isUsed];
-    
-    return rrPay;
-}
+//-(RenrenPay *)getRenrenPayWithSecret:(NSString *)secret andLocalMem:(BOOL)isUsed
+//{
+//    RenrenPay *rrPay  = [[[RenrenPay alloc] init] autorelease];
+//    [rrPay initPayWithRenren:self andSecretKey:secret andLocalMem:isUsed];
+//    
+//    return rrPay;
+//}
 
 #pragma mark - Private Methods -
 
@@ -171,6 +171,12 @@ static Renren *sharedRenren = nil;
     return;
 }
 
+- (NSString *)getUserId
+{
+  NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+  return [defaults objectForKey:@"session_UserId"];
+}
+
 // 旧的接口
 - (RORequest*)openUrl:(NSString *)url params:(NSMutableDictionary *)params httpMethod:(NSString *)httpMethod delegate:(id<RORequestDelegate>)delegate{
     
@@ -228,6 +234,8 @@ static Renren *sharedRenren = nil;
             //用户信息保存到本地
             [self saveUserSessionInfo];	
             [self getLoggedInUserId];
+        
+        DLog(@"renren delegate = %@", _renrenDelegate);
             if ([_renrenDelegate respondsToSelector:@selector(renrenDidLogin:)]) {  
                 [_renrenDelegate renrenDidLogin:self];
             }

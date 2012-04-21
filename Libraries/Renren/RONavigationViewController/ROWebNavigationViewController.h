@@ -7,6 +7,7 @@
 //
 
 #import "ROBaseNavigationViewController.h"
+#import "ROConnect.h"
 
 @interface ROWebNavigationViewController : ROBaseNavigationViewController<UIWebViewDelegate>{
     UIWebView *_webView;

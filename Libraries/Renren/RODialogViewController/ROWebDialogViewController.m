@@ -8,6 +8,8 @@
 
 
 #import "ROWebDialogViewController.h"
+#import "ROUtility.h"
+#import "ROMacroDef.h"
 
 @interface ROWebDialogViewController(Private) 
 

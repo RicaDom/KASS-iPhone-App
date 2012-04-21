@@ -7,6 +7,7 @@
 //
 
 #import "ROWebNavigationViewController.h"
+#import "ROConnect.h"
 
 @interface ROWebNavigationViewController(Private)
 

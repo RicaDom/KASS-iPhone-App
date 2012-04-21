@@ -19,8 +19,8 @@
  * of your own application registeried on http://app.renren.com/developers
  * before any using of API methods.
  */
-#define kAPP_ID     @"YOUR APP ID"
-#define kAPI_Key    @"YOUR API KEY"
+#define kAPP_ID     @"188415"
+#define kAPI_Key    @"777eadc10f9147bdb6684d814001fe74"
 
 
 @protocol RenrenDelegate;
@@ -31,7 +31,7 @@
 @class RORequest;
 @class ROPublishPhotoRequestParam;
 @class ROPasswordFlowRequestParam;
-@class RenrenPay;
+//@class RenrenPay;
 
 @interface Renren: NSObject <RODialogDelegate, RORequestDelegate> {
 	NSString *_accessToken;
@@ -91,14 +91,14 @@
  * 取得登录用户的userID
  */
 - (void)getLoggedInUserId;
-
+- (NSString *)getUserId;
 /*
  * 获得支付功能对象
  * @param secret APP的secret。
  * @param isUsed 是否使用本地存储。
  * @return 返回RenrenPay对象。
  */
--(RenrenPay *)getRenrenPayWithSecret:(NSString *)secret andLocalMem:(BOOL)isUsed;
+//-(RenrenPay *)getRenrenPayWithSecret:(NSString *)secret andLocalMem:(BOOL)isUsed;
 
 /*
  * 提供给其他扩展功能使用，可以发出http请求，取得Json数据

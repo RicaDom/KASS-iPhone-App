@@ -9,6 +9,7 @@
 #import "ROUtility.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "JSON.h"
+#import "ROConnect.h"
 
 // 给上传图像加的水印文字常量
 #define kWatermarkString @"renren-inc.com"
