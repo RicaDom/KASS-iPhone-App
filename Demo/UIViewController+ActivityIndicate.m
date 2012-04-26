@@ -43,6 +43,8 @@
     }
   }if ([errorCode isEqualToString:@"1"]) {
     [ViewHelper showConnectionErrorAlert:self.view];
+  }if ([errorCode isEqualToString:@"5"]) {
+    [ViewHelper showConnectionErrorAlert:self.view];
   }else {
     [ViewHelper showErrorMessageAlert:errors:self];
   }
@@ -54,6 +56,8 @@
   [self hideIndicator];
   NSString *errorCode = [errors objectForKey:@"code"];
   if ([errorCode isEqualToString:@"1"]) {
+    [ViewHelper showConnectionErrorAlert:self.view];
+  }if ([errorCode isEqualToString:@"5"]) {
     [ViewHelper showConnectionErrorAlert:self.view];
   }else {
     [ViewHelper showErrorMessageAlert:errors:self];

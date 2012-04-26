@@ -45,7 +45,7 @@
       [_performer perform:(NSData *)[request responseData]:(NSString *) _method];
     }
   }else{
-    NSDictionary *errors = [[NSDictionary alloc]initWithObjectsAndKeys:@"Invalid Response", @"Request", nil];
+    NSDictionary *errors = [[NSDictionary alloc]initWithObjectsAndKeys:@"5", @"code", nil];
     [_performer requestFailed:errors];
   }
 

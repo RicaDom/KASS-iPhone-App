@@ -49,6 +49,8 @@
 #define DEFAULT_FONT @"Heiti SC"
 #define DEFAULT_PER_PAGE 30
 
+#define INVALID_RESPONSE @"Invalid Response"
+
 extern NSString * const POST_TYPE_TEMPLATE;
 extern NSString * const POST_TYPE_EDITING;
 extern NSString * const POST_TEMPLATE_CATEGORY_POPULAR;
