@@ -366,7 +366,6 @@
 		E5299FAB150CACA000E73D75 /* startbg.png in Resources */ = {isa = PBXBuildFile; fileRef = E5299FAA150CACA000E73D75 /* startbg.png */; };
 		E534512E15529287003EDF4D /* UserSNSInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E534512D15529287003EDF4D /* UserSNSInfo.m */; };
 		E53451451552DE3C003EDF4D /* AboutVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E53451441552DE3C003EDF4D /* AboutVideoViewController.m */; };
-		E53451471552ECD8003EDF4D /* Movie-1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = E53451461552ECD8003EDF4D /* Movie-1.mp4 */; };
 		E53451491552ED16003EDF4D /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53451481552ED16003EDF4D /* MediaPlayer.framework */; };
 		E53741481514DBA1008AB941 /* SellerAlertsListingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E53741471514DBA1008AB941 /* SellerAlertsListingsViewController.m */; };
 		E53741501515A04C008AB941 /* alert_151.png in Resources */ = {isa = PBXBuildFile; fileRef = E537414B1515A04C008AB941 /* alert_151.png */; };
@@ -1034,7 +1033,6 @@
 		E534512D15529287003EDF4D /* UserSNSInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSNSInfo.m; sourceTree = "<group>"; };
 		E53451431552DE3C003EDF4D /* AboutVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutVideoViewController.h; sourceTree = "<group>"; };
 		E53451441552DE3C003EDF4D /* AboutVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutVideoViewController.m; sourceTree = "<group>"; };
-		E53451461552ECD8003EDF4D /* Movie-1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Movie-1.mp4"; sourceTree = "<group>"; };
 		E53451481552ED16003EDF4D /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		E53741461514DBA0008AB941 /* SellerAlertsListingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellerAlertsListingsViewController.h; sourceTree = "<group>"; };
 		E53741471514DBA1008AB941 /* SellerAlertsListingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellerAlertsListingsViewController.m; sourceTree = "<group>"; };
@@ -2212,7 +2210,6 @@
 		E5947DD114A3A12B0066723A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E53451461552ECD8003EDF4D /* Movie-1.mp4 */,
 				E59AE14814AD09410048C7C0 /* images */,
 				E5947DDC14A3A12B0066723A /* MainStoryboard.storyboard */,
 				E5947DD214A3A12B0066723A /* kass-Info.plist */,
@@ -2907,7 +2904,6 @@
 				77CFE6311542849100082FD0 /* RepairButton@2x.png in Resources */,
 				77CFE6321542849100082FD0 /* small-button-normal.png in Resources */,
 				77CFE6331542849100082FD0 /* small-button-normal@2x.png in Resources */,
-				E53451471552ECD8003EDF4D /* Movie-1.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
