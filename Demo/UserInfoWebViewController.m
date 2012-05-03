@@ -95,15 +95,6 @@
     [super viewDidLoad];
     
     [ViewHelper buildBackButton:self.leftNavigationButton];
-    
-    // Need to adjust the frame of the webview to make sure it is not
-    // partially covered by the nav bar
-//    CGRect webViewFrame = self.userInfoWebView.frame;
-//    webViewFrame.origin.y = self.navigationController.navigationBar.frame.origin.y + self.navigationController.navigationBar.frame.size.height;
-//    //webViewFrame.size.height = self.toolbar.frame.origin.y - webViewFrame.origin.y;
-//    self.userInfoWebView.frame = webViewFrame;
-//    self.userInfoWebView.delegate = self;
-//    self.userInfoWebView.scalesPageToFit = YES;
     [self loadSNSWebView];
 }
 

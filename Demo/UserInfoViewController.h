@@ -23,6 +23,7 @@
   NSString *_weibo_id;
   NSString *_name;
   NSString *_renren_id;
+  NSString *_email_address;
 }
 
 @property (strong, nonatomic) NSString *userId;

@@ -138,6 +138,7 @@
       
       NSString *emailV = [NSString stringWithFormat:@"%@",[source objectForKey:@"verified"]];
       _emailVerified = [emailV isEqualToString:@"1"];
+      _email_address = [NSString stringWithFormat:@"%@",[source objectForKey:@"email"]];
       
     }else if ([type isEqualToString:@"tsina"]) {
       
@@ -258,6 +259,13 @@
           self.userSNSInfo.userName = _name;
           self.userSNSInfo.SNSType = @"renren";
           [self performSegueWithIdentifier:@"userInfoToUserInfoWebView" sender:self];
+      }
+  } else if (location.x > 50 && location.x < 100 && location.y > 10 && location.y < 60) {
+      DLog(@"Pressing email...");
+      if (_email_address.length > 0 && _emailVerified) {
+          NSString *mailString = [NSString stringWithFormat:@"mailto:%@",
+                                  _email_address];
+          [[UIApplication sharedApplication] openURL:[NSURL URLWithString:mailString]];
       }
   }
 
