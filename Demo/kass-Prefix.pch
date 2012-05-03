@@ -34,6 +34,9 @@
 #    define KassAppUsernameKey @"KasslocalAppUsernameKey"
 #    define KassAppEmailKey @"KasslocalAppEmailKey"
 #    define KassAppIphoneTokenKey @"KasslocalAppIphoneTokenKey"
+#    define KassAppLoginStatusKey @"KassAppLoginStatusKey"
+#    define KassAppLoginTypeKey @"KassAppLoginTypeKey"
+#    define KassAppOauthEncodeKey @"KassAppOauthEncodeKey"
 #    define PIC_CACHE_PATH @"/Library/Caches/imgcache/jieqooDevelopment/"
 #    define WEIBO_SHARE_IMG @"http://jieqoo.com/images/Default.png"
 #else
@@ -45,6 +48,9 @@
 #    define KassAppUsernameKey @"KassAppUsernameKey"
 #    define KassAppEmailKey @"KassAppEmailKey"
 #    define KassAppIphoneTokenKey @"KassAppIphoneTokenKey"
+#    define KassAppLoginStatusKey @"KassAppLoginStatusKey"
+#    define KassAppLoginTypeKey @"KassAppLoginTypeKey"
+#    define KassAppOauthEncodeKey @"KassAppOauthEncodeKey"
 #    define PIC_CACHE_PATH @"/Library/Caches/imgcache/jieqoo/"
 #    define WEIBO_SHARE_IMG @"http://jieqoo.com/images/Default.png"
 #endif

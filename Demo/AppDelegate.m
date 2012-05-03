@@ -149,6 +149,8 @@
   [VariableStore.sharedInstance loadAndStoreSettings:self];
   DLog(@"AppDelegate::doneLoading");
   
+  [VariableStore.sharedInstance loginIfPreviouslyLoggedIn];
+  
 	// Let the device know we want to receive push notifications
 	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:
    (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
@@ -246,11 +248,12 @@
   if ( !VariableStore.sharedInstance.settings || !VariableStore.sharedInstance.settings.siteDict) {
     [VariableStore.sharedInstance loadSettings:self];
   }
-  
-  if (!VariableStore.sharedInstance.isLoggedIn ) {
+
+  if (VariableStore.sharedInstance.isLoggedIn ) {
     [VariableStore.sharedInstance getAuth];
+  }else{
+    [VariableStore.sharedInstance loginIfPreviouslyLoggedIn];
   }
-  
 }
 //
 //- (void)applicationWillTerminate:(UIApplication *)application

@@ -310,17 +310,24 @@
 //  [self postData:_url:dict];
 //}
 
-- (void)login:(NSMutableDictionary *)dict
++ (NSString *)getLoginUrl:(NSMutableDictionary *)dict
 {
+  NSString *url;
   if ([dict objectForKey:@"encode"]) {
-    _url = [NSString stringWithFormat:@"http://%s/v1/weibo/auth", HOST];
+    url = [NSString stringWithFormat:@"http://%s/v1/weibo/auth", HOST];
   }else if ([dict objectForKey:@"encode_renren"]){
     [dict setObject:[dict objectForKey:@"encode_renren"] forKey:@"encode"];
     [dict removeObjectForKey:@"encode_renren"];
-    _url = [NSString stringWithFormat:@"http://%s/v1/renren/auth", HOST];
+    url = [NSString stringWithFormat:@"http://%s/v1/renren/auth", HOST];
   }else{
-    _url = [NSString stringWithFormat:@"http://%s/v1/auth", HOST];
+    url = [NSString stringWithFormat:@"http://%s/v1/auth", HOST];
   }
+  return url;
+}
+
+- (void)login:(NSMutableDictionary *)dict
+{
+  _url = [KassApi getLoginUrl:dict];
   [self postData:_url:dict];
 }
 
@@ -474,6 +481,36 @@
   }else{
     return nil;
   }
+}
+
++ (NSData *)postData:(NSString *)url:(NSDictionary *)dict
+{
+  id kassSelf = self;
+  __block ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:url]];
+  [request setCompletionBlock:^{ [kassSelf requestFinished:request]; }];
+  [request setFailedBlock:^{[kassSelf requestFailed:request];}];
+  [request setRequestMethod:@"POST"];
+  [request addRequestHeader:@"Content-Type" value:@"application/json"];
+  [request setTimeOutSeconds:REQUEST_TIMEOUT];
+  for (id key in dict){
+    [request setPostValue:[dict objectForKey:key] forKey:key];
+  }
+  [request startSynchronous];
+  DLog(@"KassApi::postData::startSynchronous=%@", url);
+  NSError *error = [request error];
+  if (!error) {
+    NSData *data = [request responseData];
+    DLog(@"----- POST DATA SYNCHRONOUSLY ------ \n %@ ", [request responseString]);
+    return data;
+  }else{
+    return nil;
+  }
+}
+
++ (NSData *)login:(NSMutableDictionary *)dict
+{
+  NSString *url = [self getLoginUrl:dict];
+  [KassApi postData:url:dict]; 
 }
 
 + (NSData *)loadSettings

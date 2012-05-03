@@ -54,6 +54,7 @@
 @property (strong, nonatomic) UIResponder *appDelegate;
 
 @property NSInteger priceToModify;
+@property Boolean isAutoLogin;
 
 + (VariableStore *) sharedInstance;
 - (void) clearCurrentPostingItem;
@@ -72,6 +73,7 @@
 - (BOOL) signInWeibo;
 - (BOOL) signOut;
 - (BOOL) signUpAccount:(NSDictionary *)userInfo;
+- (BOOL) loginIfPreviouslyLoggedIn;
 - (CLLocation *)location;
 
 - (BOOL) signInRenren;

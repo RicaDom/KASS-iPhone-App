@@ -7,6 +7,7 @@
 //
 
 #import "VariableStore.h"
+#import "SFHFKeychainUtils.h"
 
 @implementation VariableStore 
 
@@ -37,6 +38,7 @@
 @synthesize currentViewControllerDelegate = _currentViewControllerDelegate;
 @synthesize remoteNotification = _remoteNotification;
 @synthesize appDelegate = _appDelegate;
+@synthesize isAutoLogin = _isAutoLogin;
 
 + (VariableStore *) sharedInstance {
     // the instance of this class is stored here
@@ -62,6 +64,8 @@
             myInstance.itemClassAndIdToShow = [[NSMutableArray alloc] init];
           
             myInstance.kassApp = [[KassApp alloc] init];
+          
+            myInstance.isAutoLogin = FALSE;
             
 //            myInstance.recentBrowseListings = [[NSMutableArray alloc] init];
 //            myInstance.nearBrowseListings = [[NSMutableArray alloc] init];
@@ -105,10 +109,11 @@
 
 - (void) getAuth
 {
-  if( !self.user ) self.user = [[User alloc] init];
-  if( !self.user.delegate ) self.user.delegate = _currentViewControllerDelegate;
-  
-  [self.user.account getAuth];
+  //only get auth when there's user object
+  if( !!self.user ){
+    if( !self.user.delegate ) self.user.delegate = _currentViewControllerDelegate;
+    [self.user.account getAuth];
+  }
 }
 
 
@@ -138,6 +143,48 @@
 //  if(!self.user) self.user = [[User alloc] initWithDelegate:_currentViewControllerDelegate];
   [self.user renrenLogin];
   return YES;
+}
+
+- (BOOL) loginIfPreviouslyLoggedIn
+{
+  // no need to relogin if user is already logged in
+  if( self.isLoggedIn ) return FALSE;
+  
+  // don't do if it's already auto login
+  if( self.isAutoLogin ) return FALSE;
+  
+  NSUserDefaults *standardDefaults = [NSUserDefaults standardUserDefaults];
+  NSString *loginStatus = [standardDefaults valueForKey:KassAppLoginStatusKey];
+  if ( [loginStatus isEqualToString:LOGGED_IN] ) {
+    DLog(@"previously logged in ");
+    //login the user
+    NSString *loginType = [standardDefaults valueForKey:KassAppLoginTypeKey];
+    if ([loginType isEqualToString:LOGIN_WITH_WEIBO]) {
+      [self signInWeibo];
+      _isAutoLogin = TRUE;
+      return true;
+    }else if ([loginType isEqualToString:LOGIN_WITH_RENREN]) {
+      [self signInRenren];
+      _isAutoLogin = TRUE;
+      return true;
+    }else if ([loginType isEqualToString:LOGIN_WITH_PASSWORD]) {
+      
+      //load keychain info
+      NSString *email = [standardDefaults stringForKey:KassAppEmailKey];
+      
+      if (email) {
+        NSError *error = nil;
+        NSString *pasword = [SFHFKeychainUtils getPasswordForUsername:email andServiceName:KassServiceName error:&error];
+        
+        [self signInAccount:email:pasword];
+        _isAutoLogin = TRUE;
+        return true;
+      }
+      
+    }
+  }
+  _isAutoLogin = FALSE;
+  return false;
 }
 
 - (BOOL) signOut {

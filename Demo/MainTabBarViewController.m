@@ -91,7 +91,7 @@ static BOOL alreadyShowedIntro = false;
     closeFingerTap  = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleCloseTap:)];
 
   
-    if ( ![[VariableStore sharedInstance] isLoggedIn]) {
+    if ( !VariableStore.sharedInstance.isAutoLogin && ![[VariableStore sharedInstance] isLoggedIn]) {
       [MTPopupWindow showWindowWithUIView:self.view];
       if (!alreadyShowedIntro) {
         [ViewHelper showIntroView:self.view:singleFingerTap:closeFingerTap];

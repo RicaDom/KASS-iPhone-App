@@ -58,6 +58,28 @@ return self;
     [_delegate requestFailed:error];
 }
 
+- (void)storeLoginStatus:(Boolean *)loggedIn
+{
+  NSString *status = loggedIn ? LOGGED_IN : LOGGED_OFF;
+  NSUserDefaults *standardDefaults = [NSUserDefaults standardUserDefaults];
+  [standardDefaults setValue:status forKey:KassAppLoginStatusKey];
+  
+  DLog(@"Set login status = %@", status);
+}
+
+- (void)storeLoginTypeStatus:(NSString *)loginType:(NSString *)encode
+{
+  NSUserDefaults *standardDefaults = [NSUserDefaults standardUserDefaults];
+  [standardDefaults setValue:loginType forKey:KassAppLoginTypeKey];
+  [standardDefaults setValue:encode forKey:KassAppOauthEncodeKey];
+}
+
+- (void)clearLoginType
+{
+  NSUserDefaults *standardDefaults = [NSUserDefaults standardUserDefaults];
+  [standardDefaults setValue:nil forKey:KassAppLoginTypeKey];
+}
+
 - (void)loginFinished:(NSData *)data
 {
   NSDictionary *dict = [KassApi parseData:data];
@@ -80,10 +102,12 @@ return self;
       BOOL storeResult = [SFHFKeychainUtils storeUsername:_email andPassword:_password forServiceName:KassServiceName updateExisting:YES error:&error];
       DLog(@"Account::loginFinished:storeEmail(%@)Password=(%@)=>%@", _email, _password, (storeResult ? @"YES" : @"NO"));
     }
+    [self storeLoginStatus:TRUE];
 
     if( [_delegate respondsToSelector:@selector(accountDidLogin)] )
       [_delegate accountDidLogin];
   }else{
+    [self storeLoginStatus:FALSE];
     if( [_delegate respondsToSelector:@selector(accountLoginFailed:)] ){
       NSDictionary *error = [[NSDictionary alloc] initWithObjectsAndKeys:@"没有找到此用户", @"description", nil];
       [_delegate accountLoginFailed:error];
@@ -126,22 +150,27 @@ return self;
   NSString *deviceToken = [self getEncodedDeviceToken];
   
   if ( _encode ) {
+    
     userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys: 
                 _encode, @"encode",
                 deviceToken, @"device_token",
                 nil];
+    [self storeLoginTypeStatus:LOGIN_WITH_WEIBO:_encode];
 
   }else if( _encodeRenren ){
     userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys: 
                 _encodeRenren, @"encode_renren",
                 deviceToken, @"device_token",
                 nil];
+    [self storeLoginTypeStatus:LOGIN_WITH_RENREN:_encodeRenren];
+    
   }else{
     userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                   _email, @"email",
                   _password, @"password",
                   deviceToken, @"device_token",
-                  nil];
+                nil];
+    [self storeLoginTypeStatus:LOGIN_WITH_PASSWORD:@""];
   }
   DLog(@"Account::login:userInfo=%@", userInfo);
   KassApi *ka = [[KassApi alloc]initWithPerformerAndAction:self:@"loginFinished:"];
@@ -151,6 +180,8 @@ return self;
 - (void)logoutFinished:(NSData *)data;
 {
   DLog(@"Account::logoutFinished:delegate=%@",_delegate);
+  [self storeLoginStatus:FALSE];
+  [self clearLoginType];
   if( [_delegate respondsToSelector:@selector(accountDidLogout)] )
   	[_delegate accountDidLogout];
 }
