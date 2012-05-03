@@ -445,7 +445,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "198"
          endingLineNumber = "198"
-         landmarkName = "-viewWillAppear:"
+         landmarkName = "-appDidGetMember:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -458,7 +458,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "194"
          endingLineNumber = "194"
-         landmarkName = "-viewWillAppear:"
+         landmarkName = "-appDidGetMember:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1329,7 +1329,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "221"
          endingLineNumber = "221"
-         landmarkName = "-handleSingleTap:"
+         landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
