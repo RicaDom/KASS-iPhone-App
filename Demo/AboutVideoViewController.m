@@ -70,7 +70,8 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    // return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
 
 -(void)webViewDidStartLoad:(UIWebView *)webView
@@ -84,6 +85,8 @@
 }
 
 - (IBAction)leftNavigationButtonAction:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissModalViewControllerAnimated:YES];
+    //[self.navigationController popViewControllerAnimated:YES];
 }
+
 @end

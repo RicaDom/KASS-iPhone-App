@@ -2144,7 +2144,6 @@
 		E5947DBB14A3A12B0066723A = {
 			isa = PBXGroup;
 			children = (
-				E53451481552ED16003EDF4D /* MediaPlayer.framework */,
 				775069EE14C80ADE000494E5 /* README.markdown */,
 				77F027A514C668A90065EDAA /* Resources */,
 				77F027A314C668760065EDAA /* Libraries */,
@@ -2167,6 +2166,7 @@
 		E5947DC914A3A12B0066723A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E53451481552ED16003EDF4D /* MediaPlayer.framework */,
 				777E4D1F14DBB7ED002B40C3 /* Security.framework */,
 				77F3D90F14D00EC20009AF75 /* QuartzCore.framework */,
 				77506A8614C9164F000494E5 /* libz.dylib */,
