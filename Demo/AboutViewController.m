@@ -8,6 +8,7 @@
 
 #import "AboutViewController.h"
 #import "ViewHelper.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @implementation AboutViewController
 
@@ -104,16 +105,50 @@
 
 #pragma mark - Table view delegate
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-////    NSString *displayName = ((SettingTable *)[settingArray objectAtIndex:indexPath.row]).displayName;
-////    if (![VariableStore sharedInstance].isLoggedIn && ([displayName isEqualToString:@"注册或登陆"] || [displayName isEqualToString:@"设置"])) {
-////        [MTPopupWindow showWindowWithUIView:self.tabBarController.view];
-////        return;
-////    }
-////    [self performSegueWithIdentifier:((SettingTable *)[settingArray objectAtIndex:indexPath.row]).segueName sender:self];
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *tableCellString = [self.aboutArray objectAtIndex:indexPath.row];
+    if ([tableCellString isEqualToString:@"如何玩转街区"]) {
+        singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self.tabBarController action:@selector(handleSingleTap:)];
+        closeFingerTap  = [[UITapGestureRecognizer alloc] initWithTarget:self.tabBarController action:@selector(handleCloseTap:)];
+        
+        [ViewHelper showIntroView:self.tabBarController.view:singleFingerTap:closeFingerTap];
+    } else if ([tableCellString isEqualToString:@"街区视频"]) {
+        [self performSegueWithIdentifier:@"AboutToVideoSegue" sender:self];
+//        
+//        NSBundle *bundle = [NSBundle mainBundle];
+//        NSString *moviePath = [bundle pathForResource:@"Movie-1" ofType:@"m4v"];
+//        NSURL *url = [NSURL fileURLWithPath:moviePath];
+//         
+//        MPMoviePlayerController *moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];  
+//        
+//        [moviePlayer.view setFrame:CGRectMake(145, 20, 155, 100)];
+//        [self.view addSubview:moviePlayer.view];
+//        
+//        // Register to receive a notification when the movie has finished playing.  
+//        [[NSNotificationCenter defaultCenter] addObserver:self  
+//                                                 selector:@selector(moviePlayBackDidFinish:)  
+//                                                     name:MPMoviePlayerPlaybackDidFinishNotification  
+//                                                   object:moviePlayer];  
+//        [moviePlayer setFullscreen:YES];
+//        [moviePlayer play];
+        
+    } else {
+        [self performSegueWithIdentifier:@"AboutToAllSegue" sender:self];
+    }
+}
 - (IBAction)leftButtonAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+//The event handling method
+- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
+    CGPoint location = [recognizer locationInView:recognizer.view];
+    
+    if (location.x > 19.0 && location.x < 156.0 && location.y > 625.0 && location.y < 675.0) {
+        [ViewHelper hideIntroView:self.tabBarController.view];
+    }
+    
+}
+
 @end

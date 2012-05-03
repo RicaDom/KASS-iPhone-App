@@ -53,6 +53,7 @@
 
 #define WEIBO_VIEW_PROFILE_PATH @"http://m.weibo.cn/u/"
 #define RENREN_VIEW_PROFILE_PATH @"http://3g.renren.com/profile.do?id="
+#define JIEQOO_YOUKU_VIDEO @"http://3g.youku.com/smartphone/video.jsp?vid=XMzgzNTQxNTcy"
 #define OAUTH_ENCODE @"OAUTH_ENCODE"
 
 #define LOGIN_TYPE @"LOGIN_TYPE"
