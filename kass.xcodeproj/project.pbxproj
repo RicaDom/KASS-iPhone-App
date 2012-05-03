@@ -365,6 +365,8 @@
 		E5299FA6150C48C100E73D75 /* buyer-2_03.png in Resources */ = {isa = PBXBuildFile; fileRef = E5299FA5150C48C100E73D75 /* buyer-2_03.png */; };
 		E5299FAB150CACA000E73D75 /* startbg.png in Resources */ = {isa = PBXBuildFile; fileRef = E5299FAA150CACA000E73D75 /* startbg.png */; };
 		E534512E15529287003EDF4D /* UserSNSInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E534512D15529287003EDF4D /* UserSNSInfo.m */; };
+		E53451451552DE3C003EDF4D /* AboutVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E53451441552DE3C003EDF4D /* AboutVideoViewController.m */; };
+		E53451491552ED16003EDF4D /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53451481552ED16003EDF4D /* MediaPlayer.framework */; };
 		E53741481514DBA1008AB941 /* SellerAlertsListingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E53741471514DBA1008AB941 /* SellerAlertsListingsViewController.m */; };
 		E53741501515A04C008AB941 /* alert_151.png in Resources */ = {isa = PBXBuildFile; fileRef = E537414B1515A04C008AB941 /* alert_151.png */; };
 		E53741511515A04C008AB941 /* alert_156.png in Resources */ = {isa = PBXBuildFile; fileRef = E537414C1515A04C008AB941 /* alert_156.png */; };
@@ -1029,6 +1031,9 @@
 		E5299FAA150CACA000E73D75 /* startbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = startbg.png; sourceTree = "<group>"; };
 		E534512C15529287003EDF4D /* UserSNSInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSNSInfo.h; sourceTree = "<group>"; };
 		E534512D15529287003EDF4D /* UserSNSInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSNSInfo.m; sourceTree = "<group>"; };
+		E53451431552DE3C003EDF4D /* AboutVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutVideoViewController.h; sourceTree = "<group>"; };
+		E53451441552DE3C003EDF4D /* AboutVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutVideoViewController.m; sourceTree = "<group>"; };
+		E53451481552ED16003EDF4D /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		E53741461514DBA0008AB941 /* SellerAlertsListingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellerAlertsListingsViewController.h; sourceTree = "<group>"; };
 		E53741471514DBA1008AB941 /* SellerAlertsListingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellerAlertsListingsViewController.m; sourceTree = "<group>"; };
 		E537414B1515A04C008AB941 /* alert_151.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alert_151.png; sourceTree = "<group>"; };
@@ -1211,6 +1216,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E53451491552ED16003EDF4D /* MediaPlayer.framework in Frameworks */,
 				777E4D2014DBB7ED002B40C3 /* Security.framework in Frameworks */,
 				77F3D91014D00EC20009AF75 /* QuartzCore.framework in Frameworks */,
 				77506A8714C9164F000494E5 /* libz.dylib in Frameworks */,
@@ -1875,6 +1881,7 @@
 		77E30FB614F13831000E9567 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E53451421552DE16003EDF4D /* About */,
 				E58BC97D151C6830006C97EF /* Setting */,
 				7755632D1512FE1000074AC0 /* PostControllers */,
 				7755632B1512FDFE00074AC0 /* SellerAlertControllers */,
@@ -2054,6 +2061,15 @@
 			name = common;
 			sourceTree = "<group>";
 		};
+		E53451421552DE16003EDF4D /* About */ = {
+			isa = PBXGroup;
+			children = (
+				E53451431552DE3C003EDF4D /* AboutVideoViewController.h */,
+				E53451441552DE3C003EDF4D /* AboutVideoViewController.m */,
+			);
+			name = About;
+			sourceTree = "<group>";
+		};
 		E537414A1515A008008AB941 /* alerts */ = {
 			isa = PBXGroup;
 			children = (
@@ -2128,6 +2144,7 @@
 		E5947DBB14A3A12B0066723A = {
 			isa = PBXGroup;
 			children = (
+				E53451481552ED16003EDF4D /* MediaPlayer.framework */,
 				775069EE14C80ADE000494E5 /* README.markdown */,
 				77F027A514C668A90065EDAA /* Resources */,
 				77F027A314C668760065EDAA /* Libraries */,
@@ -3094,6 +3111,7 @@
 				77CFE6461542849100082FD0 /* ROUtility.m in Sources */,
 				E59047C01552674200AFC804 /* UserInfoWebViewController.m in Sources */,
 				E534512E15529287003EDF4D /* UserSNSInfo.m in Sources */,
+				E53451451552DE3C003EDF4D /* AboutVideoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

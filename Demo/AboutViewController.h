@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AboutViewController : UIViewController
+@interface AboutViewController : UIViewController {
+    UITapGestureRecognizer *singleFingerTap;
+    UITapGestureRecognizer *closeFingerTap;
+}
+
 
 @property (strong, nonatomic) NSArray *aboutArray;
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
