@@ -8,12 +8,12 @@
 
 #import "AboutViewController.h"
 #import "ViewHelper.h"
-#import <MediaPlayer/MediaPlayer.h>
 
 @implementation AboutViewController
 
 @synthesize aboutArray = _aboutArray;
 @synthesize leftButton = _leftButton;
+@synthesize moviePlayer = _moviePlayer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -115,14 +115,16 @@
         [ViewHelper showIntroView:self.tabBarController.view:singleFingerTap:closeFingerTap];
     } else if ([tableCellString isEqualToString:@"街区视频"]) {
         [self performSegueWithIdentifier:@"AboutToVideoSegue" sender:self];
-//        
+        //[self performSegueWithIdentifier:@"AboutToFullScreenVideo" sender:self];
+        
 //        NSBundle *bundle = [NSBundle mainBundle];
-//        NSString *moviePath = [bundle pathForResource:@"Movie-1" ofType:@"m4v"];
+//        NSString *moviePath = [bundle pathForResource:@"Movie" ofType:@"mp4"];
 //        NSURL *url = [NSURL fileURLWithPath:moviePath];
 //         
 //        MPMoviePlayerController *moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];  
+//        self.moviePlayer = moviePlayer;
 //        
-//        [moviePlayer.view setFrame:CGRectMake(145, 20, 155, 100)];
+//        [moviePlayer.view setFrame:CGRectMake(0, 0, 480, 320)];
 //        [self.view addSubview:moviePlayer.view];
 //        
 //        // Register to receive a notification when the movie has finished playing.  
@@ -132,6 +134,14 @@
 //                                                   object:moviePlayer];  
 //        [moviePlayer setFullscreen:YES];
 //        [moviePlayer play];
+
+
+        //Resize window – a bit more practical
+//        UIWindow *moviePlayerWindow = nil;
+//        moviePlayerWindow = [[UIApplication sharedApplication] keyWindow];
+//        [moviePlayerWindow setTransform:CGAffineTransformMakeScale(0.9, 0.9)];
+//        // Play the movie.
+//        [moviePlayer play];        
         
     } else {
         [self performSegueWithIdentifier:@"AboutToAllSegue" sender:self];

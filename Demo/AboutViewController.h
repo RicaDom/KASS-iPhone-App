@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface AboutViewController : UIViewController {
     UITapGestureRecognizer *singleFingerTap;
     UITapGestureRecognizer *closeFingerTap;
 }
 
-
+@property(strong, nonatomic) MPMoviePlayerController *moviePlayer;
 @property (strong, nonatomic) NSArray *aboutArray;
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
 - (IBAction)leftButtonAction:(id)sender;
