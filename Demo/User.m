@@ -502,6 +502,8 @@
   _city   = account.city;
   _avatarUrl = account.avatarUrl;
   
+  VariableStore.sharedInstance.isAutoLogin = FALSE;
+  
   if( [_delegate respondsToSelector:@selector(accountLoginFinished)] )
     [_delegate accountLoginFinished];
     

@@ -79,6 +79,7 @@
 - (void)requestFailed:(ASIHTTPRequest *)request;
 
 + (NSData *)loadSettings;
++ (NSData *)login:(NSDictionary *)dict;
 + (NSData *)getListings:(NSDictionary *)dict;
 
 @end

@@ -53,6 +53,16 @@
 
 #define WEIBO_VIEW_PROFILE_PATH @"http://m.weibo.cn/u/"
 #define RENREN_VIEW_PROFILE_PATH @"http://3g.renren.com/profile.do?id="
+#define OAUTH_ENCODE @"OAUTH_ENCODE"
+
+#define LOGIN_TYPE @"LOGIN_TYPE"
+#define LOGIN_WITH_WEIBO @"LOGIN_WITH_WEIBO"
+#define LOGIN_WITH_RENREN @"LOGIN_WITH_RENREN"
+#define LOGIN_WITH_PASSWORD @"LOGIN_WITH_PASSWORD"
+
+#define LOGGED_IN_STATUS @"LOGGED_IN_STATUS"
+#define LOGGED_IN @"LOGGED_IN"
+#define LOGGED_OFF @"LOGGED_OFF"
 
 extern NSString * const POST_TYPE_TEMPLATE;
 extern NSString * const POST_TYPE_EDITING;
