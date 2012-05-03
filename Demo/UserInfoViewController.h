@@ -10,6 +10,7 @@
 #import "Constants.h"
 #import "KassAppDelegate.h"
 #import "HJManagedImageV.h"
+#import "UserSNSInfo.h"
 
 @interface UserInfoViewController : UIViewController <KassAppDelegate>{
   HJManagedImageV *hjManagedImageView;
@@ -19,6 +20,9 @@
   BOOL _renrenVerified;
   BOOL _phoneVerified;
   NSString *_phone_number;
+  NSString *_weibo_id;
+  NSString *_name;
+  NSString *_renren_id;
 }
 
 @property (strong, nonatomic) NSString *userId;
@@ -28,6 +32,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *regDate;
 @property (strong, nonatomic) IBOutlet UIButton *leftButton;
+@property (strong, nonatomic) UserSNSInfo *userSNSInfo;
 - (IBAction)leftButtonAction:(id)sender;
 
 @end

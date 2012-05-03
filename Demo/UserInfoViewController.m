@@ -12,6 +12,7 @@
 #import "VariableStore.h"
 #import "ViewHelper.h"
 #import "UIView+Subviews.h"
+#import "UserInfoWebViewController.h"
 
 @implementation UserInfoViewController
 
@@ -21,6 +22,7 @@
 @synthesize contentView = _contentView;
 @synthesize regDate = _regDate;
 @synthesize leftButton = _leftButton;
+@synthesize userSNSInfo = _userSNSInfo;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -86,7 +88,7 @@
 {
   UIImage *img = [UIImage imageNamed:iconUrl];
   UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
-  imgView.frame = CGRectMake(50 + offset, 10, 25, 25);
+  imgView.frame = CGRectMake(50 + offset, 10, 50, 50);
   imgView.tag   = USER_INFO_ICON_TAG;
   [_contentView addSubview:imgView];
   return imgView;
@@ -96,7 +98,10 @@
 {
   UIImage *img = [UIImage imageNamed:iconUrl];
   UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
-  imgView.frame = CGRectMake(50 + offset, 10, 25, 25);
+  imgView.frame = CGRectMake(50 + offset, 10, 50, 50);
+    
+    //DLog(@"origin x: %f", imgView.frame.origin.x);
+    DLog(@"%f , %f , %f , %f  ", imgView.frame.origin.x, imgView.frame.origin.y, imgView.frame.size.height, imgView.frame.size.width);
   imgView.tag   = USER_INFO_ICON_TAG;
   [_contentView addSubview:imgView];
 }
@@ -106,10 +111,10 @@
   DLog(@"UserinfoViewController::appDidGetMember:dict=%@", dict);
   //{"id":"4f347bf1a912091e87000001","verification":{"sources":[{"type":"email","verified":false},{"type":"tsina","verified":true,"timg_url":"http://tp4.sinaimg.cn/1876646123/50/5615566644/1"}],"member_since":"2012-02-10T10:07:46+08:00"}}
   
-  NSString *name = [dict objectForKey:@"name"];
+  _name = [dict objectForKey:@"name"];
   NSString *uId  = [dict objectForKey:@"id"];
    
-  self.nameLabel.text = name.isBlank ? uId : name;
+  self.nameLabel.text = _name.isBlank ? uId : _name;
   
   NSDictionary *veri = [dict objectForKey:@"verification"];
   
@@ -138,10 +143,12 @@
       
       NSString *weiboV = [NSString stringWithFormat:@"%@",[source objectForKey:@"verified"]];
       _weiboVerified = [weiboV isEqualToString:@"1"];
+      _weibo_id = [NSString stringWithFormat:@"%@",[source objectForKey:@"uid"]];
     }else if ([type isEqualToString:@"renren"]) {
       
       NSString *renrenV = [NSString stringWithFormat:@"%@",[source objectForKey:@"verified"]];
       _renrenVerified = [renrenV isEqualToString:@"1"];
+      _renren_id = [NSString stringWithFormat:@"%@",[source objectForKey:@"uid"]];
     } else if ([type isEqualToString:@"phone"]) {
       
       NSString *phoneV = [NSString stringWithFormat:@"%@",[source objectForKey:@"verified"]];
@@ -150,7 +157,7 @@
       
     }
   }
-  
+    
   if ( hjManagedImageView && self.userId && [self.userId isEqualToString:uId]) {
 
   }else {
@@ -166,26 +173,30 @@
   }
   
   if (_weiboVerified) {
-    [self buildIconView:@"veri-weibo-on.png":30];
+    [self buildIconView:@"veri-weibo-on.png":55];
   }else{
-    [self buildIconView:@"veri-weibo-off.png":30];
+    [self buildIconView:@"veri-weibo-off.png":55];
   }
   
   if (_renrenVerified) {
-    [self buildIconView:@"veri-renren-on.png":60];
+    [self buildIconView:@"veri-renren-on.png":110];
   }else{
-    [self buildIconView:@"veri-renren-off.png":60];
+    [self buildIconView:@"veri-renren-off.png":110];
   }
   
   if (_phoneVerified) {
-    [self buildIconView:@"veri-phone-on.png":90];
-    if ( ![[self currentUser] isSameUser:_userId] ) {
-      [_contentView addGestureRecognizer:singleFingerTap];
-    }
+    [self buildIconView:@"veri-phone-on.png":165];
+//    if ( ![[self currentUser] isSameUser:_userId] ) {
+//      [_contentView addGestureRecognizer:singleFingerTap];
+//    }
   }else{
-    [self buildIconView:@"veri-phone-off.png":90];
+    [self buildIconView:@"veri-phone-off.png":165];
   }
-  
+    
+  if (_emailVerified || _weiboVerified || _renrenVerified || _phoneVerified) {
+    [_contentView addGestureRecognizer:singleFingerTap];
+  }
+
   self.userId = uId;
 }
 
@@ -215,8 +226,9 @@
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
   CGPoint location = [recognizer locationInView:recognizer.view];
   
-  if (location.x > 155.5 && location.x < 180.0 && location.y > 13.0 && location.y < 50.0) {
-    if (_phoneVerified && _phone_number) {
+  if (location.x > 215 && location.x < 265 && location.y > 10 && location.y < 60) {
+    DLog(@"Pressing phone...");
+    if (_phoneVerified && _phone_number && ![[self currentUser] isSameUser:_userId]) {
       
       NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:
                             [VariableStore.sharedInstance.itemClassAndIdToShow objectAtIndex:0], @"class",
@@ -229,6 +241,24 @@
       NSString *call_phone_number = [[NSString alloc] initWithFormat:@"tel:%@",_phone_number];
       [[UIApplication sharedApplication] openURL:[NSURL URLWithString:call_phone_number]];
     }
+  } else if (location.x > 105 && location.x < 155 && location.y > 10 && location.y < 60) {
+      DLog(@"Pressing weibo...");
+      if(_weibo_id.length > 0 && _weiboVerified) {
+          self.userSNSInfo = [UserSNSInfo new];
+          self.userSNSInfo.userId = _weibo_id;
+          self.userSNSInfo.userName = _name;
+          self.userSNSInfo.SNSType = @"tsina";
+          [self performSegueWithIdentifier:@"userInfoToUserInfoWebView" sender:self];
+      }
+  } else if (location.x > 160 && location.x < 210 && location.y > 10 && location.y < 60) {
+      DLog(@"Pressing renren...");
+      if(_renren_id.length > 0 && _renrenVerified) {
+          self.userSNSInfo = [UserSNSInfo new];
+          self.userSNSInfo.userId = _renren_id;
+          self.userSNSInfo.userName = _name;
+          self.userSNSInfo.SNSType = @"renren";
+          [self performSegueWithIdentifier:@"userInfoToUserInfoWebView" sender:self];
+      }
   }
 
 }
@@ -236,9 +266,9 @@
 - (void)viewDidUnload
 {
   [self setImageContainerView:nil];
-    [self setLeftButton:nil];
+  [self setLeftButton:nil];
   [self setContentView:nil];
-    [super viewDidUnload];
+  [super viewDidUnload];
   self.nameLabel = nil;
   self.regDate   = nil;
   self.userId    = nil;
@@ -259,6 +289,18 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
   imageContainerView.frame = CGRectMake(0, -scrollView.contentOffset.y/10, 320, 205);
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"userInfoToUserInfoWebView"]) {
+        UINavigationController *nc = (UINavigationController *)segue.destinationViewController;
+        
+        if ([nc.topViewController isKindOfClass:[UserInfoWebViewController class]]) {
+            UserInfoWebViewController *uv = (UserInfoWebViewController *)nc.topViewController;
+            uv.userSNSInfo = self.userSNSInfo;
+        }
+    }
 }
 
 @end

@@ -51,6 +51,9 @@
 
 #define INVALID_RESPONSE @"Invalid Response"
 
+#define WEIBO_VIEW_PROFILE_PATH @"http://m.weibo.cn/u/"
+#define RENREN_VIEW_PROFILE_PATH @"http://3g.renren.com/profile.do?id="
+
 extern NSString * const POST_TYPE_TEMPLATE;
 extern NSString * const POST_TYPE_EDITING;
 extern NSString * const POST_TEMPLATE_CATEGORY_POPULAR;
