@@ -2476,7 +2476,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="..." id="whP-eN-3sE">
-                                                <rect key="frame" x="0.0" y="43" width="202" height="93"/>
+                                                <rect key="frame" x="0.0" y="43" width="202" height="52"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <accessibility key="accessibilityConfiguration">
@@ -2656,11 +2656,11 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="b2H-BT-qEx">
-                                                <rect key="frame" x="10" y="127" width="300" height="92"/>
+                                                <rect key="frame" x="10" y="115" width="300" height="104"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             </mapView>
                                             <view contentMode="scaleToFill" id="oUh-O0-CUk">
-                                                <rect key="frame" x="0.0" y="1" width="320" height="120"/>
+                                                <rect key="frame" x="0.0" y="1" width="320" height="106"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="price_bg.png" id="9fj-Yl-cNX">
@@ -2700,7 +2700,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="..." id="Zwa-jL-yyV">
-                                                        <rect key="frame" x="0.0" y="32" width="205" height="96"/>
+                                                        <rect key="frame" x="0.0" y="32" width="205" height="62"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <accessibility key="accessibilityConfiguration">
@@ -4390,14 +4390,14 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="AMc-4a-ghd"/>
-        <segue reference="UPg-Yr-5B0"/>
-        <segue reference="BhZ-ht-CXE"/>
-        <segue reference="QWu-cC-yAN"/>
-        <segue reference="tJz-zA-22g"/>
-        <segue reference="dM3-h5-4IE"/>
-        <segue reference="nl2-Xy-OWc"/>
         <segue reference="gm0-Ys-GrV"/>
         <segue reference="kjd-qS-0pq"/>
+        <segue reference="8Mx-QQ-zuz"/>
+        <segue reference="0kh-0v-gnk"/>
+        <segue reference="BhZ-ht-CXE"/>
+        <segue reference="UPg-Yr-5B0"/>
+        <segue reference="AMc-4a-ghd"/>
+        <segue reference="W5w-q8-67l"/>
+        <segue reference="nl2-Xy-OWc"/>
     </inferredMetricsTieBreakers>
 </document>
