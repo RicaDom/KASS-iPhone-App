@@ -288,8 +288,14 @@ NSString *remoteNotificationOfferId = nil;
       cell = [[OfferTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
   }
   
-  [cell buildCellByOffer:[self.offers objectAtIndex:indexPath.row]];
-    
+  Offer *offer = [self.offers objectAtIndex:indexPath.row];
+  [cell buildCellByOffer:offer];
+
+  if ([offer.receiverUnreadMessagesCount intValue] > 0) {
+    cell.unreadView.hidden = NO;
+  } else {
+    cell.unreadView.hidden = YES;
+  }
   return cell;
 }
 

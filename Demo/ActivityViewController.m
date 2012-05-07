@@ -11,6 +11,7 @@
 #import "UIViewController+SegueActiveModel.h"
 #import "UIViewController+TableViewRefreshPuller.h"
 #import "ViewHelper.h"
+#import "NotificationRenderHelper.h"
 
 
 @implementation ActivityViewController
@@ -132,6 +133,21 @@
   }
 }
 
+- (void)showUnreadIndicator
+{
+    int buyerNotificationCount = [NotificationRenderHelper getUnreadCountFromListings:[VariableStore sharedInstance].myBuyingListings isBuyer:YES];
+    DLog(@"ActivityViewController::showUnreadIndicator-buyerNotificationCount: %d", buyerNotificationCount);
+    
+    int sellerNotificationCount = [NotificationRenderHelper getUnreadCountFromListings:[VariableStore sharedInstance].mySellingListings isBuyer:NO];
+    DLog(@"ActivityViewController::showUnreadIndicator-sellerNotificationCount: %d", sellerNotificationCount);
+    
+    // set badge value
+    int total = buyerNotificationCount + sellerNotificationCount;
+
+    [[[[[self tabBarController] tabBar] items] 
+          objectAtIndex:0] setBadgeValue:((total > 0) ? [NSString stringWithFormat:@"%d", total] : nil)];
+}
+
 - (void)reloadTable
 {
     DLog(@"ActivityViewController::reloadTable");
@@ -140,6 +156,7 @@
     //[self stopLoading];
     [self doneLoadingTableViewData];
     [self hideIndicator];
+    [self showUnreadIndicator];
 }
 
 - (void)getBuyingItems:(NSDictionary *)dict
@@ -167,11 +184,14 @@
         return; 
     }
     
-    if ( [self isBuyingTabSelected] ) {
-        [self.currentUser getListings]; 
-    } else {
-        [self.currentUser getOffers];
-    }
+    [self.currentUser getListings];
+    [self.currentUser getOffers];
+    
+//    if ( [self isBuyingTabSelected] ) {
+//        [self.currentUser getListings]; 
+//    } else {
+//        [self.currentUser getOffers];
+//    }
 }
 
 //- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -196,14 +216,14 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+  [super viewDidLoad];
   [self reset];
   self.tableView.pagingEnabled = NO;
     
-    // table footer should be clear in order to see the arrow 
-    self.tableView.tableFooterView = self.emptyImageView;
+  // table footer should be clear in order to see the arrow 
+  self.tableView.tableFooterView = self.emptyImageView;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
+  [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receivedFromOfferViewNotification:) 
                                                  name:OFFER_TO_PAY_VIEW_NOTIFICATION
                                                object:nil];
@@ -236,8 +256,8 @@
     [self setTabImageView:nil];
     [self setEmptyImageView:nil];
     [self setIndicatorImageView:nil];
-  [self setISell:nil];
-  [self setIWant:nil];
+    [self setISell:nil];
+    [self setIWant:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -320,21 +340,32 @@
     
     // my buying list
     if ( [self isBuyingTabSelected] ) {
-        ListItem *item = [[VariableStore sharedInstance].myBuyingListings objectAtIndex:row];
-        cell.title.text = item.title;
+      ListItem *item = [[VariableStore sharedInstance].myBuyingListings objectAtIndex:row];
+      cell.title.text = item.title;
       
       [item buildStatusIndicationView:cell.infoView.superview];
       [item buildListingTableCell:cell];
-
+        
+      if ([NotificationRenderHelper isUnreadListing:item isBuyer:YES]) {
+        cell.unreadView.hidden = NO;
+      } else {
+        cell.unreadView.hidden = YES;
+      }
     } 
     
     // my selling list
     else {
-        Offer *item = [[VariableStore sharedInstance].mySellingListings objectAtIndex:row];
-        cell.title.text = item.title;
+      Offer *item = [[VariableStore sharedInstance].mySellingListings objectAtIndex:row];
+      cell.title.text = item.title;
 
       [item buildStatusIndicationView:cell.infoView.superview];
       [item buildListingTableCell:cell];
+      
+      if (item.ownerUnreadMessagesCount != nil && [item.ownerUnreadMessagesCount intValue] > 0) {
+        cell.unreadView.hidden = NO;
+      } else {
+        cell.unreadView.hidden = YES;
+      }
     }
     return cell;
 }

@@ -1562,7 +1562,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontSizeToFit="NO" minimumFontSize="10" id="Az1-IP-Osl">
-                                                    <rect key="frame" x="48" y="1" width="187" height="66"/>
+                                                    <rect key="frame" x="48" y="1" width="181" height="66"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="STHeitiTC-Medium" family="Heiti TC" pointSize="17"/>
                                                     <color key="textColor" red="0.37647062539999998" green="0.37647062539999998" blue="0.34901961679999999" alpha="1" colorSpace="deviceRGB"/>
@@ -1573,12 +1573,17 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.37647062539999998" green="0.37647062539999998" blue="0.34901961679999999" alpha="1" colorSpace="deviceRGB"/>
                                                 </view>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="unread.png" id="VVx-vA-A4N">
+                                                    <rect key="frame" x="228" y="5" width="25" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
                                             <outlet property="infoView" destination="WNa-w7-vYw" id="RE3-Co-BqJ"/>
                                             <outlet property="title" destination="Az1-IP-Osl" id="fJi-fM-ACC"/>
+                                            <outlet property="unreadView" destination="VVx-vA-A4N" id="SZw-gh-eWm"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1748,12 +1753,16 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" minimumFontSize="10" id="yU6-3K-8wJ">
-                                                    <rect key="frame" x="141" y="4" width="151" height="60"/>
+                                                    <rect key="frame" x="141" y="4" width="137" height="60"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     <color key="textColor" red="0.37647062540054321" green="0.37647062540054321" blue="0.3490196168422699" alpha="1" colorSpace="deviceRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="unread.png" id="2Cd-dT-cws">
+                                                    <rect key="frame" x="275" y="21" width="25" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -1762,6 +1771,7 @@
                                             <outlet property="cellView" destination="9bg-dW-85K" id="7zv-36-JNi"/>
                                             <outlet property="price" destination="9cM-U4-6rH" id="WLU-5c-hPL"/>
                                             <outlet property="title" destination="yU6-3K-8wJ" id="hBz-LB-Ul2"/>
+                                            <outlet property="unreadView" destination="2Cd-dT-cws" id="x9a-wZ-Ssz"/>
                                             <segue destination="rrf-71-T0f" kind="push" identifier="offerMessageSegue" id="oKw-pA-ROa"/>
                                         </connections>
                                     </tableViewCell>
@@ -3957,6 +3967,7 @@
         <image name="tag.png" width="52" height="19"/>
         <image name="taidi.png" width="215" height="50"/>
         <image name="tongbu_check.png" width="40" height="40"/>
+        <image name="unread.png" width="128" height="128"/>
     </resources>
     <classes>
         <class className="AboutDetailsViewController" superclassName="UIViewController">
@@ -4160,6 +4171,7 @@
                 <relationship kind="outlet" name="infoView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="price" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="title" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="unreadView" candidateClass="UIImageView"/>
             </relationships>
         </class>
         <class className="MainTabBarViewController" superclassName="UITabBarController">
@@ -4189,6 +4201,7 @@
                 <relationship kind="outlet" name="cellView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="price" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="title" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="unreadView" candidateClass="UIImageView"/>
             </relationships>
         </class>
         <class className="PostFlowPriceViewController" superclassName="UIViewController">
@@ -4390,14 +4403,14 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="BhZ-ht-CXE"/>
+        <segue reference="AMc-4a-ghd"/>
+        <segue reference="UPg-Yr-5B0"/>
+        <segue reference="34A-gF-H3c"/>
+        <segue reference="p1j-ow-HAz"/>
         <segue reference="gm0-Ys-GrV"/>
         <segue reference="kjd-qS-0pq"/>
-        <segue reference="8Mx-QQ-zuz"/>
         <segue reference="0kh-0v-gnk"/>
-        <segue reference="BhZ-ht-CXE"/>
-        <segue reference="UPg-Yr-5B0"/>
-        <segue reference="AMc-4a-ghd"/>
-        <segue reference="W5w-q8-67l"/>
-        <segue reference="nl2-Xy-OWc"/>
+        <segue reference="8Mx-QQ-zuz"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -15,6 +15,7 @@
 @synthesize title = _title;
 @synthesize price = _price;
 @synthesize cellView = _cellView;
+@synthesize unreadView = _unreadView;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

@@ -18,6 +18,7 @@
 @synthesize duration = _duration;
 @synthesize price = _price;
 @synthesize infoView = _infoView;
+@synthesize unreadView = _unreadView;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

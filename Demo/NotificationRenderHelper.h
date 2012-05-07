@@ -7,9 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ListItem.h"
 
 @interface NotificationRenderHelper : NSObject
 
 +(void) NotificationRender:(NSDictionary*)notification mainTabBarVC:(UITabBarController *)mainTabBarVC;
++(int) getUnreadCountFromListings:(NSMutableArray *)listings isBuyer:(BOOL)isBuyer;
++(BOOL) isUnreadListing:(ListItem *)listing isBuyer:(BOOL)isBuyer;
 
 @end

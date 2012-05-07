@@ -30,6 +30,9 @@
 @synthesize alipayTradeNo = _alipayTradeNo;
 @synthesize buyerName = _buyerName;
 @synthesize sellerName = _sellerName;
+@synthesize unread = _unread;
+@synthesize receiverUnreadMessagesCount = _receiverUnreadMessagesCount;
+@synthesize ownerUnreadMessagesCount = _ownerUnreadMessagesCount;
 
 - (id) initWithDictionary:(NSDictionary *) theDictionary
 {
@@ -39,6 +42,11 @@
     _dbId         = [theDictionary objectForKey:@"id"];
     _userId       = [theDictionary objectForKey:@"user_id"];
     _message      = [theDictionary objectForKey:@"message"];
+      
+    _unread       = [theDictionary objectForKey:@"unread"];
+    _receiverUnreadMessagesCount = [theDictionary objectForKey:@"receiver_unread_messages_count"];
+    _ownerUnreadMessagesCount = [theDictionary objectForKey:@"owner_unread_messages_count"];  
+      
     _alipayTradeNo= [theDictionary objectForKey:@"alipay_trade_no"];
     _price        = [NSDecimalNumber decimalNumberWithDecimal:[[theDictionary objectForKey:@"price"] decimalValue]];
     _lastMessage     = [[Message alloc] init];

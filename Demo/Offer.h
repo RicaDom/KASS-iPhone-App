@@ -35,6 +35,9 @@
 @property (nonatomic, strong) NSString *buyerName;
 @property (nonatomic, strong) NSString *sellerName;
 
+@property (nonatomic, strong) NSString *unread;
+@property (nonatomic, strong) NSString *receiverUnreadMessagesCount;
+@property (nonatomic, strong) NSString *ownerUnreadMessagesCount;
 
 //// model helper methods
 - (BOOL) isExpired;

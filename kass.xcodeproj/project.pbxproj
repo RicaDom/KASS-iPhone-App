@@ -500,6 +500,7 @@
 		E5EB944914EF8DDE0072B57B /* BrowseItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EB944414EF8DDE0072B57B /* BrowseItemViewController.m */; };
 		E5EB944A14EF8DDE0072B57B /* BrowseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EB944614EF8DDE0072B57B /* BrowseTableViewController.m */; };
 		E5EB944B14EF8DDE0072B57B /* BuyerPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EB944814EF8DDE0072B57B /* BuyerPayViewController.m */; };
+		E5F23FAC1557DD6D00E9C959 /* unread.png in Resources */ = {isa = PBXBuildFile; fileRef = E5F23FAB1557DD6D00E9C959 /* unread.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1209,6 +1210,7 @@
 		E5EB944614EF8DDE0072B57B /* BrowseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseTableViewController.m; sourceTree = "<group>"; };
 		E5EB944714EF8DDE0072B57B /* BuyerPayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyerPayViewController.h; sourceTree = "<group>"; };
 		E5EB944814EF8DDE0072B57B /* BuyerPayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyerPayViewController.m; sourceTree = "<group>"; };
+		E5F23FAB1557DD6D00E9C959 /* unread.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unread.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2343,6 +2345,7 @@
 				E5D84A6315086BB400EF17E4 /* listbg2.png */,
 				E5D84A731508922400EF17E4 /* offer_pricebg.png */,
 				E5D84A75150894BE00EF17E4 /* wodehuodong_shadow.png */,
+				E5F23FAB1557DD6D00E9C959 /* unread.png */,
 			);
 			name = activity;
 			sourceTree = "<group>";
@@ -2904,6 +2907,7 @@
 				77CFE6311542849100082FD0 /* RepairButton@2x.png in Resources */,
 				77CFE6321542849100082FD0 /* small-button-normal.png in Resources */,
 				77CFE6331542849100082FD0 /* small-button-normal@2x.png in Resources */,
+				E5F23FAC1557DD6D00E9C959 /* unread.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3220,8 +3224,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				PROVISIONING_PROFILE = "EF876BCB-E9CD-429C-80C5-879DAA62E95B";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EF876BCB-E9CD-429C-80C5-879DAA62E95B";
+				PROVISIONING_PROFILE = "03AA16CF-E428-4517-9F6B-91F2A97F26F8";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "03AA16CF-E428-4517-9F6B-91F2A97F26F8";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -3232,8 +3236,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Heyook";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Heyook";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lin He (FNSM8C45WW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lin He (FNSM8C45WW)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -3242,8 +3246,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "86C7BD8E-8DB9-4E2D-B922-1325EABBC2CA";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "86C7BD8E-8DB9-4E2D-B922-1325EABBC2CA";
+				PROVISIONING_PROFILE = "03AA16CF-E428-4517-9F6B-91F2A97F26F8";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "03AA16CF-E428-4517-9F6B-91F2A97F26F8";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -3272,8 +3276,8 @@
 					"\"$(SRCROOT)/Libraries/Utilities\"",
 				);
 				PRODUCT_NAME = kass;
-				PROVISIONING_PROFILE = "EF876BCB-E9CD-429C-80C5-879DAA62E95B";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EF876BCB-E9CD-429C-80C5-879DAA62E95B";
+				PROVISIONING_PROFILE = "03AA16CF-E428-4517-9F6B-91F2A97F26F8";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "03AA16CF-E428-4517-9F6B-91F2A97F26F8";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -3282,8 +3286,8 @@
 		E5947DFB14A3A12B0066723A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Heyook";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Heyook";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Lin He (FNSM8C45WW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lin He (FNSM8C45WW)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Libraries/GHUnit\"",
@@ -3302,8 +3306,8 @@
 					"\"$(SRCROOT)/Libraries/Utilities\"",
 				);
 				PRODUCT_NAME = kass;
-				PROVISIONING_PROFILE = "86C7BD8E-8DB9-4E2D-B922-1325EABBC2CA";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "86C7BD8E-8DB9-4E2D-B922-1325EABBC2CA";
+				PROVISIONING_PROFILE = "03AA16CF-E428-4517-9F6B-91F2A97F26F8";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "03AA16CF-E428-4517-9F6B-91F2A97F26F8";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

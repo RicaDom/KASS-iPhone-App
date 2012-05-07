@@ -82,4 +82,53 @@
     }
 }
 
++(BOOL) isUnreadListing:(ListItem *)listing isBuyer:(BOOL)isBuyer {
+    if (listing == nil) {
+        return NO;
+    }
+    
+    NSMutableArray *offers = listing.offers;
+    if ([offers count] > 0) {
+        for (Offer *offer in offers) {
+            if ((isBuyer ? [offer.receiverUnreadMessagesCount intValue] : [offer.ownerUnreadMessagesCount intValue]) > 0) {
+                return YES;
+            }
+        }
+    }
+    return NO;
+}
+
++(int) getUnreadCountFromListings:(NSMutableArray *)listings isBuyer:(BOOL)isBuyer {
+    if ([listings count] <= 0) {
+        return 0;
+    }
+    
+    int count = 0;
+    for (id listing in listings) {
+        if ([listing isKindOfClass:[ListItem class]]) {
+            ListItem *item = (ListItem *) listing;
+            
+            NSMutableArray *offers = item.offers;
+            DLog(@"Offer count... %d", [offers count]);
+            if ([offers count] > 0) {
+                for (Offer *offer in offers) {
+                    DLog(@"receiverUnreadMessagesCount string: %@", offer.receiverUnreadMessagesCount);
+                    DLog(@"ownerUnreadMessagesCount string: %@", offer.ownerUnreadMessagesCount);
+
+                    if ((isBuyer ? [offer.receiverUnreadMessagesCount intValue] : [offer.ownerUnreadMessagesCount intValue]) > 0) {
+                        count++;
+                    }
+                    
+                }
+            }
+        } else if ([listing isKindOfClass:[Offer class]]) {
+            Offer *offer = (Offer *) listing;
+            if ((isBuyer ? [offer.receiverUnreadMessagesCount intValue] : [offer.ownerUnreadMessagesCount intValue]) > 0) {
+                count++;
+            }
+        }
+    }
+    return count;
+}
+
 @end
