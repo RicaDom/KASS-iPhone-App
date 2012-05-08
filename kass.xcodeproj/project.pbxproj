@@ -35,6 +35,8 @@
 		771CBFA81558FBB20061FD5B /* btn_renren_77_check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 771CBFA41558FBB20061FD5B /* btn_renren_77_check@2x.png */; };
 		771CBFA91558FBB20061FD5B /* btn_weibo_77_check.png in Resources */ = {isa = PBXBuildFile; fileRef = 771CBFA51558FBB20061FD5B /* btn_weibo_77_check.png */; };
 		771CBFAA1558FBB20061FD5B /* btn_weibo_77_check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 771CBFA61558FBB20061FD5B /* btn_weibo_77_check@2x.png */; };
+		771CBFB415593A980061FD5B /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 771CBFB115593A980061FD5B /* libGoogleAnalytics.a */; };
+		771CBFB615593CAF0061FD5B /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 771CBFB515593CAE0061FD5B /* libsqlite3.0.dylib */; };
 		772C760C15254AB700200367 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5947DDC14A3A12B0066723A /* MainStoryboard.storyboard */; };
 		773533391522E15300CD8815 /* bg-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 773533371522E15300CD8815 /* bg-black.png */; };
 		7735333A1522E15300CD8815 /* bg-black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 773533381522E15300CD8815 /* bg-black@2x.png */; };
@@ -555,6 +557,9 @@
 		771CBFA41558FBB20061FD5B /* btn_renren_77_check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_renren_77_check@2x.png"; sourceTree = "<group>"; };
 		771CBFA51558FBB20061FD5B /* btn_weibo_77_check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_weibo_77_check.png; sourceTree = "<group>"; };
 		771CBFA61558FBB20061FD5B /* btn_weibo_77_check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_weibo_77_check@2x.png"; sourceTree = "<group>"; };
+		771CBFB115593A980061FD5B /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = Libraries/GoogleAnalytics/libGoogleAnalytics.a; sourceTree = "<group>"; };
+		771CBFB215593A980061FD5B /* GANTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GANTracker.h; path = Libraries/GoogleAnalytics/GANTracker.h; sourceTree = "<group>"; };
+		771CBFB515593CAE0061FD5B /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		773533371522E15300CD8815 /* bg-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-black.png"; sourceTree = "<group>"; };
 		773533381522E15300CD8815 /* bg-black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-black@2x.png"; sourceTree = "<group>"; };
 		7735333B1522FE2900CD8815 /* loading-sign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading-sign.png"; sourceTree = "<group>"; };
@@ -1242,6 +1247,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				771CBFB615593CAF0061FD5B /* libsqlite3.0.dylib in Frameworks */,
 				E53451491552ED16003EDF4D /* MediaPlayer.framework in Frameworks */,
 				777E4D2014DBB7ED002B40C3 /* Security.framework in Frameworks */,
 				77F3D91014D00EC20009AF75 /* QuartzCore.framework in Frameworks */,
@@ -1255,6 +1261,7 @@
 				E5947DCD14A3A12B0066723A /* Foundation.framework in Frameworks */,
 				E5947DCF14A3A12B0066723A /* CoreGraphics.framework in Frameworks */,
 				77506A0114C9131A000494E5 /* GHUnitIOS.framework in Frameworks */,
+				771CBFB415593A980061FD5B /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1272,6 +1279,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		771CBFAF15593A800061FD5B /* GoogleAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				771CBFB115593A980061FD5B /* libGoogleAnalytics.a */,
+				771CBFB215593A980061FD5B /* GANTracker.h */,
+			);
+			name = GoogleAnalytics;
+			sourceTree = "<group>";
+		};
 		7739BBCF15392BD200EFE156 /* Renren */ = {
 			isa = PBXGroup;
 			children = (
@@ -1958,6 +1974,7 @@
 		77F027A314C668760065EDAA /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				771CBFAF15593A800061FD5B /* GoogleAnalytics */,
 				7739BBCF15392BD200EFE156 /* Renren */,
 				77899CA114C68E5100C6484B /* libOCMock.a */,
 				77502EC415064EDB0019E93A /* PrivatePub */,
@@ -2204,6 +2221,7 @@
 		E5947DC914A3A12B0066723A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				771CBFB515593CAE0061FD5B /* libsqlite3.0.dylib */,
 				E53451481552ED16003EDF4D /* MediaPlayer.framework */,
 				777E4D1F14DBB7ED002B40C3 /* Security.framework */,
 				77F3D90F14D00EC20009AF75 /* QuartzCore.framework */,
@@ -3315,6 +3333,7 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/Libraries/Utilities\"",
 					"\"$(SRCROOT)/Libraries/Renren/ROTools\"",
+					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
 				);
 				INFOPLIST_FILE = "Demo/kass-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -3322,6 +3341,7 @@
 					"\"$(SRCROOT)/Libraries\"",
 					"\"$(SRCROOT)/Libraries/Alipay\"",
 					"\"$(SRCROOT)/Libraries/Utilities\"",
+					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
 				);
 				PRODUCT_NAME = kass;
 				PROVISIONING_PROFILE = "03AA16CF-E428-4517-9F6B-91F2A97F26F8";
@@ -3345,6 +3365,7 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/Libraries/Utilities\"",
 					"\"$(SRCROOT)/Libraries/Renren/ROTools\"",
+					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
 				);
 				INFOPLIST_FILE = "Demo/kass-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -3352,6 +3373,7 @@
 					"\"$(SRCROOT)/Libraries\"",
 					"\"$(SRCROOT)/Libraries/Alipay\"",
 					"\"$(SRCROOT)/Libraries/Utilities\"",
+					"\"$(SRCROOT)/Libraries/GoogleAnalytics\"",
 				);
 				PRODUCT_NAME = kass;
 				PROVISIONING_PROFILE = "03AA16CF-E428-4517-9F6B-91F2A97F26F8";

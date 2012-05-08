@@ -55,6 +55,7 @@
 
 -(void)loadMessageView
 {
+  [self.scrollView removeViewsWithTag:OFFER_ROW_VIEW_TAG];
   [_currentOffer buildMessagesScrollView:self.scrollView:[self kassVS].user];
 }
 

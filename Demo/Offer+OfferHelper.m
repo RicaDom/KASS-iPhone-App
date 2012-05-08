@@ -185,6 +185,7 @@
   Message *firstMessage = [[Message alloc] initWithOffer:self];
   UIView *diglogView = [self getMessageRow:scrollView:user:yOffset:firstMessage:dateFormatter];
   yOffset += diglogView.frame.size.height;
+  diglogView.tag = OFFER_ROW_VIEW_TAG;
   [scrollView addSubview:diglogView];
   [scrollView setContentSize:CGSizeMake(scrollView.frame.size.width, yOffset + 5)];  
   
@@ -193,6 +194,7 @@
     Message *message = [self.messages objectAtIndex:i];
     
     UIView *diglogView = [self getMessageRow:scrollView:user:yOffset:message:dateFormatter];
+    diglogView.tag = OFFER_ROW_VIEW_TAG;
     
     //INCREMNET in yOffset 
     yOffset += diglogView.frame.size.height;

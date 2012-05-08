@@ -14,10 +14,15 @@
 //#import "AlixPayResult.h"
 //#import "DataVerifier.h"
 #import <sys/utsname.h>
+#import "GANTracker.h"
 
 @implementation AppDelegate
 
 @synthesize window    = _window;
+
+// Dispatch period in seconds
+static const NSInteger kGANDispatchPeriodSec = 10;
+static NSString* const kAnalyticsAccountId = @"UA-31469096-1";
 
 - (BOOL)isSingleTask{
 	struct utsname name;
@@ -123,12 +128,43 @@
   }
 }
 
+- (void)setupGoogleAnalytics
+{
+  [[GANTracker sharedTracker] startTrackerWithAccountID:kAnalyticsAccountId
+                                         dispatchPeriod:kGANDispatchPeriodSec
+                                               delegate:nil];
+  NSError *error;
+  
+  if (![[GANTracker sharedTracker] setCustomVariableAtIndex:1
+                                                       name:@"iOS1"
+                                                      value:@"iv1"
+                                                  withError:&error]) {
+    NSLog(@"error in setCustomVariableAtIndex");
+  }
+  
+  if (![[GANTracker sharedTracker] trackEvent:@"Application iOS"
+                                       action:@"Launch iOS"
+                                        label:@"Example iOS"
+                                        value:99
+                                    withError:&error]) {
+    NSLog(@"error in trackEvent");
+  }
+  
+  if (![[GANTracker sharedTracker] trackPageview:@"/app_entry_point"
+                                       withError:&error]) {
+    NSLog(@"error in trackPageview");
+  }
+
+}
+
 //////////////////////////////////// Application Life Cycle ///////////////////////////////////////////
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   DLog(@"AppDelegate::didFinishLaunchingWithOptions:rootViewController=%@,options=%@", self.window.rootViewController, launchOptions);
   VariableStore.sharedInstance.appDelegate = self;
+  
+  [self setupGoogleAnalytics];
   
   if (launchOptions != nil)
 	{
