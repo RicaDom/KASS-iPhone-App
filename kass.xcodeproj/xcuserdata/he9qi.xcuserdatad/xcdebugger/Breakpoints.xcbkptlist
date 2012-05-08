@@ -331,11 +331,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/User.m"
-         timestampString = "356199505.607502"
+         timestampString = "358155395.475314"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "384"
-         endingLineNumber = "384"
+         startingLineNumber = "385"
+         endingLineNumber = "385"
          landmarkName = "-accountLogin::"
          landmarkType = "5">
       </FileBreakpoint>
@@ -387,13 +387,13 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/UIViewController+ActivityIndicate.m"
-         timestampString = "354958015.914"
+         timestampString = "358168544.486462"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "73"
-         endingLineNumber = "73"
-         landmarkName = "-viewWillAppear:"
-         landmarkType = "5">
+         startingLineNumber = "76"
+         endingLineNumber = "76"
+         landmarkName = "@implementation UIViewController(ActivityIndicate)"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -401,11 +401,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Demo/UIViewController+ActivityIndicate.m"
-         timestampString = "354958015.914"
+         timestampString = "358168544.486462"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "74"
-         endingLineNumber = "74"
+         startingLineNumber = "77"
+         endingLineNumber = "77"
          landmarkName = "-viewWillAppear:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -713,11 +713,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/UIViewController+ActivityIndicate.m"
-         timestampString = "354450536.294423"
+         timestampString = "358168544.486462"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "29"
-         endingLineNumber = "29"
+         startingLineNumber = "30"
+         endingLineNumber = "30"
          landmarkName = "-hideIndicator"
          landmarkType = "5">
       </FileBreakpoint>
@@ -739,11 +739,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/UIViewController+ActivityIndicate.m"
-         timestampString = "354450536.294423"
+         timestampString = "358168544.486462"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "30"
-         endingLineNumber = "30"
+         startingLineNumber = "31"
+         endingLineNumber = "31"
          landmarkName = "-hideIndicator"
          landmarkType = "5">
       </FileBreakpoint>
@@ -778,13 +778,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/UIViewController+ActivityIndicate.m"
-         timestampString = "354958015.914"
+         timestampString = "358168544.486462"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "52"
-         endingLineNumber = "52"
-         landmarkName = "-appRequestFailed:"
-         landmarkType = "5">
+         startingLineNumber = "53"
+         endingLineNumber = "53"
+         landmarkName = "@implementation UIViewController(ActivityIndicate)"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1051,11 +1051,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/UIViewController+ActivityIndicate.m"
-         timestampString = "354450536.294423"
+         timestampString = "358168544.486462"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "24"
-         endingLineNumber = "24"
+         startingLineNumber = "25"
+         endingLineNumber = "25"
          landmarkName = "-showIndicator:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1064,13 +1064,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/UIViewController+ActivityIndicate.m"
-         timestampString = "354958015.914"
+         timestampString = "358168544.486462"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "66"
-         endingLineNumber = "66"
-         landmarkName = "-accountRequestStarted"
-         landmarkType = "5">
+         startingLineNumber = "69"
+         endingLineNumber = "69"
+         landmarkName = "@implementation UIViewController(ActivityIndicate)"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -1285,11 +1285,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/User.m"
-         timestampString = "356199505.607502"
+         timestampString = "358155395.475314"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "402"
-         endingLineNumber = "402"
+         startingLineNumber = "403"
+         endingLineNumber = "403"
          landmarkName = "-createStatusCall:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1454,11 +1454,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/UIViewController+ActivityIndicate.m"
-         timestampString = "354957834.418259"
+         timestampString = "358168544.486462"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "38"
-         endingLineNumber = "38"
+         startingLineNumber = "39"
+         endingLineNumber = "39"
          landmarkName = "-accountRequestFailed:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1480,11 +1480,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/User.m"
-         timestampString = "357652105.877873"
+         timestampString = "358155395.475314"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "629"
-         endingLineNumber = "629"
+         startingLineNumber = "663"
+         endingLineNumber = "663"
          landmarkName = "-weiboShare:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1493,11 +1493,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Demo/User.m"
-         timestampString = "357652105.877873"
+         timestampString = "358155395.475314"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "627"
-         endingLineNumber = "627"
+         startingLineNumber = "661"
+         endingLineNumber = "661"
          landmarkName = "-weiboShare:"
          landmarkType = "5">
       </FileBreakpoint>

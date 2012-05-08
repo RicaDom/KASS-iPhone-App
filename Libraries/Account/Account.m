@@ -104,8 +104,8 @@ return self;
     }
     [self storeLoginStatus:TRUE];
 
-    if( [_delegate respondsToSelector:@selector(accountDidLogin)] )
-      [_delegate accountDidLogin];
+    if( [_delegate respondsToSelector:@selector(accountDidLogin:)] )
+      [_delegate accountDidLogin:dict];
   }else{
     [self storeLoginStatus:FALSE];
     if( [_delegate respondsToSelector:@selector(accountLoginFailed:)] ){

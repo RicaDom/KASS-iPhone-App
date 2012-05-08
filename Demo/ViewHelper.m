@@ -400,6 +400,16 @@
   return [VariableStore.sharedInstance kassApp];
 }
 
++ (void)hideConnectionErrorAlert:(UIView *)view
+{
+  [view removeAlertViews];
+//  UIView *aView = [view getViewWithTag:ALERT_VIEW_TAG];
+//  if ( aView == NULL ) { return; }
+//  [UIView animateWithDuration:0.45 animations:^{
+//    aView.frame = CGRectMake(0, -40, 320, 40);
+//  }];
+}
+
 + (void)showConnectionErrorAlert:(UIView *)view
 {
   [view removeAlertViews];
@@ -557,6 +567,42 @@
     [button setImage:img forState:UIControlStateNormal];
     button.frame = CGRectMake(button.frame.origin.x, button.frame.origin.y, img.size.width, img.size.height);
     button.enabled = YES;
+}
+
++ (void)buildWeiboBindButton:(UIButton *)button
+{
+  UIImage *img = [UIImage imageNamed:UI_IMAGE_WEIBO_BIND_BUTTON];
+  UIImage *imgPress = [UIImage imageNamed:UI_IMAGE_WEIBO_BIND_BUTTON_PRESS];
+  [button setImage:img forState:UIControlStateNormal];
+  [button setImage:imgPress forState:UIControlStateSelected];
+  button.frame = CGRectMake(218, 13, img.size.width, img.size.height);
+  button.enabled = YES;
+}
+
++ (void)buildRenrenBindButton:(UIButton *)button
+{
+  UIImage *img = [UIImage imageNamed:UI_IMAGE_RENREN_BIND_BUTTON];
+  UIImage *imgPress = [UIImage imageNamed:UI_IMAGE_RENREN_BIND_BUTTON_PRESS];
+  [button setImage:img forState:UIControlStateNormal];
+  [button setImage:imgPress forState:UIControlStateSelected];
+  button.frame = CGRectMake(265, 13, img.size.width, img.size.height);
+  button.enabled = YES;
+}
+
++ (void)buildWeiboCheckButton:(UIButton *)button
+{
+  UIImage *img = [UIImage imageNamed:UI_IMAGE_WEIBO_BIND_BUTTON_CHECK];
+  [button setImage:img forState:UIControlStateNormal];
+  button.frame = CGRectMake(218, 13, img.size.width, img.size.height);
+  button.enabled = YES;
+}
+
++ (void)buildRenrenCheckButton:(UIButton *)button
+{
+  UIImage *img = [UIImage imageNamed:UI_IMAGE_RENREN_BIND_BUTTON_CHECK];
+  [button setImage:img forState:UIControlStateNormal];
+  button.frame = CGRectMake(265, 13, img.size.width, img.size.height);
+  button.enabled = YES;
 }
 
 + (void)buildEditButton:(UIButton *)button

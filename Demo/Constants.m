@@ -194,4 +194,12 @@ NSString * const UI_IMAGE_DEFAULT_USER = @"everyone";
 NSString * const UI_IMAGE_PULLER_LOADING = @"blueArrow.png";
 NSString * const UI_IMAGE_PULLER_LOADING_ALPHA = @"blueArrow-alpha.png";
 
+NSString * const UI_IMAGE_WEIBO_BIND_BUTTON_PRESS = @"btn_weibo_77_press.png";
+NSString * const UI_IMAGE_WEIBO_BIND_BUTTON = @"btn_weibo_77.png";
+NSString * const UI_IMAGE_WEIBO_BIND_BUTTON_CHECK = @"btn_weibo_77_check.png";
+
+NSString * const UI_IMAGE_RENREN_BIND_BUTTON_PRESS = @"btn_renren_77_press.png";
+NSString * const UI_IMAGE_RENREN_BIND_BUTTON = @"btn_renren_77.png";
+NSString * const UI_IMAGE_RENREN_BIND_BUTTON_CHECK = @"btn_renren_77_check.png";
+
 @end

@@ -30,6 +30,7 @@
 @synthesize phone = _phone;
 @synthesize avatarUrl = _avatarUrl;
 @synthesize city = _city;
+@synthesize emailVerified = _emailVerified, renrenVerified = _renrenVerified, weiboVerified = _weiboVerified, phoneVerified = _phoneVerified;
 
 - (id) initWithDelegate:(id<AccountActivityDelegate>)delegate
 {
@@ -491,7 +492,7 @@
     }
 }
 
-- (void) accountDidLogin
+- (void) accountDidLogin:(NSDictionary *)dict
 {
   DLog(@"User::accountDidLogin:username=%@,delegate=%@", account.userName, _delegate);
   
@@ -503,6 +504,39 @@
   _avatarUrl = account.avatarUrl;
   
   VariableStore.sharedInstance.isAutoLogin = FALSE;
+  
+  NSDictionary *veri = [dict objectForKey:@"verification"];
+  NSArray *sources = [veri objectForKey:@"sources"];
+  
+  for (NSDictionary *source in sources) {
+    if (!source || ![source isKindOfClass:NSDictionary.class]) { continue; }
+    
+    NSString *type = [source objectForKey:@"type"];
+    if ([type isEqualToString:@"email"]) {
+      
+      NSString *emailV = [NSString stringWithFormat:@"%@",[source objectForKey:@"verified"]];
+      _emailVerified = [emailV isEqualToString:@"1"];
+//      _email_address = [NSString stringWithFormat:@"%@",[source objectForKey:@"email"]];
+      
+    }else if ([type isEqualToString:@"tsina"]) {
+      
+      NSString *weiboV = [NSString stringWithFormat:@"%@",[source objectForKey:@"verified"]];
+      _weiboVerified = [weiboV isEqualToString:@"1"];
+//      _weibo_id = [NSString stringWithFormat:@"%@",[source objectForKey:@"uid"]];
+    }else if ([type isEqualToString:@"renren"]) {
+      
+      NSString *renrenV = [NSString stringWithFormat:@"%@",[source objectForKey:@"verified"]];
+      _renrenVerified = [renrenV isEqualToString:@"1"];
+//      _renren_id = [NSString stringWithFormat:@"%@",[source objectForKey:@"uid"]];
+    } else if ([type isEqualToString:@"phone"]) {
+      
+      NSString *phoneV = [NSString stringWithFormat:@"%@",[source objectForKey:@"verified"]];
+      _phoneVerified = [phoneV isEqualToString:@"1"];
+//      _phone_number  = [source objectForKey:@"phone"];
+      
+    }
+  }
+  
   
   if( [_delegate respondsToSelector:@selector(accountLoginFinished)] )
     [_delegate accountLoginFinished];

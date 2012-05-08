@@ -11,7 +11,7 @@
 @protocol AccountSessionDelegate <NSObject>
 
 @optional
-- (void)accountDidLogin;
+- (void)accountDidLogin:(NSDictionary *)dict;
 - (void)accountLoginFailed:(NSDictionary *)error;
 - (void)accountDidLogout;
 

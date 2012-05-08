@@ -15,7 +15,7 @@
 
 @implementation SettingViewController
 
-@synthesize rightButton;
+@synthesize rightButton, weiboButton, renrenButton;
 @synthesize mainScrollView;
 @synthesize mainTableView;
 @synthesize topInfoView = _topInfoView;
@@ -72,23 +72,21 @@ NSArray *settingArray;
     [self customViewLoad];
 }
 
+- (void)accountRequestFailed:(NSDictionary *)errors
+{
+  DLog(@"BrowseItemViewController::requestFailed");
+  NSString *msg = [errors objectForKey:@"data"]; 
+  [ViewHelper showAlert:@"提醒":msg:self];
+}
+
 - (void)loadDataSource
 {
   [self updateButtons];
   
   [_topInfoView removeAllSubviews];
   
-  if ([self currentUser]) {
+  if ( VariableStore.sharedInstance.isLoggedIn ) {
     VariableStore.sharedInstance.userToShowId = [self currentUser].userId;
-  }
-  if( [self currentUser].avatarUrl.isPresent ){
-    [ViewHelper buildCustomImageViewWithFrame:_topInfoView:VariableStore.sharedInstance.user.avatarUrl:CGRectMake(20,20,60,60)];
-  } else {
-    [ViewHelper buildDefaultImageViewWithFrame:_topInfoView:UI_IMAGE_MESSAGE_DEFAULT_USER:CGRectMake(20,20,60,60)];
-  }
-  
-   
-  if( VariableStore.sharedInstance.isLoggedIn ){
     
     NSString *name = [self currentUser].name ? [self currentUser].name : [self currentUser].userId;
     
@@ -100,7 +98,24 @@ NSArray *settingArray;
     nameLabel.frame = CGRectMake(90, 30, 200, 30);
     nameLabel.textAlignment = UITextAlignmentLeft;
     [_topInfoView addSubview:nameLabel];
-    
+  }
+  
+  if( VariableStore.sharedInstance.isLoggedIn && [self currentUser].avatarUrl.isPresent ){
+    [ViewHelper buildCustomImageViewWithFrame:_topInfoView:VariableStore.sharedInstance.user.avatarUrl:CGRectMake(20,20,60,60)];
+  } else {
+    [ViewHelper buildDefaultImageViewWithFrame:_topInfoView:UI_IMAGE_MESSAGE_DEFAULT_USER:CGRectMake(20,20,60,60)];
+  }
+  
+  if( VariableStore.sharedInstance.isLoggedIn && self.currentUser.weiboVerified ){
+    [ViewHelper buildWeiboCheckButton:weiboButton];
+  }else{
+    [ViewHelper buildWeiboBindButton:weiboButton];
+  }
+  
+  if( VariableStore.sharedInstance.isLoggedIn && self.currentUser.renrenVerified ){
+    [ViewHelper buildRenrenCheckButton:renrenButton];
+  }else{
+    [ViewHelper buildRenrenBindButton:renrenButton];
   }
   
     [self loadSettingTableData];
@@ -147,6 +162,18 @@ NSArray *settingArray;
     } else {
         [[VariableStore sharedInstance] signOut];
     }
+}
+
+- (IBAction)renrenButtonAction:(id)sender {
+  if( VariableStore.sharedInstance.isLoggedIn && !self.currentUser.renrenVerified ){ 
+    [self.currentUser renrenLogin]; 
+  }
+}
+
+- (IBAction)weiboButtonAction:(id)sender {
+  if( VariableStore.sharedInstance.isLoggedIn && !self.currentUser.weiboVerified ){ 
+    [self.currentUser weiboLogin]; 
+  }  
 }
 
 #pragma mark - Table view data source

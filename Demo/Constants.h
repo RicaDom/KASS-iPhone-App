@@ -241,6 +241,13 @@ extern NSString * const UI_IMAGE_SETTING_LOGIN_PRESS;
 extern NSString * const UI_IMAGE_SETTING_LOGOUT;
 extern NSString * const UI_IMAGE_SETTING_LOGOUT_PRESS;
 
+extern NSString * const UI_IMAGE_RENREN_BIND_BUTTON;
+extern NSString * const UI_IMAGE_RENREN_BIND_BUTTON_PRESS;
+extern NSString * const UI_IMAGE_RENREN_BIND_BUTTON_CHECK;
+extern NSString * const UI_IMAGE_WEIBO_BIND_BUTTON;
+extern NSString * const UI_IMAGE_WEIBO_BIND_BUTTON_PRESS;
+extern NSString * const UI_IMAGE_WEIBO_BIND_BUTTON_CHECK;
+
 extern NSString * const UI_IMAGE_CHECKBOX_CHECK;
 extern NSString * const UI_IMAGE_CHECKBOX_UNCHECK;
 

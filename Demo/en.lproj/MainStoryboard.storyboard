@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="tSz-RA-HQY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="tSz-RA-HQY">
     <dependencies>
+        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1179"/>
     </dependencies>
     <scenes>
+        <!--Seller Alerts View Controller - 我关注的商品-->
         <scene sceneID="Hqj-56-KaI">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rtJ-aQ-Mq8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -135,6 +137,7 @@
             </objects>
             <point key="canvasLocation" x="71" y="1258"/>
         </scene>
+        <!--Seller Alerts Add Alert View Controller - 添加提醒-->
         <scene sceneID="7dR-zp-rp4">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AVz-8h-hLi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -335,6 +338,7 @@
             </objects>
             <point key="canvasLocation" x="552" y="1258"/>
         </scene>
+        <!--Seller Alerts Listings View Controller-->
         <scene sceneID="Rol-pM-c75">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cTb-sI-Yf6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -362,7 +366,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" minimumFontSize="10" id="Aom-eM-4UO">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="Aom-eM-4UO">
                                                     <rect key="frame" x="70" y="0.0" width="170" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -448,6 +452,7 @@
             </objects>
             <point key="canvasLocation" x="-107" y="597"/>
         </scene>
+        <!--Seller Alerts Add Alert What View Controller - 关注的商品-->
         <scene sceneID="cM7-pz-52Y">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fDI-kE-sHa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -603,6 +608,7 @@
             </objects>
             <point key="canvasLocation" x="1238" y="810"/>
         </scene>
+        <!--Post Flow View Controller - 我要-->
         <scene sceneID="oic-l7-G5s">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DEg-Ri-DgU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -711,6 +717,7 @@
             </objects>
             <point key="canvasLocation" x="106" y="2070"/>
         </scene>
+        <!--Post Flow Price View Controller - 我愿付-->
         <scene sceneID="gQp-g6-kNK">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a72-YF-L8h" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -805,6 +812,7 @@
             </objects>
             <point key="canvasLocation" x="610" y="2078"/>
         </scene>
+        <!--Post Flow Set Date View Controller - 时限-->
         <scene sceneID="nmR-5k-eyx">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uHY-Th-lRo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -901,6 +909,7 @@
             </objects>
             <point key="canvasLocation" x="1076" y="2086"/>
         </scene>
+        <!--Post Summary View Controller - 预览-->
         <scene sceneID="AhR-xF-Y8i">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bSe-Tj-nG8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1195,6 +1204,7 @@
             </objects>
             <point key="canvasLocation" x="1577" y="2118"/>
         </scene>
+        <!--Post Flow Navigation Controller - Item-->
         <scene sceneID="8Va-Hs-p7h">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BJL-IK-EQ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1210,6 +1220,7 @@
             </objects>
             <point key="canvasLocation" x="-340" y="2040"/>
         </scene>
+        <!--Setting View Controller - 设置-->
         <scene sceneID="Tgh-vV-tKz">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hY7-uA-dve" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1258,6 +1269,38 @@
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="B3V-Vs-otd">
+                                        <rect key="frame" x="218" y="13" width="39" height="39"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" image="btn_weibo_77.png">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected" image="btn_weibo_77_press.png"/>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="weiboButtonAction:" destination="vOc-ds-mGa" eventType="touchUpInside" id="aR6-kd-07L"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JRg-r1-NHT">
+                                        <rect key="frame" x="265" y="13" width="39" height="39"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" image="btn_renren_77.png">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected" image="btn_renren_77_press.png"/>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="renrenButtonAction:" destination="vOc-ds-mGa" eventType="touchUpInside" id="Ako-NY-y8R"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -1289,8 +1332,10 @@
                     <connections>
                         <outlet property="mainScrollView" destination="Q6f-Oa-0AP" id="9Jd-QF-2LU"/>
                         <outlet property="mainTableView" destination="vOf-3r-Tq2" id="pNM-Eg-Di6"/>
+                        <outlet property="renrenButton" destination="JRg-r1-NHT" id="OHq-Yt-Blu"/>
                         <outlet property="rightButton" destination="bRK-Wf-9LD" id="FBq-Zr-edg"/>
                         <outlet property="topInfoView" destination="TUb-z6-ANS" id="H1g-EH-jmv"/>
+                        <outlet property="weiboButton" destination="B3V-Vs-otd" id="ASW-SL-BUw"/>
                         <segue destination="4Wd-lO-4Xm" kind="push" identifier="SettingToAbout" id="Wvn-JK-0vI"/>
                         <segue destination="qSl-ws-Clg" kind="push" identifier="SettingToProfileView" id="R9B-U7-jDV"/>
                         <segue destination="qvh-Zd-xaX" kind="modal" identifier="SettingToConfigView" id="a8r-G7-z33"/>
@@ -1300,6 +1345,7 @@
             </objects>
             <point key="canvasLocation" x="-340" y="2634"/>
         </scene>
+        <!--About View Controller - 关于街区-->
         <scene sceneID="tJm-g1-YBb">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V0r-VT-HNY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1367,6 +1413,7 @@
             </objects>
             <point key="canvasLocation" x="153" y="2687"/>
         </scene>
+        <!--Config View Controller - 设置-->
         <scene sceneID="xm1-cZ-Bog">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Adw-ag-lVO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1430,6 +1477,7 @@
             </objects>
             <point key="canvasLocation" x="679" y="3301"/>
         </scene>
+        <!--About Details View Controller-->
         <scene sceneID="V1g-C3-0cn">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tbx-oh-pSW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1483,6 +1531,7 @@
             </objects>
             <point key="canvasLocation" x="610" y="2687"/>
         </scene>
+        <!--About Video View Controller - 街区视频-->
         <scene sceneID="ShV-wX-DII">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YRZ-N9-2Tq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1529,6 +1578,7 @@
             </objects>
             <point key="canvasLocation" x="1597" y="2687"/>
         </scene>
+        <!--Activity View Controller - 我的街区-->
         <scene sceneID="aBZ-HS-Gho">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sRN-RN-2E8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1561,7 +1611,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontSizeToFit="NO" minimumFontSize="10" id="Az1-IP-Osl">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="wordWrap" numberOfLines="0" minimumFontSize="10" adjustsFontSizeToFit="NO" id="Az1-IP-Osl">
                                                     <rect key="frame" x="48" y="1" width="181" height="66"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="STHeitiTC-Medium" family="Heiti TC" pointSize="17"/>
@@ -1661,6 +1711,7 @@
             </objects>
             <point key="canvasLocation" x="-428" y="-989"/>
         </scene>
+        <!--Item View Controller - 我的需求-->
         <scene sceneID="0N0-kD-qj3">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ppp-yx-nEl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1889,6 +1940,7 @@
             </objects>
             <point key="canvasLocation" x="1506" y="-1187"/>
         </scene>
+        <!--Activity Offer Message View Controller - 联系卖家-->
         <scene sceneID="LNn-kQ-B9d">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H2I-Y1-qeF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2128,6 +2180,7 @@
             </objects>
             <point key="canvasLocation" x="1974" y="-1187"/>
         </scene>
+        <!--Buyer Pay View Controller - 联系卖家-->
         <scene sceneID="8UW-Sx-uG9">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iQc-4K-a28" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2352,6 +2405,7 @@
             </objects>
             <point key="canvasLocation" x="1498" y="-1852"/>
         </scene>
+        <!--Map View Controller-->
         <scene sceneID="g45-t1-bCl">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PEB-0q-sY1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2402,6 +2456,7 @@
             </objects>
             <point key="canvasLocation" x="3854" y="-1449"/>
         </scene>
+        <!--Browse Item View Controller - 联系买家-->
         <scene sceneID="gQf-rS-YM8">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Psy-ZG-cZf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2449,7 +2504,7 @@
                                         <rect key="frame" x="0.0" y="70" width="320" height="131"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="..." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="none" adjustsFontSizeToFit="NO" minimumFontSize="10" id="gVS-Jq-Ce4">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="..." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="none" minimumFontSize="10" adjustsFontSizeToFit="NO" id="gVS-Jq-Ce4">
                                                 <rect key="frame" x="8" y="6" width="194" height="29"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="STHeitiTC-Medium" family="Heiti TC" pointSize="20"/>
@@ -2607,6 +2662,7 @@
             </objects>
             <point key="canvasLocation" x="1768" y="175"/>
         </scene>
+        <!--Browse Item No Msg View Controller - 联系买家-->
         <scene sceneID="Tfc-Qx-Tg3">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TPQ-xg-yaA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2839,12 +2895,13 @@
             </objects>
             <point key="canvasLocation" x="1974" y="-435"/>
         </scene>
+        <!--User Info View Controller - 用户资料-->
         <scene sceneID="TbS-m1-AdZ">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hWg-Ie-RHa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="qSl-ws-Clg" customClass="UserInfoViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Br1-bB-Ybw">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="X9Q-fg-5oI">
@@ -2853,7 +2910,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" id="duj-ox-mNU">
-                                <rect key="frame" x="0.0" y="49" width="320" height="367"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="kzU-qb-KOG">
@@ -2925,6 +2982,7 @@
             </objects>
             <point key="canvasLocation" x="3960" y="-49"/>
         </scene>
+        <!--Offer Changing Price View Controller - 修改价格-->
         <scene sceneID="1BH-DW-PPI">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xbk-Yt-aUk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3005,6 +3063,7 @@
             </objects>
             <point key="canvasLocation" x="3402" y="-111"/>
         </scene>
+        <!--Main Tab Bar View Controller-->
         <scene sceneID="DtA-tP-kxv">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UW4-5a-14i" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3026,6 +3085,7 @@
             </objects>
             <point key="canvasLocation" x="-2027" y="463"/>
         </scene>
+        <!--Navigation Controller-->
         <scene sceneID="SGi-2m-nU8">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="34B-fh-gGp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3044,6 +3104,7 @@
             </objects>
             <point key="canvasLocation" x="-813" y="2634"/>
         </scene>
+        <!--Post View Controller-->
         <scene sceneID="Uv3-oT-B9N">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vex-Sl-t59" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3198,6 +3259,7 @@
             </objects>
             <point key="canvasLocation" x="-805" y="2025"/>
         </scene>
+        <!--Navigation Controller-->
         <scene sceneID="FJ0-3g-hO5">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LVd-Am-m7K" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3215,6 +3277,7 @@
             </objects>
             <point key="canvasLocation" x="3014" y="-123"/>
         </scene>
+        <!--Navigation Controller-->
         <scene sceneID="y2q-W9-anL">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GQT-TB-g80" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3236,6 +3299,7 @@
             </objects>
             <point key="canvasLocation" x="1090" y="-1187"/>
         </scene>
+        <!--Navigation Controller-->
         <scene sceneID="8uT-Eq-FuH">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6w3-IM-paa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3253,6 +3317,7 @@
             </objects>
             <point key="canvasLocation" x="1084" y="-1852"/>
         </scene>
+        <!--Browse Table View Controller-->
         <scene sceneID="b8K-IM-UeX">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cU9-2c-dnf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3339,7 +3404,7 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" minimumFontSize="10" id="ARq-EU-0W7">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="10" adjustsFontSizeToFit="NO" id="ARq-EU-0W7">
                                                     <rect key="frame" x="73" y="0.0" width="161" height="69"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="STHeitiTC-Medium" family="Heiti TC" pointSize="17"/>
@@ -3460,6 +3525,7 @@
             </objects>
             <point key="canvasLocation" x="-411" y="-111"/>
         </scene>
+        <!--Provide View Controller - 浏览市场-->
         <scene sceneID="deq-mz-MMJ">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ewK-uk-Ukh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3532,6 +3598,7 @@
             </objects>
             <point key="canvasLocation" x="-889" y="463"/>
         </scene>
+        <!--Navigation Controller-->
         <scene sceneID="5Wj-95-x9u">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQu-Cy-VqS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3550,6 +3617,7 @@
             </objects>
             <point key="canvasLocation" x="1612" y="-435"/>
         </scene>
+        <!--Navigation Controller-->
         <scene sceneID="8zG-xV-r9S">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kzz-dk-OBE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3567,6 +3635,7 @@
             </objects>
             <point key="canvasLocation" x="1368" y="167"/>
         </scene>
+        <!--Seller Alerts Add Alert Price View Controller - 提醒价位-->
         <scene sceneID="UCz-uM-75x">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbG-Xc-zFe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3637,6 +3706,7 @@
             </objects>
             <point key="canvasLocation" x="1685" y="1151"/>
         </scene>
+        <!--Seller Alerts Add Alert Location View Controller - 提醒位置-->
         <scene sceneID="DMD-YB-bAf">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c4m-7D-0Cx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3747,6 +3817,7 @@
             </objects>
             <point key="canvasLocation" x="1255" y="1431"/>
         </scene>
+        <!--Navigation Controller-->
         <scene sceneID="zFe-bg-4Wl">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IYJ-1g-5ny" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3765,6 +3836,7 @@
             </objects>
             <point key="canvasLocation" x="-897" y="-1001"/>
         </scene>
+        <!--Navigation Controller-->
         <scene sceneID="Tp9-zj-hSb">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aqr-7U-H24" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3783,6 +3855,7 @@
             </objects>
             <point key="canvasLocation" x="-1321" y="463"/>
         </scene>
+        <!--Navigation Controller-->
         <scene sceneID="gzd-rs-Q8W">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="akZ-bx-qt8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3800,6 +3873,7 @@
             </objects>
             <point key="canvasLocation" x="-356" y="1258"/>
         </scene>
+        <!--Navigation Controller-->
         <scene sceneID="FwX-eo-pBo">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c2a-b8-nOp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3817,6 +3891,7 @@
             </objects>
             <point key="canvasLocation" x="153" y="3301"/>
         </scene>
+        <!--User Info Web View Controller-->
         <scene sceneID="2Zy-Bu-xGG">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xNK-AY-cfy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3897,6 +3972,7 @@
             </objects>
             <point key="canvasLocation" x="5014" y="-150"/>
         </scene>
+        <!--Navigation Controller-->
         <scene sceneID="Bz0-bs-J9H">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b4a-tv-feX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3914,6 +3990,7 @@
             </objects>
             <point key="canvasLocation" x="4488" y="-150"/>
         </scene>
+        <!--Navigation Controller-->
         <scene sceneID="kaG-9I-1Eh">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8g7-qI-8DB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3943,6 +4020,10 @@
         <image name="btn_add_alert@2x.png" width="603" height="110"/>
         <image name="btn_big_90.png" width="300" height="44"/>
         <image name="btn_big_90@2x.png" width="600" height="86"/>
+        <image name="btn_renren_77.png" width="39" height="39"/>
+        <image name="btn_renren_77_press.png" width="39" height="39"/>
+        <image name="btn_weibo_77.png" width="39" height="39"/>
+        <image name="btn_weibo_77_press.png" width="39" height="39"/>
         <image name="buying.png" width="320" height="43"/>
         <image name="cell-avatar-girl.png" width="60" height="60"/>
         <image name="cell-avatar.png" width="55" height="55"/>
@@ -4365,11 +4446,15 @@
         <class className="SettingViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingViewController.h"/>
             <relationships>
+                <relationship kind="action" name="renrenButtonAction:"/>
                 <relationship kind="action" name="rightButtonAction:"/>
+                <relationship kind="action" name="weiboButtonAction:"/>
                 <relationship kind="outlet" name="mainScrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="mainTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="renrenButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="rightButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="topInfoView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="weiboButton" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="UserInfoViewController" superclassName="UIViewController">
@@ -4403,14 +4488,14 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="BhZ-ht-CXE"/>
         <segue reference="AMc-4a-ghd"/>
         <segue reference="UPg-Yr-5B0"/>
+        <segue reference="BhZ-ht-CXE"/>
         <segue reference="34A-gF-H3c"/>
         <segue reference="p1j-ow-HAz"/>
-        <segue reference="gm0-Ys-GrV"/>
         <segue reference="kjd-qS-0pq"/>
         <segue reference="0kh-0v-gnk"/>
-        <segue reference="8Mx-QQ-zuz"/>
+        <segue reference="R9B-U7-jDV"/>
+        <segue reference="bw5-Hf-Ght"/>
     </inferredMetricsTieBreakers>
 </document>

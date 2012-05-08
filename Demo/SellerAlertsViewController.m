@@ -121,7 +121,7 @@
       UIRemoteNotificationType status = [[UIApplication sharedApplication] enabledRemoteNotificationTypes];
       if (status == UIRemoteNotificationTypeNone)
       {
-        [ViewHelper showAlert:@"温馨提示":@"您需要在设置里开启接收街区应用信息才能试用此功能":self];
+        [ViewHelper showAlert:@"温馨提示":@"您需要在设置里开启接收街区应用信息才能使用此功能":self];
       }
   }
 }

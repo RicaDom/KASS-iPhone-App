@@ -10,6 +10,7 @@
 #import "DejalActivityView.h"
 #import "UIResponder+VariableStore.h"
 #import "ViewHelper.h"
+#import "ROWebNavigationViewController.h"
 
 @implementation UIViewController (ActivityIndicate)
 
@@ -60,7 +61,9 @@
   }if ([errorCode isEqualToString:@"5"]) {
     [ViewHelper showConnectionErrorAlert:self.view];
   }else {
-    [ViewHelper showErrorMessageAlert:errors:self];
+    NSString *data = [errors objectForKey:@"data"];
+    if( data != NULL) [ViewHelper showAlert:@"提醒":data:self];
+    else [ViewHelper showErrorMessageAlert:errors:self];
   }
 }
 
@@ -74,8 +77,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 //  DLog(@"UIViewController (ActivityIndicate)::viewWillAppear:currentViewController=%@", self);
-  VariableStore.sharedInstance.currentViewControllerDelegate = self;
-  self.kassVS.user.delegate = self;
+  if (![self isKindOfClass:ROWebNavigationViewController.class]) {
+    VariableStore.sharedInstance.currentViewControllerDelegate = self;
+    self.kassVS.user.delegate = self;
+    [ViewHelper hideConnectionErrorAlert:self.view];
+  }
 }
 
 - (void)viewDidLoad

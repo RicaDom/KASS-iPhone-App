@@ -41,6 +41,11 @@ typedef enum {
 @property (nonatomic, strong) NSString *avatarUrl;
 @property (nonatomic, strong) NSString *city;
 
+@property BOOL emailVerified;
+@property BOOL weiboVerified;
+@property BOOL renrenVerified;
+@property BOOL phoneVerified;
+
 - (id) initWithDelegate:(id<AccountActivityDelegate>)delegate;
 - (void) weiboLogin;
 - (void) renrenLogin;

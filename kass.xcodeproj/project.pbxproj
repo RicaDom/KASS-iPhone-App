@@ -23,6 +23,18 @@
 		77122C2D150BB187006FE1B0 /* china-chengdu.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 77122C2B150BB187006FE1B0 /* china-chengdu.gpx */; };
 		77122C2E150BB187006FE1B0 /* china-hangzhou.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 77122C2C150BB187006FE1B0 /* china-hangzhou.gpx */; };
 		771AE31A150DF1AB009F546B /* UIViewController+PriceModifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 771AE319150DF1AB009F546B /* UIViewController+PriceModifier.m */; };
+		771CBF9A1558F7F00061FD5B /* btn_weibo_77_press.png in Resources */ = {isa = PBXBuildFile; fileRef = 771CBF921558F7F00061FD5B /* btn_weibo_77_press.png */; };
+		771CBF9B1558F7F00061FD5B /* btn_weibo_77_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 771CBF931558F7F00061FD5B /* btn_weibo_77_press@2x.png */; };
+		771CBF9C1558F7F00061FD5B /* btn_weibo_77.png in Resources */ = {isa = PBXBuildFile; fileRef = 771CBF941558F7F00061FD5B /* btn_weibo_77.png */; };
+		771CBF9D1558F7F00061FD5B /* btn_weibo_77@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 771CBF951558F7F00061FD5B /* btn_weibo_77@2x.png */; };
+		771CBF9E1558F7F00061FD5B /* btn_renren_77_press.png in Resources */ = {isa = PBXBuildFile; fileRef = 771CBF961558F7F00061FD5B /* btn_renren_77_press.png */; };
+		771CBF9F1558F7F00061FD5B /* btn_renren_77_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 771CBF971558F7F00061FD5B /* btn_renren_77_press@2x.png */; };
+		771CBFA01558F7F00061FD5B /* btn_renren_77.png in Resources */ = {isa = PBXBuildFile; fileRef = 771CBF981558F7F00061FD5B /* btn_renren_77.png */; };
+		771CBFA11558F7F00061FD5B /* btn_renren_77@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 771CBF991558F7F00061FD5B /* btn_renren_77@2x.png */; };
+		771CBFA71558FBB20061FD5B /* btn_renren_77_check.png in Resources */ = {isa = PBXBuildFile; fileRef = 771CBFA31558FBB20061FD5B /* btn_renren_77_check.png */; };
+		771CBFA81558FBB20061FD5B /* btn_renren_77_check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 771CBFA41558FBB20061FD5B /* btn_renren_77_check@2x.png */; };
+		771CBFA91558FBB20061FD5B /* btn_weibo_77_check.png in Resources */ = {isa = PBXBuildFile; fileRef = 771CBFA51558FBB20061FD5B /* btn_weibo_77_check.png */; };
+		771CBFAA1558FBB20061FD5B /* btn_weibo_77_check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 771CBFA61558FBB20061FD5B /* btn_weibo_77_check@2x.png */; };
 		772C760C15254AB700200367 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5947DDC14A3A12B0066723A /* MainStoryboard.storyboard */; };
 		773533391522E15300CD8815 /* bg-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 773533371522E15300CD8815 /* bg-black.png */; };
 		7735333A1522E15300CD8815 /* bg-black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 773533381522E15300CD8815 /* bg-black@2x.png */; };
@@ -531,6 +543,18 @@
 		77122C2C150BB187006FE1B0 /* china-hangzhou.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "china-hangzhou.gpx"; path = "Resources/china-hangzhou.gpx"; sourceTree = "<group>"; };
 		771AE318150DF1AB009F546B /* UIViewController+PriceModifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PriceModifier.h"; sourceTree = "<group>"; };
 		771AE319150DF1AB009F546B /* UIViewController+PriceModifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PriceModifier.m"; sourceTree = "<group>"; };
+		771CBF921558F7F00061FD5B /* btn_weibo_77_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_weibo_77_press.png; sourceTree = "<group>"; };
+		771CBF931558F7F00061FD5B /* btn_weibo_77_press@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_weibo_77_press@2x.png"; sourceTree = "<group>"; };
+		771CBF941558F7F00061FD5B /* btn_weibo_77.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_weibo_77.png; sourceTree = "<group>"; };
+		771CBF951558F7F00061FD5B /* btn_weibo_77@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_weibo_77@2x.png"; sourceTree = "<group>"; };
+		771CBF961558F7F00061FD5B /* btn_renren_77_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_renren_77_press.png; sourceTree = "<group>"; };
+		771CBF971558F7F00061FD5B /* btn_renren_77_press@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_renren_77_press@2x.png"; sourceTree = "<group>"; };
+		771CBF981558F7F00061FD5B /* btn_renren_77.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_renren_77.png; sourceTree = "<group>"; };
+		771CBF991558F7F00061FD5B /* btn_renren_77@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_renren_77@2x.png"; sourceTree = "<group>"; };
+		771CBFA31558FBB20061FD5B /* btn_renren_77_check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_renren_77_check.png; sourceTree = "<group>"; };
+		771CBFA41558FBB20061FD5B /* btn_renren_77_check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_renren_77_check@2x.png"; sourceTree = "<group>"; };
+		771CBFA51558FBB20061FD5B /* btn_weibo_77_check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_weibo_77_check.png; sourceTree = "<group>"; };
+		771CBFA61558FBB20061FD5B /* btn_weibo_77_check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_weibo_77_check@2x.png"; sourceTree = "<group>"; };
 		773533371522E15300CD8815 /* bg-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-black.png"; sourceTree = "<group>"; };
 		773533381522E15300CD8815 /* bg-black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-black@2x.png"; sourceTree = "<group>"; };
 		7735333B1522FE2900CD8815 /* loading-sign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading-sign.png"; sourceTree = "<group>"; };
@@ -2099,6 +2123,18 @@
 		E58BC974151C3F25006C97EF /* setting */ = {
 			isa = PBXGroup;
 			children = (
+				771CBFA31558FBB20061FD5B /* btn_renren_77_check.png */,
+				771CBFA41558FBB20061FD5B /* btn_renren_77_check@2x.png */,
+				771CBFA51558FBB20061FD5B /* btn_weibo_77_check.png */,
+				771CBFA61558FBB20061FD5B /* btn_weibo_77_check@2x.png */,
+				771CBF921558F7F00061FD5B /* btn_weibo_77_press.png */,
+				771CBF931558F7F00061FD5B /* btn_weibo_77_press@2x.png */,
+				771CBF941558F7F00061FD5B /* btn_weibo_77.png */,
+				771CBF951558F7F00061FD5B /* btn_weibo_77@2x.png */,
+				771CBF961558F7F00061FD5B /* btn_renren_77_press.png */,
+				771CBF971558F7F00061FD5B /* btn_renren_77_press@2x.png */,
+				771CBF981558F7F00061FD5B /* btn_renren_77.png */,
+				771CBF991558F7F00061FD5B /* btn_renren_77@2x.png */,
 				777D4C061525A50A0048B34B /* intro.png */,
 				777D4C081525A5280048B34B /* intro@2x.png */,
 				774320E51520710300032117 /* veri-weibo-on.png */,
@@ -2908,6 +2944,18 @@
 				77CFE6321542849100082FD0 /* small-button-normal.png in Resources */,
 				77CFE6331542849100082FD0 /* small-button-normal@2x.png in Resources */,
 				E5F23FAC1557DD6D00E9C959 /* unread.png in Resources */,
+				771CBF9A1558F7F00061FD5B /* btn_weibo_77_press.png in Resources */,
+				771CBF9B1558F7F00061FD5B /* btn_weibo_77_press@2x.png in Resources */,
+				771CBF9C1558F7F00061FD5B /* btn_weibo_77.png in Resources */,
+				771CBF9D1558F7F00061FD5B /* btn_weibo_77@2x.png in Resources */,
+				771CBF9E1558F7F00061FD5B /* btn_renren_77_press.png in Resources */,
+				771CBF9F1558F7F00061FD5B /* btn_renren_77_press@2x.png in Resources */,
+				771CBFA01558F7F00061FD5B /* btn_renren_77.png in Resources */,
+				771CBFA11558F7F00061FD5B /* btn_renren_77@2x.png in Resources */,
+				771CBFA71558FBB20061FD5B /* btn_renren_77_check.png in Resources */,
+				771CBFA81558FBB20061FD5B /* btn_renren_77_check@2x.png in Resources */,
+				771CBFA91558FBB20061FD5B /* btn_weibo_77_check.png in Resources */,
+				771CBFAA1558FBB20061FD5B /* btn_weibo_77_check@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

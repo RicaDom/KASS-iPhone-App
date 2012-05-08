@@ -53,6 +53,11 @@
 + (void)buildActivityShareButton:(UIButton *)button;
 + (void)buildSmallMapButton:(UIButton *)button;
 
++ (void)buildWeiboBindButton:(UIButton *)button;
++ (void)buildRenrenBindButton:(UIButton *)button;
++ (void)buildWeiboCheckButton:(UIButton *)button;
++ (void)buildRenrenCheckButton:(UIButton *)button;
+
 + (void)buildPostButton:(UIButton *)button;
 + (void)buildProvideAlertButton:(UIButton *)button;
 + (void)buildProvideBrowseButton:(UIButton *)button;
@@ -64,6 +69,7 @@
 + (void)showErrorMessageAlert:(NSDictionary *)errors:(id)delegate;
 + (void) buildMap:(MKMapView *)mapView:(CLLocation *)location;
 + (void)showConnectionErrorAlert:(UIView *)view;
++ (void)hideConnectionErrorAlert:(UIView *)view;
 + (void)showIntroView:(UIView *)view:(UITapGestureRecognizer *)sft:(UITapGestureRecognizer *)cft;
 + (void)hideIntroView:(UIView *)view;
 
