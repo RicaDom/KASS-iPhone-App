@@ -43,8 +43,14 @@
 
 - (void) accountLoginFinished
 {
-    DLog(@"ActivityViewController::accountLoginFinished");
-    [self updateTableView];
+  DLog(@"ActivityViewController::accountLoginFinished");
+  [self updateTableView];
+  
+  if ([[VariableStore sharedInstance].remoteNotification count] > 0) {
+    NSDictionary *copyDict = [NSDictionary dictionaryWithDictionary:[VariableStore sharedInstance].remoteNotification];
+    [VariableStore sharedInstance].remoteNotification = nil;
+    [NotificationRenderHelper NotificationRender:copyDict mainTabBarVC:VariableStore.sharedInstance.mainTabBar];
+  }
 }
 
 - (void) accountDidGetListings:(NSDictionary *)dict

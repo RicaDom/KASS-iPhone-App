@@ -166,6 +166,11 @@ static NSString* const kAnalyticsAccountId = @"UA-31469096-1";
   
   [self setupGoogleAnalytics];
   
+  [VariableStore.sharedInstance loadAndStoreSettings:self];
+  DLog(@"AppDelegate::doneLoading");
+  
+  [VariableStore.sharedInstance loginIfPreviouslyLoggedIn];
+  
   if (launchOptions != nil)
 	{
     NSURL *url = [launchOptions objectForKey:UIApplicationLaunchOptionsURLKey];
@@ -177,15 +182,11 @@ static NSString* const kAnalyticsAccountId = @"UA-31469096-1";
 		NSDictionary* dictionary = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
 		if (dictionary != nil)
 		{
-			DLog(@"Launched from push notification: %@", dictionary);
-            [self performByNotification:dictionary];
+//			DLog(@"Launched from push notification: %@", dictionary);
+//            [self performByNotification:dictionary];
+      [VariableStore sharedInstance].remoteNotification = dictionary;
 		}
 	}
-  
-  [VariableStore.sharedInstance loadAndStoreSettings:self];
-  DLog(@"AppDelegate::doneLoading");
-  
-  [VariableStore.sharedInstance loginIfPreviouslyLoggedIn];
   
 	// Let the device know we want to receive push notifications
 	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:
