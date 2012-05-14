@@ -853,7 +853,7 @@
   
   
   ROUserInfoRequestParam *requestParam = [[ROUserInfoRequestParam alloc] init] ;
-	requestParam.fields = [NSString stringWithFormat:@"uid,name,sex,birthday,headurl"];
+	requestParam.fields = [NSString stringWithFormat:@"uid,name,sex,birthday,headurl,mainurl,email_hash"];
 	
   wAction = wLogin;
 	[self.renren getUsersInfo:requestParam andDelegate:self];
