@@ -754,6 +754,12 @@
     return;
   }
   
+  errorMsgs = [errors valueForKey:@"listing"];
+  if ( errorMsgs ){
+    [ViewHelper showErrorAlert:errorMsgs:delegate]; 
+    return;
+  }
+  
   for (NSString *k in errors) {
     errorKey  = k;
     errorMsgs = [errors valueForKey:errorKey];
