@@ -2190,7 +2190,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" id="0FM-w4-91s">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="353"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="318"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="6Q2-dH-gku">
@@ -2279,21 +2279,19 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </scrollView>
-                            <view contentMode="scaleToFill" id="e1Y-L5-vfr">
-                                <rect key="frame" x="0.0" y="351" width="320" height="65"/>
+                            <view contentMode="scaleToFill" id="sDN-pE-frK">
+                                <rect key="frame" x="0.0" y="318" width="320" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="发送讯息或价格" minimumFontSize="17" id="qXi-pt-Rg7">
-                                        <rect key="frame" x="303" y="9" width="17" height="31"/>
+                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" minimumFontSize="10" id="bac-HI-x3s">
+                                        <rect key="frame" x="43" y="-8" width="25" height="15"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="jzI-1g-RJt" id="Ier-HW-pN1"/>
-                                        </connections>
-                                    </textField>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uIh-Go-OLy">
-                                        <rect key="frame" x="0.0" y="9" width="37" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="opY-BB-d80">
+                                        <rect key="frame" x="0.0" y="4" width="37" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="¥">
@@ -2303,23 +2301,25 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="RL8-g6-Yll" kind="modal" id="t08-TN-ReO"/>
+                                        </connections>
                                     </button>
-                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" minimumFontSize="10" id="mGL-8i-1GT">
-                                        <rect key="frame" x="75" y="-8" width="42" height="21"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="发送讯息或价格" minimumFontSize="17" id="kCr-4V-UF2">
+                                        <rect key="frame" x="37" y="4" width="282" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" minimumFontSize="10" id="pfR-Av-Fzp">
-                                        <rect key="frame" x="171" y="-8" width="42" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="e1Y-L5-vfr">
+                                <rect key="frame" x="0.0" y="358" width="320" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Vwi-6R-pea">
-                                        <rect key="frame" x="10" y="11" width="300" height="43"/>
+                                        <rect key="frame" x="10" y="9" width="300" height="43"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" backgroundImage="btn_big_90@2x.png">
@@ -2334,7 +2334,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="支   付" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="qNy-Do-RsR">
-                                        <rect key="frame" x="10" y="9" width="300" height="43"/>
+                                        <rect key="frame" x="10" y="7" width="300" height="43"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="STHeitiTC-Medium" family="Heiti TC" pointSize="20"/>
                                         <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
@@ -2383,18 +2383,19 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="bottomView" destination="e1Y-L5-vfr" id="jdQ-fe-Pgy"/>
-                        <outlet property="changedPriceLabel" destination="mGL-8i-1GT" id="aco-3d-07j"/>
-                        <outlet property="changedPriceMessage" destination="pfR-Av-Fzp" id="rJs-ZT-wC5"/>
+                        <outlet property="bottomView" destination="sDN-pE-frK" id="vQW-Gc-gAJ"/>
+                        <outlet property="changedPriceMessage" destination="bac-HI-x3s" id="LUF-12-mG1"/>
                         <outlet property="descriptionTextField" destination="IJV-9Y-Nl0" id="iil-9J-BwB"/>
                         <outlet property="leftButton" destination="1Gt-CY-b2H" id="3wS-Dd-r0Q"/>
                         <outlet property="listingExpiredDate" destination="rfu-Ts-BxJ" id="U4h-A3-rs4"/>
                         <outlet property="listingTitle" destination="uqr-lK-x6Y" id="i07-gQ-bwB"/>
-                        <outlet property="messageTextField" destination="qXi-pt-Rg7" id="9ZG-WI-QCe"/>
+                        <outlet property="mainView" destination="7QR-YX-CYL" id="92O-jS-ijb"/>
+                        <outlet property="messageTextField" destination="kCr-4V-UF2" id="I3H-iq-vvv"/>
                         <outlet property="offerPrice" destination="VtK-1X-CDe" id="a5I-fo-pPe"/>
                         <outlet property="payButton" destination="Vwi-6R-pea" id="GM8-F0-lbZ"/>
                         <outlet property="payStatusLabel" destination="qNy-Do-RsR" id="AW9-ba-5Aj"/>
-                        <outlet property="priceButton" destination="uIh-Go-OLy" id="XhB-7m-OaU"/>
+                        <outlet property="payView" destination="e1Y-L5-vfr" id="JgY-Mi-UmX"/>
+                        <outlet property="priceButton" destination="opY-BB-d80" id="dWV-Mf-hs9"/>
                         <outlet property="rightButton" destination="IIZ-jK-MYT" id="F8r-2A-yR8"/>
                         <outlet property="scrollView" destination="0FM-w4-91s" id="RDr-rs-wOD"/>
                         <outlet property="topInfoView" destination="6Q2-dH-gku" id="ol2-rQ-15B"/>
@@ -2901,7 +2902,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hWg-Ie-RHa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="qSl-ws-Clg" customClass="UserInfoViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Br1-bB-Ybw">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="X9Q-fg-5oI">
@@ -2910,7 +2911,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" id="duj-ox-mNU">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <rect key="frame" x="0.0" y="49" width="320" height="367"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="kzU-qb-KOG">
@@ -4198,10 +4199,12 @@
                 <relationship kind="outlet" name="leftButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="listingExpiredDate" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="listingTitle" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="mainView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="messageTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="offerPrice" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="payButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="payStatusLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="payView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="priceButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="rightButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
@@ -4488,14 +4491,14 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="AMc-4a-ghd"/>
-        <segue reference="UPg-Yr-5B0"/>
-        <segue reference="BhZ-ht-CXE"/>
-        <segue reference="34A-gF-H3c"/>
-        <segue reference="p1j-ow-HAz"/>
         <segue reference="kjd-qS-0pq"/>
-        <segue reference="0kh-0v-gnk"/>
-        <segue reference="R9B-U7-jDV"/>
         <segue reference="bw5-Hf-Ght"/>
+        <segue reference="skE-QR-q5J"/>
+        <segue reference="QWu-cC-yAN"/>
+        <segue reference="t08-TN-ReO"/>
+        <segue reference="tJz-zA-22g"/>
+        <segue reference="BhZ-ht-CXE"/>
+        <segue reference="UPg-Yr-5B0"/>
+        <segue reference="p1j-ow-HAz"/>
     </inferredMetricsTieBreakers>
 </document>

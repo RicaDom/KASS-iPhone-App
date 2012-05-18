@@ -171,11 +171,10 @@
       
       //load keychain info
       NSString *email = [standardDefaults stringForKey:KassAppEmailKey];
+      NSError *error = nil;
+      NSString *pasword = [SFHFKeychainUtils getPasswordForUsername:email andServiceName:KassServiceName error:&error];
       
-      if (email) {
-        NSError *error = nil;
-        NSString *pasword = [SFHFKeychainUtils getPasswordForUsername:email andServiceName:KassServiceName error:&error];
-        
+      if (email && pasword) {
         [self signInAccount:email:pasword];
         _isAutoLogin = TRUE;
         return true;

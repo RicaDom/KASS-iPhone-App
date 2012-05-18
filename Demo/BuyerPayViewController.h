@@ -15,7 +15,7 @@
 #import "ViewHelper.h"
 #import "CustomImageViewPopup.h"
 
-@interface BuyerPayViewController : DataSourceViewController <UIScrollViewDelegate, AccountActivityDelegate>
+@interface BuyerPayViewController : DataSourceViewController <UIScrollViewDelegate, UITextFieldDelegate, AccountActivityDelegate>
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) Offer *currentOffer;
@@ -35,6 +35,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *payButton;
 @property (weak, nonatomic) IBOutlet UILabel *payStatusLabel;
 @property (weak, nonatomic) IBOutlet UIView *topInfoView;
+@property (strong, nonatomic) IBOutlet UIView *payView;
+@property (weak, nonatomic) IBOutlet UIView *mainView;
 
 - (IBAction)leftButtonAction:(id)sender;
 - (IBAction)payButtonAction:(id)sender;
