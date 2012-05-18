@@ -110,7 +110,9 @@
     [ViewHelper buildRoundCustomImageViewWithFrame:_topInfoView:_currentOffer.buyerImageUrl:CGRectMake(10,5,50,50)];
   }
   
-  if ( self.currentOffer.isPaid ) {
+  if (self.currentOffer.isAccepted) {
+    
+  }else if ( self.currentOffer.isPaid ) {
     [self.buttomView hideAllSubviews];
     [ViewHelper buildConfirmPaymentButton:self.buttomView:self];
   } else if ( self.currentOffer.isPaymentConfirmed ) {
